@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoClip - 智能视频切片系统</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5e6ad2',
+                        secondary: '#8b5cf6',
+                        accent: '#00d4ff',
+                        dark: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            200: '#e2e8f0',
+                            300: '#cbd5e1',
+                            400: '#94a3b8',
+                            500: '#64748b',
+                            600: '#475569',
+                            700: '#334155',
+                            800: '#1e293b',
+                            900: '#0f172a',
+                            950: '#020617'
+                        }
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+        }
+        
+        .linear-gradient {
+            background: linear-gradient(180deg, #0a0a0a 0%, #111111 100%);
+        }
+        
+        .hero-gradient {
+            background: radial-gradient(ellipse at center, rgba(94, 106, 210, 0.15) 0%, transparent 70%);
+        }
+        
+        .card-dark {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+        }
+        
+        .card-dark:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(255, 255, 255, 0.12);
+            transform: translateY(-2px);
+            transition: all 0.3s ease;
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, #ffffff 0%, #a1a1aa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .accent-gradient {
+            background: linear-gradient(135deg, #5e6ad2 0%, #00d4ff 100%);
+        }
+        
+        .border-gradient {
+            border-image: linear-gradient(135deg, #5e6ad2, #00d4ff) 1;
+        }
+        
+        .demo-container {
+            background: #0a0a0a;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        
+        .nav-blur {
+            backdrop-filter: blur(20px);
+            background: rgba(10, 10, 10, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        .feature-icon {
+            background: linear-gradient(135deg, #5e6ad2 0%, #00d4ff 100%);
+            border-radius: 12px;
+            padding: 12px;
+        }
+        
+        .stats-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 24px;
+        }
+        
+        .tech-badge {
+            background: rgba(94, 106, 210, 0.1);
+            border: 1px solid rgba(94, 106, 210, 0.2);
+            color: #5e6ad2;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #5e6ad2 0%, #00d4ff 100%);
+            border: none;
+            color: white;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 25px rgba(94, 106, 210, 0.3);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        /* 暗黑主题滚动条样式 */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            transition: background 0.3s ease;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Firefox 滚动条样式 */
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 255, 255, 0.2) rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body class="linear-gradient">
+    <!-- Header -->
+    <header class="nav-blur sticky top-0 z-50">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <h1 class="text-xl font-bold bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent drop-shadow-lg filter brightness-110">AutoClip</h1>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#features" class="text-gray-300 hover:text-white transition-colors text-sm font-medium">功能特性</a>
+                    <a href="#tech" class="text-gray-300 hover:text-white transition-colors text-sm font-medium">技术架构</a>
+                    <a href="#demo" class="text-gray-300 hover:text-white transition-colors text-sm font-medium">演示</a>
+                    <a href="#github" class="btn-primary px-4 py-2 rounded-lg text-sm font-medium">GitHub</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative py-32 overflow-hidden">
+        <div class="hero-gradient absolute inset-0"></div>
+        
+        <!-- Large AutoClip background text -->
+        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <div class="text-[15rem] md:text-[20rem] lg:text-[25rem] font-black text-white/3 select-none transform -rotate-12 whitespace-nowrap">
+                AutoClip
+            </div>
+        </div>
+        
+        <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="mb-8">
+                <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-white/5 border border-white/10 text-gray-300 mb-8">
+                    <span class="w-2 h-2 bg-green-400 rounded-full mr-2"></span>
+                    开源免费 · 智能高效
+                </span>
+            </div>
+            <h1 class="text-6xl md:text-7xl font-bold mb-8 leading-loose">
+                <span class="text-gradient">AutoClip</span><br>
+                <span class="text-white/90 mt-4 block">智能视频切片</span>
+            </h1>
+            <p class="text-xl md:text-2xl mb-12 text-gray-300 max-w-4xl mx-auto leading-relaxed">
+                基于AI的端到端视频切片解决方案，自动切分为高质量片段
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+                <a href="#demo" class="btn-primary px-8 py-4 rounded-xl font-medium text-lg">
+                    查看演示
+                </a>
+                <a href="#github" class="btn-secondary px-8 py-4 rounded-xl font-medium text-lg">
+                    ⭐ GitHub
+                </a>
+            </div>
+            
+            <!-- Hero Image Carousel -->
+            <div class="demo-container max-w-6xl mx-auto relative">
+                <!-- 轮播图容器 -->
+                <div class="carousel-container relative group">
+                    <!-- 主图片区域 -->
+                    <div class="aspect-[16/10] bg-gradient-to-br from-gray-900 via-gray-800 to-black rounded-3xl overflow-hidden shadow-2xl relative">
+                        <!-- 轮播图片容器 -->
+                        <div class="carousel-wrapper h-full relative overflow-hidden">
+                            <!-- 图片1 - 主界面 -->
+                            <div class="carousel-slide absolute inset-0 transition-all duration-700 ease-out transform translate-x-0 opacity-100">
+                                <img src="main.png" alt="AutoClip主界面" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
+                            </div>
+                            <!-- 图片2 - 多输入界面 -->
+                            <div class="carousel-slide absolute inset-0 transition-all duration-700 ease-out transform translate-x-full opacity-0">
+                                <img src="multi_input.png" alt="多输入界面" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
+                            </div>
+                            <!-- 图片3 - 任务管理 -->
+                            <div class="carousel-slide absolute inset-0 transition-all duration-700 ease-out transform translate-x-full opacity-0">
+                                <img src="task.png" alt="任务管理" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
+                            </div>
+                            <!-- 图片4 - 合集预览 -->
+                            <div class="carousel-slide absolute inset-0 transition-all duration-700 ease-out transform translate-x-full opacity-0">
+                                <img src="collection.png" alt="合集预览" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
+                            </div>
+                            <!-- 图片5 - 视频预览 -->
+                            <div class="carousel-slide absolute inset-0 transition-all duration-700 ease-out transform translate-x-full opacity-0">
+                                <img src="preview.png" alt="视频预览" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- 导航按钮 -->
+                        <button class="carousel-btn carousel-prev absolute left-6 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-300 opacity-0 group-hover:opacity-100">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                            </svg>
+                        </button>
+                        <button class="carousel-btn carousel-next absolute right-6 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-300 opacity-0 group-hover:opacity-100">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <!-- 指示器和标题区域 -->
+                    <div class="mt-12 space-y-8">
+                        <!-- 指示器 -->
+                        <div class="carousel-indicators flex justify-center space-x-3">
+                            <button class="indicator w-2 h-2 rounded-full bg-white/30 hover:bg-white/60 transition-all duration-300 active scale-125" data-slide="0"></button>
+                            <button class="indicator w-2 h-2 rounded-full bg-white/30 hover:bg-white/60 transition-all duration-300" data-slide="1"></button>
+                            <button class="indicator w-2 h-2 rounded-full bg-white/30 hover:bg-white/60 transition-all duration-300" data-slide="2"></button>
+                            <button class="indicator w-2 h-2 rounded-full bg-white/30 hover:bg-white/60 transition-all duration-300" data-slide="3"></button>
+                            <button class="indicator w-2 h-2 rounded-full bg-white/30 hover:bg-white/60 transition-all duration-300" data-slide="4"></button>
+                        </div>
+                        
+                        <!-- 图片标题区域 -->
+                        <div class="carousel-caption text-center max-w-2xl mx-auto">
+                            <h3 class="text-3xl font-bold mb-3 text-white carousel-title tracking-tight">AutoClip 主界面</h3>
+                            <p class="text-gray-300 text-lg leading-relaxed carousel-description">智能视频切片系统的核心操作界面</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 轮播图JavaScript -->
+            <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const slides = document.querySelectorAll('.carousel-slide');
+                const indicators = document.querySelectorAll('.indicator');
+                const prevBtn = document.querySelector('.carousel-prev');
+                const nextBtn = document.querySelector('.carousel-next');
+                const titles = [
+                    { title: 'AutoClip 主界面', desc: '智能视频切片系统的核心操作界面' },
+                    { title: '多输入支持', desc: '支持视频文件、链接和字幕文件多种输入方式' },
+                    { title: '任务管理', desc: '实时监控处理进度，支持批量任务管理' },
+                    { title: '智能合集', desc: 'AI自动聚类相关内容，生成主题合集' },
+                    { title: '视频预览', desc: '切片结果预览，支持在线播放和编辑' }
+                ];
+                
+                let currentSlide = 0;
+                
+                function updateCarousel() {
+                    slides.forEach((slide, index) => {
+                        if (index === currentSlide) {
+                            slide.style.transform = 'translateX(0)';
+                            slide.style.opacity = '1';
+                        } else if (index < currentSlide) {
+                            slide.style.transform = 'translateX(-100%)';
+                            slide.style.opacity = '0';
+                        } else {
+                            slide.style.transform = 'translateX(100%)';
+                            slide.style.opacity = '0';
+                        }
+                    });
+                    
+                    indicators.forEach((indicator, index) => {
+                        indicator.classList.toggle('active', index === currentSlide);
+                        if (index === currentSlide) {
+                            indicator.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
+                            indicator.style.transform = 'scale(1.25)';
+                        } else {
+                            indicator.style.backgroundColor = 'rgba(255, 255, 255, 0.3)';
+                            indicator.style.transform = 'scale(1)';
+                        }
+                    });
+                    
+                    // 更新标题和描述
+                    const titleEl = document.querySelector('.carousel-title');
+                    const descEl = document.querySelector('.carousel-description');
+                    if (titleEl && descEl && titles[currentSlide]) {
+                        titleEl.textContent = titles[currentSlide].title;
+                        descEl.textContent = titles[currentSlide].desc;
+                    }
+                }
+                
+                function nextSlide() {
+                    currentSlide = (currentSlide + 1) % slides.length;
+                    updateCarousel();
+                }
+                
+                function prevSlide() {
+                    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                    updateCarousel();
+                }
+                
+                // 事件监听
+                nextBtn.addEventListener('click', nextSlide);
+                prevBtn.addEventListener('click', prevSlide);
+                
+                indicators.forEach((indicator, index) => {
+                    indicator.addEventListener('click', () => {
+                        currentSlide = index;
+                        updateCarousel();
+                    });
+                });
+                
+                // 自动轮播
+                setInterval(nextSlide, 5000);
+                
+                // 初始化
+                updateCarousel();
+            });
+            </script>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="stats-card text-center">
+                    <div class="text-4xl font-bold text-white mb-2">95%+</div>
+                    <div class="text-gray-400 text-sm font-medium">处理成功率</div>
+                </div>
+                <div class="stats-card text-center">
+                    <div class="text-4xl font-bold text-white mb-2">8-15</div>
+                    <div class="text-gray-400 text-sm font-medium">每小时切片数</div>
+                </div>
+                <div class="stats-card text-center">
+                    <div class="text-4xl font-bold text-white mb-2">3-8分钟</div>
+                    <div class="text-gray-400 text-sm font-medium">智能切片时长</div>
+                </div>
+                <div class="stats-card text-center">
+                    <div class="text-4xl font-bold text-white mb-2">6步</div>
+                    <div class="text-gray-400 text-sm font-medium">AI处理流水线</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <h2 class="text-5xl font-bold text-white mb-6">核心功能</h2>
+                <p class="text-xl text-gray-400">AI驱动的全流程自动化视频处理</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card-dark p-8 rounded-2xl">
+                    <div class="feature-icon w-12 h-12 mb-6 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4 text-white">智能视频切片</h3>
+                    <p class="text-gray-400 leading-relaxed">基于大语言模型的内容理解，自动识别有价值话题片段，确保语义完整性</p>
+                </div>
+
+                <div class="card-dark p-8 rounded-2xl">
+                    <div class="feature-icon w-12 h-12 mb-6 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4 text-white">智能合集推荐</h3>
+                    <p class="text-gray-400 leading-relaxed">基于主题相似度的智能聚类，自动组织相关内容为合集，提升内容价值</p>
+                </div>
+
+                <div class="card-dark p-8 rounded-2xl">
+                    <div class="feature-icon w-12 h-12 mb-6 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4 text-white">自动标题生成</h3>
+                    <p class="text-gray-400 leading-relaxed">AI生成吸引人的标题，考虑SEO优化和情感共鸣，提升内容传播效果</p>
+                </div>
+
+                <div class="card-dark p-8 rounded-2xl">
+                    <div class="feature-icon w-12 h-12 mb-6 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4 text-white">内容质量评估</h3>
+                    <p class="text-gray-400 leading-relaxed">多维度质量评估系统，确保输出内容的信息密度和观点价值</p>
+                </div>
+
+                <div class="card-dark p-8 rounded-2xl">
+                    <div class="feature-icon w-12 h-12 mb-6 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4 text-white">B站自动上传</h3>
+                    <p class="text-gray-400 leading-relaxed">支持批量上传到B站，智能标签生成和分区推荐，实现全流程自动化</p>
+                </div>
+
+                <div class="card-dark p-8 rounded-2xl">
+                    <div class="feature-icon w-12 h-12 mb-6 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4 text-white">多项目管理</h3>
+                    <p class="text-gray-400 leading-relaxed">支持同时管理多个处理项目，数据完全隔离，支持并发处理</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack Section -->
+    <section id="tech" class="py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <h2 class="text-5xl font-bold text-white mb-6">技术架构</h2>
+                <p class="text-xl text-gray-400">现代化的技术栈，确保高性能和可扩展性</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
+                <div>
+                    <h3 class="text-2xl font-semibold mb-6 text-white">核心技术</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div class="tech-badge px-3 py-1 rounded-full text-sm mr-4">AI</div>
+                            <span class="text-gray-300">通义千问 (Qwen-Plus) 大语言模型</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="tech-badge px-3 py-1 rounded-full text-sm mr-4">后端</div>
+                            <span class="text-gray-300">Python + FastAPI + SQLite</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="tech-badge px-3 py-1 rounded-full text-sm mr-4">前端</div>
+                            <span class="text-gray-300">React + TypeScript + Streamlit</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="tech-badge px-3 py-1 rounded-full text-sm mr-4">视频</div>
+                            <span class="text-gray-300">FFmpeg 视频处理</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="tech-badge px-3 py-1 rounded-full text-sm mr-4">部署</div>
+                            <span class="text-gray-300">Docker + Nginx</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-dark p-8 rounded-2xl">
+                    <h3 class="text-xl font-semibold mb-4 text-white">6步处理流水线</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 accent-gradient text-white rounded-full flex items-center justify-center text-sm mr-3">1</div>
+                            <span class="text-gray-300">📖 大纲提取</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 accent-gradient text-white rounded-full flex items-center justify-center text-sm mr-3">2</div>
+                            <span class="text-gray-300">⏰ 时间定位</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 accent-gradient text-white rounded-full flex items-center justify-center text-sm mr-3">3</div>
+                            <span class="text-gray-300">🔥 内容评分</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 accent-gradient text-white rounded-full flex items-center justify-center text-sm mr-3">4</div>
+                            <span class="text-gray-300">📝 标题生成</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 accent-gradient text-white rounded-full flex items-center justify-center text-sm mr-3">5</div>
+                            <span class="text-gray-300">📦 主题聚类</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 accent-gradient text-white rounded-full flex items-center justify-center text-sm mr-3">6</div>
+                            <span class="text-gray-300">✂️ 视频切割</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
+                <div class="card-dark p-6 rounded-2xl text-center">
+                    <div class="feature-icon w-12 h-12 mb-4 mx-auto flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-3 text-white">AI</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">大语言模型<br>内容理解<br>智能推荐</p>
+                </div>
+
+                <div class="card-dark p-6 rounded-2xl text-center">
+                    <div class="feature-icon w-12 h-12 mb-4 mx-auto flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-3 text-white">后端</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Python<br>FastAPI<br>异步处理</p>
+                </div>
+
+                <div class="card-dark p-6 rounded-2xl text-center">
+                    <div class="feature-icon w-12 h-12 mb-4 mx-auto flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-3 text-white">前端</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">React<br>TypeScript<br>现代UI</p>
+                </div>
+
+                <div class="card-dark p-6 rounded-2xl text-center">
+                    <div class="feature-icon w-12 h-12 mb-4 mx-auto flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-3 text-white">视频处理</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">FFmpeg<br>音视频分析<br>格式转换</p>
+                </div>
+
+                <div class="card-dark p-6 rounded-2xl text-center">
+                    <div class="feature-icon w-12 h-12 mb-4 mx-auto flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-3 text-white">部署</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Docker<br>云原生<br>自动扩容</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Demo Section -->
+    <section id="demo" class="py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <h2 class="text-5xl font-bold text-white mb-6">产品演示</h2>
+                <p class="text-xl text-gray-400">直观体验AutoClip的强大功能</p>
+            </div>
+            
+            <!-- 主产品截图 -->
+            <div class="mb-16">
+                <div class="card-dark p-8 rounded-3xl">
+                    <div class="aspect-video bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl overflow-hidden border border-gray-700">
+                        <!-- 产品主界面图片 -->
+                        <img src="main.png" alt="AutoClip主界面" class="w-full h-full object-cover rounded-2xl">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 功能特性展示 -->
+            <div class="grid lg:grid-cols-3 gap-8">
+                <div class="card-dark p-6 rounded-2xl">
+                    <div class="aspect-video bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl mb-4 flex items-center justify-center border border-gray-700">
+                        <div class="text-center">
+                            <div class="w-12 h-12 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-lg mx-auto mb-3 flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                                </svg>
+                            </div>
+                            <p class="text-gray-400 text-sm">AI 内容分析</p>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-semibold text-white mb-2">智能内容理解</h3>
+                    <p class="text-gray-400 text-sm">基于大语言模型的深度内容分析，自动识别关键话题和价值片段</p>
+                </div>
+                
+                <div class="card-dark p-6 rounded-2xl">
+                    <div class="aspect-video bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl mb-4 flex items-center justify-center border border-gray-700">
+                        <div class="text-center">
+                            <div class="w-12 h-12 bg-gradient-to-br from-purple-400 to-pink-500 rounded-lg mx-auto mb-3 flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                                </svg>
+                            </div>
+                            <p class="text-gray-400 text-sm">智能合集</p>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-semibold text-white mb-2">自动合集推荐</h3>
+                    <p class="text-gray-400 text-sm">基于主题相似度智能聚类，自动组织相关内容为合集，提升内容价值</p>
+                </div>
+                
+                <div class="card-dark p-6 rounded-2xl">
+                    <div class="aspect-video bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl mb-4 flex items-center justify-center border border-gray-700">
+                        <div class="text-center">
+                            <div class="w-12 h-12 bg-gradient-to-br from-green-400 to-teal-500 rounded-lg mx-auto mb-3 flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                                </svg>
+                            </div>
+                            <p class="text-gray-400 text-sm">一键上传</p>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-semibold text-white mb-2">自动化发布（计划中）</h3>
+                    <p class="text-gray-400 text-sm">支持批量上传到B站，智能标签生成和分区推荐，实现全流程自动化</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Start Section -->
+    <section id="start" class="py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <h2 class="text-5xl font-bold text-white mb-6">快速开始</h2>
+                <p class="text-xl text-gray-400">三种使用方式，满足不同需求</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="card-dark p-8 rounded-2xl">
+                    <div class="feature-icon w-12 h-12 mb-6 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4 text-white">命令行模式</h3>
+                    <div class="bg-gray-900/80 text-green-400 p-4 rounded-xl text-sm font-mono mb-6 border border-gray-700">
+                        <div>$ python main.py \</div>
+                        <div>  --video input.mp4 \</div>
+                        <div>  --srt input.srt \</div>
+                        <div>  --project-name "我的项目"</div>
+                    </div>
+                    <p class="text-gray-400 leading-relaxed">适合批量处理和自动化场景</p>
+                </div>
+
+                <div class="card-dark p-8 rounded-2xl">
+                    <div class="feature-icon w-12 h-12 mb-6 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4 text-white">Streamlit界面</h3>
+                    <div class="bg-gray-900/80 text-green-400 p-4 rounded-xl text-sm font-mono mb-6 border border-gray-700">
+                        <div>$ streamlit run app.py</div>
+                    </div>
+                    <p class="text-gray-400 leading-relaxed">快速原型开发和测试</p>
+                </div>
+
+                <div class="card-dark p-8 rounded-2xl">
+                    <div class="feature-icon w-12 h-12 mb-6 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4 text-white">React前端</h3>
+                    <div class="bg-gray-900/80 text-green-400 p-4 rounded-xl text-sm font-mono mb-6 border border-gray-700">
+                        <div>$ cd frontend</div>
+                        <div>$ npm install</div>
+                        <div>$ npm start</div>
+                    </div>
+                    <p class="text-gray-400 leading-relaxed">生产环境的完整功能界面</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section class="py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <h2 class="text-5xl font-bold text-white mb-6">应用场景</h2>
+                <p class="text-xl text-gray-400">适用于多种内容创作和教育场景</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="card-dark p-8 rounded-2xl text-center">
+                    <div class="feature-icon w-16 h-16 mx-auto mb-6 flex items-center justify-center">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-4 text-white">内容创作者</h3>
+                    <p class="text-gray-400 leading-relaxed">直播回放处理、课程视频切片、访谈节目处理</p>
+                </div>
+
+                <div class="card-dark p-8 rounded-2xl text-center">
+                    <div class="feature-icon w-16 h-16 mx-auto mb-6 flex items-center justify-center">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-4 text-white">教育机构</h3>
+                    <p class="text-gray-400 leading-relaxed">在线课程制作、知识点提取、学习资源整理</p>
+                </div>
+
+                <div class="card-dark p-8 rounded-2xl text-center">
+                    <div class="feature-icon w-16 h-16 mx-auto mb-6 flex items-center justify-center">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-4 text-white">企业培训</h3>
+                    <p class="text-gray-400 leading-relaxed">培训视频处理、技能点提取、知识库建设</p>
+                </div>
+
+                <div class="card-dark p-8 rounded-2xl text-center">
+                    <div class="feature-icon w-16 h-16 mx-auto mb-6 flex items-center justify-center">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-4 text-white">平台运营</h3>
+                    <p class="text-gray-400 leading-relaxed">内容推荐、流量分发、用户留存</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-24">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="card-dark p-12 rounded-3xl">
+                <h2 class="text-5xl font-bold mb-6 text-white">开始使用 AutoClip</h2>
+                <p class="text-xl mb-8 text-gray-300 leading-relaxed">
+                    开源免费，快速部署，让AI为你的内容创作赋能
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#" class="btn-primary px-8 py-4 rounded-xl font-medium text-lg">
+                        ⭐ Star on GitHub
+                    </a>
+                    <a href="#" class="btn-secondary px-8 py-4 rounded-xl font-medium text-lg">
+                        📖 查看文档
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-16 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-12">
+                <div class="col-span-2">
+                    <div class="flex items-center mb-6">
+                        <div class="w-8 h-8 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-lg mr-3"></div>
+                        <span class="text-2xl font-bold text-white">AutoClip</span>
+                    </div>
+                    <p class="text-gray-400 mb-6 leading-relaxed max-w-md">AI驱动的智能视频切片系统，让内容创作更高效。开源免费，持续迭代。</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-cyan-400 transition-colors duration-200">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-cyan-400 transition-colors duration-200">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6 text-white">产品</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#features" class="text-gray-400 hover:text-white transition-colors duration-200">功能特性</a></li>
+                        <li><a href="#tech" class="text-gray-400 hover:text-white transition-colors duration-200">技术架构</a></li>
+                        <li><a href="#demo" class="text-gray-400 hover:text-white transition-colors duration-200">产品演示</a></li>
+                        <li><a href="#start" class="text-gray-400 hover:text-white transition-colors duration-200">快速开始</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6 text-white">资源</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">使用文档</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">API参考</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">开发指南</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">社区支持</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2024 AutoClip. 开源项目，MIT许可证.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.classList.add('shadow-lg');
+            } else {
+                header.classList.remove('shadow-lg');
+            }
+        });
+    </script>
+</body>
+</html>
