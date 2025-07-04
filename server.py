@@ -16,7 +16,7 @@ import os
 import sys
 from pathlib import Path
 
-PORT = 8001
+PORT = 8002
 
 def main():
     # 确保在正确的目录中运行
