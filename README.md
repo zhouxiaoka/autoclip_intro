@@ -222,3 +222,52 @@ MIT License
 ## 📞 支持
 
 如有问题，请提交Issue或联系开发团队。
+
+## 项目文件说明
+
+### 核心文件
+- `index.html` - 项目主页
+- `server.py` - 本地开发服务器
+- `项目介绍文档.md` - 项目详细介绍
+
+### 图片资源
+- `main.png` - 主界面截图
+- `multi_input.png` - 多输入界面截图
+- `task.png` - 任务管理截图
+- `collection.png` - 合集预览截图
+- `preview.png` - 视频预览截图
+
+### 联系方式二维码（需要添加）
+- `qq_qr.jpg` - QQ二维码
+- `feishu_qr.jpg` - 飞书二维码
+
+### 视频演示文件（需要添加）
+- `demo.mp4` - 产品演示视频（推荐格式）
+- `demo.webm` - 产品演示视频（WebM格式）
+- `demo.ogg` - 产品演示视频（OGG格式）
+
+## 本地开发
+
+```bash
+# 启动本地服务器
+python server.py
+
+# 访问 http://localhost:8000
+```
+
+## 功能特性
+
+- 智能视频切片
+- 智能合集推荐
+- 自动标题生成
+- 内容质量评估
+- 多项目管理（开发中）
+- B站自动上传（计划中）
+
+## 联系方式
+
+扫描二维码添加开发者：
+- QQ：`qq_qr.jpg`
+- 飞书：`feishu_qr.jpg`
+
+请备注"AutoClip"以便快速通过好友申请。
