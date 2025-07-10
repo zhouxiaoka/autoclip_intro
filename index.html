@@ -222,153 +222,24 @@
                 </a>
             </div>
             
-            <!-- Hero Image Carousel -->
-            <div class="demo-container max-w-6xl mx-auto relative">
-                <!-- 轮播图容器 -->
-                <div class="carousel-container relative group">
-                    <!-- 主图片区域 -->
-                    <div class="aspect-[16/10] bg-gradient-to-br from-gray-900 via-gray-800 to-black rounded-3xl overflow-hidden shadow-2xl relative">
-                        <!-- 轮播图片容器 -->
-                        <div class="carousel-wrapper h-full relative overflow-hidden">
-                            <!-- 图片1 - 主界面 -->
-                            <div class="carousel-slide absolute inset-0 transition-all duration-700 ease-out transform translate-x-0 opacity-100">
-                                <img src="main.png" alt="AutoClip主界面" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
-                            </div>
-                            <!-- 图片2 - 多输入界面 -->
-                            <div class="carousel-slide absolute inset-0 transition-all duration-700 ease-out transform translate-x-full opacity-0">
-                                <img src="multi_input.png" alt="多输入界面" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
-                            </div>
-                            <!-- 图片3 - 任务管理 -->
-                            <div class="carousel-slide absolute inset-0 transition-all duration-700 ease-out transform translate-x-full opacity-0">
-                                <img src="task.png" alt="任务管理" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
-                            </div>
-                            <!-- 图片4 - 合集预览 -->
-                            <div class="carousel-slide absolute inset-0 transition-all duration-700 ease-out transform translate-x-full opacity-0">
-                                <img src="collection.png" alt="合集预览" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
-                            </div>
-                            <!-- 图片5 - 视频预览 -->
-                            <div class="carousel-slide absolute inset-0 transition-all duration-700 ease-out transform translate-x-full opacity-0">
-                                <img src="preview.png" alt="视频预览" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
-                            </div>
-                        </div>
-                        
-                        <!-- 导航按钮 -->
-                        <button class="carousel-btn carousel-prev absolute left-6 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-300 opacity-0 group-hover:opacity-100">
-                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-                            </svg>
-                        </button>
-                        <button class="carousel-btn carousel-next absolute right-6 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-300 opacity-0 group-hover:opacity-100">
-                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                            </svg>
-                        </button>
-                    </div>
-                    
-                    <!-- 指示器和标题区域 -->
-                    <div class="mt-8 space-y-8">
-                        <!-- 指示器 -->
-                        <div class="carousel-indicators flex justify-center space-x-4">
-                            <button class="indicator w-3 h-3 rounded-full bg-white/30 hover:bg-white/60 transition-all duration-300 active scale-125" data-slide="0"></button>
-                            <button class="indicator w-3 h-3 rounded-full bg-white/30 hover:bg-white/60 transition-all duration-300" data-slide="1"></button>
-                            <button class="indicator w-3 h-3 rounded-full bg-white/30 hover:bg-white/60 transition-all duration-300" data-slide="2"></button>
-                            <button class="indicator w-3 h-3 rounded-full bg-white/30 hover:bg-white/60 transition-all duration-300" data-slide="3"></button>
-                            <button class="indicator w-3 h-3 rounded-full bg-white/30 hover:bg-white/60 transition-all duration-300" data-slide="4"></button>
-                        </div>
-                        
-                        <!-- 图片标题区域 -->
-                        <div class="carousel-caption text-center max-w-3xl mx-auto mb-8">
-                            <h3 class="text-4xl font-bold mb-6 text-white carousel-title tracking-tight">AutoClip 主界面</h3>
-                            <p class="text-gray-300 text-xl leading-relaxed carousel-description mb-6">智能视频切片系统的核心操作界面</p>
-                        </div>
-                    </div>
+            <!-- Hero区主视觉：产品演示视频播放器 -->
+            <div class="max-w-5xl mx-auto mb-16">
+                <div class="card-dark p-4 rounded-3xl shadow-lg">
+                    <video
+                        id="demo-video"
+                        class="w-full h-full object-cover rounded-2xl"
+                        poster="main.png"
+                        preload="metadata"
+                        controls
+                        controlsList="nodownload"
+                        oncontextmenu="return false;"
+                    >
+                        <source src="demo.mp4" type="video/mp4">
+                        您的浏览器不支持视频播放。
+                    </video>
+                    <div class="text-sm text-gray-400 mt-2">功能实机测试预览，时长约1分钟</div>
                 </div>
             </div>
-            
-            <!-- 轮播图JavaScript -->
-            <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const slides = document.querySelectorAll('.carousel-slide');
-                const indicators = document.querySelectorAll('.indicator');
-                const prevBtn = document.querySelector('.carousel-prev');
-                const nextBtn = document.querySelector('.carousel-next');
-                const titles = [
-                    { title: 'AutoClip 主界面', desc: '智能视频切片系统的核心操作界面' },
-                    { title: '多输入支持', desc: '支持视频文件、链接和字幕文件多种输入方式' },
-                    { title: '任务管理', desc: '实时监控处理进度，支持批量任务管理' },
-                    { title: '智能合集', desc: 'AI自动聚类相关内容，生成主题合集' },
-                    { title: '视频预览', desc: '切片结果预览，支持在线播放和编辑' }
-                ];
-                
-                let currentSlide = 0;
-                
-                function updateCarousel() {
-                    slides.forEach((slide, index) => {
-                        if (index === currentSlide) {
-                            slide.style.transform = 'translateX(0)';
-                            slide.style.opacity = '1';
-                        } else if (index < currentSlide) {
-                            slide.style.transform = 'translateX(-100%)';
-                            slide.style.opacity = '0';
-                        } else {
-                            slide.style.transform = 'translateX(100%)';
-                            slide.style.opacity = '0';
-                        }
-                    });
-                    
-                    indicators.forEach((indicator, index) => {
-                        indicator.classList.toggle('active', index === currentSlide);
-                        if (index === currentSlide) {
-                            indicator.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
-                            indicator.style.transform = 'scale(1.25)';
-                        } else {
-                            indicator.style.backgroundColor = 'rgba(255, 255, 255, 0.3)';
-                            indicator.style.transform = 'scale(1)';
-                        }
-                    });
-                    
-                    // 更新标题和描述
-                    const titleEl = document.querySelector('.carousel-title');
-                    const descEl = document.querySelector('.carousel-description');
-                    if (titleEl && descEl && titles[currentSlide]) {
-                        titleEl.textContent = titles[currentSlide].title;
-                        descEl.textContent = titles[currentSlide].desc;
-                    }
-                }
-                
-                function nextSlide() {
-                    currentSlide = (currentSlide + 1) % slides.length;
-                    updateCarousel();
-                }
-                
-                function prevSlide() {
-                    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-                    updateCarousel();
-                }
-                
-                // 事件监听
-                nextBtn.addEventListener('click', nextSlide);
-                prevBtn.addEventListener('click', prevSlide);
-                
-                indicators.forEach((indicator, index) => {
-                    indicator.addEventListener('click', () => {
-                        currentSlide = index;
-                        updateCarousel();
-                    });
-                });
-                
-                // 自动轮播
-                setInterval(nextSlide, 5000);
-                
-                // 初始化
-                updateCarousel();
-            });
-            </script>
         </div>
     </section>
 
@@ -478,114 +349,157 @@
         </div>
     </section>
 
-    <!-- Product Demo Section -->
+    <!-- Product Demo Section（现在显示轮播图） -->
     <section id="demo" class="py-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-20">
                 <h2 class="text-5xl font-bold text-white mb-6">产品演示</h2>
                 <p class="text-xl text-gray-400">直观体验AutoClip的强大功能</p>
             </div>
-            
-            <!-- 主产品演示 -->
-            <div class="mb-16">
-                <div class="card-dark p-8 rounded-3xl">
-                    <div class="aspect-video bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl overflow-hidden border border-gray-700 relative group">
-                        <!-- 视频播放器 -->
-                        <video 
-                            id="demo-video" 
-                            class="w-full h-full object-cover rounded-2xl cursor-pointer"
-                            poster="main.png"
-                            preload="metadata"
-                            controls
-                            controlsList="nodownload"
-                            oncontextmenu="return false;"
-                        >
-                            <source src="demo.mp4" type="video/mp4">
-                            <source src="demo.webm" type="video/webm">
-                            <source src="demo.ogg" type="video/ogg">
-                            您的浏览器不支持视频播放。
-                        </video>
-                        
-                        <!-- 播放按钮覆盖层 -->
-                        <div id="play-overlay" class="absolute inset-0 flex items-center justify-center bg-black/30 opacity-100 group-hover:opacity-80 transition-opacity duration-300 cursor-pointer">
-                            <div class="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30">
-                                <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M8 5v14l11-7z"/>
-                                </svg>
+            <!-- 轮播图 -->
+            <div class="demo-container max-w-6xl mx-auto relative mb-16">
+                <!-- 轮播图容器 -->
+                <div class="carousel-container relative group">
+                    <!-- 主图片区域 -->
+                    <div class="aspect-[16/10] bg-gradient-to-br from-gray-900 via-gray-800 to-black rounded-3xl overflow-hidden shadow-2xl relative">
+                        <!-- 轮播图片容器 -->
+                        <div class="carousel-wrapper h-full relative overflow-hidden">
+                            <!-- 图片1 - 主界面 -->
+                            <div class="carousel-slide absolute inset-0 transition-all duration-700 ease-out transform translate-x-0 opacity-100">
+                                <img src="main.png" alt="AutoClip主界面" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
+                            </div>
+                            <!-- 图片2 - 多输入界面 -->
+                            <div class="carousel-slide absolute inset-0 transition-all duration-700 ease-out transform translate-x-full opacity-0">
+                                <img src="multi_input.png" alt="多输入界面" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
+                            </div>
+                            <!-- 图片3 - 任务管理 -->
+                            <div class="carousel-slide absolute inset-0 transition-all duration-700 ease-out transform translate-x-full opacity-0">
+                                <img src="task.png" alt="任务管理" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
+                            </div>
+                            <!-- 图片4 - 合集预览 -->
+                            <div class="carousel-slide absolute inset-0 transition-all duration-700 ease-out transform translate-x-full opacity-0">
+                                <img src="collection.png" alt="合集预览" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
+                            </div>
+                            <!-- 图片5 - 视频预览 -->
+                            <div class="carousel-slide absolute inset-0 transition-all duration-700 ease-out transform translate-x-full opacity-0">
+                                <img src="preview.png" alt="视频预览" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
                             </div>
                         </div>
-                        
-                        <!-- 视频信息 -->
-                        <div class="absolute bottom-4 left-4 right-4 bg-black/50 backdrop-blur-sm rounded-lg p-4 text-white">
-                            <div class="flex items-center justify-between">
-                                <div>
-                                    <h3 class="text-lg font-semibold">AutoClip 产品演示</h3>
-                                    <p class="text-sm text-gray-300">完整功能演示，时长约3分钟</p>
-                                </div>
-                                <div class="flex items-center space-x-2">
-                                    <span class="text-xs bg-blue-500/20 px-2 py-1 rounded-full border border-blue-500/30 text-blue-400">高清</span>
-                                    <span class="text-xs bg-green-500/20 px-2 py-1 rounded-full border border-green-500/30 text-green-400">中文字幕</span>
-                                </div>
-                            </div>
+                        <!-- 导航按钮 -->
+                        <button class="carousel-btn carousel-prev absolute left-6 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-300 opacity-0 group-hover:opacity-100">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                            </svg>
+                        </button>
+                        <button class="carousel-btn carousel-next absolute right-6 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-300 opacity-0 group-hover:opacity-100">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <!-- 指示器和标题区域 -->
+                    <div class="mt-8 space-y-8">
+                        <!-- 指示器 -->
+                        <div class="carousel-indicators flex justify-center space-x-4">
+                            <button class="indicator w-3 h-3 rounded-full bg-white/30 hover:bg-white/60 transition-all duration-300 active scale-125" data-slide="0"></button>
+                            <button class="indicator w-3 h-3 rounded-full bg-white/30 hover:bg-white/60 transition-all duration-300" data-slide="1"></button>
+                            <button class="indicator w-3 h-3 rounded-full bg-white/30 hover:bg-white/60 transition-all duration-300" data-slide="2"></button>
+                            <button class="indicator w-3 h-3 rounded-full bg-white/30 hover:bg-white/60 transition-all duration-300" data-slide="3"></button>
+                            <button class="indicator w-3 h-3 rounded-full bg-white/30 hover:bg-white/60 transition-all duration-300" data-slide="4"></button>
+                        </div>
+                        <!-- 图片标题区域 -->
+                        <div class="carousel-caption text-center max-w-3xl mx-auto mb-8">
+                            <h3 class="text-4xl font-bold mb-6 text-white carousel-title tracking-tight">AutoClip 主界面</h3>
+                            <p class="text-gray-300 text-xl leading-relaxed carousel-description mb-6">智能视频切片系统的核心操作界面</p>
                         </div>
                     </div>
+                </div>
+            </div>
+            
+            <!-- 轮播图JavaScript -->
+            <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const slides = document.querySelectorAll('.carousel-slide');
+                const indicators = document.querySelectorAll('.indicator');
+                const prevBtn = document.querySelector('.carousel-prev');
+                const nextBtn = document.querySelector('.carousel-next');
+                const titles = [
+                    { title: 'AutoClip 主界面', desc: '智能视频切片系统的核心操作界面' },
+                    { title: '多输入支持', desc: '支持视频文件、链接和字幕文件多种输入方式' },
+                    { title: '任务管理', desc: '实时监控处理进度，支持批量任务管理' },
+                    { title: '智能合集', desc: 'AI自动聚类相关内容，生成主题合集' },
+                    { title: '视频预览', desc: '切片结果预览，支持在线播放和编辑' }
+                ];
+                
+                let currentSlide = 0;
+                
+                function updateCarousel() {
+                    slides.forEach((slide, index) => {
+                        if (index === currentSlide) {
+                            slide.style.transform = 'translateX(0)';
+                            slide.style.opacity = '1';
+                        } else if (index < currentSlide) {
+                            slide.style.transform = 'translateX(-100%)';
+                            slide.style.opacity = '0';
+                        } else {
+                            slide.style.transform = 'translateX(100%)';
+                            slide.style.opacity = '0';
+                        }
+                    });
                     
-                    <!-- 视频控制说明 -->
-                    <div class="mt-6 text-center">
-                        <p class="text-gray-400 text-sm">
-                            💡 点击播放按钮观看完整产品演示，了解AutoClip的核心功能和工作流程
-                        </p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- 功能特性展示 -->
-            <div class="grid lg:grid-cols-3 gap-8">
-                <div class="card-dark p-6 rounded-2xl">
-                    <div class="aspect-video bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl mb-4 flex items-center justify-center border border-gray-700">
-                        <div class="text-center">
-                            <div class="w-12 h-12 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-lg mx-auto mb-3 flex items-center justify-center">
-                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-                                </svg>
-                            </div>
-                            <p class="text-gray-400 text-sm">AI 内容分析</p>
-                        </div>
-                    </div>
-                    <h3 class="text-lg font-semibold text-white mb-2">智能内容理解</h3>
-                    <p class="text-gray-400 text-sm">基于大语言模型的深度内容分析，自动识别关键话题和价值片段</p>
-                </div>
+                    indicators.forEach((indicator, index) => {
+                        indicator.classList.toggle('active', index === currentSlide);
+                        if (index === currentSlide) {
+                            indicator.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
+                            indicator.style.transform = 'scale(1.25)';
+                        } else {
+                            indicator.style.backgroundColor = 'rgba(255, 255, 255, 0.3)';
+                            indicator.style.transform = 'scale(1)';
+                        }
+                    });
+                    
+                    // 更新标题和描述
+                    const titleEl = document.querySelector('.carousel-title');
+                    const descEl = document.querySelector('.carousel-description');
+                    if (titleEl && descEl && titles[currentSlide]) {
+                        titleEl.textContent = titles[currentSlide].title;
+                        descEl.textContent = titles[currentSlide].desc;
+                    }
+                }
                 
-                <div class="card-dark p-6 rounded-2xl">
-                    <div class="aspect-video bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl mb-4 flex items-center justify-center border border-gray-700">
-                        <div class="text-center">
-                            <div class="w-12 h-12 bg-gradient-to-br from-purple-400 to-pink-500 rounded-lg mx-auto mb-3 flex items-center justify-center">
-                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
-                                </svg>
-                            </div>
-                            <p class="text-gray-400 text-sm">智能合集</p>
-                        </div>
-                    </div>
-                    <h3 class="text-lg font-semibold text-white mb-2">自动合集推荐</h3>
-                    <p class="text-gray-400 text-sm">基于主题相似度智能聚类，自动组织相关内容为合集，提升内容价值</p>
-                </div>
+                function nextSlide() {
+                    currentSlide = (currentSlide + 1) % slides.length;
+                    updateCarousel();
+                }
                 
-                <div class="card-dark p-6 rounded-2xl">
-                    <div class="aspect-video bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl mb-4 flex items-center justify-center border border-gray-700">
-                        <div class="text-center">
-                            <div class="w-12 h-12 bg-gradient-to-br from-green-400 to-teal-500 rounded-lg mx-auto mb-3 flex items-center justify-center">
-                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
-                                </svg>
-                            </div>
-                            <p class="text-gray-400 text-sm">一键上传</p>
-                        </div>
-                    </div>
-                    <h3 class="text-lg font-semibold text-white mb-2">自动化发布（计划中）</h3>
-                    <p class="text-gray-400 text-sm">支持批量上传到B站，智能标签生成和分区推荐，实现全流程自动化</p>
-                </div>
-            </div>
+                function prevSlide() {
+                    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                    updateCarousel();
+                }
+                
+                // 事件监听
+                nextBtn.addEventListener('click', nextSlide);
+                prevBtn.addEventListener('click', prevSlide);
+                
+                indicators.forEach((indicator, index) => {
+                    indicator.addEventListener('click', () => {
+                        currentSlide = index;
+                        updateCarousel();
+                    });
+                });
+                
+                // 自动轮播
+                setInterval(nextSlide, 5000);
+                
+                // 初始化
+                updateCarousel();
+            });
+            </script>
         </div>
     </section>
 
@@ -653,7 +567,7 @@
                 </div>
                 <h2 class="text-5xl font-bold mb-6 text-white">联系 AutoClip 开发者</h2>
                 <p class="text-xl mb-8 text-gray-300 leading-relaxed">
-                    我们正在全力开发 AutoClip，添加企微直接沟通，获得产品最新进展和专属服务
+                    我们正在全力开发 AutoClip，添加联系方式直接沟通，获得产品最新进展
                 </p>
                 
                 <!-- Contact Methods -->
