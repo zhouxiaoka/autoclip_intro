@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AutoClip - 智能视频切片系统</title>
+    <title>AutoClip | AI-powered video clipping and highlight generation</title>
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
+    <link rel="alternate icon" href="logo.svg">
+    <link rel="apple-touch-icon" href="logo.svg">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -71,11 +74,11 @@
         }
         
         .accent-gradient {
-            background: linear-gradient(135deg, #5e6ad2 0%, #00d4ff 100%);
+            background: linear-gradient(135deg, #444444 0%, #222222 100%);
         }
         
         .border-gradient {
-            border-image: linear-gradient(135deg, #5e6ad2, #00d4ff) 1;
+            border-image: linear-gradient(135deg, #444444, #222222) 1;
         }
         
         .demo-container {
@@ -92,7 +95,7 @@
         }
         
         .feature-icon {
-            background: linear-gradient(135deg, #5e6ad2 0%, #00d4ff 100%);
+            background: linear-gradient(135deg, #444444 0%, #222222 100%);
             border-radius: 12px;
             padding: 12px;
         }
@@ -170,13 +173,50 @@
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center py-4">
                 <div class="flex items-center">
-                    <h1 class="text-xl font-bold bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent drop-shadow-lg filter brightness-110">AutoClip</h1>
+                    <div class="w-12 h-12 mr-3 flex items-center justify-center">
+                        <img src="logo.svg" alt="AutoClip Logo" class="w-full h-full object-contain">
+                    </div>
+                    <h1 class="text-xl font-bold bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent drop-shadow-lg filter brightness-110">AutoClip</h1>
                 </div>
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#features" class="text-gray-300 hover:text-white transition-colors text-sm font-medium">功能特性</a>
-                    <a href="#architecture" class="text-gray-300 hover:text-white transition-colors text-sm font-medium">技术架构</a>
-                    <a href="#demo" class="text-gray-300 hover:text-white transition-colors text-sm font-medium">演示</a>
-                    <a href="#waitlist" class="btn-primary px-4 py-2 rounded-lg text-sm font-medium">联系开发者</a>
+                    <a href="#features" class="text-gray-300 hover:text-white transition-colors text-sm font-medium" data-i18n="nav.features">功能特性</a>
+                    <a href="#architecture" class="text-gray-300 hover:text-white transition-colors text-sm font-medium" data-i18n="nav.architecture">技术架构</a>
+                    <a href="#demo" class="text-gray-300 hover:text-white transition-colors text-sm font-medium" data-i18n="nav.demo">演示</a>
+                    <a href="#waitlist" class="text-gray-300 hover:text-white transition-colors text-sm font-medium" data-i18n="nav.contact">联系开发者</a>
+                    <a href="https://github.com/zhouxiaoka/autoclip" target="_blank" rel="noopener" class="inline-flex items-center px-3 py-2 rounded-lg text-sm font-medium bg-white/10 border border-white/20 text-white/70 hover:bg-white/15 hover:text-white/90 hover:border-white/30 transition">
+                        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.66-.22.66-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.45-1.15-1.1-1.46-1.1-1.46-.9-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85.004 1.71.11 2.51.32 1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.85-2.34 4.7-4.57 4.95.36.31.68.92.68 1.85 0 1.33-.01 2.4-.01 2.73 0 .27.16.58.67.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"/>
+                        </svg>
+                        GitHub
+                    </a>
+                    <!-- 语言切换下拉菜单 -->
+                    <div class="relative group">
+                        <button id="language-switcher" class="inline-flex items-center px-2 py-1 text-sm text-gray-300 hover:text-white transition-colors rounded-md hover:bg-white/5">
+                            <span id="current-lang" class="mr-1">🇨🇳</span>
+                            <span class="text-xs">中文</span>
+                            <svg class="w-3 h-3 ml-1 opacity-60 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        
+                        <!-- 下拉菜单 -->
+                        <div id="language-dropdown" class="absolute right-0 mt-1 w-28 bg-gray-900/95 backdrop-blur-sm border border-gray-700/50 rounded-md shadow-lg opacity-0 invisible transition-all duration-150 group-hover:opacity-100 group-hover:visible">
+                            <div class="py-1">
+                                <button class="language-option w-full text-left px-3 py-1.5 text-xs text-gray-300 hover:text-white hover:bg-white/5 transition-colors" data-lang="zh">
+                                    <span class="mr-2">🇨🇳</span>中文
+                                </button>
+                                <button class="language-option w-full text-left px-3 py-1.5 text-xs text-gray-300 hover:text-white hover:bg-white/5 transition-colors" data-lang="en">
+                                    <span class="mr-2">🇺🇸</span>English
+                                </button>
+                                <button class="language-option w-full text-left px-3 py-1.5 text-xs text-gray-300 hover:text-white hover:bg-white/5 transition-colors" data-lang="ja">
+                                    <span class="mr-2">🇯🇵</span>日本語
+                                </button>
+                                <button class="language-option w-full text-left px-3 py-1.5 text-xs text-gray-300 hover:text-white hover:bg-white/5 transition-colors" data-lang="ko">
+                                    <span class="mr-2">🇰🇷</span>한국어
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -195,80 +235,88 @@
         
         <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div class="mb-8">
-                <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-white/5 border border-white/10 text-gray-300 mb-8">
+                <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-white/5 border border-white/10 text-gray-300 mb-8" data-i18n="hero.badge">
                     <span class="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></span>
                     🚀 正式发布 · 💻 桌面端支持
                 </span>
             </div>
             <h1 class="text-6xl md:text-7xl font-bold mb-8 leading-loose">
                 <span class="text-gradient">AutoClip</span><br>
-                <span class="text-white/90 mt-4 block">视频高光，一键生成</span>
+                <span class="text-white/90 mt-4 block" data-i18n="hero.subtitle">视频高光，一键生成</span>
             </h1>
-            <p class="text-xl md:text-2xl mb-12 text-gray-300 max-w-4xl mx-auto leading-relaxed">
+            <p class="text-xl md:text-2xl mb-12 text-gray-300 max-w-4xl mx-auto leading-relaxed" data-i18n="hero.description">
                 你的AI视频剪辑搭子，一条视频自动提取多个高光片段
             </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-                <a href="#hero-video" class="inline-flex items-center px-8 py-4 rounded-xl font-medium text-lg bg-white/10 border border-white/20 text-white/90 shadow-sm backdrop-blur transition hover:bg-white/15 hover:text-white hover:border-white/30">查看演示</a>
-                <!-- Github按钮：磨砂玻璃风格，带icon -->
-                <a href="https://github.com/zhouxiaoka/autoclip" target="_blank" rel="noopener"
-                   class="inline-flex items-center px-8 py-4 rounded-xl font-medium text-lg bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg backdrop-blur transition hover:from-purple-700 hover:to-blue-700 hover:shadow-xl transform hover:scale-105 border border-purple-500/30">
-                   <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                     <path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.66-.22.66-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.45-1.15-1.1-1.46-1.1-1.46-.9-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85.004 1.71.11 2.51.32 1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.85-2.34 4.7-4.57 4.95.36.31.68.92.68 1.85 0 1.33-.01 2.4-.01 2.73 0 .27.16.58.67.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"/>
-                   </svg>
-                   Github
-                </a>
-            </div>
-            
-            <!-- Hero区主视觉：产品演示视频播放器（B站内嵌） -->
-            <div id="hero-video" class="max-w-5xl mx-auto mb-16">
-                <div class="card-dark p-4 rounded-3xl shadow-lg">
-                    <div class="aspect-video rounded-2xl overflow-hidden shadow-lg">
-                        <iframe
-                            src="https://player.bilibili.com/player.html?bvid=BV1CfG3zREom&autoplay=0"
-                            scrolling="no"
-                            border="0"
-                            frameborder="no"
-                            framespacing="0"
-                            allowfullscreen="true"
-                            style="width:100%;height:100%;"
-                        ></iframe>
-                    </div>
-                    <div class="text-sm text-gray-400 mt-2">功能实机测试预览，时长约1分钟</div>
+            <!-- 桌面版下载按钮区域 -->
+            <div class="mb-16">
+                <div class="inline-flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#waitlist" class="inline-flex items-center px-8 py-4 rounded-xl font-medium text-lg bg-white/10 backdrop-blur-md text-white shadow-2xl transition-all duration-300 transform hover:scale-105 hover:bg-white/15 hover:shadow-3xl border border-white/20 hover:border-white/30 relative overflow-hidden group">
+                        <!-- 光效动画 -->
+                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
+                        <!-- 按钮内容 -->
+                        <div class="relative z-10 flex items-center">
+                            <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span data-i18n="hero.beta.apply">申请桌面版内测</span>
+                        </div>
+                    </a>
+                    <a href="https://github.com/zhouxiaoka/autoclip" target="_blank" rel="noopener" class="inline-flex items-center px-8 py-4 rounded-xl font-medium text-lg bg-white/5 backdrop-blur-sm text-white/80 shadow-lg transition-all duration-300 transform hover:scale-105 hover:bg-white/10 hover:text-white hover:shadow-xl border border-white/10 hover:border-white/20">
+                        <svg class="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.66-.22.66-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.45-1.15-1.1-1.46-1.1-1.46-.9-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85.004 1.71.11 2.51.32 1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.85-2.34 4.7-4.57 4.95.36.31.68.92.68 1.85 0 1.33-.01 2.4-.01 2.73 0 .27.16.58.67.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"/>
+                        </svg>
+                        <span data-i18n="hero.github.view">GitHub</span>
+                    </a>
                 </div>
+                
+                <!-- 核心卖点展示 -->
+                <div class="mt-8 grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                    <div class="text-center p-4 rounded-xl bg-white/5 border border-white/10">
+                        <div class="w-12 h-12 mx-auto mb-3 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-xl flex items-center justify-center">
+                            <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                        </div>
+                        <h4 class="text-sm font-semibold text-white mb-1" data-i18n="hero.feature1.title">一键生成高光</h4>
+                        <p class="text-gray-400 text-xs" data-i18n="hero.feature1.desc">AI智能分析，剪辑自动化</p>
+                    </div>
+                    
+                    <div class="text-center p-4 rounded-xl bg-white/5 border border-white/10">
+                        <div class="w-12 h-12 mx-auto mb-3 bg-gradient-to-br from-green-500/20 to-emerald-500/20 rounded-xl flex items-center justify-center">
+                            <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <h4 class="text-sm font-semibold text-white mb-1" data-i18n="hero.feature2.title">本地运行</h4>
+                        <p class="text-gray-400 text-xs" data-i18n="hero.feature2.desc">轻量高效，隐私保护</p>
+                    </div>
+                    
+                    <div class="text-center p-4 rounded-xl bg-white/5 border border-white/10">
+                        <div class="w-12 h-12 mx-auto mb-3 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-xl flex items-center justify-center">
+                            <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                            </svg>
+                        </div>
+                        <h4 class="text-sm font-semibold text-white mb-1" data-i18n="hero.feature3.title">多平台适配</h4>
+                        <p class="text-gray-400 text-xs" data-i18n="hero.feature3.desc">创作即分享，全平台支持</p>
+                    </div>
+                </div>
+                
+                <!-- 版本信息 -->
+            <div class="text-center mt-6">
+                <p class="text-sm text-gray-400" data-i18n="hero.beta.info">桌面版内测招募中，扫码加入用户群获取内测资格</p>
+            </div>
             </div>
         </div>
     </section>
 
-    <!-- Stats Section -->
-    <section class="py-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div class="stats-card text-center">
-                    <div class="text-4xl font-bold text-white mb-2">98%+</div>
-                    <div class="text-gray-400 text-sm font-medium">处理成功率</div>
-                </div>
-                <div class="stats-card text-center">
-                    <div class="text-4xl font-bold text-white mb-2">3个</div>
-                    <div class="text-gray-400 text-sm font-medium">支持平台</div>
-                </div>
-                <div class="stats-card text-center">
-                    <div class="text-4xl font-bold text-white mb-2">20+</div>
-                    <div class="text-gray-400 text-sm font-medium">API端点</div>
-                </div>
-                <div class="stats-card text-center">
-                    <div class="text-4xl font-bold text-white mb-2">6步</div>
-                    <div class="text-gray-400 text-sm font-medium">AI处理流水线</div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Features Section -->
-    <section id="features" class="py-24">
+    <section id="features" class="py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-20">
-                <h2 class="text-5xl font-bold text-white mb-6">核心功能</h2>
-                <p class="text-xl text-gray-400">AI驱动的全流程自动化视频处理</p>
+                <h2 class="text-5xl font-bold text-white mb-6" data-i18n="features.title">核心功能</h2>
+                <p class="text-xl text-gray-400" data-i18n="features.subtitle">AI驱动的全流程自动化视频处理</p>
             </div>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -278,10 +326,10 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold mb-4 text-white">AI智能分析</h3>
-                    <p class="text-gray-400 leading-relaxed">基于大语言模型的视频内容理解，智能识别高光时刻</p>
+                    <h3 class="text-xl font-semibold mb-4 text-white" data-i18n="feature.ai.title">AI智能分析</h3>
+                    <p class="text-gray-400 leading-relaxed" data-i18n="feature.ai.desc">基于大语言模型的视频内容理解，智能识别高光时刻</p>
                     <div class="mt-3">
-                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-500/20 border border-green-500/30 text-green-400">
+                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-500/20 border border-green-500/30 text-green-400" data-i18n="feature.ai.status">
                             已发布
                         </span>
                     </div>
@@ -293,10 +341,10 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold mb-4 text-white">实时处理</h3>
-                    <p class="text-gray-400 leading-relaxed">基于Celery队列的异步处理，支持WebSocket实时状态推送</p>
+                    <h3 class="text-xl font-semibold mb-4 text-white" data-i18n="feature.realtime.title">实时处理</h3>
+                    <p class="text-gray-400 leading-relaxed" data-i18n="feature.realtime.desc">基于Celery队列的异步处理，支持WebSocket实时状态推送</p>
                     <div class="mt-3">
-                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-500/20 border border-green-500/30 text-green-400">
+                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-500/20 border border-green-500/30 text-green-400" data-i18n="feature.realtime.status">
                             已发布
                         </span>
                     </div>
@@ -308,10 +356,10 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold mb-4 text-white">自动标题生成</h3>
-                    <p class="text-gray-400 leading-relaxed">AI自动为每个切片生成吸引人的标题，提升内容传播效果</p>
+                    <h3 class="text-xl font-semibold mb-4 text-white" data-i18n="feature.title.title">自动标题生成</h3>
+                    <p class="text-gray-400 leading-relaxed" data-i18n="feature.title.desc">AI自动为每个切片生成吸引人的标题，提升内容传播效果</p>
                     <div class="mt-3">
-                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-500/20 border border-green-500/30 text-green-400">
+                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-500/20 border border-green-500/30 text-green-400" data-i18n="feature.title.status">
                             已发布
                         </span>
                     </div>
@@ -323,10 +371,10 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold mb-4 text-white">内容质量评估</h3>
-                    <p class="text-gray-400 leading-relaxed">智能评估切片质量，确保输出内容的高质量标准</p>
+                    <h3 class="text-xl font-semibold mb-4 text-white" data-i18n="feature.quality.title">内容质量评估</h3>
+                    <p class="text-gray-400 leading-relaxed" data-i18n="feature.quality.desc">智能评估切片质量，确保输出内容的高质量标准</p>
                     <div class="mt-3">
-                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-500/20 border border-green-500/30 text-green-400">
+                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-500/20 border border-green-500/30 text-green-400" data-i18n="feature.quality.status">
                             已发布
                         </span>
                     </div>
@@ -338,10 +386,10 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold mb-4 text-white">Docker部署</h3>
-                    <p class="text-gray-400 leading-relaxed">一键Docker部署，支持本地和云端环境快速启动</p>
+                    <h3 class="text-xl font-semibold mb-4 text-white" data-i18n="feature.docker.title">Docker部署</h3>
+                    <p class="text-gray-400 leading-relaxed" data-i18n="feature.docker.desc">一键Docker部署，支持本地和云端环境快速启动</p>
                     <div class="mt-3">
-                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-500/20 border border-green-500/30 text-green-400">
+                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-500/20 border border-green-500/30 text-green-400" data-i18n="feature.docker.status">
                             已发布
                         </span>
                     </div>
@@ -353,10 +401,25 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold mb-4 text-white">多平台支持</h3>
-                    <p class="text-gray-400 leading-relaxed">支持Windows、macOS、Linux三大平台，适配不同开发环境</p>
+                    <h3 class="text-xl font-semibold mb-4 text-white" data-i18n="feature.platform.title">多平台支持</h3>
+                    <p class="text-gray-400 leading-relaxed" data-i18n="feature.platform.desc">支持Windows、macOS、Linux三大平台，适配不同开发环境</p>
                     <div class="mt-3">
-                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-500/20 border border-green-500/30 text-green-400">
+                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-500/20 border border-green-500/30 text-green-400" data-i18n="feature.platform.status">
+                            已发布
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-dark p-8 rounded-2xl">
+                    <div class="feature-icon w-12 h-12 mb-6 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4 text-white" data-i18n="feature.collection.title">智能合集推荐</h3>
+                    <p class="text-gray-400 leading-relaxed" data-i18n="feature.collection.desc">基于主题相似度的智能聚类，自动组织相关内容为合集，提升内容价值</p>
+                    <div class="mt-3">
+                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-500/20 border border-green-500/30 text-green-400" data-i18n="feature.collection.status">
                             已发布
                         </span>
                     </div>
@@ -368,26 +431,42 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold mb-4 text-white">智能合集推荐</h3>
-                    <p class="text-gray-400 leading-relaxed">基于主题相似度的智能聚类，自动组织相关内容为合集，提升内容价值</p>
+                    <h3 class="text-xl font-semibold mb-4 text-white" data-i18n="feature.project.title">多项目管理</h3>
+                    <p class="text-gray-400 leading-relaxed" data-i18n="feature.project.desc">支持同时管理多个处理项目，数据完全隔离，支持并发处理</p>
                     <div class="mt-3">
-                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-500/20 border border-green-500/30 text-green-400">
+                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-500/20 border border-green-500/30 text-green-400" data-i18n="feature.project.status">
                             已发布
                         </span>
                     </div>
                 </div>
 
+                <!-- 开发中功能区域 -->
                 <div class="card-dark p-8 rounded-2xl">
                     <div class="feature-icon w-12 h-12 mb-6 flex items-center justify-center">
                         <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold mb-4 text-white">多项目管理</h3>
-                    <p class="text-gray-400 leading-relaxed">支持同时管理多个处理项目，数据完全隔离，支持并发处理</p>
+                    <h3 class="text-xl font-semibold mb-4 text-white" data-i18n="feature.cover.title">智能封面</h3>
+                    <p class="text-gray-400 leading-relaxed" data-i18n="feature.cover.desc">AI自动为视频生成高质量封面图，提升点击率和观看体验</p>
                     <div class="mt-3">
-                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-500/20 border border-green-500/30 text-green-400">
-                            已发布
+                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-500/20 border border-blue-500/30 text-blue-400" data-i18n="feature.cover.status">
+                            开发中
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-dark p-8 rounded-2xl">
+                    <div class="feature-icon w-12 h-12 mb-6 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4 text-white" data-i18n="feature.subtitle.title">智能字幕翻译</h3>
+                    <p class="text-gray-400 leading-relaxed" data-i18n="feature.subtitle.desc">自动识别语音并生成多语言字幕，支持中英日韩等多种语言互译</p>
+                    <div class="mt-3">
+                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-500/20 border border-blue-500/30 text-blue-400" data-i18n="feature.subtitle.status">
+                            开发中
                         </span>
                     </div>
                 </div>
@@ -398,10 +477,10 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold mb-4 text-white">B站自动上传</h3>
-                    <p class="text-gray-400 leading-relaxed">自动上传切片到B站，支持批量发布和定时发布</p>
+                    <h3 class="text-xl font-semibold mb-4 text-white" data-i18n="feature.upload.title">B站自动上传</h3>
+                    <p class="text-gray-400 leading-relaxed" data-i18n="feature.upload.desc">自动上传切片到B站，支持批量发布和定时发布</p>
                     <div class="mt-3">
-                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-500/20 border border-blue-500/30 text-blue-400">
+                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-500/20 border border-blue-500/30 text-blue-400" data-i18n="feature.upload.status">
                             开发中
                         </span>
                     </div>
@@ -414,8 +493,8 @@
     <section id="architecture" class="py-24 bg-gradient-to-b from-gray-900/50 to-transparent">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-20">
-                <h2 class="text-5xl font-bold text-white mb-6">技术架构</h2>
-                <p class="text-xl text-gray-400">现代化的前后端分离架构，确保高性能和可扩展性</p>
+                <h2 class="text-5xl font-bold text-white mb-6" data-i18n="architecture.title">技术架构</h2>
+                <p class="text-xl text-gray-400" data-i18n="architecture.subtitle">现代化的前后端分离架构，确保高性能和可扩展性</p>
             </div>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
@@ -425,8 +504,8 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold mb-4 text-white">前端技术栈</h3>
-                    <p class="text-gray-400 leading-relaxed mb-4">基于React + TypeScript构建的现代化Web界面</p>
+                    <h3 class="text-xl font-semibold mb-4 text-white" data-i18n="arch.frontend.title">前端技术栈</h3>
+                    <p class="text-gray-400 leading-relaxed mb-4" data-i18n="arch.frontend.desc">基于React + TypeScript构建的现代化Web界面</p>
                     <div class="flex flex-wrap gap-2">
                         <span class="tech-badge">React</span>
                         <span class="tech-badge">TypeScript</span>
@@ -440,8 +519,8 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold mb-4 text-white">后端架构</h3>
-                    <p class="text-gray-400 leading-relaxed mb-4">基于FastAPI的高性能异步API服务</p>
+                    <h3 class="text-xl font-semibold mb-4 text-white" data-i18n="arch.backend.title">后端架构</h3>
+                    <p class="text-gray-400 leading-relaxed mb-4" data-i18n="arch.backend.desc">基于FastAPI的高性能异步API服务</p>
                     <div class="flex flex-wrap gap-2">
                         <span class="tech-badge">FastAPI</span>
                         <span class="tech-badge">Python</span>
@@ -455,8 +534,8 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold mb-4 text-white">数据存储</h3>
-                    <p class="text-gray-400 leading-relaxed mb-4">多种数据库支持，灵活的数据存储方案</p>
+                    <h3 class="text-xl font-semibold mb-4 text-white" data-i18n="arch.database.title">数据存储</h3>
+                    <p class="text-gray-400 leading-relaxed mb-4" data-i18n="arch.database.desc">多种数据库支持，灵活的数据存储方案</p>
                     <div class="flex flex-wrap gap-2">
                         <span class="tech-badge">PostgreSQL</span>
                         <span class="tech-badge">Redis</span>
@@ -470,8 +549,8 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold mb-4 text-white">异步处理</h3>
-                    <p class="text-gray-400 leading-relaxed mb-4">基于Celery的分布式任务队列系统</p>
+                    <h3 class="text-xl font-semibold mb-4 text-white" data-i18n="arch.async.title">异步处理</h3>
+                    <p class="text-gray-400 leading-relaxed mb-4" data-i18n="arch.async.desc">基于Celery的分布式任务队列系统</p>
                     <div class="flex flex-wrap gap-2">
                         <span class="tech-badge">Celery</span>
                         <span class="tech-badge">Redis</span>
@@ -485,8 +564,8 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold mb-4 text-white">AI引擎</h3>
-                    <p class="text-gray-400 leading-relaxed mb-4">集成多种AI模型，提供智能分析能力</p>
+                    <h3 class="text-xl font-semibold mb-4 text-white" data-i18n="arch.ai.title">AI引擎</h3>
+                    <p class="text-gray-400 leading-relaxed mb-4" data-i18n="arch.ai.desc">集成多种AI模型，提供智能分析能力</p>
                     <div class="flex flex-wrap gap-2">
                         <span class="tech-badge">OpenAI</span>
                         <span class="tech-badge">Whisper</span>
@@ -500,8 +579,8 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold mb-4 text-white">容器化部署</h3>
-                    <p class="text-gray-400 leading-relaxed mb-4">Docker容器化部署，支持多环境一键启动</p>
+                    <h3 class="text-xl font-semibold mb-4 text-white" data-i18n="arch.container.title">容器化部署</h3>
+                    <p class="text-gray-400 leading-relaxed mb-4" data-i18n="arch.container.desc">Docker容器化部署，支持多环境一键启动</p>
                     <div class="flex flex-wrap gap-2">
                         <span class="tech-badge">Docker</span>
                         <span class="tech-badge">Docker Compose</span>
@@ -510,56 +589,6 @@
                 </div>
             </div>
 
-            <!-- 部署方式展示 -->
-            <div class="text-center mb-12">
-                <h3 class="text-3xl font-bold text-white mb-8">部署方式</h3>
-            </div>
-            
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="card-dark p-8 rounded-2xl">
-                    <div class="flex items-center mb-6">
-                        <div class="feature-icon w-12 h-12 mr-4 flex items-center justify-center">
-                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
-                            </svg>
-                        </div>
-                        <h3 class="text-2xl font-semibold text-white">Docker 一键部署</h3>
-                    </div>
-                    <p class="text-gray-400 leading-relaxed mb-6">使用Docker Compose一键启动完整系统，包含所有依赖服务</p>
-                    <div class="bg-gray-800/50 rounded-lg p-4 font-mono text-sm text-gray-300 mb-4">
-                        <div class="text-green-400"># 克隆项目</div>
-                        <div>git clone https://github.com/zhouxiaoka/autoclip.git</div>
-                        <div class="text-green-400 mt-2"># 一键启动</div>
-                        <div>docker-compose up -d</div>
-                    </div>
-                    <div class="flex items-center text-sm text-green-400">
-                        <span class="w-2 h-2 bg-green-400 rounded-full mr-2"></span>
-                        推荐方式 · 零配置启动
-                    </div>
-                </div>
-
-                <div class="card-dark p-8 rounded-2xl">
-                    <div class="flex items-center mb-6">
-                        <div class="feature-icon w-12 h-12 mr-4 flex items-center justify-center">
-                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                            </svg>
-                        </div>
-                        <h3 class="text-2xl font-semibold text-white">本地开发部署</h3>
-                    </div>
-                    <p class="text-gray-400 leading-relaxed mb-6">适合开发者的本地部署方式，支持代码调试和功能定制</p>
-                    <div class="bg-gray-800/50 rounded-lg p-4 font-mono text-sm text-gray-300 mb-4">
-                        <div class="text-green-400"># 安装依赖</div>
-                        <div>pip install -r requirements.txt</div>
-                        <div class="text-green-400 mt-2"># 启动服务</div>
-                        <div>python main.py</div>
-                    </div>
-                    <div class="flex items-center text-sm text-blue-400">
-                        <span class="w-2 h-2 bg-blue-400 rounded-full mr-2"></span>
-                        开发友好 · 灵活配置
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -567,8 +596,8 @@
     <section id="demo" class="py-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-20">
-                <h2 class="text-5xl font-bold text-white mb-6">产品演示</h2>
-                <p class="text-xl text-gray-400">直观体验AutoClip的强大功能</p>
+                <h2 class="text-5xl font-bold text-white mb-6" data-i18n="demo.title">产品演示</h2>
+                <p class="text-xl text-gray-400" data-i18n="demo.subtitle">直观体验AutoClip的强大功能</p>
             </div>
             <!-- 轮播图 -->
             <div class="demo-container max-w-6xl mx-auto relative mb-16">
@@ -628,8 +657,8 @@
                         </div>
                         <!-- 图片标题区域 -->
                         <div class="carousel-caption text-center max-w-3xl mx-auto mb-8">
-                            <h3 class="text-4xl font-bold mb-6 text-white carousel-title tracking-tight">AutoClip 主界面</h3>
-                            <p class="text-gray-300 text-xl leading-relaxed carousel-description mb-6">智能视频切片系统的核心操作界面</p>
+                            <h3 class="text-4xl font-bold mb-6 text-white carousel-title tracking-tight" data-i18n="demo.main.title">AutoClip 主界面</h3>
+                            <p class="text-gray-300 text-xl leading-relaxed carousel-description mb-6" data-i18n="demo.main.desc">智能视频切片系统的核心操作界面</p>
                         </div>
                     </div>
                 </div>
@@ -643,11 +672,11 @@
                 const prevBtn = document.querySelector('.carousel-prev');
                 const nextBtn = document.querySelector('.carousel-next');
                 const titles = [
-                    { title: 'AutoClip 主界面', desc: '智能视频切片系统的核心操作界面' },
-                    { title: '多输入支持', desc: '支持视频文件、链接和字幕文件多种输入方式' },
-                    { title: '任务管理', desc: '实时监控处理进度，支持批量任务管理' },
-                    { title: '智能合集', desc: 'AI自动聚类相关内容，生成主题合集' },
-                    { title: '视频预览', desc: '切片结果预览，支持在线播放和编辑' }
+                    { titleKey: 'demo.main.title', descKey: 'demo.main.desc' },
+                    { titleKey: 'demo.input.title', descKey: 'demo.input.desc' },
+                    { titleKey: 'demo.task.title', descKey: 'demo.task.desc' },
+                    { titleKey: 'demo.collection.title', descKey: 'demo.collection.desc' },
+                    { titleKey: 'demo.preview.title', descKey: 'demo.preview.desc' }
                 ];
                 
                 let currentSlide = 0;
@@ -681,8 +710,14 @@
                     const titleEl = document.querySelector('.carousel-title');
                     const descEl = document.querySelector('.carousel-description');
                     if (titleEl && descEl && titles[currentSlide]) {
-                        titleEl.textContent = titles[currentSlide].title;
-                        descEl.textContent = titles[currentSlide].desc;
+                        const titleKey = titles[currentSlide].titleKey;
+                        const descKey = titles[currentSlide].descKey;
+                        if (translations[currentLang] && translations[currentLang][titleKey]) {
+                            titleEl.textContent = translations[currentLang][titleKey];
+                        }
+                        if (translations[currentLang] && translations[currentLang][descKey]) {
+                            descEl.textContent = translations[currentLang][descKey];
+                        }
                     }
                 }
                 
@@ -721,8 +756,8 @@
     <section class="py-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-20">
-                <h2 class="text-5xl font-bold text-white mb-6">应用场景</h2>
-                <p class="text-xl text-gray-400">适用于多种内容创作和教育场景</p>
+                <h2 class="text-5xl font-bold text-white mb-6" data-i18n="usecases.title">应用场景</h2>
+                <p class="text-xl text-gray-400" data-i18n="usecases.subtitle">适用于多种内容创作和教育场景</p>
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -732,8 +767,8 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-lg font-semibold mb-4 text-white">内容创作者</h3>
-                    <p class="text-gray-400 leading-relaxed">直播回放处理、课程视频切片、访谈节目处理</p>
+                    <h3 class="text-lg font-semibold mb-4 text-white" data-i18n="usecase.creator.title">内容创作者</h3>
+                    <p class="text-gray-400 leading-relaxed" data-i18n="usecase.creator.desc">直播回放处理、课程视频切片、访谈节目处理</p>
                 </div>
 
                 <div class="card-dark p-8 rounded-2xl text-center">
@@ -742,8 +777,8 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
                         </svg>
                     </div>
-                    <h3 class="text-lg font-semibold mb-4 text-white">教育机构</h3>
-                    <p class="text-gray-400 leading-relaxed">在线课程制作、知识点提取、学习资源整理</p>
+                    <h3 class="text-lg font-semibold mb-4 text-white" data-i18n="usecase.education.title">教育机构</h3>
+                    <p class="text-gray-400 leading-relaxed" data-i18n="usecase.education.desc">在线课程制作、知识点提取、学习资源整理</p>
                 </div>
 
                 <div class="card-dark p-8 rounded-2xl text-center">
@@ -752,8 +787,8 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
                         </svg>
                     </div>
-                    <h3 class="text-lg font-semibold mb-4 text-white">企业培训</h3>
-                    <p class="text-gray-400 leading-relaxed">培训视频处理、技能点提取、知识库建设</p>
+                    <h3 class="text-lg font-semibold mb-4 text-white" data-i18n="usecase.training.title">企业培训</h3>
+                    <p class="text-gray-400 leading-relaxed" data-i18n="usecase.training.desc">培训视频处理、技能点提取、知识库建设</p>
                 </div>
 
                 <div class="card-dark p-8 rounded-2xl text-center">
@@ -762,8 +797,8 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-lg font-semibold mb-4 text-white">平台运营</h3>
-                    <p class="text-gray-400 leading-relaxed">内容推荐、流量分发、用户留存</p>
+                    <h3 class="text-lg font-semibold mb-4 text-white" data-i18n="usecase.platform.title">平台运营</h3>
+                    <p class="text-gray-400 leading-relaxed" data-i18n="usecase.platform.desc">内容推荐、流量分发、用户留存</p>
                 </div>
             </div>
         </div>
@@ -774,36 +809,36 @@
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div class="card-dark p-12 rounded-3xl">
                 <div class="mb-8">
-                    <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-gradient-to-r from-blue-500/10 to-cyan-500/10 border border-blue-500/20 text-blue-400 mb-6">
+                    <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-gradient-to-r from-blue-500/10 to-cyan-500/10 border border-blue-500/20 text-blue-400 mb-6" data-i18n="contact.development">
                         <span class="w-2 h-2 bg-blue-400 rounded-full mr-2 animate-pulse"></span>
                         产品开发中
                     </span>
                 </div>
-                <h2 class="text-5xl font-bold mb-6 text-white">联系 AutoClip 开发者</h2>
-                <p class="text-xl mb-8 text-gray-300 leading-relaxed">
-                    我们正在全力开发 AutoClip，添加联系方式直接沟通，获得产品最新进展
+                <h2 class="text-5xl font-bold mb-6 text-white" data-i18n="waitlist.title">申请内测资格</h2>
+                <p class="text-xl mb-8 text-gray-300 leading-relaxed" data-i18n="waitlist.subtitle">
+                    扫描下方二维码，加入AutoClip用户群，申请桌面版内测资格
                 </p>
                 
                 <!-- Contact Methods -->
                 <div class="grid md:grid-cols-2 gap-8 mb-8">
-                    <!-- QQ Contact -->
-                    <div class="bg-white/5 border border-white/10 rounded-2xl p-8 text-center">
+                    <!-- QQ群 -->
+                    <div class="bg-[#1A1D26] border border-white/10 rounded-2xl p-8 text-center">
                         <!-- QQ QR Code -->
                         <div class="w-48 h-48 mx-auto mb-6 bg-white rounded-2xl flex items-center justify-center shadow-lg p-4">
-                            <img src="qq_qr.jpg" alt="QQ二维码" class="w-full h-full object-contain">
+                            <img src="qq_qr.jpg" alt="QQ群二维码" class="w-full h-full object-contain">
                         </div>
                         
                         <!-- Instructions -->
                         <div class="space-y-3">
-                            <h3 class="text-xl font-semibold text-white mb-2">扫码添加QQ</h3>
-                            <p class="text-gray-300 text-sm leading-relaxed">
-                                扫描上方二维码，添加我的QQ<br>
-                                直接沟通，获得第一手产品信息
+                            <h3 class="text-xl font-semibold text-white mb-2" data-i18n="contact.qq.title">QQ用户群</h3>
+                            <p class="text-gray-300 text-sm leading-relaxed" data-i18n="contact.qq.desc">
+                                扫描上方二维码，加入QQ用户群<br>
+                                与其他用户交流使用心得
                             </p>
                             
                             <!-- Contact Button -->
                             <div class="mt-6">
-                                <div class="inline-flex items-center px-6 py-3 bg-blue-500/20 border border-blue-500/30 rounded-xl text-blue-400 font-medium">
+                                <div class="inline-flex items-center px-6 py-3 bg-[#2C2E36] border border-white/10 rounded-xl text-white font-medium" data-i18n="contact.qq.button">
                                     <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
                                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
                                     </svg>
@@ -814,23 +849,23 @@
                     </div>
                     
                     <!-- Feishu Contact -->
-                    <div class="bg-white/5 border border-white/10 rounded-2xl p-8 text-center">
+                    <div class="bg-[#1A1D26] border border-white/10 rounded-2xl p-8 text-center">
                         <!-- Feishu QR Code -->
                         <div class="w-48 h-48 mx-auto mb-6 bg-white rounded-2xl flex items-center justify-center shadow-lg p-4">
-                            <img src="feishu_qr.jpg" alt="飞书二维码" class="w-full h-full object-contain">
+                            <img src="feishu_qr.jpg" alt="飞书群二维码" class="w-full h-full object-contain">
                         </div>
                         
                         <!-- Instructions -->
                         <div class="space-y-3">
-                            <h3 class="text-xl font-semibold text-white mb-2">扫码添加飞书</h3>
-                            <p class="text-gray-300 text-sm leading-relaxed">
-                                扫描上方二维码，添加我的飞书<br>
-                                直接沟通，获得第一手产品信息
+                            <h3 class="text-xl font-semibold text-white mb-2" data-i18n="contact.feishu.title">飞书用户群</h3>
+                            <p class="text-gray-300 text-sm leading-relaxed" data-i18n="contact.feishu.desc">
+                                扫描上方二维码，加入飞书用户群<br>
+                                获取技术支持和最新版本通知
                             </p>
                             
                             <!-- Contact Button -->
                             <div class="mt-6">
-                                <div class="inline-flex items-center px-6 py-3 bg-green-500/20 border border-green-500/30 rounded-xl text-green-400 font-medium">
+                                <div class="inline-flex items-center px-6 py-3 bg-[#2C2E36] border border-white/10 rounded-xl text-white font-medium" data-i18n="contact.feishu.button">
                                     <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
                                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
                                     </svg>
@@ -843,7 +878,7 @@
                 
                 <!-- Tips -->
                 <div class="mt-12 text-center">
-                    <p class="text-gray-400 text-base md:text-lg font-medium">
+                    <p class="text-gray-400 text-base md:text-lg font-medium" data-i18n="contact.tip">
                         💡 提示：请备注"AutoClip"以便快速通过好友申请
                     </p>
                 </div>
@@ -857,8 +892,8 @@
                             </svg>
                         </div>
                         <div>
-                            <h3 class="text-white font-semibold mb-1">实时沟通</h3>
-                             <p class="text-gray-400 text-sm">直接对话，实时了解开发进展</p>
+                            <h3 class="text-white font-semibold mb-1" data-i18n="contact.benefit1.title">实时沟通</h3>
+                             <p class="text-gray-400 text-sm" data-i18n="contact.benefit1.desc">直接对话，实时了解开发进展</p>
                         </div>
                     </div>
                     
@@ -869,8 +904,8 @@
                             </svg>
                         </div>
                         <div>
-                            <h3 class="text-white font-semibold mb-1">专属服务</h3>
-                             <p class="text-gray-400 text-sm">一对一咨询，定制化解决方案</p>
+                            <h3 class="text-white font-semibold mb-1" data-i18n="contact.benefit2.title">专属服务</h3>
+                             <p class="text-gray-400 text-sm" data-i18n="contact.benefit2.desc">一对一咨询，定制化解决方案</p>
                         </div>
                     </div>
                     
@@ -881,8 +916,8 @@
                             </svg>
                         </div>
                         <div>
-                            <h3 class="text-white font-semibold mb-1">优先体验</h3>
-                             <p class="text-gray-400 text-sm">内测资格，抢先试用新功能</p>
+                            <h3 class="text-white font-semibold mb-1" data-i18n="contact.benefit3.title">优先体验</h3>
+                             <p class="text-gray-400 text-sm" data-i18n="contact.benefit3.desc">内测资格，抢先试用新功能</p>
                         </div>
                     </div>
                 </div>
@@ -893,13 +928,522 @@
     <!-- Footer -->
     <footer class="py-10 border-t border-gray-800">
         <div class="max-w-3xl mx-auto px-4 text-center">
-            <h1 class="text-2xl font-bold bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent drop-shadow-lg filter brightness-110 mb-2">AutoClip</h1>
-            <p class="text-gray-400 mb-2">AI驱动的智能视频切片系统，让内容创作更高效。</p>
-            <p class="text-gray-500 text-sm">&copy; 2025 AutoClip. 开源项目，MIT许可证.</p>
+            <h1 class="text-2xl font-bold text-white drop-shadow-lg mb-2">AutoClip</h1>
+            <p class="text-gray-400 mb-2" data-i18n="footer.description">AI驱动的智能视频切片系统，让内容创作更高效。</p>
+            <p class="text-gray-500 text-sm">&copy; 2025 AutoClip. <span data-i18n="footer.copyright">开源项目，MIT许可证.</span></p>
         </div>
     </footer>
 
     <script>
+        // 翻译数据
+        const translations = {
+            zh: {
+                'nav.features': '功能特性',
+                'nav.architecture': '技术架构',
+                'nav.demo': '演示',
+                'nav.contact': '联系开发者',
+                'hero.subtitle': '视频高光，一键生成',
+                'hero.description': '你的AI视频剪辑搭子，一条视频自动提取多个高光片段',
+                'hero.feature1.title': '一键生成高光',
+                'hero.feature1.desc': 'AI智能分析，剪辑自动化',
+                'hero.feature2.title': '本地运行',
+                'hero.feature2.desc': '轻量高效，隐私保护',
+                'hero.feature3.title': '多平台适配',
+                'hero.feature3.desc': '创作即分享，全平台支持',
+                'hero.version': '支持最新版本，自动适配系统架构',
+                'features.title': '核心功能',
+                'features.subtitle': 'AI驱动的全流程自动化视频处理',
+                'architecture.title': '技术架构',
+                'architecture.subtitle': '现代化的前后端分离架构，确保高性能和可扩展性',
+                'demo.title': '产品演示',
+                'demo.subtitle': '直观体验AutoClip的强大功能',
+                'usecases.title': '应用场景',
+                'usecases.subtitle': '适用于多种内容创作和教育场景',
+                'waitlist.title': '加入用户群',
+                'waitlist.subtitle': '扫描下方二维码，加入AutoClip用户群，获取产品最新进展和使用帮助',
+                'footer.description': 'AI驱动的智能视频切片系统，让内容创作更高效。',
+                'footer.copyright': '开源项目，MIT许可证.',
+                'feature.ai.title': 'AI智能分析',
+                'feature.ai.desc': '基于大语言模型的视频内容理解，智能识别高光时刻',
+                'feature.ai.status': '已发布',
+                'feature.realtime.title': '实时处理',
+                'feature.realtime.desc': '基于Celery队列的异步处理，支持WebSocket实时状态推送',
+                'feature.realtime.status': '已发布',
+                'feature.title.title': '自动标题生成',
+                'feature.title.desc': 'AI自动为每个切片生成吸引人的标题，提升内容传播效果',
+                'feature.title.status': '已发布',
+                'feature.quality.title': '内容质量评估',
+                'feature.quality.desc': '智能评估切片质量，确保输出内容的高质量标准',
+                'feature.quality.status': '已发布',
+                'feature.docker.title': 'Docker部署',
+                'feature.docker.desc': '一键Docker部署，支持本地和云端环境快速启动',
+                'feature.docker.status': '已发布',
+                'feature.platform.title': '多平台支持',
+                'feature.platform.desc': '支持Windows、macOS、Linux三大平台，适配不同开发环境',
+                'feature.platform.status': '已发布',
+                'feature.cover.title': '智能封面',
+                'feature.cover.desc': 'AI自动为视频生成高质量封面图，提升点击率和观看体验',
+                'feature.cover.status': '开发中',
+                'feature.subtitle.title': '智能字幕翻译',
+                'feature.subtitle.desc': '自动识别语音并生成多语言字幕，支持中英日韩等多种语言互译',
+                'feature.subtitle.status': '开发中',
+                'feature.collection.title': '智能合集推荐',
+                'feature.collection.desc': '基于主题相似度的智能聚类，自动组织相关内容为合集，提升内容价值',
+                'feature.collection.status': '已发布',
+                'feature.project.title': '多项目管理',
+                'feature.project.desc': '支持同时管理多个处理项目，数据完全隔离，支持并发处理',
+                'feature.project.status': '已发布',
+                'feature.upload.title': 'B站自动上传',
+                'feature.upload.desc': '自动上传切片到B站，支持批量发布和定时发布',
+                'feature.upload.status': '开发中',
+                'arch.frontend.title': '前端技术栈',
+                'arch.frontend.desc': '基于React + TypeScript构建的现代化Web界面',
+                'arch.backend.title': '后端架构',
+                'arch.backend.desc': '基于FastAPI的高性能异步API服务',
+                'arch.database.title': '数据存储',
+                'arch.database.desc': '多种数据库支持，灵活的数据存储方案',
+                'arch.async.title': '异步处理',
+                'arch.async.desc': '基于Celery的分布式任务队列系统',
+                'arch.ai.title': 'AI引擎',
+                'arch.ai.desc': '集成多种AI模型，提供智能分析能力',
+                'arch.container.title': '容器化部署',
+                'arch.container.desc': 'Docker容器化部署，支持多环境一键启动',
+                'demo.main.title': 'AutoClip 主界面',
+                'demo.main.desc': '智能视频切片系统的核心操作界面',
+                'demo.input.title': '多输入支持',
+                'demo.input.desc': '支持视频文件、链接和字幕文件多种输入方式',
+                'demo.task.title': '任务管理',
+                'demo.task.desc': '实时监控处理进度，支持批量任务管理',
+                'demo.collection.title': '智能合集',
+                'demo.collection.desc': 'AI自动聚类相关内容，生成主题合集',
+                'demo.preview.title': '视频预览',
+                'demo.preview.desc': '切片结果预览，支持在线播放和编辑',
+                'usecase.creator.title': '内容创作者',
+                'usecase.creator.desc': '直播回放处理、课程视频切片、访谈节目处理',
+                'usecase.education.title': '教育机构',
+                'usecase.education.desc': '在线课程制作、知识点提取、学习资源整理',
+                'usecase.training.title': '企业培训',
+                'usecase.training.desc': '培训视频处理、技能点提取、知识库建设',
+                'usecase.platform.title': '平台运营',
+                'usecase.platform.desc': '内容推荐、流量分发、用户留存',
+                'hero.badge': '🚀 正式发布 · 💻 桌面端支持',
+                'contact.qq.title': 'QQ用户群',
+                'contact.qq.desc': '扫描上方二维码，加入QQ用户群<br>与其他用户交流使用心得',
+                'contact.qq.button': 'QQ专属服务',
+                'contact.feishu.title': '飞书用户群',
+                'contact.feishu.desc': '扫描上方二维码，加入飞书用户群<br>获取技术支持和最新版本通知',
+                'contact.feishu.button': '飞书专属服务',
+                'contact.tip': '💡 提示：请备注"AutoClip"以便快速通过好友申请',
+                'contact.benefit1.title': '实时沟通',
+                'contact.benefit1.desc': '直接对话，实时了解开发进展',
+                'contact.benefit2.title': '专属服务',
+                'contact.benefit2.desc': '一对一咨询，定制化解决方案',
+                'contact.benefit3.title': '优先体验',
+                'contact.benefit3.desc': '内测资格，抢先试用新功能',
+                'download.macos': 'macOS Beta',
+                'download.windows': 'Windows Beta',
+                'contact.development': '产品开发中',
+                'hero.beta.apply': '申请桌面版内测',
+                'hero.github.view': 'GitHub',
+                'hero.beta.info': '桌面版内测招募中，扫码加入用户群获取内测资格',
+                'waitlist.title': '申请内测资格',
+                'waitlist.subtitle': '扫描下方二维码，加入AutoClip用户群，申请桌面版内测资格'
+            },
+            en: {
+                'nav.features': 'Features',
+                'nav.architecture': 'Architecture',
+                'nav.demo': 'Demo',
+                'nav.contact': 'Contact',
+                'hero.subtitle': 'AI-powered video highlights, one-click generation',
+                'hero.description': 'Your AI video editing companion, automatically extract multiple highlights from one video',
+                'hero.feature1.title': 'One-Click Highlights',
+                'hero.feature1.desc': 'AI smart analysis, automated editing',
+                'hero.feature2.title': 'Local Processing',
+                'hero.feature2.desc': 'Lightweight & efficient, privacy protected',
+                'hero.feature3.title': 'Multi-Platform',
+                'hero.feature3.desc': 'Create and share, full platform support',
+                'hero.version': 'Latest version support, auto-adapt system architecture',
+                'features.title': 'Core Features',
+                'features.subtitle': 'AI-driven full-process automated video processing',
+                'architecture.title': 'Technical Architecture',
+                'architecture.subtitle': 'Modern frontend-backend separation architecture, ensuring high performance and scalability',
+                'demo.title': 'Product Demo',
+                'demo.subtitle': 'Experience the powerful features of AutoClip intuitively',
+                'usecases.title': 'Use Cases',
+                'usecases.subtitle': 'Suitable for various content creation and educational scenarios',
+                'waitlist.title': 'Join User Community',
+                'waitlist.subtitle': 'Scan the QR code below to join the AutoClip user community and get the latest product updates and usage help',
+                'footer.description': 'AI-driven intelligent video clipping system, making content creation more efficient.',
+                'footer.copyright': 'Open source project, MIT license.',
+                'feature.ai.title': 'AI Smart Analysis',
+                'feature.ai.desc': 'Video content understanding based on large language models, intelligently identifying highlight moments',
+                'feature.ai.status': 'Released',
+                'feature.realtime.title': 'Real-time Processing',
+                'feature.realtime.desc': 'Asynchronous processing based on Celery queue, supporting WebSocket real-time status push',
+                'feature.realtime.status': 'Released',
+                'feature.title.title': 'Auto Title Generation',
+                'feature.title.desc': 'AI automatically generates attractive titles for each clip, improving content dissemination',
+                'feature.title.status': 'Released',
+                'feature.quality.title': 'Content Quality Assessment',
+                'feature.quality.desc': 'Intelligent evaluation of clip quality, ensuring high-quality output content',
+                'feature.quality.status': 'Released',
+                'feature.docker.title': 'Docker Deployment',
+                'feature.docker.desc': 'One-click Docker deployment, supporting rapid startup in local and cloud environments',
+                'feature.docker.status': 'Released',
+                'feature.platform.title': 'Multi-Platform Support',
+                'feature.platform.desc': 'Support for Windows, macOS, Linux platforms, adapting to different development environments',
+                'feature.platform.status': 'Released',
+                'feature.cover.title': 'Smart Cover',
+                'feature.cover.desc': 'AI automatically generates high-quality cover images for videos, improving click-through rates and viewing experience',
+                'feature.cover.status': 'In Development',
+                'feature.subtitle.title': 'Smart Subtitle Translation',
+                'feature.subtitle.desc': 'Automatically recognize speech and generate multilingual subtitles, supporting translation between Chinese, English, Japanese, Korean and other languages',
+                'feature.subtitle.status': 'In Development',
+                'feature.collection.title': 'Smart Collection Recommendation',
+                'feature.collection.desc': 'Intelligent clustering based on topic similarity, automatically organizing related content into collections, enhancing content value',
+                'feature.collection.status': 'Released',
+                'feature.project.title': 'Multi-Project Management',
+                'feature.project.desc': 'Support simultaneous management of multiple processing projects, complete data isolation, supporting concurrent processing',
+                'feature.project.status': 'Released',
+                'feature.upload.title': 'Bilibili Auto Upload',
+                'feature.upload.desc': 'Automatically upload clips to Bilibili, supporting batch publishing and scheduled publishing',
+                'feature.upload.status': 'In Development',
+                'arch.frontend.title': 'Frontend Tech Stack',
+                'arch.frontend.desc': 'Modern web interface built with React + TypeScript',
+                'arch.backend.title': 'Backend Architecture',
+                'arch.backend.desc': 'High-performance asynchronous API service based on FastAPI',
+                'arch.database.title': 'Data Storage',
+                'arch.database.desc': 'Multiple database support, flexible data storage solutions',
+                'arch.async.title': 'Async Processing',
+                'arch.async.desc': 'Distributed task queue system based on Celery',
+                'arch.ai.title': 'AI Engine',
+                'arch.ai.desc': 'Integrated multiple AI models, providing intelligent analysis capabilities',
+                'arch.container.title': 'Containerized Deployment',
+                'arch.container.desc': 'Docker containerized deployment, supporting one-click startup in multiple environments',
+                'demo.main.title': 'AutoClip Main Interface',
+                'demo.main.desc': 'Core operation interface of intelligent video clipping system',
+                'demo.input.title': 'Multi-Input Support',
+                'demo.input.desc': 'Support for video files, links and subtitle files in multiple input formats',
+                'demo.task.title': 'Task Management',
+                'demo.task.desc': 'Real-time monitoring of processing progress, supporting batch task management',
+                'demo.collection.title': 'Smart Collection',
+                'demo.collection.desc': 'AI automatically clusters related content and generates topic collections',
+                'demo.preview.title': 'Video Preview',
+                'demo.preview.desc': 'Clip result preview, supporting online playback and editing',
+                'usecase.creator.title': 'Content Creators',
+                'usecase.creator.desc': 'Live replay processing, course video clipping, interview program processing',
+                'usecase.education.title': 'Educational Institutions',
+                'usecase.education.desc': 'Online course production, knowledge point extraction, learning resource organization',
+                'usecase.training.title': 'Corporate Training',
+                'usecase.training.desc': 'Training video processing, skill point extraction, knowledge base construction',
+                'usecase.platform.title': 'Platform Operations',
+                'usecase.platform.desc': 'Content recommendation, traffic distribution, user retention',
+                'hero.badge': '🚀 Officially Released · 💻 Desktop Support',
+                'contact.qq.title': 'QQ User Group',
+                'contact.qq.desc': 'Scan the QR code above to join the QQ user group<br>Exchange usage experience with other users',
+                'contact.qq.button': 'QQ Exclusive Service',
+                'contact.feishu.title': 'Feishu User Group',
+                'contact.feishu.desc': 'Scan the QR code above to join the Feishu user group<br>Get technical support and latest version notifications',
+                'contact.feishu.button': 'Feishu Exclusive Service',
+                'contact.tip': '💡 Tip: Please note "AutoClip" for quick approval',
+                'contact.benefit1.title': 'Real-time Communication',
+                'contact.benefit1.desc': 'Direct dialogue, real-time development updates',
+                'contact.benefit2.title': 'Exclusive Service',
+                'contact.benefit2.desc': 'One-on-one consultation, customized solutions',
+                'contact.benefit3.title': 'Priority Experience',
+                'contact.benefit3.desc': 'Beta access, early access to new features',
+                'download.macos': 'macOS Beta',
+                'download.windows': 'Windows Beta',
+                'contact.development': 'Product in Development',
+                'hero.beta.apply': 'Apply for Desktop Beta',
+                'hero.github.view': 'GitHub',
+                'hero.beta.info': 'Desktop version beta recruitment in progress, scan QR code to join user group for beta access',
+                'waitlist.title': 'Apply for Beta Access',
+                'waitlist.subtitle': 'Scan the QR code below to join AutoClip user group and apply for desktop version beta access'
+            },
+            ja: {
+                'nav.features': '機能',
+                'nav.architecture': 'アーキテクチャ',
+                'nav.demo': 'デモ',
+                'nav.contact': 'お問い合わせ',
+                'hero.subtitle': 'AI駆動の動画ハイライト、ワンクリック生成',
+                'hero.description': 'あなたのAI動画編集パートナー、一本の動画から複数のハイライトを自動抽出',
+                'hero.feature1.title': 'ワンクリックハイライト',
+                'hero.feature1.desc': 'AIスマート分析、自動編集',
+                'hero.feature2.title': 'ローカル処理',
+                'hero.feature2.desc': '軽量・効率的、プライバシー保護',
+                'hero.feature3.title': 'マルチプラットフォーム',
+                'hero.feature3.desc': '作成して共有、全プラットフォーム対応',
+                'hero.version': '最新バージョンサポート、システムアーキテクチャ自動適応',
+                'features.title': 'コア機能',
+                'features.subtitle': 'AI駆動の全プロセス自動動画処理',
+                'architecture.title': '技術アーキテクチャ',
+                'architecture.subtitle': 'モダンなフロントエンド・バックエンド分離アーキテクチャ、高性能とスケーラビリティを保証',
+                'demo.title': '製品デモ',
+                'demo.subtitle': 'AutoClipの強力な機能を直感的に体験',
+                'usecases.title': '使用例',
+                'usecases.subtitle': '様々なコンテンツ制作と教育シナリオに適用',
+                'waitlist.title': 'ユーザーコミュニティに参加',
+                'waitlist.subtitle': '下記のQRコードをスキャンしてAutoClipユーザーコミュニティに参加し、最新の製品アップデートと使用方法のヘルプを取得',
+                'footer.description': 'AI駆動のインテリジェント動画クリッピングシステム、コンテンツ制作をより効率的に。',
+                'footer.copyright': 'オープンソースプロジェクト、MITライセンス。',
+                'feature.ai.title': 'AIスマート分析',
+                'feature.ai.desc': '大規模言語モデルに基づく動画コンテンツ理解、ハイライト瞬間の智能識別',
+                'feature.ai.status': 'リリース済み',
+                'feature.realtime.title': 'リアルタイム処理',
+                'feature.realtime.desc': 'Celeryキューに基づく非同期処理、WebSocketリアルタイムステータスプッシュをサポート',
+                'feature.realtime.status': 'リリース済み',
+                'feature.title.title': '自動タイトル生成',
+                'feature.title.desc': 'AIが各クリップに魅力的なタイトルを自動生成、コンテンツ拡散効果を向上',
+                'feature.title.status': 'リリース済み',
+                'feature.quality.title': 'コンテンツ品質評価',
+                'feature.quality.desc': 'クリップ品質の智能評価、高品質な出力コンテンツを保証',
+                'feature.quality.status': 'リリース済み',
+                'feature.docker.title': 'Dockerデプロイ',
+                'feature.docker.desc': 'ワンクリックDockerデプロイ、ローカルとクラウド環境での迅速な起動をサポート',
+                'feature.docker.status': 'リリース済み',
+                'feature.platform.title': 'マルチプラットフォームサポート',
+                'feature.platform.desc': 'Windows、macOS、Linuxプラットフォームをサポート、異なる開発環境に適応',
+                'feature.platform.status': 'リリース済み',
+                'feature.cover.title': 'スマートカバー',
+                'feature.cover.desc': 'AIが動画の高品質カバー画像を自動生成、クリック率と視聴体験を向上',
+                'feature.cover.status': '開発中',
+                'feature.subtitle.title': 'スマート字幕翻訳',
+                'feature.subtitle.desc': '音声を自動認識し多言語字幕を生成、中英日韓など多言語間翻訳をサポート',
+                'feature.subtitle.status': '開発中',
+                'feature.collection.title': 'スマートコレクション推薦',
+                'feature.collection.desc': 'トピック類似度に基づく智能クラスタリング、関連コンテンツを自動的にコレクションに整理、コンテンツ価値を向上',
+                'feature.collection.status': 'リリース済み',
+                'feature.project.title': 'マルチプロジェクト管理',
+                'feature.project.desc': '複数の処理プロジェクトの同時管理をサポート、完全なデータ分離、並行処理をサポート',
+                'feature.project.status': 'リリース済み',
+                'feature.upload.title': 'Bilibili自動アップロード',
+                'feature.upload.desc': 'クリップをBilibiliに自動アップロード、バッチ公開とスケジュール公開をサポート',
+                'feature.upload.status': '開発中',
+                'arch.frontend.title': 'フロントエンド技術スタック',
+                'arch.frontend.desc': 'React + TypeScriptで構築されたモダンなWebインターフェース',
+                'arch.backend.title': 'バックエンドアーキテクチャ',
+                'arch.backend.desc': 'FastAPIベースの高性能非同期APIサービス',
+                'arch.database.title': 'データストレージ',
+                'arch.database.desc': '複数のデータベースサポート、柔軟なデータストレージソリューション',
+                'arch.async.title': '非同期処理',
+                'arch.async.desc': 'Celeryベースの分散タスクキューシステム',
+                'arch.ai.title': 'AIエンジン',
+                'arch.ai.desc': '複数のAIモデルを統合、智能分析機能を提供',
+                'arch.container.title': 'コンテナ化デプロイ',
+                'arch.container.desc': 'Dockerコンテナ化デプロイ、複数環境でのワンクリック起動をサポート',
+                'demo.main.title': 'AutoClipメインインターフェース',
+                'demo.main.desc': '智能動画クリッピングシステムのコア操作インターフェース',
+                'demo.input.title': 'マルチ入力サポート',
+                'demo.input.desc': '動画ファイル、リンク、字幕ファイルなど複数の入力形式をサポート',
+                'demo.task.title': 'タスク管理',
+                'demo.task.desc': '処理進捗のリアルタイム監視、バッチタスク管理をサポート',
+                'demo.collection.title': 'スマートコレクション',
+                'demo.collection.desc': 'AIが関連コンテンツを自動クラスタリングし、トピックコレクションを生成',
+                'demo.preview.title': '動画プレビュー',
+                'demo.preview.desc': 'クリップ結果プレビュー、オンライン再生と編集をサポート',
+                'usecase.creator.title': 'コンテンツクリエイター',
+                'usecase.creator.desc': 'ライブリプレイ処理、コース動画クリッピング、インタビュー番組処理',
+                'usecase.education.title': '教育機関',
+                'usecase.education.desc': 'オンラインコース制作、知識点抽出、学習リソース整理',
+                'usecase.training.title': '企業研修',
+                'usecase.training.desc': '研修動画処理、スキル点抽出、ナレッジベース構築',
+                'usecase.platform.title': 'プラットフォーム運営',
+                'usecase.platform.desc': 'コンテンツ推薦、トラフィック配信、ユーザー維持',
+                'hero.badge': '🚀 正式リリース · 💻 デスクトップサポート',
+                'contact.qq.title': 'QQユーザーグループ',
+                'contact.qq.desc': '上記のQRコードをスキャンしてQQユーザーグループに参加<br>他のユーザーと使用体験を交流',
+                'contact.qq.button': 'QQ専用サービス',
+                'contact.feishu.title': 'Feishuユーザーグループ',
+                'contact.feishu.desc': '上記のQRコードをスキャンしてFeishuユーザーグループに参加<br>技術サポートと最新バージョン通知を取得',
+                'contact.feishu.button': 'Feishu専用サービス',
+                'contact.tip': '💡 ヒント：「AutoClip」と記載して迅速な承認を取得',
+                'contact.benefit1.title': 'リアルタイムコミュニケーション',
+                'contact.benefit1.desc': '直接対話、リアルタイム開発進捗',
+                'contact.benefit2.title': '専用サービス',
+                'contact.benefit2.desc': '1対1コンサルティング、カスタマイズソリューション',
+                'contact.benefit3.title': '優先体験',
+                'contact.benefit3.desc': 'ベータアクセス、新機能の早期体験',
+                'download.macos': 'macOS Beta',
+                'download.windows': 'Windows Beta',
+                'contact.development': '製品開発中',
+                'hero.beta.apply': 'デスクトップ版ベータ申請',
+                'hero.github.view': 'GitHub',
+                'hero.beta.info': 'デスクトップ版ベータ募集進行中、QRコードをスキャンしてユーザーグループに参加しベータアクセスを取得',
+                'waitlist.title': 'ベータアクセス申請',
+                'waitlist.subtitle': '下のQRコードをスキャンしてAutoClipユーザーグループに参加し、デスクトップ版ベータアクセスを申請'
+            },
+            ko: {
+                'nav.features': '기능',
+                'nav.architecture': '아키텍처',
+                'nav.demo': '데모',
+                'nav.contact': '문의하기',
+                'hero.subtitle': 'AI 기반 비디오 하이라이트, 원클릭 생성',
+                'hero.description': '당신의 AI 비디오 편집 파트너, 하나의 비디오에서 여러 하이라이트를 자동으로 추출',
+                'hero.feature1.title': '원클릭 하이라이트',
+                'hero.feature1.desc': 'AI 스마트 분석, 자동 편집',
+                'hero.feature2.title': '로컬 처리',
+                'hero.feature2.desc': '가볍고 효율적, 개인정보 보호',
+                'hero.feature3.title': '멀티 플랫폼',
+                'hero.feature3.desc': '제작하고 공유, 전체 플랫폼 지원',
+                'hero.version': '최신 버전 지원, 시스템 아키텍처 자동 적응',
+                'features.title': '핵심 기능',
+                'features.subtitle': 'AI 기반 전체 프로세스 자동 비디오 처리',
+                'architecture.title': '기술 아키텍처',
+                'architecture.subtitle': '현대적인 프론트엔드-백엔드 분리 아키텍처, 고성능과 확장성 보장',
+                'demo.title': '제품 데모',
+                'demo.subtitle': 'AutoClip의 강력한 기능을 직관적으로 체험',
+                'usecases.title': '사용 사례',
+                'usecases.subtitle': '다양한 콘텐츠 제작 및 교육 시나리오에 적용',
+                'waitlist.title': '사용자 커뮤니티 참여',
+                'waitlist.subtitle': '아래 QR 코드를 스캔하여 AutoClip 사용자 커뮤니티에 참여하고 최신 제품 업데이트 및 사용법 도움말을 받으세요',
+                'footer.description': 'AI 기반 지능형 비디오 클리핑 시스템, 콘텐츠 제작을 더욱 효율적으로.',
+                'footer.copyright': '오픈소스 프로젝트, MIT 라이선스.',
+                'feature.ai.title': 'AI 스마트 분석',
+                'feature.ai.desc': '대규모 언어 모델 기반 비디오 콘텐츠 이해, 하이라이트 순간의 지능형 식별',
+                'feature.ai.status': '출시됨',
+                'feature.realtime.title': '실시간 처리',
+                'feature.realtime.desc': 'Celery 큐 기반 비동기 처리, WebSocket 실시간 상태 푸시 지원',
+                'feature.realtime.status': '출시됨',
+                'feature.title.title': '자동 제목 생성',
+                'feature.title.desc': 'AI가 각 클립에 매력적인 제목을 자동 생성, 콘텐츠 확산 효과 향상',
+                'feature.title.status': '출시됨',
+                'feature.quality.title': '콘텐츠 품질 평가',
+                'feature.quality.desc': '클립 품질의 지능형 평가, 고품질 출력 콘텐츠 보장',
+                'feature.quality.status': '출시됨',
+                'feature.docker.title': 'Docker 배포',
+                'feature.docker.desc': '원클릭 Docker 배포, 로컬 및 클라우드 환경에서의 빠른 시작 지원',
+                'feature.docker.status': '출시됨',
+                'feature.platform.title': '멀티 플랫폼 지원',
+                'feature.platform.desc': 'Windows, macOS, Linux 플랫폼 지원, 다양한 개발 환경에 적응',
+                'feature.platform.status': '출시됨',
+                'feature.cover.title': '스마트 커버',
+                'feature.cover.desc': 'AI가 비디오의 고품질 커버 이미지를 자동 생성, 클릭률과 시청 경험 향상',
+                'feature.cover.status': '개발 중',
+                'feature.subtitle.title': '스마트 자막 번역',
+                'feature.subtitle.desc': '음성을 자동 인식하여 다국어 자막 생성, 중영일한 등 다국어 간 번역 지원',
+                'feature.subtitle.status': '개발 중',
+                'feature.collection.title': '스마트 컬렉션 추천',
+                'feature.collection.desc': '주제 유사도 기반 지능형 클러스터링, 관련 콘텐츠를 자동으로 컬렉션으로 구성, 콘텐츠 가치 향상',
+                'feature.collection.status': '출시됨',
+                'feature.project.title': '멀티 프로젝트 관리',
+                'feature.project.desc': '여러 처리 프로젝트의 동시 관리 지원, 완전한 데이터 격리, 동시 처리 지원',
+                'feature.project.status': '출시됨',
+                'feature.upload.title': 'Bilibili 자동 업로드',
+                'feature.upload.desc': '클립을 Bilibili에 자동 업로드, 배치 게시 및 예약 게시 지원',
+                'feature.upload.status': '개발 중',
+                'arch.frontend.title': '프론트엔드 기술 스택',
+                'arch.frontend.desc': 'React + TypeScript로 구축된 모던 웹 인터페이스',
+                'arch.backend.title': '백엔드 아키텍처',
+                'arch.backend.desc': 'FastAPI 기반의 고성능 비동기 API 서비스',
+                'arch.database.title': '데이터 스토리지',
+                'arch.database.desc': '다중 데이터베이스 지원, 유연한 데이터 스토리지 솔루션',
+                'arch.async.title': '비동기 처리',
+                'arch.async.desc': 'Celery 기반의 분산 작업 큐 시스템',
+                'arch.ai.title': 'AI 엔진',
+                'arch.ai.desc': '다중 AI 모델 통합, 지능형 분석 기능 제공',
+                'arch.container.title': '컨테이너화 배포',
+                'arch.container.desc': 'Docker 컨테이너화 배포, 다중 환경에서의 원클릭 시작 지원',
+                'demo.main.title': 'AutoClip 메인 인터페이스',
+                'demo.main.desc': '지능형 비디오 클리핑 시스템의 핵심 운영 인터페이스',
+                'demo.input.title': '멀티 입력 지원',
+                'demo.input.desc': '비디오 파일, 링크, 자막 파일 등 다중 입력 형식 지원',
+                'demo.task.title': '작업 관리',
+                'demo.task.desc': '처리 진행률의 실시간 모니터링, 배치 작업 관리 지원',
+                'demo.collection.title': '스마트 컬렉션',
+                'demo.collection.desc': 'AI가 관련 콘텐츠를 자동 클러스터링하고 주제 컬렉션을 생성',
+                'demo.preview.title': '비디오 미리보기',
+                'demo.preview.desc': '클립 결과 미리보기, 온라인 재생 및 편집 지원',
+                'usecase.creator.title': '콘텐츠 크리에이터',
+                'usecase.creator.desc': '라이브 리플레이 처리, 강의 비디오 클리핑, 인터뷰 프로그램 처리',
+                'usecase.education.title': '교육 기관',
+                'usecase.education.desc': '온라인 강의 제작, 지식점 추출, 학습 리소스 정리',
+                'usecase.training.title': '기업 교육',
+                'usecase.training.desc': '교육 비디오 처리, 스킬점 추출, 지식베이스 구축',
+                'usecase.platform.title': '플랫폼 운영',
+                'usecase.platform.desc': '콘텐츠 추천, 트래픽 분배, 사용자 유지',
+                'hero.badge': '🚀 정식 출시 · 💻 데스크톱 지원',
+                'contact.qq.title': 'QQ 사용자 그룹',
+                'contact.qq.desc': '위의 QR 코드를 스캔하여 QQ 사용자 그룹에 참여<br>다른 사용자와 사용 경험을 교류',
+                'contact.qq.button': 'QQ 전용 서비스',
+                'contact.feishu.title': 'Feishu 사용자 그룹',
+                'contact.feishu.desc': '위의 QR 코드를 스캔하여 Feishu 사용자 그룹에 참여<br>기술 지원 및 최신 버전 알림 받기',
+                'contact.feishu.button': 'Feishu 전용 서비스',
+                'contact.tip': '💡 팁: 빠른 승인을 위해 "AutoClip"이라고 메모해 주세요',
+                'contact.benefit1.title': '실시간 소통',
+                'contact.benefit1.desc': '직접 대화, 실시간 개발 진행 상황',
+                'contact.benefit2.title': '전용 서비스',
+                'contact.benefit2.desc': '1대1 상담, 맞춤형 솔루션',
+                'contact.benefit3.title': '우선 체험',
+                'contact.benefit3.desc': '베타 액세스, 신기능 조기 체험',
+                'download.macos': 'macOS Beta',
+                'download.windows': 'Windows Beta',
+                'contact.development': '제품 개발 중',
+                'hero.beta.apply': '데스크톱 베타 신청',
+                'hero.github.view': 'GitHub',
+                'hero.beta.info': '데스크톱 버전 베타 모집 진행 중, QR 코드를 스캔하여 사용자 그룹에 참여하고 베타 액세스 획득',
+                'waitlist.title': '베타 액세스 신청',
+                'waitlist.subtitle': '아래 QR 코드를 스캔하여 AutoClip 사용자 그룹에 참여하고 데스크톱 버전 베타 액세스를 신청하세요'
+            }
+        };
+
+        // 当前语言
+        let currentLang = localStorage.getItem('language') || 'zh';
+
+        // 语言名称映射
+        const languageNames = {
+            zh: '中文',
+            en: 'English',
+            ja: '日本語',
+            ko: '한국어'
+        };
+
+        // 语言切换功能
+        function switchLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('language', lang);
+            
+            // 更新所有带有data-i18n属性的元素
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+            
+            // 更新语言切换按钮显示
+            const langButton = document.getElementById('current-lang');
+            const langText = document.querySelector('#language-switcher .text-xs');
+            if (langButton && langText) {
+                const flags = { zh: '🇨🇳', en: '🇺🇸', ja: '🇯🇵', ko: '🇰🇷' };
+                langButton.textContent = flags[lang] || '🇨🇳';
+                langText.textContent = languageNames[lang] || '中文';
+            }
+            
+            // 更新页面标题
+            const titles = {
+                zh: 'AutoClip | AI驱动的智能视频切片系统',
+                en: 'AutoClip | AI-powered video clipping and highlight generation',
+                ja: 'AutoClip | AI駆動の動画ハイライト生成システム',
+                ko: 'AutoClip | AI 기반 비디오 하이라이트 생성 시스템'
+            };
+            document.title = titles[lang] || titles.zh;
+        }
+
+        // 初始化语言
+        document.addEventListener('DOMContentLoaded', function() {
+            // 设置初始语言
+            switchLanguage(currentLang);
+            
+            // 语言选项点击事件
+            document.querySelectorAll('.language-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    const lang = this.getAttribute('data-lang');
+                    switchLanguage(lang);
+                });
+            });
+        });
+
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
