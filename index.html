@@ -179,10 +179,10 @@
                     <h1 class="text-xl font-bold bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent drop-shadow-lg filter brightness-110">AutoClip</h1>
                 </div>
                 <div class="hidden md:flex items-center space-x-8">
+                    <a href="#download" class="text-gray-300 hover:text-white transition-colors text-sm font-medium" data-i18n="nav.download">下载</a>
                     <a href="#features" class="text-gray-300 hover:text-white transition-colors text-sm font-medium" data-i18n="nav.features">功能特性</a>
-                    <a href="#architecture" class="text-gray-300 hover:text-white transition-colors text-sm font-medium" data-i18n="nav.architecture">技术架构</a>
                     <a href="#demo" class="text-gray-300 hover:text-white transition-colors text-sm font-medium" data-i18n="nav.demo">演示</a>
-                    <a href="#waitlist" class="text-gray-300 hover:text-white transition-colors text-sm font-medium" data-i18n="nav.contact">联系开发者</a>
+                    <a href="#waitlist" class="text-gray-300 hover:text-white transition-colors text-sm font-medium" data-i18n="nav.contact">用户社区</a>
                     <a href="https://github.com/zhouxiaoka/autoclip" target="_blank" rel="noopener" class="inline-flex items-center px-3 py-2 rounded-lg text-sm font-medium bg-white/10 border border-white/20 text-white/70 hover:bg-white/15 hover:text-white/90 hover:border-white/30 transition">
                         <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.66-.22.66-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.45-1.15-1.1-1.46-1.1-1.46-.9-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85.004 1.71.11 2.51.32 1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.85-2.34 4.7-4.57 4.95.36.31.68.92.68 1.85 0 1.33-.01 2.4-.01 2.73 0 .27.16.58.67.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"/>
@@ -237,7 +237,7 @@
             <div class="mb-8">
                 <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-white/5 border border-white/10 text-gray-300 mb-8" data-i18n="hero.badge">
                     <span class="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></span>
-                    🚀 正式发布 · 💻 桌面端支持
+                    🚀 v1.2.0 已发布 · 🍎 macOS Apple Silicon
                 </span>
             </div>
             <h1 class="text-6xl md:text-7xl font-bold mb-8 leading-loose">
@@ -249,24 +249,34 @@
             </p>
             <!-- 桌面版下载按钮区域 -->
             <div class="mb-16">
-                <div class="inline-flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="#waitlist" class="inline-flex items-center px-8 py-4 rounded-xl font-medium text-lg bg-white/10 backdrop-blur-md text-white shadow-2xl transition-all duration-300 transform hover:scale-105 hover:bg-white/15 hover:shadow-3xl border border-white/20 hover:border-white/30 relative overflow-hidden group">
+                <div class="flex flex-col items-center gap-5">
+                    <!-- 主下载按钮 -->
+                    <a href="https://github.com/zhouxiaoka/autoclip/releases/download/v1.2.0/AutoClip.Desktop_1.2.0_aarch64.dmg" class="group relative inline-flex items-center justify-center px-9 py-4 rounded-2xl font-semibold text-lg btn-primary shadow-2xl shadow-primary/30 overflow-hidden">
                         <!-- 光效动画 -->
-                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
-                        <!-- 按钮内容 -->
-                        <div class="relative z-10 flex items-center">
-                            <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
+                        <span class="relative z-10 flex items-center">
+                            <svg class="w-5 h-5 mr-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3"></path>
                             </svg>
-                            <span data-i18n="hero.beta.apply">申请桌面版内测</span>
-                        </div>
+                            <span data-i18n="hero.download.dmg">下载 macOS 客户端 (Apple Silicon) — v1.2.0</span>
+                        </span>
                     </a>
-                    <a href="https://github.com/zhouxiaoka/autoclip" target="_blank" rel="noopener" class="inline-flex items-center px-8 py-4 rounded-xl font-medium text-lg bg-white/5 backdrop-blur-sm text-white/80 shadow-lg transition-all duration-300 transform hover:scale-105 hover:bg-white/10 hover:text-white hover:shadow-xl border border-white/10 hover:border-white/20">
-                        <svg class="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.66-.22.66-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.45-1.15-1.1-1.46-1.1-1.46-.9-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85.004 1.71.11 2.51.32 1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.85-2.34 4.7-4.57 4.95.36.31.68.92.68 1.85 0 1.33-.01 2.4-.01 2.73 0 .27.16.58.67.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"/>
-                        </svg>
-                        <span data-i18n="hero.github.view">GitHub</span>
-                    </a>
+                    <!-- 次级链接 -->
+                    <div class="flex items-center gap-4 text-sm">
+                        <a href="https://github.com/zhouxiaoka/autoclip/releases/latest" target="_blank" rel="noopener" class="inline-flex items-center text-gray-400 hover:text-white transition-colors">
+                            <svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                            </svg>
+                            <span data-i18n="hero.releases.view">全部版本 / Releases</span>
+                        </a>
+                        <span class="text-white/15" aria-hidden="true">|</span>
+                        <a href="https://github.com/zhouxiaoka/autoclip" target="_blank" rel="noopener" class="inline-flex items-center text-gray-400 hover:text-white transition-colors">
+                            <svg class="w-4 h-4 mr-1.5 opacity-70" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.66-.22.66-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.45-1.15-1.1-1.46-1.1-1.46-.9-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85.004 1.71.11 2.51.32 1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.85-2.34 4.7-4.57 4.95.36.31.68.92.68 1.85 0 1.33-.01 2.4-.01 2.73 0 .27.16.58.67.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"/>
+                            </svg>
+                            <span data-i18n="hero.github.view">GitHub</span>
+                        </a>
+                    </div>
                 </div>
                 
                 <!-- 核心卖点展示 -->
@@ -277,8 +287,8 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                             </svg>
                         </div>
-                        <h4 class="text-sm font-semibold text-white mb-1" data-i18n="hero.feature1.title">一键生成高光</h4>
-                        <p class="text-gray-400 text-xs" data-i18n="hero.feature1.desc">AI智能分析，剪辑自动化</p>
+                        <h4 class="text-sm font-semibold text-white mb-1" data-i18n="hero.feature1.title">一键安装零依赖</h4>
+                        <p class="text-gray-400 text-xs" data-i18n="hero.feature1.desc">内置便携 Python + ffmpeg，无需配置</p>
                     </div>
                     
                     <div class="text-center p-4 rounded-xl bg-white/5 border border-white/10">
@@ -287,8 +297,8 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                             </svg>
                         </div>
-                        <h4 class="text-sm font-semibold text-white mb-1" data-i18n="hero.feature2.title">本地运行</h4>
-                        <p class="text-gray-400 text-xs" data-i18n="hero.feature2.desc">轻量高效，隐私保护</p>
+                        <h4 class="text-sm font-semibold text-white mb-1" data-i18n="hero.feature2.title">端到端本地出片</h4>
+                        <p class="text-gray-400 text-xs" data-i18n="hero.feature2.desc">下载到切片全程本地，隐私可控</p>
                     </div>
                     
                     <div class="text-center p-4 rounded-xl bg-white/5 border border-white/10">
@@ -297,14 +307,14 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                             </svg>
                         </div>
-                        <h4 class="text-sm font-semibold text-white mb-1" data-i18n="hero.feature3.title">多平台适配</h4>
-                        <p class="text-gray-400 text-xs" data-i18n="hero.feature3.desc">创作即分享，全平台支持</p>
+                        <h4 class="text-sm font-semibold text-white mb-1" data-i18n="hero.feature3.title">原生 Mac 客户端</h4>
+                        <p class="text-gray-400 text-xs" data-i18n="hero.feature3.desc">Apple Silicon (M 系列)，其他平台后续</p>
                     </div>
                 </div>
                 
                 <!-- 版本信息 -->
             <div class="text-center mt-6">
-                <p class="text-sm text-gray-400" data-i18n="hero.beta.info">桌面版内测招募中，扫码联系开发者获取内测资格</p>
+                <p class="text-sm text-gray-400" data-i18n="hero.beta.info">系统要求：macOS · Apple Silicon (M 系列)。首次打开请右键点应用 → 选「打开」。</p>
             </div>
             
             <!-- 开发状态公告 -->
@@ -319,9 +329,9 @@
                             </div>
                         </div>
                         <div class="flex-1">
-                            <h3 class="text-lg font-semibold text-white mb-2" data-i18n="announcement.title">开发状态公告</h3>
+                            <h3 class="text-lg font-semibold text-white mb-2" data-i18n="announcement.title">首次打开提示</h3>
                             <p class="text-gray-300 leading-relaxed" data-i18n="announcement.content">
-                                桌面版正在全力开发中，本项目为个人开发者项目。我们会持续优化产品体验，完成后将第一时间发布，感谢您的耐心等待！
+                                当前为 ad-hoc 签名、未公证版本。首次打开时请右键点击应用 → 选「打开」即可绕过 Gatekeeper（直接双击可能提示"无法验证开发者"）。仅 macOS Apple Silicon (M 系列)，Intel / Windows / Linux 后续支持。
                             </p>
                         </div>
                     </div>
@@ -331,6 +341,43 @@
         </div>
     </section>
 
+
+    <!-- Download / Install Section -->
+    <section id="download" class="py-24 bg-gradient-to-b from-gray-900/50 to-transparent">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold text-white mb-6" data-i18n="install.title">下载与安装</h2>
+                <p class="text-xl text-gray-400" data-i18n="install.subtitle">三步即可开始，无需配置任何环境</p>
+            </div>
+
+            <!-- 安装三步 -->
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <div class="card-dark p-8 rounded-2xl text-center">
+                    <div class="w-12 h-12 mx-auto mb-6 rounded-full bg-gradient-to-br from-blue-500/20 to-cyan-500/20 flex items-center justify-center text-xl font-bold text-blue-400">1</div>
+                    <p class="text-gray-300 leading-relaxed" data-i18n="install.step1">下载 DMG，双击后把 App 拖进「应用程序」</p>
+                </div>
+                <div class="card-dark p-8 rounded-2xl text-center">
+                    <div class="w-12 h-12 mx-auto mb-6 rounded-full bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center text-xl font-bold text-purple-400">2</div>
+                    <p class="text-gray-300 leading-relaxed" data-i18n="install.step2">首次打开：右键点应用 → 选「打开」（绕过 Gatekeeper）</p>
+                </div>
+                <div class="card-dark p-8 rounded-2xl text-center">
+                    <div class="w-12 h-12 mx-auto mb-6 rounded-full bg-gradient-to-br from-green-500/20 to-emerald-500/20 flex items-center justify-center text-xl font-bold text-green-400">3</div>
+                    <p class="text-gray-300 leading-relaxed" data-i18n="install.step3">进入「设置」填入 AI 提供商 API Key（通义千问 / OpenAI / Gemini 等），开始使用</p>
+                </div>
+            </div>
+
+            <!-- 下载按钮 + 系统要求 -->
+            <div class="text-center">
+                <a href="https://github.com/zhouxiaoka/autoclip/releases/download/v1.2.0/AutoClip.Desktop_1.2.0_aarch64.dmg" class="inline-flex items-center px-8 py-4 rounded-xl font-medium text-lg btn-primary shadow-2xl">
+                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3"></path>
+                    </svg>
+                    <span data-i18n="hero.download.dmg">⬇️ 下载 macOS 客户端 (Apple Silicon) — v1.2.0</span>
+                </a>
+                <p class="mt-6 text-sm text-gray-400" data-i18n="install.req">系统要求：macOS，Apple Silicon (M 系列)</p>
+            </div>
+        </div>
+    </section>
 
     <!-- Features Section -->
     <section id="features" class="py-16">
@@ -362,8 +409,8 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold mb-4 text-white" data-i18n="feature.realtime.title">实时处理</h3>
-                    <p class="text-gray-400 leading-relaxed" data-i18n="feature.realtime.desc">基于Celery队列的异步处理，支持WebSocket实时状态推送</p>
+                    <h3 class="text-xl font-semibold mb-4 text-white" data-i18n="feature.realtime.title">顺手的编辑</h3>
+                    <p class="text-gray-400 leading-relaxed" data-i18n="feature.realtime.desc">切片标题可手改、合集内拖拽排序、按分类组织项目</p>
                     <div class="mt-3">
                         <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-500/20 border border-green-500/30 text-green-400" data-i18n="feature.realtime.status">
                             已发布
@@ -407,8 +454,8 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold mb-4 text-white" data-i18n="feature.docker.title">Docker部署</h3>
-                    <p class="text-gray-400 leading-relaxed" data-i18n="feature.docker.desc">一键Docker部署，支持本地和云端环境快速启动</p>
+                    <h3 class="text-xl font-semibold mb-4 text-white" data-i18n="feature.docker.title">一键安装零依赖</h3>
+                    <p class="text-gray-400 leading-relaxed" data-i18n="feature.docker.desc">内置便携 Python + 静态 ffmpeg，无需预装任何环境</p>
                     <div class="mt-3">
                         <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-500/20 border border-green-500/30 text-green-400" data-i18n="feature.docker.status">
                             已发布
@@ -422,8 +469,8 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold mb-4 text-white" data-i18n="feature.platform.title">多平台支持</h3>
-                    <p class="text-gray-400 leading-relaxed" data-i18n="feature.platform.desc">支持Windows、macOS、Linux三大平台，适配不同开发环境</p>
+                    <h3 class="text-xl font-semibold mb-4 text-white" data-i18n="feature.platform.title">本地字幕转写</h3>
+                    <p class="text-gray-400 leading-relaxed" data-i18n="feature.platform.desc">无字幕视频可一键安装 Whisper 并自选模型，按需启用</p>
                     <div class="mt-3">
                         <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-500/20 border border-green-500/30 text-green-400" data-i18n="feature.platform.status">
                             已发布
@@ -456,6 +503,21 @@
                     <p class="text-gray-400 leading-relaxed" data-i18n="feature.project.desc">支持同时管理多个处理项目，数据完全隔离，支持并发处理</p>
                     <div class="mt-3">
                         <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-500/20 border border-green-500/30 text-green-400" data-i18n="feature.project.status">
+                            已发布
+                        </span>
+                    </div>
+                </div>
+
+                <div class="card-dark p-8 rounded-2xl">
+                    <div class="feature-icon w-12 h-12 mb-6 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m6-1.13a4 4 0 10-4-4 4 4 0 004 4zm6-2a3 3 0 10-3-3"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4 text-white" data-i18n="feature.account.title">B站多账号</h3>
+                    <p class="text-gray-400 leading-relaxed" data-i18n="feature.account.desc">多账号管理，配合登录健康监控，掉登录及时提醒</p>
+                    <div class="mt-3">
+                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-500/20 border border-green-500/30 text-green-400" data-i18n="feature.account.status">
                             已发布
                         </span>
                     </div>
@@ -507,109 +569,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Technology Architecture Section -->
-    <section id="architecture" class="py-24 bg-gradient-to-b from-gray-900/50 to-transparent">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-20">
-                <h2 class="text-5xl font-bold text-white mb-6" data-i18n="architecture.title">技术架构</h2>
-                <p class="text-xl text-gray-400" data-i18n="architecture.subtitle">现代化的前后端分离架构，确保高性能和可扩展性</p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-                <div class="card-dark p-8 rounded-2xl">
-                    <div class="feature-icon w-12 h-12 mb-6 flex items-center justify-center">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-4 text-white" data-i18n="arch.frontend.title">前端技术栈</h3>
-                    <p class="text-gray-400 leading-relaxed mb-4" data-i18n="arch.frontend.desc">基于React + TypeScript构建的现代化Web界面</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="tech-badge">React</span>
-                        <span class="tech-badge">TypeScript</span>
-                        <span class="tech-badge">Tailwind CSS</span>
-                    </div>
-                </div>
-
-                <div class="card-dark p-8 rounded-2xl">
-                    <div class="feature-icon w-12 h-12 mb-6 flex items-center justify-center">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-4 text-white" data-i18n="arch.backend.title">后端架构</h3>
-                    <p class="text-gray-400 leading-relaxed mb-4" data-i18n="arch.backend.desc">基于FastAPI的高性能异步API服务</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="tech-badge">FastAPI</span>
-                        <span class="tech-badge">Python</span>
-                        <span class="tech-badge">SQLAlchemy</span>
-                    </div>
-                </div>
-
-                <div class="card-dark p-8 rounded-2xl">
-                    <div class="feature-icon w-12 h-12 mb-6 flex items-center justify-center">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-4 text-white" data-i18n="arch.database.title">数据存储</h3>
-                    <p class="text-gray-400 leading-relaxed mb-4" data-i18n="arch.database.desc">多种数据库支持，灵活的数据存储方案</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="tech-badge">PostgreSQL</span>
-                        <span class="tech-badge">Redis</span>
-                        <span class="tech-badge">SQLite</span>
-                    </div>
-                </div>
-
-                <div class="card-dark p-8 rounded-2xl">
-                    <div class="feature-icon w-12 h-12 mb-6 flex items-center justify-center">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-4 text-white" data-i18n="arch.async.title">异步处理</h3>
-                    <p class="text-gray-400 leading-relaxed mb-4" data-i18n="arch.async.desc">基于Celery的分布式任务队列系统</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="tech-badge">Celery</span>
-                        <span class="tech-badge">Redis</span>
-                        <span class="tech-badge">WebSocket</span>
-                    </div>
-                </div>
-
-                <div class="card-dark p-8 rounded-2xl">
-                    <div class="feature-icon w-12 h-12 mb-6 flex items-center justify-center">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-4 text-white" data-i18n="arch.ai.title">AI引擎</h3>
-                    <p class="text-gray-400 leading-relaxed mb-4" data-i18n="arch.ai.desc">集成多种AI模型，提供智能分析能力</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="tech-badge">OpenAI</span>
-                        <span class="tech-badge">Whisper</span>
-                        <span class="tech-badge">FFmpeg</span>
-                    </div>
-                </div>
-
-                <div class="card-dark p-8 rounded-2xl">
-                    <div class="feature-icon w-12 h-12 mb-6 flex items-center justify-center">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-4 text-white" data-i18n="arch.container.title">容器化部署</h3>
-                    <p class="text-gray-400 leading-relaxed mb-4" data-i18n="arch.container.desc">Docker容器化部署，支持多环境一键启动</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="tech-badge">Docker</span>
-                        <span class="tech-badge">Docker Compose</span>
-                        <span class="tech-badge">Nginx</span>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </section>
 
@@ -832,12 +791,12 @@
                 <div class="mb-8">
                     <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-gradient-to-r from-blue-500/10 to-cyan-500/10 border border-blue-500/20 text-blue-400 mb-6" data-i18n="contact.development">
                         <span class="w-2 h-2 bg-blue-400 rounded-full mr-2 animate-pulse"></span>
-                        产品开发中
+                        加入社区 · 获取支持
                     </span>
                 </div>
-                <h2 class="text-5xl font-bold mb-6 text-white" data-i18n="waitlist.title">申请内测资格</h2>
+                <h2 class="text-5xl font-bold mb-6 text-white" data-i18n="waitlist.title">加入用户群</h2>
                 <p class="text-xl mb-8 text-gray-300 leading-relaxed" data-i18n="waitlist.subtitle">
-                    扫描下方二维码，联系AutoClip开发者，申请桌面版内测资格
+                    扫描下方二维码，加入 AutoClip 用户群，获取使用帮助与版本更新通知
                 </p>
                 
                 <!-- Contact Methods -->
@@ -937,8 +896,8 @@
                             </svg>
                         </div>
                         <div>
-                            <h3 class="text-white font-semibold mb-1" data-i18n="contact.benefit3.title">优先体验</h3>
-                             <p class="text-gray-400 text-sm" data-i18n="contact.benefit3.desc">内测资格，抢先试用新功能</p>
+                            <h3 class="text-white font-semibold mb-1" data-i18n="contact.benefit3.title">版本通知</h3>
+                             <p class="text-gray-400 text-sm" data-i18n="contact.benefit3.desc">第一时间获取新版本与使用帮助</p>
                         </div>
                     </div>
                 </div>
@@ -951,7 +910,10 @@
         <div class="max-w-3xl mx-auto px-4 text-center">
             <h1 class="text-2xl font-bold text-white drop-shadow-lg mb-2">AutoClip</h1>
             <p class="text-gray-400 mb-2" data-i18n="footer.description">AI驱动的智能视频切片系统，让内容创作更高效。</p>
-            <p class="text-gray-500 text-sm">&copy; 2025 AutoClip. <span data-i18n="footer.copyright">开源项目，MIT许可证.</span></p>
+            <p class="mb-3">
+                <a id="footer-privacy" href="https://github.com/zhouxiaoka/autoclip/blob/main/docs/PRIVACY.md" target="_blank" rel="noopener" class="text-gray-400 hover:text-white transition-colors text-sm underline underline-offset-4" data-i18n="footer.privacy">隐私政策</a>
+            </p>
+            <p class="text-gray-500 text-sm">&copy; 2025–2026 AutoClip. <span data-i18n="footer.copyright">开源项目，MIT许可证.</span></p>
         </div>
     </footer>
 
@@ -959,23 +921,26 @@
         // 翻译数据
         const translations = {
             zh: {
+                'nav.download': '下载',
                 'nav.features': '功能特性',
-                'nav.architecture': '技术架构',
                 'nav.demo': '演示',
-                'nav.contact': '联系开发者',
+                'nav.contact': '用户社区',
                 'hero.subtitle': '视频高光，一键生成',
                 'hero.description': '你的AI视频剪辑搭子，一条视频自动提取多个高光片段',
-                'hero.feature1.title': '一键生成高光',
-                'hero.feature1.desc': 'AI智能分析，剪辑自动化',
-                'hero.feature2.title': '本地运行',
-                'hero.feature2.desc': '轻量高效，隐私保护',
-                'hero.feature3.title': '多平台适配',
-                'hero.feature3.desc': '创作即分享，全平台支持',
-                'hero.version': '支持最新版本，自动适配系统架构',
+                'hero.feature1.title': '一键安装零依赖',
+                'hero.feature1.desc': '内置便携 Python + ffmpeg，无需配置',
+                'hero.feature2.title': '端到端本地出片',
+                'hero.feature2.desc': '下载到切片全程本地，隐私可控',
+                'hero.feature3.title': '原生 Mac 客户端',
+                'hero.feature3.desc': 'Apple Silicon (M 系列)，其他平台后续',
                 'features.title': '核心功能',
                 'features.subtitle': 'AI驱动的全流程自动化视频处理',
-                'architecture.title': '技术架构',
-                'architecture.subtitle': '现代化的前后端分离架构，确保高性能和可扩展性',
+                'install.title': '下载与安装',
+                'install.subtitle': '三步即可开始，无需配置任何环境',
+                'install.step1': '下载 DMG，双击后把 App 拖进「应用程序」',
+                'install.step2': '首次打开：右键点应用 → 选「打开」（绕过 Gatekeeper）',
+                'install.step3': '进入「设置」填入 AI 提供商 API Key（通义千问 / OpenAI / Gemini 等），开始使用',
+                'install.req': '系统要求：macOS，Apple Silicon (M 系列)',
                 'demo.title': '产品演示',
                 'demo.subtitle': '直观体验AutoClip的强大功能',
                 'usecases.title': '应用场景',
@@ -987,8 +952,8 @@
                 'feature.ai.title': 'AI智能分析',
                 'feature.ai.desc': '基于大语言模型的视频内容理解，智能识别高光时刻',
                 'feature.ai.status': '已发布',
-                'feature.realtime.title': '实时处理',
-                'feature.realtime.desc': '基于Celery队列的异步处理，支持WebSocket实时状态推送',
+                'feature.realtime.title': '顺手的编辑',
+                'feature.realtime.desc': '切片标题可手改、合集内拖拽排序、按分类组织项目',
                 'feature.realtime.status': '已发布',
                 'feature.title.title': '自动标题生成',
                 'feature.title.desc': 'AI自动为每个切片生成吸引人的标题，提升内容传播效果',
@@ -996,11 +961,11 @@
                 'feature.quality.title': '内容质量评估',
                 'feature.quality.desc': '智能评估切片质量，确保输出内容的高质量标准',
                 'feature.quality.status': '已发布',
-                'feature.docker.title': 'Docker部署',
-                'feature.docker.desc': '一键Docker部署，支持本地和云端环境快速启动',
+                'feature.docker.title': '一键安装零依赖',
+                'feature.docker.desc': '内置便携 Python + 静态 ffmpeg，无需预装任何环境',
                 'feature.docker.status': '已发布',
-                'feature.platform.title': '多平台支持',
-                'feature.platform.desc': '支持Windows、macOS、Linux三大平台，适配不同开发环境',
+                'feature.platform.title': '本地字幕转写',
+                'feature.platform.desc': '无字幕视频可一键安装 Whisper 并自选模型，按需启用',
                 'feature.platform.status': '已发布',
                 'feature.cover.title': '智能封面',
                 'feature.cover.desc': 'AI自动为视频生成高质量封面图，提升点击率和观看体验',
@@ -1014,21 +979,12 @@
                 'feature.project.title': '多项目管理',
                 'feature.project.desc': '支持同时管理多个处理项目，数据完全隔离，支持并发处理',
                 'feature.project.status': '已发布',
+                'feature.account.title': 'B站多账号',
+                'feature.account.desc': '多账号管理，配合登录健康监控，掉登录及时提醒',
+                'feature.account.status': '已发布',
                 'feature.upload.title': 'B站自动上传',
                 'feature.upload.desc': '自动上传切片到B站，支持批量发布和定时发布',
                 'feature.upload.status': '开发中',
-                'arch.frontend.title': '前端技术栈',
-                'arch.frontend.desc': '基于React + TypeScript构建的现代化Web界面',
-                'arch.backend.title': '后端架构',
-                'arch.backend.desc': '基于FastAPI的高性能异步API服务',
-                'arch.database.title': '数据存储',
-                'arch.database.desc': '多种数据库支持，灵活的数据存储方案',
-                'arch.async.title': '异步处理',
-                'arch.async.desc': '基于Celery的分布式任务队列系统',
-                'arch.ai.title': 'AI引擎',
-                'arch.ai.desc': '集成多种AI模型，提供智能分析能力',
-                'arch.container.title': '容器化部署',
-                'arch.container.desc': 'Docker容器化部署，支持多环境一键启动',
                 'demo.main.title': 'AutoClip 主界面',
                 'demo.main.desc': '智能视频切片系统的核心操作界面',
                 'demo.input.title': '多输入支持',
@@ -1047,7 +1003,7 @@
                 'usecase.training.desc': '培训视频处理、技能点提取、知识库建设',
                 'usecase.platform.title': '平台运营',
                 'usecase.platform.desc': '内容推荐、流量分发、用户留存',
-                'hero.badge': '🚀 正式发布 · 💻 桌面端支持',
+                'hero.badge': '🚀 v1.2.0 已发布 · 🍎 macOS Apple Silicon',
                 'contact.qq.title': 'QQ用户群',
                 'contact.qq.desc': '扫描上方二维码，加入QQ用户群<br>与其他用户交流使用心得',
                 'contact.qq.button': 'QQ专属服务',
@@ -1059,37 +1015,40 @@
                 'contact.benefit1.desc': '直接对话，实时了解开发进展',
                 'contact.benefit2.title': '专属服务',
                 'contact.benefit2.desc': '一对一咨询，定制化解决方案',
-                'contact.benefit3.title': '优先体验',
-                'contact.benefit3.desc': '内测资格，抢先试用新功能',
-                'download.macos': 'macOS Beta',
-                'download.windows': 'Windows Beta',
-                'contact.development': '产品开发中',
-                'hero.beta.apply': '申请桌面版内测',
+                'contact.benefit3.title': '版本通知',
+                'contact.benefit3.desc': '第一时间获取新版本与使用帮助',
+                'contact.development': '加入社区 · 获取支持',
                 'hero.github.view': 'GitHub',
-                'hero.beta.info': '桌面版内测招募中，扫码联系开发者获取内测资格',
-                'waitlist.title': '申请内测资格',
-                'waitlist.subtitle': '扫描下方二维码，联系AutoClip开发者，申请桌面版内测资格',
-                'announcement.title': '开发状态公告',
-                'announcement.content': '桌面版正在全力开发中，本项目为个人开发者项目。我们会持续优化产品体验，完成后将第一时间发布，感谢您的耐心等待！'
+                'hero.download.dmg': '下载 macOS 客户端 (Apple Silicon) — v1.2.0',
+                'hero.releases.view': '全部版本 / Releases',
+                'hero.beta.info': '系统要求：macOS · Apple Silicon (M 系列)。首次打开请右键点应用 → 选「打开」。',
+                'waitlist.title': '加入用户群',
+                'waitlist.subtitle': '扫描下方二维码，加入 AutoClip 用户群，获取使用帮助与版本更新通知',
+                'footer.privacy': '隐私政策',
+                'announcement.title': '首次打开提示',
+                'announcement.content': '当前为 ad-hoc 签名、未公证版本。首次打开时请右键点击应用 → 选「打开」即可绕过 Gatekeeper（直接双击可能提示"无法验证开发者"）。仅 macOS Apple Silicon (M 系列)，Intel / Windows / Linux 后续支持。'
             },
             en: {
+                'nav.download': 'Download',
                 'nav.features': 'Features',
-                'nav.architecture': 'Architecture',
                 'nav.demo': 'Demo',
-                'nav.contact': 'Contact',
+                'nav.contact': 'Community',
                 'hero.subtitle': 'AI-powered video highlights, one-click generation',
                 'hero.description': 'Your AI video editing companion, automatically extract multiple highlights from one video',
-                'hero.feature1.title': 'One-Click Highlights',
-                'hero.feature1.desc': 'AI smart analysis, automated editing',
-                'hero.feature2.title': 'Local Processing',
-                'hero.feature2.desc': 'Lightweight & efficient, privacy protected',
-                'hero.feature3.title': 'Multi-Platform',
-                'hero.feature3.desc': 'Create and share, full platform support',
-                'hero.version': 'Latest version support, auto-adapt system architecture',
+                'hero.feature1.title': 'One-Click, Zero-Dependency',
+                'hero.feature1.desc': 'Bundled portable Python + ffmpeg, no setup',
+                'hero.feature2.title': 'End-to-End Local',
+                'hero.feature2.desc': 'From download to clips, all local & private',
+                'hero.feature3.title': 'Native Mac App',
+                'hero.feature3.desc': 'Apple Silicon (M-series); other platforms later',
                 'features.title': 'Core Features',
                 'features.subtitle': 'AI-driven full-process automated video processing',
-                'architecture.title': 'Technical Architecture',
-                'architecture.subtitle': 'Modern frontend-backend separation architecture, ensuring high performance and scalability',
+                'install.title': 'Download & Install',
+                'install.subtitle': 'Start in three steps, with no environment setup',
+                'install.step1': 'Download the DMG, open it, drag the app into Applications',
+                'install.step2': 'First launch: right-click the app → Open (bypasses Gatekeeper)',
+                'install.step3': 'Open Settings, enter your AI provider API key (Tongyi Qianwen / OpenAI / Gemini), and start',
+                'install.req': 'Requirements: macOS, Apple Silicon (M-series)',
                 'demo.title': 'Product Demo',
                 'demo.subtitle': 'Experience the powerful features of AutoClip intuitively',
                 'usecases.title': 'Use Cases',
@@ -1101,8 +1060,8 @@
                 'feature.ai.title': 'AI Smart Analysis',
                 'feature.ai.desc': 'Video content understanding based on large language models, intelligently identifying highlight moments',
                 'feature.ai.status': 'Released',
-                'feature.realtime.title': 'Real-time Processing',
-                'feature.realtime.desc': 'Asynchronous processing based on Celery queue, supporting WebSocket real-time status push',
+                'feature.realtime.title': 'Handy Editing',
+                'feature.realtime.desc': 'Edit clip titles, drag-and-drop ordering within collections, organize by category',
                 'feature.realtime.status': 'Released',
                 'feature.title.title': 'Auto Title Generation',
                 'feature.title.desc': 'AI automatically generates attractive titles for each clip, improving content dissemination',
@@ -1110,11 +1069,11 @@
                 'feature.quality.title': 'Content Quality Assessment',
                 'feature.quality.desc': 'Intelligent evaluation of clip quality, ensuring high-quality output content',
                 'feature.quality.status': 'Released',
-                'feature.docker.title': 'Docker Deployment',
-                'feature.docker.desc': 'One-click Docker deployment, supporting rapid startup in local and cloud environments',
+                'feature.docker.title': 'One-Click, Zero-Dependency',
+                'feature.docker.desc': 'Bundled portable Python + static ffmpeg, no environment setup required',
                 'feature.docker.status': 'Released',
-                'feature.platform.title': 'Multi-Platform Support',
-                'feature.platform.desc': 'Support for Windows, macOS, Linux platforms, adapting to different development environments',
+                'feature.platform.title': 'Local Subtitle Transcription',
+                'feature.platform.desc': 'One-click Whisper install with selectable models, enabled on demand',
                 'feature.platform.status': 'Released',
                 'feature.cover.title': 'Smart Cover',
                 'feature.cover.desc': 'AI automatically generates high-quality cover images for videos, improving click-through rates and viewing experience',
@@ -1128,21 +1087,12 @@
                 'feature.project.title': 'Multi-Project Management',
                 'feature.project.desc': 'Support simultaneous management of multiple processing projects, complete data isolation, supporting concurrent processing',
                 'feature.project.status': 'Released',
+                'feature.account.title': 'Bilibili Multi-Account',
+                'feature.account.desc': 'Account management with login health monitoring and timely re-login alerts',
+                'feature.account.status': 'Released',
                 'feature.upload.title': 'Bilibili Auto Upload',
                 'feature.upload.desc': 'Automatically upload clips to Bilibili, supporting batch publishing and scheduled publishing',
                 'feature.upload.status': 'In Development',
-                'arch.frontend.title': 'Frontend Tech Stack',
-                'arch.frontend.desc': 'Modern web interface built with React + TypeScript',
-                'arch.backend.title': 'Backend Architecture',
-                'arch.backend.desc': 'High-performance asynchronous API service based on FastAPI',
-                'arch.database.title': 'Data Storage',
-                'arch.database.desc': 'Multiple database support, flexible data storage solutions',
-                'arch.async.title': 'Async Processing',
-                'arch.async.desc': 'Distributed task queue system based on Celery',
-                'arch.ai.title': 'AI Engine',
-                'arch.ai.desc': 'Integrated multiple AI models, providing intelligent analysis capabilities',
-                'arch.container.title': 'Containerized Deployment',
-                'arch.container.desc': 'Docker containerized deployment, supporting one-click startup in multiple environments',
                 'demo.main.title': 'AutoClip Main Interface',
                 'demo.main.desc': 'Core operation interface of intelligent video clipping system',
                 'demo.input.title': 'Multi-Input Support',
@@ -1161,7 +1111,7 @@
                 'usecase.training.desc': 'Training video processing, skill point extraction, knowledge base construction',
                 'usecase.platform.title': 'Platform Operations',
                 'usecase.platform.desc': 'Content recommendation, traffic distribution, user retention',
-                'hero.badge': '🚀 Officially Released · 💻 Desktop Support',
+                'hero.badge': '🚀 v1.2.0 Released · 🍎 macOS Apple Silicon',
                 'contact.qq.title': 'QQ User Group',
                 'contact.qq.desc': 'Scan the QR code above to join the QQ user group<br>Exchange usage experience with other users',
                 'contact.qq.button': 'QQ Exclusive Service',
@@ -1173,37 +1123,40 @@
                 'contact.benefit1.desc': 'Direct dialogue, real-time development updates',
                 'contact.benefit2.title': 'Exclusive Service',
                 'contact.benefit2.desc': 'One-on-one consultation, customized solutions',
-                'contact.benefit3.title': 'Priority Experience',
-                'contact.benefit3.desc': 'Beta access, early access to new features',
-                'download.macos': 'macOS Beta',
-                'download.windows': 'Windows Beta',
-                'contact.development': 'Product in Development',
-                'hero.beta.apply': 'Apply for Desktop Beta',
+                'contact.benefit3.title': 'Release Updates',
+                'contact.benefit3.desc': 'Get new versions and usage help first',
+                'contact.development': 'Community & Support',
                 'hero.github.view': 'GitHub',
-                'hero.beta.info': 'Desktop version beta recruitment in progress, scan QR code to contact developer for beta access',
-                'waitlist.title': 'Apply for Beta Access',
-                'waitlist.subtitle': 'Scan the QR code below to contact AutoClip developer and apply for desktop version beta access',
-                'announcement.title': 'Development Status Announcement',
-                'announcement.content': 'Desktop version is under intensive development. This is a personal developer project. We will continue to optimize the product experience and release it as soon as it\'s ready. Thank you for your patience!'
+                'hero.download.dmg': 'Download for macOS (Apple Silicon) — v1.2.0',
+                'hero.releases.view': 'All Releases',
+                'hero.beta.info': 'Requirements: macOS · Apple Silicon (M-series). On first launch, right-click the app → Open.',
+                'waitlist.title': 'Join the Community',
+                'waitlist.subtitle': 'Scan the QR code below to join the AutoClip community for usage help and release updates',
+                'footer.privacy': 'Privacy Policy',
+                'announcement.title': 'First Launch Note',
+                'announcement.content': 'This is an ad-hoc signed, un-notarized build. On first launch, right-click the app → Open to bypass Gatekeeper (a plain double-click may warn that the developer cannot be verified). macOS Apple Silicon (M-series) only; Intel / Windows / Linux support to follow.'
             },
             ja: {
+                'nav.download': 'ダウンロード',
                 'nav.features': '機能',
-                'nav.architecture': 'アーキテクチャ',
                 'nav.demo': 'デモ',
-                'nav.contact': 'お問い合わせ',
+                'nav.contact': 'コミュニティ',
                 'hero.subtitle': 'AI駆動の動画ハイライト、ワンクリック生成',
                 'hero.description': 'あなたのAI動画編集パートナー、一本の動画から複数のハイライトを自動抽出',
-                'hero.feature1.title': 'ワンクリックハイライト',
-                'hero.feature1.desc': 'AIスマート分析、自動編集',
-                'hero.feature2.title': 'ローカル処理',
-                'hero.feature2.desc': '軽量・効率的、プライバシー保護',
-                'hero.feature3.title': 'マルチプラットフォーム',
-                'hero.feature3.desc': '作成して共有、全プラットフォーム対応',
-                'hero.version': '最新バージョンサポート、システムアーキテクチャ自動適応',
+                'hero.feature1.title': 'ワンクリック・依存ゼロ',
+                'hero.feature1.desc': '携帯版 Python + ffmpeg を内蔵、設定不要',
+                'hero.feature2.title': 'エンドツーエンドでローカル',
+                'hero.feature2.desc': 'ダウンロードからクリップまで全てローカル、プライバシー安心',
+                'hero.feature3.title': 'ネイティブ Mac アプリ',
+                'hero.feature3.desc': 'Apple Silicon (M シリーズ)、他プラットフォームは今後対応',
                 'features.title': 'コア機能',
                 'features.subtitle': 'AI駆動の全プロセス自動動画処理',
-                'architecture.title': '技術アーキテクチャ',
-                'architecture.subtitle': 'モダンなフロントエンド・バックエンド分離アーキテクチャ、高性能とスケーラビリティを保証',
+                'install.title': 'ダウンロードとインストール',
+                'install.subtitle': '環境構築不要、3 ステップで開始',
+                'install.step1': 'DMG をダウンロードし、アプリを「アプリケーション」にドラッグ',
+                'install.step2': '初回起動：アプリを右クリック →「開く」を選択（Gatekeeper を回避）',
+                'install.step3': '「設定」で AI プロバイダーの API キー（通義千問 / OpenAI / Gemini など）を入力して開始',
+                'install.req': 'システム要件：macOS、Apple Silicon (M シリーズ)',
                 'demo.title': '製品デモ',
                 'demo.subtitle': 'AutoClipの強力な機能を直感的に体験',
                 'usecases.title': '使用例',
@@ -1215,8 +1168,8 @@
                 'feature.ai.title': 'AIスマート分析',
                 'feature.ai.desc': '大規模言語モデルに基づく動画コンテンツ理解、ハイライト瞬間の智能識別',
                 'feature.ai.status': 'リリース済み',
-                'feature.realtime.title': 'リアルタイム処理',
-                'feature.realtime.desc': 'Celeryキューに基づく非同期処理、WebSocketリアルタイムステータスプッシュをサポート',
+                'feature.realtime.title': '手軽な編集',
+                'feature.realtime.desc': 'クリップタイトルの手動編集、コレクション内のドラッグ並べ替え、カテゴリ別整理',
                 'feature.realtime.status': 'リリース済み',
                 'feature.title.title': '自動タイトル生成',
                 'feature.title.desc': 'AIが各クリップに魅力的なタイトルを自動生成、コンテンツ拡散効果を向上',
@@ -1224,11 +1177,11 @@
                 'feature.quality.title': 'コンテンツ品質評価',
                 'feature.quality.desc': 'クリップ品質の智能評価、高品質な出力コンテンツを保証',
                 'feature.quality.status': 'リリース済み',
-                'feature.docker.title': 'Dockerデプロイ',
-                'feature.docker.desc': 'ワンクリックDockerデプロイ、ローカルとクラウド環境での迅速な起動をサポート',
+                'feature.docker.title': 'ワンクリック・依存ゼロ',
+                'feature.docker.desc': '携帯版 Python + 静的 ffmpeg を内蔵、環境の事前インストール不要',
                 'feature.docker.status': 'リリース済み',
-                'feature.platform.title': 'マルチプラットフォームサポート',
-                'feature.platform.desc': 'Windows、macOS、Linuxプラットフォームをサポート、異なる開発環境に適応',
+                'feature.platform.title': 'ローカル字幕文字起こし',
+                'feature.platform.desc': '字幕なし動画もワンクリックで Whisper をインストール、モデルを選んで必要時に使用',
                 'feature.platform.status': 'リリース済み',
                 'feature.cover.title': 'スマートカバー',
                 'feature.cover.desc': 'AIが動画の高品質カバー画像を自動生成、クリック率と視聴体験を向上',
@@ -1242,21 +1195,12 @@
                 'feature.project.title': 'マルチプロジェクト管理',
                 'feature.project.desc': '複数の処理プロジェクトの同時管理をサポート、完全なデータ分離、並行処理をサポート',
                 'feature.project.status': 'リリース済み',
+                'feature.account.title': 'Bilibiliマルチアカウント',
+                'feature.account.desc': '複数アカウント管理、ログイン健全性モニタリングでログイン切れを即時通知',
+                'feature.account.status': 'リリース済み',
                 'feature.upload.title': 'Bilibili自動アップロード',
                 'feature.upload.desc': 'クリップをBilibiliに自動アップロード、バッチ公開とスケジュール公開をサポート',
                 'feature.upload.status': '開発中',
-                'arch.frontend.title': 'フロントエンド技術スタック',
-                'arch.frontend.desc': 'React + TypeScriptで構築されたモダンなWebインターフェース',
-                'arch.backend.title': 'バックエンドアーキテクチャ',
-                'arch.backend.desc': 'FastAPIベースの高性能非同期APIサービス',
-                'arch.database.title': 'データストレージ',
-                'arch.database.desc': '複数のデータベースサポート、柔軟なデータストレージソリューション',
-                'arch.async.title': '非同期処理',
-                'arch.async.desc': 'Celeryベースの分散タスクキューシステム',
-                'arch.ai.title': 'AIエンジン',
-                'arch.ai.desc': '複数のAIモデルを統合、智能分析機能を提供',
-                'arch.container.title': 'コンテナ化デプロイ',
-                'arch.container.desc': 'Dockerコンテナ化デプロイ、複数環境でのワンクリック起動をサポート',
                 'demo.main.title': 'AutoClipメインインターフェース',
                 'demo.main.desc': '智能動画クリッピングシステムのコア操作インターフェース',
                 'demo.input.title': 'マルチ入力サポート',
@@ -1275,7 +1219,7 @@
                 'usecase.training.desc': '研修動画処理、スキル点抽出、ナレッジベース構築',
                 'usecase.platform.title': 'プラットフォーム運営',
                 'usecase.platform.desc': 'コンテンツ推薦、トラフィック配信、ユーザー維持',
-                'hero.badge': '🚀 正式リリース · 💻 デスクトップサポート',
+                'hero.badge': '🚀 v1.2.0 リリース · 🍎 macOS Apple Silicon',
                 'contact.qq.title': 'QQユーザーグループ',
                 'contact.qq.desc': '上記のQRコードをスキャンしてQQユーザーグループに参加<br>他のユーザーと使用体験を交流',
                 'contact.qq.button': 'QQ専用サービス',
@@ -1287,37 +1231,40 @@
                 'contact.benefit1.desc': '直接対話、リアルタイム開発進捗',
                 'contact.benefit2.title': '専用サービス',
                 'contact.benefit2.desc': '1対1コンサルティング、カスタマイズソリューション',
-                'contact.benefit3.title': '優先体験',
-                'contact.benefit3.desc': 'ベータアクセス、新機能の早期体験',
-                'download.macos': 'macOS Beta',
-                'download.windows': 'Windows Beta',
-                'contact.development': '製品開発中',
-                'hero.beta.apply': 'デスクトップ版ベータ申請',
+                'contact.benefit3.title': 'バージョン通知',
+                'contact.benefit3.desc': '新バージョンと使い方のヘルプをいち早く入手',
+                'contact.development': 'コミュニティ・サポート',
                 'hero.github.view': 'GitHub',
-                'hero.beta.info': 'デスクトップ版ベータ募集進行中、QRコードをスキャンしてユーザーグループに参加しベータアクセスを取得',
-                'waitlist.title': 'ベータアクセス申請',
-                'waitlist.subtitle': '下のQRコードをスキャンしてAutoClipユーザーグループに参加し、デスクトップ版ベータアクセスを申請',
-                'announcement.title': '開発状況のお知らせ',
-                'announcement.content': 'デスクトップ版は全力で開発中です。本プロジェクトは個人開発者プロジェクトです。製品体験を継続的に最適化し、完成次第すぐにリリースいたします。お待ちいただきありがとうございます！'
+                'hero.download.dmg': 'macOS クライアントをダウンロード (Apple Silicon) — v1.2.0',
+                'hero.releases.view': 'すべてのリリース',
+                'hero.beta.info': 'システム要件：macOS · Apple Silicon (M シリーズ)。初回起動時はアプリを右クリック →「開く」を選択してください。',
+                'waitlist.title': 'コミュニティに参加',
+                'waitlist.subtitle': '下の QR コードをスキャンして AutoClip コミュニティに参加し、使い方のヘルプとバージョン更新通知を入手',
+                'footer.privacy': 'プライバシーポリシー',
+                'announcement.title': '初回起動時の注意',
+                'announcement.content': '現在は ad-hoc 署名・未公証のビルドです。初回起動時はアプリを右クリック →「開く」を選択すると Gatekeeper を回避できます（ダブルクリックでは「開発元を確認できません」と表示される場合があります）。macOS Apple Silicon (M シリーズ) のみ対応、Intel / Windows / Linux は今後対応予定です。'
             },
             ko: {
+                'nav.download': '다운로드',
                 'nav.features': '기능',
-                'nav.architecture': '아키텍처',
                 'nav.demo': '데모',
-                'nav.contact': '문의하기',
+                'nav.contact': '커뮤니티',
                 'hero.subtitle': 'AI 기반 비디오 하이라이트, 원클릭 생성',
                 'hero.description': '당신의 AI 비디오 편집 파트너, 하나의 비디오에서 여러 하이라이트를 자동으로 추출',
-                'hero.feature1.title': '원클릭 하이라이트',
-                'hero.feature1.desc': 'AI 스마트 분석, 자동 편집',
-                'hero.feature2.title': '로컬 처리',
-                'hero.feature2.desc': '가볍고 효율적, 개인정보 보호',
-                'hero.feature3.title': '멀티 플랫폼',
-                'hero.feature3.desc': '제작하고 공유, 전체 플랫폼 지원',
-                'hero.version': '최신 버전 지원, 시스템 아키텍처 자동 적응',
+                'hero.feature1.title': '원클릭·의존성 제로',
+                'hero.feature1.desc': '휴대용 Python + ffmpeg 내장, 설정 불필요',
+                'hero.feature2.title': '엔드투엔드 로컬',
+                'hero.feature2.desc': '다운로드부터 클립까지 전부 로컬, 개인정보 안심',
+                'hero.feature3.title': '네이티브 Mac 앱',
+                'hero.feature3.desc': 'Apple Silicon (M 시리즈), 기타 플랫폼은 추후 지원',
                 'features.title': '핵심 기능',
                 'features.subtitle': 'AI 기반 전체 프로세스 자동 비디오 처리',
-                'architecture.title': '기술 아키텍처',
-                'architecture.subtitle': '현대적인 프론트엔드-백엔드 분리 아키텍처, 고성능과 확장성 보장',
+                'install.title': '다운로드 및 설치',
+                'install.subtitle': '환경 설정 없이 세 단계로 시작',
+                'install.step1': 'DMG를 다운로드하고 앱을 「응용 프로그램」으로 드래그',
+                'install.step2': '첫 실행: 앱을 우클릭 →「열기」 선택 (Gatekeeper 우회)',
+                'install.step3': '「설정」에서 AI 제공자 API 키(통이첸원 / OpenAI / Gemini 등)를 입력하고 시작',
+                'install.req': '시스템 요구사항: macOS, Apple Silicon (M 시리즈)',
                 'demo.title': '제품 데모',
                 'demo.subtitle': 'AutoClip의 강력한 기능을 직관적으로 체험',
                 'usecases.title': '사용 사례',
@@ -1329,8 +1276,8 @@
                 'feature.ai.title': 'AI 스마트 분석',
                 'feature.ai.desc': '대규모 언어 모델 기반 비디오 콘텐츠 이해, 하이라이트 순간의 지능형 식별',
                 'feature.ai.status': '출시됨',
-                'feature.realtime.title': '실시간 처리',
-                'feature.realtime.desc': 'Celery 큐 기반 비동기 처리, WebSocket 실시간 상태 푸시 지원',
+                'feature.realtime.title': '손쉬운 편집',
+                'feature.realtime.desc': '클립 제목 직접 수정, 컬렉션 내 드래그 정렬, 카테고리별 정리',
                 'feature.realtime.status': '출시됨',
                 'feature.title.title': '자동 제목 생성',
                 'feature.title.desc': 'AI가 각 클립에 매력적인 제목을 자동 생성, 콘텐츠 확산 효과 향상',
@@ -1338,11 +1285,11 @@
                 'feature.quality.title': '콘텐츠 품질 평가',
                 'feature.quality.desc': '클립 품질의 지능형 평가, 고품질 출력 콘텐츠 보장',
                 'feature.quality.status': '출시됨',
-                'feature.docker.title': 'Docker 배포',
-                'feature.docker.desc': '원클릭 Docker 배포, 로컬 및 클라우드 환경에서의 빠른 시작 지원',
+                'feature.docker.title': '원클릭·의존성 제로',
+                'feature.docker.desc': '휴대용 Python + 정적 ffmpeg 내장, 환경 사전 설치 불필요',
                 'feature.docker.status': '출시됨',
-                'feature.platform.title': '멀티 플랫폼 지원',
-                'feature.platform.desc': 'Windows, macOS, Linux 플랫폼 지원, 다양한 개발 환경에 적응',
+                'feature.platform.title': '로컬 자막 받아쓰기',
+                'feature.platform.desc': '자막 없는 영상도 원클릭으로 Whisper 설치, 모델 선택해 필요 시 사용',
                 'feature.platform.status': '출시됨',
                 'feature.cover.title': '스마트 커버',
                 'feature.cover.desc': 'AI가 비디오의 고품질 커버 이미지를 자동 생성, 클릭률과 시청 경험 향상',
@@ -1356,21 +1303,12 @@
                 'feature.project.title': '멀티 프로젝트 관리',
                 'feature.project.desc': '여러 처리 프로젝트의 동시 관리 지원, 완전한 데이터 격리, 동시 처리 지원',
                 'feature.project.status': '출시됨',
+                'feature.account.title': 'Bilibili 멀티 계정',
+                'feature.account.desc': '다중 계정 관리, 로그인 상태 모니터링으로 로그인 만료 즉시 알림',
+                'feature.account.status': '출시됨',
                 'feature.upload.title': 'Bilibili 자동 업로드',
                 'feature.upload.desc': '클립을 Bilibili에 자동 업로드, 배치 게시 및 예약 게시 지원',
                 'feature.upload.status': '개발 중',
-                'arch.frontend.title': '프론트엔드 기술 스택',
-                'arch.frontend.desc': 'React + TypeScript로 구축된 모던 웹 인터페이스',
-                'arch.backend.title': '백엔드 아키텍처',
-                'arch.backend.desc': 'FastAPI 기반의 고성능 비동기 API 서비스',
-                'arch.database.title': '데이터 스토리지',
-                'arch.database.desc': '다중 데이터베이스 지원, 유연한 데이터 스토리지 솔루션',
-                'arch.async.title': '비동기 처리',
-                'arch.async.desc': 'Celery 기반의 분산 작업 큐 시스템',
-                'arch.ai.title': 'AI 엔진',
-                'arch.ai.desc': '다중 AI 모델 통합, 지능형 분석 기능 제공',
-                'arch.container.title': '컨테이너화 배포',
-                'arch.container.desc': 'Docker 컨테이너화 배포, 다중 환경에서의 원클릭 시작 지원',
                 'demo.main.title': 'AutoClip 메인 인터페이스',
                 'demo.main.desc': '지능형 비디오 클리핑 시스템의 핵심 운영 인터페이스',
                 'demo.input.title': '멀티 입력 지원',
@@ -1389,7 +1327,7 @@
                 'usecase.training.desc': '교육 비디오 처리, 스킬점 추출, 지식베이스 구축',
                 'usecase.platform.title': '플랫폼 운영',
                 'usecase.platform.desc': '콘텐츠 추천, 트래픽 분배, 사용자 유지',
-                'hero.badge': '🚀 정식 출시 · 💻 데스크톱 지원',
+                'hero.badge': '🚀 v1.2.0 출시 · 🍎 macOS Apple Silicon',
                 'contact.qq.title': 'QQ 사용자 그룹',
                 'contact.qq.desc': '위의 QR 코드를 스캔하여 QQ 사용자 그룹에 참여<br>다른 사용자와 사용 경험을 교류',
                 'contact.qq.button': 'QQ 전용 서비스',
@@ -1401,18 +1339,18 @@
                 'contact.benefit1.desc': '직접 대화, 실시간 개발 진행 상황',
                 'contact.benefit2.title': '전용 서비스',
                 'contact.benefit2.desc': '1대1 상담, 맞춤형 솔루션',
-                'contact.benefit3.title': '우선 체험',
-                'contact.benefit3.desc': '베타 액세스, 신기능 조기 체험',
-                'download.macos': 'macOS Beta',
-                'download.windows': 'Windows Beta',
-                'contact.development': '제품 개발 중',
-                'hero.beta.apply': '데스크톱 베타 신청',
+                'contact.benefit3.title': '버전 알림',
+                'contact.benefit3.desc': '새 버전과 사용법 도움말을 가장 먼저 받기',
+                'contact.development': '커뮤니티 · 지원',
                 'hero.github.view': 'GitHub',
-                'hero.beta.info': '데스크톱 버전 베타 모집 진행 중, QR 코드를 스캔하여 사용자 그룹에 참여하고 베타 액세스 획득',
-                'waitlist.title': '베타 액세스 신청',
-                'waitlist.subtitle': '아래 QR 코드를 스캔하여 AutoClip 사용자 그룹에 참여하고 데스크톱 버전 베타 액세스를 신청하세요',
-                'announcement.title': '개발 상태 공지',
-                'announcement.content': '데스크톱 버전이 전력으로 개발 중입니다. 본 프로젝트는 개인 개발자 프로젝트입니다. 제품 경험을 지속적으로 최적화하고 완성되면 즉시 출시하겠습니다. 기다려 주셔서 감사합니다!'
+                'hero.download.dmg': 'macOS 클라이언트 다운로드 (Apple Silicon) — v1.2.0',
+                'hero.releases.view': '전체 릴리스',
+                'hero.beta.info': '시스템 요구사항: macOS · Apple Silicon (M 시리즈). 첫 실행 시 앱을 우클릭 →「열기」를 선택하세요.',
+                'waitlist.title': '커뮤니티 참여',
+                'waitlist.subtitle': '아래 QR 코드를 스캔하여 AutoClip 커뮤니티에 참여하고 사용법 도움말과 버전 업데이트 알림을 받으세요',
+                'footer.privacy': '개인정보 처리방침',
+                'announcement.title': '첫 실행 안내',
+                'announcement.content': '현재 ad-hoc 서명·공증되지 않은 빌드입니다. 첫 실행 시 앱을 우클릭 →「열기」를 선택하면 Gatekeeper를 우회할 수 있습니다(더블클릭 시 "개발자를 확인할 수 없음" 경고가 표시될 수 있습니다). macOS Apple Silicon (M 시리즈)만 지원하며 Intel / Windows / Linux는 추후 지원 예정입니다.'
             }
         };
 
@@ -1457,6 +1395,13 @@
                 ko: 'AutoClip | AI 기반 비디오 하이라이트 생성 시스템'
             };
             document.title = titles[lang] || titles.zh;
+
+            // 隐私政策链接按语言切换（仓库仅有中文 PRIVACY.md 与英文 PRIVACY.en.md）
+            const privacyLink = document.getElementById('footer-privacy');
+            if (privacyLink) {
+                const privacyDoc = lang === 'zh' ? 'PRIVACY.md' : 'PRIVACY.en.md';
+                privacyLink.href = 'https://github.com/zhouxiaoka/autoclip/blob/main/docs/' + privacyDoc;
+            }
         }
 
         // 初始化语言
