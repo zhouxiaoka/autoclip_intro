@@ -11,8 +11,9 @@
 <meta property="og:url" content="https://zhouxiaoka.github.io/autoclip_intro/">
 <meta name="theme-color" content="#F6F5F3" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#19181A" media="(prefers-color-scheme: dark)">
-<link rel="icon" href="logo.svg">
-<link rel="apple-touch-icon" href="logo.svg">
+<link rel="icon" type="image/svg+xml" href="logo.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet">
@@ -106,12 +107,15 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
 .pcard{background:var(--ac-card);border:1px solid var(--ac-line);border-radius:var(--ac-r-card);overflow:hidden;transition:transform var(--ac-t-short) var(--ac-ease-out),box-shadow var(--ac-t-short)}
 .pcard:hover{transform:translateY(-2px);box-shadow:var(--ac-shadow)}
 .thumb{aspect-ratio:16/9;position:relative;background:var(--ac-thumb)}
-.thumb.t1{background:linear-gradient(135deg,#E9E6E0 0%,#D9D5CD 55%,#CFCAC1 100%)}
-.thumb.t2{background:linear-gradient(160deg,#E3E1DC 0%,#D2CFC8 60%,#C6C2BA 100%)}
-.thumb.t3{background:linear-gradient(120deg,#ECE9E3 0%,#DCD8D0 50%,#D0CBC2 100%)}
-[data-theme="dark"] .thumb.t1,[data-theme="dark"] .thumb.t2,[data-theme="dark"] .thumb.t3{filter:brightness(.32) saturate(.6)}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .thumb.t1,:root:not([data-theme="light"]) .thumb.t2,:root:not([data-theme="light"]) .thumb.t3{filter:brightness(.32) saturate(.6)}}
-.thumb::after{content:"";position:absolute;inset:0;background:radial-gradient(60% 80% at 30% 20%,rgba(255,255,255,.35),transparent 70%)}
+.thumb.t1,.thumb.t2,.thumb.t3{background-size:cover;background-position:center;background-repeat:no-repeat}
+.thumb.t1{background-image:url(img/thumb-podcast.webp)}
+.thumb.t2{background-image:url(img/thumb-livestream.webp)}
+.thumb.t3{background-image:url(img/thumb-lecture.webp)}
+.thumb.pos-l{background-size:150%;background-position:8% 40%}
+.thumb.pos-r{background-size:150%;background-position:88% 35%}
+[data-theme="dark"] .thumb.t1,[data-theme="dark"] .thumb.t2,[data-theme="dark"] .thumb.t3{filter:brightness(.82) saturate(.85)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .thumb.t1,:root:not([data-theme="light"]) .thumb.t2,:root:not([data-theme="light"]) .thumb.t3{filter:brightness(.82) saturate(.85)}}
+.thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(26,26,25,.10),transparent 40%);pointer-events:none}
 .status{position:absolute;top:10px;left:10px;display:inline-flex;align-items:center;gap:6px;font-size:.6875rem;color:var(--ac-ink);background:color-mix(in srgb,var(--ac-card) 88%,transparent);border-radius:var(--ac-r-pill);padding:3px 9px 3px 7px;z-index:1;backdrop-filter:blur(6px)}
 .status i{width:6px;height:6px;border-radius:50%;background:var(--ac-ok);display:inline-block}
 .status.run i{background:var(--ac-accent)}
@@ -362,8 +366,8 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
         </div>
         <div class="vis" aria-hidden="true">
           <div class="clips">
-            <div class="clip"><div class="thumb t2"></div><div class="t" data-i18n="how.2.r1">为什么我放弃了订阅制</div><div class="m mono">02:27</div></div>
-            <div class="clip"><div class="thumb t1"></div><div class="t" data-i18n="how.2.r2">第一个付费用户是怎么来的</div><div class="m mono">03:22</div></div>
+            <div class="clip"><div class="thumb t1 pos-l"></div><div class="t" data-i18n="how.2.r1">为什么我放弃了订阅制</div><div class="m mono">02:27</div></div>
+            <div class="clip"><div class="thumb t1 pos-r"></div><div class="t" data-i18n="how.2.r2">第一个付费用户是怎么来的</div><div class="m mono">03:22</div></div>
           </div>
           <div class="vis-foot">
             <span class="lbl" data-i18n="how.3.foot">合集 · 独立开发者的一年 · 3 段</span>
