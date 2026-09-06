@@ -237,7 +237,7 @@
             <div class="mb-8">
                 <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-white/5 border border-white/10 text-gray-300 mb-8" data-i18n="hero.badge">
                     <span class="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></span>
-                    🚀 v1.2.0 已发布 · 🍎 macOS Apple Silicon
+                    🚀 v1.2.1 已发布 · 🍎 macOS · 🪟 Windows
                 </span>
             </div>
             <h1 class="text-6xl md:text-7xl font-bold mb-8 leading-loose">
@@ -250,17 +250,28 @@
             <!-- 桌面版下载按钮区域 -->
             <div class="mb-16">
                 <div class="flex flex-col items-center gap-5">
-                    <!-- 主下载按钮 -->
-                    <a href="https://github.com/zhouxiaoka/autoclip/releases/download/v1.2.0/AutoClip.Desktop_1.2.0_aarch64.dmg" class="group relative inline-flex items-center justify-center px-9 py-4 rounded-2xl font-semibold text-lg btn-primary shadow-2xl shadow-primary/30 overflow-hidden">
-                        <!-- 光效动画 -->
-                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
-                        <span class="relative z-10 flex items-center">
-                            <svg class="w-5 h-5 mr-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3"></path>
-                            </svg>
-                            <span data-i18n="hero.download.dmg">下载 macOS 客户端 (Apple Silicon) — v1.2.0</span>
-                        </span>
-                    </a>
+                    <!-- 主下载按钮：macOS + Windows -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                        <a href="https://github.com/zhouxiaoka/autoclip/releases/download/v1.2.1/AutoClip.Desktop_1.2.1_aarch64.dmg" class="group relative inline-flex items-center justify-center px-8 py-4 rounded-2xl font-semibold text-lg btn-primary shadow-2xl shadow-primary/30 overflow-hidden">
+                            <!-- 光效动画 -->
+                            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
+                            <span class="relative z-10 flex items-center">
+                                <svg class="w-5 h-5 mr-2.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M16.365 1.43c0 1.14-.493 2.27-1.177 3.08-.744.9-1.99 1.57-2.987 1.57-.12 0-.23-.02-.3-.03-.01-.06-.04-.22-.04-.39 0-1.15.572-2.27 1.206-2.98.804-.94 2.142-1.64 3.248-1.68.03.13.05.28.05.43zm4.565 15.71c-.03.07-.463 1.58-1.518 3.12-.945 1.34-1.94 2.71-3.43 2.71-1.517 0-1.9-.88-3.63-.88-1.698 0-2.302.91-3.67.91-1.377 0-2.332-1.26-3.428-2.8-1.287-1.82-2.323-4.63-2.323-7.28 0-4.28 2.797-6.55 5.552-6.55 1.448 0 2.675.95 3.6.95.865 0 2.222-1.01 3.902-1.01.613 0 2.886.06 4.374 2.19-.13.09-2.383 1.37-2.383 4.19 0 3.26 2.854 4.42 2.955 4.45z"/>
+                                </svg>
+                                <span data-i18n="hero.download.dmg">macOS 客户端 (Apple Silicon) — v1.2.1</span>
+                            </span>
+                        </a>
+                        <a href="https://github.com/zhouxiaoka/autoclip/releases/download/v1.2.1/AutoClip.Desktop_1.2.1_x64-setup.exe" class="group relative inline-flex items-center justify-center px-8 py-4 rounded-2xl font-semibold text-lg btn-primary shadow-2xl shadow-primary/30 overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
+                            <span class="relative z-10 flex items-center">
+                                <svg class="w-5 h-5 mr-2.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M3 5.5l7.5-1.03v7.25H3V5.5zm0 13l7.5 1.03v-7.16H3v6.13zm8.32 1.14L21 21v-8.63h-9.68v7.27zm0-15.28v7.36H21V3l-9.68 1.36z"/>
+                                </svg>
+                                <span data-i18n="hero.download.win">Windows 安装包 (x64) — v1.2.1</span>
+                            </span>
+                        </a>
+                    </div>
                     <!-- 次级链接 -->
                     <div class="flex items-center gap-4 text-sm">
                         <a href="https://github.com/zhouxiaoka/autoclip/releases/latest" target="_blank" rel="noopener" class="inline-flex items-center text-gray-400 hover:text-white transition-colors">
@@ -307,14 +318,14 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                             </svg>
                         </div>
-                        <h4 class="text-sm font-semibold text-white mb-1" data-i18n="hero.feature3.title">原生 Mac 客户端</h4>
-                        <p class="text-gray-400 text-xs" data-i18n="hero.feature3.desc">Apple Silicon (M 系列)，其他平台后续</p>
+                        <h4 class="text-sm font-semibold text-white mb-1" data-i18n="hero.feature3.title">原生桌面客户端</h4>
+                        <p class="text-gray-400 text-xs" data-i18n="hero.feature3.desc">macOS (Apple Silicon) 与 Windows (x64)，Intel Mac / Linux 后续</p>
                     </div>
                 </div>
                 
                 <!-- 版本信息 -->
             <div class="text-center mt-6">
-                <p class="text-sm text-gray-400" data-i18n="hero.beta.info">系统要求：macOS · Apple Silicon (M 系列)。首次打开请右键点应用 → 选「打开」。</p>
+                <p class="text-sm text-gray-400" data-i18n="hero.beta.info">macOS Apple Silicon (M 系列) · Windows 10/11 x64。均为未签名版本，首次打开见下方提示。</p>
             </div>
             
             <!-- 开发状态公告 -->
@@ -331,7 +342,7 @@
                         <div class="flex-1">
                             <h3 class="text-lg font-semibold text-white mb-2" data-i18n="announcement.title">首次打开提示</h3>
                             <p class="text-gray-300 leading-relaxed" data-i18n="announcement.content">
-                                当前为 ad-hoc 签名、未公证版本。首次打开时请右键点击应用 → 选「打开」即可绕过 Gatekeeper（直接双击可能提示"无法验证开发者"）。仅 macOS Apple Silicon (M 系列)，Intel / Windows / Linux 后续支持。
+                                两个平台的安装包目前都未做代码签名。macOS：首次打开请右键点击应用 → 选「打开」即可绕过 Gatekeeper（直接双击可能提示"无法验证开发者"）。Windows：首次运行 SmartScreen 会拦截，点「更多信息」→「仍要运行」。Intel Mac / Linux 后续支持。
                             </p>
                         </div>
                     </div>
@@ -354,27 +365,35 @@
             <div class="grid md:grid-cols-3 gap-8 mb-12">
                 <div class="card-dark p-8 rounded-2xl text-center">
                     <div class="w-12 h-12 mx-auto mb-6 rounded-full bg-gradient-to-br from-blue-500/20 to-cyan-500/20 flex items-center justify-center text-xl font-bold text-blue-400">1</div>
-                    <p class="text-gray-300 leading-relaxed" data-i18n="install.step1">下载 DMG，双击后把 App 拖进「应用程序」</p>
+                    <p class="text-gray-300 leading-relaxed" data-i18n="install.step1">macOS：下载 DMG，把 App 拖进「应用程序」；Windows：运行安装包，按用户安装、无需管理员权限</p>
                 </div>
                 <div class="card-dark p-8 rounded-2xl text-center">
                     <div class="w-12 h-12 mx-auto mb-6 rounded-full bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center text-xl font-bold text-purple-400">2</div>
-                    <p class="text-gray-300 leading-relaxed" data-i18n="install.step2">首次打开：右键点应用 → 选「打开」（绕过 Gatekeeper）</p>
+                    <p class="text-gray-300 leading-relaxed" data-i18n="install.step2">首次打开：macOS 右键点应用 → 选「打开」；Windows 在 SmartScreen 点「更多信息」→「仍要运行」</p>
                 </div>
                 <div class="card-dark p-8 rounded-2xl text-center">
                     <div class="w-12 h-12 mx-auto mb-6 rounded-full bg-gradient-to-br from-green-500/20 to-emerald-500/20 flex items-center justify-center text-xl font-bold text-green-400">3</div>
-                    <p class="text-gray-300 leading-relaxed" data-i18n="install.step3">进入「设置」填入 AI 提供商 API Key（通义千问 / OpenAI / Gemini 等），开始使用</p>
+                    <p class="text-gray-300 leading-relaxed" data-i18n="install.step3">进入「设置」填入 AI 提供商 API Key（通义千问 / OpenAI / Gemini / 硅基流动，或任意 OpenAI 兼容接口），开始使用</p>
                 </div>
             </div>
 
             <!-- 下载按钮 + 系统要求 -->
             <div class="text-center">
-                <a href="https://github.com/zhouxiaoka/autoclip/releases/download/v1.2.0/AutoClip.Desktop_1.2.0_aarch64.dmg" class="inline-flex items-center px-8 py-4 rounded-xl font-medium text-lg btn-primary shadow-2xl">
-                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3"></path>
-                    </svg>
-                    <span data-i18n="hero.download.dmg">⬇️ 下载 macOS 客户端 (Apple Silicon) — v1.2.0</span>
-                </a>
-                <p class="mt-6 text-sm text-gray-400" data-i18n="install.req">系统要求：macOS，Apple Silicon (M 系列)</p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="https://github.com/zhouxiaoka/autoclip/releases/download/v1.2.1/AutoClip.Desktop_1.2.1_aarch64.dmg" class="inline-flex items-center px-8 py-4 rounded-xl font-medium text-lg btn-primary shadow-2xl">
+                        <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3"></path>
+                        </svg>
+                        <span data-i18n="hero.download.dmg">macOS 客户端 (Apple Silicon) — v1.2.1</span>
+                    </a>
+                    <a href="https://github.com/zhouxiaoka/autoclip/releases/download/v1.2.1/AutoClip.Desktop_1.2.1_x64-setup.exe" class="inline-flex items-center px-8 py-4 rounded-xl font-medium text-lg btn-primary shadow-2xl">
+                        <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3"></path>
+                        </svg>
+                        <span data-i18n="hero.download.win">Windows 安装包 (x64) — v1.2.1</span>
+                    </a>
+                </div>
+                <p class="mt-6 text-sm text-gray-400" data-i18n="install.req">系统要求：macOS Apple Silicon (M 系列) · Windows 10/11 x64</p>
             </div>
         </div>
     </section>
@@ -931,16 +950,16 @@
                 'hero.feature1.desc': '内置便携 Python + ffmpeg，无需配置',
                 'hero.feature2.title': '端到端本地出片',
                 'hero.feature2.desc': '下载到切片全程本地，隐私可控',
-                'hero.feature3.title': '原生 Mac 客户端',
-                'hero.feature3.desc': 'Apple Silicon (M 系列)，其他平台后续',
+                'hero.feature3.title': '原生桌面客户端',
+                'hero.feature3.desc': 'macOS (Apple Silicon) 与 Windows (x64)，Intel Mac / Linux 后续',
                 'features.title': '核心功能',
                 'features.subtitle': 'AI驱动的全流程自动化视频处理',
                 'install.title': '下载与安装',
                 'install.subtitle': '三步即可开始，无需配置任何环境',
-                'install.step1': '下载 DMG，双击后把 App 拖进「应用程序」',
-                'install.step2': '首次打开：右键点应用 → 选「打开」（绕过 Gatekeeper）',
-                'install.step3': '进入「设置」填入 AI 提供商 API Key（通义千问 / OpenAI / Gemini 等），开始使用',
-                'install.req': '系统要求：macOS，Apple Silicon (M 系列)',
+                'install.step1': 'macOS：下载 DMG，把 App 拖进「应用程序」；Windows：运行安装包，按用户安装、无需管理员权限',
+                'install.step2': '首次打开：macOS 右键点应用 → 选「打开」；Windows 在 SmartScreen 点「更多信息」→「仍要运行」',
+                'install.step3': '进入「设置」填入 AI 提供商 API Key（通义千问 / OpenAI / Gemini / 硅基流动，或任意 OpenAI 兼容接口），开始使用',
+                'install.req': '系统要求：macOS Apple Silicon (M 系列) · Windows 10/11 x64',
                 'demo.title': '产品演示',
                 'demo.subtitle': '直观体验AutoClip的强大功能',
                 'usecases.title': '应用场景',
@@ -1003,7 +1022,7 @@
                 'usecase.training.desc': '培训视频处理、技能点提取、知识库建设',
                 'usecase.platform.title': '平台运营',
                 'usecase.platform.desc': '内容推荐、流量分发、用户留存',
-                'hero.badge': '🚀 v1.2.0 已发布 · 🍎 macOS Apple Silicon',
+                'hero.badge': '🚀 v1.2.1 已发布 · 🍎 macOS · 🪟 Windows',
                 'contact.qq.title': 'QQ用户群',
                 'contact.qq.desc': '扫描上方二维码，加入QQ用户群<br>与其他用户交流使用心得',
                 'contact.qq.button': 'QQ专属服务',
@@ -1019,14 +1038,15 @@
                 'contact.benefit3.desc': '第一时间获取新版本与使用帮助',
                 'contact.development': '加入社区 · 获取支持',
                 'hero.github.view': 'GitHub',
-                'hero.download.dmg': '下载 macOS 客户端 (Apple Silicon) — v1.2.0',
+                'hero.download.dmg': 'macOS 客户端 (Apple Silicon) — v1.2.1',
+                'hero.download.win': 'Windows 安装包 (x64) — v1.2.1',
                 'hero.releases.view': '全部版本 / Releases',
-                'hero.beta.info': '系统要求：macOS · Apple Silicon (M 系列)。首次打开请右键点应用 → 选「打开」。',
+                'hero.beta.info': 'macOS Apple Silicon (M 系列) · Windows 10/11 x64。均为未签名版本，首次打开见下方提示。',
                 'waitlist.title': '加入用户群',
                 'waitlist.subtitle': '扫描下方二维码，加入 AutoClip 用户群，获取使用帮助与版本更新通知',
                 'footer.privacy': '隐私政策',
                 'announcement.title': '首次打开提示',
-                'announcement.content': '当前为 ad-hoc 签名、未公证版本。首次打开时请右键点击应用 → 选「打开」即可绕过 Gatekeeper（直接双击可能提示"无法验证开发者"）。仅 macOS Apple Silicon (M 系列)，Intel / Windows / Linux 后续支持。'
+                'announcement.content': '两个平台的安装包目前都未做代码签名。macOS：首次打开请右键点击应用 → 选「打开」即可绕过 Gatekeeper（直接双击可能提示"无法验证开发者"）。Windows：首次运行 SmartScreen 会拦截，点「更多信息」→「仍要运行」。Intel Mac / Linux 后续支持。'
             },
             en: {
                 'nav.download': 'Download',
@@ -1039,16 +1059,16 @@
                 'hero.feature1.desc': 'Bundled portable Python + ffmpeg, no setup',
                 'hero.feature2.title': 'End-to-End Local',
                 'hero.feature2.desc': 'From download to clips, all local & private',
-                'hero.feature3.title': 'Native Mac App',
-                'hero.feature3.desc': 'Apple Silicon (M-series); other platforms later',
+                'hero.feature3.title': 'Native Desktop App',
+                'hero.feature3.desc': 'macOS (Apple Silicon) and Windows (x64); Intel Mac / Linux later',
                 'features.title': 'Core Features',
                 'features.subtitle': 'AI-driven full-process automated video processing',
                 'install.title': 'Download & Install',
                 'install.subtitle': 'Start in three steps, with no environment setup',
-                'install.step1': 'Download the DMG, open it, drag the app into Applications',
-                'install.step2': 'First launch: right-click the app → Open (bypasses Gatekeeper)',
-                'install.step3': 'Open Settings, enter your AI provider API key (Tongyi Qianwen / OpenAI / Gemini), and start',
-                'install.req': 'Requirements: macOS, Apple Silicon (M-series)',
+                'install.step1': 'macOS: download the DMG and drag the app into Applications. Windows: run the installer (per-user, no admin rights needed)',
+                'install.step2': 'First launch: on macOS right-click the app → Open; on Windows choose “More info → Run anyway” in SmartScreen',
+                'install.step3': 'Open Settings, enter your AI provider API key (Qwen / OpenAI / Gemini / SiliconFlow, or any OpenAI-compatible endpoint), and start',
+                'install.req': 'Requirements: macOS Apple Silicon (M-series) · Windows 10/11 x64',
                 'demo.title': 'Product Demo',
                 'demo.subtitle': 'Experience the powerful features of AutoClip intuitively',
                 'usecases.title': 'Use Cases',
@@ -1111,7 +1131,7 @@
                 'usecase.training.desc': 'Training video processing, skill point extraction, knowledge base construction',
                 'usecase.platform.title': 'Platform Operations',
                 'usecase.platform.desc': 'Content recommendation, traffic distribution, user retention',
-                'hero.badge': '🚀 v1.2.0 Released · 🍎 macOS Apple Silicon',
+                'hero.badge': '🚀 v1.2.1 Released · 🍎 macOS · 🪟 Windows',
                 'contact.qq.title': 'QQ User Group',
                 'contact.qq.desc': 'Scan the QR code above to join the QQ user group<br>Exchange usage experience with other users',
                 'contact.qq.button': 'QQ Exclusive Service',
@@ -1127,14 +1147,15 @@
                 'contact.benefit3.desc': 'Get new versions and usage help first',
                 'contact.development': 'Community & Support',
                 'hero.github.view': 'GitHub',
-                'hero.download.dmg': 'Download for macOS (Apple Silicon) — v1.2.0',
+                'hero.download.dmg': 'macOS (Apple Silicon) — v1.2.1',
+                'hero.download.win': 'Windows installer (x64) — v1.2.1',
                 'hero.releases.view': 'All Releases',
-                'hero.beta.info': 'Requirements: macOS · Apple Silicon (M-series). On first launch, right-click the app → Open.',
+                'hero.beta.info': 'macOS Apple Silicon (M-series) · Windows 10/11 x64. Both builds are unsigned — see the first-launch note below.',
                 'waitlist.title': 'Join the Community',
                 'waitlist.subtitle': 'Scan the QR code below to join the AutoClip community for usage help and release updates',
                 'footer.privacy': 'Privacy Policy',
                 'announcement.title': 'First Launch Note',
-                'announcement.content': 'This is an ad-hoc signed, un-notarized build. On first launch, right-click the app → Open to bypass Gatekeeper (a plain double-click may warn that the developer cannot be verified). macOS Apple Silicon (M-series) only; Intel / Windows / Linux support to follow.'
+                'announcement.content': 'Neither installer is code-signed yet. macOS: on first launch, right-click the app → Open to bypass Gatekeeper (a plain double-click may warn that the developer cannot be verified). Windows: SmartScreen will warn on first run — choose “More info → Run anyway”. Intel Mac / Linux support is planned.'
             },
             ja: {
                 'nav.download': 'ダウンロード',
@@ -1147,16 +1168,16 @@
                 'hero.feature1.desc': '携帯版 Python + ffmpeg を内蔵、設定不要',
                 'hero.feature2.title': 'エンドツーエンドでローカル',
                 'hero.feature2.desc': 'ダウンロードからクリップまで全てローカル、プライバシー安心',
-                'hero.feature3.title': 'ネイティブ Mac アプリ',
-                'hero.feature3.desc': 'Apple Silicon (M シリーズ)、他プラットフォームは今後対応',
+                'hero.feature3.title': 'ネイティブデスクトップアプリ',
+                'hero.feature3.desc': 'macOS (Apple Silicon) と Windows (x64) に対応、Intel Mac / Linux は今後対応',
                 'features.title': 'コア機能',
                 'features.subtitle': 'AI駆動の全プロセス自動動画処理',
                 'install.title': 'ダウンロードとインストール',
                 'install.subtitle': '環境構築不要、3 ステップで開始',
-                'install.step1': 'DMG をダウンロードし、アプリを「アプリケーション」にドラッグ',
-                'install.step2': '初回起動：アプリを右クリック →「開く」を選択（Gatekeeper を回避）',
-                'install.step3': '「設定」で AI プロバイダーの API キー（通義千問 / OpenAI / Gemini など）を入力して開始',
-                'install.req': 'システム要件：macOS、Apple Silicon (M シリーズ)',
+                'install.step1': 'macOS：DMG をダウンロードしアプリを「アプリケーション」にドラッグ。Windows：インストーラーを実行（ユーザー単位、管理者権限不要）',
+                'install.step2': '初回起動：macOS はアプリを右クリック →「開く」、Windows は SmartScreen で「詳細情報」→「実行」',
+                'install.step3': '「設定」で AI プロバイダーの API キー（通義千問 / OpenAI / Gemini / SiliconFlow、または OpenAI 互換エンドポイント）を入力して開始',
+                'install.req': 'システム要件：macOS Apple Silicon (M シリーズ) · Windows 10/11 x64',
                 'demo.title': '製品デモ',
                 'demo.subtitle': 'AutoClipの強力な機能を直感的に体験',
                 'usecases.title': '使用例',
@@ -1219,7 +1240,7 @@
                 'usecase.training.desc': '研修動画処理、スキル点抽出、ナレッジベース構築',
                 'usecase.platform.title': 'プラットフォーム運営',
                 'usecase.platform.desc': 'コンテンツ推薦、トラフィック配信、ユーザー維持',
-                'hero.badge': '🚀 v1.2.0 リリース · 🍎 macOS Apple Silicon',
+                'hero.badge': '🚀 v1.2.1 リリース · 🍎 macOS · 🪟 Windows',
                 'contact.qq.title': 'QQユーザーグループ',
                 'contact.qq.desc': '上記のQRコードをスキャンしてQQユーザーグループに参加<br>他のユーザーと使用体験を交流',
                 'contact.qq.button': 'QQ専用サービス',
@@ -1235,14 +1256,15 @@
                 'contact.benefit3.desc': '新バージョンと使い方のヘルプをいち早く入手',
                 'contact.development': 'コミュニティ・サポート',
                 'hero.github.view': 'GitHub',
-                'hero.download.dmg': 'macOS クライアントをダウンロード (Apple Silicon) — v1.2.0',
+                'hero.download.dmg': 'macOS クライアント (Apple Silicon) — v1.2.1',
+                'hero.download.win': 'Windows インストーラー (x64) — v1.2.1',
                 'hero.releases.view': 'すべてのリリース',
-                'hero.beta.info': 'システム要件：macOS · Apple Silicon (M シリーズ)。初回起動時はアプリを右クリック →「開く」を選択してください。',
+                'hero.beta.info': 'macOS Apple Silicon (M シリーズ) · Windows 10/11 x64。いずれも未署名ビルドです。初回起動は下記の注意をご覧ください。',
                 'waitlist.title': 'コミュニティに参加',
                 'waitlist.subtitle': '下の QR コードをスキャンして AutoClip コミュニティに参加し、使い方のヘルプとバージョン更新通知を入手',
                 'footer.privacy': 'プライバシーポリシー',
                 'announcement.title': '初回起動時の注意',
-                'announcement.content': '現在は ad-hoc 署名・未公証のビルドです。初回起動時はアプリを右クリック →「開く」を選択すると Gatekeeper を回避できます（ダブルクリックでは「開発元を確認できません」と表示される場合があります）。macOS Apple Silicon (M シリーズ) のみ対応、Intel / Windows / Linux は今後対応予定です。'
+                'announcement.content': '両プラットフォームのインストーラーはまだコード署名されていません。macOS：初回起動時はアプリを右クリック →「開く」で Gatekeeper を回避できます（ダブルクリックでは「開発元を確認できません」と表示される場合があります）。Windows：初回実行時に SmartScreen が表示されたら「詳細情報」→「実行」を選択してください。Intel Mac / Linux は今後対応予定です。'
             },
             ko: {
                 'nav.download': '다운로드',
@@ -1255,16 +1277,16 @@
                 'hero.feature1.desc': '휴대용 Python + ffmpeg 내장, 설정 불필요',
                 'hero.feature2.title': '엔드투엔드 로컬',
                 'hero.feature2.desc': '다운로드부터 클립까지 전부 로컬, 개인정보 안심',
-                'hero.feature3.title': '네이티브 Mac 앱',
-                'hero.feature3.desc': 'Apple Silicon (M 시리즈), 기타 플랫폼은 추후 지원',
+                'hero.feature3.title': '네이티브 데스크톱 앱',
+                'hero.feature3.desc': 'macOS (Apple Silicon) 및 Windows (x64) 지원, Intel Mac / Linux는 추후 지원',
                 'features.title': '핵심 기능',
                 'features.subtitle': 'AI 기반 전체 프로세스 자동 비디오 처리',
                 'install.title': '다운로드 및 설치',
                 'install.subtitle': '환경 설정 없이 세 단계로 시작',
-                'install.step1': 'DMG를 다운로드하고 앱을 「응용 프로그램」으로 드래그',
-                'install.step2': '첫 실행: 앱을 우클릭 →「열기」 선택 (Gatekeeper 우회)',
-                'install.step3': '「설정」에서 AI 제공자 API 키(통이첸원 / OpenAI / Gemini 등)를 입력하고 시작',
-                'install.req': '시스템 요구사항: macOS, Apple Silicon (M 시리즈)',
+                'install.step1': 'macOS: DMG를 다운로드하고 앱을 「응용 프로그램」으로 드래그. Windows: 설치 파일 실행(사용자 단위, 관리자 권한 불필요)',
+                'install.step2': '첫 실행: macOS는 앱을 우클릭 →「열기」, Windows는 SmartScreen에서 「추가 정보」→「실행」',
+                'install.step3': '「설정」에서 AI 제공자 API 키(통이첸원 / OpenAI / Gemini / SiliconFlow 또는 OpenAI 호환 엔드포인트)를 입력하고 시작',
+                'install.req': '시스템 요구사항: macOS Apple Silicon (M 시리즈) · Windows 10/11 x64',
                 'demo.title': '제품 데모',
                 'demo.subtitle': 'AutoClip의 강력한 기능을 직관적으로 체험',
                 'usecases.title': '사용 사례',
@@ -1327,7 +1349,7 @@
                 'usecase.training.desc': '교육 비디오 처리, 스킬점 추출, 지식베이스 구축',
                 'usecase.platform.title': '플랫폼 운영',
                 'usecase.platform.desc': '콘텐츠 추천, 트래픽 분배, 사용자 유지',
-                'hero.badge': '🚀 v1.2.0 출시 · 🍎 macOS Apple Silicon',
+                'hero.badge': '🚀 v1.2.1 출시 · 🍎 macOS · 🪟 Windows',
                 'contact.qq.title': 'QQ 사용자 그룹',
                 'contact.qq.desc': '위의 QR 코드를 스캔하여 QQ 사용자 그룹에 참여<br>다른 사용자와 사용 경험을 교류',
                 'contact.qq.button': 'QQ 전용 서비스',
@@ -1343,14 +1365,15 @@
                 'contact.benefit3.desc': '새 버전과 사용법 도움말을 가장 먼저 받기',
                 'contact.development': '커뮤니티 · 지원',
                 'hero.github.view': 'GitHub',
-                'hero.download.dmg': 'macOS 클라이언트 다운로드 (Apple Silicon) — v1.2.0',
+                'hero.download.dmg': 'macOS 클라이언트 (Apple Silicon) — v1.2.1',
+                'hero.download.win': 'Windows 설치 파일 (x64) — v1.2.1',
                 'hero.releases.view': '전체 릴리스',
-                'hero.beta.info': '시스템 요구사항: macOS · Apple Silicon (M 시리즈). 첫 실행 시 앱을 우클릭 →「열기」를 선택하세요.',
+                'hero.beta.info': 'macOS Apple Silicon (M 시리즈) · Windows 10/11 x64. 두 빌드 모두 서명되지 않았습니다. 첫 실행은 아래 안내를 참고하세요.',
                 'waitlist.title': '커뮤니티 참여',
                 'waitlist.subtitle': '아래 QR 코드를 스캔하여 AutoClip 커뮤니티에 참여하고 사용법 도움말과 버전 업데이트 알림을 받으세요',
                 'footer.privacy': '개인정보 처리방침',
                 'announcement.title': '첫 실행 안내',
-                'announcement.content': '현재 ad-hoc 서명·공증되지 않은 빌드입니다. 첫 실행 시 앱을 우클릭 →「열기」를 선택하면 Gatekeeper를 우회할 수 있습니다(더블클릭 시 "개발자를 확인할 수 없음" 경고가 표시될 수 있습니다). macOS Apple Silicon (M 시리즈)만 지원하며 Intel / Windows / Linux는 추후 지원 예정입니다.'
+                'announcement.content': '두 플랫폼의 설치 파일은 아직 코드 서명이 되어 있지 않습니다. macOS: 첫 실행 시 앱을 우클릭 →「열기」를 선택하면 Gatekeeper를 우회할 수 있습니다(더블클릭 시 "개발자를 확인할 수 없음" 경고가 표시될 수 있습니다). Windows: 첫 실행 시 SmartScreen이 차단하면 「추가 정보」→「실행」을 선택하세요. Intel Mac / Linux는 추후 지원 예정입니다.'
             }
         };
 
