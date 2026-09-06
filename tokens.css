@@ -1,0 +1,91 @@
+/* ==========================================================================
+   AutoClip · Calm Premium design tokens
+   Canonical source: autoclip/DESIGN.md. Names match the product's
+   frontend/src/index.css (--ac-*) so the site and the app share one system.
+   Web-only additions (display type scale, section rhythm) live at the bottom.
+   ========================================================================== */
+
+:root {
+  /* --- surface & ink (light, default) --- */
+  --ac-bg:      #F6F5F3;
+  --ac-card:    #FFFFFF;
+  --ac-ink:     #1A1A19;
+  --ac-sub:     #6E6B66;
+  --ac-muted:   #A8A59F;
+  --ac-line:    #EBE9E4;
+  --ac-line-2:  #F0EEEA;
+  --ac-thumb:   #EEECE8;
+  --ac-accent:  #2D6BFF;
+  --ac-cta-bg:  #1A1A19;
+  --ac-cta-fg:  #FFFFFF;
+
+  /* --- semantic (restrained) --- */
+  --ac-ok:      #5BB36A;
+  --ac-warn:    #E6B23C;
+  --ac-error:   #E66A5C;
+
+  /* --- type --- */
+  --ac-font-sans:  "Geist", "PingFang SC", "Noto Sans SC", system-ui, -apple-system, sans-serif;
+  --ac-font-serif: "Instrument Serif", Georgia, serif;   /* Latin brand moments only */
+  --ac-font-mono:  "Geist Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* --- shape --- */
+  --ac-r-card:  16px;
+  --ac-r-sm:    10px;
+  --ac-r-pill:  999px;
+  --ac-shadow:  0 1px 2px rgba(26,26,25,.03), 0 8px 24px rgba(26,26,25,.05);
+  --ac-shadow-frame: 0 1px 2px rgba(26,26,25,.04), 0 24px 64px -24px rgba(26,26,25,.18);
+
+  /* --- motion --- */
+  --ac-ease-out: cubic-bezier(.2,.7,.2,1);
+  --ac-t-micro: 100ms;
+  --ac-t-short: 200ms;
+
+  /* --- web layer: display type scale (rem, 16px base) --- */
+  --ac-fs-display: clamp(2.5rem, 1.6rem + 3vw, 3.75rem);   /* hero h1, 40–60px */
+  --ac-fs-h2:      clamp(1.75rem, 1.3rem + 1.5vw, 2.25rem); /* section h2, 28–36px */
+  --ac-fs-h3:      1.125rem;                                 /* 18px */
+  --ac-fs-body:    1rem;                                     /* 16px on web (15 in app) */
+  --ac-fs-small:   .875rem;                                  /* 14px */
+  --ac-fs-meta:    .8125rem;                                 /* 13px */
+  --ac-fs-label:   .6875rem;                                 /* 11px uppercase, .08em */
+
+  /* --- web layer: rhythm --- */
+  --ac-container: 1120px;
+  --ac-gutter:    clamp(20px, 4vw, 56px);
+  --ac-section:   clamp(72px, 6vw + 40px, 128px);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ac-bg:      #19181A;
+    --ac-card:    #211F22;
+    --ac-ink:     #ECEAE6;
+    --ac-sub:     #A6A29B;
+    --ac-muted:   #76726C;
+    --ac-line:    #2C2A2D;
+    --ac-line-2:  #232124;
+    --ac-thumb:   #262428;
+    --ac-accent:  #5A8BFF;
+    --ac-cta-bg:  #ECEAE6;
+    --ac-cta-fg:  #19181A;
+    --ac-shadow:  0 1px 2px rgba(0,0,0,.2), 0 8px 24px rgba(0,0,0,.28);
+    --ac-shadow-frame: 0 1px 2px rgba(0,0,0,.3), 0 24px 64px -24px rgba(0,0,0,.6);
+  }
+}
+
+[data-theme="dark"] {
+  --ac-bg:      #19181A;
+  --ac-card:    #211F22;
+  --ac-ink:     #ECEAE6;
+  --ac-sub:     #A6A29B;
+  --ac-muted:   #76726C;
+  --ac-line:    #2C2A2D;
+  --ac-line-2:  #232124;
+  --ac-thumb:   #262428;
+  --ac-accent:  #5A8BFF;
+  --ac-cta-bg:  #ECEAE6;
+  --ac-cta-fg:  #19181A;
+  --ac-shadow:  0 1px 2px rgba(0,0,0,.2), 0 8px 24px rgba(0,0,0,.28);
+  --ac-shadow-frame: 0 1px 2px rgba(0,0,0,.3), 0 24px 64px -24px rgba(0,0,0,.6);
+}

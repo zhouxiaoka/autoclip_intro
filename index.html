@@ -1,1510 +1,682 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AutoClip | AI-powered video clipping and highlight generation</title>
-    <link rel="icon" type="image/svg+xml" href="logo.svg">
-    <link rel="alternate icon" href="logo.svg">
-    <link rel="apple-touch-icon" href="logo.svg">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#5e6ad2',
-                        secondary: '#8b5cf6',
-                        accent: '#00d4ff',
-                        dark: {
-                            50: '#f8fafc',
-                            100: '#f1f5f9',
-                            200: '#e2e8f0',
-                            300: '#cbd5e1',
-                            400: '#94a3b8',
-                            500: '#64748b',
-                            600: '#475569',
-                            700: '#334155',
-                            800: '#1e293b',
-                            900: '#0f172a',
-                            950: '#020617'
-                        }
-                    },
-                    fontFamily: {
-                        'sans': ['Inter', 'system-ui', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', system-ui, sans-serif;
-            background: #0a0a0a;
-            color: #ffffff;
-        }
-        
-        .linear-gradient {
-            background: linear-gradient(180deg, #0a0a0a 0%, #111111 100%);
-        }
-        
-        .hero-gradient {
-            background: radial-gradient(ellipse at center, rgba(94, 106, 210, 0.15) 0%, transparent 70%);
-        }
-        
-        .card-dark {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(10px);
-        }
-        
-        .card-dark:hover {
-            background: rgba(255, 255, 255, 0.04);
-            border-color: rgba(255, 255, 255, 0.12);
-            transform: translateY(-2px);
-            transition: all 0.3s ease;
-        }
-        
-        .text-gradient {
-            background: linear-gradient(135deg, #ffffff 0%, #a1a1aa 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .accent-gradient {
-            background: linear-gradient(135deg, #444444 0%, #222222 100%);
-        }
-        
-        .border-gradient {
-            border-image: linear-gradient(135deg, #444444, #222222) 1;
-        }
-        
-        .demo-container {
-            background: #0a0a0a;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            overflow: hidden;
-        }
-        
-        .nav-blur {
-            backdrop-filter: blur(20px);
-            background: rgba(10, 10, 10, 0.8);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        }
-        
-        .feature-icon {
-            background: linear-gradient(135deg, #444444 0%, #222222 100%);
-            border-radius: 12px;
-            padding: 12px;
-        }
-        
-        .stats-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
-            padding: 24px;
-        }
-        
-        .tech-badge {
-            background: rgba(94, 106, 210, 0.1);
-            border: 1px solid rgba(94, 106, 210, 0.2);
-            color: #5e6ad2;
-        }
-        
-        .btn-primary {
-            background: linear-gradient(135deg, #5e6ad2 0%, #00d4ff 100%);
-            border: none;
-            color: white;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 10px 25px rgba(94, 106, 210, 0.3);
-        }
-        
-        .btn-secondary {
-            background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: white;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(255, 255, 255, 0.3);
-        }
-        
-        /* 暗黑主题滚动条样式 */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 4px;
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 4px;
-            transition: background 0.3s ease;
-        }
-        
-        ::-webkit-scrollbar-thumb:hover {
-            background: rgba(255, 255, 255, 0.3);
-        }
-        
-        /* Firefox 滚动条样式 */
-        * {
-            scrollbar-width: thin;
-            scrollbar-color: rgba(255, 255, 255, 0.2) rgba(255, 255, 255, 0.05);
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AutoClip — 长视频的高光，自动剪出来</title>
+<meta name="description" content="AutoClip 是一款开源、本地运行的 AI 视频切片工具。粘一条 B站 / YouTube 链接或拖入本地视频，AI 读懂内容、找出高光、生成切片与合集。macOS 与 Windows 客户端。">
+<meta property="og:title" content="AutoClip — 长视频的高光，自动剪出来">
+<meta property="og:description" content="开源、本地运行的 AI 视频切片工具。macOS 与 Windows 客户端。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://zhouxiaoka.github.io/autoclip_intro/">
+<meta name="theme-color" content="#F6F5F3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#19181A" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="logo.svg">
+<link rel="apple-touch-icon" href="logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<style>
+/* ---------- base ---------- */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ac-bg);color:var(--ac-ink);font-family:var(--ac-font-sans);font-size:var(--ac-fs-body);line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+h1,h2,h3,p{margin:0}
+::selection{background:rgba(45,107,255,.18)}
+.serif{font-family:var(--ac-font-serif);font-weight:400;letter-spacing:-.01em}
+.mono{font-family:var(--ac-font-mono);font-variant-numeric:tabular-nums}
+.container{max-width:var(--ac-container);margin:0 auto;padding:0 var(--ac-gutter)}
+.section{padding:var(--ac-section) 0}
+.section + .section{border-top:1px solid var(--ac-line)}
+.eyebrow{font-size:var(--ac-fs-label);letter-spacing:.08em;text-transform:uppercase;color:var(--ac-muted);font-weight:500}
+.eyebrow + h2{margin-top:14px}
+h2{font-size:var(--ac-fs-h2);font-weight:500;line-height:1.2;letter-spacing:-.015em}
+h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
+.lede{color:var(--ac-sub);font-size:1.0625rem;line-height:1.65;max-width:56ch}
+.sub{color:var(--ac-sub)}
+.muted{color:var(--ac-muted)}
+.hairline{height:1px;background:var(--ac-line)}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 22px;border-radius:var(--ac-r-pill);font-size:.9375rem;font-weight:500;line-height:1;white-space:nowrap;transition:transform var(--ac-t-short) var(--ac-ease-out),background var(--ac-t-short),border-color var(--ac-t-short),box-shadow var(--ac-t-short)}
+.btn:active{transform:translateY(1px)}
+.btn-primary{background:var(--ac-cta-bg);color:var(--ac-cta-fg)}
+.btn-primary:hover{box-shadow:var(--ac-shadow)}
+.btn-secondary{border:1px solid var(--ac-line);color:var(--ac-sub);background:transparent}
+.btn-secondary:hover{border-color:var(--ac-muted);color:var(--ac-ink)}
+.btn-sm{height:36px;padding:0 16px;font-size:.875rem}
+.btn svg{width:16px;height:16px;flex:none}
+.link{color:var(--ac-accent);font-weight:500}
+.link:hover{text-decoration:underline;text-underline-offset:3px}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--ac-bg) 82%,transparent);backdrop-filter:saturate(1.2) blur(14px);-webkit-backdrop-filter:saturate(1.2) blur(14px);border-bottom:1px solid var(--ac-line)}
+.nav-in{height:60px;display:flex;align-items:center;gap:28px}
+.brand{display:flex;align-items:center;gap:10px;font-size:1.375rem;line-height:1;margin-right:auto}
+.brand img{width:26px;height:26px;border-radius:7px}
+.nav-links{display:flex;gap:24px;font-size:var(--ac-fs-small);color:var(--ac-sub)}
+.nav-links a:hover{color:var(--ac-ink)}
+.nav-right{display:flex;align-items:center;gap:16px}
+.gh{display:inline-flex;align-items:center;gap:7px;font-size:var(--ac-fs-small);color:var(--ac-sub)}
+.gh:hover{color:var(--ac-ink)}
+.gh svg{width:16px;height:16px}
+.lang{display:flex;align-items:center;gap:2px;border:1px solid var(--ac-line);border-radius:var(--ac-r-pill);padding:3px}
+.lang button{height:26px;padding:0 9px;border-radius:var(--ac-r-pill);font-size:.75rem;font-weight:500;color:var(--ac-muted);transition:background var(--ac-t-micro),color var(--ac-t-micro)}
+.lang button:hover{color:var(--ac-ink)}
+.lang button[aria-pressed="true"]{background:var(--ac-card);color:var(--ac-ink);box-shadow:0 1px 2px rgba(0,0,0,.06)}
+.nav-menu{display:none}
+
+/* ---------- hero ---------- */
+.hero{padding:clamp(56px,7vw,104px) 0 0;text-align:center}
+.hero .wordmark{font-size:clamp(1.75rem,1.2rem + 1.6vw,2.5rem);color:var(--ac-ink);line-height:1}
+.hero h1{margin-top:22px;font-size:var(--ac-fs-display);font-weight:500;line-height:1.12;letter-spacing:-.02em;max-width:22ch;margin-left:auto;margin-right:auto}
+.hero h1 em{font-family:var(--ac-font-serif);font-style:italic;font-weight:400;letter-spacing:0}
+.hero .lede{margin:22px auto 0;text-align:center}
+.hero-cta{margin-top:36px;display:flex;flex-direction:column;align-items:center;gap:14px}
+.hero-alt{font-size:var(--ac-fs-meta);color:var(--ac-muted);display:flex;align-items:center;gap:6px;flex-wrap:wrap;justify-content:center}
+.hero-alt a{color:var(--ac-sub);border-bottom:1px solid var(--ac-line);transition:border-color var(--ac-t-micro),color var(--ac-t-micro)}
+.hero-alt a:hover{color:var(--ac-ink);border-color:var(--ac-muted)}
+.hero-alt .sep{color:var(--ac-line)}
+.hero-note{margin-top:14px;font-size:var(--ac-fs-meta);color:var(--ac-muted)}
+
+/* ---------- product frame ---------- */
+.frame-wrap{margin-top:clamp(48px,6vw,80px);padding-bottom:var(--ac-section);position:relative}
+.frame-wrap::before{content:"";position:absolute;inset:auto 0 0 0;height:60%;background:linear-gradient(to bottom,transparent,var(--ac-bg));pointer-events:none;z-index:2;opacity:0}
+.frame{background:var(--ac-card);border:1px solid var(--ac-line);border-radius:var(--ac-r-card);box-shadow:var(--ac-shadow-frame);overflow:hidden;text-align:left}
+.frame-bar{height:40px;display:flex;align-items:center;padding:0 16px;gap:7px;border-bottom:1px solid var(--ac-line)}
+.frame-bar .dot{width:10px;height:10px;border-radius:50%;background:var(--ac-line)}
+.frame-bar .title{margin-left:auto;margin-right:auto;font-size:.75rem;color:var(--ac-muted);position:absolute;left:0;right:0;text-align:center;pointer-events:none}
+.app{padding:28px clamp(20px,3.5vw,44px) clamp(28px,3.5vw,40px);background:var(--ac-bg)}
+.app-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:26px}
+.app-top .wm{font-size:1.5rem;line-height:1}
+.app-top .tabs{display:flex;gap:18px;font-size:.8125rem;color:var(--ac-muted)}
+.app-top .tabs .on{color:var(--ac-ink)}
+.import{display:flex;align-items:center;gap:12px;background:var(--ac-card);border:1px solid var(--ac-line);border-radius:var(--ac-r-card);padding:12px 12px 12px 14px;box-shadow:var(--ac-shadow)}
+.seg{display:flex;background:var(--ac-line-2);border-radius:var(--ac-r-pill);padding:3px;flex:none}
+.seg span{padding:6px 14px;border-radius:var(--ac-r-pill);font-size:.8125rem;color:var(--ac-sub)}
+.seg .on{background:var(--ac-card);color:var(--ac-ink);box-shadow:0 1px 2px rgba(0,0,0,.05)}
+.import .field{flex:1;font-size:.9375rem;color:var(--ac-muted);padding:0 6px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.import .go{height:36px;padding:0 18px;border-radius:var(--ac-r-pill);background:var(--ac-cta-bg);color:var(--ac-cta-fg);font-size:.875rem;font-weight:500;display:inline-flex;align-items:center;flex:none}
+.app-label{margin:30px 4px 14px;font-size:.8125rem;color:var(--ac-muted);letter-spacing:.2px}
+.pgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.pcard{background:var(--ac-card);border:1px solid var(--ac-line);border-radius:var(--ac-r-card);overflow:hidden;transition:transform var(--ac-t-short) var(--ac-ease-out),box-shadow var(--ac-t-short)}
+.pcard:hover{transform:translateY(-2px);box-shadow:var(--ac-shadow)}
+.thumb{aspect-ratio:16/9;position:relative;background:var(--ac-thumb)}
+.thumb.t1{background:linear-gradient(135deg,#E9E6E0 0%,#D9D5CD 55%,#CFCAC1 100%)}
+.thumb.t2{background:linear-gradient(160deg,#E3E1DC 0%,#D2CFC8 60%,#C6C2BA 100%)}
+.thumb.t3{background:linear-gradient(120deg,#ECE9E3 0%,#DCD8D0 50%,#D0CBC2 100%)}
+[data-theme="dark"] .thumb.t1,[data-theme="dark"] .thumb.t2,[data-theme="dark"] .thumb.t3{filter:brightness(.32) saturate(.6)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .thumb.t1,:root:not([data-theme="light"]) .thumb.t2,:root:not([data-theme="light"]) .thumb.t3{filter:brightness(.32) saturate(.6)}}
+.thumb::after{content:"";position:absolute;inset:0;background:radial-gradient(60% 80% at 30% 20%,rgba(255,255,255,.35),transparent 70%)}
+.status{position:absolute;top:10px;left:10px;display:inline-flex;align-items:center;gap:6px;font-size:.6875rem;color:var(--ac-ink);background:color-mix(in srgb,var(--ac-card) 88%,transparent);border-radius:var(--ac-r-pill);padding:3px 9px 3px 7px;z-index:1;backdrop-filter:blur(6px)}
+.status i{width:6px;height:6px;border-radius:50%;background:var(--ac-ok);display:inline-block}
+.status.run i{background:var(--ac-accent)}
+.progress{position:absolute;left:0;right:0;bottom:0;height:4px;background:color-mix(in srgb,var(--ac-ink) 8%,transparent);z-index:1}
+.progress b{display:block;height:100%;width:63%;background:var(--ac-accent);border-radius:0 2px 2px 0}
+.pbody{padding:14px 16px 16px}
+.pbody .t{font-size:.9375rem;font-weight:500;line-height:1.4;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
+.pbody .m{margin-top:6px;font-size:.75rem;color:var(--ac-muted);display:flex;justify-content:space-between;gap:8px}
+
+/* ---------- how ---------- */
+.steps{margin-top:clamp(40px,5vw,64px);display:grid;grid-template-columns:minmax(0,1fr);gap:0}
+.step>*{min-width:0}
+.step{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,5vw,72px);align-items:center;padding:clamp(36px,4vw,56px) 0;border-top:1px solid var(--ac-line)}
+.step:first-child{border-top:0;padding-top:0}
+.step .n{font-family:var(--ac-font-mono);font-size:.8125rem;color:var(--ac-muted);letter-spacing:.06em}
+.step h3{margin-top:10px;font-size:1.375rem;letter-spacing:-.01em}
+.step p{margin-top:12px;color:var(--ac-sub);max-width:46ch}
+.step .vis{background:var(--ac-card);border:1px solid var(--ac-line);border-radius:var(--ac-r-card);padding:20px;box-shadow:var(--ac-shadow)}
+.vis .import{box-shadow:none;border-color:var(--ac-line-2);background:var(--ac-bg)}
+.vis .import .go{height:34px}
+.srcrow{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.chip{font-size:.75rem;color:var(--ac-sub);border:1px solid var(--ac-line);border-radius:var(--ac-r-pill);padding:4px 11px}
+.rows{display:flex;flex-direction:column}
+.row{display:flex;align-items:center;gap:14px;padding:12px 6px;border-top:1px solid var(--ac-line-2)}
+.row:first-child{border-top:0;padding-top:2px}
+.row .tc{font-family:var(--ac-font-mono);font-size:.75rem;color:var(--ac-muted);width:12ch;flex:none;white-space:nowrap}
+.row .tt{flex:1;font-size:.9375rem;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.row .sc{font-family:var(--ac-font-mono);font-size:.8125rem;color:var(--ac-sub);width:3ch;text-align:right}
+.row.pick .tt{font-weight:500}
+.row.pick .sc{color:var(--ac-ink)}
+.row .d{width:6px;height:6px;border-radius:50%;background:var(--ac-line);flex:none}
+.row.pick .d{background:var(--ac-accent)}
+.clips{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.clip .thumb{border-radius:var(--ac-r-sm);overflow:hidden}
+.clip .t{margin-top:10px;font-size:.875rem;font-weight:500;line-height:1.4}
+.clip .m{margin-top:4px;font-size:.75rem;color:var(--ac-muted)}
+.vis-foot{margin-top:16px;display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid var(--ac-line-2);padding-top:14px}
+.vis-foot .lbl{font-size:.8125rem;color:var(--ac-sub)}
+.pill{display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 13px;border-radius:var(--ac-r-pill);border:1px solid var(--ac-line);font-size:.8125rem;color:var(--ac-sub)}
+.pill i{width:6px;height:6px;border-radius:50%;background:var(--ac-ok)}
+
+/* ---------- why ---------- */
+.why{margin-top:clamp(40px,5vw,64px);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 clamp(32px,5vw,72px)}
+.why .item{padding:28px 0;border-top:1px solid var(--ac-line)}
+.why .item h3{font-size:1.125rem}
+.why .item p{margin-top:8px;color:var(--ac-sub);font-size:.9375rem}
+.why .item .k{font-family:var(--ac-font-mono);font-size:.75rem;color:var(--ac-muted);letter-spacing:.06em;margin-bottom:10px;display:block}
+
+/* ---------- download ---------- */
+.dl{margin-top:clamp(40px,5vw,64px);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.dlcard{background:var(--ac-card);border:1px solid var(--ac-line);border-radius:var(--ac-r-card);padding:28px 28px 24px;display:flex;flex-direction:column;gap:18px;box-shadow:var(--ac-shadow)}
+.dlcard .hd{display:flex;align-items:center;justify-content:space-between}
+.dlcard .hd h3{display:flex;align-items:center;gap:10px}
+.dlcard .hd h3 svg{width:20px;height:20px}
+.dlcard .ver{font-family:var(--ac-font-mono);font-size:.75rem;color:var(--ac-muted)}
+.dlcard .req{font-size:.875rem;color:var(--ac-sub);flex:1}
+.dlcard .btn{align-self:flex-start}
+.dlcard details{border-top:1px solid var(--ac-line-2);padding-top:14px;margin-top:2px}
+.dlcard summary{cursor:pointer;font-size:.875rem;color:var(--ac-sub);list-style:none;display:flex;align-items:center;justify-content:space-between}
+.dlcard summary::-webkit-details-marker{display:none}
+.dlcard summary::after{content:"+";font-family:var(--ac-font-mono);color:var(--ac-muted)}
+.dlcard details[open] summary::after{content:"–"}
+.dlcard details p{margin-top:10px;font-size:.875rem;color:var(--ac-sub);line-height:1.6}
+.dl-alt{margin-top:24px;font-size:var(--ac-fs-small);color:var(--ac-muted);text-align:center}
+.dl-alt a{color:var(--ac-sub);border-bottom:1px solid var(--ac-line)}
+.dl-alt a:hover{color:var(--ac-ink);border-color:var(--ac-muted)}
+
+/* ---------- faq ---------- */
+.faq-grid{margin-top:clamp(40px,5vw,64px);display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(28px,5vw,72px)}
+.faq details{border-top:1px solid var(--ac-line);padding:18px 0}
+.faq details:last-child{border-bottom:1px solid var(--ac-line)}
+.faq summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px;font-size:1.0625rem;font-weight:500}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--ac-font-mono);color:var(--ac-muted);font-weight:400}
+.faq details[open] summary::after{content:"–"}
+.faq p{margin-top:10px;color:var(--ac-sub);font-size:.9375rem;max-width:62ch}
+.community{margin-top:40px;display:flex;gap:20px;flex-wrap:wrap}
+.qr{display:flex;align-items:center;gap:16px;border:1px solid var(--ac-line);border-radius:var(--ac-r-card);padding:14px 18px 14px 14px;background:var(--ac-card)}
+.qr img{width:84px;height:84px;border-radius:var(--ac-r-sm);object-fit:cover}
+.qr .t{font-size:.9375rem;font-weight:500}
+.qr .m{font-size:.8125rem;color:var(--ac-muted);margin-top:4px}
+
+/* ---------- footer ---------- */
+.footer{border-top:1px solid var(--ac-line);padding:40px 0 48px}
+.footer-in{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:var(--ac-fs-meta);color:var(--ac-muted)}
+.footer .brand{font-size:1.25rem;margin-right:0}
+.footer-links{display:flex;gap:20px}
+.footer-links a:hover{color:var(--ac-ink)}
+
+/* ---------- responsive ---------- */
+@media (max-width: 900px){
+  .step,.faq-grid{grid-template-columns:minmax(0,1fr)}
+  .step>*,.faq-grid>*{min-width:0}
+  .step .vis{order:2}
+  .pgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pcard:nth-child(3){display:none}
+}
+@media (max-width: 720px){
+  .nav-links,.gh{display:none}
+  .nav-in{gap:12px}
+  .brand{font-size:1.25rem}
+  .hero h1{font-size:1.875rem}
+  .why,.dl{grid-template-columns:minmax(0,1fr)}
+  .pgrid{grid-template-columns:minmax(0,1fr)}
+  .pcard:nth-child(2){display:none}
+  .app-top .tabs{display:none}
+  .import{flex-wrap:wrap}
+  .import .field{flex-basis:100%;order:3;padding:6px 4px 0}
+  .clips{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .hero h1{max-width:none}
+}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
 </head>
-<body class="linear-gradient">
-    <!-- Header -->
-    <header class="nav-blur sticky top-0 z-50">
-        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center py-4">
-                <div class="flex items-center">
-                    <div class="w-12 h-12 mr-3 flex items-center justify-center">
-                        <img src="logo.svg" alt="AutoClip Logo" class="w-full h-full object-contain">
-                    </div>
-                    <h1 class="text-xl font-bold bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent drop-shadow-lg filter brightness-110">AutoClip</h1>
-                </div>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#download" class="text-gray-300 hover:text-white transition-colors text-sm font-medium" data-i18n="nav.download">下载</a>
-                    <a href="#features" class="text-gray-300 hover:text-white transition-colors text-sm font-medium" data-i18n="nav.features">功能特性</a>
-                    <a href="#demo" class="text-gray-300 hover:text-white transition-colors text-sm font-medium" data-i18n="nav.demo">演示</a>
-                    <a href="#waitlist" class="text-gray-300 hover:text-white transition-colors text-sm font-medium" data-i18n="nav.contact">用户社区</a>
-                    <a href="https://github.com/zhouxiaoka/autoclip" target="_blank" rel="noopener" class="inline-flex items-center px-3 py-2 rounded-lg text-sm font-medium bg-white/10 border border-white/20 text-white/70 hover:bg-white/15 hover:text-white/90 hover:border-white/30 transition">
-                        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.66-.22.66-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.45-1.15-1.1-1.46-1.1-1.46-.9-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85.004 1.71.11 2.51.32 1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.85-2.34 4.7-4.57 4.95.36.31.68.92.68 1.85 0 1.33-.01 2.4-.01 2.73 0 .27.16.58.67.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"/>
-                        </svg>
-                        GitHub
-                    </a>
-                    <!-- 语言切换下拉菜单 -->
-                    <div class="relative group">
-                        <button id="language-switcher" class="inline-flex items-center px-2 py-1 text-sm text-gray-300 hover:text-white transition-colors rounded-md hover:bg-white/5">
-                            <span id="current-lang" class="mr-1">🇨🇳</span>
-                            <span class="text-xs">中文</span>
-                            <svg class="w-3 h-3 ml-1 opacity-60 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                            </svg>
-                        </button>
-                        
-                        <!-- 下拉菜单 -->
-                        <div id="language-dropdown" class="absolute right-0 mt-1 w-28 bg-gray-900/95 backdrop-blur-sm border border-gray-700/50 rounded-md shadow-lg opacity-0 invisible transition-all duration-150 group-hover:opacity-100 group-hover:visible">
-                            <div class="py-1">
-                                <button class="language-option w-full text-left px-3 py-1.5 text-xs text-gray-300 hover:text-white hover:bg-white/5 transition-colors" data-lang="zh">
-                                    <span class="mr-2">🇨🇳</span>中文
-                                </button>
-                                <button class="language-option w-full text-left px-3 py-1.5 text-xs text-gray-300 hover:text-white hover:bg-white/5 transition-colors" data-lang="en">
-                                    <span class="mr-2">🇺🇸</span>English
-                                </button>
-                                <button class="language-option w-full text-left px-3 py-1.5 text-xs text-gray-300 hover:text-white hover:bg-white/5 transition-colors" data-lang="ja">
-                                    <span class="mr-2">🇯🇵</span>日本語
-                                </button>
-                                <button class="language-option w-full text-left px-3 py-1.5 text-xs text-gray-300 hover:text-white hover:bg-white/5 transition-colors" data-lang="ko">
-                                    <span class="mr-2">🇰🇷</span>한국어
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </header>
+<body>
 
-    <!-- Hero Section -->
-    <section class="relative py-32 overflow-hidden">
-        <div class="hero-gradient absolute inset-0"></div>
-        
-        <!-- Large AutoClip background text -->
-        <div class="absolute inset-0 flex items-start justify-center pt-16 pointer-events-none">
-            <div class="text-[10rem] md:text-[12rem] lg:text-[15rem] font-black text-white/[0.08] select-none whitespace-nowrap">
-                AutoClip
-            </div>
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="container nav-in">
+    <a class="brand serif" href="#top" aria-label="AutoClip"><img src="logo.svg" alt="">AutoClip</a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="#how" data-i18n="nav.how">怎么工作</a>
+      <a href="#why" data-i18n="nav.why">为什么</a>
+      <a href="#download" data-i18n="nav.download">下载</a>
+      <a href="#faq" data-i18n="nav.faq">常见问题</a>
+    </nav>
+    <div class="nav-right">
+      <a class="gh" href="https://github.com/zhouxiaoka/autoclip" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.66-.22.66-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.45-1.15-1.1-1.46-1.1-1.46-.9-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85.004 1.71.11 2.51.32 1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.85-2.34 4.7-4.57 4.95.36.31.68.92.68 1.85 0 1.33-.01 2.4-.01 2.73 0 .27.16.58.67.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"/></svg>
+        <span>GitHub</span>
+      </a>
+      <div class="lang" role="group" aria-label="Language">
+        <button data-lang="zh" aria-pressed="true">中</button>
+        <button data-lang="en" aria-pressed="false">EN</button>
+        <button data-lang="ja" aria-pressed="false">日</button>
+        <button data-lang="ko" aria-pressed="false">한</button>
+      </div>
+      <a class="btn btn-primary btn-sm" href="#download" data-i18n="nav.cta">下载</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="container">
+    <div class="wordmark serif">AutoClip</div>
+    <h1 data-i18n-html="hero.h1">长视频里值得看的部分，<br>自动剪出来。</h1>
+    <p class="lede" data-i18n="hero.lede">粘一条 B站 / YouTube 链接，或拖入本地视频。AI 读懂内容、找出高光，生成切片与合集——全程在你自己的电脑上完成。</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" id="cta-primary" href="https://github.com/zhouxiaoka/autoclip/releases/download/v1.2.1/AutoClip.Desktop_1.2.1_aarch64.dmg">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg>
+        <span id="cta-primary-label" data-i18n="hero.cta.mac">下载 macOS 版</span>
+      </a>
+      <div class="hero-alt">
+        <span data-i18n="hero.alt.also">也支持</span>
+        <a id="cta-alt" href="https://github.com/zhouxiaoka/autoclip/releases/download/v1.2.1/AutoClip.Desktop_1.2.1_x64-setup.exe"><span id="cta-alt-label" data-i18n="hero.alt.win">Windows</span></a>
+        <span class="sep">·</span>
+        <a href="https://github.com/zhouxiaoka/autoclip/releases/latest" target="_blank" rel="noopener" data-i18n="hero.alt.releases">全部版本</a>
+        <span class="sep">·</span>
+        <a href="https://github.com/zhouxiaoka/autoclip#readme" target="_blank" rel="noopener" data-i18n="hero.alt.docker">Docker / 源码</a>
+      </div>
+    </div>
+    <p class="hero-note mono" data-i18n="hero.note">v1.2.1 · 开源 MIT · 免费</p>
+  </div>
+
+  <!-- product frame -->
+  <div class="container frame-wrap">
+    <div class="frame" aria-hidden="true">
+      <div class="frame-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="title">AutoClip</span></div>
+      <div class="app">
+        <div class="app-top">
+          <span class="wm serif">AutoClip</span>
+          <div class="tabs"><span class="on" data-i18n="mock.tab.projects">项目</span><span data-i18n="mock.tab.uploads">上传</span><span data-i18n="mock.tab.settings">设置</span></div>
         </div>
-        
-        <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="mb-8">
-                <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-white/5 border border-white/10 text-gray-300 mb-8" data-i18n="hero.badge">
-                    <span class="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></span>
-                    🚀 v1.2.1 已发布 · 🍎 macOS · 🪟 Windows
-                </span>
-            </div>
-            <h1 class="text-6xl md:text-7xl font-bold mb-8 leading-loose">
-                <span class="text-gradient">AutoClip</span><br>
-                <span class="text-white/90 mt-4 block" data-i18n="hero.subtitle">视频高光，一键生成</span>
-            </h1>
-            <p class="text-xl md:text-2xl mb-12 text-gray-300 max-w-4xl mx-auto leading-relaxed" data-i18n="hero.description">
-                你的AI视频剪辑搭子，一条视频自动提取多个高光片段
-            </p>
-            <!-- 桌面版下载按钮区域 -->
-            <div class="mb-16">
-                <div class="flex flex-col items-center gap-5">
-                    <!-- 主下载按钮：macOS + Windows -->
-                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <a href="https://github.com/zhouxiaoka/autoclip/releases/download/v1.2.1/AutoClip.Desktop_1.2.1_aarch64.dmg" class="group relative inline-flex items-center justify-center px-8 py-4 rounded-2xl font-semibold text-lg btn-primary shadow-2xl shadow-primary/30 overflow-hidden">
-                            <!-- 光效动画 -->
-                            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
-                            <span class="relative z-10 flex items-center">
-                                <svg class="w-5 h-5 mr-2.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                    <path d="M16.365 1.43c0 1.14-.493 2.27-1.177 3.08-.744.9-1.99 1.57-2.987 1.57-.12 0-.23-.02-.3-.03-.01-.06-.04-.22-.04-.39 0-1.15.572-2.27 1.206-2.98.804-.94 2.142-1.64 3.248-1.68.03.13.05.28.05.43zm4.565 15.71c-.03.07-.463 1.58-1.518 3.12-.945 1.34-1.94 2.71-3.43 2.71-1.517 0-1.9-.88-3.63-.88-1.698 0-2.302.91-3.67.91-1.377 0-2.332-1.26-3.428-2.8-1.287-1.82-2.323-4.63-2.323-7.28 0-4.28 2.797-6.55 5.552-6.55 1.448 0 2.675.95 3.6.95.865 0 2.222-1.01 3.902-1.01.613 0 2.886.06 4.374 2.19-.13.09-2.383 1.37-2.383 4.19 0 3.26 2.854 4.42 2.955 4.45z"/>
-                                </svg>
-                                <span data-i18n="hero.download.dmg">macOS 客户端 (Apple Silicon) — v1.2.1</span>
-                            </span>
-                        </a>
-                        <a href="https://github.com/zhouxiaoka/autoclip/releases/download/v1.2.1/AutoClip.Desktop_1.2.1_x64-setup.exe" class="group relative inline-flex items-center justify-center px-8 py-4 rounded-2xl font-semibold text-lg btn-primary shadow-2xl shadow-primary/30 overflow-hidden">
-                            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
-                            <span class="relative z-10 flex items-center">
-                                <svg class="w-5 h-5 mr-2.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                    <path d="M3 5.5l7.5-1.03v7.25H3V5.5zm0 13l7.5 1.03v-7.16H3v6.13zm8.32 1.14L21 21v-8.63h-9.68v7.27zm0-15.28v7.36H21V3l-9.68 1.36z"/>
-                                </svg>
-                                <span data-i18n="hero.download.win">Windows 安装包 (x64) — v1.2.1</span>
-                            </span>
-                        </a>
-                    </div>
-                    <!-- 次级链接 -->
-                    <div class="flex items-center gap-4 text-sm">
-                        <a href="https://github.com/zhouxiaoka/autoclip/releases/latest" target="_blank" rel="noopener" class="inline-flex items-center text-gray-400 hover:text-white transition-colors">
-                            <svg class="w-4 h-4 mr-1.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
-                            </svg>
-                            <span data-i18n="hero.releases.view">全部版本 / Releases</span>
-                        </a>
-                        <span class="text-white/15" aria-hidden="true">|</span>
-                        <a href="https://github.com/zhouxiaoka/autoclip" target="_blank" rel="noopener" class="inline-flex items-center text-gray-400 hover:text-white transition-colors">
-                            <svg class="w-4 h-4 mr-1.5 opacity-70" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.66-.22.66-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.45-1.15-1.1-1.46-1.1-1.46-.9-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85.004 1.71.11 2.51.32 1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.85-2.34 4.7-4.57 4.95.36.31.68.92.68 1.85 0 1.33-.01 2.4-.01 2.73 0 .27.16.58.67.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"/>
-                            </svg>
-                            <span data-i18n="hero.github.view">GitHub</span>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- 核心卖点展示 -->
-                <div class="mt-8 grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-                    <div class="text-center p-4 rounded-xl bg-white/5 border border-white/10">
-                        <div class="w-12 h-12 mx-auto mb-3 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-xl flex items-center justify-center">
-                            <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                            </svg>
-                        </div>
-                        <h4 class="text-sm font-semibold text-white mb-1" data-i18n="hero.feature1.title">一键安装零依赖</h4>
-                        <p class="text-gray-400 text-xs" data-i18n="hero.feature1.desc">内置便携 Python + ffmpeg，无需配置</p>
-                    </div>
-                    
-                    <div class="text-center p-4 rounded-xl bg-white/5 border border-white/10">
-                        <div class="w-12 h-12 mx-auto mb-3 bg-gradient-to-br from-green-500/20 to-emerald-500/20 rounded-xl flex items-center justify-center">
-                            <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                        </div>
-                        <h4 class="text-sm font-semibold text-white mb-1" data-i18n="hero.feature2.title">端到端本地出片</h4>
-                        <p class="text-gray-400 text-xs" data-i18n="hero.feature2.desc">下载到切片全程本地，隐私可控</p>
-                    </div>
-                    
-                    <div class="text-center p-4 rounded-xl bg-white/5 border border-white/10">
-                        <div class="w-12 h-12 mx-auto mb-3 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-xl flex items-center justify-center">
-                            <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                            </svg>
-                        </div>
-                        <h4 class="text-sm font-semibold text-white mb-1" data-i18n="hero.feature3.title">原生桌面客户端</h4>
-                        <p class="text-gray-400 text-xs" data-i18n="hero.feature3.desc">macOS (Apple Silicon) 与 Windows (x64)，Intel Mac / Linux 后续</p>
-                    </div>
-                </div>
-                
-                <!-- 版本信息 -->
-            <div class="text-center mt-6">
-                <p class="text-sm text-gray-400" data-i18n="hero.beta.info">macOS Apple Silicon (M 系列) · Windows 10/11 x64。均为未签名版本，首次打开见下方提示。</p>
-            </div>
-            
-            <!-- 开发状态公告 -->
-            <div class="mt-8 max-w-4xl mx-auto">
-                <div class="bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-xl p-6 backdrop-blur-sm">
-                    <div class="flex items-start space-x-3">
-                        <div class="flex-shrink-0">
-                            <div class="w-8 h-8 bg-blue-500/20 rounded-full flex items-center justify-center">
-                                <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="flex-1">
-                            <h3 class="text-lg font-semibold text-white mb-2" data-i18n="announcement.title">首次打开提示</h3>
-                            <p class="text-gray-300 leading-relaxed" data-i18n="announcement.content">
-                                两个平台的安装包目前都未做代码签名。macOS：首次打开请右键点击应用 → 选「打开」即可绕过 Gatekeeper（直接双击可能提示"无法验证开发者"）。Windows：首次运行 SmartScreen 会拦截，点「更多信息」→「仍要运行」。Intel Mac / Linux 后续支持。
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            </div>
+        <div class="import">
+          <div class="seg"><span class="on" data-i18n="mock.seg.link">链接</span><span data-i18n="mock.seg.file">文件</span></div>
+          <div class="field" data-i18n="mock.placeholder">粘贴 B站 / YouTube 链接…</div>
+          <span class="go" data-i18n="mock.go">开始</span>
         </div>
-    </section>
-
-
-    <!-- Download / Install Section -->
-    <section id="download" class="py-24 bg-gradient-to-b from-gray-900/50 to-transparent">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-5xl font-bold text-white mb-6" data-i18n="install.title">下载与安装</h2>
-                <p class="text-xl text-gray-400" data-i18n="install.subtitle">三步即可开始，无需配置任何环境</p>
-            </div>
-
-            <!-- 安装三步 -->
-            <div class="grid md:grid-cols-3 gap-8 mb-12">
-                <div class="card-dark p-8 rounded-2xl text-center">
-                    <div class="w-12 h-12 mx-auto mb-6 rounded-full bg-gradient-to-br from-blue-500/20 to-cyan-500/20 flex items-center justify-center text-xl font-bold text-blue-400">1</div>
-                    <p class="text-gray-300 leading-relaxed" data-i18n="install.step1">macOS：下载 DMG，把 App 拖进「应用程序」；Windows：运行安装包，按用户安装、无需管理员权限</p>
-                </div>
-                <div class="card-dark p-8 rounded-2xl text-center">
-                    <div class="w-12 h-12 mx-auto mb-6 rounded-full bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center text-xl font-bold text-purple-400">2</div>
-                    <p class="text-gray-300 leading-relaxed" data-i18n="install.step2">首次打开：macOS 右键点应用 → 选「打开」；Windows 在 SmartScreen 点「更多信息」→「仍要运行」</p>
-                </div>
-                <div class="card-dark p-8 rounded-2xl text-center">
-                    <div class="w-12 h-12 mx-auto mb-6 rounded-full bg-gradient-to-br from-green-500/20 to-emerald-500/20 flex items-center justify-center text-xl font-bold text-green-400">3</div>
-                    <p class="text-gray-300 leading-relaxed" data-i18n="install.step3">进入「设置」填入 AI 提供商 API Key（通义千问 / OpenAI / Gemini / 硅基流动，或任意 OpenAI 兼容接口），开始使用</p>
-                </div>
-            </div>
-
-            <!-- 下载按钮 + 系统要求 -->
-            <div class="text-center">
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <a href="https://github.com/zhouxiaoka/autoclip/releases/download/v1.2.1/AutoClip.Desktop_1.2.1_aarch64.dmg" class="inline-flex items-center px-8 py-4 rounded-xl font-medium text-lg btn-primary shadow-2xl">
-                        <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3"></path>
-                        </svg>
-                        <span data-i18n="hero.download.dmg">macOS 客户端 (Apple Silicon) — v1.2.1</span>
-                    </a>
-                    <a href="https://github.com/zhouxiaoka/autoclip/releases/download/v1.2.1/AutoClip.Desktop_1.2.1_x64-setup.exe" class="inline-flex items-center px-8 py-4 rounded-xl font-medium text-lg btn-primary shadow-2xl">
-                        <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3"></path>
-                        </svg>
-                        <span data-i18n="hero.download.win">Windows 安装包 (x64) — v1.2.1</span>
-                    </a>
-                </div>
-                <p class="mt-6 text-sm text-gray-400" data-i18n="install.req">系统要求：macOS Apple Silicon (M 系列) · Windows 10/11 x64</p>
-            </div>
+        <div class="app-label" data-i18n="mock.recent">最近项目</div>
+        <div class="pgrid">
+          <div class="pcard">
+            <div class="thumb t1"><span class="status run"><i></i><span data-i18n="mock.status.analyzing">分析中</span></span><div class="progress"><b></b></div></div>
+            <div class="pbody"><div class="t" data-i18n="mock.p1.title">对谈：独立开发者的一年</div><div class="m mono"><span>01:42:16</span><span>63%</span></div></div>
+          </div>
+          <div class="pcard">
+            <div class="thumb t2"><span class="status"><i></i><span data-i18n="mock.status.done">已完成</span></span></div>
+            <div class="pbody"><div class="t" data-i18n="mock.p2.title">直播回放 · 产品发布问答</div><div class="m mono"><span data-i18n="mock.p2.meta">7 切片 · 1 合集</span><span data-i18n="mock.p2.time">2 小时前</span></div></div>
+          </div>
+          <div class="pcard">
+            <div class="thumb t3"><span class="status"><i></i><span data-i18n="mock.status.done">已完成</span></span></div>
+            <div class="pbody"><div class="t" data-i18n="mock.p3.title">公开课：概率论第 3 讲</div><div class="m mono"><span data-i18n="mock.p3.meta">12 切片 · 2 合集</span><span data-i18n="mock.p3.time">昨天</span></div></div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Features Section -->
-    <section id="features" class="py-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-20">
-                <h2 class="text-5xl font-bold text-white mb-6" data-i18n="features.title">核心功能</h2>
-                <p class="text-xl text-gray-400" data-i18n="features.subtitle">AI驱动的全流程自动化视频处理</p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="card-dark p-8 rounded-2xl">
-                    <div class="feature-icon w-12 h-12 mb-6 flex items-center justify-center">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-4 text-white" data-i18n="feature.ai.title">AI智能分析</h3>
-                    <p class="text-gray-400 leading-relaxed" data-i18n="feature.ai.desc">基于大语言模型的视频内容理解，智能识别高光时刻</p>
-                    <div class="mt-3">
-                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-500/20 border border-green-500/30 text-green-400" data-i18n="feature.ai.status">
-                            已发布
-                        </span>
-                    </div>
-                </div>
+<!-- ============ HOW ============ -->
+<section class="section" id="how">
+  <div class="container">
+    <div class="eyebrow" data-i18n="how.eyebrow">怎么工作</div>
+    <h2 data-i18n="how.h2">三步，从一条长视频到一组切片。</h2>
 
-                <div class="card-dark p-8 rounded-2xl">
-                    <div class="feature-icon w-12 h-12 mb-6 flex items-center justify-center">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-4 text-white" data-i18n="feature.realtime.title">顺手的编辑</h3>
-                    <p class="text-gray-400 leading-relaxed" data-i18n="feature.realtime.desc">切片标题可手改、合集内拖拽排序、按分类组织项目</p>
-                    <div class="mt-3">
-                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-500/20 border border-green-500/30 text-green-400" data-i18n="feature.realtime.status">
-                            已发布
-                        </span>
-                    </div>
-                </div>
-
-                <div class="card-dark p-8 rounded-2xl">
-                    <div class="feature-icon w-12 h-12 mb-6 flex items-center justify-center">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-4 text-white" data-i18n="feature.title.title">自动标题生成</h3>
-                    <p class="text-gray-400 leading-relaxed" data-i18n="feature.title.desc">AI自动为每个切片生成吸引人的标题，提升内容传播效果</p>
-                    <div class="mt-3">
-                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-500/20 border border-green-500/30 text-green-400" data-i18n="feature.title.status">
-                            已发布
-                        </span>
-                    </div>
-                </div>
-
-                <div class="card-dark p-8 rounded-2xl">
-                    <div class="feature-icon w-12 h-12 mb-6 flex items-center justify-center">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-4 text-white" data-i18n="feature.quality.title">内容质量评估</h3>
-                    <p class="text-gray-400 leading-relaxed" data-i18n="feature.quality.desc">智能评估切片质量，确保输出内容的高质量标准</p>
-                    <div class="mt-3">
-                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-500/20 border border-green-500/30 text-green-400" data-i18n="feature.quality.status">
-                            已发布
-                        </span>
-                    </div>
-                </div>
-
-                <div class="card-dark p-8 rounded-2xl">
-                    <div class="feature-icon w-12 h-12 mb-6 flex items-center justify-center">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-4 text-white" data-i18n="feature.docker.title">一键安装零依赖</h3>
-                    <p class="text-gray-400 leading-relaxed" data-i18n="feature.docker.desc">内置便携 Python + 静态 ffmpeg，无需预装任何环境</p>
-                    <div class="mt-3">
-                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-500/20 border border-green-500/30 text-green-400" data-i18n="feature.docker.status">
-                            已发布
-                        </span>
-                    </div>
-                </div>
-
-                <div class="card-dark p-8 rounded-2xl">
-                    <div class="feature-icon w-12 h-12 mb-6 flex items-center justify-center">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-4 text-white" data-i18n="feature.platform.title">本地字幕转写</h3>
-                    <p class="text-gray-400 leading-relaxed" data-i18n="feature.platform.desc">无字幕视频可一键安装 Whisper 并自选模型，按需启用</p>
-                    <div class="mt-3">
-                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-500/20 border border-green-500/30 text-green-400" data-i18n="feature.platform.status">
-                            已发布
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-dark p-8 rounded-2xl">
-                    <div class="feature-icon w-12 h-12 mb-6 flex items-center justify-center">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-4 text-white" data-i18n="feature.collection.title">智能合集推荐</h3>
-                    <p class="text-gray-400 leading-relaxed" data-i18n="feature.collection.desc">基于主题相似度的智能聚类，自动组织相关内容为合集，提升内容价值</p>
-                    <div class="mt-3">
-                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-500/20 border border-green-500/30 text-green-400" data-i18n="feature.collection.status">
-                            已发布
-                        </span>
-                    </div>
-                </div>
-
-                <div class="card-dark p-8 rounded-2xl">
-                    <div class="feature-icon w-12 h-12 mb-6 flex items-center justify-center">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-4 text-white" data-i18n="feature.project.title">多项目管理</h3>
-                    <p class="text-gray-400 leading-relaxed" data-i18n="feature.project.desc">支持同时管理多个处理项目，数据完全隔离，支持并发处理</p>
-                    <div class="mt-3">
-                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-500/20 border border-green-500/30 text-green-400" data-i18n="feature.project.status">
-                            已发布
-                        </span>
-                    </div>
-                </div>
-
-                <div class="card-dark p-8 rounded-2xl">
-                    <div class="feature-icon w-12 h-12 mb-6 flex items-center justify-center">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m6-1.13a4 4 0 10-4-4 4 4 0 004 4zm6-2a3 3 0 10-3-3"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-4 text-white" data-i18n="feature.account.title">B站多账号</h3>
-                    <p class="text-gray-400 leading-relaxed" data-i18n="feature.account.desc">多账号管理，配合登录健康监控，掉登录及时提醒</p>
-                    <div class="mt-3">
-                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-500/20 border border-green-500/30 text-green-400" data-i18n="feature.account.status">
-                            已发布
-                        </span>
-                    </div>
-                </div>
-
-                <!-- 开发中功能区域 -->
-                <div class="card-dark p-8 rounded-2xl">
-                    <div class="feature-icon w-12 h-12 mb-6 flex items-center justify-center">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-4 text-white" data-i18n="feature.cover.title">智能封面</h3>
-                    <p class="text-gray-400 leading-relaxed" data-i18n="feature.cover.desc">AI自动为视频生成高质量封面图，提升点击率和观看体验</p>
-                    <div class="mt-3">
-                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-500/20 border border-blue-500/30 text-blue-400" data-i18n="feature.cover.status">
-                            开发中
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-dark p-8 rounded-2xl">
-                    <div class="feature-icon w-12 h-12 mb-6 flex items-center justify-center">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-4 text-white" data-i18n="feature.subtitle.title">智能字幕翻译</h3>
-                    <p class="text-gray-400 leading-relaxed" data-i18n="feature.subtitle.desc">自动识别语音并生成多语言字幕，支持中英日韩等多种语言互译</p>
-                    <div class="mt-3">
-                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-500/20 border border-blue-500/30 text-blue-400" data-i18n="feature.subtitle.status">
-                            开发中
-                        </span>
-                    </div>
-                </div>
-
-                <div class="card-dark p-8 rounded-2xl">
-                    <div class="feature-icon w-12 h-12 mb-6 flex items-center justify-center">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-4 text-white" data-i18n="feature.upload.title">B站自动上传</h3>
-                    <p class="text-gray-400 leading-relaxed" data-i18n="feature.upload.desc">自动上传切片到B站，支持批量发布和定时发布</p>
-                    <div class="mt-3">
-                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-500/20 border border-blue-500/30 text-blue-400" data-i18n="feature.upload.status">
-                            开发中
-                        </span>
-                    </div>
-                </div>
-            </div>
+    <div class="steps">
+      <div class="step">
+        <div>
+          <div class="n">01</div>
+          <h3 data-i18n="how.1.h">导入</h3>
+          <p data-i18n="how.1.p">粘一条 B站或 YouTube 链接，或者直接拖入本地视频。没有字幕的视频，可以一键在本地安装 Whisper 转写，不必先去别处生成字幕。</p>
         </div>
-    </section>
-
-    <!-- Product Demo Section（现在显示轮播图） -->
-    <section id="demo" class="py-24">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-20">
-                <h2 class="text-5xl font-bold text-white mb-6" data-i18n="demo.title">产品演示</h2>
-                <p class="text-xl text-gray-400" data-i18n="demo.subtitle">直观体验AutoClip的强大功能</p>
-            </div>
-            <!-- 轮播图 -->
-            <div class="demo-container max-w-6xl mx-auto relative mb-16">
-                <!-- 轮播图容器 -->
-                <div class="carousel-container relative group">
-                    <!-- 主图片区域 -->
-                    <div class="aspect-[16/10] bg-gradient-to-br from-gray-900 via-gray-800 to-black rounded-3xl overflow-hidden shadow-2xl relative">
-                        <!-- 轮播图片容器 -->
-                        <div class="carousel-wrapper h-full relative overflow-hidden">
-                            <!-- 图片1 - 主界面 -->
-                            <div class="carousel-slide absolute inset-0 transition-all duration-700 ease-out transform translate-x-0 opacity-100">
-                                <img src="main.png" alt="AutoClip主界面" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
-                            </div>
-                            <!-- 图片2 - 多输入界面 -->
-                            <div class="carousel-slide absolute inset-0 transition-all duration-700 ease-out transform translate-x-full opacity-0">
-                                <img src="multi_input.png" alt="多输入界面" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
-                            </div>
-                            <!-- 图片3 - 任务管理 -->
-                            <div class="carousel-slide absolute inset-0 transition-all duration-700 ease-out transform translate-x-full opacity-0">
-                                <img src="task.png" alt="任务管理" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
-                            </div>
-                            <!-- 图片4 - 合集预览 -->
-                            <div class="carousel-slide absolute inset-0 transition-all duration-700 ease-out transform translate-x-full opacity-0">
-                                <img src="collection.png" alt="合集预览" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
-                            </div>
-                            <!-- 图片5 - 视频预览 -->
-                            <div class="carousel-slide absolute inset-0 transition-all duration-700 ease-out transform translate-x-full opacity-0">
-                                <img src="preview.png" alt="视频预览" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
-                            </div>
-                        </div>
-                        <!-- 导航按钮 -->
-                        <button class="carousel-btn carousel-prev absolute left-6 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-300 opacity-0 group-hover:opacity-100">
-                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-                            </svg>
-                        </button>
-                        <button class="carousel-btn carousel-next absolute right-6 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-300 opacity-0 group-hover:opacity-100">
-                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                            </svg>
-                        </button>
-                    </div>
-                    <!-- 指示器和标题区域 -->
-                    <div class="mt-8 space-y-8">
-                        <!-- 指示器 -->
-                        <div class="carousel-indicators flex justify-center space-x-4">
-                            <button class="indicator w-3 h-3 rounded-full bg-white/30 hover:bg-white/60 transition-all duration-300 active scale-125" data-slide="0"></button>
-                            <button class="indicator w-3 h-3 rounded-full bg-white/30 hover:bg-white/60 transition-all duration-300" data-slide="1"></button>
-                            <button class="indicator w-3 h-3 rounded-full bg-white/30 hover:bg-white/60 transition-all duration-300" data-slide="2"></button>
-                            <button class="indicator w-3 h-3 rounded-full bg-white/30 hover:bg-white/60 transition-all duration-300" data-slide="3"></button>
-                            <button class="indicator w-3 h-3 rounded-full bg-white/30 hover:bg-white/60 transition-all duration-300" data-slide="4"></button>
-                        </div>
-                        <!-- 图片标题区域 -->
-                        <div class="carousel-caption text-center max-w-3xl mx-auto mb-8">
-                            <h3 class="text-4xl font-bold mb-6 text-white carousel-title tracking-tight" data-i18n="demo.main.title">AutoClip 主界面</h3>
-                            <p class="text-gray-300 text-xl leading-relaxed carousel-description mb-6" data-i18n="demo.main.desc">智能视频切片系统的核心操作界面</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- 轮播图JavaScript -->
-            <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const slides = document.querySelectorAll('.carousel-slide');
-                const indicators = document.querySelectorAll('.indicator');
-                const prevBtn = document.querySelector('.carousel-prev');
-                const nextBtn = document.querySelector('.carousel-next');
-                const titles = [
-                    { titleKey: 'demo.main.title', descKey: 'demo.main.desc' },
-                    { titleKey: 'demo.input.title', descKey: 'demo.input.desc' },
-                    { titleKey: 'demo.task.title', descKey: 'demo.task.desc' },
-                    { titleKey: 'demo.collection.title', descKey: 'demo.collection.desc' },
-                    { titleKey: 'demo.preview.title', descKey: 'demo.preview.desc' }
-                ];
-                
-                let currentSlide = 0;
-                
-                function updateCarousel() {
-                    slides.forEach((slide, index) => {
-                        if (index === currentSlide) {
-                            slide.style.transform = 'translateX(0)';
-                            slide.style.opacity = '1';
-                        } else if (index < currentSlide) {
-                            slide.style.transform = 'translateX(-100%)';
-                            slide.style.opacity = '0';
-                        } else {
-                            slide.style.transform = 'translateX(100%)';
-                            slide.style.opacity = '0';
-                        }
-                    });
-                    
-                    indicators.forEach((indicator, index) => {
-                        indicator.classList.toggle('active', index === currentSlide);
-                        if (index === currentSlide) {
-                            indicator.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
-                            indicator.style.transform = 'scale(1.25)';
-                        } else {
-                            indicator.style.backgroundColor = 'rgba(255, 255, 255, 0.3)';
-                            indicator.style.transform = 'scale(1)';
-                        }
-                    });
-                    
-                    // 更新标题和描述
-                    const titleEl = document.querySelector('.carousel-title');
-                    const descEl = document.querySelector('.carousel-description');
-                    if (titleEl && descEl && titles[currentSlide]) {
-                        const titleKey = titles[currentSlide].titleKey;
-                        const descKey = titles[currentSlide].descKey;
-                        if (translations[currentLang] && translations[currentLang][titleKey]) {
-                            titleEl.textContent = translations[currentLang][titleKey];
-                        }
-                        if (translations[currentLang] && translations[currentLang][descKey]) {
-                            descEl.textContent = translations[currentLang][descKey];
-                        }
-                    }
-                }
-                
-                function nextSlide() {
-                    currentSlide = (currentSlide + 1) % slides.length;
-                    updateCarousel();
-                }
-                
-                function prevSlide() {
-                    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-                    updateCarousel();
-                }
-                
-                // 事件监听
-                nextBtn.addEventListener('click', nextSlide);
-                prevBtn.addEventListener('click', prevSlide);
-                
-                indicators.forEach((indicator, index) => {
-                    indicator.addEventListener('click', () => {
-                        currentSlide = index;
-                        updateCarousel();
-                    });
-                });
-                
-                // 自动轮播
-                setInterval(nextSlide, 5000);
-                
-                // 初始化
-                updateCarousel();
-            });
-            </script>
+        <div class="vis" aria-hidden="true">
+          <div class="import">
+            <div class="seg"><span class="on" data-i18n="mock.seg.link">链接</span><span data-i18n="mock.seg.file">文件</span></div>
+            <div class="field">https://www.bilibili.com/video/BV1…</div>
+            <span class="go" data-i18n="mock.go">开始</span>
+          </div>
+          <div class="srcrow"><span class="chip">bilibili</span><span class="chip">YouTube</span><span class="chip" data-i18n="how.1.chip.local">本地 mp4 / mov / mkv</span><span class="chip" data-i18n="how.1.chip.srt">可选 SRT 字幕</span></div>
         </div>
-    </section>
+      </div>
 
-    <!-- Use Cases Section -->
-    <section class="py-24">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-20">
-                <h2 class="text-5xl font-bold text-white mb-6" data-i18n="usecases.title">应用场景</h2>
-                <p class="text-xl text-gray-400" data-i18n="usecases.subtitle">适用于多种内容创作和教育场景</p>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="card-dark p-8 rounded-2xl text-center">
-                    <div class="feature-icon w-16 h-16 mx-auto mb-6 flex items-center justify-center">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-lg font-semibold mb-4 text-white" data-i18n="usecase.creator.title">内容创作者</h3>
-                    <p class="text-gray-400 leading-relaxed" data-i18n="usecase.creator.desc">直播回放处理、课程视频切片、访谈节目处理</p>
-                </div>
-
-                <div class="card-dark p-8 rounded-2xl text-center">
-                    <div class="feature-icon w-16 h-16 mx-auto mb-6 flex items-center justify-center">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-lg font-semibold mb-4 text-white" data-i18n="usecase.education.title">教育机构</h3>
-                    <p class="text-gray-400 leading-relaxed" data-i18n="usecase.education.desc">在线课程制作、知识点提取、学习资源整理</p>
-                </div>
-
-                <div class="card-dark p-8 rounded-2xl text-center">
-                    <div class="feature-icon w-16 h-16 mx-auto mb-6 flex items-center justify-center">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-lg font-semibold mb-4 text-white" data-i18n="usecase.training.title">企业培训</h3>
-                    <p class="text-gray-400 leading-relaxed" data-i18n="usecase.training.desc">培训视频处理、技能点提取、知识库建设</p>
-                </div>
-
-                <div class="card-dark p-8 rounded-2xl text-center">
-                    <div class="feature-icon w-16 h-16 mx-auto mb-6 flex items-center justify-center">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-lg font-semibold mb-4 text-white" data-i18n="usecase.platform.title">平台运营</h3>
-                    <p class="text-gray-400 leading-relaxed" data-i18n="usecase.platform.desc">内容推荐、流量分发、用户留存</p>
-                </div>
-            </div>
+      <div class="step">
+        <div>
+          <div class="n">02</div>
+          <h3 data-i18n="how.2.h">理解</h3>
+          <p data-i18n="how.2.p">大模型读完整条视频的内容，按话题切分、逐段评分，挑出真正值得单独看的片段，并为每段写好标题。用哪个模型你自己定：通义千问、OpenAI、Gemini、硅基流动，或任何 OpenAI 兼容接口。</p>
         </div>
-    </section>
-
-    <!-- Waitlist Section -->
-    <section id="waitlist" class="py-24">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="card-dark p-12 rounded-3xl">
-                <div class="mb-8">
-                    <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-gradient-to-r from-blue-500/10 to-cyan-500/10 border border-blue-500/20 text-blue-400 mb-6" data-i18n="contact.development">
-                        <span class="w-2 h-2 bg-blue-400 rounded-full mr-2 animate-pulse"></span>
-                        加入社区 · 获取支持
-                    </span>
-                </div>
-                <h2 class="text-5xl font-bold mb-6 text-white" data-i18n="waitlist.title">加入用户群</h2>
-                <p class="text-xl mb-8 text-gray-300 leading-relaxed" data-i18n="waitlist.subtitle">
-                    扫描下方二维码，加入 AutoClip 用户群，获取使用帮助与版本更新通知
-                </p>
-                
-                <!-- Contact Methods -->
-                <div class="grid md:grid-cols-2 gap-8 mb-8">
-                    <!-- QQ群 -->
-                    <div class="bg-[#1A1D26] border border-white/10 rounded-2xl p-8 text-center">
-                        <!-- QQ QR Code -->
-                        <div class="w-48 h-48 mx-auto mb-6 bg-white rounded-2xl flex items-center justify-center shadow-lg p-4">
-                            <img src="qq_qr.jpg" alt="QQ群二维码" class="w-full h-full object-contain">
-                        </div>
-                        
-                        <!-- Instructions -->
-                        <div class="space-y-3">
-                            <h3 class="text-xl font-semibold text-white mb-2" data-i18n="contact.qq.title">QQ用户群</h3>
-                            <p class="text-gray-300 text-sm leading-relaxed" data-i18n="contact.qq.desc">
-                                扫描上方二维码，加入QQ用户群<br>
-                                与其他用户交流使用心得
-                            </p>
-                            
-                            <!-- Contact Button -->
-                            <div class="mt-6">
-                                <div class="inline-flex items-center px-6 py-3 bg-[#2C2E36] border border-white/10 rounded-xl text-white font-medium" data-i18n="contact.qq.button">
-                                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                                    </svg>
-                                    QQ专属服务
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Feishu Contact -->
-                    <div class="bg-[#1A1D26] border border-white/10 rounded-2xl p-8 text-center">
-                        <!-- Feishu QR Code -->
-                        <div class="w-48 h-48 mx-auto mb-6 bg-white rounded-2xl flex items-center justify-center shadow-lg p-4">
-                            <img src="feishu_qr.jpg" alt="飞书群二维码" class="w-full h-full object-contain">
-                        </div>
-                        
-                        <!-- Instructions -->
-                        <div class="space-y-3">
-                            <h3 class="text-xl font-semibold text-white mb-2" data-i18n="contact.feishu.title">飞书个人</h3>
-                            <p class="text-gray-300 text-sm leading-relaxed" data-i18n="contact.feishu.desc">
-                                扫描上方二维码，添加飞书个人<br>
-                                获取技术支持和最新版本通知
-                            </p>
-                            
-                            <!-- Contact Button -->
-                            <div class="mt-6">
-                                <div class="inline-flex items-center px-6 py-3 bg-[#2C2E36] border border-white/10 rounded-xl text-white font-medium" data-i18n="contact.feishu.button">
-                                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                                    </svg>
-                                    飞书专属服务
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Tips -->
-                <div class="mt-12 text-center">
-                    <p class="text-gray-400 text-base md:text-lg font-medium" data-i18n="contact.tip">
-                        💡 提示：请备注"AutoClip"以便快速通过好友申请
-                    </p>
-                </div>
-                
-                <!-- Benefits -->
-                <div class="grid md:grid-cols-3 gap-10 mt-12 text-left">
-                    <div class="flex items-start space-x-3">
-                        <div class="flex-shrink-0 w-8 h-8 bg-blue-500/20 rounded-lg flex items-center justify-center mt-1">
-                            <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                            </svg>
-                        </div>
-                        <div>
-                            <h3 class="text-white font-semibold mb-1" data-i18n="contact.benefit1.title">实时沟通</h3>
-                             <p class="text-gray-400 text-sm" data-i18n="contact.benefit1.desc">直接对话，实时了解开发进展</p>
-                        </div>
-                    </div>
-                    
-                    <div class="flex items-start space-x-3">
-                        <div class="flex-shrink-0 w-8 h-8 bg-green-500/20 rounded-lg flex items-center justify-center mt-1">
-                            <svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
-                            </svg>
-                        </div>
-                        <div>
-                            <h3 class="text-white font-semibold mb-1" data-i18n="contact.benefit2.title">专属服务</h3>
-                             <p class="text-gray-400 text-sm" data-i18n="contact.benefit2.desc">一对一咨询，定制化解决方案</p>
-                        </div>
-                    </div>
-                    
-                    <div class="flex items-start space-x-3">
-                        <div class="flex-shrink-0 w-8 h-8 bg-purple-500/20 rounded-lg flex items-center justify-center mt-1">
-                            <svg class="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
-                            </svg>
-                        </div>
-                        <div>
-                            <h3 class="text-white font-semibold mb-1" data-i18n="contact.benefit3.title">版本通知</h3>
-                             <p class="text-gray-400 text-sm" data-i18n="contact.benefit3.desc">第一时间获取新版本与使用帮助</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="vis" aria-hidden="true">
+          <div class="rows">
+            <div class="row pick"><span class="d"></span><span class="tc">12:04–14:31</span><span class="tt" data-i18n="how.2.r1">为什么我放弃了订阅制</span><span class="sc">9.2</span></div>
+            <div class="row pick"><span class="d"></span><span class="tc">27:50–31:12</span><span class="tt" data-i18n="how.2.r2">第一个付费用户是怎么来的</span><span class="sc">8.8</span></div>
+            <div class="row pick"><span class="d"></span><span class="tc">48:19–50:02</span><span class="tt" data-i18n="how.2.r3">一个人做产品最怕的事</span><span class="sc">8.5</span></div>
+            <div class="row"><span class="d"></span><span class="tc">55:40–57:10</span><span class="tt" data-i18n="how.2.r4">闲聊：最近在看的书</span><span class="sc">6.1</span></div>
+          </div>
         </div>
-    </section>
+      </div>
 
-    <!-- Footer -->
-    <footer class="py-10 border-t border-gray-800">
-        <div class="max-w-3xl mx-auto px-4 text-center">
-            <h1 class="text-2xl font-bold text-white drop-shadow-lg mb-2">AutoClip</h1>
-            <p class="text-gray-400 mb-2" data-i18n="footer.description">AI驱动的智能视频切片系统，让内容创作更高效。</p>
-            <p class="mb-3">
-                <a id="footer-privacy" href="https://github.com/zhouxiaoka/autoclip/blob/main/docs/PRIVACY.md" target="_blank" rel="noopener" class="text-gray-400 hover:text-white transition-colors text-sm underline underline-offset-4" data-i18n="footer.privacy">隐私政策</a>
-            </p>
-            <p class="text-gray-500 text-sm">&copy; 2025–2026 AutoClip. <span data-i18n="footer.copyright">开源项目，MIT许可证.</span></p>
+      <div class="step">
+        <div>
+          <div class="n">03</div>
+          <h3 data-i18n="how.3.h">出片</h3>
+          <p data-i18n="how.3.p">切片和合集直接生成到本地。标题可以顺手改，合集里拖拽排序，多个 B站账号一键上传。剩下的时间，留给下一条视频。</p>
         </div>
-    </footer>
+        <div class="vis" aria-hidden="true">
+          <div class="clips">
+            <div class="clip"><div class="thumb t2"></div><div class="t" data-i18n="how.2.r1">为什么我放弃了订阅制</div><div class="m mono">02:27</div></div>
+            <div class="clip"><div class="thumb t1"></div><div class="t" data-i18n="how.2.r2">第一个付费用户是怎么来的</div><div class="m mono">03:22</div></div>
+          </div>
+          <div class="vis-foot">
+            <span class="lbl" data-i18n="how.3.foot">合集 · 独立开发者的一年 · 3 段</span>
+            <span class="pill"><i></i><span data-i18n="how.3.pill">已上传到 B站</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <script>
-        // 翻译数据
-        const translations = {
-            zh: {
-                'nav.download': '下载',
-                'nav.features': '功能特性',
-                'nav.demo': '演示',
-                'nav.contact': '用户社区',
-                'hero.subtitle': '视频高光，一键生成',
-                'hero.description': '你的AI视频剪辑搭子，一条视频自动提取多个高光片段',
-                'hero.feature1.title': '一键安装零依赖',
-                'hero.feature1.desc': '内置便携 Python + ffmpeg，无需配置',
-                'hero.feature2.title': '端到端本地出片',
-                'hero.feature2.desc': '下载到切片全程本地，隐私可控',
-                'hero.feature3.title': '原生桌面客户端',
-                'hero.feature3.desc': 'macOS (Apple Silicon) 与 Windows (x64)，Intel Mac / Linux 后续',
-                'features.title': '核心功能',
-                'features.subtitle': 'AI驱动的全流程自动化视频处理',
-                'install.title': '下载与安装',
-                'install.subtitle': '三步即可开始，无需配置任何环境',
-                'install.step1': 'macOS：下载 DMG，把 App 拖进「应用程序」；Windows：运行安装包，按用户安装、无需管理员权限',
-                'install.step2': '首次打开：macOS 右键点应用 → 选「打开」；Windows 在 SmartScreen 点「更多信息」→「仍要运行」',
-                'install.step3': '进入「设置」填入 AI 提供商 API Key（通义千问 / OpenAI / Gemini / 硅基流动，或任意 OpenAI 兼容接口），开始使用',
-                'install.req': '系统要求：macOS Apple Silicon (M 系列) · Windows 10/11 x64',
-                'demo.title': '产品演示',
-                'demo.subtitle': '直观体验AutoClip的强大功能',
-                'usecases.title': '应用场景',
-                'usecases.subtitle': '适用于多种内容创作和教育场景',
-                'waitlist.title': '加入用户群',
-                'waitlist.subtitle': '扫描下方二维码，加入AutoClip用户群，获取产品最新进展和使用帮助',
-                'footer.description': 'AI驱动的智能视频切片系统，让内容创作更高效。',
-                'footer.copyright': '开源项目，MIT许可证.',
-                'feature.ai.title': 'AI智能分析',
-                'feature.ai.desc': '基于大语言模型的视频内容理解，智能识别高光时刻',
-                'feature.ai.status': '已发布',
-                'feature.realtime.title': '顺手的编辑',
-                'feature.realtime.desc': '切片标题可手改、合集内拖拽排序、按分类组织项目',
-                'feature.realtime.status': '已发布',
-                'feature.title.title': '自动标题生成',
-                'feature.title.desc': 'AI自动为每个切片生成吸引人的标题，提升内容传播效果',
-                'feature.title.status': '已发布',
-                'feature.quality.title': '内容质量评估',
-                'feature.quality.desc': '智能评估切片质量，确保输出内容的高质量标准',
-                'feature.quality.status': '已发布',
-                'feature.docker.title': '一键安装零依赖',
-                'feature.docker.desc': '内置便携 Python + 静态 ffmpeg，无需预装任何环境',
-                'feature.docker.status': '已发布',
-                'feature.platform.title': '本地字幕转写',
-                'feature.platform.desc': '无字幕视频可一键安装 Whisper 并自选模型，按需启用',
-                'feature.platform.status': '已发布',
-                'feature.cover.title': '智能封面',
-                'feature.cover.desc': 'AI自动为视频生成高质量封面图，提升点击率和观看体验',
-                'feature.cover.status': '开发中',
-                'feature.subtitle.title': '智能字幕翻译',
-                'feature.subtitle.desc': '自动识别语音并生成多语言字幕，支持中英日韩等多种语言互译',
-                'feature.subtitle.status': '开发中',
-                'feature.collection.title': '智能合集推荐',
-                'feature.collection.desc': '基于主题相似度的智能聚类，自动组织相关内容为合集，提升内容价值',
-                'feature.collection.status': '已发布',
-                'feature.project.title': '多项目管理',
-                'feature.project.desc': '支持同时管理多个处理项目，数据完全隔离，支持并发处理',
-                'feature.project.status': '已发布',
-                'feature.account.title': 'B站多账号',
-                'feature.account.desc': '多账号管理，配合登录健康监控，掉登录及时提醒',
-                'feature.account.status': '已发布',
-                'feature.upload.title': 'B站自动上传',
-                'feature.upload.desc': '自动上传切片到B站，支持批量发布和定时发布',
-                'feature.upload.status': '开发中',
-                'demo.main.title': 'AutoClip 主界面',
-                'demo.main.desc': '智能视频切片系统的核心操作界面',
-                'demo.input.title': '多输入支持',
-                'demo.input.desc': '支持视频文件、链接和字幕文件多种输入方式',
-                'demo.task.title': '任务管理',
-                'demo.task.desc': '实时监控处理进度，支持批量任务管理',
-                'demo.collection.title': '智能合集',
-                'demo.collection.desc': 'AI自动聚类相关内容，生成主题合集',
-                'demo.preview.title': '视频预览',
-                'demo.preview.desc': '切片结果预览，支持在线播放和编辑',
-                'usecase.creator.title': '内容创作者',
-                'usecase.creator.desc': '直播回放处理、课程视频切片、访谈节目处理',
-                'usecase.education.title': '教育机构',
-                'usecase.education.desc': '在线课程制作、知识点提取、学习资源整理',
-                'usecase.training.title': '企业培训',
-                'usecase.training.desc': '培训视频处理、技能点提取、知识库建设',
-                'usecase.platform.title': '平台运营',
-                'usecase.platform.desc': '内容推荐、流量分发、用户留存',
-                'hero.badge': '🚀 v1.2.1 已发布 · 🍎 macOS · 🪟 Windows',
-                'contact.qq.title': 'QQ用户群',
-                'contact.qq.desc': '扫描上方二维码，加入QQ用户群<br>与其他用户交流使用心得',
-                'contact.qq.button': 'QQ专属服务',
-                'contact.feishu.title': '飞书个人',
-                'contact.feishu.desc': '扫描上方二维码，添加飞书个人<br>获取技术支持和最新版本通知',
-                'contact.feishu.button': '飞书专属服务',
-                'contact.tip': '💡 提示：请备注"AutoClip"以便快速通过好友申请',
-                'contact.benefit1.title': '实时沟通',
-                'contact.benefit1.desc': '直接对话，实时了解开发进展',
-                'contact.benefit2.title': '专属服务',
-                'contact.benefit2.desc': '一对一咨询，定制化解决方案',
-                'contact.benefit3.title': '版本通知',
-                'contact.benefit3.desc': '第一时间获取新版本与使用帮助',
-                'contact.development': '加入社区 · 获取支持',
-                'hero.github.view': 'GitHub',
-                'hero.download.dmg': 'macOS 客户端 (Apple Silicon) — v1.2.1',
-                'hero.download.win': 'Windows 安装包 (x64) — v1.2.1',
-                'hero.releases.view': '全部版本 / Releases',
-                'hero.beta.info': 'macOS Apple Silicon (M 系列) · Windows 10/11 x64。均为未签名版本，首次打开见下方提示。',
-                'waitlist.title': '加入用户群',
-                'waitlist.subtitle': '扫描下方二维码，加入 AutoClip 用户群，获取使用帮助与版本更新通知',
-                'footer.privacy': '隐私政策',
-                'announcement.title': '首次打开提示',
-                'announcement.content': '两个平台的安装包目前都未做代码签名。macOS：首次打开请右键点击应用 → 选「打开」即可绕过 Gatekeeper（直接双击可能提示"无法验证开发者"）。Windows：首次运行 SmartScreen 会拦截，点「更多信息」→「仍要运行」。Intel Mac / Linux 后续支持。'
-            },
-            en: {
-                'nav.download': 'Download',
-                'nav.features': 'Features',
-                'nav.demo': 'Demo',
-                'nav.contact': 'Community',
-                'hero.subtitle': 'AI-powered video highlights, one-click generation',
-                'hero.description': 'Your AI video editing companion, automatically extract multiple highlights from one video',
-                'hero.feature1.title': 'One-Click, Zero-Dependency',
-                'hero.feature1.desc': 'Bundled portable Python + ffmpeg, no setup',
-                'hero.feature2.title': 'End-to-End Local',
-                'hero.feature2.desc': 'From download to clips, all local & private',
-                'hero.feature3.title': 'Native Desktop App',
-                'hero.feature3.desc': 'macOS (Apple Silicon) and Windows (x64); Intel Mac / Linux later',
-                'features.title': 'Core Features',
-                'features.subtitle': 'AI-driven full-process automated video processing',
-                'install.title': 'Download & Install',
-                'install.subtitle': 'Start in three steps, with no environment setup',
-                'install.step1': 'macOS: download the DMG and drag the app into Applications. Windows: run the installer (per-user, no admin rights needed)',
-                'install.step2': 'First launch: on macOS right-click the app → Open; on Windows choose “More info → Run anyway” in SmartScreen',
-                'install.step3': 'Open Settings, enter your AI provider API key (Qwen / OpenAI / Gemini / SiliconFlow, or any OpenAI-compatible endpoint), and start',
-                'install.req': 'Requirements: macOS Apple Silicon (M-series) · Windows 10/11 x64',
-                'demo.title': 'Product Demo',
-                'demo.subtitle': 'Experience the powerful features of AutoClip intuitively',
-                'usecases.title': 'Use Cases',
-                'usecases.subtitle': 'Suitable for various content creation and educational scenarios',
-                'waitlist.title': 'Join User Community',
-                'waitlist.subtitle': 'Scan the QR code below to join the AutoClip user community and get the latest product updates and usage help',
-                'footer.description': 'AI-driven intelligent video clipping system, making content creation more efficient.',
-                'footer.copyright': 'Open source project, MIT license.',
-                'feature.ai.title': 'AI Smart Analysis',
-                'feature.ai.desc': 'Video content understanding based on large language models, intelligently identifying highlight moments',
-                'feature.ai.status': 'Released',
-                'feature.realtime.title': 'Handy Editing',
-                'feature.realtime.desc': 'Edit clip titles, drag-and-drop ordering within collections, organize by category',
-                'feature.realtime.status': 'Released',
-                'feature.title.title': 'Auto Title Generation',
-                'feature.title.desc': 'AI automatically generates attractive titles for each clip, improving content dissemination',
-                'feature.title.status': 'Released',
-                'feature.quality.title': 'Content Quality Assessment',
-                'feature.quality.desc': 'Intelligent evaluation of clip quality, ensuring high-quality output content',
-                'feature.quality.status': 'Released',
-                'feature.docker.title': 'One-Click, Zero-Dependency',
-                'feature.docker.desc': 'Bundled portable Python + static ffmpeg, no environment setup required',
-                'feature.docker.status': 'Released',
-                'feature.platform.title': 'Local Subtitle Transcription',
-                'feature.platform.desc': 'One-click Whisper install with selectable models, enabled on demand',
-                'feature.platform.status': 'Released',
-                'feature.cover.title': 'Smart Cover',
-                'feature.cover.desc': 'AI automatically generates high-quality cover images for videos, improving click-through rates and viewing experience',
-                'feature.cover.status': 'In Development',
-                'feature.subtitle.title': 'Smart Subtitle Translation',
-                'feature.subtitle.desc': 'Automatically recognize speech and generate multilingual subtitles, supporting translation between Chinese, English, Japanese, Korean and other languages',
-                'feature.subtitle.status': 'In Development',
-                'feature.collection.title': 'Smart Collection Recommendation',
-                'feature.collection.desc': 'Intelligent clustering based on topic similarity, automatically organizing related content into collections, enhancing content value',
-                'feature.collection.status': 'Released',
-                'feature.project.title': 'Multi-Project Management',
-                'feature.project.desc': 'Support simultaneous management of multiple processing projects, complete data isolation, supporting concurrent processing',
-                'feature.project.status': 'Released',
-                'feature.account.title': 'Bilibili Multi-Account',
-                'feature.account.desc': 'Account management with login health monitoring and timely re-login alerts',
-                'feature.account.status': 'Released',
-                'feature.upload.title': 'Bilibili Auto Upload',
-                'feature.upload.desc': 'Automatically upload clips to Bilibili, supporting batch publishing and scheduled publishing',
-                'feature.upload.status': 'In Development',
-                'demo.main.title': 'AutoClip Main Interface',
-                'demo.main.desc': 'Core operation interface of intelligent video clipping system',
-                'demo.input.title': 'Multi-Input Support',
-                'demo.input.desc': 'Support for video files, links and subtitle files in multiple input formats',
-                'demo.task.title': 'Task Management',
-                'demo.task.desc': 'Real-time monitoring of processing progress, supporting batch task management',
-                'demo.collection.title': 'Smart Collection',
-                'demo.collection.desc': 'AI automatically clusters related content and generates topic collections',
-                'demo.preview.title': 'Video Preview',
-                'demo.preview.desc': 'Clip result preview, supporting online playback and editing',
-                'usecase.creator.title': 'Content Creators',
-                'usecase.creator.desc': 'Live replay processing, course video clipping, interview program processing',
-                'usecase.education.title': 'Educational Institutions',
-                'usecase.education.desc': 'Online course production, knowledge point extraction, learning resource organization',
-                'usecase.training.title': 'Corporate Training',
-                'usecase.training.desc': 'Training video processing, skill point extraction, knowledge base construction',
-                'usecase.platform.title': 'Platform Operations',
-                'usecase.platform.desc': 'Content recommendation, traffic distribution, user retention',
-                'hero.badge': '🚀 v1.2.1 Released · 🍎 macOS · 🪟 Windows',
-                'contact.qq.title': 'QQ User Group',
-                'contact.qq.desc': 'Scan the QR code above to join the QQ user group<br>Exchange usage experience with other users',
-                'contact.qq.button': 'QQ Exclusive Service',
-                'contact.feishu.title': 'Feishu Personal',
-                'contact.feishu.desc': 'Scan the QR code above to add Feishu personal contact<br>Get technical support and latest version notifications',
-                'contact.feishu.button': 'Feishu Exclusive Service',
-                'contact.tip': '💡 Tip: Please note "AutoClip" for quick approval',
-                'contact.benefit1.title': 'Real-time Communication',
-                'contact.benefit1.desc': 'Direct dialogue, real-time development updates',
-                'contact.benefit2.title': 'Exclusive Service',
-                'contact.benefit2.desc': 'One-on-one consultation, customized solutions',
-                'contact.benefit3.title': 'Release Updates',
-                'contact.benefit3.desc': 'Get new versions and usage help first',
-                'contact.development': 'Community & Support',
-                'hero.github.view': 'GitHub',
-                'hero.download.dmg': 'macOS (Apple Silicon) — v1.2.1',
-                'hero.download.win': 'Windows installer (x64) — v1.2.1',
-                'hero.releases.view': 'All Releases',
-                'hero.beta.info': 'macOS Apple Silicon (M-series) · Windows 10/11 x64. Both builds are unsigned — see the first-launch note below.',
-                'waitlist.title': 'Join the Community',
-                'waitlist.subtitle': 'Scan the QR code below to join the AutoClip community for usage help and release updates',
-                'footer.privacy': 'Privacy Policy',
-                'announcement.title': 'First Launch Note',
-                'announcement.content': 'Neither installer is code-signed yet. macOS: on first launch, right-click the app → Open to bypass Gatekeeper (a plain double-click may warn that the developer cannot be verified). Windows: SmartScreen will warn on first run — choose “More info → Run anyway”. Intel Mac / Linux support is planned.'
-            },
-            ja: {
-                'nav.download': 'ダウンロード',
-                'nav.features': '機能',
-                'nav.demo': 'デモ',
-                'nav.contact': 'コミュニティ',
-                'hero.subtitle': 'AI駆動の動画ハイライト、ワンクリック生成',
-                'hero.description': 'あなたのAI動画編集パートナー、一本の動画から複数のハイライトを自動抽出',
-                'hero.feature1.title': 'ワンクリック・依存ゼロ',
-                'hero.feature1.desc': '携帯版 Python + ffmpeg を内蔵、設定不要',
-                'hero.feature2.title': 'エンドツーエンドでローカル',
-                'hero.feature2.desc': 'ダウンロードからクリップまで全てローカル、プライバシー安心',
-                'hero.feature3.title': 'ネイティブデスクトップアプリ',
-                'hero.feature3.desc': 'macOS (Apple Silicon) と Windows (x64) に対応、Intel Mac / Linux は今後対応',
-                'features.title': 'コア機能',
-                'features.subtitle': 'AI駆動の全プロセス自動動画処理',
-                'install.title': 'ダウンロードとインストール',
-                'install.subtitle': '環境構築不要、3 ステップで開始',
-                'install.step1': 'macOS：DMG をダウンロードしアプリを「アプリケーション」にドラッグ。Windows：インストーラーを実行（ユーザー単位、管理者権限不要）',
-                'install.step2': '初回起動：macOS はアプリを右クリック →「開く」、Windows は SmartScreen で「詳細情報」→「実行」',
-                'install.step3': '「設定」で AI プロバイダーの API キー（通義千問 / OpenAI / Gemini / SiliconFlow、または OpenAI 互換エンドポイント）を入力して開始',
-                'install.req': 'システム要件：macOS Apple Silicon (M シリーズ) · Windows 10/11 x64',
-                'demo.title': '製品デモ',
-                'demo.subtitle': 'AutoClipの強力な機能を直感的に体験',
-                'usecases.title': '使用例',
-                'usecases.subtitle': '様々なコンテンツ制作と教育シナリオに適用',
-                'waitlist.title': 'ユーザーコミュニティに参加',
-                'waitlist.subtitle': '下記のQRコードをスキャンしてAutoClipユーザーコミュニティに参加し、最新の製品アップデートと使用方法のヘルプを取得',
-                'footer.description': 'AI駆動のインテリジェント動画クリッピングシステム、コンテンツ制作をより効率的に。',
-                'footer.copyright': 'オープンソースプロジェクト、MITライセンス。',
-                'feature.ai.title': 'AIスマート分析',
-                'feature.ai.desc': '大規模言語モデルに基づく動画コンテンツ理解、ハイライト瞬間の智能識別',
-                'feature.ai.status': 'リリース済み',
-                'feature.realtime.title': '手軽な編集',
-                'feature.realtime.desc': 'クリップタイトルの手動編集、コレクション内のドラッグ並べ替え、カテゴリ別整理',
-                'feature.realtime.status': 'リリース済み',
-                'feature.title.title': '自動タイトル生成',
-                'feature.title.desc': 'AIが各クリップに魅力的なタイトルを自動生成、コンテンツ拡散効果を向上',
-                'feature.title.status': 'リリース済み',
-                'feature.quality.title': 'コンテンツ品質評価',
-                'feature.quality.desc': 'クリップ品質の智能評価、高品質な出力コンテンツを保証',
-                'feature.quality.status': 'リリース済み',
-                'feature.docker.title': 'ワンクリック・依存ゼロ',
-                'feature.docker.desc': '携帯版 Python + 静的 ffmpeg を内蔵、環境の事前インストール不要',
-                'feature.docker.status': 'リリース済み',
-                'feature.platform.title': 'ローカル字幕文字起こし',
-                'feature.platform.desc': '字幕なし動画もワンクリックで Whisper をインストール、モデルを選んで必要時に使用',
-                'feature.platform.status': 'リリース済み',
-                'feature.cover.title': 'スマートカバー',
-                'feature.cover.desc': 'AIが動画の高品質カバー画像を自動生成、クリック率と視聴体験を向上',
-                'feature.cover.status': '開発中',
-                'feature.subtitle.title': 'スマート字幕翻訳',
-                'feature.subtitle.desc': '音声を自動認識し多言語字幕を生成、中英日韓など多言語間翻訳をサポート',
-                'feature.subtitle.status': '開発中',
-                'feature.collection.title': 'スマートコレクション推薦',
-                'feature.collection.desc': 'トピック類似度に基づく智能クラスタリング、関連コンテンツを自動的にコレクションに整理、コンテンツ価値を向上',
-                'feature.collection.status': 'リリース済み',
-                'feature.project.title': 'マルチプロジェクト管理',
-                'feature.project.desc': '複数の処理プロジェクトの同時管理をサポート、完全なデータ分離、並行処理をサポート',
-                'feature.project.status': 'リリース済み',
-                'feature.account.title': 'Bilibiliマルチアカウント',
-                'feature.account.desc': '複数アカウント管理、ログイン健全性モニタリングでログイン切れを即時通知',
-                'feature.account.status': 'リリース済み',
-                'feature.upload.title': 'Bilibili自動アップロード',
-                'feature.upload.desc': 'クリップをBilibiliに自動アップロード、バッチ公開とスケジュール公開をサポート',
-                'feature.upload.status': '開発中',
-                'demo.main.title': 'AutoClipメインインターフェース',
-                'demo.main.desc': '智能動画クリッピングシステムのコア操作インターフェース',
-                'demo.input.title': 'マルチ入力サポート',
-                'demo.input.desc': '動画ファイル、リンク、字幕ファイルなど複数の入力形式をサポート',
-                'demo.task.title': 'タスク管理',
-                'demo.task.desc': '処理進捗のリアルタイム監視、バッチタスク管理をサポート',
-                'demo.collection.title': 'スマートコレクション',
-                'demo.collection.desc': 'AIが関連コンテンツを自動クラスタリングし、トピックコレクションを生成',
-                'demo.preview.title': '動画プレビュー',
-                'demo.preview.desc': 'クリップ結果プレビュー、オンライン再生と編集をサポート',
-                'usecase.creator.title': 'コンテンツクリエイター',
-                'usecase.creator.desc': 'ライブリプレイ処理、コース動画クリッピング、インタビュー番組処理',
-                'usecase.education.title': '教育機関',
-                'usecase.education.desc': 'オンラインコース制作、知識点抽出、学習リソース整理',
-                'usecase.training.title': '企業研修',
-                'usecase.training.desc': '研修動画処理、スキル点抽出、ナレッジベース構築',
-                'usecase.platform.title': 'プラットフォーム運営',
-                'usecase.platform.desc': 'コンテンツ推薦、トラフィック配信、ユーザー維持',
-                'hero.badge': '🚀 v1.2.1 リリース · 🍎 macOS · 🪟 Windows',
-                'contact.qq.title': 'QQユーザーグループ',
-                'contact.qq.desc': '上記のQRコードをスキャンしてQQユーザーグループに参加<br>他のユーザーと使用体験を交流',
-                'contact.qq.button': 'QQ専用サービス',
-                'contact.feishu.title': 'Feishu個人',
-                'contact.feishu.desc': '上記のQRコードをスキャンしてFeishu個人を追加<br>技術サポートと最新バージョン通知を取得',
-                'contact.feishu.button': 'Feishu専用サービス',
-                'contact.tip': '💡 ヒント：「AutoClip」と記載して迅速な承認を取得',
-                'contact.benefit1.title': 'リアルタイムコミュニケーション',
-                'contact.benefit1.desc': '直接対話、リアルタイム開発進捗',
-                'contact.benefit2.title': '専用サービス',
-                'contact.benefit2.desc': '1対1コンサルティング、カスタマイズソリューション',
-                'contact.benefit3.title': 'バージョン通知',
-                'contact.benefit3.desc': '新バージョンと使い方のヘルプをいち早く入手',
-                'contact.development': 'コミュニティ・サポート',
-                'hero.github.view': 'GitHub',
-                'hero.download.dmg': 'macOS クライアント (Apple Silicon) — v1.2.1',
-                'hero.download.win': 'Windows インストーラー (x64) — v1.2.1',
-                'hero.releases.view': 'すべてのリリース',
-                'hero.beta.info': 'macOS Apple Silicon (M シリーズ) · Windows 10/11 x64。いずれも未署名ビルドです。初回起動は下記の注意をご覧ください。',
-                'waitlist.title': 'コミュニティに参加',
-                'waitlist.subtitle': '下の QR コードをスキャンして AutoClip コミュニティに参加し、使い方のヘルプとバージョン更新通知を入手',
-                'footer.privacy': 'プライバシーポリシー',
-                'announcement.title': '初回起動時の注意',
-                'announcement.content': '両プラットフォームのインストーラーはまだコード署名されていません。macOS：初回起動時はアプリを右クリック →「開く」で Gatekeeper を回避できます（ダブルクリックでは「開発元を確認できません」と表示される場合があります）。Windows：初回実行時に SmartScreen が表示されたら「詳細情報」→「実行」を選択してください。Intel Mac / Linux は今後対応予定です。'
-            },
-            ko: {
-                'nav.download': '다운로드',
-                'nav.features': '기능',
-                'nav.demo': '데모',
-                'nav.contact': '커뮤니티',
-                'hero.subtitle': 'AI 기반 비디오 하이라이트, 원클릭 생성',
-                'hero.description': '당신의 AI 비디오 편집 파트너, 하나의 비디오에서 여러 하이라이트를 자동으로 추출',
-                'hero.feature1.title': '원클릭·의존성 제로',
-                'hero.feature1.desc': '휴대용 Python + ffmpeg 내장, 설정 불필요',
-                'hero.feature2.title': '엔드투엔드 로컬',
-                'hero.feature2.desc': '다운로드부터 클립까지 전부 로컬, 개인정보 안심',
-                'hero.feature3.title': '네이티브 데스크톱 앱',
-                'hero.feature3.desc': 'macOS (Apple Silicon) 및 Windows (x64) 지원, Intel Mac / Linux는 추후 지원',
-                'features.title': '핵심 기능',
-                'features.subtitle': 'AI 기반 전체 프로세스 자동 비디오 처리',
-                'install.title': '다운로드 및 설치',
-                'install.subtitle': '환경 설정 없이 세 단계로 시작',
-                'install.step1': 'macOS: DMG를 다운로드하고 앱을 「응용 프로그램」으로 드래그. Windows: 설치 파일 실행(사용자 단위, 관리자 권한 불필요)',
-                'install.step2': '첫 실행: macOS는 앱을 우클릭 →「열기」, Windows는 SmartScreen에서 「추가 정보」→「실행」',
-                'install.step3': '「설정」에서 AI 제공자 API 키(통이첸원 / OpenAI / Gemini / SiliconFlow 또는 OpenAI 호환 엔드포인트)를 입력하고 시작',
-                'install.req': '시스템 요구사항: macOS Apple Silicon (M 시리즈) · Windows 10/11 x64',
-                'demo.title': '제품 데모',
-                'demo.subtitle': 'AutoClip의 강력한 기능을 직관적으로 체험',
-                'usecases.title': '사용 사례',
-                'usecases.subtitle': '다양한 콘텐츠 제작 및 교육 시나리오에 적용',
-                'waitlist.title': '사용자 커뮤니티 참여',
-                'waitlist.subtitle': '아래 QR 코드를 스캔하여 AutoClip 사용자 커뮤니티에 참여하고 최신 제품 업데이트 및 사용법 도움말을 받으세요',
-                'footer.description': 'AI 기반 지능형 비디오 클리핑 시스템, 콘텐츠 제작을 더욱 효율적으로.',
-                'footer.copyright': '오픈소스 프로젝트, MIT 라이선스.',
-                'feature.ai.title': 'AI 스마트 분석',
-                'feature.ai.desc': '대규모 언어 모델 기반 비디오 콘텐츠 이해, 하이라이트 순간의 지능형 식별',
-                'feature.ai.status': '출시됨',
-                'feature.realtime.title': '손쉬운 편집',
-                'feature.realtime.desc': '클립 제목 직접 수정, 컬렉션 내 드래그 정렬, 카테고리별 정리',
-                'feature.realtime.status': '출시됨',
-                'feature.title.title': '자동 제목 생성',
-                'feature.title.desc': 'AI가 각 클립에 매력적인 제목을 자동 생성, 콘텐츠 확산 효과 향상',
-                'feature.title.status': '출시됨',
-                'feature.quality.title': '콘텐츠 품질 평가',
-                'feature.quality.desc': '클립 품질의 지능형 평가, 고품질 출력 콘텐츠 보장',
-                'feature.quality.status': '출시됨',
-                'feature.docker.title': '원클릭·의존성 제로',
-                'feature.docker.desc': '휴대용 Python + 정적 ffmpeg 내장, 환경 사전 설치 불필요',
-                'feature.docker.status': '출시됨',
-                'feature.platform.title': '로컬 자막 받아쓰기',
-                'feature.platform.desc': '자막 없는 영상도 원클릭으로 Whisper 설치, 모델 선택해 필요 시 사용',
-                'feature.platform.status': '출시됨',
-                'feature.cover.title': '스마트 커버',
-                'feature.cover.desc': 'AI가 비디오의 고품질 커버 이미지를 자동 생성, 클릭률과 시청 경험 향상',
-                'feature.cover.status': '개발 중',
-                'feature.subtitle.title': '스마트 자막 번역',
-                'feature.subtitle.desc': '음성을 자동 인식하여 다국어 자막 생성, 중영일한 등 다국어 간 번역 지원',
-                'feature.subtitle.status': '개발 중',
-                'feature.collection.title': '스마트 컬렉션 추천',
-                'feature.collection.desc': '주제 유사도 기반 지능형 클러스터링, 관련 콘텐츠를 자동으로 컬렉션으로 구성, 콘텐츠 가치 향상',
-                'feature.collection.status': '출시됨',
-                'feature.project.title': '멀티 프로젝트 관리',
-                'feature.project.desc': '여러 처리 프로젝트의 동시 관리 지원, 완전한 데이터 격리, 동시 처리 지원',
-                'feature.project.status': '출시됨',
-                'feature.account.title': 'Bilibili 멀티 계정',
-                'feature.account.desc': '다중 계정 관리, 로그인 상태 모니터링으로 로그인 만료 즉시 알림',
-                'feature.account.status': '출시됨',
-                'feature.upload.title': 'Bilibili 자동 업로드',
-                'feature.upload.desc': '클립을 Bilibili에 자동 업로드, 배치 게시 및 예약 게시 지원',
-                'feature.upload.status': '개발 중',
-                'demo.main.title': 'AutoClip 메인 인터페이스',
-                'demo.main.desc': '지능형 비디오 클리핑 시스템의 핵심 운영 인터페이스',
-                'demo.input.title': '멀티 입력 지원',
-                'demo.input.desc': '비디오 파일, 링크, 자막 파일 등 다중 입력 형식 지원',
-                'demo.task.title': '작업 관리',
-                'demo.task.desc': '처리 진행률의 실시간 모니터링, 배치 작업 관리 지원',
-                'demo.collection.title': '스마트 컬렉션',
-                'demo.collection.desc': 'AI가 관련 콘텐츠를 자동 클러스터링하고 주제 컬렉션을 생성',
-                'demo.preview.title': '비디오 미리보기',
-                'demo.preview.desc': '클립 결과 미리보기, 온라인 재생 및 편집 지원',
-                'usecase.creator.title': '콘텐츠 크리에이터',
-                'usecase.creator.desc': '라이브 리플레이 처리, 강의 비디오 클리핑, 인터뷰 프로그램 처리',
-                'usecase.education.title': '교육 기관',
-                'usecase.education.desc': '온라인 강의 제작, 지식점 추출, 학습 리소스 정리',
-                'usecase.training.title': '기업 교육',
-                'usecase.training.desc': '교육 비디오 처리, 스킬점 추출, 지식베이스 구축',
-                'usecase.platform.title': '플랫폼 운영',
-                'usecase.platform.desc': '콘텐츠 추천, 트래픽 분배, 사용자 유지',
-                'hero.badge': '🚀 v1.2.1 출시 · 🍎 macOS · 🪟 Windows',
-                'contact.qq.title': 'QQ 사용자 그룹',
-                'contact.qq.desc': '위의 QR 코드를 스캔하여 QQ 사용자 그룹에 참여<br>다른 사용자와 사용 경험을 교류',
-                'contact.qq.button': 'QQ 전용 서비스',
-                'contact.feishu.title': 'Feishu 개인',
-                'contact.feishu.desc': '위의 QR 코드를 스캔하여 Feishu 개인 연락처 추가<br>기술 지원 및 최신 버전 알림 받기',
-                'contact.feishu.button': 'Feishu 전용 서비스',
-                'contact.tip': '💡 팁: 빠른 승인을 위해 "AutoClip"이라고 메모해 주세요',
-                'contact.benefit1.title': '실시간 소통',
-                'contact.benefit1.desc': '직접 대화, 실시간 개발 진행 상황',
-                'contact.benefit2.title': '전용 서비스',
-                'contact.benefit2.desc': '1대1 상담, 맞춤형 솔루션',
-                'contact.benefit3.title': '버전 알림',
-                'contact.benefit3.desc': '새 버전과 사용법 도움말을 가장 먼저 받기',
-                'contact.development': '커뮤니티 · 지원',
-                'hero.github.view': 'GitHub',
-                'hero.download.dmg': 'macOS 클라이언트 (Apple Silicon) — v1.2.1',
-                'hero.download.win': 'Windows 설치 파일 (x64) — v1.2.1',
-                'hero.releases.view': '전체 릴리스',
-                'hero.beta.info': 'macOS Apple Silicon (M 시리즈) · Windows 10/11 x64. 두 빌드 모두 서명되지 않았습니다. 첫 실행은 아래 안내를 참고하세요.',
-                'waitlist.title': '커뮤니티 참여',
-                'waitlist.subtitle': '아래 QR 코드를 스캔하여 AutoClip 커뮤니티에 참여하고 사용법 도움말과 버전 업데이트 알림을 받으세요',
-                'footer.privacy': '개인정보 처리방침',
-                'announcement.title': '첫 실행 안내',
-                'announcement.content': '두 플랫폼의 설치 파일은 아직 코드 서명이 되어 있지 않습니다. macOS: 첫 실행 시 앱을 우클릭 →「열기」를 선택하면 Gatekeeper를 우회할 수 있습니다(더블클릭 시 "개발자를 확인할 수 없음" 경고가 표시될 수 있습니다). Windows: 첫 실행 시 SmartScreen이 차단하면 「추가 정보」→「실행」을 선택하세요. Intel Mac / Linux는 추후 지원 예정입니다.'
-            }
-        };
+<!-- ============ WHY ============ -->
+<section class="section" id="why">
+  <div class="container">
+    <div class="eyebrow" data-i18n="why.eyebrow">为什么是 AutoClip</div>
+    <h2 data-i18n="why.h2">一个认真做内容的人，会想要的工具。</h2>
+    <div class="why">
+      <div class="item"><span class="k">01</span><h3 data-i18n="why.1.h">全程本地</h3><p data-i18n="why.1.p">视频不上传到任何服务器。下载、转写、切片、合成都在你的电脑上完成，只有字幕文本会发给你选择的模型。</p></div>
+      <div class="item"><span class="k">02</span><h3 data-i18n="why.2.h">零依赖安装</h3><p data-i18n="why.2.p">安装包自带便携 Python 与静态 ffmpeg。不用配环境、不用装 Docker，下载即用。</p></div>
+      <div class="item"><span class="k">03</span><h3 data-i18n="why.3.h">模型自选</h3><p data-i18n="why.3.p">不绑定任何厂商。API Key 填在自己的设置页里，随时切换提供商或接入自定义 OpenAI 兼容地址，包括本地模型。</p></div>
+      <div class="item"><span class="k">04</span><h3 data-i18n="why.4.h">开源 MIT</h3><p data-i18n="why.4.p">全部代码在 GitHub。想看它怎么处理你的视频、想改、想自己部署，都可以。</p></div>
+    </div>
+  </div>
+</section>
 
-        // 当前语言
-        let currentLang = localStorage.getItem('language') || 'zh';
+<!-- ============ DOWNLOAD ============ -->
+<section class="section" id="download">
+  <div class="container">
+    <div class="eyebrow" data-i18n="dl.eyebrow">下载</div>
+    <h2 data-i18n="dl.h2">macOS 与 Windows，免费。</h2>
+    <div class="dl">
+      <div class="dlcard">
+        <div class="hd">
+          <h3><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.365 1.43c0 1.14-.493 2.27-1.177 3.08-.744.9-1.99 1.57-2.987 1.57-.12 0-.23-.02-.3-.03-.01-.06-.04-.22-.04-.39 0-1.15.572-2.27 1.206-2.98.804-.94 2.142-1.64 3.248-1.68.03.13.05.28.05.43zm4.565 15.71c-.03.07-.463 1.58-1.518 3.12-.945 1.34-1.94 2.71-3.43 2.71-1.517 0-1.9-.88-3.63-.88-1.698 0-2.302.91-3.67.91-1.377 0-2.332-1.26-3.428-2.8-1.287-1.82-2.323-4.63-2.323-7.28 0-4.28 2.797-6.55 5.552-6.55 1.448 0 2.675.95 3.6.95.865 0 2.222-1.01 3.902-1.01.613 0 2.886.06 4.374 2.19-.13.09-2.383 1.37-2.383 4.19 0 3.26 2.854 4.42 2.955 4.45z"/></svg>macOS</h3>
+          <span class="ver">v1.2.1 · 223 MB</span>
+        </div>
+        <p class="req" data-i18n="dl.mac.req">Apple Silicon（M 系列）· macOS 13 或更高。Intel Mac 暂不支持。</p>
+        <a class="btn btn-primary" href="https://github.com/zhouxiaoka/autoclip/releases/download/v1.2.1/AutoClip.Desktop_1.2.1_aarch64.dmg" data-i18n="dl.mac.btn">下载 .dmg</a>
+        <details>
+          <summary data-i18n="dl.mac.sum">首次打开提示</summary>
+          <p data-i18n="dl.mac.note">安装包尚未做 Apple 公证。第一次打开时请在应用上右键 → 选「打开」，即可绕过 Gatekeeper；之后双击正常启动。</p>
+        </details>
+      </div>
+      <div class="dlcard">
+        <div class="hd">
+          <h3><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 5.5l7.5-1.03v7.25H3V5.5zm0 13l7.5 1.03v-7.16H3v6.13zm8.32 1.14L21 21v-8.63h-9.68v7.27zm0-15.28v7.36H21V3l-9.68 1.36z"/></svg>Windows</h3>
+          <span class="ver">v1.2.1 · 145 MB</span>
+        </div>
+        <p class="req" data-i18n="dl.win.req">Windows 10 / 11，x64。按用户安装，不需要管理员权限；缺少 WebView2 时安装器会自动下载。</p>
+        <a class="btn btn-primary" href="https://github.com/zhouxiaoka/autoclip/releases/download/v1.2.1/AutoClip.Desktop_1.2.1_x64-setup.exe" data-i18n="dl.win.btn">下载安装包</a>
+        <details>
+          <summary data-i18n="dl.win.sum">首次运行提示</summary>
+          <p data-i18n="dl.win.note">安装包尚未做代码签名，SmartScreen 会拦一次。点「更多信息」→「仍要运行」即可。</p>
+        </details>
+      </div>
+    </div>
+    <p class="dl-alt" data-i18n-html="dl.alt">想跑在服务器或 NAS 上？<a href="https://github.com/zhouxiaoka/autoclip#readme" target="_blank" rel="noopener">Docker 部署与源码运行</a>见 GitHub README。</p>
+  </div>
+</section>
 
-        // 语言名称映射
-        const languageNames = {
-            zh: '中文',
-            en: 'English',
-            ja: '日本語',
-            ko: '한국어'
-        };
+<!-- ============ FAQ ============ -->
+<section class="section" id="faq">
+  <div class="container">
+    <div class="faq-grid">
+      <div>
+        <div class="eyebrow" data-i18n="faq.eyebrow">常见问题</div>
+        <h2 data-i18n="faq.h2">你大概想问的。</h2>
+        <div class="community">
+          <div class="qr"><img src="qq_qr.jpg" alt="QQ 群二维码"><div><div class="t" data-i18n="faq.qq.t">QQ 用户群</div><div class="m" data-i18n="faq.qq.m">使用帮助与版本通知</div></div></div>
+          <div class="qr"><img src="feishu_qr.jpg" alt="飞书二维码"><div><div class="t" data-i18n="faq.feishu.t">飞书</div><div class="m" data-i18n="faq.feishu.m">备注「AutoClip」</div></div></div>
+        </div>
+      </div>
+      <div class="faq">
+        <details open>
+          <summary data-i18n="faq.1.q">要花钱吗？</summary>
+          <p data-i18n="faq.1.a">AutoClip 本身免费、开源（MIT）。唯一的成本是你自己模型的 API 调用费——每条视频通常只是几分钱到几毛钱，取决于时长和所选模型。</p>
+        </details>
+        <details>
+          <summary data-i18n="faq.2.q">我的视频会被上传吗？</summary>
+          <p data-i18n="faq.2.a">不会。视频文件只在你的电脑上处理。发给模型的只有字幕文本（用于理解内容和评分），发给哪家由你在设置里决定。</p>
+        </details>
+        <details>
+          <summary data-i18n="faq.3.q">支持哪些视频来源？</summary>
+          <p data-i18n="faq.3.a">B站链接、YouTube 链接、本地文件。有字幕的视频直接用；没有字幕的可以在设置里一键安装 Whisper，在本地转写。</p>
+        </details>
+        <details>
+          <summary data-i18n="faq.4.q">为什么第一次打开系统会警告？</summary>
+          <p data-i18n="faq.4.a">因为安装包还没有做 Apple 公证 / Windows 代码签名。macOS 右键 → 打开；Windows 点「更多信息」→「仍要运行」。之后不会再提示。签名正在计划中。</p>
+        </details>
+        <details>
+          <summary data-i18n="faq.5.q">切片效果不好怎么办？</summary>
+          <p data-i18n-html="faq.5.a">先试换一个更强的模型。仍不理想的话，请到 <a class="link" href="https://github.com/zhouxiaoka/autoclip/issues/96" target="_blank" rel="noopener">GitHub 置顶帖</a>按格式反馈（视频类型、时长、模型），我们在收集样例改进评分策略。</p>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
 
-        // 语言切换功能
-        function switchLanguage(lang) {
-            currentLang = lang;
-            localStorage.setItem('language', lang);
-            
-            // 更新所有带有data-i18n属性的元素
-            document.querySelectorAll('[data-i18n]').forEach(element => {
-                const key = element.getAttribute('data-i18n');
-                if (translations[lang] && translations[lang][key]) {
-                    element.textContent = translations[lang][key];
-                }
-            });
-            
-            // 更新语言切换按钮显示
-            const langButton = document.getElementById('current-lang');
-            const langText = document.querySelector('#language-switcher .text-xs');
-            if (langButton && langText) {
-                const flags = { zh: '🇨🇳', en: '🇺🇸', ja: '🇯🇵', ko: '🇰🇷' };
-                langButton.textContent = flags[lang] || '🇨🇳';
-                langText.textContent = languageNames[lang] || '中文';
-            }
-            
-            // 更新页面标题
-            const titles = {
-                zh: 'AutoClip | AI驱动的智能视频切片系统',
-                en: 'AutoClip | AI-powered video clipping and highlight generation',
-                ja: 'AutoClip | AI駆動の動画ハイライト生成システム',
-                ko: 'AutoClip | AI 기반 비디오 하이라이트 생성 시스템'
-            };
-            document.title = titles[lang] || titles.zh;
+</main>
 
-            // 隐私政策链接按语言切换（仓库仅有中文 PRIVACY.md 与英文 PRIVACY.en.md）
-            const privacyLink = document.getElementById('footer-privacy');
-            if (privacyLink) {
-                const privacyDoc = lang === 'zh' ? 'PRIVACY.md' : 'PRIVACY.en.md';
-                privacyLink.href = 'https://github.com/zhouxiaoka/autoclip/blob/main/docs/' + privacyDoc;
-            }
-        }
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container footer-in">
+    <a class="brand serif" href="#top">AutoClip</a>
+    <nav class="footer-links" aria-label="页脚">
+      <a href="https://github.com/zhouxiaoka/autoclip" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://github.com/zhouxiaoka/autoclip/releases" target="_blank" rel="noopener" data-i18n="footer.releases">版本</a>
+      <a href="https://github.com/zhouxiaoka/autoclip/blob/main/docs/PRIVACY.md" target="_blank" rel="noopener" data-i18n="footer.privacy">隐私政策</a>
+    </nav>
+    <span data-i18n="footer.copy">© 2025–2026 AutoClip · MIT 许可</span>
+  </div>
+</footer>
 
-        // 初始化语言
-        document.addEventListener('DOMContentLoaded', function() {
-            // 设置初始语言
-            switchLanguage(currentLang);
-            
-            // 语言选项点击事件
-            document.querySelectorAll('.language-option').forEach(option => {
-                option.addEventListener('click', function() {
-                    const lang = this.getAttribute('data-lang');
-                    switchLanguage(lang);
-                });
-            });
-        });
+<script>
+(function(){
+  var REL = 'https://github.com/zhouxiaoka/autoclip/releases/download/v1.2.1/';
+  var MAC = REL + 'AutoClip.Desktop_1.2.1_aarch64.dmg';
+  var WIN = REL + 'AutoClip.Desktop_1.2.1_x64-setup.exe';
 
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+  var T = {
+    zh: {
+      'title': 'AutoClip — 长视频的高光，自动剪出来',
+      'nav.how':'怎么工作','nav.why':'为什么','nav.download':'下载','nav.faq':'常见问题','nav.cta':'下载',
+      'hero.h1':'长视频里值得看的部分，<br>自动剪出来。',
+      'hero.lede':'粘一条 B站 / YouTube 链接，或拖入本地视频。AI 读懂内容、找出高光，生成切片与合集——全程在你自己的电脑上完成。',
+      'hero.cta.mac':'下载 macOS 版','hero.cta.win':'下载 Windows 版',
+      'hero.alt.also':'也支持','hero.alt.win':'Windows','hero.alt.mac':'macOS','hero.alt.releases':'全部版本','hero.alt.docker':'Docker / 源码',
+      'hero.note':'v1.2.1 · 开源 MIT · 免费',
+      'mock.tab.projects':'项目','mock.tab.uploads':'上传','mock.tab.settings':'设置','mock.seg.link':'链接','mock.seg.file':'文件',
+      'mock.placeholder':'粘贴 B站 / YouTube 链接…','mock.go':'开始','mock.recent':'最近项目',
+      'mock.status.analyzing':'分析中','mock.status.done':'已完成',
+      'mock.p1.title':'对谈：独立开发者的一年','mock.p2.title':'直播回放 · 产品发布问答','mock.p2.meta':'7 切片 · 1 合集','mock.p2.time':'2 小时前',
+      'mock.p3.title':'公开课：概率论第 3 讲','mock.p3.meta':'12 切片 · 2 合集','mock.p3.time':'昨天',
+      'how.eyebrow':'怎么工作','how.h2':'三步，从一条长视频到一组切片。',
+      'how.1.h':'导入','how.1.p':'粘一条 B站或 YouTube 链接，或者直接拖入本地视频。没有字幕的视频，可以一键在本地安装 Whisper 转写，不必先去别处生成字幕。',
+      'how.1.chip.local':'本地 mp4 / mov / mkv','how.1.chip.srt':'可选 SRT 字幕',
+      'how.2.h':'理解','how.2.p':'大模型读完整条视频的内容，按话题切分、逐段评分，挑出真正值得单独看的片段，并为每段写好标题。用哪个模型你自己定：通义千问、OpenAI、Gemini、硅基流动，或任何 OpenAI 兼容接口。',
+      'how.2.r1':'为什么我放弃了订阅制','how.2.r2':'第一个付费用户是怎么来的','how.2.r3':'一个人做产品最怕的事','how.2.r4':'闲聊：最近在看的书',
+      'how.3.h':'出片','how.3.p':'切片和合集直接生成到本地。标题可以顺手改，合集里拖拽排序，多个 B站账号一键上传。剩下的时间，留给下一条视频。',
+      'how.3.foot':'合集 · 独立开发者的一年 · 3 段','how.3.pill':'已上传到 B站',
+      'why.eyebrow':'为什么是 AutoClip','why.h2':'一个认真做内容的人，会想要的工具。',
+      'why.1.h':'全程本地','why.1.p':'视频不上传到任何服务器。下载、转写、切片、合成都在你的电脑上完成，只有字幕文本会发给你选择的模型。',
+      'why.2.h':'零依赖安装','why.2.p':'安装包自带便携 Python 与静态 ffmpeg。不用配环境、不用装 Docker，下载即用。',
+      'why.3.h':'模型自选','why.3.p':'不绑定任何厂商。API Key 填在自己的设置页里，随时切换提供商或接入自定义 OpenAI 兼容地址，包括本地模型。',
+      'why.4.h':'开源 MIT','why.4.p':'全部代码在 GitHub。想看它怎么处理你的视频、想改、想自己部署，都可以。',
+      'dl.eyebrow':'下载','dl.h2':'macOS 与 Windows，免费。',
+      'dl.mac.req':'Apple Silicon（M 系列）· macOS 13 或更高。Intel Mac 暂不支持。','dl.mac.btn':'下载 .dmg',
+      'dl.mac.sum':'首次打开提示','dl.mac.note':'安装包尚未做 Apple 公证。第一次打开时请在应用上右键 → 选「打开」，即可绕过 Gatekeeper；之后双击正常启动。',
+      'dl.win.req':'Windows 10 / 11，x64。按用户安装，不需要管理员权限；缺少 WebView2 时安装器会自动下载。','dl.win.btn':'下载安装包',
+      'dl.win.sum':'首次运行提示','dl.win.note':'安装包尚未做代码签名，SmartScreen 会拦一次。点「更多信息」→「仍要运行」即可。',
+      'dl.alt':'想跑在服务器或 NAS 上？<a href="https://github.com/zhouxiaoka/autoclip#readme" target="_blank" rel="noopener">Docker 部署与源码运行</a>见 GitHub README。',
+      'faq.eyebrow':'常见问题','faq.h2':'你大概想问的。',
+      'faq.qq.t':'QQ 用户群','faq.qq.m':'使用帮助与版本通知','faq.feishu.t':'飞书','faq.feishu.m':'备注「AutoClip」',
+      'faq.1.q':'要花钱吗？','faq.1.a':'AutoClip 本身免费、开源（MIT）。唯一的成本是你自己模型的 API 调用费——每条视频通常只是几分钱到几毛钱，取决于时长和所选模型。',
+      'faq.2.q':'我的视频会被上传吗？','faq.2.a':'不会。视频文件只在你的电脑上处理。发给模型的只有字幕文本（用于理解内容和评分），发给哪家由你在设置里决定。',
+      'faq.3.q':'支持哪些视频来源？','faq.3.a':'B站链接、YouTube 链接、本地文件。有字幕的视频直接用；没有字幕的可以在设置里一键安装 Whisper，在本地转写。',
+      'faq.4.q':'为什么第一次打开系统会警告？','faq.4.a':'因为安装包还没有做 Apple 公证 / Windows 代码签名。macOS 右键 → 打开；Windows 点「更多信息」→「仍要运行」。之后不会再提示。签名正在计划中。',
+      'faq.5.q':'切片效果不好怎么办？','faq.5.a':'先试换一个更强的模型。仍不理想的话，请到 <a class="link" href="https://github.com/zhouxiaoka/autoclip/issues/96" target="_blank" rel="noopener">GitHub 置顶帖</a>按格式反馈（视频类型、时长、模型），我们在收集样例改进评分策略。',
+      'footer.releases':'版本','footer.privacy':'隐私政策','footer.copy':'© 2025–2026 AutoClip · MIT 许可'
+    },
+    en: {
+      'title': 'AutoClip — The best parts of a long video, clipped automatically',
+      'nav.how':'How it works','nav.why':'Why','nav.download':'Download','nav.faq':'FAQ','nav.cta':'Download',
+      'hero.h1':'The parts worth watching,<br><em>clipped</em> automatically.',
+      'hero.lede':'Paste a Bilibili or YouTube link, or drop in a local video. AI reads the content, finds the highlights and produces clips and collections — entirely on your own machine.',
+      'hero.cta.mac':'Download for macOS','hero.cta.win':'Download for Windows',
+      'hero.alt.also':'Also for','hero.alt.win':'Windows','hero.alt.mac':'macOS','hero.alt.releases':'All releases','hero.alt.docker':'Docker / source',
+      'hero.note':'v1.2.1 · Open source, MIT · Free',
+      'mock.tab.projects':'Projects','mock.tab.uploads':'Uploads','mock.tab.settings':'Settings','mock.seg.link':'Link','mock.seg.file':'File',
+      'mock.placeholder':'Paste a Bilibili / YouTube link…','mock.go':'Start','mock.recent':'Recent projects',
+      'mock.status.analyzing':'Analyzing','mock.status.done':'Done',
+      'mock.p1.title':'Interview: a year of indie development','mock.p2.title':'Livestream replay · launch Q&A','mock.p2.meta':'7 clips · 1 collection','mock.p2.time':'2 h ago',
+      'mock.p3.title':'Lecture: Probability, week 3','mock.p3.meta':'12 clips · 2 collections','mock.p3.time':'Yesterday',
+      'how.eyebrow':'How it works','how.h2':'Three steps from one long video to a set of clips.',
+      'how.1.h':'Import','how.1.p':'Paste a Bilibili or YouTube link, or drag in a local file. No subtitles? Install Whisper with one click and transcribe locally — no need to generate captions elsewhere first.',
+      'how.1.chip.local':'Local mp4 / mov / mkv','how.1.chip.srt':'Optional SRT',
+      'how.2.h':'Understand','how.2.p':'A language model reads the whole video, splits it by topic, scores each segment and picks the ones worth watching on their own — with a title for each. You choose the model: Qwen, OpenAI, Gemini, SiliconFlow, or any OpenAI-compatible endpoint.',
+      'how.2.r1':'Why I gave up on subscriptions','how.2.r2':'How the first paying customer showed up','how.2.r3':'The scariest part of building alone','how.2.r4':'Small talk: books I\'m reading',
+      'how.3.h':'Export','how.3.p':'Clips and collections land on your disk. Tweak titles inline, drag to reorder a collection, and publish to multiple Bilibili accounts in one click. The time you save goes to the next video.',
+      'how.3.foot':'Collection · A year of indie development · 3 clips','how.3.pill':'Published to Bilibili',
+      'why.eyebrow':'Why AutoClip','why.h2':'The tool a serious creator would want.',
+      'why.1.h':'Local end to end','why.1.p':'Your video never leaves your machine. Downloading, transcribing, cutting and rendering all happen locally; only subtitle text is sent to the model you pick.',
+      'why.2.h':'Zero-dependency install','why.2.p':'The installer bundles a portable Python and static ffmpeg. No environment setup, no Docker — download and run.',
+      'why.3.h':'Bring your own model','why.3.p':'No vendor lock-in. Your API key lives in your own settings; switch providers any time or point it at a custom OpenAI-compatible URL, including local models.',
+      'why.4.h':'Open source, MIT','why.4.p':'All the code is on GitHub. Read how it handles your video, change it, or self-host it.',
+      'dl.eyebrow':'Download','dl.h2':'macOS and Windows. Free.',
+      'dl.mac.req':'Apple Silicon (M-series) · macOS 13 or later. Intel Macs are not supported yet.','dl.mac.btn':'Download .dmg',
+      'dl.mac.sum':'First launch','dl.mac.note':'The build is not notarized by Apple yet. On first launch, right-click the app → Open to bypass Gatekeeper. It opens normally after that.',
+      'dl.win.req':'Windows 10 / 11, x64. Per-user install, no admin rights; the installer fetches WebView2 if it is missing.','dl.win.btn':'Download installer',
+      'dl.win.sum':'First run','dl.win.note':'The installer is not code-signed yet, so SmartScreen will warn once. Choose “More info → Run anyway”.',
+      'dl.alt':'Running on a server or NAS? <a href="https://github.com/zhouxiaoka/autoclip#readme" target="_blank" rel="noopener">Docker and source setup</a> are in the GitHub README.',
+      'faq.eyebrow':'FAQ','faq.h2':'The questions you were about to ask.',
+      'faq.qq.t':'QQ group','faq.qq.m':'Help and release notices','faq.feishu.t':'Feishu','faq.feishu.m':'Mention “AutoClip”',
+      'faq.1.q':'Does it cost anything?','faq.1.a':'AutoClip itself is free and open source (MIT). The only cost is your own model\'s API usage — typically a few cents per video, depending on length and model.',
+      'faq.2.q':'Is my video uploaded anywhere?','faq.2.a':'No. Video files are processed only on your machine. The model receives subtitle text only (to understand and score content), and you decide which provider that is.',
+      'faq.3.q':'Which sources are supported?','faq.3.a':'Bilibili links, YouTube links and local files. Videos with subtitles work directly; for the rest, install Whisper from Settings and transcribe locally.',
+      'faq.4.q':'Why does the OS warn me on first launch?','faq.4.a':'The builds are not yet notarized (macOS) or code-signed (Windows). macOS: right-click → Open. Windows: “More info → Run anyway”. It only happens once. Signing is on the roadmap.',
+      'faq.5.q':'What if the clips aren\'t good?','faq.5.a':'Try a stronger model first. If results are still off, report it in the <a class="link" href="https://github.com/zhouxiaoka/autoclip/issues/96" target="_blank" rel="noopener">pinned GitHub issue</a> with video type, length and model — we are collecting samples to improve scoring.',
+      'footer.releases':'Releases','footer.privacy':'Privacy','footer.copy':'© 2025–2026 AutoClip · MIT License'
+    },
+    ja: {
+      'title': 'AutoClip — 長い動画の見どころを、自動で切り出す',
+      'nav.how':'仕組み','nav.why':'特徴','nav.download':'ダウンロード','nav.faq':'FAQ','nav.cta':'ダウンロード',
+      'hero.h1':'長い動画の見どころを、<br>自動で切り出す。',
+      'hero.lede':'Bilibili / YouTube のリンクを貼るか、ローカル動画をドロップ。AI が内容を理解してハイライトを見つけ、クリップとコレクションを生成します。処理はすべてあなたの PC 上で完了。',
+      'hero.cta.mac':'macOS 版をダウンロード','hero.cta.win':'Windows 版をダウンロード',
+      'hero.alt.also':'ほかに','hero.alt.win':'Windows','hero.alt.mac':'macOS','hero.alt.releases':'すべてのリリース','hero.alt.docker':'Docker / ソース',
+      'hero.note':'v1.2.1 · オープンソース MIT · 無料',
+      'mock.tab.projects':'プロジェクト','mock.tab.uploads':'アップロード','mock.tab.settings':'設定','mock.seg.link':'リンク','mock.seg.file':'ファイル',
+      'mock.placeholder':'Bilibili / YouTube のリンクを貼り付け…','mock.go':'開始','mock.recent':'最近のプロジェクト',
+      'mock.status.analyzing':'解析中','mock.status.done':'完了',
+      'mock.p1.title':'対談：個人開発の 1 年','mock.p2.title':'配信アーカイブ · 製品発表 Q&A','mock.p2.meta':'7 クリップ · 1 コレクション','mock.p2.time':'2 時間前',
+      'mock.p3.title':'公開講義：確率論 第 3 回','mock.p3.meta':'12 クリップ · 2 コレクション','mock.p3.time':'昨日',
+      'how.eyebrow':'仕組み','how.h2':'3 ステップで、1 本の長い動画からクリップ一式へ。',
+      'how.1.h':'読み込む','how.1.p':'Bilibili か YouTube のリンクを貼るか、ローカル動画をドラッグ。字幕のない動画は、Whisper をワンクリックでローカルにインストールして文字起こしできます。',
+      'how.1.chip.local':'ローカル mp4 / mov / mkv','how.1.chip.srt':'SRT 字幕（任意）',
+      'how.2.h':'理解する','how.2.p':'大規模言語モデルが動画全体を読み、話題ごとに分割・採点し、単独で見る価値のある部分を選び、タイトルを付けます。モデルは自由に選択：通義千問、OpenAI、Gemini、SiliconFlow、または OpenAI 互換エンドポイント。',
+      'how.2.r1':'サブスクをやめた理由','how.2.r2':'最初の有料ユーザーはどう来たか','how.2.r3':'一人で作るとき一番怖いこと','how.2.r4':'雑談：最近読んでいる本',
+      'how.3.h':'書き出す','how.3.p':'クリップとコレクションはローカルに直接生成。タイトルはその場で編集、コレクションはドラッグで並べ替え、複数の Bilibili アカウントへワンクリックで投稿できます。',
+      'how.3.foot':'コレクション · 個人開発の 1 年 · 3 本','how.3.pill':'Bilibili に投稿済み',
+      'why.eyebrow':'AutoClip を選ぶ理由','why.h2':'本気でコンテンツを作る人のためのツール。',
+      'why.1.h':'すべてローカル','why.1.p':'動画はどのサーバーにも送られません。ダウンロード・文字起こし・カット・合成はすべて PC 上で完了。モデルに送るのは字幕テキストのみです。',
+      'why.2.h':'依存ゼロで導入','why.2.p':'インストーラーにポータブル Python と静的 ffmpeg を同梱。環境構築も Docker も不要、ダウンロードしてすぐ使えます。',
+      'why.3.h':'モデルは自分で選ぶ','why.3.p':'特定ベンダーに縛られません。API キーは自分の設定画面に保存し、いつでもプロバイダーを切り替え、ローカルモデルを含む OpenAI 互換 URL にも接続できます。',
+      'why.4.h':'オープンソース MIT','why.4.p':'コードはすべて GitHub に。動画がどう処理されるかを読み、変更し、自分でホストすることもできます。',
+      'dl.eyebrow':'ダウンロード','dl.h2':'macOS と Windows。無料。',
+      'dl.mac.req':'Apple Silicon（M シリーズ）· macOS 13 以降。Intel Mac は未対応。','dl.mac.btn':'.dmg をダウンロード',
+      'dl.mac.sum':'初回起動について','dl.mac.note':'Apple の公証はまだ行っていません。初回はアプリを右クリック →「開く」で Gatekeeper を回避できます。以降は通常どおり起動します。',
+      'dl.win.req':'Windows 10 / 11、x64。ユーザー単位のインストールで管理者権限不要。WebView2 がない場合は自動で取得します。','dl.win.btn':'インストーラーをダウンロード',
+      'dl.win.sum':'初回実行について','dl.win.note':'コード署名はまだ行っていないため、SmartScreen が一度警告します。「詳細情報」→「実行」を選択してください。',
+      'dl.alt':'サーバーや NAS で動かす場合は、GitHub README の <a href="https://github.com/zhouxiaoka/autoclip#readme" target="_blank" rel="noopener">Docker / ソースからの実行</a>をご覧ください。',
+      'faq.eyebrow':'よくある質問','faq.h2':'聞きたくなることを、先に。',
+      'faq.qq.t':'QQ グループ','faq.qq.m':'使い方とリリース通知','faq.feishu.t':'飛書（Feishu）','faq.feishu.m':'「AutoClip」と記入',
+      'faq.1.q':'費用はかかりますか？','faq.1.a':'AutoClip 自体は無料でオープンソース（MIT）です。かかるのは選んだモデルの API 利用料のみで、動画 1 本あたり通常は数円程度です。',
+      'faq.2.q':'動画はアップロードされますか？','faq.2.a':'されません。動画ファイルは PC 上でのみ処理されます。モデルに送るのは字幕テキストだけで、送信先は設定で選べます。',
+      'faq.3.q':'対応する動画ソースは？','faq.3.a':'Bilibili リンク、YouTube リンク、ローカルファイル。字幕付きはそのまま、字幕なしは設定から Whisper をインストールしてローカルで文字起こしできます。',
+      'faq.4.q':'初回起動時に OS が警告するのはなぜ？','faq.4.a':'まだ Apple 公証 / Windows コード署名を行っていないためです。macOS は右クリック →「開く」、Windows は「詳細情報」→「実行」。表示は一度だけです。署名は計画中です。',
+      'faq.5.q':'クリップの品質が良くない場合は？','faq.5.a':'まずより強いモデルを試してください。それでも改善しない場合は <a class="link" href="https://github.com/zhouxiaoka/autoclip/issues/96" target="_blank" rel="noopener">GitHub のピン留め Issue</a> に動画の種類・長さ・モデルを添えて報告してください。採点戦略の改善に使います。',
+      'footer.releases':'リリース','footer.privacy':'プライバシー','footer.copy':'© 2025–2026 AutoClip · MIT ライセンス'
+    },
+    ko: {
+      'title': 'AutoClip — 긴 영상의 하이라이트를 자동으로 잘라냅니다',
+      'nav.how':'작동 방식','nav.why':'특징','nav.download':'다운로드','nav.faq':'FAQ','nav.cta':'다운로드',
+      'hero.h1':'긴 영상에서 볼 만한 부분만,<br>자동으로 잘라냅니다.',
+      'hero.lede':'Bilibili / YouTube 링크를 붙여 넣거나 로컬 영상을 드롭하세요. AI가 내용을 이해해 하이라이트를 찾고 클립과 컬렉션을 만듭니다. 모든 처리는 내 컴퓨터에서 끝납니다.',
+      'hero.cta.mac':'macOS용 다운로드','hero.cta.win':'Windows용 다운로드',
+      'hero.alt.also':'다른 플랫폼','hero.alt.win':'Windows','hero.alt.mac':'macOS','hero.alt.releases':'전체 릴리스','hero.alt.docker':'Docker / 소스',
+      'hero.note':'v1.2.1 · 오픈소스 MIT · 무료',
+      'mock.tab.projects':'프로젝트','mock.tab.uploads':'업로드','mock.tab.settings':'설정','mock.seg.link':'링크','mock.seg.file':'파일',
+      'mock.placeholder':'Bilibili / YouTube 링크 붙여 넣기…','mock.go':'시작','mock.recent':'최근 프로젝트',
+      'mock.status.analyzing':'분석 중','mock.status.done':'완료',
+      'mock.p1.title':'대담: 1인 개발자의 1년','mock.p2.title':'라이브 다시보기 · 제품 발표 Q&A','mock.p2.meta':'클립 7 · 컬렉션 1','mock.p2.time':'2시간 전',
+      'mock.p3.title':'공개 강의: 확률론 3강','mock.p3.meta':'클립 12 · 컬렉션 2','mock.p3.time':'어제',
+      'how.eyebrow':'작동 방식','how.h2':'세 단계로, 긴 영상 하나에서 클립 세트까지.',
+      'how.1.h':'가져오기','how.1.p':'Bilibili나 YouTube 링크를 붙여 넣거나 로컬 영상을 끌어다 놓으세요. 자막이 없는 영상은 Whisper를 한 번에 로컬 설치해 전사할 수 있습니다.',
+      'how.1.chip.local':'로컬 mp4 / mov / mkv','how.1.chip.srt':'SRT 자막(선택)',
+      'how.2.h':'이해하기','how.2.p':'대규모 언어 모델이 영상 전체를 읽고 주제별로 나누어 점수를 매긴 뒤, 따로 볼 가치가 있는 구간을 고르고 제목을 붙입니다. 모델은 직접 선택: 통이첸원, OpenAI, Gemini, SiliconFlow 또는 OpenAI 호환 엔드포인트.',
+      'how.2.r1':'구독제를 포기한 이유','how.2.r2':'첫 유료 사용자는 어떻게 왔나','how.2.r3':'혼자 만들 때 가장 두려운 것','how.2.r4':'잡담: 요즘 읽는 책',
+      'how.3.h':'내보내기','how.3.p':'클립과 컬렉션이 로컬에 바로 생성됩니다. 제목은 바로 수정, 컬렉션은 드래그로 정렬, 여러 Bilibili 계정에 한 번에 업로드할 수 있습니다.',
+      'how.3.foot':'컬렉션 · 1인 개발자의 1년 · 3개','how.3.pill':'Bilibili에 업로드됨',
+      'why.eyebrow':'왜 AutoClip인가','why.h2':'진지하게 콘텐츠를 만드는 사람을 위한 도구.',
+      'why.1.h':'전 과정 로컬','why.1.p':'영상은 어떤 서버에도 올라가지 않습니다. 다운로드·전사·컷·합성이 모두 내 컴퓨터에서 이루어지며, 모델에는 자막 텍스트만 전송됩니다.',
+      'why.2.h':'의존성 없는 설치','why.2.p':'설치 파일에 포터블 Python과 정적 ffmpeg가 포함되어 있습니다. 환경 설정도 Docker도 필요 없이 내려받아 바로 실행.',
+      'why.3.h':'모델은 직접 선택','why.3.p':'특정 업체에 묶이지 않습니다. API 키는 내 설정 페이지에 저장되고, 언제든 제공자를 바꾸거나 로컬 모델을 포함한 OpenAI 호환 주소에 연결할 수 있습니다.',
+      'why.4.h':'오픈소스 MIT','why.4.p':'모든 코드가 GitHub에 있습니다. 내 영상을 어떻게 처리하는지 읽고, 고치고, 직접 배포할 수 있습니다.',
+      'dl.eyebrow':'다운로드','dl.h2':'macOS와 Windows. 무료.',
+      'dl.mac.req':'Apple Silicon(M 시리즈) · macOS 13 이상. Intel Mac은 아직 지원하지 않습니다.','dl.mac.btn':'.dmg 다운로드',
+      'dl.mac.sum':'첫 실행 안내','dl.mac.note':'아직 Apple 공증을 받지 않았습니다. 첫 실행 시 앱을 우클릭 → 「열기」를 선택하면 Gatekeeper를 우회할 수 있고, 이후에는 정상적으로 열립니다.',
+      'dl.win.req':'Windows 10 / 11, x64. 사용자 단위 설치로 관리자 권한이 필요 없으며, WebView2가 없으면 설치 프로그램이 자동으로 내려받습니다.','dl.win.btn':'설치 파일 다운로드',
+      'dl.win.sum':'첫 실행 안내','dl.win.note':'아직 코드 서명이 되어 있지 않아 SmartScreen이 한 번 경고합니다. 「추가 정보」→「실행」을 선택하세요.',
+      'dl.alt':'서버나 NAS에서 실행하려면 GitHub README의 <a href="https://github.com/zhouxiaoka/autoclip#readme" target="_blank" rel="noopener">Docker 및 소스 실행</a>을 참고하세요.',
+      'faq.eyebrow':'자주 묻는 질문','faq.h2':'물어보실 것 같은 질문에 먼저 답합니다.',
+      'faq.qq.t':'QQ 그룹','faq.qq.m':'사용 도움과 릴리스 알림','faq.feishu.t':'Feishu','faq.feishu.m':'「AutoClip」이라고 적어 주세요',
+      'faq.1.q':'비용이 드나요?','faq.1.a':'AutoClip 자체는 무료 오픈소스(MIT)입니다. 유일한 비용은 선택한 모델의 API 사용료로, 영상 한 편에 보통 몇십 원 수준입니다.',
+      'faq.2.q':'내 영상이 업로드되나요?','faq.2.a':'아닙니다. 영상 파일은 내 컴퓨터에서만 처리됩니다. 모델에는 자막 텍스트만 전송되며, 어느 제공자로 보낼지는 설정에서 정합니다.',
+      'faq.3.q':'어떤 영상 소스를 지원하나요?','faq.3.a':'Bilibili 링크, YouTube 링크, 로컬 파일. 자막이 있으면 바로 사용하고, 없으면 설정에서 Whisper를 설치해 로컬로 전사합니다.',
+      'faq.4.q':'첫 실행 시 OS가 경고하는 이유는?','faq.4.a':'아직 Apple 공증 / Windows 코드 서명을 하지 않았기 때문입니다. macOS는 우클릭 → 열기, Windows는 「추가 정보」→「실행」. 한 번만 표시됩니다. 서명은 계획 중입니다.',
+      'faq.5.q':'클립 품질이 좋지 않으면?','faq.5.a':'먼저 더 강한 모델을 시도해 보세요. 그래도 아쉬우면 <a class="link" href="https://github.com/zhouxiaoka/autoclip/issues/96" target="_blank" rel="noopener">GitHub 고정 이슈</a>에 영상 유형·길이·모델을 적어 알려 주세요. 채점 전략 개선에 사용합니다.',
+      'footer.releases':'릴리스','footer.privacy':'개인정보','footer.copy':'© 2025–2026 AutoClip · MIT 라이선스'
+    }
+  };
+  var LANG_ATTR = {zh:'zh-CN', en:'en', ja:'ja', ko:'ko'};
 
-        // Add scroll effect to header
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.classList.add('shadow-lg');
-            } else {
-                header.classList.remove('shadow-lg');
-            }
-        });
+  var isWin = /Windows/i.test(navigator.userAgent) || (navigator.userAgentData && navigator.userAgentData.platform === 'Windows');
 
-        // Video player interaction
-        document.addEventListener('DOMContentLoaded', function() {
-            const video = document.getElementById('demo-video');
-            const playOverlay = document.getElementById('play-overlay');
-            
-            if (video && playOverlay) {
-                // 点击播放按钮覆盖层时播放视频
-                playOverlay.addEventListener('click', function() {
-                    video.play();
-                    playOverlay.style.opacity = '0';
-                    playOverlay.style.pointerEvents = 'none';
-                });
-                
-                // 视频播放时隐藏覆盖层
-                video.addEventListener('play', function() {
-                    playOverlay.style.opacity = '0';
-                    playOverlay.style.pointerEvents = 'none';
-                });
-                
-                // 视频暂停时显示覆盖层
-                video.addEventListener('pause', function() {
-                    playOverlay.style.opacity = '1';
-                    playOverlay.style.pointerEvents = 'auto';
-                });
-                
-                // 视频结束时显示覆盖层
-                video.addEventListener('ended', function() {
-                    playOverlay.style.opacity = '1';
-                    playOverlay.style.pointerEvents = 'auto';
-                });
-                
-                // 防止右键菜单
-                video.addEventListener('contextmenu', function(e) {
-                    e.preventDefault();
-                });
-            }
-            
-            // Add any future QR code related interactions here
-            // For example: QR code click to enlarge, copy contact info, etc.
-        });
-    </script>
+  function apply(lang){
+    var d = T[lang] || T.zh;
+    document.documentElement.lang = LANG_ATTR[lang] || 'zh-CN';
+    document.title = d.title;
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      var k = el.getAttribute('data-i18n'); if (d[k] != null) el.textContent = d[k];
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(function(el){
+      var k = el.getAttribute('data-i18n-html'); if (d[k] != null) el.innerHTML = d[k];
+    });
+    document.querySelectorAll('.lang button').forEach(function(b){
+      b.setAttribute('aria-pressed', b.getAttribute('data-lang') === lang ? 'true' : 'false');
+    });
+    // platform-aware primary CTA
+    var p = document.getElementById('cta-primary'), pl = document.getElementById('cta-primary-label');
+    var a = document.getElementById('cta-alt'), al = document.getElementById('cta-alt-label');
+    if (isWin) { p.href = WIN; pl.textContent = d['hero.cta.win']; a.href = MAC; al.textContent = d['hero.alt.mac']; }
+    else       { p.href = MAC; pl.textContent = d['hero.cta.mac']; a.href = WIN; al.textContent = d['hero.alt.win']; }
+    try { localStorage.setItem('autoclip.lang', lang); } catch(e){}
+  }
+
+  var saved = null; try { saved = localStorage.getItem('autoclip.lang'); } catch(e){}
+  var nav = (navigator.language || 'zh').toLowerCase();
+  var guess = nav.indexOf('zh') === 0 ? 'zh' : nav.indexOf('ja') === 0 ? 'ja' : nav.indexOf('ko') === 0 ? 'ko' : 'en';
+  apply(saved && T[saved] ? saved : guess);
+
+  document.querySelectorAll('.lang button').forEach(function(b){
+    b.addEventListener('click', function(){ apply(b.getAttribute('data-lang')); });
+  });
+})();
+</script>
 </body>
 </html>
