@@ -22,11 +22,31 @@ npx serve -l 8765 .
 # 打开 http://localhost:8765
 ```
 
-## 发新版本时要改的地方
+## Release 自动同步
 
-1. hero 与下载区的版本号、下载链接（搜 `v1.2.1` 与 `releases/download/`），四语各一份。
-2. 下载卡上的安装包体积。
-3. `hero.note` 里的版本号。
+`.github/workflows/sync-release.yml` 从 `zhouxiaoka/autoclip` 的 GitHub Release 同步四语版本文案、下载链接及安装包体积，并自动提交到 `main`、显式请求 GitHub Pages 构建。
+
+- **每日同步**：cron `17 3 * * *`，北京时间每天 11:17 检查最新正式 Release；GitHub 调度可能延迟。无需额外 token。
+- **发版触发**：接收 `repository_dispatch` 的 `autoclip-release` 事件，读取 `client_payload.tag`。
+- **手动同步**：在 Actions → Sync release info → Run workflow 运行；tag 留空取 latest，也可指定已发布版本。
+
+仅有 tag 不会更新官网；Release 必须包含 macOS ARM64 `.dmg` 和 Windows x64 `.exe` 两个安装包，否则同步失败并保留原页面。
+
+本地检查与同步：
+
+```bash
+python3 scripts/sync_release.py --check  # 0 = 已同步，1 = 需要更新
+python3 scripts/sync_release.py          # 更新到 latest
+python3 scripts/sync_release.py v1.3.0   # 更新到指定已发布 Release
+```
+
+### 可选：发版即时更新
+
+主仓库需先合入 [PR #105](https://github.com/zhouxiaoka/autoclip/pull/105) 的 `Notify website` 步骤，再在 **zhouxiaoka/autoclip** 的 Settings → Secrets and variables → Actions 中配置 `WEBSITE_DISPATCH_TOKEN`。
+
+使用 fine-grained PAT：Repository access 只选 **autoclip_intro**，Contents 权限为 **Read and write**。该 token 用来发送跨仓库 dispatch；官网 workflow 自身使用内置 `GITHUB_TOKEN` 提交和请求 Pages 构建。
+
+没有配置该 secret 或通知步骤尚未合入时，每日 cron 仍可独立同步。GitHub 可能在公共仓库连续 60 天无活动后停用定时 workflow；如被停用，在 Actions 中重新启用。
 
 ## 反馈入口
 
