@@ -61,14 +61,12 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
 .brand img{width:26px;height:26px;border-radius:7px}
 .nav-links{display:flex;gap:24px;font-size:var(--ac-fs-small);color:var(--ac-sub)}
 .nav-links a:hover{color:var(--ac-ink)}
-.nav-right{display:flex;align-items:center;gap:16px}
+.nav-right{display:flex;min-width:0;align-items:center;gap:16px}
 .gh{display:inline-flex;align-items:center;gap:7px;font-size:var(--ac-fs-small);color:var(--ac-sub)}
 .gh:hover{color:var(--ac-ink)}
 .gh svg{width:16px;height:16px}
-.lang{display:flex;align-items:center;gap:2px;border:1px solid var(--ac-line);border-radius:var(--ac-r-pill);padding:3px}
-.lang button{height:26px;padding:0 9px;border-radius:var(--ac-r-pill);font-size:.75rem;font-weight:500;color:var(--ac-muted);transition:background var(--ac-t-micro),color var(--ac-t-micro)}
-.lang button:hover{color:var(--ac-ink)}
-.lang button[aria-pressed="true"]{background:var(--ac-card);color:var(--ac-ink);box-shadow:0 1px 2px rgba(0,0,0,.06)}
+.lang select{font:inherit;font-size:.8125rem;color:var(--ac-ink);background:var(--ac-card);border:1px solid var(--ac-line);border-radius:var(--ac-r-pill);padding:7px 10px;max-width:160px;cursor:pointer}
+.lang select:focus-visible{outline:2px solid var(--ac-accent);outline-offset:3px}
 .nav-menu{display:none}
 
 /* ---------- hero ---------- */
@@ -216,7 +214,7 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
   .pcard:nth-child(3){display:none}
 }
 @media (max-width: 720px){
-  .nav-links,.gh{display:none}
+  .nav-links,.gh,.nav-right>.btn{display:none}
   .nav-in{gap:12px}
   .brand{font-size:1.25rem}
   .hero h1{font-size:1.875rem}
@@ -227,7 +225,7 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
   .import{flex-wrap:wrap}
   .import .field{flex-basis:100%;order:3;padding:6px 4px 0}
   .clips{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .hero h1{max-width:none}
+  .hero h1{max-width:none;overflow-wrap:anywhere}
 }
 @media (prefers-reduced-motion: reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
@@ -249,11 +247,17 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.66-.22.66-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.45-1.15-1.1-1.46-1.1-1.46-.9-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85.004 1.71.11 2.51.32 1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.85-2.34 4.7-4.57 4.95.36.31.68.92.68 1.85 0 1.33-.01 2.4-.01 2.73 0 .27.16.58.67.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"/></svg>
         <span>GitHub</span>
       </a>
-      <div class="lang" role="group" aria-label="Language">
-        <button data-lang="zh" aria-pressed="true">中</button>
-        <button data-lang="en" aria-pressed="false">EN</button>
-        <button data-lang="ja" aria-pressed="false">日</button>
-        <button data-lang="ko" aria-pressed="false">한</button>
+      <div class="lang">
+        <select id="language" aria-label="Language / 语言">
+          <option value="zh" lang="zh-CN">简体中文</option>
+          <option value="en" lang="en">English</option>
+          <option value="ja" lang="ja">日本語</option>
+          <option value="ko" lang="ko">한국어</option>
+          <option value="es" lang="es">Español</option>
+          <option value="pt" lang="pt-BR">Português (Brasil)</option>
+          <option value="ru" lang="ru">Русский</option>
+          <option value="fr" lang="fr">Français</option>
+        </select>
       </div>
       <a class="btn btn-primary btn-sm" href="#download" data-i18n="nav.cta">下载</a>
     </div>
@@ -651,14 +655,379 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       'faq.4.q':'첫 실행 시 OS가 경고하는 이유는?','faq.4.a':'아직 Apple 공증 / Windows 코드 서명을 하지 않았기 때문입니다. macOS는 우클릭 → 열기, Windows는 「추가 정보」→「실행」. 한 번만 표시됩니다. 서명은 계획 중입니다.',
       'faq.5.q':'클립 품질이 좋지 않으면?','faq.5.a':'먼저 더 강한 모델을 시도해 보세요. 그래도 아쉬우면 <a class="link" href="https://github.com/zhouxiaoka/autoclip/issues/96" target="_blank" rel="noopener">GitHub 고정 이슈</a>에 영상 유형·길이·모델을 적어 알려 주세요. 채점 전략 개선에 사용합니다.',
       'footer.releases':'릴리스','footer.privacy':'개인정보','footer.copy':'© 2025–2026 AutoClip · MIT 라이선스'
+    },
+    es: {
+      "title": "AutoClip — Los mejores momentos de tus videos, en clips automáticos",
+      "nav.how": "Cómo funciona",
+      "nav.why": "Ventajas",
+      "nav.download": "Descargar",
+      "nav.faq": "Preguntas frecuentes",
+      "nav.cta": "Descargar",
+      "hero.h1": "Tus mejores momentos,<br>en clips automáticos.",
+      "hero.lede": "Pega un enlace de Bilibili o YouTube, o importa un video local. La IA analiza el contenido, encuentra los mejores momentos y crea clips y colecciones. El procesamiento de video se realiza en tu equipo.",
+      "hero.cta.mac": "Descargar para macOS",
+      "hero.cta.win": "Descargar para Windows",
+      "hero.alt.also": "También para",
+      "hero.alt.win": "Windows",
+      "hero.alt.mac": "macOS",
+      "hero.alt.releases": "Todas las versiones",
+      "hero.alt.docker": "Docker / código fuente",
+      "hero.note": "v1.3.0 · Código abierto, MIT · Gratis",
+      "mock.tab.projects": "Proyectos",
+      "mock.tab.uploads": "Publicaciones",
+      "mock.tab.settings": "Ajustes",
+      "mock.seg.link": "Enlace",
+      "mock.seg.file": "Archivo",
+      "mock.placeholder": "Pega un enlace de Bilibili / YouTube…",
+      "mock.go": "Iniciar",
+      "mock.recent": "Proyectos recientes",
+      "mock.status.analyzing": "Analizando",
+      "mock.status.done": "Completado",
+      "mock.p1.title": "Entrevista: un año como desarrollador independiente",
+      "mock.p2.title": "Grabación del directo · Preguntas del lanzamiento",
+      "mock.p2.meta": "7 clips · 1 colección",
+      "mock.p2.time": "Hace 2 h",
+      "mock.p3.title": "Clase: probabilidad, lección 3",
+      "mock.p3.meta": "12 clips · 2 colecciones",
+      "mock.p3.time": "Ayer",
+      "how.eyebrow": "Cómo funciona",
+      "how.h2": "De un video largo a una serie de clips, en tres pasos.",
+      "how.1.h": "Importa",
+      "how.1.p": "Pega un enlace de Bilibili o YouTube, o arrastra un archivo local. ¿Sin subtítulos? Instala Whisper con un clic y transcribe en tu equipo, sin generar subtítulos en otro servicio.",
+      "how.1.chip.local": "Archivos mp4 / mov / mkv",
+      "how.1.chip.srt": "SRT opcional",
+      "how.2.h": "Analiza",
+      "how.2.p": "Un modelo de lenguaje analiza todo el contenido, lo divide por temas, puntúa cada segmento y elige los que funcionan por sí solos, con un título para cada uno. Tú eliges el modelo: Qwen, OpenAI, Gemini, SiliconFlow o cualquier API compatible con OpenAI.",
+      "how.2.r1": "Por qué dejé las suscripciones",
+      "how.2.r2": "Cómo llegó mi primer cliente de pago",
+      "how.2.r3": "Lo más difícil de crear un producto en solitario",
+      "how.2.r4": "Charla: los libros que estoy leyendo",
+      "how.3.h": "Exporta",
+      "how.3.p": "Los clips y colecciones se guardan en tu disco. Edita los títulos, arrastra para ordenar una colección y publica en varias cuentas de Bilibili con un clic. Dedica el tiempo que ahorras a tu próximo video.",
+      "how.3.foot": "Colección · Un año de desarrollo independiente · 3 clips",
+      "how.3.pill": "Publicado en Bilibili",
+      "why.eyebrow": "Por qué AutoClip",
+      "why.h2": "Una herramienta para quienes se toman en serio crear contenido.",
+      "why.1.h": "Procesamiento local",
+      "why.1.p": "La descarga, transcripción, edición y renderizado se realizan en tu equipo. Solo se envía el texto de los subtítulos al modelo que eliges.",
+      "why.2.h": "Instala y empieza",
+      "why.2.p": "El instalador incluye Python portátil y ffmpeg estático. Sin configurar entornos ni instalar Docker: descarga y empieza.",
+      "why.3.h": "Elige tu modelo",
+      "why.3.p": "Sin depender de un proveedor. Guarda tu clave API en los ajustes, cambia de proveedor cuando quieras o usa una URL compatible con OpenAI, incluidos modelos locales.",
+      "why.4.h": "Código abierto, MIT",
+      "why.4.p": "Todo el código está en GitHub. Revisa cómo procesa tus videos, modifícalo o ejecútalo en tu propio servidor.",
+      "dl.eyebrow": "Descargar",
+      "dl.h2": "macOS y Windows. Gratis.",
+      "dl.mac.req": "Apple Silicon (serie M) · macOS 13 o posterior. Aún no compatible con Mac Intel.",
+      "dl.mac.btn": "Descargar .dmg",
+      "dl.mac.sum": "Primer inicio",
+      "dl.mac.note": "La app aún no está notarizada por Apple. Si Gatekeeper la bloquea, haz clic derecho en la app y elige «Abrir».",
+      "dl.win.req": "Windows 10 / 11, x64. Instalación por usuario, sin permisos de administrador. El instalador descarga WebView2 si falta.",
+      "dl.win.btn": "Descargar instalador",
+      "dl.win.sum": "Primera ejecución",
+      "dl.win.note": "El instalador aún no tiene firma de código. Si SmartScreen muestra una advertencia, elige «Más información» → «Ejecutar de todas formas».",
+      "dl.alt": "¿En un servidor o NAS? Consulta <a href=\"https://github.com/zhouxiaoka/autoclip#readme\" target=\"_blank\" rel=\"noopener\">Docker y ejecución desde el código</a> en el README de GitHub.",
+      "faq.eyebrow": "Preguntas frecuentes",
+      "faq.h2": "Lo que probablemente te preguntas.",
+      "fb.t": "¿Encontraste un error o tienes una idea? Cuéntanos.",
+      "fb.m": "Un formulario de un minuto, sin registro. Para errores, incluye la versión y el sistema. Si dejas un contacto, te avisaremos cuando se resuelva.",
+      "fb.btn": "Enviar comentarios",
+      "fb.alt": "Para errores: <a href=\"https://github.com/zhouxiaoka/autoclip/issues/new/choose\" target=\"_blank\" rel=\"noopener\">GitHub Issues</a>. Para preguntas: <a href=\"https://github.com/zhouxiaoka/autoclip/discussions\" target=\"_blank\" rel=\"noopener\">Discussions</a>.",
+      "faq.1.q": "¿Tiene algún costo?",
+      "faq.1.a": "AutoClip es gratuito y de código abierto (MIT). Solo pagas el uso de la API del modelo que eliges; el costo depende del modelo y de la duración del video.",
+      "faq.2.q": "¿Se sube mi video a algún servidor?",
+      "faq.2.a": "El procesamiento se realiza en tu equipo. El modelo recibe solo el texto de los subtítulos para analizarlo y puntuarlo; tú eliges el proveedor.",
+      "faq.3.q": "¿Qué fuentes de video admite?",
+      "faq.3.a": "Enlaces de Bilibili, YouTube y archivos locales. Los videos con subtítulos se procesan directamente; para los demás, instala Whisper desde Ajustes y transcribe localmente.",
+      "faq.4.q": "¿Por qué el sistema muestra una advertencia al abrirlo?",
+      "faq.4.a": "Las versiones aún no están notarizadas en macOS ni firmadas en Windows. En macOS, prueba clic derecho → «Abrir». En Windows, «Más información» → «Ejecutar de todas formas». La firma está prevista.",
+      "faq.5.q": "¿Y si los clips no son buenos?",
+      "faq.5.a": "Prueba primero un modelo más potente. Si no mejora, cuéntanos el tipo de video, la duración y el modelo en el <a class=\"link\" href=\"https://github.com/zhouxiaoka/autoclip/issues/96\" target=\"_blank\" rel=\"noopener\">issue fijado de GitHub</a>. Recopilamos ejemplos para mejorar la selección.",
+      "footer.releases": "Versiones",
+      "footer.privacy": "Privacidad",
+      "footer.copy": "© 2025–2026 AutoClip · Licencia MIT"
+    },
+    pt: {
+      "title": "AutoClip — Os melhores momentos dos seus vídeos, em clipes automáticos",
+      "nav.how": "Como funciona",
+      "nav.why": "Vantagens",
+      "nav.download": "Baixar",
+      "nav.faq": "Dúvidas frequentes",
+      "nav.cta": "Baixar",
+      "hero.h1": "Os melhores momentos,<br>em clipes automáticos.",
+      "hero.lede": "Cole um link do Bilibili ou YouTube, ou importe um vídeo local. A IA analisa o conteúdo, encontra os destaques e cria clipes e coleções. O processamento do vídeo acontece no seu computador.",
+      "hero.cta.mac": "Baixar para macOS",
+      "hero.cta.win": "Baixar para Windows",
+      "hero.alt.also": "Também para",
+      "hero.alt.win": "Windows",
+      "hero.alt.mac": "macOS",
+      "hero.alt.releases": "Todas as versões",
+      "hero.alt.docker": "Docker / código-fonte",
+      "hero.note": "v1.3.0 · Código aberto, MIT · Grátis",
+      "mock.tab.projects": "Projetos",
+      "mock.tab.uploads": "Publicações",
+      "mock.tab.settings": "Configurações",
+      "mock.seg.link": "Link",
+      "mock.seg.file": "Arquivo",
+      "mock.placeholder": "Cole um link do Bilibili / YouTube…",
+      "mock.go": "Iniciar",
+      "mock.recent": "Projetos recentes",
+      "mock.status.analyzing": "Analisando",
+      "mock.status.done": "Concluído",
+      "mock.p1.title": "Entrevista: um ano de desenvolvimento independente",
+      "mock.p2.title": "Gravação da live · Perguntas do lançamento",
+      "mock.p2.meta": "7 clipes · 1 coleção",
+      "mock.p2.time": "Há 2 h",
+      "mock.p3.title": "Aula: probabilidade, lição 3",
+      "mock.p3.meta": "12 clipes · 2 coleções",
+      "mock.p3.time": "Ontem",
+      "how.eyebrow": "Como funciona",
+      "how.h2": "De um vídeo longo a vários clipes, em três passos.",
+      "how.1.h": "Importe",
+      "how.1.p": "Cole um link do Bilibili ou YouTube, ou arraste um arquivo local. Sem legendas? Instale o Whisper com um clique e transcreva no computador, sem gerar legendas em outro serviço.",
+      "how.1.chip.local": "Arquivos mp4 / mov / mkv",
+      "how.1.chip.srt": "SRT opcional",
+      "how.2.h": "Analise",
+      "how.2.p": "Um modelo de linguagem analisa todo o conteúdo, divide por temas, pontua cada trecho e escolhe os que funcionam sozinhos, com um título para cada um. Você escolhe o modelo: Qwen, OpenAI, Gemini, SiliconFlow ou qualquer API compatível com OpenAI.",
+      "how.2.r1": "Por que abandonei as assinaturas",
+      "how.2.r2": "Como conquistei meu primeiro cliente pagante",
+      "how.2.r3": "O maior medo de criar um produto sozinho",
+      "how.2.r4": "Conversa: os livros que estou lendo",
+      "how.3.h": "Exporte",
+      "how.3.p": "Os clipes e coleções ficam no seu disco. Edite os títulos, arraste para ordenar uma coleção e publique em várias contas do Bilibili com um clique. Use o tempo que economizou no próximo vídeo.",
+      "how.3.foot": "Coleção · Um ano de desenvolvimento independente · 3 clipes",
+      "how.3.pill": "Publicado no Bilibili",
+      "why.eyebrow": "Por que AutoClip",
+      "why.h2": "Uma ferramenta para quem leva a criação de conteúdo a sério.",
+      "why.1.h": "Processamento local",
+      "why.1.p": "Download, transcrição, cortes e renderização acontecem no seu computador. Apenas o texto das legendas é enviado ao modelo que você escolhe.",
+      "why.2.h": "Instale e comece",
+      "why.2.p": "O instalador inclui Python portátil e ffmpeg estático. Sem configurar ambientes nem instalar Docker: baixe e comece.",
+      "why.3.h": "Escolha seu modelo",
+      "why.3.p": "Sem depender de um fornecedor. Salve sua chave de API nas configurações, troque de provedor quando quiser ou use uma URL compatível com OpenAI, incluindo modelos locais.",
+      "why.4.h": "Código aberto, MIT",
+      "why.4.p": "Todo o código está no GitHub. Veja como seus vídeos são processados, modifique o código ou hospede por conta própria.",
+      "dl.eyebrow": "Baixar",
+      "dl.h2": "macOS e Windows. Grátis.",
+      "dl.mac.req": "Apple Silicon (série M) · macOS 13 ou superior. Macs Intel ainda não são compatíveis.",
+      "dl.mac.btn": "Baixar .dmg",
+      "dl.mac.sum": "Primeira execução",
+      "dl.mac.note": "O app ainda não tem notarização da Apple. Se o Gatekeeper bloquear, clique com o botão direito no app e escolha “Abrir”.",
+      "dl.win.req": "Windows 10 / 11, x64. Instalação por usuário, sem permissão de administrador. O instalador baixa o WebView2 se necessário.",
+      "dl.win.btn": "Baixar instalador",
+      "dl.win.sum": "Primeira execução",
+      "dl.win.note": "O instalador ainda não tem assinatura de código. Se o SmartScreen exibir um aviso, escolha “Mais informações” → “Executar assim mesmo”.",
+      "dl.alt": "Vai usar em servidor ou NAS? Consulte <a href=\"https://github.com/zhouxiaoka/autoclip#readme\" target=\"_blank\" rel=\"noopener\">Docker e execução pelo código</a> no README do GitHub.",
+      "faq.eyebrow": "Dúvidas frequentes",
+      "faq.h2": "O que você provavelmente quer saber.",
+      "fb.t": "Encontrou um erro ou tem uma ideia? Conte para nós.",
+      "fb.m": "Um formulário de um minuto, sem cadastro. Para erros, inclua a versão e o sistema. Se deixar um contato, avisaremos quando for resolvido.",
+      "fb.btn": "Enviar feedback",
+      "fb.alt": "Para erros: <a href=\"https://github.com/zhouxiaoka/autoclip/issues/new/choose\" target=\"_blank\" rel=\"noopener\">GitHub Issues</a>. Para dúvidas: <a href=\"https://github.com/zhouxiaoka/autoclip/discussions\" target=\"_blank\" rel=\"noopener\">Discussions</a>.",
+      "faq.1.q": "Tem algum custo?",
+      "faq.1.a": "O AutoClip é grátis e de código aberto (MIT). Você só paga pelo uso da API do modelo escolhido; o custo depende do modelo e da duração do vídeo.",
+      "faq.2.q": "Meu vídeo é enviado a algum servidor?",
+      "faq.2.a": "O processamento acontece no seu computador. O modelo recebe apenas o texto das legendas para análise e pontuação; você escolhe o provedor.",
+      "faq.3.q": "Quais fontes de vídeo são aceitas?",
+      "faq.3.a": "Links do Bilibili, YouTube e arquivos locais. Vídeos com legendas funcionam diretamente; para os demais, instale o Whisper nas configurações e transcreva localmente.",
+      "faq.4.q": "Por que o sistema mostra um aviso ao abrir?",
+      "faq.4.a": "As versões ainda não têm notarização no macOS nem assinatura no Windows. No macOS, tente botão direito → “Abrir”. No Windows, “Mais informações” → “Executar assim mesmo”. A assinatura está planejada.",
+      "faq.5.q": "E se os clipes não ficarem bons?",
+      "faq.5.a": "Experimente um modelo mais potente. Se não melhorar, informe o tipo de vídeo, a duração e o modelo no <a class=\"link\" href=\"https://github.com/zhouxiaoka/autoclip/issues/96\" target=\"_blank\" rel=\"noopener\">issue fixado do GitHub</a>. Estamos reunindo exemplos para melhorar a seleção.",
+      "footer.releases": "Versões",
+      "footer.privacy": "Privacidade",
+      "footer.copy": "© 2025–2026 AutoClip · Licença MIT"
+    },
+    ru: {
+      "title": "AutoClip — Лучшие моменты длинных видео автоматически",
+      "nav.how": "Как это работает",
+      "nav.why": "Преимущества",
+      "nav.download": "Скачать",
+      "nav.faq": "Вопросы",
+      "nav.cta": "Скачать",
+      "hero.h1": "Всё самое интересное —<br>в клипах, автоматически.",
+      "hero.lede": "Вставьте ссылку Bilibili или YouTube либо добавьте видео с компьютера. ИИ анализирует содержание, находит лучшие моменты и создаёт клипы и подборки. Обработка видео происходит на вашем компьютере.",
+      "hero.cta.mac": "Скачать для macOS",
+      "hero.cta.win": "Скачать для Windows",
+      "hero.alt.also": "Также для",
+      "hero.alt.win": "Windows",
+      "hero.alt.mac": "macOS",
+      "hero.alt.releases": "Все версии",
+      "hero.alt.docker": "Docker / исходный код",
+      "hero.note": "v1.3.0 · Открытый код, MIT · Бесплатно",
+      "mock.tab.projects": "Проекты",
+      "mock.tab.uploads": "Публикации",
+      "mock.tab.settings": "Настройки",
+      "mock.seg.link": "Ссылка",
+      "mock.seg.file": "Файл",
+      "mock.placeholder": "Вставьте ссылку Bilibili / YouTube…",
+      "mock.go": "Начать",
+      "mock.recent": "Недавние проекты",
+      "mock.status.analyzing": "Анализ",
+      "mock.status.done": "Готово",
+      "mock.p1.title": "Интервью: год независимой разработки",
+      "mock.p2.title": "Запись эфира · Вопросы о запуске",
+      "mock.p2.meta": "7 клипов · 1 подборка",
+      "mock.p2.time": "2 ч назад",
+      "mock.p3.title": "Лекция: теория вероятностей, занятие 3",
+      "mock.p3.meta": "12 клипов · 2 подборки",
+      "mock.p3.time": "Вчера",
+      "how.eyebrow": "Как это работает",
+      "how.h2": "От длинного видео к клипам за три шага.",
+      "how.1.h": "Импорт",
+      "how.1.p": "Вставьте ссылку Bilibili или YouTube либо перетащите локальный файл. Нет субтитров? Установите Whisper в один клик и создайте их локально, без стороннего сервиса.",
+      "how.1.chip.local": "Файлы mp4 / mov / mkv",
+      "how.1.chip.srt": "SRT по желанию",
+      "how.2.h": "Анализ",
+      "how.2.p": "Языковая модель анализирует содержание, делит его по темам, оценивает фрагменты и выбирает те, которые интересны сами по себе, добавляя названия. Вы выбираете модель: Qwen, OpenAI, Gemini, SiliconFlow или любой API, совместимый с OpenAI.",
+      "how.2.r1": "Почему я отказался от подписок",
+      "how.2.r2": "Как появился первый платящий клиент",
+      "how.2.r3": "Что пугает в работе в одиночку",
+      "how.2.r4": "Разговор о книгах, которые я читаю",
+      "how.3.h": "Экспорт",
+      "how.3.p": "Клипы и подборки сохраняются на диск. Меняйте названия, перетаскивайте клипы для сортировки и публикуйте в нескольких аккаунтах Bilibili в один клик. Сэкономленное время — для следующего видео.",
+      "how.3.foot": "Подборка · Год независимой разработки · 3 клипа",
+      "how.3.pill": "Опубликовано в Bilibili",
+      "why.eyebrow": "Почему AutoClip",
+      "why.h2": "Инструмент для тех, кто серьёзно занимается контентом.",
+      "why.1.h": "Локальная обработка",
+      "why.1.p": "Скачивание, распознавание речи, нарезка и рендеринг выполняются на вашем компьютере. Выбранной модели отправляется только текст субтитров.",
+      "why.2.h": "Простая установка",
+      "why.2.p": "Установщик включает переносимый Python и статический ffmpeg. Не нужно настраивать среду или устанавливать Docker — скачайте и запускайте.",
+      "why.3.h": "Выбор модели за вами",
+      "why.3.p": "Без привязки к провайдеру. Храните API-ключ в настройках, меняйте провайдера или подключайте свой адрес API, совместимого с OpenAI, включая локальные модели.",
+      "why.4.h": "Открытый код, MIT",
+      "why.4.p": "Весь код на GitHub. Изучайте обработку видео, меняйте код или размещайте приложение на своём сервере.",
+      "dl.eyebrow": "Скачать",
+      "dl.h2": "macOS и Windows. Бесплатно.",
+      "dl.mac.req": "Apple Silicon (серия M) · macOS 13 и новее. Intel Mac пока не поддерживается.",
+      "dl.mac.btn": "Скачать .dmg",
+      "dl.mac.sum": "Первый запуск",
+      "dl.mac.note": "Приложение пока не заверено Apple. Если Gatekeeper блокирует запуск, нажмите на приложение правой кнопкой и выберите «Открыть».",
+      "dl.win.req": "Windows 10 / 11, x64. Установка для пользователя без прав администратора. При необходимости установщик скачает WebView2.",
+      "dl.win.btn": "Скачать установщик",
+      "dl.win.sum": "Первый запуск",
+      "dl.win.note": "Установщик пока не имеет цифровой подписи. При предупреждении SmartScreen выберите «Подробнее» → «Выполнить в любом случае».",
+      "dl.alt": "Для сервера или NAS см. <a href=\"https://github.com/zhouxiaoka/autoclip#readme\" target=\"_blank\" rel=\"noopener\">установку через Docker и из исходников</a> в README на GitHub.",
+      "faq.eyebrow": "Вопросы",
+      "faq.h2": "Ответы на ваши вопросы.",
+      "fb.t": "Нашли ошибку или есть идея? Напишите нам.",
+      "fb.m": "Форма на минуту, без регистрации. Для ошибок укажите версию и систему. Оставьте контакт — сообщим об исправлении.",
+      "fb.btn": "Отправить отзыв",
+      "fb.alt": "Ошибки: <a href=\"https://github.com/zhouxiaoka/autoclip/issues/new/choose\" target=\"_blank\" rel=\"noopener\">GitHub Issues</a>. Вопросы: <a href=\"https://github.com/zhouxiaoka/autoclip/discussions\" target=\"_blank\" rel=\"noopener\">Discussions</a>.",
+      "faq.1.q": "Это платно?",
+      "faq.1.a": "AutoClip бесплатен и открыт по лицензии MIT. Оплачивается только API выбранной модели; стоимость зависит от модели и длительности видео.",
+      "faq.2.q": "Видео отправляется на сервер?",
+      "faq.2.a": "Обработка выполняется на вашем компьютере. Модель получает только текст субтитров для анализа и оценки; провайдера выбираете вы.",
+      "faq.3.q": "Какие источники поддерживаются?",
+      "faq.3.a": "Ссылки Bilibili, YouTube и локальные файлы. Видео с субтитрами обрабатываются сразу; для остальных установите Whisper в настройках и создайте субтитры локально.",
+      "faq.4.q": "Почему система предупреждает при запуске?",
+      "faq.4.a": "Версии пока не заверены Apple и не подписаны для Windows. В macOS попробуйте правую кнопку → «Открыть». В Windows — «Подробнее» → «Выполнить в любом случае». Подпись запланирована.",
+      "faq.5.q": "Что делать, если клипы неудачные?",
+      "faq.5.a": "Попробуйте более мощную модель. Если результат не улучшится, укажите тип видео, длительность и модель в <a class=\"link\" href=\"https://github.com/zhouxiaoka/autoclip/issues/96\" target=\"_blank\" rel=\"noopener\">закреплённом issue GitHub</a>. Мы собираем примеры для улучшения отбора.",
+      "footer.releases": "Версии",
+      "footer.privacy": "Конфиденциальность",
+      "footer.copy": "© 2025–2026 AutoClip · Лицензия MIT"
+    },
+    fr: {
+      "title": "AutoClip — Les meilleurs moments de vos vidéos, découpés automatiquement",
+      "nav.how": "Fonctionnement",
+      "nav.why": "Avantages",
+      "nav.download": "Télécharger",
+      "nav.faq": "FAQ",
+      "nav.cta": "Télécharger",
+      "hero.h1": "Les moments qui comptent,<br>découpés automatiquement.",
+      "hero.lede": "Collez un lien Bilibili ou YouTube, ou importez une vidéo locale. L’IA analyse le contenu, repère les meilleurs moments et crée des extraits et collections. Le traitement vidéo s’effectue sur votre ordinateur.",
+      "hero.cta.mac": "Télécharger pour macOS",
+      "hero.cta.win": "Télécharger pour Windows",
+      "hero.alt.also": "Aussi pour",
+      "hero.alt.win": "Windows",
+      "hero.alt.mac": "macOS",
+      "hero.alt.releases": "Toutes les versions",
+      "hero.alt.docker": "Docker / code source",
+      "hero.note": "v1.3.0 · Code ouvert, MIT · Gratuit",
+      "mock.tab.projects": "Projets",
+      "mock.tab.uploads": "Publications",
+      "mock.tab.settings": "Paramètres",
+      "mock.seg.link": "Lien",
+      "mock.seg.file": "Fichier",
+      "mock.placeholder": "Collez un lien Bilibili / YouTube…",
+      "mock.go": "Lancer",
+      "mock.recent": "Projets récents",
+      "mock.status.analyzing": "Analyse",
+      "mock.status.done": "Terminé",
+      "mock.p1.title": "Entretien : un an de développement indépendant",
+      "mock.p2.title": "Rediffusion · Questions sur le lancement",
+      "mock.p2.meta": "7 extraits · 1 collection",
+      "mock.p2.time": "Il y a 2 h",
+      "mock.p3.title": "Cours : probabilités, leçon 3",
+      "mock.p3.meta": "12 extraits · 2 collections",
+      "mock.p3.time": "Hier",
+      "how.eyebrow": "Fonctionnement",
+      "how.h2": "D’une longue vidéo à une série d’extraits, en trois étapes.",
+      "how.1.h": "Importez",
+      "how.1.p": "Collez un lien Bilibili ou YouTube, ou glissez un fichier local. Pas de sous-titres ? Installez Whisper en un clic et transcrivez sur votre ordinateur, sans passer par un autre service.",
+      "how.1.chip.local": "Fichiers mp4 / mov / mkv",
+      "how.1.chip.srt": "SRT facultatif",
+      "how.2.h": "Analysez",
+      "how.2.p": "Un modèle de langage analyse le contenu, le divise par thèmes, évalue chaque passage et sélectionne ceux qui méritent d’être vus seuls, avec un titre pour chacun. Choisissez Qwen, OpenAI, Gemini, SiliconFlow ou toute API compatible OpenAI.",
+      "how.2.r1": "Pourquoi j’ai abandonné les abonnements",
+      "how.2.r2": "Comment j’ai trouvé mon premier client payant",
+      "how.2.r3": "Ce qui fait peur quand on crée seul",
+      "how.2.r4": "Discussion : mes lectures du moment",
+      "how.3.h": "Exportez",
+      "how.3.p": "Les extraits et collections sont enregistrés sur votre disque. Modifiez les titres, réordonnez les extraits par glisser-déposer et publiez sur plusieurs comptes Bilibili en un clic. Gardez du temps pour votre prochaine vidéo.",
+      "how.3.foot": "Collection · Un an de développement indépendant · 3 extraits",
+      "how.3.pill": "Publié sur Bilibili",
+      "why.eyebrow": "Pourquoi AutoClip",
+      "why.h2": "Un outil pour ceux qui prennent la création au sérieux.",
+      "why.1.h": "Traitement local",
+      "why.1.p": "Téléchargement, transcription, découpage et rendu s’effectuent sur votre ordinateur. Seul le texte des sous-titres est envoyé au modèle choisi.",
+      "why.2.h": "Installation simple",
+      "why.2.p": "L’installateur inclut Python portable et ffmpeg statique. Aucun environnement à configurer ni Docker à installer : téléchargez et lancez.",
+      "why.3.h": "Choisissez votre modèle",
+      "why.3.p": "Sans dépendre d’un fournisseur. Enregistrez votre clé API dans les paramètres, changez de fournisseur ou utilisez une URL compatible OpenAI, y compris pour des modèles locaux.",
+      "why.4.h": "Code ouvert, MIT",
+      "why.4.p": "Tout le code est sur GitHub. Découvrez comment vos vidéos sont traitées, modifiez le code ou hébergez l’application vous-même.",
+      "dl.eyebrow": "Télécharger",
+      "dl.h2": "macOS et Windows. Gratuit.",
+      "dl.mac.req": "Apple Silicon (série M) · macOS 13 ou ultérieur. Mac Intel non pris en charge pour le moment.",
+      "dl.mac.btn": "Télécharger le .dmg",
+      "dl.mac.sum": "Premier lancement",
+      "dl.mac.note": "L’application n’est pas encore notariée par Apple. Si Gatekeeper la bloque, faites un clic droit sur l’app, puis « Ouvrir ».",
+      "dl.win.req": "Windows 10 / 11, x64. Installation par utilisateur, sans droits administrateur. L’installateur télécharge WebView2 si nécessaire.",
+      "dl.win.btn": "Télécharger l’installateur",
+      "dl.win.sum": "Première exécution",
+      "dl.win.note": "L’installateur n’est pas encore signé. Si SmartScreen affiche un avertissement, choisissez « Informations complémentaires » → « Exécuter quand même ».",
+      "dl.alt": "Sur un serveur ou NAS ? Consultez <a href=\"https://github.com/zhouxiaoka/autoclip#readme\" target=\"_blank\" rel=\"noopener\">Docker et l’exécution depuis les sources</a> dans le README GitHub.",
+      "faq.eyebrow": "FAQ",
+      "faq.h2": "Les questions que vous vous posez.",
+      "fb.t": "Un bug ou une idée ? Dites-le-nous.",
+      "fb.m": "Un formulaire d’une minute, sans inscription. Pour les bugs, indiquez la version et le système. Laissez un contact pour être informé de la résolution.",
+      "fb.btn": "Envoyer un retour",
+      "fb.alt": "Pour les bugs : <a href=\"https://github.com/zhouxiaoka/autoclip/issues/new/choose\" target=\"_blank\" rel=\"noopener\">GitHub Issues</a>. Pour les questions : <a href=\"https://github.com/zhouxiaoka/autoclip/discussions\" target=\"_blank\" rel=\"noopener\">Discussions</a>.",
+      "faq.1.q": "Est-ce payant ?",
+      "faq.1.a": "AutoClip est gratuit et ouvert (MIT). Seul l’usage de l’API du modèle choisi est payant ; le coût dépend du modèle et de la durée de la vidéo.",
+      "faq.2.q": "Ma vidéo est-elle envoyée sur un serveur ?",
+      "faq.2.a": "Le traitement s’effectue sur votre ordinateur. Le modèle reçoit uniquement le texte des sous-titres pour l’analyse et l’évaluation ; vous choisissez le fournisseur.",
+      "faq.3.q": "Quelles sources sont prises en charge ?",
+      "faq.3.a": "Liens Bilibili, YouTube et fichiers locaux. Les vidéos sous-titrées fonctionnent directement ; pour les autres, installez Whisper dans les paramètres et transcrivez localement.",
+      "faq.4.q": "Pourquoi le système affiche-t-il un avertissement ?",
+      "faq.4.a": "Les versions ne sont pas encore notariées sur macOS ni signées sur Windows. Sur macOS, essayez clic droit → « Ouvrir ». Sur Windows : « Informations complémentaires » → « Exécuter quand même ». La signature est prévue.",
+      "faq.5.q": "Et si les extraits ne sont pas satisfaisants ?",
+      "faq.5.a": "Essayez un modèle plus puissant. Si le résultat reste décevant, indiquez le type de vidéo, sa durée et le modèle dans l’<a class=\"link\" href=\"https://github.com/zhouxiaoka/autoclip/issues/96\" target=\"_blank\" rel=\"noopener\">issue GitHub épinglée</a>. Nous recueillons des exemples pour améliorer la sélection.",
+      "footer.releases": "Versions",
+      "footer.privacy": "Confidentialité",
+      "footer.copy": "© 2025–2026 AutoClip · Licence MIT"
     }
   };
-  var LANG_ATTR = {zh:'zh-CN', en:'en', ja:'ja', ko:'ko'};
+  var LANG_ATTR = {zh:'zh-CN', en:'en', ja:'ja', ko:'ko', es:'es', pt:'pt-BR', ru:'ru', fr:'fr'};
 
   var isWin = /Windows/i.test(navigator.userAgent) || (navigator.userAgentData && navigator.userAgentData.platform === 'Windows');
 
   function apply(lang){
-    var d = T[lang] || T.zh;
+    if (!Object.prototype.hasOwnProperty.call(T, lang)) lang = 'en';
+    var d = T[lang];
     document.documentElement.lang = LANG_ATTR[lang] || 'zh-CN';
     document.title = d.title;
     document.querySelectorAll('[data-i18n]').forEach(function(el){
@@ -667,9 +1036,17 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
     document.querySelectorAll('[data-i18n-html]').forEach(function(el){
       var k = el.getAttribute('data-i18n-html'); if (d[k] != null) el.innerHTML = d[k];
     });
-    document.querySelectorAll('.lang button').forEach(function(b){
-      b.setAttribute('aria-pressed', b.getAttribute('data-lang') === lang ? 'true' : 'false');
-    });
+    document.getElementById('language').value = lang;
+    var landmarks = {
+      zh:['主导航','页脚'], en:['Main navigation','Footer'], ja:['メインナビゲーション','フッター'], ko:['주 탐색','바닥글'],
+      es:['Navegación principal','Pie de página'], pt:['Navegação principal','Rodapé'], ru:['Основная навигация','Нижняя часть страницы'], fr:['Navigation principale','Pied de page']
+    };
+    document.querySelector('.nav-links').setAttribute('aria-label', landmarks[lang][0]);
+    document.querySelector('.footer-links').setAttribute('aria-label', landmarks[lang][1]);
+    document.querySelector('[data-i18n="footer.privacy"]').href = 'https://github.com/zhouxiaoka/autoclip/blob/main/docs/PRIVACY' + (lang === 'zh' ? '' : '.en') + '.md';
+    document.querySelector('meta[name="description"]').content = d['hero.lede'];
+    document.querySelector('meta[property="og:title"]').content = d.title;
+    document.querySelector('meta[property="og:description"]').content = d['hero.lede'];
     // platform-aware primary CTA
     var p = document.getElementById('cta-primary'), pl = document.getElementById('cta-primary-label');
     var a = document.getElementById('cta-alt'), al = document.getElementById('cta-alt-label');
@@ -679,12 +1056,23 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
   }
 
   var saved = null; try { saved = localStorage.getItem('autoclip.lang'); } catch(e){}
-  var nav = (navigator.language || 'zh').toLowerCase();
-  var guess = nav.indexOf('zh') === 0 ? 'zh' : nav.indexOf('ja') === 0 ? 'ja' : nav.indexOf('ko') === 0 ? 'ko' : 'en';
-  apply(saved && T[saved] ? saved : guess);
+  function supported(value) { return Object.prototype.hasOwnProperty.call(T, value); }
+  function detect(languages) {
+    for (var i = 0; i < languages.length; i++) {
+      var base = languages[i].toLowerCase().replace('_', '-').split('-')[0];
+      if (supported(base)) return base;
+    }
+    return 'en';
+  }
+  var requested = new URLSearchParams(location.search).get('lang');
+  apply(supported(requested) ? requested : supported(saved) ? saved : detect(navigator.languages || [navigator.language || 'en']));
 
-  document.querySelectorAll('.lang button').forEach(function(b){
-    b.addEventListener('click', function(){ apply(b.getAttribute('data-lang')); });
+  document.getElementById('language').addEventListener('change', function(event){
+    var lang = event.target.value;
+    apply(lang);
+    var url = new URL(location.href);
+    url.searchParams.set('lang', lang);
+    history.replaceState(null, '', url);
   });
 })();
 </script>

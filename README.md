@@ -7,7 +7,7 @@
 ## 结构
 
 ```
-index.html          单页官网，含 zh / en / ja / ko 四语文案（页尾 <script> 里的 T 对象）
+index.html          单页官网，含 zh / en / ja / ko / es / pt / ru / fr 八语文案（页尾 <script> 里的 T 对象）
 tokens.css          设计 token，与产品 frontend/src/index.css 的 --ac-* 同名（规范见主仓库 DESIGN.md）
 logo.svg            品牌标记（矢量）；favicon-32.png / apple-touch-icon.png 由它渲染
 img/                hero 与示例卡里的视频静帧（WebP）
@@ -24,7 +24,7 @@ npx serve -l 8765 .
 
 ## Release 自动同步
 
-`.github/workflows/sync-release.yml` 从 `zhouxiaoka/autoclip` 的 GitHub Release 同步四语版本文案、下载链接及安装包体积，并自动提交到 `main`、显式请求 GitHub Pages 构建。
+`.github/workflows/sync-release.yml` 从 `zhouxiaoka/autoclip` 的 GitHub Release 同步八语版本文案、下载链接及安装包体积，并自动提交到 `main`、显式请求 GitHub Pages 构建。
 
 - **每日同步**：cron `17 3 * * *`，北京时间每天 11:17 检查最新正式 Release；GitHub 调度可能延迟。无需额外 token。
 - **发版触发**：接收 `repository_dispatch` 的 `autoclip-release` 事件，读取 `client_payload.tag`。
@@ -51,3 +51,13 @@ python3 scripts/sync_release.py v1.3.0   # 更新到指定已发布 Release
 ## 反馈入口
 
 官网 `#feedback` 卡指向飞书多维表格表单（免登录）与 GitHub Issues / Discussions；收件箱的说明见主仓库 `HANDOFF.md`「反馈收件箱」一节。
+
+## 语言
+
+支持中文、英语、日语、韩语、西班牙语、巴西葡萄牙语、俄语、法语。优先级：URL 的 `?lang=es` 等参数 → 上次手动选择 → 浏览器偏好语言列表 → 英语。`pt-BR` 和 `pt-PT` 均使用巴西葡语文案；西语使用通用表达。导航中的原生语言选择器支持键盘与移动端，选择后更新 URL，可直接分享对应语言。
+
+所有文案仍在 `index.html` 的 `T` 对象中，发布版本同步脚本会更新八语中的版本号。页面标题、说明与 `html[lang]` 随语言切换；静态社交爬虫未执行 JavaScript 时仍看到默认中文元信息。
+
+验证：`node --test scripts/i18n.test.cjs`。
+
+本次八语改动已验证目录中的文案键、语言优先级、切换后的标题/描述/下载目标、语言选择持久化，以及八语在桌面和约 400 CSS 像素宽度下的排版。新增四语尚未经过母语用户审校。部署前继续使用现有 Pages 流程；本地验证本身不会发布官网。
