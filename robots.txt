@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://zhouxiaoka.github.io/autoclip_intro/sitemap.xml

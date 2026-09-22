@@ -24,7 +24,7 @@ test('eight catalogs cover all translated elements and preserve links',()=>{
  for(const lang of langs){
   assert.deepEqual(Object.keys(c.T[lang]).sort(),keys,lang)
   for(const [,key] of html.matchAll(/data-i18n(?:-html)?="([^"]+)"/g))assert.ok(c.T[lang][key],lang+': '+key)
-  for(const key of ['dl.alt','fb.alt','faq.5.a']){
+  for(const key of ['dl.alt','fb.alt','fb.stuck','faq.5.a','faq.6.a']){
    const links=s=>[...s.matchAll(/href="([^"]+)"/g)].map(m=>m[1]).filter(x=>!x.startsWith('#')).sort()
    assert.deepEqual(links(c.T[lang][key]),links(c.T.en[key]),lang+': '+key)
   }
@@ -42,7 +42,10 @@ test('switches translate the whole page, update metadata, persist and retain dow
  for(const lang of langs){
   page.nodes.language.change({target:{value:lang}})
   assert.equal(page.document.title,c.T[lang].title)
-  assert.equal(page.nodes['meta[name="description"]'].content,c.T[lang]['hero.lede'])
+  assert.equal(page.nodes['meta[name="description"]'].content,c.T[lang]['meta.desc'])
+  assert.equal(page.nodes['meta[property="og:description"]'].content,c.T[lang]['meta.desc'])
+  assert.equal(page.nodes['meta[name="twitter:title"]'].content,c.T[lang].title)
+  assert.equal(page.nodes['meta[name="twitter:description"]'].content,c.T[lang]['meta.desc'])
   assert.equal(page.storage.get('autoclip.lang'),lang)
   assert.equal(page.history.url.searchParams.get('lang'),lang)
   assert.equal(page.history.url.hash,'#download')
