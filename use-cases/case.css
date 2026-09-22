@@ -58,9 +58,6 @@ h2{font-size:1.375rem;font-weight:500;line-height:1.3;letter-spacing:-.015em}
 .steps > li:first-child{border-top:0;padding-top:0}
 .steps .n{font-family:var(--ac-font-mono);font-size:.8125rem;color:var(--ac-muted);letter-spacing:.06em}
 .steps p{color:var(--ac-sub)}
-.steps p + p{margin-top:10px}
-.examples{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-direction:column;gap:6px}
-.examples li{color:var(--ac-sub);font-size:.9375rem;line-height:1.55}
 
 .note{margin-top:8px;background:var(--ac-card);border:1px solid var(--ac-line);border-radius:var(--ac-r-card);padding:22px 24px;box-shadow:var(--ac-shadow)}
 .note p{margin-top:10px;color:var(--ac-sub);max-width:62ch}
