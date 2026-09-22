@@ -54,8 +54,8 @@ h2{font-size:1.375rem;font-weight:500;line-height:1.3;letter-spacing:-.015em}
 .card p{margin-top:8px;color:var(--ac-sub);font-size:.9375rem}
 
 .steps{list-style:none;margin:22px 0 0;padding:0;display:flex;flex-direction:column}
-.steps li{display:grid;grid-template-columns:3.5rem minmax(0,1fr);gap:8px;align-items:baseline;padding:16px 0;border-top:1px solid var(--ac-line)}
-.steps li:first-child{border-top:0;padding-top:0}
+.steps > li{display:grid;grid-template-columns:3.5rem minmax(0,1fr);gap:8px;align-items:baseline;padding:16px 0;border-top:1px solid var(--ac-line)}
+.steps > li:first-child{border-top:0;padding-top:0}
 .steps .n{font-family:var(--ac-font-mono);font-size:.8125rem;color:var(--ac-muted);letter-spacing:.06em}
 .steps p{color:var(--ac-sub)}
 
