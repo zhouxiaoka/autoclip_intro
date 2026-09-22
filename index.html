@@ -49,7 +49,7 @@
           "name": "要花钱吗？",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "AutoClip 本身免费、开源（MIT）。唯一的成本是你自己模型的 API 调用费——每条视频通常只是几分钱到几毛钱，取决于时长和所选模型。"
+            "text": "AutoClip 本身免费、开源（MIT）。模型费用由你自己承担。发到海外平台需要你自己的 Upload-Post，额度以 Upload-Post 页面为准，AutoClip 不承诺配额。"
           }
         },
         {
@@ -57,7 +57,7 @@
           "name": "我的视频会被上传吗？",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "不会。视频文件只在你的电脑上处理。发给模型的只有字幕文本（用于理解内容和评分），发给哪家由你在设置里决定。"
+            "text": "剪辑一直在本地。只有你点了「发布」之后，成片才会发到已连接的平台。发给模型的仍然只有字幕文本。「仅自己」只保证 TikTok、YouTube 和 B站。"
           }
         },
         {
@@ -455,7 +455,8 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
         <div>
           <div class="n">03</div>
           <h3 data-i18n="how.3.h">出片</h3>
-          <p data-i18n="how.3.p">切片和合集直接生成到本地。标题可以顺手改，合集里拖拽排序，多个 B站账号一键上传。剩下的时间，留给下一条视频。</p>
+          <p data-i18n="how.3.p">切片和合集直接生成到本地。标题可以顺手改，合集里拖拽排序。发布在同一页完成：海外平台走你自己的 Upload-Post；B站在设置里保存一次 Cookie（SESSDATA、bili_jct、DedeUserID），只连一个账号。剩下的时间，留给下一条视频。</p>
+          <p data-i18n="how.3.note">在切片上打开「发布」：海外用你的 Upload-Post，B站用已保存的 Cookie。抖音、小红书、快手不能从这里发出去。</p>
         </div>
         <div class="vis" aria-hidden="true">
           <div class="clips">
@@ -478,7 +479,7 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
     <div class="eyebrow" data-i18n="why.eyebrow">为什么是 AutoClip</div>
     <h2 data-i18n="why.h2">一个认真做内容的人，会想要的工具。</h2>
     <div class="why">
-      <div class="item"><span class="k">01</span><h3 data-i18n="why.1.h">全程本地</h3><p data-i18n="why.1.p">视频不上传到任何服务器。下载、转写、切片、合成都在你的电脑上完成，只有字幕文本会发给你选择的模型。</p></div>
+      <div class="item"><span class="k">01</span><h3 data-i18n="why.1.h">剪辑在本地</h3><p data-i18n="why.1.p">下载、转写、切片、合成都在你的电脑上完成，发给模型的只有字幕文本。成片只有在你点了「发布」之后，才会发到已连接的平台。</p></div>
       <div class="item"><span class="k">02</span><h3 data-i18n="why.2.h">零依赖安装</h3><p data-i18n="why.2.p">安装包自带便携 Python 与静态 ffmpeg。不用配环境、不用装 Docker，下载即用。</p></div>
       <div class="item"><span class="k">03</span><h3 data-i18n="why.3.h">模型自选</h3><p data-i18n="why.3.p">不绑定任何厂商。API Key 填在自己的设置页里，随时切换提供商或接入自定义 OpenAI 兼容地址，包括本地模型。</p></div>
       <div class="item"><span class="k">04</span><h3 data-i18n="why.4.h">开源 MIT</h3><p data-i18n="why.4.p">全部代码在 GitHub。想看它怎么处理你的视频、想改、想自己部署，都可以。</p></div>
@@ -541,11 +542,11 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       <div class="faq">
         <details open>
           <summary data-i18n="faq.1.q">要花钱吗？</summary>
-          <p data-i18n="faq.1.a">AutoClip 本身免费、开源（MIT）。唯一的成本是你自己模型的 API 调用费——每条视频通常只是几分钱到几毛钱，取决于时长和所选模型。</p>
+          <p data-i18n="faq.1.a">AutoClip 本身免费、开源（MIT）。模型费用由你自己承担。发到海外平台需要你自己的 Upload-Post，额度以 Upload-Post 页面为准，AutoClip 不承诺配额。</p>
         </details>
         <details>
           <summary data-i18n="faq.2.q">我的视频会被上传吗？</summary>
-          <p data-i18n="faq.2.a">不会。视频文件只在你的电脑上处理。发给模型的只有字幕文本（用于理解内容和评分），发给哪家由你在设置里决定。</p>
+          <p data-i18n="faq.2.a">剪辑一直在本地。只有你点了「发布」之后，成片才会发到已连接的平台。发给模型的仍然只有字幕文本。「仅自己」只保证 TikTok、YouTube 和 B站。</p>
         </details>
         <details>
           <summary data-i18n="faq.3.q">支持哪些视频来源？</summary>
@@ -611,10 +612,11 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       'how.1.chip.local':'本地 mp4 / mov / mkv','how.1.chip.srt':'可选 SRT 字幕',
       'how.2.h':'理解','how.2.p':'大模型读完整条视频的内容，按话题切分、逐段评分，挑出真正值得单独看的片段，并为每段写好标题。用哪个模型你自己定：通义千问、OpenAI、Gemini、硅基流动，或任何 OpenAI 兼容接口。',
       'how.2.r1':'为什么我放弃了订阅制','how.2.r2':'第一个付费用户是怎么来的','how.2.r3':'一个人做产品最怕的事','how.2.r4':'闲聊：最近在看的书',
-      'how.3.h':'出片','how.3.p':'切片和合集直接生成到本地。标题可以顺手改，合集里拖拽排序，多个 B站账号一键上传。剩下的时间，留给下一条视频。',
+      'how.3.h':'出片','how.3.p':'切片和合集直接生成到本地。标题可以顺手改，合集里拖拽排序。发布在同一页完成：海外平台走你自己的 Upload-Post；B站在设置里保存一次 Cookie（SESSDATA、bili_jct、DedeUserID），只连一个账号。剩下的时间，留给下一条视频。',
+      'how.3.note':'在切片上打开「发布」：海外用你的 Upload-Post，B站用已保存的 Cookie。抖音、小红书、快手不能从这里发出去。',
       'how.3.foot':'合集 · 独立开发者的一年 · 3 段','how.3.pill':'已上传到 B站',
       'why.eyebrow':'为什么是 AutoClip','why.h2':'一个认真做内容的人，会想要的工具。',
-      'why.1.h':'全程本地','why.1.p':'视频不上传到任何服务器。下载、转写、切片、合成都在你的电脑上完成，只有字幕文本会发给你选择的模型。',
+      'why.1.h':'剪辑在本地','why.1.p':'下载、转写、切片、合成都在你的电脑上完成，发给模型的只有字幕文本。成片只有在你点了「发布」之后，才会发到已连接的平台。',
       'why.2.h':'零依赖安装','why.2.p':'安装包自带便携 Python 与静态 ffmpeg。不用配环境、不用装 Docker，下载即用。',
       'why.3.h':'模型自选','why.3.p':'不绑定任何厂商。API Key 填在自己的设置页里，随时切换提供商或接入自定义 OpenAI 兼容地址，包括本地模型。',
       'why.4.h':'开源 MIT','why.4.p':'全部代码在 GitHub。想看它怎么处理你的视频、想改、想自己部署，都可以。',
@@ -627,8 +629,8 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       'faq.eyebrow':'常见问题','faq.h2':'你大概想问的。',
       'fb.t':'有问题或想法？直接告诉我们。','fb.m':'一分钟的表单，不用注册。Bug 带上版本和平台就能更快复现；留了联系方式的，解决后会回你一声。','fb.btn':'提交反馈','fb.alt':'可复现的 Bug 用 <a href="https://github.com/zhouxiaoka/autoclip/issues/new/choose" target="_blank" rel="noopener">GitHub Issues</a>。讨论：<a href="https://github.com/zhouxiaoka/autoclip/discussions/127" target="_blank" rel="noopener">公告</a>、<a href="https://github.com/zhouxiaoka/autoclip/discussions/128" target="_blank" rel="noopener">第一次出片</a>、<a href="https://github.com/zhouxiaoka/autoclip/discussions/129" target="_blank" rel="noopener">想法与路线图</a>。已知问题见 <a href="https://github.com/zhouxiaoka/autoclip/issues/96" target="_blank" rel="noopener">置顶帖</a>。',
       'fb.stuck':'第一次出片卡住？去 <a href="https://github.com/zhouxiaoka/autoclip/discussions/128" target="_blank" rel="noopener">第一次出片问答</a>。',
-      'faq.1.q':'要花钱吗？','faq.1.a':'AutoClip 本身免费、开源（MIT）。唯一的成本是你自己模型的 API 调用费——每条视频通常只是几分钱到几毛钱，取决于时长和所选模型。',
-      'faq.2.q':'我的视频会被上传吗？','faq.2.a':'不会。视频文件只在你的电脑上处理。发给模型的只有字幕文本（用于理解内容和评分），发给哪家由你在设置里决定。',
+      'faq.1.q':'要花钱吗？','faq.1.a':'AutoClip 本身免费、开源（MIT）。模型费用由你自己承担。发到海外平台需要你自己的 Upload-Post，额度以 Upload-Post 页面为准，AutoClip 不承诺配额。',
+      'faq.2.q':'我的视频会被上传吗？','faq.2.a':'剪辑一直在本地。只有你点了「发布」之后，成片才会发到已连接的平台。发给模型的仍然只有字幕文本。「仅自己」只保证 TikTok、YouTube 和 B站。',
       'faq.3.q':'支持哪些视频来源？','faq.3.a':'B站链接、YouTube 链接、本地文件。有字幕的视频直接用；没有字幕的可以在设置里一键安装 Whisper，在本地转写。',
       'faq.4.q':'为什么第一次打开系统会警告？','faq.4.a':'因为安装包还没有做 Apple 公证 / Windows 代码签名。macOS 右键 → 打开；Windows 点「更多信息」→「仍要运行」。之后不会再提示。签名正在计划中。',
       'faq.5.q':'切片效果不好怎么办？','faq.5.a':'先试换一个更强的模型。仍不理想的话，请通过 <a class="link" href="#feedback">反馈表单</a>或 <a class="link" href="https://github.com/zhouxiaoka/autoclip/issues/96" target="_blank" rel="noopener">GitHub 置顶帖</a>告诉我们视频类型、时长、模型，我们在收集样例改进评分策略。',
@@ -654,10 +656,11 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       'how.1.chip.local':'Local mp4 / mov / mkv','how.1.chip.srt':'Optional SRT',
       'how.2.h':'Understand','how.2.p':'A language model reads the whole video, splits it by topic, scores each segment and picks the ones worth watching on their own — with a title for each. You choose the model: Qwen, OpenAI, Gemini, SiliconFlow, or any OpenAI-compatible endpoint.',
       'how.2.r1':'Why I gave up on subscriptions','how.2.r2':'How the first paying customer showed up','how.2.r3':'The scariest part of building alone','how.2.r4':'Small talk: books I\'m reading',
-      'how.3.h':'Export','how.3.p':'Clips and collections land on your disk. Tweak titles inline, drag to reorder a collection, and publish to multiple Bilibili accounts in one click. The time you save goes to the next video.',
+      'how.3.h':'Export','how.3.p':'Clips and collections land on your disk. Tweak titles inline and drag to reorder a collection. Publishing is one page: overseas platforms go through your Upload-Post; for Bilibili, save a Cookie once in Settings (SESSDATA, bili_jct, DedeUserID), a single account. The time you save goes to the next video.',
+      'how.3.note':'On a clip, open Publish — your Upload-Post for overseas platforms, and the Bilibili Cookie you saved. Douyin, Xiaohongshu, and Kuaishou are not supported from here.',
       'how.3.foot':'Collection · A year of indie development · 3 clips','how.3.pill':'Published to Bilibili',
       'why.eyebrow':'Why AutoClip','why.h2':'The tool a serious creator would want.',
-      'why.1.h':'Local end to end','why.1.p':'Your video never leaves your machine. Downloading, transcribing, cutting and rendering all happen locally; only subtitle text is sent to the model you pick.',
+      'why.1.h':'Editing stays local','why.1.p':'Downloading, transcribing, cutting and rendering stay on your machine; only subtitle text goes to the model you pick. The finished clip goes to connected platforms only after you click Publish.',
       'why.2.h':'Zero-dependency install','why.2.p':'The installer bundles a portable Python and static ffmpeg. No environment setup, no Docker — download and run.',
       'why.3.h':'Bring your own model','why.3.p':'No vendor lock-in. Your API key lives in your own settings; switch providers any time or point it at a custom OpenAI-compatible URL, including local models.',
       'why.4.h':'Open source, MIT','why.4.p':'All the code is on GitHub. Read how it handles your video, change it, or self-host it.',
@@ -670,8 +673,8 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       'faq.eyebrow':'FAQ','faq.h2':'The questions you were about to ask.',
       'fb.t':'Found a bug or have an idea? Tell us.','fb.m':'A one-minute form, no sign-up. Include version and platform for bugs so we can reproduce; leave a contact and we\'ll follow up once it\'s fixed.','fb.btn':'Send feedback','fb.alt':'Reproducible bugs: <a href="https://github.com/zhouxiaoka/autoclip/issues/new/choose" target="_blank" rel="noopener">GitHub Issues</a>. Discussions: <a href="https://github.com/zhouxiaoka/autoclip/discussions/127" target="_blank" rel="noopener">Announcements</a>, <a href="https://github.com/zhouxiaoka/autoclip/discussions/128" target="_blank" rel="noopener">first clip</a>, <a href="https://github.com/zhouxiaoka/autoclip/discussions/129" target="_blank" rel="noopener">ideas and roadmap</a>. Known issues: <a href="https://github.com/zhouxiaoka/autoclip/issues/96" target="_blank" rel="noopener">pinned issue</a>.',
       'fb.stuck':'Stuck on your first clip? See the <a href="https://github.com/zhouxiaoka/autoclip/discussions/128" target="_blank" rel="noopener">first-clip Q&A</a>.',
-      'faq.1.q':'Does it cost anything?','faq.1.a':'AutoClip itself is free and open source (MIT). The only cost is your own model\'s API usage — typically a few cents per video, depending on length and model.',
-      'faq.2.q':'Is my video uploaded anywhere?','faq.2.a':'No. Video files are processed only on your machine. The model receives subtitle text only (to understand and score content), and you decide which provider that is.',
+      'faq.1.q':'Does it cost anything?','faq.1.a':'AutoClip itself is free and open source (MIT). Model fees are yours. Overseas publishing needs your own Upload-Post; quotas follow the Upload-Post page, and AutoClip does not promise them.',
+      'faq.2.q':'Is my video uploaded anywhere?','faq.2.a':'Editing stays on your machine. Only after you click Publish does the clip go to the platforms you connected. The model still receives subtitle text only. Only me is guaranteed for TikTok, YouTube, and Bilibili.',
       'faq.3.q':'Which sources are supported?','faq.3.a':'Bilibili links, YouTube links and local files. Videos with subtitles work directly; for the rest, install Whisper from Settings and transcribe locally.',
       'faq.4.q':'Why does the OS warn me on first launch?','faq.4.a':'The builds are not yet notarized (macOS) or code-signed (Windows). macOS: right-click → Open. Windows: “More info → Run anyway”. It only happens once. Signing is on the roadmap.',
       'faq.5.q':'What if the clips aren\'t good?','faq.5.a':'Try a stronger model first. If results are still off, report it in the <a class="link" href="https://github.com/zhouxiaoka/autoclip/issues/96" target="_blank" rel="noopener">pinned GitHub issue</a> with video type, length and model — we are collecting samples to improve scoring.',
@@ -697,10 +700,11 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       'how.1.chip.local':'ローカル mp4 / mov / mkv','how.1.chip.srt':'SRT 字幕（任意）',
       'how.2.h':'理解する','how.2.p':'大規模言語モデルが動画全体を読み、話題ごとに分割・採点し、単独で見る価値のある部分を選び、タイトルを付けます。モデルは自由に選択：通義千問、OpenAI、Gemini、SiliconFlow、または OpenAI 互換エンドポイント。',
       'how.2.r1':'サブスクをやめた理由','how.2.r2':'最初の有料ユーザーはどう来たか','how.2.r3':'一人で作るとき一番怖いこと','how.2.r4':'雑談：最近読んでいる本',
-      'how.3.h':'書き出す','how.3.p':'クリップとコレクションはローカルに直接生成。タイトルはその場で編集、コレクションはドラッグで並べ替え、複数の Bilibili アカウントへワンクリックで投稿できます。',
+      'how.3.h':'書き出す','how.3.p':'クリップとコレクションはローカルに直接生成。タイトルはその場で編集、コレクションはドラッグで並べ替え。投稿は同じページ：海外は自分の Upload-Post、Bilibili は設定に Cookie（SESSDATA、bili_jct、DedeUserID）を一度保存し、アカウントは一つです。',
+      'how.3.note':'クリップで「公開」を開く：海外は自分の Upload-Post、Bilibili は保存した Cookie。Douyin、Xiaohongshu、Kuaishou はここからは対応していません。',
       'how.3.foot':'コレクション · 個人開発の 1 年 · 3 本','how.3.pill':'Bilibili に投稿済み',
       'why.eyebrow':'AutoClip を選ぶ理由','why.h2':'本気でコンテンツを作る人のためのツール。',
-      'why.1.h':'すべてローカル','why.1.p':'動画はどのサーバーにも送られません。ダウンロード・文字起こし・カット・合成はすべて PC 上で完了。モデルに送るのは字幕テキストのみです。',
+      'why.1.h':'編集はローカル','why.1.p':'ダウンロード、文字起こし、カット、書き出しは PC 上で完了し、モデルに送るのは字幕テキストだけです。完成したクリップが接続済みのプラットフォームへ行くのは、「公開」を押したあとだけです。',
       'why.2.h':'依存ゼロで導入','why.2.p':'インストーラーにポータブル Python と静的 ffmpeg を同梱。環境構築も Docker も不要、ダウンロードしてすぐ使えます。',
       'why.3.h':'モデルは自分で選ぶ','why.3.p':'特定ベンダーに縛られません。API キーは自分の設定画面に保存し、いつでもプロバイダーを切り替え、ローカルモデルを含む OpenAI 互換 URL にも接続できます。',
       'why.4.h':'オープンソース MIT','why.4.p':'コードはすべて GitHub に。動画がどう処理されるかを読み、変更し、自分でホストすることもできます。',
@@ -713,8 +717,8 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       'faq.eyebrow':'よくある質問','faq.h2':'聞きたくなることを、先に。',
       'fb.t':'不具合や要望があれば、直接お知らせください。','fb.m':'1 分で書けるフォーム、登録不要。バグはバージョンと OS を添えると再現が早くなります。連絡先を残していただければ、解決後にお知らせします。','fb.btn':'フィードバックを送る','fb.alt':'再現できる不具合は <a href="https://github.com/zhouxiaoka/autoclip/issues/new/choose" target="_blank" rel="noopener">GitHub Issues</a> へ。議論：<a href="https://github.com/zhouxiaoka/autoclip/discussions/127" target="_blank" rel="noopener">お知らせ</a>、<a href="https://github.com/zhouxiaoka/autoclip/discussions/128" target="_blank" rel="noopener">はじめてのクリップ</a>、<a href="https://github.com/zhouxiaoka/autoclip/discussions/129" target="_blank" rel="noopener">アイデアとロードマップ</a>。既知の問題は <a href="https://github.com/zhouxiaoka/autoclip/issues/96" target="_blank" rel="noopener">ピン留め Issue</a>。',
       'fb.stuck':'最初の書き出しで止まったら、<a href="https://github.com/zhouxiaoka/autoclip/discussions/128" target="_blank" rel="noopener">はじめてのクリップ Q&A</a> へ。',
-      'faq.1.q':'費用はかかりますか？','faq.1.a':'AutoClip 自体は無料でオープンソース（MIT）です。かかるのは選んだモデルの API 利用料のみで、動画 1 本あたり通常は数円程度です。',
-      'faq.2.q':'動画はアップロードされますか？','faq.2.a':'されません。動画ファイルは PC 上でのみ処理されます。モデルに送るのは字幕テキストだけで、送信先は設定で選べます。',
+      'faq.1.q':'費用はかかりますか？','faq.1.a':'AutoClip 自体は無料でオープンソース（MIT）です。モデル費用はご自身の負担です。海外へ出すには自分の Upload-Post が必要で、枠は Upload-Post のページに従います。AutoClip は枠を保証しません。',
+      'faq.2.q':'動画はアップロードされますか？','faq.2.a':'編集はローカルのままです。「公開」を押したあとだけ、クリップが接続済みのプラットフォームへ送られます。モデルが受け取るのは字幕テキストだけです。「自分のみ」が保証されるのは TikTok、YouTube、Bilibili だけです。',
       'faq.3.q':'対応する動画ソースは？','faq.3.a':'Bilibili リンク、YouTube リンク、ローカルファイル。字幕付きはそのまま、字幕なしは設定から Whisper をインストールしてローカルで文字起こしできます。',
       'faq.4.q':'初回起動時に OS が警告するのはなぜ？','faq.4.a':'まだ Apple 公証 / Windows コード署名を行っていないためです。macOS は右クリック →「開く」、Windows は「詳細情報」→「実行」。表示は一度だけです。署名は計画中です。',
       'faq.5.q':'クリップの品質が良くない場合は？','faq.5.a':'まずより強いモデルを試してください。それでも改善しない場合は <a class="link" href="https://github.com/zhouxiaoka/autoclip/issues/96" target="_blank" rel="noopener">GitHub のピン留め Issue</a> に動画の種類・長さ・モデルを添えて報告してください。採点戦略の改善に使います。',
@@ -740,10 +744,11 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       'how.1.chip.local':'로컬 mp4 / mov / mkv','how.1.chip.srt':'SRT 자막(선택)',
       'how.2.h':'이해하기','how.2.p':'대규모 언어 모델이 영상 전체를 읽고 주제별로 나누어 점수를 매긴 뒤, 따로 볼 가치가 있는 구간을 고르고 제목을 붙입니다. 모델은 직접 선택: 통이첸원, OpenAI, Gemini, SiliconFlow 또는 OpenAI 호환 엔드포인트.',
       'how.2.r1':'구독제를 포기한 이유','how.2.r2':'첫 유료 사용자는 어떻게 왔나','how.2.r3':'혼자 만들 때 가장 두려운 것','how.2.r4':'잡담: 요즘 읽는 책',
-      'how.3.h':'내보내기','how.3.p':'클립과 컬렉션이 로컬에 바로 생성됩니다. 제목은 바로 수정, 컬렉션은 드래그로 정렬, 여러 Bilibili 계정에 한 번에 업로드할 수 있습니다.',
+      'how.3.h':'내보내기','how.3.p':'클립과 컬렉션이 로컬에 바로 생성됩니다. 제목은 바로 수정하고, 컬렉션은 드래그로 순서를 바꿉니다. 게시는 한 페이지입니다. 해외 플랫폼은 본인의 Upload-Post로, Bilibili는 설정에 Cookie(SESSDATA, bili_jct, DedeUserID)를 한 번 저장하며 계정은 하나입니다.',
+      'how.3.note':'클립에서 게시를 엽니다. 해외는 본인의 Upload-Post, Bilibili는 저장한 Cookie입니다. Douyin, Xiaohongshu, Kuaishou는 여기서 지원하지 않습니다.',
       'how.3.foot':'컬렉션 · 1인 개발자의 1년 · 3개','how.3.pill':'Bilibili에 업로드됨',
       'why.eyebrow':'왜 AutoClip인가','why.h2':'진지하게 콘텐츠를 만드는 사람을 위한 도구.',
-      'why.1.h':'전 과정 로컬','why.1.p':'영상은 어떤 서버에도 올라가지 않습니다. 다운로드·전사·컷·합성이 모두 내 컴퓨터에서 이루어지며, 모델에는 자막 텍스트만 전송됩니다.',
+      'why.1.h':'편집은 로컬','why.1.p':'다운로드, 전사, 자르기, 합성은 내 컴퓨터에서 끝나고, 모델에는 자막 텍스트만 갑니다. 완성된 클립은 게시를 누른 뒤에만 연결한 플랫폼으로 갑니다.',
       'why.2.h':'의존성 없는 설치','why.2.p':'설치 파일에 포터블 Python과 정적 ffmpeg가 포함되어 있습니다. 환경 설정도 Docker도 필요 없이 내려받아 바로 실행.',
       'why.3.h':'모델은 직접 선택','why.3.p':'특정 업체에 묶이지 않습니다. API 키는 내 설정 페이지에 저장되고, 언제든 제공자를 바꾸거나 로컬 모델을 포함한 OpenAI 호환 주소에 연결할 수 있습니다.',
       'why.4.h':'오픈소스 MIT','why.4.p':'모든 코드가 GitHub에 있습니다. 내 영상을 어떻게 처리하는지 읽고, 고치고, 직접 배포할 수 있습니다.',
@@ -756,8 +761,8 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       'faq.eyebrow':'자주 묻는 질문','faq.h2':'물어보실 것 같은 질문에 먼저 답합니다.',
       'fb.t':'문제나 아이디어가 있나요? 바로 알려 주세요.','fb.m':'1분이면 되는 폼, 가입 불필요. 버그는 버전과 플랫폼을 함께 적어 주면 재현이 빨라지고, 연락처를 남기면 해결 후 알려 드립니다.','fb.btn':'피드백 보내기','fb.alt':'재현 가능한 버그는 <a href="https://github.com/zhouxiaoka/autoclip/issues/new/choose" target="_blank" rel="noopener">GitHub Issues</a>로. 토론: <a href="https://github.com/zhouxiaoka/autoclip/discussions/127" target="_blank" rel="noopener">공지</a>, <a href="https://github.com/zhouxiaoka/autoclip/discussions/128" target="_blank" rel="noopener">첫 클립</a>, <a href="https://github.com/zhouxiaoka/autoclip/discussions/129" target="_blank" rel="noopener">아이디어와 로드맵</a>. 알려진 문제는 <a href="https://github.com/zhouxiaoka/autoclip/issues/96" target="_blank" rel="noopener">고정 이슈</a>.',
       'fb.stuck':'첫 클립에서 막히면 <a href="https://github.com/zhouxiaoka/autoclip/discussions/128" target="_blank" rel="noopener">첫 클립 Q&A</a>를 보세요.',
-      'faq.1.q':'비용이 드나요?','faq.1.a':'AutoClip 자체는 무료 오픈소스(MIT)입니다. 유일한 비용은 선택한 모델의 API 사용료로, 영상 한 편에 보통 몇십 원 수준입니다.',
-      'faq.2.q':'내 영상이 업로드되나요?','faq.2.a':'아닙니다. 영상 파일은 내 컴퓨터에서만 처리됩니다. 모델에는 자막 텍스트만 전송되며, 어느 제공자로 보낼지는 설정에서 정합니다.',
+      'faq.1.q':'비용이 드나요?','faq.1.a':'AutoClip 자체는 무료 오픈소스(MIT)입니다. 모델 요금은 사용자 부담입니다. 해외 게시에는 본인의 Upload-Post가 필요하며, 할당량은 Upload-Post 페이지를 따릅니다. AutoClip은 할당량을 약속하지 않습니다.',
+      'faq.2.q':'내 영상이 업로드되나요?','faq.2.a':'편집은 계속 로컬에서 이뤄집니다. 게시를 누른 뒤에만 클립이 연결한 플랫폼으로 갑니다. 모델이 받는 것은 여전히 자막 텍스트뿐입니다. 나만 보기는 TikTok, YouTube, Bilibili에만 보장됩니다.',
       'faq.3.q':'어떤 영상 소스를 지원하나요?','faq.3.a':'Bilibili 링크, YouTube 링크, 로컬 파일. 자막이 있으면 바로 사용하고, 없으면 설정에서 Whisper를 설치해 로컬로 전사합니다.',
       'faq.4.q':'첫 실행 시 OS가 경고하는 이유는?','faq.4.a':'아직 Apple 공증 / Windows 코드 서명을 하지 않았기 때문입니다. macOS는 우클릭 → 열기, Windows는 「추가 정보」→「실행」. 한 번만 표시됩니다. 서명은 계획 중입니다.',
       'faq.5.q':'클립 품질이 좋지 않으면?','faq.5.a':'먼저 더 강한 모델을 시도해 보세요. 그래도 아쉬우면 <a class="link" href="https://github.com/zhouxiaoka/autoclip/issues/96" target="_blank" rel="noopener">GitHub 고정 이슈</a>에 영상 유형·길이·모델을 적어 알려 주세요. 채점 전략 개선에 사용합니다.',
@@ -812,13 +817,14 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       "how.2.r3": "Lo más difícil de crear un producto en solitario",
       "how.2.r4": "Charla: los libros que estoy leyendo",
       "how.3.h": "Exporta",
-      "how.3.p": "Los clips y colecciones se guardan en tu disco. Edita los títulos, arrastra para ordenar una colección y publica en varias cuentas de Bilibili con un clic. Dedica el tiempo que ahorras a tu próximo video.",
+      "how.3.p": "Los clips y colecciones se guardan en tu disco. Edita los títulos y arrastra para ordenar una colección. La publicación está en una sola página: las plataformas de fuera van por tu Upload-Post; en Bilibili guarda una Cookie una vez en Ajustes (SESSDATA, bili_jct, DedeUserID), una sola cuenta. El tiempo que ahorras es para el próximo video.",
+      "how.3.note": "En un clip, abre Publicar: tu Upload-Post para el extranjero y la Cookie de Bilibili que guardaste. Douyin, Xiaohongshu y Kuaishou no están disponibles desde aquí.",
       "how.3.foot": "Colección · Un año de desarrollo independiente · 3 clips",
       "how.3.pill": "Publicado en Bilibili",
       "why.eyebrow": "Por qué AutoClip",
       "why.h2": "Una herramienta para quienes se toman en serio crear contenido.",
-      "why.1.h": "Procesamiento local",
-      "why.1.p": "La descarga, transcripción, edición y renderizado se realizan en tu equipo. Solo se envía el texto de los subtítulos al modelo que eliges.",
+      "why.1.h": "La edición queda en local",
+      "why.1.p": "La descarga, la transcripción, el corte y el render se hacen en tu equipo; el modelo solo recibe el texto de los subtítulos. El clip terminado va a las plataformas conectadas solo después de pulsar Publicar.",
       "why.2.h": "Instala y empieza",
       "why.2.p": "El instalador incluye Python portátil y ffmpeg estático. Sin configurar entornos ni instalar Docker: descarga y empieza.",
       "why.3.h": "Elige tu modelo",
@@ -844,9 +850,9 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       "fb.alt": "Bugs reproducibles: <a href=\"https://github.com/zhouxiaoka/autoclip/issues/new/choose\" target=\"_blank\" rel=\"noopener\">GitHub Issues</a>. Discusiones: <a href=\"https://github.com/zhouxiaoka/autoclip/discussions/127\" target=\"_blank\" rel=\"noopener\">anuncios</a>, <a href=\"https://github.com/zhouxiaoka/autoclip/discussions/128\" target=\"_blank\" rel=\"noopener\">primer clip</a>, <a href=\"https://github.com/zhouxiaoka/autoclip/discussions/129\" target=\"_blank\" rel=\"noopener\">ideas y hoja de ruta</a>. Problemas conocidos: <a href=\"https://github.com/zhouxiaoka/autoclip/issues/96\" target=\"_blank\" rel=\"noopener\">issue fijado</a>.",
       "fb.stuck": "¿Atascado en el primer clip? Mira las <a href=\"https://github.com/zhouxiaoka/autoclip/discussions/128\" target=\"_blank\" rel=\"noopener\">preguntas del primer clip</a>.",
       "faq.1.q": "¿Tiene algún costo?",
-      "faq.1.a": "AutoClip es gratuito y de código abierto (MIT). Solo pagas el uso de la API del modelo que eliges; el costo depende del modelo y de la duración del video.",
+      "faq.1.a": "AutoClip es gratuito y de código abierto (MIT). Las tarifas del modelo las pagas tú. Publicar fuera requiere tu propio Upload-Post; las cuotas son las de la página de Upload-Post, y AutoClip no las promete.",
       "faq.2.q": "¿Se sube mi video a algún servidor?",
-      "faq.2.a": "El procesamiento se realiza en tu equipo. El modelo recibe solo el texto de los subtítulos para analizarlo y puntuarlo; tú eliges el proveedor.",
+      "faq.2.a": "La edición sigue en local. Solo después de pulsar Publicar el clip va a las plataformas conectadas. El modelo sigue recibiendo solo el texto de los subtítulos. Solo yo queda garantizado en TikTok, YouTube y Bilibili.",
       "faq.3.q": "¿Qué fuentes de video admite?",
       "faq.3.a": "Enlaces de Bilibili, YouTube y archivos locales. Los videos con subtítulos se procesan directamente; para los demás, instala Whisper desde Ajustes y transcribe localmente.",
       "faq.4.q": "¿Por qué el sistema muestra una advertencia al abrirlo?",
@@ -909,13 +915,14 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       "how.2.r3": "O maior medo de criar um produto sozinho",
       "how.2.r4": "Conversa: os livros que estou lendo",
       "how.3.h": "Exporte",
-      "how.3.p": "Os clipes e coleções ficam no seu disco. Edite os títulos, arraste para ordenar uma coleção e publique em várias contas do Bilibili com um clique. Use o tempo que economizou no próximo vídeo.",
+      "how.3.p": "Os clipes e coleções ficam no seu disco. Edite os títulos e arraste para ordenar uma coleção. A publicação fica em uma página: plataformas no exterior usam o seu Upload-Post; no Bilibili, salve o Cookie uma vez em Configurações (SESSDATA, bili_jct, DedeUserID), uma conta só. O tempo que sobra é para o próximo vídeo.",
+      "how.3.note": "Em um clipe, abra Publicar — o seu Upload-Post para o exterior e o Cookie do Bilibili que você salvou. Douyin, Xiaohongshu e Kuaishou não são suportados daqui.",
       "how.3.foot": "Coleção · Um ano de desenvolvimento independente · 3 clipes",
       "how.3.pill": "Publicado no Bilibili",
       "why.eyebrow": "Por que AutoClip",
       "why.h2": "Uma ferramenta para quem leva a criação de conteúdo a sério.",
-      "why.1.h": "Processamento local",
-      "why.1.p": "Download, transcrição, cortes e renderização acontecem no seu computador. Apenas o texto das legendas é enviado ao modelo que você escolhe.",
+      "why.1.h": "A edição fica local",
+      "why.1.p": "Download, transcrição, corte e renderização ficam no seu computador; o modelo recebe apenas o texto das legendas. O clipe pronto vai às plataformas conectadas só depois que você clica em Publicar.",
       "why.2.h": "Instale e comece",
       "why.2.p": "O instalador inclui Python portátil e ffmpeg estático. Sem configurar ambientes nem instalar Docker: baixe e comece.",
       "why.3.h": "Escolha seu modelo",
@@ -941,9 +948,9 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       "fb.alt": "Bugs reproduzíveis: <a href=\"https://github.com/zhouxiaoka/autoclip/issues/new/choose\" target=\"_blank\" rel=\"noopener\">GitHub Issues</a>. Discussões: <a href=\"https://github.com/zhouxiaoka/autoclip/discussions/127\" target=\"_blank\" rel=\"noopener\">anúncios</a>, <a href=\"https://github.com/zhouxiaoka/autoclip/discussions/128\" target=\"_blank\" rel=\"noopener\">primeiro clipe</a>, <a href=\"https://github.com/zhouxiaoka/autoclip/discussions/129\" target=\"_blank\" rel=\"noopener\">ideias e roteiro</a>. Problemas conhecidos: <a href=\"https://github.com/zhouxiaoka/autoclip/issues/96\" target=\"_blank\" rel=\"noopener\">issue fixado</a>.",
       "fb.stuck": "Travou no primeiro clipe? Veja as <a href=\"https://github.com/zhouxiaoka/autoclip/discussions/128\" target=\"_blank\" rel=\"noopener\">perguntas do primeiro clipe</a>.",
       "faq.1.q": "Tem algum custo?",
-      "faq.1.a": "O AutoClip é grátis e de código aberto (MIT). Você só paga pelo uso da API do modelo escolhido; o custo depende do modelo e da duração do vídeo.",
+      "faq.1.a": "O AutoClip é grátis e de código aberto (MIT). As taxas do modelo são suas. Publicar no exterior exige o seu Upload-Post; as cotas seguem a página do Upload-Post, e o AutoClip não as promete.",
       "faq.2.q": "Meu vídeo é enviado a algum servidor?",
-      "faq.2.a": "O processamento acontece no seu computador. O modelo recebe apenas o texto das legendas para análise e pontuação; você escolhe o provedor.",
+      "faq.2.a": "A edição continua local. Só depois de clicar em Publicar o clipe vai para as plataformas conectadas. O modelo continua recebendo apenas o texto das legendas. Só eu vale para TikTok, YouTube e Bilibili.",
       "faq.3.q": "Quais fontes de vídeo são aceitas?",
       "faq.3.a": "Links do Bilibili, YouTube e arquivos locais. Vídeos com legendas funcionam diretamente; para os demais, instale o Whisper nas configurações e transcreva localmente.",
       "faq.4.q": "Por que o sistema mostra um aviso ao abrir?",
@@ -1006,13 +1013,14 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       "how.2.r3": "Что пугает в работе в одиночку",
       "how.2.r4": "Разговор о книгах, которые я читаю",
       "how.3.h": "Экспорт",
-      "how.3.p": "Клипы и подборки сохраняются на диск. Меняйте названия, перетаскивайте клипы для сортировки и публикуйте в нескольких аккаунтах Bilibili в один клик. Сэкономленное время — для следующего видео.",
+      "how.3.p": "Клипы и подборки сохраняются на диск. Меняйте названия и перетаскивайте клипы для сортировки. Публикация — на одной странице: зарубежные площадки идут через ваш Upload-Post; для Bilibili один раз сохраните Cookie в настройках (SESSDATA, bili_jct, DedeUserID), один аккаунт. Сэкономленное время — для следующего видео.",
+      "how.3.note": "На клипе откройте «Публикация»: ваш Upload-Post для зарубежных площадок и сохранённый Cookie Bilibili. Douyin, Xiaohongshu и Kuaishou отсюда не поддерживаются.",
       "how.3.foot": "Подборка · Год независимой разработки · 3 клипа",
       "how.3.pill": "Опубликовано в Bilibili",
       "why.eyebrow": "Почему AutoClip",
       "why.h2": "Инструмент для тех, кто серьёзно занимается контентом.",
-      "why.1.h": "Локальная обработка",
-      "why.1.p": "Скачивание, распознавание речи, нарезка и рендеринг выполняются на вашем компьютере. Выбранной модели отправляется только текст субтитров.",
+      "why.1.h": "Монтаж локально",
+      "why.1.p": "Скачивание, распознавание, нарезка и рендер выполняются на вашем компьютере; модель получает только текст субтитров. Готовый клип уходит на подключённые площадки только после нажатия «Публикация».",
       "why.2.h": "Простая установка",
       "why.2.p": "Установщик включает переносимый Python и статический ffmpeg. Не нужно настраивать среду или устанавливать Docker — скачайте и запускайте.",
       "why.3.h": "Выбор модели за вами",
@@ -1038,9 +1046,9 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       "fb.alt": "Воспроизводимые ошибки: <a href=\"https://github.com/zhouxiaoka/autoclip/issues/new/choose\" target=\"_blank\" rel=\"noopener\">GitHub Issues</a>. Обсуждения: <a href=\"https://github.com/zhouxiaoka/autoclip/discussions/127\" target=\"_blank\" rel=\"noopener\">объявления</a>, <a href=\"https://github.com/zhouxiaoka/autoclip/discussions/128\" target=\"_blank\" rel=\"noopener\">первый клип</a>, <a href=\"https://github.com/zhouxiaoka/autoclip/discussions/129\" target=\"_blank\" rel=\"noopener\">идеи и план</a>. Известные проблемы: <a href=\"https://github.com/zhouxiaoka/autoclip/issues/96\" target=\"_blank\" rel=\"noopener\">закреплённый issue</a>.",
       "fb.stuck": "Застряли на первом клипе? Смотрите <a href=\"https://github.com/zhouxiaoka/autoclip/discussions/128\" target=\"_blank\" rel=\"noopener\">вопросы и ответы</a>.",
       "faq.1.q": "Это платно?",
-      "faq.1.a": "AutoClip бесплатен и открыт по лицензии MIT. Оплачивается только API выбранной модели; стоимость зависит от модели и длительности видео.",
+      "faq.1.a": "AutoClip бесплатен и открыт по лицензии MIT. Оплату модели берёте на себя. Публикация за рубежом требует ваш Upload-Post; квоты указаны на странице Upload-Post, AutoClip их не обещает.",
       "faq.2.q": "Видео отправляется на сервер?",
-      "faq.2.a": "Обработка выполняется на вашем компьютере. Модель получает только текст субтитров для анализа и оценки; провайдера выбираете вы.",
+      "faq.2.a": "Монтаж остаётся локальным. Клип уходит на подключённые площадки только после нажатия «Публикация». Модель по-прежнему получает только текст субтитров. «Только я» гарантируется для TikTok, YouTube и Bilibili.",
       "faq.3.q": "Какие источники поддерживаются?",
       "faq.3.a": "Ссылки Bilibili, YouTube и локальные файлы. Видео с субтитрами обрабатываются сразу; для остальных установите Whisper в настройках и создайте субтитры локально.",
       "faq.4.q": "Почему система предупреждает при запуске?",
@@ -1103,13 +1111,14 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       "how.2.r3": "Ce qui fait peur quand on crée seul",
       "how.2.r4": "Discussion : mes lectures du moment",
       "how.3.h": "Exportez",
-      "how.3.p": "Les extraits et collections sont enregistrés sur votre disque. Modifiez les titres, réordonnez les extraits par glisser-déposer et publiez sur plusieurs comptes Bilibili en un clic. Gardez du temps pour votre prochaine vidéo.",
+      "how.3.p": "Les extraits et collections sont enregistrés sur votre disque. Modifiez les titres et réordonnez par glisser-déposer. La publication se fait sur une seule page : l’étranger passe par votre Upload-Post ; pour Bilibili, enregistrez une fois le Cookie dans les réglages (SESSDATA, bili_jct, DedeUserID), un seul compte. Gardez du temps pour votre prochaine vidéo.",
+      "how.3.note": "Sur un extrait, ouvrez Publier — votre Upload-Post pour l’étranger, et le Cookie Bilibili enregistré. Douyin, Xiaohongshu et Kuaishou ne sont pas pris en charge depuis ici.",
       "how.3.foot": "Collection · Un an de développement indépendant · 3 extraits",
       "how.3.pill": "Publié sur Bilibili",
       "why.eyebrow": "Pourquoi AutoClip",
       "why.h2": "Un outil pour ceux qui prennent la création au sérieux.",
-      "why.1.h": "Traitement local",
-      "why.1.p": "Téléchargement, transcription, découpage et rendu s’effectuent sur votre ordinateur. Seul le texte des sous-titres est envoyé au modèle choisi.",
+      "why.1.h": "Montage en local",
+      "why.1.p": "Le téléchargement, la transcription, le découpage et le rendu restent sur votre ordinateur ; le modèle ne reçoit que le texte des sous-titres. L’extrait fini part vers les plateformes connectées seulement après un clic sur Publier.",
       "why.2.h": "Installation simple",
       "why.2.p": "L’installateur inclut Python portable et ffmpeg statique. Aucun environnement à configurer ni Docker à installer : téléchargez et lancez.",
       "why.3.h": "Choisissez votre modèle",
@@ -1135,9 +1144,9 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       "fb.alt": "Bugs reproductibles : <a href=\"https://github.com/zhouxiaoka/autoclip/issues/new/choose\" target=\"_blank\" rel=\"noopener\">GitHub Issues</a>. Discussions : <a href=\"https://github.com/zhouxiaoka/autoclip/discussions/127\" target=\"_blank\" rel=\"noopener\">annonces</a>, <a href=\"https://github.com/zhouxiaoka/autoclip/discussions/128\" target=\"_blank\" rel=\"noopener\">premier extrait</a>, <a href=\"https://github.com/zhouxiaoka/autoclip/discussions/129\" target=\"_blank\" rel=\"noopener\">idées et feuille de route</a>. Problèmes connus : <a href=\"https://github.com/zhouxiaoka/autoclip/issues/96\" target=\"_blank\" rel=\"noopener\">issue épinglée</a>.",
       "fb.stuck": "Bloqué au premier extrait ? Voir la <a href=\"https://github.com/zhouxiaoka/autoclip/discussions/128\" target=\"_blank\" rel=\"noopener\">FAQ du premier extrait</a>.",
       "faq.1.q": "Est-ce payant ?",
-      "faq.1.a": "AutoClip est gratuit et ouvert (MIT). Seul l’usage de l’API du modèle choisi est payant ; le coût dépend du modèle et de la durée de la vidéo.",
+      "faq.1.a": "AutoClip est gratuit et ouvert (MIT). Les frais du modèle sont à votre charge. Publier à l’étranger nécessite votre Upload-Post ; les quotas sont ceux de la page Upload-Post, AutoClip ne les promet pas.",
       "faq.2.q": "Ma vidéo est-elle envoyée sur un serveur ?",
-      "faq.2.a": "Le traitement s’effectue sur votre ordinateur. Le modèle reçoit uniquement le texte des sous-titres pour l’analyse et l’évaluation ; vous choisissez le fournisseur.",
+      "faq.2.a": "Le montage reste local. L’extrait part vers les plateformes connectées seulement après un clic sur Publier. Le modèle ne reçoit toujours que le texte des sous-titres. « Moi seul » n’est garanti que pour TikTok, YouTube et Bilibili.",
       "faq.3.q": "Quelles sources sont prises en charge ?",
       "faq.3.a": "Liens Bilibili, YouTube et fichiers locaux. Les vidéos sous-titrées fonctionnent directement ; pour les autres, installez Whisper dans les paramètres et transcrivez localement.",
       "faq.4.q": "Pourquoi le système affiche-t-il un avertissement ?",
