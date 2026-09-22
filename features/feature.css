@@ -25,18 +25,23 @@
 .hold p + p{margin-top:8px}
 .cta-row{margin-top:22px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
 .fine{margin-top:14px;color:var(--ac-sub);font-size:.875rem;max-width:62ch}
-.demo{
-  margin-top:18px;
-  min-height:11rem;
-  display:grid;
-  place-items:center;
-  text-align:center;
-  padding:32px 20px;
+.demo-copy{max-width:760px;margin-left:auto;margin-right:auto}
+.demo-copy + .shot,
+.demo-copy + .shots{margin-top:22px}
+.shots{display:flex;flex-direction:column;gap:28px}
+.shot{margin:0}
+.shot img{
+  width:100%;
+  height:auto;
+  border:1px solid var(--ac-line);
   border-radius:var(--ac-r-card);
-  border:1px dashed var(--ac-line);
   background:var(--ac-card);
+  box-shadow:var(--ac-shadow);
+}
+.shot figcaption{
+  margin-top:10px;
   color:var(--ac-muted);
-  font-size:.9375rem;
+  font-size:.875rem;
   line-height:1.5;
 }
 @media (max-width: 900px){
