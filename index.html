@@ -457,6 +457,7 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
           <h3 data-i18n="how.3.h">出片</h3>
           <p data-i18n="how.3.p">切片和合集直接生成到本地。标题可以顺手改，合集里拖拽排序。发布在同一页完成：海外平台走你自己的 Upload-Post；B站在设置里保存一次 Cookie（SESSDATA、bili_jct、DedeUserID），只连一个账号。剩下的时间，留给下一条视频。</p>
           <p data-i18n="how.3.note">在切片上打开「发布」：海外用你的 Upload-Post，B站用已保存的 Cookie。抖音、小红书、快手不能从这里发出去。</p>
+          <p data-i18n="how.3.cover">发布时会自动生成封面，避免 B站空封面被拒。</p>
         </div>
         <div class="vis" aria-hidden="true">
           <div class="clips">
@@ -614,6 +615,7 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       'how.2.r1':'为什么我放弃了订阅制','how.2.r2':'第一个付费用户是怎么来的','how.2.r3':'一个人做产品最怕的事','how.2.r4':'闲聊：最近在看的书',
       'how.3.h':'出片','how.3.p':'切片和合集直接生成到本地。标题可以顺手改，合集里拖拽排序。发布在同一页完成：海外平台走你自己的 Upload-Post；B站在设置里保存一次 Cookie（SESSDATA、bili_jct、DedeUserID），只连一个账号。剩下的时间，留给下一条视频。',
       'how.3.note':'在切片上打开「发布」：海外用你的 Upload-Post，B站用已保存的 Cookie。抖音、小红书、快手不能从这里发出去。',
+      'how.3.cover':'发布时会自动生成封面，避免 B站空封面被拒。',
       'how.3.foot':'合集 · 独立开发者的一年 · 3 段','how.3.pill':'已上传到 B站',
       'why.eyebrow':'为什么是 AutoClip','why.h2':'一个认真做内容的人，会想要的工具。',
       'why.1.h':'剪辑在本地','why.1.p':'下载、转写、切片、合成都在你的电脑上完成，发给模型的只有字幕文本。成片只有在你点了「发布」之后，才会发到已连接的平台。',
@@ -658,6 +660,7 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       'how.2.r1':'Why I gave up on subscriptions','how.2.r2':'How the first paying customer showed up','how.2.r3':'The scariest part of building alone','how.2.r4':'Small talk: books I\'m reading',
       'how.3.h':'Export','how.3.p':'Clips and collections land on your disk. Tweak titles inline and drag to reorder a collection. Publishing is one page: overseas platforms go through your Upload-Post; for Bilibili, save a Cookie once in Settings (SESSDATA, bili_jct, DedeUserID), a single account. The time you save goes to the next video.',
       'how.3.note':'On a clip, open Publish — your Upload-Post for overseas platforms, and the Bilibili Cookie you saved. Douyin, Xiaohongshu, and Kuaishou are not supported from here.',
+      'how.3.cover':'Publish includes an auto-generated cover, which helps avoid an empty-cover rejection on Bilibili.',
       'how.3.foot':'Collection · A year of indie development · 3 clips','how.3.pill':'Published to Bilibili',
       'why.eyebrow':'Why AutoClip','why.h2':'The tool a serious creator would want.',
       'why.1.h':'Editing stays local','why.1.p':'Downloading, transcribing, cutting and rendering stay on your machine; only subtitle text goes to the model you pick. The finished clip goes to connected platforms only after you click Publish.',
@@ -702,6 +705,7 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       'how.2.r1':'サブスクをやめた理由','how.2.r2':'最初の有料ユーザーはどう来たか','how.2.r3':'一人で作るとき一番怖いこと','how.2.r4':'雑談：最近読んでいる本',
       'how.3.h':'書き出す','how.3.p':'クリップとコレクションはローカルに直接生成。タイトルはその場で編集、コレクションはドラッグで並べ替え。投稿は同じページ：海外は自分の Upload-Post、Bilibili は設定に Cookie（SESSDATA、bili_jct、DedeUserID）を一度保存し、アカウントは一つです。',
       'how.3.note':'クリップで「公開」を開く：海外は自分の Upload-Post、Bilibili は保存した Cookie。Douyin、Xiaohongshu、Kuaishou はここからは対応していません。',
+      'how.3.cover':'公開時にカバーを自動で付け、Bilibili の空カバー却下を避けます。',
       'how.3.foot':'コレクション · 個人開発の 1 年 · 3 本','how.3.pill':'Bilibili に投稿済み',
       'why.eyebrow':'AutoClip を選ぶ理由','why.h2':'本気でコンテンツを作る人のためのツール。',
       'why.1.h':'編集はローカル','why.1.p':'ダウンロード、文字起こし、カット、書き出しは PC 上で完了し、モデルに送るのは字幕テキストだけです。完成したクリップが接続済みのプラットフォームへ行くのは、「公開」を押したあとだけです。',
@@ -746,6 +750,7 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       'how.2.r1':'구독제를 포기한 이유','how.2.r2':'첫 유료 사용자는 어떻게 왔나','how.2.r3':'혼자 만들 때 가장 두려운 것','how.2.r4':'잡담: 요즘 읽는 책',
       'how.3.h':'내보내기','how.3.p':'클립과 컬렉션이 로컬에 바로 생성됩니다. 제목은 바로 수정하고, 컬렉션은 드래그로 순서를 바꿉니다. 게시는 한 페이지입니다. 해외 플랫폼은 본인의 Upload-Post로, Bilibili는 설정에 Cookie(SESSDATA, bili_jct, DedeUserID)를 한 번 저장하며 계정은 하나입니다.',
       'how.3.note':'클립에서 게시를 엽니다. 해외는 본인의 Upload-Post, Bilibili는 저장한 Cookie입니다. Douyin, Xiaohongshu, Kuaishou는 여기서 지원하지 않습니다.',
+      'how.3.cover':'게시할 때 커버를 자동으로 넣어, Bilibili의 빈 커버 거절을 피합니다.',
       'how.3.foot':'컬렉션 · 1인 개발자의 1년 · 3개','how.3.pill':'Bilibili에 업로드됨',
       'why.eyebrow':'왜 AutoClip인가','why.h2':'진지하게 콘텐츠를 만드는 사람을 위한 도구.',
       'why.1.h':'편집은 로컬','why.1.p':'다운로드, 전사, 자르기, 합성은 내 컴퓨터에서 끝나고, 모델에는 자막 텍스트만 갑니다. 완성된 클립은 게시를 누른 뒤에만 연결한 플랫폼으로 갑니다.',
@@ -819,6 +824,7 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       "how.3.h": "Exporta",
       "how.3.p": "Los clips y colecciones se guardan en tu disco. Edita los títulos y arrastra para ordenar una colección. La publicación está en una sola página: las plataformas de fuera van por tu Upload-Post; en Bilibili guarda una Cookie una vez en Ajustes (SESSDATA, bili_jct, DedeUserID), una sola cuenta. El tiempo que ahorras es para el próximo video.",
       "how.3.note": "En un clip, abre Publicar: tu Upload-Post para el extranjero y la Cookie de Bilibili que guardaste. Douyin, Xiaohongshu y Kuaishou no están disponibles desde aquí.",
+      "how.3.cover": "Al publicar se incluye una portada generada automáticamente, para evitar que Bilibili rechace una portada vacía.",
       "how.3.foot": "Colección · Un año de desarrollo independiente · 3 clips",
       "how.3.pill": "Publicado en Bilibili",
       "why.eyebrow": "Por qué AutoClip",
@@ -917,6 +923,7 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       "how.3.h": "Exporte",
       "how.3.p": "Os clipes e coleções ficam no seu disco. Edite os títulos e arraste para ordenar uma coleção. A publicação fica em uma página: plataformas no exterior usam o seu Upload-Post; no Bilibili, salve o Cookie uma vez em Configurações (SESSDATA, bili_jct, DedeUserID), uma conta só. O tempo que sobra é para o próximo vídeo.",
       "how.3.note": "Em um clipe, abra Publicar — o seu Upload-Post para o exterior e o Cookie do Bilibili que você salvou. Douyin, Xiaohongshu e Kuaishou não são suportados daqui.",
+      "how.3.cover": "A publicação inclui uma capa gerada automaticamente, para evitar que o Bilibili recuse uma capa vazia.",
       "how.3.foot": "Coleção · Um ano de desenvolvimento independente · 3 clipes",
       "how.3.pill": "Publicado no Bilibili",
       "why.eyebrow": "Por que AutoClip",
@@ -1015,6 +1022,7 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       "how.3.h": "Экспорт",
       "how.3.p": "Клипы и подборки сохраняются на диск. Меняйте названия и перетаскивайте клипы для сортировки. Публикация — на одной странице: зарубежные площадки идут через ваш Upload-Post; для Bilibili один раз сохраните Cookie в настройках (SESSDATA, bili_jct, DedeUserID), один аккаунт. Сэкономленное время — для следующего видео.",
       "how.3.note": "На клипе откройте «Публикация»: ваш Upload-Post для зарубежных площадок и сохранённый Cookie Bilibili. Douyin, Xiaohongshu и Kuaishou отсюда не поддерживаются.",
+      "how.3.cover": "При публикации добавляется автоматически созданная обложка, чтобы Bilibili не отклонял пустую.",
       "how.3.foot": "Подборка · Год независимой разработки · 3 клипа",
       "how.3.pill": "Опубликовано в Bilibili",
       "why.eyebrow": "Почему AutoClip",
@@ -1113,6 +1121,7 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       "how.3.h": "Exportez",
       "how.3.p": "Les extraits et collections sont enregistrés sur votre disque. Modifiez les titres et réordonnez par glisser-déposer. La publication se fait sur une seule page : l’étranger passe par votre Upload-Post ; pour Bilibili, enregistrez une fois le Cookie dans les réglages (SESSDATA, bili_jct, DedeUserID), un seul compte. Gardez du temps pour votre prochaine vidéo.",
       "how.3.note": "Sur un extrait, ouvrez Publier — votre Upload-Post pour l’étranger, et le Cookie Bilibili enregistré. Douyin, Xiaohongshu et Kuaishou ne sont pas pris en charge depuis ici.",
+      "how.3.cover": "La publication inclut une couverture générée automatiquement, pour éviter un refus Bilibili si elle est vide.",
       "how.3.foot": "Collection · Un an de développement indépendant · 3 extraits",
       "how.3.pill": "Publié sur Bilibili",
       "why.eyebrow": "Pourquoi AutoClip",
