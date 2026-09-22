@@ -24,7 +24,7 @@ test('eight catalogs cover all translated elements and preserve links',()=>{
  for(const lang of langs){
   assert.deepEqual(Object.keys(c.T[lang]).sort(),keys,lang)
   for(const [,key] of html.matchAll(/data-i18n(?:-html)?="([^"]+)"/g))assert.ok(c.T[lang][key],lang+': '+key)
-  for(const key of ['dl.alt','fb.alt','fb.stuck','faq.5.a','faq.6.a']){
+  for(const key of ['dl.alt','fb.alt','fb.stuck','faq.5.a','faq.6.a','faq.7.a']){
    const links=s=>[...s.matchAll(/href="([^"]+)"/g)].map(m=>m[1]).filter(x=>!x.startsWith('#')).sort()
    assert.deepEqual(links(c.T[lang][key]),links(c.T.en[key]),lang+': '+key)
   }

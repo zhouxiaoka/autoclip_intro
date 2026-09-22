@@ -562,6 +562,10 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
         <details>
           <summary data-i18n="faq.6.q">第一次怎么试？</summary>
           <p data-i18n-html="faq.6.a">自备短样片。多为英语对白，可开官方字幕或走 Whisper / 自备 SRT。示例 · 非托管 · 自担使用权：<a class="link" href="https://www.youtube.com/watch?v=VeizK1M7V7E" target="_blank" rel="noopener">Sources Podcast · Sam Altman on Astra/AGI</a>（Sources Podcast，不是 OpenAI 频道）。卡住时看 <a class="link" href="https://github.com/zhouxiaoka/autoclip/discussions/128" target="_blank" rel="noopener">第一次出片问答</a>。</p>
+        <details>
+          <summary data-i18n="faq.7.q">怎么发布到 B 站和海外平台？</summary>
+          <p data-i18n-html="faq.7.a">在设置里配 Upload-Post 密钥和 B 站 Cookie，切片页勾选平台，默认先发到「仅自己」。逐步说明见 <a class="link" href="guides/publish/">发布教程</a>。</p>
+        </details>
         </details>
       </div>
     </div>
@@ -577,6 +581,7 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
     <nav class="footer-links" aria-label="页脚">
       <a href="use-cases/podcast/" data-i18n="footer.podcast">播客切片</a>
       <a href="use-cases/course/" data-i18n="footer.course">课程高光</a>
+      <a href="guides/publish/" data-i18n="footer.publish">发布教程</a>
       <a href="https://github.com/zhouxiaoka/autoclip" target="_blank" rel="noopener">GitHub</a>
       <a href="https://github.com/zhouxiaoka/autoclip/releases" target="_blank" rel="noopener" data-i18n="footer.releases">版本</a>
       <a href="https://github.com/zhouxiaoka/autoclip/blob/main/docs/PRIVACY.md" target="_blank" rel="noopener" data-i18n="footer.privacy">隐私政策</a>
@@ -632,8 +637,8 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       'faq.3.q':'支持哪些视频来源？','faq.3.a':'B站链接、YouTube 链接、本地文件。有字幕的视频直接用；没有字幕的可以在设置里一键安装 Whisper，在本地转写。',
       'faq.4.q':'为什么第一次打开系统会警告？','faq.4.a':'因为安装包还没有做 Apple 公证 / Windows 代码签名。macOS 右键 → 打开；Windows 点「更多信息」→「仍要运行」。之后不会再提示。签名正在计划中。',
       'faq.5.q':'切片效果不好怎么办？','faq.5.a':'先试换一个更强的模型。仍不理想的话，请通过 <a class="link" href="#feedback">反馈表单</a>或 <a class="link" href="https://github.com/zhouxiaoka/autoclip/issues/96" target="_blank" rel="noopener">GitHub 置顶帖</a>告诉我们视频类型、时长、模型，我们在收集样例改进评分策略。',
-      'faq.6.q':'第一次怎么试？','faq.6.a':'自备短样片。多为英语对白，可开官方字幕或走 Whisper / 自备 SRT。示例 · 非托管 · 自担使用权：<a class="link" href="https://www.youtube.com/watch?v=VeizK1M7V7E" target="_blank" rel="noopener">Sources Podcast · Sam Altman on Astra/AGI</a>（Sources Podcast，不是 OpenAI 频道）。卡住时看 <a class="link" href="https://github.com/zhouxiaoka/autoclip/discussions/128" target="_blank" rel="noopener">第一次出片问答</a>。',
-      'footer.podcast':'播客切片','footer.course':'课程高光','footer.releases':'版本','footer.privacy':'隐私政策','footer.copy':'© 2025–2026 AutoClip · MIT 许可'
+      'faq.7.q':'怎么发布到 B 站和海外平台？','faq.7.a':'在设置里配 Upload-Post 密钥和 B 站 Cookie，切片页勾选平台，默认先发到「仅自己」。逐步说明见 <a class="link" href="guides/publish/">发布教程</a>。','faq.6.q':'第一次怎么试？','faq.6.a':'自备短样片。多为英语对白，可开官方字幕或走 Whisper / 自备 SRT。示例 · 非托管 · 自担使用权：<a class="link" href="https://www.youtube.com/watch?v=VeizK1M7V7E" target="_blank" rel="noopener">Sources Podcast · Sam Altman on Astra/AGI</a>（Sources Podcast，不是 OpenAI 频道）。卡住时看 <a class="link" href="https://github.com/zhouxiaoka/autoclip/discussions/128" target="_blank" rel="noopener">第一次出片问答</a>。',
+      'footer.publish':'发布教程','footer.podcast':'播客切片','footer.course':'课程高光','footer.releases':'版本','footer.privacy':'隐私政策','footer.copy':'© 2025–2026 AutoClip · MIT 许可'
     },
     en: {
       'title': 'AutoClip — The best parts of a long video, clipped automatically',
@@ -675,8 +680,8 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       'faq.3.q':'Which sources are supported?','faq.3.a':'Bilibili links, YouTube links and local files. Videos with subtitles work directly; for the rest, install Whisper from Settings and transcribe locally.',
       'faq.4.q':'Why does the OS warn me on first launch?','faq.4.a':'The builds are not yet notarized (macOS) or code-signed (Windows). macOS: right-click → Open. Windows: “More info → Run anyway”. It only happens once. Signing is on the roadmap.',
       'faq.5.q':'What if the clips aren\'t good?','faq.5.a':'Try a stronger model first. If results are still off, report it in the <a class="link" href="https://github.com/zhouxiaoka/autoclip/issues/96" target="_blank" rel="noopener">pinned GitHub issue</a> with video type, length and model — we are collecting samples to improve scoring.',
-      'faq.6.q':'How should I try it the first time?','faq.6.a':'Bring your own short clip. Most speech is in English; turn on official captions, use Whisper, or bring your own SRT. Example · not hosted · you are responsible for the rights: <a class="link" href="https://www.youtube.com/watch?v=VeizK1M7V7E" target="_blank" rel="noopener">Sources Podcast · Sam Altman on Astra/AGI</a> (Sources Podcast, not the OpenAI channel). If you get stuck, see the <a class="link" href="https://github.com/zhouxiaoka/autoclip/discussions/128" target="_blank" rel="noopener">first-clip Q&A</a>.',
-      'footer.podcast':'Podcast clips','footer.course':'Course highlights','footer.releases':'Releases','footer.privacy':'Privacy','footer.copy':'© 2025–2026 AutoClip · MIT License'
+      'faq.7.q':'How do I publish to Bilibili and overseas platforms?','faq.7.a':'Add an Upload-Post key and a Bilibili cookie in Settings, pick platforms on a clip, and keep Only me for a first try. Step-by-step: <a class="link" href="guides/publish/">publish guide</a>.','faq.6.q':'How should I try it the first time?','faq.6.a':'Bring your own short clip. Most speech is in English; turn on official captions, use Whisper, or bring your own SRT. Example · not hosted · you are responsible for the rights: <a class="link" href="https://www.youtube.com/watch?v=VeizK1M7V7E" target="_blank" rel="noopener">Sources Podcast · Sam Altman on Astra/AGI</a> (Sources Podcast, not the OpenAI channel). If you get stuck, see the <a class="link" href="https://github.com/zhouxiaoka/autoclip/discussions/128" target="_blank" rel="noopener">first-clip Q&A</a>.',
+      'footer.publish':'Publish guide','footer.podcast':'Podcast clips','footer.course':'Course highlights','footer.releases':'Releases','footer.privacy':'Privacy','footer.copy':'© 2025–2026 AutoClip · MIT License'
     },
     ja: {
       'title': 'AutoClip — 長い動画の見どころを、自動で切り出す',
@@ -718,8 +723,8 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       'faq.3.q':'対応する動画ソースは？','faq.3.a':'Bilibili リンク、YouTube リンク、ローカルファイル。字幕付きはそのまま、字幕なしは設定から Whisper をインストールしてローカルで文字起こしできます。',
       'faq.4.q':'初回起動時に OS が警告するのはなぜ？','faq.4.a':'まだ Apple 公証 / Windows コード署名を行っていないためです。macOS は右クリック →「開く」、Windows は「詳細情報」→「実行」。表示は一度だけです。署名は計画中です。',
       'faq.5.q':'クリップの品質が良くない場合は？','faq.5.a':'まずより強いモデルを試してください。それでも改善しない場合は <a class="link" href="https://github.com/zhouxiaoka/autoclip/issues/96" target="_blank" rel="noopener">GitHub のピン留め Issue</a> に動画の種類・長さ・モデルを添えて報告してください。採点戦略の改善に使います。',
-      'faq.6.q':'最初はどう試せばいい？','faq.6.a':'自分で短いサンプルを用意してください。多くは英語の対白です。公式字幕、Whisper、または自前の SRT。例 · 非ホスト · 利用権はご自身で：<a class="link" href="https://www.youtube.com/watch?v=VeizK1M7V7E" target="_blank" rel="noopener">Sources Podcast · Sam Altman on Astra/AGI</a>（Sources Podcast。OpenAI 公式チャンネルではありません）。止まったら <a class="link" href="https://github.com/zhouxiaoka/autoclip/discussions/128" target="_blank" rel="noopener">はじめてのクリップ Q&A</a> を見てください。',
-      'footer.podcast':'ポッドキャスト','footer.course':'講義ハイライト','footer.releases':'リリース','footer.privacy':'プライバシー','footer.copy':'© 2025–2026 AutoClip · MIT ライセンス'
+      'faq.7.q':'Bilibili と海外へはどう公開する？','faq.7.a':'設定で Upload-Post のキーと Bilibili の Cookie を入れ、切片ページで配信先を選び、最初は「自分のみ」のまま。手順は <a class="link" href="guides/publish/">公開ガイド</a>。','faq.6.q':'最初はどう試せばいい？','faq.6.a':'自分で短いサンプルを用意してください。多くは英語の対白です。公式字幕、Whisper、または自前の SRT。例 · 非ホスト · 利用権はご自身で：<a class="link" href="https://www.youtube.com/watch?v=VeizK1M7V7E" target="_blank" rel="noopener">Sources Podcast · Sam Altman on Astra/AGI</a>（Sources Podcast。OpenAI 公式チャンネルではありません）。止まったら <a class="link" href="https://github.com/zhouxiaoka/autoclip/discussions/128" target="_blank" rel="noopener">はじめてのクリップ Q&A</a> を見てください。',
+      'footer.publish':'公開ガイド','footer.podcast':'ポッドキャスト','footer.course':'講義ハイライト','footer.releases':'リリース','footer.privacy':'プライバシー','footer.copy':'© 2025–2026 AutoClip · MIT ライセンス'
     },
     ko: {
       'title': 'AutoClip — 긴 영상의 하이라이트를 자동으로 잘라냅니다',
@@ -761,8 +766,8 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       'faq.3.q':'어떤 영상 소스를 지원하나요?','faq.3.a':'Bilibili 링크, YouTube 링크, 로컬 파일. 자막이 있으면 바로 사용하고, 없으면 설정에서 Whisper를 설치해 로컬로 전사합니다.',
       'faq.4.q':'첫 실행 시 OS가 경고하는 이유는?','faq.4.a':'아직 Apple 공증 / Windows 코드 서명을 하지 않았기 때문입니다. macOS는 우클릭 → 열기, Windows는 「추가 정보」→「실행」. 한 번만 표시됩니다. 서명은 계획 중입니다.',
       'faq.5.q':'클립 품질이 좋지 않으면?','faq.5.a':'먼저 더 강한 모델을 시도해 보세요. 그래도 아쉬우면 <a class="link" href="https://github.com/zhouxiaoka/autoclip/issues/96" target="_blank" rel="noopener">GitHub 고정 이슈</a>에 영상 유형·길이·모델을 적어 알려 주세요. 채점 전략 개선에 사용합니다.',
-      'faq.6.q':'처음에는 어떻게 시험해 보나요?','faq.6.a':'짧은 샘플을 직접 준비하세요. 대부분은 영어 대사입니다. 공식 자막, Whisper, 또는 직접 준비한 SRT. 예시 · 비호스팅 · 사용권은 본인 책임: <a class="link" href="https://www.youtube.com/watch?v=VeizK1M7V7E" target="_blank" rel="noopener">Sources Podcast · Sam Altman on Astra/AGI</a>（Sources Podcast이며 OpenAI 공식 채널이 아닙니다）. 막히면 <a class="link" href="https://github.com/zhouxiaoka/autoclip/discussions/128" target="_blank" rel="noopener">첫 클립 Q&A</a>를 보세요.',
-      'footer.podcast':'팟캐스트','footer.course':'강의 하이라이트','footer.releases':'릴리스','footer.privacy':'개인정보','footer.copy':'© 2025–2026 AutoClip · MIT 라이선스'
+      'faq.7.q':'빌리빌리와 해외에는 어떻게 올리나요?','faq.7.a':'설정에 Upload-Post 키와 빌리빌리 Cookie를 넣고, 클립에서 플랫폼을 고른 뒤 처음에는 「나만」으로 두세요. 단계는 <a class="link" href="guides/publish/">게시 가이드</a>에 있습니다.','faq.6.q':'처음에는 어떻게 시험해 보나요?','faq.6.a':'짧은 샘플을 직접 준비하세요. 대부분은 영어 대사입니다. 공식 자막, Whisper, 또는 직접 준비한 SRT. 예시 · 비호스팅 · 사용권은 본인 책임: <a class="link" href="https://www.youtube.com/watch?v=VeizK1M7V7E" target="_blank" rel="noopener">Sources Podcast · Sam Altman on Astra/AGI</a>（Sources Podcast이며 OpenAI 공식 채널이 아닙니다）. 막히면 <a class="link" href="https://github.com/zhouxiaoka/autoclip/discussions/128" target="_blank" rel="noopener">첫 클립 Q&A</a>를 보세요.',
+      'footer.publish':'게시 가이드','footer.podcast':'팟캐스트','footer.course':'강의 하이라이트','footer.releases':'릴리스','footer.privacy':'개인정보','footer.copy':'© 2025–2026 AutoClip · MIT 라이선스'
     },
     es: {
       "title": "AutoClip — Los mejores momentos de tus videos, en clips automáticos",
@@ -853,8 +858,11 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       "faq.4.a": "Las versiones aún no están notarizadas en macOS ni firmadas en Windows. En macOS, prueba clic derecho → «Abrir». En Windows, «Más información» → «Ejecutar de todas formas». La firma está prevista.",
       "faq.5.q": "¿Y si los clips no son buenos?",
       "faq.5.a": "Prueba primero un modelo más potente. Si no mejora, cuéntanos el tipo de video, la duración y el modelo en el <a class=\"link\" href=\"https://github.com/zhouxiaoka/autoclip/issues/96\" target=\"_blank\" rel=\"noopener\">issue fijado de GitHub</a>. Recopilamos ejemplos para mejorar la selección.",
+      "faq.7.q": "¿Cómo publico en Bilibili y en el extranjero?",
+      "faq.7.a": "Añade una clave de Upload-Post y una cookie de Bilibili en Ajustes, elige plataformas en un clip y deja Solo yo para la primera prueba. Pasos: <a class=\"link\" href=\"guides/publish/\">guía de publicación</a>.",
       "faq.6.q": "¿Cómo probarlo la primera vez?",
       "faq.6.a": "Trae tu propio clip corto. Casi todo el diálogo está en inglés; activa los subtítulos oficiales, usa Whisper o trae tu SRT. Ejemplo · no alojado · los derechos son tuyos: <a class=\"link\" href=\"https://www.youtube.com/watch?v=VeizK1M7V7E\" target=\"_blank\" rel=\"noopener\">Sources Podcast · Sam Altman on Astra/AGI</a> (Sources Podcast, no el canal de OpenAI). Si te atascas, mira las <a class=\"link\" href=\"https://github.com/zhouxiaoka/autoclip/discussions/128\" target=\"_blank\" rel=\"noopener\">preguntas del primer clip</a>.",
+      "footer.publish": "Guía de publicación",
       "footer.podcast": "Pódcast",
       "footer.course": "Curso",
       "footer.releases": "Versiones",
@@ -950,8 +958,11 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       "faq.4.a": "As versões ainda não têm notarização no macOS nem assinatura no Windows. No macOS, tente botão direito → “Abrir”. No Windows, “Mais informações” → “Executar assim mesmo”. A assinatura está planejada.",
       "faq.5.q": "E se os clipes não ficarem bons?",
       "faq.5.a": "Experimente um modelo mais potente. Se não melhorar, informe o tipo de vídeo, a duração e o modelo no <a class=\"link\" href=\"https://github.com/zhouxiaoka/autoclip/issues/96\" target=\"_blank\" rel=\"noopener\">issue fixado do GitHub</a>. Estamos reunindo exemplos para melhorar a seleção.",
+      "faq.7.q": "Como publicar no Bilibili e no exterior?",
+      "faq.7.a": "Coloque a chave do Upload-Post e o cookie do Bilibili em Ajustes, escolha as plataformas no clipe e deixe Só eu na primeira tentativa. Passos: <a class=\"link\" href=\"guides/publish/\">guia de publicação</a>.",
       "faq.6.q": "Como experimentar na primeira vez?",
       "faq.6.a": "Traga seu próprio clipe curto. A maioria da fala está em inglês; ative as legendas oficiais, use o Whisper ou traga um SRT. Exemplo · não hospedado · os direitos são seus: <a class=\"link\" href=\"https://www.youtube.com/watch?v=VeizK1M7V7E\" target=\"_blank\" rel=\"noopener\">Sources Podcast · Sam Altman on Astra/AGI</a> (Sources Podcast, não o canal da OpenAI). Se travar, veja as <a class=\"link\" href=\"https://github.com/zhouxiaoka/autoclip/discussions/128\" target=\"_blank\" rel=\"noopener\">perguntas do primeiro clipe</a>.",
+      "footer.publish": "Guia de publicação",
       "footer.podcast": "Podcast",
       "footer.course": "Curso",
       "footer.releases": "Versões",
@@ -1047,8 +1058,11 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       "faq.4.a": "Версии пока не заверены Apple и не подписаны для Windows. В macOS попробуйте правую кнопку → «Открыть». В Windows — «Подробнее» → «Выполнить в любом случае». Подпись запланирована.",
       "faq.5.q": "Что делать, если клипы неудачные?",
       "faq.5.a": "Попробуйте более мощную модель. Если результат не улучшится, укажите тип видео, длительность и модель в <a class=\"link\" href=\"https://github.com/zhouxiaoka/autoclip/issues/96\" target=\"_blank\" rel=\"noopener\">закреплённом issue GitHub</a>. Мы собираем примеры для улучшения отбора.",
+      "faq.7.q": "Как публиковать на Bilibili и за рубежом?",
+      "faq.7.a": "В настройках укажите ключ Upload-Post и cookie Bilibili, на клипе выберите площадки и оставьте «Только я» для первой пробы. Шаги: <a class=\"link\" href=\"guides/publish/\">как публиковать</a>.",
       "faq.6.q": "С чего начать в первый раз?",
       "faq.6.a": "Возьмите свой короткий ролик. Речь чаще на английском; включите официальные субтитры, используйте Whisper или подготовьте SRT. Пример · не размещён нами · права на вас: <a class=\"link\" href=\"https://www.youtube.com/watch?v=VeizK1M7V7E\" target=\"_blank\" rel=\"noopener\">Sources Podcast · Sam Altman on Astra/AGI</a> (Sources Podcast, не канал OpenAI). Если застрянете, смотрите <a class=\"link\" href=\"https://github.com/zhouxiaoka/autoclip/discussions/128\" target=\"_blank\" rel=\"noopener\">вопросы и ответы</a>.",
+      "footer.publish": "Как публиковать",
       "footer.podcast": "Подкаст",
       "footer.course": "Курс",
       "footer.releases": "Версии",
@@ -1144,8 +1158,11 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       "faq.4.a": "Les versions ne sont pas encore notariées sur macOS ni signées sur Windows. Sur macOS, essayez clic droit → « Ouvrir ». Sur Windows : « Informations complémentaires » → « Exécuter quand même ». La signature est prévue.",
       "faq.5.q": "Et si les extraits ne sont pas satisfaisants ?",
       "faq.5.a": "Essayez un modèle plus puissant. Si le résultat reste décevant, indiquez le type de vidéo, sa durée et le modèle dans l’<a class=\"link\" href=\"https://github.com/zhouxiaoka/autoclip/issues/96\" target=\"_blank\" rel=\"noopener\">issue GitHub épinglée</a>. Nous recueillons des exemples pour améliorer la sélection.",
+      "faq.7.q": "Comment publier sur Bilibili et à l’étranger ?",
+      "faq.7.a": "Ajoutez une clé Upload-Post et un cookie Bilibili dans Réglages, choisissez les plateformes sur un extrait et laissez Moi seul pour le premier essai. Étapes : <a class=\"link\" href=\"guides/publish/\">guide de publication</a>.",
       "faq.6.q": "Comment essayer pour la première fois ?",
       "faq.6.a": "Apportez votre propre extrait court. La parole est surtout en anglais ; activez les sous-titres officiels, utilisez Whisper ou apportez un SRT. Exemple · non hébergé · les droits d’usage vous incombent : <a class=\"link\" href=\"https://www.youtube.com/watch?v=VeizK1M7V7E\" target=\"_blank\" rel=\"noopener\">Sources Podcast · Sam Altman on Astra/AGI</a> (Sources Podcast, pas la chaîne OpenAI). Si vous êtes bloqué, voir la <a class=\"link\" href=\"https://github.com/zhouxiaoka/autoclip/discussions/128\" target=\"_blank\" rel=\"noopener\">FAQ du premier extrait</a>.",
+      "footer.publish": "Guide de publication",
       "footer.podcast": "Podcast",
       "footer.course": "Cours",
       "footer.releases": "Versions",
