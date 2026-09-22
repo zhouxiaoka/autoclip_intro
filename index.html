@@ -9,6 +9,85 @@
 <meta property="og:description" content="开源、本地运行的 AI 视频切片工具。macOS 与 Windows 客户端。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://zhouxiaoka.github.io/autoclip_intro/">
+<link rel="canonical" href="https://zhouxiaoka.github.io/autoclip_intro/">
+<meta property="og:image" content="https://zhouxiaoka.github.io/autoclip_intro/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="AutoClip — 长视频的高光，自动剪出来">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AutoClip — 长视频的高光，自动剪出来">
+<meta name="twitter:description" content="开源、本地运行的 AI 视频切片工具。macOS 与 Windows 客户端。">
+<meta name="twitter:image" content="https://zhouxiaoka.github.io/autoclip_intro/img/og.png">
+<meta name="twitter:image:alt" content="AutoClip — 长视频的高光，自动剪出来">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "AutoClip",
+      "url": "https://zhouxiaoka.github.io/autoclip_intro/",
+      "description": "AutoClip 是一款开源、本地运行的 AI 视频切片工具。粘一条 B站 / YouTube 链接或拖入本地视频，AI 读懂内容、找出高光、生成切片与合集。macOS 与 Windows 客户端。",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "macOS, Windows",
+      "license": "https://opensource.org/licenses/MIT",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "inLanguage": "zh-CN",
+      "url": "https://zhouxiaoka.github.io/autoclip_intro/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "要花钱吗？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "AutoClip 本身免费、开源（MIT）。唯一的成本是你自己模型的 API 调用费——每条视频通常只是几分钱到几毛钱，取决于时长和所选模型。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "我的视频会被上传吗？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "不会。视频文件只在你的电脑上处理。发给模型的只有字幕文本（用于理解内容和评分），发给哪家由你在设置里决定。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "支持哪些视频来源？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "B站链接、YouTube 链接、本地文件。有字幕的视频直接用；没有字幕的可以在设置里一键安装 Whisper，在本地转写。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "为什么第一次打开系统会警告？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "因为安装包还没有做 Apple 公证 / Windows 代码签名。macOS 右键 → 打开；Windows 点「更多信息」→「仍要运行」。之后不会再提示。签名正在计划中。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "切片效果不好怎么办？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "先试换一个更强的模型。仍不理想的话，请通过 反馈表单或 GitHub 置顶帖告诉我们视频类型、时长、模型，我们在收集样例改进评分策略。"
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 <meta name="theme-color" content="#F6F5F3" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#19181A" media="(prefers-color-scheme: dark)">
 <link rel="icon" type="image/svg+xml" href="logo.svg">
@@ -1047,6 +1126,8 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
     document.querySelector('meta[name="description"]').content = d['hero.lede'];
     document.querySelector('meta[property="og:title"]').content = d.title;
     document.querySelector('meta[property="og:description"]').content = d['hero.lede'];
+    document.querySelector('meta[name="twitter:title"]').content = d.title;
+    document.querySelector('meta[name="twitter:description"]').content = d['hero.lede'];
     // platform-aware primary CTA
     var p = document.getElementById('cta-primary'), pl = document.getElementById('cta-primary-label');
     var a = document.getElementById('cta-alt'), al = document.getElementById('cta-alt-label');

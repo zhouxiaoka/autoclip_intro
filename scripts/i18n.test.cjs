@@ -43,6 +43,8 @@ test('switches translate the whole page, update metadata, persist and retain dow
   page.nodes.language.change({target:{value:lang}})
   assert.equal(page.document.title,c.T[lang].title)
   assert.equal(page.nodes['meta[name="description"]'].content,c.T[lang]['hero.lede'])
+  assert.equal(page.nodes['meta[name="twitter:title"]'].content,c.T[lang].title)
+  assert.equal(page.nodes['meta[name="twitter:description"]'].content,c.T[lang]['hero.lede'])
   assert.equal(page.storage.get('autoclip.lang'),lang)
   assert.equal(page.history.url.searchParams.get('lang'),lang)
   assert.equal(page.history.url.hash,'#download')
