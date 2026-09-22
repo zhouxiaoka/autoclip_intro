@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AutoClip — 长视频的高光，自动剪出来</title>
-<meta name="description" content="AutoClip 是一款开源、本地运行的 AI 视频切片工具。粘一条 B站 / YouTube 链接或拖入本地视频，AI 读懂内容、找出高光、生成切片与合集。macOS 与 Windows 客户端。">
-<meta property="og:title" content="AutoClip — 长视频的高光，自动剪出来">
-<meta property="og:description" content="开源、本地运行的 AI 视频切片工具。macOS 与 Windows 客户端。">
+<title>AutoClip — 本地 AI 高光切片（开源 MIT）</title>
+<meta name="description" content="导入本地 / B站 / YouTube，基于字幕自动出切片与合集。视频本地处理；可选云端模型只发字幕文本。macOS / Windows / Docker / CLI。">
+<meta property="og:title" content="AutoClip — 本地 AI 高光切片（开源 MIT）">
+<meta property="og:description" content="导入本地 / B站 / YouTube，基于字幕自动出切片与合集。视频本地处理；可选云端模型只发字幕文本。macOS / Windows / Docker / CLI。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://zhouxiaoka.github.io/autoclip_intro/">
 <link rel="canonical" href="https://zhouxiaoka.github.io/autoclip_intro/">
@@ -15,8 +15,8 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="AutoClip — 长视频的高光，自动剪出来">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="AutoClip — 长视频的高光，自动剪出来">
-<meta name="twitter:description" content="开源、本地运行的 AI 视频切片工具。macOS 与 Windows 客户端。">
+<meta name="twitter:title" content="AutoClip — 本地 AI 高光切片（开源 MIT）">
+<meta name="twitter:description" content="导入本地 / B站 / YouTube，基于字幕自动出切片与合集。视频本地处理；可选云端模型只发字幕文本。macOS / Windows / Docker / CLI。">
 <meta name="twitter:image" content="https://zhouxiaoka.github.io/autoclip_intro/img/og.png">
 <meta name="twitter:image:alt" content="AutoClip — 长视频的高光，自动剪出来">
 <script type="application/ld+json">
@@ -27,9 +27,10 @@
       "@type": "SoftwareApplication",
       "name": "AutoClip",
       "url": "https://zhouxiaoka.github.io/autoclip_intro/",
-      "description": "AutoClip 是一款开源、本地运行的 AI 视频切片工具。粘一条 B站 / YouTube 链接或拖入本地视频，AI 读懂内容、找出高光、生成切片与合集。macOS 与 Windows 客户端。",
+      "description": "导入本地 / B站 / YouTube，基于字幕自动出切片与合集。视频本地处理；可选云端模型只发字幕文本。macOS / Windows / Docker / CLI。",
       "applicationCategory": "MultimediaApplication",
-      "operatingSystem": "macOS, Windows",
+      "operatingSystem": "macOS (Apple Silicon), Windows 10/11",
+      "downloadUrl": "https://github.com/zhouxiaoka/autoclip/releases/latest",
       "license": "https://opensource.org/licenses/MIT",
       "isAccessibleForFree": true,
       "offers": {
@@ -81,6 +82,14 @@
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "先试换一个更强的模型。仍不理想的话，请通过 反馈表单或 GitHub 置顶帖告诉我们视频类型、时长、模型，我们在收集样例改进评分策略。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "第一次怎么试？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "先用一条较短的视频，并带上 SRT 字幕。卡住时看 第一次出片问答。"
           }
         }
       ]
@@ -550,6 +559,10 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
           <summary data-i18n="faq.5.q">切片效果不好怎么办？</summary>
           <p data-i18n-html="faq.5.a">先试换一个更强的模型。仍不理想的话，请通过 <a class="link" href="#feedback">反馈表单</a>或 <a class="link" href="https://github.com/zhouxiaoka/autoclip/issues/96" target="_blank" rel="noopener">GitHub 置顶帖</a>告诉我们视频类型、时长、模型，我们在收集样例改进评分策略。</p>
         </details>
+        <details>
+          <summary data-i18n="faq.6.q">第一次怎么试？</summary>
+          <p data-i18n-html="faq.6.a">先用一条较短的视频，并带上 SRT 字幕。卡住时看 <a class="link" href="https://github.com/zhouxiaoka/autoclip/discussions/128" target="_blank" rel="noopener">第一次出片问答</a>。</p>
+        </details>
       </div>
     </div>
   </div>
@@ -578,7 +591,8 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
 
   var T = {
     zh: {
-      'title': 'AutoClip — 长视频的高光，自动剪出来',
+      'title': 'AutoClip — 本地 AI 高光切片（开源 MIT）',
+      'meta.desc': '导入本地 / B站 / YouTube，基于字幕自动出切片与合集。视频本地处理；可选云端模型只发字幕文本。macOS / Windows / Docker / CLI。',
       'nav.how':'怎么工作','nav.why':'为什么','nav.download':'下载','nav.faq':'常见问题','nav.cta':'下载',
       'hero.h1':'长视频里值得看的部分，<br>自动剪出来。',
       'hero.lede':'粘一条 B站 / YouTube 链接，或拖入本地视频。AI 读懂内容、找出高光，生成切片与合集——全程在你自己的电脑上完成。',
@@ -616,10 +630,12 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       'faq.3.q':'支持哪些视频来源？','faq.3.a':'B站链接、YouTube 链接、本地文件。有字幕的视频直接用；没有字幕的可以在设置里一键安装 Whisper，在本地转写。',
       'faq.4.q':'为什么第一次打开系统会警告？','faq.4.a':'因为安装包还没有做 Apple 公证 / Windows 代码签名。macOS 右键 → 打开；Windows 点「更多信息」→「仍要运行」。之后不会再提示。签名正在计划中。',
       'faq.5.q':'切片效果不好怎么办？','faq.5.a':'先试换一个更强的模型。仍不理想的话，请通过 <a class="link" href="#feedback">反馈表单</a>或 <a class="link" href="https://github.com/zhouxiaoka/autoclip/issues/96" target="_blank" rel="noopener">GitHub 置顶帖</a>告诉我们视频类型、时长、模型，我们在收集样例改进评分策略。',
+      'faq.6.q':'第一次怎么试？','faq.6.a':'先用一条较短的视频，并带上 SRT 字幕。卡住时看 <a class="link" href="https://github.com/zhouxiaoka/autoclip/discussions/128" target="_blank" rel="noopener">第一次出片问答</a>。',
       'footer.releases':'版本','footer.privacy':'隐私政策','footer.copy':'© 2025–2026 AutoClip · MIT 许可'
     },
     en: {
       'title': 'AutoClip — The best parts of a long video, clipped automatically',
+      'meta.desc': 'Import local files, Bilibili, or YouTube. Clips and compilations are generated from subtitles. Video is processed locally; an optional cloud model receives subtitle text only. macOS, Windows, Docker, and CLI.',
       'nav.how':'How it works','nav.why':'Why','nav.download':'Download','nav.faq':'FAQ','nav.cta':'Download',
       'hero.h1':'The parts worth watching,<br><em>clipped</em> automatically.',
       'hero.lede':'Paste a Bilibili or YouTube link, or drop in a local video. AI reads the content, finds the highlights and produces clips and collections — entirely on your own machine.',
@@ -657,10 +673,12 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       'faq.3.q':'Which sources are supported?','faq.3.a':'Bilibili links, YouTube links and local files. Videos with subtitles work directly; for the rest, install Whisper from Settings and transcribe locally.',
       'faq.4.q':'Why does the OS warn me on first launch?','faq.4.a':'The builds are not yet notarized (macOS) or code-signed (Windows). macOS: right-click → Open. Windows: “More info → Run anyway”. It only happens once. Signing is on the roadmap.',
       'faq.5.q':'What if the clips aren\'t good?','faq.5.a':'Try a stronger model first. If results are still off, report it in the <a class="link" href="https://github.com/zhouxiaoka/autoclip/issues/96" target="_blank" rel="noopener">pinned GitHub issue</a> with video type, length and model — we are collecting samples to improve scoring.',
+      'faq.6.q':'How should I try it the first time?','faq.6.a':'Start with a short video and an SRT subtitle file. If you get stuck, see the <a class="link" href="https://github.com/zhouxiaoka/autoclip/discussions/128" target="_blank" rel="noopener">first-clip Q&A</a>.',
       'footer.releases':'Releases','footer.privacy':'Privacy','footer.copy':'© 2025–2026 AutoClip · MIT License'
     },
     ja: {
       'title': 'AutoClip — 長い動画の見どころを、自動で切り出す',
+      'meta.desc': 'ローカル / Bilibili / YouTube を読み込み、字幕からクリップとコレクションを自動生成。動画はローカルで処理し、任意のクラウドモデルには字幕テキストだけを送ります。macOS / Windows / Docker / CLI。',
       'nav.how':'仕組み','nav.why':'特徴','nav.download':'ダウンロード','nav.faq':'FAQ','nav.cta':'ダウンロード',
       'hero.h1':'長い動画の見どころを、<br>自動で切り出す。',
       'hero.lede':'Bilibili / YouTube のリンクを貼るか、ローカル動画をドロップ。AI が内容を理解してハイライトを見つけ、クリップとコレクションを生成します。処理はすべてあなたの PC 上で完了。',
@@ -698,10 +716,12 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       'faq.3.q':'対応する動画ソースは？','faq.3.a':'Bilibili リンク、YouTube リンク、ローカルファイル。字幕付きはそのまま、字幕なしは設定から Whisper をインストールしてローカルで文字起こしできます。',
       'faq.4.q':'初回起動時に OS が警告するのはなぜ？','faq.4.a':'まだ Apple 公証 / Windows コード署名を行っていないためです。macOS は右クリック →「開く」、Windows は「詳細情報」→「実行」。表示は一度だけです。署名は計画中です。',
       'faq.5.q':'クリップの品質が良くない場合は？','faq.5.a':'まずより強いモデルを試してください。それでも改善しない場合は <a class="link" href="https://github.com/zhouxiaoka/autoclip/issues/96" target="_blank" rel="noopener">GitHub のピン留め Issue</a> に動画の種類・長さ・モデルを添えて報告してください。採点戦略の改善に使います。',
+      'faq.6.q':'最初はどう試せばいい？','faq.6.a':'まずは短い動画と SRT 字幕で試してください。止まったら <a class="link" href="https://github.com/zhouxiaoka/autoclip/discussions/128" target="_blank" rel="noopener">はじめてのクリップ Q&A</a> を見てください。',
       'footer.releases':'リリース','footer.privacy':'プライバシー','footer.copy':'© 2025–2026 AutoClip · MIT ライセンス'
     },
     ko: {
       'title': 'AutoClip — 긴 영상의 하이라이트를 자동으로 잘라냅니다',
+      'meta.desc': '로컬 / Bilibili / YouTube를 불러와 자막으로 클립과 컬렉션을 만듭니다. 영상은 로컬에서 처리하고, 선택적 클라우드 모델에는 자막 텍스트만 전송합니다. macOS / Windows / Docker / CLI.',
       'nav.how':'작동 방식','nav.why':'특징','nav.download':'다운로드','nav.faq':'FAQ','nav.cta':'다운로드',
       'hero.h1':'긴 영상에서 볼 만한 부분만,<br>자동으로 잘라냅니다.',
       'hero.lede':'Bilibili / YouTube 링크를 붙여 넣거나 로컬 영상을 드롭하세요. AI가 내용을 이해해 하이라이트를 찾고 클립과 컬렉션을 만듭니다. 모든 처리는 내 컴퓨터에서 끝납니다.',
@@ -739,10 +759,12 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       'faq.3.q':'어떤 영상 소스를 지원하나요?','faq.3.a':'Bilibili 링크, YouTube 링크, 로컬 파일. 자막이 있으면 바로 사용하고, 없으면 설정에서 Whisper를 설치해 로컬로 전사합니다.',
       'faq.4.q':'첫 실행 시 OS가 경고하는 이유는?','faq.4.a':'아직 Apple 공증 / Windows 코드 서명을 하지 않았기 때문입니다. macOS는 우클릭 → 열기, Windows는 「추가 정보」→「실행」. 한 번만 표시됩니다. 서명은 계획 중입니다.',
       'faq.5.q':'클립 품질이 좋지 않으면?','faq.5.a':'먼저 더 강한 모델을 시도해 보세요. 그래도 아쉬우면 <a class="link" href="https://github.com/zhouxiaoka/autoclip/issues/96" target="_blank" rel="noopener">GitHub 고정 이슈</a>에 영상 유형·길이·모델을 적어 알려 주세요. 채점 전략 개선에 사용합니다.',
+      'faq.6.q':'처음에는 어떻게 시험해 보나요?','faq.6.a':'짧은 영상과 SRT 자막으로 먼저 시도하세요. 막히면 <a class="link" href="https://github.com/zhouxiaoka/autoclip/discussions/128" target="_blank" rel="noopener">첫 클립 Q&A</a>를 보세요.',
       'footer.releases':'릴리스','footer.privacy':'개인정보','footer.copy':'© 2025–2026 AutoClip · MIT 라이선스'
     },
     es: {
       "title": "AutoClip — Los mejores momentos de tus videos, en clips automáticos",
+      "meta.desc": "Importa archivos locales, Bilibili o YouTube. Los clips y colecciones se generan a partir de los subtítulos. El video se procesa en local; un modelo en la nube opcional solo recibe el texto de los subtítulos. macOS, Windows, Docker y CLI.",
       "nav.how": "Cómo funciona",
       "nav.why": "Ventajas",
       "nav.download": "Descargar",
@@ -829,12 +851,15 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       "faq.4.a": "Las versiones aún no están notarizadas en macOS ni firmadas en Windows. En macOS, prueba clic derecho → «Abrir». En Windows, «Más información» → «Ejecutar de todas formas». La firma está prevista.",
       "faq.5.q": "¿Y si los clips no son buenos?",
       "faq.5.a": "Prueba primero un modelo más potente. Si no mejora, cuéntanos el tipo de video, la duración y el modelo en el <a class=\"link\" href=\"https://github.com/zhouxiaoka/autoclip/issues/96\" target=\"_blank\" rel=\"noopener\">issue fijado de GitHub</a>. Recopilamos ejemplos para mejorar la selección.",
+      "faq.6.q": "¿Cómo probarlo la primera vez?",
+      "faq.6.a": "Empieza con un video corto y un archivo SRT. Si te atascas, mira las <a class=\"link\" href=\"https://github.com/zhouxiaoka/autoclip/discussions/128\" target=\"_blank\" rel=\"noopener\">preguntas del primer clip</a>.",
       "footer.releases": "Versiones",
       "footer.privacy": "Privacidad",
       "footer.copy": "© 2025–2026 AutoClip · Licencia MIT"
     },
     pt: {
       "title": "AutoClip — Os melhores momentos dos seus vídeos, em clipes automáticos",
+      "meta.desc": "Importe arquivos locais, Bilibili ou YouTube. Clipes e coleções são gerados a partir das legendas. O vídeo é processado localmente; um modelo na nuvem opcional recebe apenas o texto das legendas. macOS, Windows, Docker e CLI.",
       "nav.how": "Como funciona",
       "nav.why": "Vantagens",
       "nav.download": "Baixar",
@@ -921,12 +946,15 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       "faq.4.a": "As versões ainda não têm notarização no macOS nem assinatura no Windows. No macOS, tente botão direito → “Abrir”. No Windows, “Mais informações” → “Executar assim mesmo”. A assinatura está planejada.",
       "faq.5.q": "E se os clipes não ficarem bons?",
       "faq.5.a": "Experimente um modelo mais potente. Se não melhorar, informe o tipo de vídeo, a duração e o modelo no <a class=\"link\" href=\"https://github.com/zhouxiaoka/autoclip/issues/96\" target=\"_blank\" rel=\"noopener\">issue fixado do GitHub</a>. Estamos reunindo exemplos para melhorar a seleção.",
+      "faq.6.q": "Como experimentar na primeira vez?",
+      "faq.6.a": "Comece com um vídeo curto e um arquivo SRT. Se travar, veja as <a class=\"link\" href=\"https://github.com/zhouxiaoka/autoclip/discussions/128\" target=\"_blank\" rel=\"noopener\">perguntas do primeiro clipe</a>.",
       "footer.releases": "Versões",
       "footer.privacy": "Privacidade",
       "footer.copy": "© 2025–2026 AutoClip · Licença MIT"
     },
     ru: {
       "title": "AutoClip — Лучшие моменты длинных видео автоматически",
+      "meta.desc": "Импорт локальных файлов, Bilibili или YouTube. Клипы и подборки собираются по субтитрам. Видео обрабатывается локально; необязательная облачная модель получает только текст субтитров. macOS, Windows, Docker и CLI.",
       "nav.how": "Как это работает",
       "nav.why": "Преимущества",
       "nav.download": "Скачать",
@@ -1013,12 +1041,15 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       "faq.4.a": "Версии пока не заверены Apple и не подписаны для Windows. В macOS попробуйте правую кнопку → «Открыть». В Windows — «Подробнее» → «Выполнить в любом случае». Подпись запланирована.",
       "faq.5.q": "Что делать, если клипы неудачные?",
       "faq.5.a": "Попробуйте более мощную модель. Если результат не улучшится, укажите тип видео, длительность и модель в <a class=\"link\" href=\"https://github.com/zhouxiaoka/autoclip/issues/96\" target=\"_blank\" rel=\"noopener\">закреплённом issue GitHub</a>. Мы собираем примеры для улучшения отбора.",
+      "faq.6.q": "С чего начать в первый раз?",
+      "faq.6.a": "Сначала возьмите короткое видео и субтитры SRT. Если застрянете, смотрите <a class=\"link\" href=\"https://github.com/zhouxiaoka/autoclip/discussions/128\" target=\"_blank\" rel=\"noopener\">вопросы и ответы</a>.",
       "footer.releases": "Версии",
       "footer.privacy": "Конфиденциальность",
       "footer.copy": "© 2025–2026 AutoClip · Лицензия MIT"
     },
     fr: {
       "title": "AutoClip — Les meilleurs moments de vos vidéos, découpés automatiquement",
+      "meta.desc": "Importez des fichiers locaux, Bilibili ou YouTube. Les extraits et collections sont générés à partir des sous-titres. La vidéo est traitée localement ; un modèle cloud facultatif ne reçoit que le texte des sous-titres. macOS, Windows, Docker et CLI.",
       "nav.how": "Fonctionnement",
       "nav.why": "Avantages",
       "nav.download": "Télécharger",
@@ -1105,6 +1136,8 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       "faq.4.a": "Les versions ne sont pas encore notariées sur macOS ni signées sur Windows. Sur macOS, essayez clic droit → « Ouvrir ». Sur Windows : « Informations complémentaires » → « Exécuter quand même ». La signature est prévue.",
       "faq.5.q": "Et si les extraits ne sont pas satisfaisants ?",
       "faq.5.a": "Essayez un modèle plus puissant. Si le résultat reste décevant, indiquez le type de vidéo, sa durée et le modèle dans l’<a class=\"link\" href=\"https://github.com/zhouxiaoka/autoclip/issues/96\" target=\"_blank\" rel=\"noopener\">issue GitHub épinglée</a>. Nous recueillons des exemples pour améliorer la sélection.",
+      "faq.6.q": "Comment essayer pour la première fois ?",
+      "faq.6.a": "Commencez par une vidéo courte et un fichier SRT. Si vous êtes bloqué, voir la <a class=\"link\" href=\"https://github.com/zhouxiaoka/autoclip/discussions/128\" target=\"_blank\" rel=\"noopener\">FAQ du premier extrait</a>.",
       "footer.releases": "Versions",
       "footer.privacy": "Confidentialité",
       "footer.copy": "© 2025–2026 AutoClip · Licence MIT"
@@ -1133,11 +1166,11 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
     document.querySelector('.nav-links').setAttribute('aria-label', landmarks[lang][0]);
     document.querySelector('.footer-links').setAttribute('aria-label', landmarks[lang][1]);
     document.querySelector('[data-i18n="footer.privacy"]').href = 'https://github.com/zhouxiaoka/autoclip/blob/main/docs/PRIVACY' + (lang === 'zh' ? '' : '.en') + '.md';
-    document.querySelector('meta[name="description"]').content = d['hero.lede'];
+    document.querySelector('meta[name="description"]').content = d['meta.desc'];
     document.querySelector('meta[property="og:title"]').content = d.title;
-    document.querySelector('meta[property="og:description"]').content = d['hero.lede'];
+    document.querySelector('meta[property="og:description"]').content = d['meta.desc'];
     document.querySelector('meta[name="twitter:title"]').content = d.title;
-    document.querySelector('meta[name="twitter:description"]').content = d['hero.lede'];
+    document.querySelector('meta[name="twitter:description"]').content = d['meta.desc'];
     // platform-aware primary CTA
     var p = document.getElementById('cta-primary'), pl = document.getElementById('cta-primary-label');
     var a = document.getElementById('cta-alt'), al = document.getElementById('cta-alt-label');
