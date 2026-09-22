@@ -52,7 +52,7 @@ python3 scripts/sync_release.py v1.3.0   # 更新到指定已发布 Release
 
 ## 反馈入口
 
-官网 `#feedback` 卡指向飞书多维表格表单（免登录）与 GitHub Issues / Discussions；收件箱的说明见主仓库 `HANDOFF.md`「反馈收件箱」一节。
+官网 `#feedback` 卡指向飞书多维表格表单（免登录）。可复现的 Bug 走 GitHub Issues；公告、第一次出片、想法与路线图分别是 Discussions [#127](https://github.com/zhouxiaoka/autoclip/discussions/127)、[#128](https://github.com/zhouxiaoka/autoclip/discussions/128)、[#129](https://github.com/zhouxiaoka/autoclip/discussions/129)；已知问题仍是 [Issues #96](https://github.com/zhouxiaoka/autoclip/issues/96)。收件箱的说明见主仓库 `HANDOFF.md`「反馈收件箱」一节。
 
 ## 语言
 

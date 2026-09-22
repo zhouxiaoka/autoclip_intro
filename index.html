@@ -273,7 +273,8 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
 .feedback .t{font-size:1rem;font-weight:500}
 .feedback .m{margin-top:6px;font-size:.875rem;color:var(--ac-sub);line-height:1.55}
 .feedback .row{margin-top:16px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-.feedback .alt{font-size:var(--ac-fs-meta);color:var(--ac-muted)}
+.feedback .alt{display:block;margin-top:12px;font-size:var(--ac-fs-meta);color:var(--ac-muted);line-height:1.55}
+.feedback .alt + .alt{margin-top:6px}
 .feedback .alt a{color:var(--ac-sub);border-bottom:1px solid var(--ac-line)}
 .feedback .alt a:hover{color:var(--ac-ink);border-color:var(--ac-muted)}
 
@@ -523,8 +524,9 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
           <div class="m" data-i18n="fb.m">一分钟的表单，不用注册。Bug 带上版本和平台就能更快复现；留了联系方式的，解决后会回你一声。</div>
           <div class="row">
             <a class="btn btn-primary btn-sm" href="https://my.feishu.cn/share/base/shrcn8hKUG2icIJLpNry6uWVNJe" target="_blank" rel="noopener" data-i18n="fb.btn">提交反馈</a>
-            <span class="alt" data-i18n-html="fb.alt">开发者请用 <a href="https://github.com/zhouxiaoka/autoclip/issues/new/choose" target="_blank" rel="noopener">GitHub Issues</a>，提问去 <a href="https://github.com/zhouxiaoka/autoclip/discussions" target="_blank" rel="noopener">Discussions</a>。</span>
           </div>
+          <p class="alt" data-i18n-html="fb.alt">可复现的 Bug 用 <a href="https://github.com/zhouxiaoka/autoclip/issues/new/choose" target="_blank" rel="noopener">GitHub Issues</a>。讨论：<a href="https://github.com/zhouxiaoka/autoclip/discussions/127" target="_blank" rel="noopener">公告</a>、<a href="https://github.com/zhouxiaoka/autoclip/discussions/128" target="_blank" rel="noopener">第一次出片</a>、<a href="https://github.com/zhouxiaoka/autoclip/discussions/129" target="_blank" rel="noopener">想法与路线图</a>。已知问题见 <a href="https://github.com/zhouxiaoka/autoclip/issues/96" target="_blank" rel="noopener">置顶帖</a>。</p>
+          <p class="alt" data-i18n-html="fb.stuck">第一次出片卡住？去 <a href="https://github.com/zhouxiaoka/autoclip/discussions/128" target="_blank" rel="noopener">第一次出片问答</a>。</p>
         </div>
       </div>
       <div class="faq">
@@ -607,7 +609,8 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       'dl.win.sum':'首次运行提示','dl.win.note':'安装包尚未做代码签名，SmartScreen 会拦一次。点「更多信息」→「仍要运行」即可。',
       'dl.alt':'想跑在服务器或 NAS 上？<a href="https://github.com/zhouxiaoka/autoclip#readme" target="_blank" rel="noopener">Docker 部署与源码运行</a>见 GitHub README。',
       'faq.eyebrow':'常见问题','faq.h2':'你大概想问的。',
-      'fb.t':'有问题或想法？直接告诉我们。','fb.m':'一分钟的表单，不用注册。Bug 带上版本和平台就能更快复现；留了联系方式的，解决后会回你一声。','fb.btn':'提交反馈','fb.alt':'开发者请用 <a href="https://github.com/zhouxiaoka/autoclip/issues/new/choose" target="_blank" rel="noopener">GitHub Issues</a>，提问去 <a href="https://github.com/zhouxiaoka/autoclip/discussions" target="_blank" rel="noopener">Discussions</a>。',
+      'fb.t':'有问题或想法？直接告诉我们。','fb.m':'一分钟的表单，不用注册。Bug 带上版本和平台就能更快复现；留了联系方式的，解决后会回你一声。','fb.btn':'提交反馈','fb.alt':'可复现的 Bug 用 <a href="https://github.com/zhouxiaoka/autoclip/issues/new/choose" target="_blank" rel="noopener">GitHub Issues</a>。讨论：<a href="https://github.com/zhouxiaoka/autoclip/discussions/127" target="_blank" rel="noopener">公告</a>、<a href="https://github.com/zhouxiaoka/autoclip/discussions/128" target="_blank" rel="noopener">第一次出片</a>、<a href="https://github.com/zhouxiaoka/autoclip/discussions/129" target="_blank" rel="noopener">想法与路线图</a>。已知问题见 <a href="https://github.com/zhouxiaoka/autoclip/issues/96" target="_blank" rel="noopener">置顶帖</a>。',
+      'fb.stuck':'第一次出片卡住？去 <a href="https://github.com/zhouxiaoka/autoclip/discussions/128" target="_blank" rel="noopener">第一次出片问答</a>。',
       'faq.1.q':'要花钱吗？','faq.1.a':'AutoClip 本身免费、开源（MIT）。唯一的成本是你自己模型的 API 调用费——每条视频通常只是几分钱到几毛钱，取决于时长和所选模型。',
       'faq.2.q':'我的视频会被上传吗？','faq.2.a':'不会。视频文件只在你的电脑上处理。发给模型的只有字幕文本（用于理解内容和评分），发给哪家由你在设置里决定。',
       'faq.3.q':'支持哪些视频来源？','faq.3.a':'B站链接、YouTube 链接、本地文件。有字幕的视频直接用；没有字幕的可以在设置里一键安装 Whisper，在本地转写。',
@@ -647,7 +650,8 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       'dl.win.sum':'First run','dl.win.note':'The installer is not code-signed yet, so SmartScreen will warn once. Choose “More info → Run anyway”.',
       'dl.alt':'Running on a server or NAS? <a href="https://github.com/zhouxiaoka/autoclip#readme" target="_blank" rel="noopener">Docker and source setup</a> are in the GitHub README.',
       'faq.eyebrow':'FAQ','faq.h2':'The questions you were about to ask.',
-      'fb.t':'Found a bug or have an idea? Tell us.','fb.m':'A one-minute form, no sign-up. Include version and platform for bugs so we can reproduce; leave a contact and we\'ll follow up once it\'s fixed.','fb.btn':'Send feedback','fb.alt':'Developers: <a href="https://github.com/zhouxiaoka/autoclip/issues/new/choose" target="_blank" rel="noopener">GitHub Issues</a> for bugs, <a href="https://github.com/zhouxiaoka/autoclip/discussions" target="_blank" rel="noopener">Discussions</a> for questions.',
+      'fb.t':'Found a bug or have an idea? Tell us.','fb.m':'A one-minute form, no sign-up. Include version and platform for bugs so we can reproduce; leave a contact and we\'ll follow up once it\'s fixed.','fb.btn':'Send feedback','fb.alt':'Reproducible bugs: <a href="https://github.com/zhouxiaoka/autoclip/issues/new/choose" target="_blank" rel="noopener">GitHub Issues</a>. Discussions: <a href="https://github.com/zhouxiaoka/autoclip/discussions/127" target="_blank" rel="noopener">Announcements</a>, <a href="https://github.com/zhouxiaoka/autoclip/discussions/128" target="_blank" rel="noopener">first clip</a>, <a href="https://github.com/zhouxiaoka/autoclip/discussions/129" target="_blank" rel="noopener">ideas and roadmap</a>. Known issues: <a href="https://github.com/zhouxiaoka/autoclip/issues/96" target="_blank" rel="noopener">pinned issue</a>.',
+      'fb.stuck':'Stuck on your first clip? See the <a href="https://github.com/zhouxiaoka/autoclip/discussions/128" target="_blank" rel="noopener">first-clip Q&A</a>.',
       'faq.1.q':'Does it cost anything?','faq.1.a':'AutoClip itself is free and open source (MIT). The only cost is your own model\'s API usage — typically a few cents per video, depending on length and model.',
       'faq.2.q':'Is my video uploaded anywhere?','faq.2.a':'No. Video files are processed only on your machine. The model receives subtitle text only (to understand and score content), and you decide which provider that is.',
       'faq.3.q':'Which sources are supported?','faq.3.a':'Bilibili links, YouTube links and local files. Videos with subtitles work directly; for the rest, install Whisper from Settings and transcribe locally.',
@@ -687,7 +691,8 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       'dl.win.sum':'初回実行について','dl.win.note':'コード署名はまだ行っていないため、SmartScreen が一度警告します。「詳細情報」→「実行」を選択してください。',
       'dl.alt':'サーバーや NAS で動かす場合は、GitHub README の <a href="https://github.com/zhouxiaoka/autoclip#readme" target="_blank" rel="noopener">Docker / ソースからの実行</a>をご覧ください。',
       'faq.eyebrow':'よくある質問','faq.h2':'聞きたくなることを、先に。',
-      'fb.t':'不具合や要望があれば、直接お知らせください。','fb.m':'1 分で書けるフォーム、登録不要。バグはバージョンと OS を添えると再現が早くなります。連絡先を残していただければ、解決後にお知らせします。','fb.btn':'フィードバックを送る','fb.alt':'開発者の方は <a href="https://github.com/zhouxiaoka/autoclip/issues/new/choose" target="_blank" rel="noopener">GitHub Issues</a>、質問は <a href="https://github.com/zhouxiaoka/autoclip/discussions" target="_blank" rel="noopener">Discussions</a> へ。',
+      'fb.t':'不具合や要望があれば、直接お知らせください。','fb.m':'1 分で書けるフォーム、登録不要。バグはバージョンと OS を添えると再現が早くなります。連絡先を残していただければ、解決後にお知らせします。','fb.btn':'フィードバックを送る','fb.alt':'再現できる不具合は <a href="https://github.com/zhouxiaoka/autoclip/issues/new/choose" target="_blank" rel="noopener">GitHub Issues</a> へ。議論：<a href="https://github.com/zhouxiaoka/autoclip/discussions/127" target="_blank" rel="noopener">お知らせ</a>、<a href="https://github.com/zhouxiaoka/autoclip/discussions/128" target="_blank" rel="noopener">はじめてのクリップ</a>、<a href="https://github.com/zhouxiaoka/autoclip/discussions/129" target="_blank" rel="noopener">アイデアとロードマップ</a>。既知の問題は <a href="https://github.com/zhouxiaoka/autoclip/issues/96" target="_blank" rel="noopener">ピン留め Issue</a>。',
+      'fb.stuck':'最初の書き出しで止まったら、<a href="https://github.com/zhouxiaoka/autoclip/discussions/128" target="_blank" rel="noopener">はじめてのクリップ Q&A</a> へ。',
       'faq.1.q':'費用はかかりますか？','faq.1.a':'AutoClip 自体は無料でオープンソース（MIT）です。かかるのは選んだモデルの API 利用料のみで、動画 1 本あたり通常は数円程度です。',
       'faq.2.q':'動画はアップロードされますか？','faq.2.a':'されません。動画ファイルは PC 上でのみ処理されます。モデルに送るのは字幕テキストだけで、送信先は設定で選べます。',
       'faq.3.q':'対応する動画ソースは？','faq.3.a':'Bilibili リンク、YouTube リンク、ローカルファイル。字幕付きはそのまま、字幕なしは設定から Whisper をインストールしてローカルで文字起こしできます。',
@@ -727,7 +732,8 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       'dl.win.sum':'첫 실행 안내','dl.win.note':'아직 코드 서명이 되어 있지 않아 SmartScreen이 한 번 경고합니다. 「추가 정보」→「실행」을 선택하세요.',
       'dl.alt':'서버나 NAS에서 실행하려면 GitHub README의 <a href="https://github.com/zhouxiaoka/autoclip#readme" target="_blank" rel="noopener">Docker 및 소스 실행</a>을 참고하세요.',
       'faq.eyebrow':'자주 묻는 질문','faq.h2':'물어보실 것 같은 질문에 먼저 답합니다.',
-      'fb.t':'문제나 아이디어가 있나요? 바로 알려 주세요.','fb.m':'1분이면 되는 폼, 가입 불필요. 버그는 버전과 플랫폼을 함께 적어 주면 재현이 빨라지고, 연락처를 남기면 해결 후 알려 드립니다.','fb.btn':'피드백 보내기','fb.alt':'개발자는 <a href="https://github.com/zhouxiaoka/autoclip/issues/new/choose" target="_blank" rel="noopener">GitHub Issues</a>, 질문은 <a href="https://github.com/zhouxiaoka/autoclip/discussions" target="_blank" rel="noopener">Discussions</a>으로.',
+      'fb.t':'문제나 아이디어가 있나요? 바로 알려 주세요.','fb.m':'1분이면 되는 폼, 가입 불필요. 버그는 버전과 플랫폼을 함께 적어 주면 재현이 빨라지고, 연락처를 남기면 해결 후 알려 드립니다.','fb.btn':'피드백 보내기','fb.alt':'재현 가능한 버그는 <a href="https://github.com/zhouxiaoka/autoclip/issues/new/choose" target="_blank" rel="noopener">GitHub Issues</a>로. 토론: <a href="https://github.com/zhouxiaoka/autoclip/discussions/127" target="_blank" rel="noopener">공지</a>, <a href="https://github.com/zhouxiaoka/autoclip/discussions/128" target="_blank" rel="noopener">첫 클립</a>, <a href="https://github.com/zhouxiaoka/autoclip/discussions/129" target="_blank" rel="noopener">아이디어와 로드맵</a>. 알려진 문제는 <a href="https://github.com/zhouxiaoka/autoclip/issues/96" target="_blank" rel="noopener">고정 이슈</a>.',
+      'fb.stuck':'첫 클립에서 막히면 <a href="https://github.com/zhouxiaoka/autoclip/discussions/128" target="_blank" rel="noopener">첫 클립 Q&A</a>를 보세요.',
       'faq.1.q':'비용이 드나요?','faq.1.a':'AutoClip 자체는 무료 오픈소스(MIT)입니다. 유일한 비용은 선택한 모델의 API 사용료로, 영상 한 편에 보통 몇십 원 수준입니다.',
       'faq.2.q':'내 영상이 업로드되나요?','faq.2.a':'아닙니다. 영상 파일은 내 컴퓨터에서만 처리됩니다. 모델에는 자막 텍스트만 전송되며, 어느 제공자로 보낼지는 설정에서 정합니다.',
       'faq.3.q':'어떤 영상 소스를 지원하나요?','faq.3.a':'Bilibili 링크, YouTube 링크, 로컬 파일. 자막이 있으면 바로 사용하고, 없으면 설정에서 Whisper를 설치해 로컬로 전사합니다.',
@@ -811,7 +817,8 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       "fb.t": "¿Encontraste un error o tienes una idea? Cuéntanos.",
       "fb.m": "Un formulario de un minuto, sin registro. Para errores, incluye la versión y el sistema. Si dejas un contacto, te avisaremos cuando se resuelva.",
       "fb.btn": "Enviar comentarios",
-      "fb.alt": "Para errores: <a href=\"https://github.com/zhouxiaoka/autoclip/issues/new/choose\" target=\"_blank\" rel=\"noopener\">GitHub Issues</a>. Para preguntas: <a href=\"https://github.com/zhouxiaoka/autoclip/discussions\" target=\"_blank\" rel=\"noopener\">Discussions</a>.",
+      "fb.alt": "Bugs reproducibles: <a href=\"https://github.com/zhouxiaoka/autoclip/issues/new/choose\" target=\"_blank\" rel=\"noopener\">GitHub Issues</a>. Discusiones: <a href=\"https://github.com/zhouxiaoka/autoclip/discussions/127\" target=\"_blank\" rel=\"noopener\">anuncios</a>, <a href=\"https://github.com/zhouxiaoka/autoclip/discussions/128\" target=\"_blank\" rel=\"noopener\">primer clip</a>, <a href=\"https://github.com/zhouxiaoka/autoclip/discussions/129\" target=\"_blank\" rel=\"noopener\">ideas y hoja de ruta</a>. Problemas conocidos: <a href=\"https://github.com/zhouxiaoka/autoclip/issues/96\" target=\"_blank\" rel=\"noopener\">issue fijado</a>.",
+      "fb.stuck": "¿Atascado en el primer clip? Mira las <a href=\"https://github.com/zhouxiaoka/autoclip/discussions/128\" target=\"_blank\" rel=\"noopener\">preguntas del primer clip</a>.",
       "faq.1.q": "¿Tiene algún costo?",
       "faq.1.a": "AutoClip es gratuito y de código abierto (MIT). Solo pagas el uso de la API del modelo que eliges; el costo depende del modelo y de la duración del video.",
       "faq.2.q": "¿Se sube mi video a algún servidor?",
@@ -902,7 +909,8 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       "fb.t": "Encontrou um erro ou tem uma ideia? Conte para nós.",
       "fb.m": "Um formulário de um minuto, sem cadastro. Para erros, inclua a versão e o sistema. Se deixar um contato, avisaremos quando for resolvido.",
       "fb.btn": "Enviar feedback",
-      "fb.alt": "Para erros: <a href=\"https://github.com/zhouxiaoka/autoclip/issues/new/choose\" target=\"_blank\" rel=\"noopener\">GitHub Issues</a>. Para dúvidas: <a href=\"https://github.com/zhouxiaoka/autoclip/discussions\" target=\"_blank\" rel=\"noopener\">Discussions</a>.",
+      "fb.alt": "Bugs reproduzíveis: <a href=\"https://github.com/zhouxiaoka/autoclip/issues/new/choose\" target=\"_blank\" rel=\"noopener\">GitHub Issues</a>. Discussões: <a href=\"https://github.com/zhouxiaoka/autoclip/discussions/127\" target=\"_blank\" rel=\"noopener\">anúncios</a>, <a href=\"https://github.com/zhouxiaoka/autoclip/discussions/128\" target=\"_blank\" rel=\"noopener\">primeiro clipe</a>, <a href=\"https://github.com/zhouxiaoka/autoclip/discussions/129\" target=\"_blank\" rel=\"noopener\">ideias e roteiro</a>. Problemas conhecidos: <a href=\"https://github.com/zhouxiaoka/autoclip/issues/96\" target=\"_blank\" rel=\"noopener\">issue fixado</a>.",
+      "fb.stuck": "Travou no primeiro clipe? Veja as <a href=\"https://github.com/zhouxiaoka/autoclip/discussions/128\" target=\"_blank\" rel=\"noopener\">perguntas do primeiro clipe</a>.",
       "faq.1.q": "Tem algum custo?",
       "faq.1.a": "O AutoClip é grátis e de código aberto (MIT). Você só paga pelo uso da API do modelo escolhido; o custo depende do modelo e da duração do vídeo.",
       "faq.2.q": "Meu vídeo é enviado a algum servidor?",
@@ -993,7 +1001,8 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       "fb.t": "Нашли ошибку или есть идея? Напишите нам.",
       "fb.m": "Форма на минуту, без регистрации. Для ошибок укажите версию и систему. Оставьте контакт — сообщим об исправлении.",
       "fb.btn": "Отправить отзыв",
-      "fb.alt": "Ошибки: <a href=\"https://github.com/zhouxiaoka/autoclip/issues/new/choose\" target=\"_blank\" rel=\"noopener\">GitHub Issues</a>. Вопросы: <a href=\"https://github.com/zhouxiaoka/autoclip/discussions\" target=\"_blank\" rel=\"noopener\">Discussions</a>.",
+      "fb.alt": "Воспроизводимые ошибки: <a href=\"https://github.com/zhouxiaoka/autoclip/issues/new/choose\" target=\"_blank\" rel=\"noopener\">GitHub Issues</a>. Обсуждения: <a href=\"https://github.com/zhouxiaoka/autoclip/discussions/127\" target=\"_blank\" rel=\"noopener\">объявления</a>, <a href=\"https://github.com/zhouxiaoka/autoclip/discussions/128\" target=\"_blank\" rel=\"noopener\">первый клип</a>, <a href=\"https://github.com/zhouxiaoka/autoclip/discussions/129\" target=\"_blank\" rel=\"noopener\">идеи и план</a>. Известные проблемы: <a href=\"https://github.com/zhouxiaoka/autoclip/issues/96\" target=\"_blank\" rel=\"noopener\">закреплённый issue</a>.",
+      "fb.stuck": "Застряли на первом клипе? Смотрите <a href=\"https://github.com/zhouxiaoka/autoclip/discussions/128\" target=\"_blank\" rel=\"noopener\">вопросы и ответы</a>.",
       "faq.1.q": "Это платно?",
       "faq.1.a": "AutoClip бесплатен и открыт по лицензии MIT. Оплачивается только API выбранной модели; стоимость зависит от модели и длительности видео.",
       "faq.2.q": "Видео отправляется на сервер?",
@@ -1084,7 +1093,8 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       "fb.t": "Un bug ou une idée ? Dites-le-nous.",
       "fb.m": "Un formulaire d’une minute, sans inscription. Pour les bugs, indiquez la version et le système. Laissez un contact pour être informé de la résolution.",
       "fb.btn": "Envoyer un retour",
-      "fb.alt": "Pour les bugs : <a href=\"https://github.com/zhouxiaoka/autoclip/issues/new/choose\" target=\"_blank\" rel=\"noopener\">GitHub Issues</a>. Pour les questions : <a href=\"https://github.com/zhouxiaoka/autoclip/discussions\" target=\"_blank\" rel=\"noopener\">Discussions</a>.",
+      "fb.alt": "Bugs reproductibles : <a href=\"https://github.com/zhouxiaoka/autoclip/issues/new/choose\" target=\"_blank\" rel=\"noopener\">GitHub Issues</a>. Discussions : <a href=\"https://github.com/zhouxiaoka/autoclip/discussions/127\" target=\"_blank\" rel=\"noopener\">annonces</a>, <a href=\"https://github.com/zhouxiaoka/autoclip/discussions/128\" target=\"_blank\" rel=\"noopener\">premier extrait</a>, <a href=\"https://github.com/zhouxiaoka/autoclip/discussions/129\" target=\"_blank\" rel=\"noopener\">idées et feuille de route</a>. Problèmes connus : <a href=\"https://github.com/zhouxiaoka/autoclip/issues/96\" target=\"_blank\" rel=\"noopener\">issue épinglée</a>.",
+      "fb.stuck": "Bloqué au premier extrait ? Voir la <a href=\"https://github.com/zhouxiaoka/autoclip/discussions/128\" target=\"_blank\" rel=\"noopener\">FAQ du premier extrait</a>.",
       "faq.1.q": "Est-ce payant ?",
       "faq.1.a": "AutoClip est gratuit et ouvert (MIT). Seul l’usage de l’API du modèle choisi est payant ; le coût dépend du modèle et de la durée de la vidéo.",
       "faq.2.q": "Ma vidéo est-elle envoyée sur un serveur ?",
