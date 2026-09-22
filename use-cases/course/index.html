@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>课程视频高光提取｜AutoClip</title>
+<meta name="description" content="从网课/讲座里抽出考点与金句段。建议带 SRT 的短样先跑通；本地处理，开源 MIT。">
+<link rel="canonical" href="https://zhouxiaoka.github.io/autoclip_intro/use-cases/course/">
+<meta property="og:title" content="课程视频高光提取｜AutoClip">
+<meta property="og:description" content="从网课/讲座里抽出考点与金句段。建议带 SRT 的短样先跑通；本地处理，开源 MIT。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://zhouxiaoka.github.io/autoclip_intro/use-cases/course/">
+<meta property="og:image" content="https://zhouxiaoka.github.io/autoclip_intro/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="课程里的考点与金句，自动成片">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="课程视频高光提取｜AutoClip">
+<meta name="twitter:description" content="从网课/讲座里抽出考点与金句段。建议带 SRT 的短样先跑通；本地处理，开源 MIT。">
+<meta name="twitter:image" content="https://zhouxiaoka.github.io/autoclip_intro/img/og.png">
+<meta name="twitter:image:alt" content="课程里的考点与金句，自动成片">
+<meta name="theme-color" content="#F6F5F3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#19181A" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/svg+xml" href="../../logo.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../case.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="container nav-in">
+    <a class="brand serif" href="../../" aria-label="AutoClip 首页"><img src="../../logo.svg" alt="">AutoClip</a>
+    <nav class="nav-links" aria-label="用法">
+      <a href="../../">首页</a>
+      <a href="../podcast/">播客</a>
+      <a href="./" aria-current="page">课程</a>
+    </nav>
+    <div class="nav-right">
+      <a class="gh" href="https://github.com/zhouxiaoka/autoclip" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.66-.22.66-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.45-1.15-1.1-1.46-1.1-1.46-.9-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85.004 1.71.11 2.51.32 1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.85-2.34 4.7-4.57 4.95.36.31.68.92.68 1.85 0 1.33-.01 2.4-.01 2.73 0 .27.16.58.67.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"/></svg>
+        <span>GitHub</span>
+      </a>
+      <a class="btn btn-primary btn-sm" href="https://github.com/zhouxiaoka/autoclip/releases/latest">下载</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">用法 · 课程</div>
+        <h1>课程里的考点与金句，自动成片</h1>
+        <p class="lede">适合有讲解字幕的录播课、讲座。AI 按话题与精彩度打分，帮你出短切片和合集，少靠纯画面猜重点。</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="https://github.com/zhouxiaoka/autoclip/releases/latest">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg>
+            下载桌面版
+          </a>
+          <a class="btn btn-secondary" href="../../#download">macOS / Windows</a>
+        </div>
+      </div>
+      <figure class="still">
+        <img src="../../img/thumb-lecture.webp" alt="讲座画面，可从课程里抽出考点与金句">
+      </figure>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="pair">
+        <article class="card">
+          <h2>适合</h2>
+          <p>口播授课、讲座回放、有字幕或可 Whisper 转写的课。</p>
+        </article>
+        <article class="card">
+          <h2>不太适合</h2>
+          <p>几乎无讲解的板书静音段、纯演示无旁白。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="first">
+    <div class="container narrow">
+      <h2>第一次出片</h2>
+      <ol class="steps">
+        <li>
+          <span class="n">01</span>
+          <p><a class="link" href="https://github.com/zhouxiaoka/autoclip/releases/latest">安装桌面版</a>，设置里测通模型</p>
+        </li>
+        <li>
+          <span class="n">02</span>
+          <p>用带 SRT 的短样片（或自带字幕的 3–5 分钟片段）导入</p>
+        </li>
+        <li>
+          <span class="n">03</span>
+          <p>开始处理 → 导出 ≥1 条切片。卡住看 <a class="link" href="https://github.com/zhouxiaoka/autoclip/discussions/128">讨论 #128</a></p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container narrow">
+      <div class="note">
+        <h2>效果提示</h2>
+        <p>优先「金句/考点段」而非均分切段；若不满意，先换更强模型，再反馈素材类型。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container narrow">
+      <h2>事实</h2>
+      <ul class="facts">
+        <li>MIT 开源</li>
+        <li>视频不过云（云端模型只发字幕文本）</li>
+        <li>模型自选</li>
+        <li><a class="link" href="https://github.com/zhouxiaoka/autoclip/releases/latest">下载</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container sibling">
+      <p>访谈和对谈，看播客页。</p>
+      <a class="btn btn-secondary" href="../podcast/">播客自动切片</a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footer-in">
+    <a class="brand serif" href="../../">AutoClip</a>
+    <nav class="footer-links" aria-label="讨论">
+      <a href="https://github.com/zhouxiaoka/autoclip/discussions/128" target="_blank" rel="noopener">卡点</a>
+      <a href="https://github.com/zhouxiaoka/autoclip/discussions/129" target="_blank" rel="noopener">想法</a>
+      <a href="https://github.com/zhouxiaoka/autoclip/discussions/categories/use-cases" target="_blank" rel="noopener">晒用法</a>
+    </nav>
+    <span>© 2025–2026 AutoClip · MIT 许可</span>
+  </div>
+</footer>
+
+</body>
+</html>

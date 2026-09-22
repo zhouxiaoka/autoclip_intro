@@ -11,8 +11,9 @@ index.html          单页官网，含 zh / en / ja / ko / es / pt / ru / fr 八
 tokens.css          设计 token，与产品 frontend/src/index.css 的 --ac-* 同名（规范见主仓库 DESIGN.md）
 logo.svg            品牌标记（矢量）；favicon-32.png / apple-touch-icon.png 由它渲染
 img/                hero 与示例卡里的视频静帧（WebP），以及 1200×630 的 og.png
+use-cases/          静态用法页：podcast/、course/，以及共用 case.css；引用根目录 tokens.css 与图标
 robots.txt          允许抓取 /，Sitemap 指向 GitHub Pages
-sitemap.xml         单页站点，目前只有首页
+sitemap.xml         首页、播客用法、课程用法
 ```
 
 零构建：改完 `index.html` 直接 push 到 `main`，Pages 约一分钟后生效。
