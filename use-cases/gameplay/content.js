@@ -24,7 +24,7 @@ const GAME_COPY = {
     "cost": "文字、视觉与转写费用取决于你的配置和服务商。智能选择先用本地证据；付费视觉初筛需单独启用。",
     "version": "1.4.0 功能预告 · 正式发布后提供",
     "output": "高光 / 推广草稿",
-    "illustration": "流程示意 · 非真实产品截图"
+    "illustration": "Subway Princess Runner · 基于实际样片的 AI 合成展示，非产品截图"
   },
   "en": {
     "label": "Game videos",
@@ -51,7 +51,7 @@ const GAME_COPY = {
     "cost": "Text, vision and transcription costs depend on your setup and provider. Smart selection starts with local evidence; paid visual screening requires separate opt-in.",
     "version": "1.4.0 preview · Available after release",
     "output": "Highlights / Promotional drafts",
-    "illustration": "Workflow illustration · Not a product screenshot"
+    "illustration": "Subway Princess Runner · AI-composed from real example frames · Not a product screenshot"
   },
   "ja": {
     "label": "ゲーム動画",
@@ -78,7 +78,7 @@ const GAME_COPY = {
     "cost": "テキスト・視覚・文字起こしの費用は設定と提供元によります。自動選択はローカル情報から開始。有料の視覚簡易判定は個別に有効化します。",
     "version": "1.4.0 プレビュー · 正式公開後に提供",
     "output": "ハイライト / 宣伝下書き",
-    "illustration": "処理の模式図 · 実際の製品画面ではありません"
+    "illustration": "Subway Princess Runner · 実際のサンプルを基にした AI 合成画像・製品画面ではありません"
   },
   "ko": {
     "label": "게임 영상",
@@ -105,7 +105,7 @@ const GAME_COPY = {
     "cost": "텍스트·시각·전사 비용은 설정과 제공업체에 따라 달라집니다. 스마트 선택은 로컬 정보부터 사용하며 유료 시각 사전 판별은 별도로 활성화해야 합니다.",
     "version": "1.4.0 미리보기 · 정식 출시 후 제공",
     "output": "하이라이트 / 홍보 초안",
-    "illustration": "흐름 예시 · 실제 제품 화면이 아닙니다"
+    "illustration": "Subway Princess Runner · 실제 샘플 기반 AI 합성 이미지 · 제품 스크린샷 아님"
   },
   "es": {
     "label": "Vídeos de juegos",
@@ -132,7 +132,7 @@ const GAME_COPY = {
     "cost": "Los costes de texto, visión y transcripción dependen del proveedor y la configuración. La selección inteligente empieza con información local; la evaluación visual de pago requiere activación aparte.",
     "version": "Avance de 1.4.0 · Disponible tras el lanzamiento",
     "output": "Destacados / Borradores promocionales",
-    "illustration": "Esquema del flujo · No es una captura del producto"
+    "illustration": "Subway Princess Runner · Composición con IA basada en muestras reales · No es una captura del producto"
   },
   "pt": {
     "label": "Vídeos de jogos",
@@ -159,7 +159,7 @@ const GAME_COPY = {
     "cost": "Custos de texto, visão e transcrição dependem da configuração e do provedor. A seleção inteligente começa com dados locais; a avaliação visual paga exige ativação separada.",
     "version": "Prévia de 1.4.0 · Disponível após o lançamento",
     "output": "Destaques / Rascunhos promocionais",
-    "illustration": "Esquema do fluxo · Não é uma captura do produto"
+    "illustration": "Subway Princess Runner · Composição com IA baseada em amostras reais · Não é uma captura do produto"
   },
   "ru": {
     "label": "Игровые видео",
@@ -186,7 +186,7 @@ const GAME_COPY = {
     "cost": "Стоимость текста, изображений и транскрипции зависит от настроек и провайдера. Умный выбор начинает с локальных данных; платная визуальная оценка включается отдельно.",
     "version": "Предпросмотр 1.4.0 · После выпуска",
     "output": "Моменты / Рекламные черновики",
-    "illustration": "Схема процесса · Не снимок приложения"
+    "illustration": "Subway Princess Runner · AI-композиция на основе реальных примеров · Не скриншот продукта"
   },
   "fr": {
     "label": "Vidéos de jeux",
@@ -213,6 +213,6 @@ const GAME_COPY = {
     "cost": "Les coûts de texte, vision et transcription dépendent de la configuration et du fournisseur. Le choix intelligent commence par les données locales ; l’évaluation visuelle payante nécessite une activation distincte.",
     "version": "Aperçu 1.4.0 · Disponible après publication",
     "output": "Moments forts / Brouillons promotionnels",
-    "illustration": "Schéma du parcours · Pas une capture du produit"
+    "illustration": "Subway Princess Runner · Composition IA à partir d’exemples réels · Pas une capture du produit"
   }
 };
