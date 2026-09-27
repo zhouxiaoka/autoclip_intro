@@ -294,8 +294,10 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
 .footer-links{display:flex;gap:20px;flex-wrap:wrap}
 .footer-links a:hover{color:var(--ac-ink)}
 
-/* ---------- features shipped in v1.3.5 ---------- */
+/* ---------- dated capabilities: v1.4.0 highlights, publish/cover since v1.3.2 ---------- */
 .feat-note{margin-top:14px}
+.feat-card:not(a){cursor:default}
+.feat-card:not(a):hover{transform:none}
 .feat-grid{margin-top:clamp(28px,4vw,40px);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
 .feat-card{display:flex;flex-direction:column;align-items:flex-start;gap:10px;background:var(--ac-card);border:1px solid var(--ac-line);border-radius:var(--ac-r-card);padding:22px 24px 20px;box-shadow:var(--ac-shadow);min-width:0;transition:transform var(--ac-t-short) var(--ac-ease-out),box-shadow var(--ac-t-short)}
 .feat-card:hover{transform:translateY(-2px);box-shadow:var(--ac-shadow)}
@@ -492,7 +494,7 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
     <div class="why">
       <div class="item"><span class="k">01</span><h3 data-i18n="why.1.h">本机剪辑与渲染</h3><p data-i18n="why.1.p">剪辑与渲染在本机完成。云端文字分析发送相关字幕/文案；云端视觉分析发送抽样画面及必要文字。由你选择服务商，发布时才上传成片到目标平台。</p></div>
       <div class="item"><span class="k">02</span><h3 data-i18n="why.2.h">零依赖安装</h3><p data-i18n="why.2.p">安装包自带便携 Python 与静态 ffmpeg。不用配环境、不用装 Docker，下载即用。</p></div>
-      <div class="item"><span class="k">03</span><h3 data-i18n="why.3.h">模型自选</h3><p data-i18n="why.3.p">不绑定任何厂商。API Key 填在自己的设置页里，随时切换提供商或接入自定义 OpenAI 兼容地址，包括本地模型。</p></div>
+      <div class="item"><span class="k">03</span><h3 data-i18n="why.3.h">模型自选</h3><p data-i18n="why.3.p">不绑定任何厂商。自备 Key，可选 Qwen、OpenAI、Gemini、DeepSeek、Doubao Seed、Kimi、GLM、Grok，或本地 Ollama / LM Studio。也可填自定义 OpenAI 兼容地址。云端费用由所选服务商收取，不是 AutoClip 的定价。</p></div>
       <div class="item"><span class="k">04</span><h3 data-i18n="why.4.h">开源 MIT</h3><p data-i18n="why.4.p">全部代码在 GitHub。想看它怎么处理你的视频、想改、想自己部署，都可以。</p></div>
     </div>
   </div>
@@ -521,7 +523,7 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
           <h3><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 5.5l7.5-1.03v7.25H3V5.5zm0 13l7.5 1.03v-7.16H3v6.13zm8.32 1.14L21 21v-8.63h-9.68v7.27zm0-15.28v7.36H21V3l-9.68 1.36z"/></svg>Windows</h3>
           <span class="ver">v1.4.0 · 175 MB</span>
         </div>
-        <p class="req" data-i18n="dl.win.req">Windows 10 / 11，x64。按用户安装，不需要管理员权限；缺少 WebView2 时安装器会自动下载。</p>
+        <p class="req" data-i18n="dl.win.req">Windows 10 / 11，x64。按用户安装，不需要管理员权限；缺少 WebView2 时安装器会自动下载。安装包已提供；实机安装、导入与保存尚待验收。</p>
         <a class="btn btn-primary" href="https://github.com/zhouxiaoka/autoclip/releases/download/v1.4.0/AutoClip.Desktop_1.4.0_x64-setup.exe" data-i18n="dl.win.btn">下载安装包</a>
         <details>
           <summary data-i18n="dl.win.sum">首次运行提示</summary>
@@ -598,20 +600,36 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
  </div>
 </section>
 
-<!-- ============ FEATURES (in v1.3.5) ============ -->
+<!-- ============ FEATURES ============ -->
 <section class="section" id="features">
   <div class="container">
     <div class="eyebrow" data-i18n="feat.eyebrow">新能力</div>
-    <h2 data-i18n="feat.h2">v1.3.5 里的发布与封面。</h2>
-    <p class="lede feat-note" data-i18n="feat.note">v1.3.5 已包含发布和自动封面。仍在用 v1.3.1 的，请更新到 v1.3.5。</p>
+    <h2 data-i18n="feat.h2">v1.4.0 的重点，以及更早已经有的。</h2>
+    <p class="lede feat-note" data-i18n="feat.note">请从 GitHub Releases 下载最新版。发布和自动封面自 v1.3.2 起就有，不是 v1.4.0 新做的。游戏视觉分析和双分析路线是 v1.4.0 的重点。验证样本是一段跑酷录屏，不代表所有游戏；成片仍要人工看边界、裁切和文案，不承诺广告投放效果。Windows 安装包已提供，实机安装、导入与保存尚待验收。</p>
     <div class="feat-grid">
+      <article class="feat-card">
+        <h3 data-i18n="feat.game.h">游戏视觉分析</h3>
+        <p data-i18n="feat.game.p">v1.4.0。确认后，用你配置的多模态模型识别录屏里的独立事件，生成可编辑高光和推广草稿。</p>
+      </article>
+      <article class="feat-card">
+        <h3 data-i18n="feat.routes.h">双分析路线</h3>
+        <p data-i18n="feat.routes.p">v1.4.0。字幕路线仍在，旧配置默认走字幕。视觉初筛要单独打开，付费调用需你显式启用。</p>
+      </article>
+      <article class="feat-card">
+        <h3 data-i18n="feat.flow.h">导入到导出</h3>
+        <p data-i18n="feat.flow.p">v1.4.0。导入、确认、编辑、导出在同一条路上。未确认的导入可以恢复；确认之后才正式理解和剪辑。</p>
+      </article>
+      <article class="feat-card">
+        <h3 data-i18n="feat.editor.h">共用编辑器</h3>
+        <p data-i18n="feat.editor.p">v1.4.0。字幕高光和推广草稿进同一个编辑器，带文字模板、语言配置、候选边界和导出历史。</p>
+      </article>
       <a class="feat-card" href="features/publish/">
         <h3 data-i18n="feat.publish.h">发布</h3>
-        <p data-i18n="feat.publish.p">切片直达海外平台与 B 站</p>
+        <p data-i18n="feat.publish.p">自 v1.3.2 起。切片发到已连接的海外平台和 B 站。</p>
       </a>
       <a class="feat-card" href="features/auto-cover/">
         <h3 data-i18n="feat.cover.h">自动封面</h3>
-        <p data-i18n="feat.cover.p">发布前生成封面，降低空封面拒稿</p>
+        <p data-i18n="feat.cover.p">自 v1.3.2 起。发布前生成封面，减少空封面被退回。不保证任意平台零拒稿。</p>
       </a>
     </div>
   </div>
@@ -662,32 +680,36 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       'how.eyebrow':'怎么工作','how.h2':'三步，从一条长视频到一组切片。',
       'how.1.h':'导入','how.1.p':'粘一条 B站或 YouTube 链接，或者直接拖入本地视频。没有字幕的视频，可以一键在本地安装 Whisper 转写，不必先去别处生成字幕。',
       'how.1.chip.local':'本地 mp4 / mov / mkv','how.1.chip.srt':'可选 SRT 字幕',
-      'how.2.h':'理解','how.2.p':'大模型读完整条视频的内容，按话题切分、逐段评分，挑出真正值得单独看的片段，并为每段写好标题。用哪个模型你自己定：通义千问、OpenAI、Gemini、硅基流动，或任何 OpenAI 兼容接口。',
+      'how.2.h':'理解','how.2.p':'大模型读完整条视频的内容，按话题切分、逐段评分，挑出真正值得单独看的片段，并为每段写好标题。用哪个模型你自己定：Qwen、OpenAI、Gemini、DeepSeek、Doubao Seed、Kimi、GLM、Grok，或本地 Ollama / LM Studio（自备 Key）。云端按所选服务商计费。',
       'how.2.r1':'为什么我放弃了订阅制','how.2.r2':'第一个付费用户是怎么来的','how.2.r3':'一个人做产品最怕的事','how.2.r4':'闲聊：最近在看的书',
       'how.3.h':'出片','how.3.p':'切片和合集直接生成到本地。标题可以顺手改，合集里拖拽排序。切片可发布到海外平台与 B 站，发到已连接的平台。剩下的时间，留给下一条视频。',
       'how.3.foot':'合集 · 独立开发者的一年 · 3 段','how.3.pill':'已上传到 B站',
       'why.eyebrow':'为什么是 AutoClip','why.h2':'一个认真做内容的人，会想要的工具。',
       'why.1.h':'全程本地','why.1.p':'下载、转写、切片、合成都在你的电脑上，只有字幕文本会发给你选择的模型。点了发布，成片才会发到你连的平台；也可以只下载，不发布。',
       'why.2.h':'零依赖安装','why.2.p':'安装包自带便携 Python 与静态 ffmpeg。不用配环境、不用装 Docker，下载即用。',
-      'why.3.h':'模型自选','why.3.p':'不绑定任何厂商。API Key 填在自己的设置页里，随时切换提供商或接入自定义 OpenAI 兼容地址，包括本地模型。',
+      'why.3.h':'模型自选','why.3.p':'不绑定任何厂商。自备 Key，可选 Qwen、OpenAI、Gemini、DeepSeek、Doubao Seed、Kimi、GLM、Grok，或本地 Ollama / LM Studio。也可填自定义 OpenAI 兼容地址。云端费用由所选服务商收取，不是 AutoClip 的定价。',
       'why.4.h':'开源 MIT','why.4.p':'全部代码在 GitHub。想看它怎么处理你的视频、想改、想自己部署，都可以。',
       'dl.eyebrow':'下载','dl.h2':'macOS 与 Windows，免费。',
       'dl.mac.req':'Apple Silicon（M 系列）· macOS 13 或更高。Intel Mac 暂不支持。','dl.mac.btn':'下载 .dmg',
       'dl.mac.sum':'首次打开提示','dl.mac.note':'安装包尚未做 Apple 公证。第一次打开时请在应用上右键 → 选「打开」，即可绕过 Gatekeeper；之后双击正常启动。',
-      'dl.win.req':'Windows 10 / 11，x64。按用户安装，不需要管理员权限；缺少 WebView2 时安装器会自动下载。','dl.win.btn':'下载安装包',
+      'dl.win.req':'Windows 10 / 11，x64。按用户安装，不需要管理员权限；缺少 WebView2 时安装器会自动下载。安装包已提供；实机安装、导入与保存尚待验收。','dl.win.btn':'下载安装包',
       'dl.win.sum':'首次运行提示','dl.win.note':'安装包尚未做代码签名，SmartScreen 会拦一次。点「更多信息」→「仍要运行」即可。',
       'dl.alt':'想跑在服务器或 NAS 上？<a href="https://github.com/zhouxiaoka/autoclip#readme" target="_blank" rel="noopener">Docker 部署与源码运行</a>见 GitHub README。',
       'faq.eyebrow':'常见问题','faq.h2':'你大概想问的。',
       'fb.t':'有问题或想法？直接告诉我们。','fb.m':'一分钟的表单，不用注册。Bug 带上版本和平台就能更快复现；留了联系方式的，解决后会回你一声。','fb.btn':'提交反馈','fb.alt':'可复现的 Bug 用 <a href="https://github.com/zhouxiaoka/autoclip/issues/new/choose" target="_blank" rel="noopener">GitHub Issues</a>。讨论：<a href="https://github.com/zhouxiaoka/autoclip/discussions/127" target="_blank" rel="noopener">公告</a>、<a href="https://github.com/zhouxiaoka/autoclip/discussions/128" target="_blank" rel="noopener">第一次出片</a>、<a href="https://github.com/zhouxiaoka/autoclip/discussions/129" target="_blank" rel="noopener">想法与路线图</a>。已知问题见 <a href="https://github.com/zhouxiaoka/autoclip/issues/96" target="_blank" rel="noopener">置顶帖</a>。',
       'fb.stuck':'第一次出片卡住？去 <a href="https://github.com/zhouxiaoka/autoclip/discussions/128" target="_blank" rel="noopener">第一次出片问答</a>。',
-      'faq.1.q':'要花钱吗？','faq.1.a':'AutoClip 本身免费、开源（MIT）。唯一的成本是你自己模型的 API 调用费——每条视频通常只是几分钱到几毛钱，取决于时长和所选模型。',
+      'faq.1.q':'要花钱吗？','faq.1.a':'文字、视觉与转写费用取决于你的配置和服务商。智能选择先用本地证据；付费视觉初筛需单独启用。AutoClip 本身免费、开源（MIT），不代付模型费用。',
       'faq.2.q':'我的视频会被上传吗？','faq.2.a':'剪辑不上传。下载、转写、切片、合成都在你的电脑上；发给模型的只有字幕文本（用于理解内容和评分），发给哪家由你在设置里决定。点了发布，成片才会发到你连的平台；也可以只下载，不发布。',
       'faq.3.q':'支持哪些视频来源？','faq.3.a':'B站链接、YouTube 链接、本地文件。有字幕的视频直接用；没有字幕的可以在设置里一键安装 Whisper，在本地转写。',
       'faq.4.q':'为什么第一次打开系统会警告？','faq.4.a':'因为安装包还没有做 Apple 公证 / Windows 代码签名。macOS 右键 → 打开；Windows 点「更多信息」→「仍要运行」。之后不会再提示。签名正在计划中。',
       'faq.5.q':'切片效果不好怎么办？','faq.5.a':'先试换一个更强的模型。仍不理想的话，请通过 <a class="link" href="#feedback">反馈表单</a>或 <a class="link" href="https://github.com/zhouxiaoka/autoclip/issues/96" target="_blank" rel="noopener">GitHub 置顶帖</a>告诉我们视频类型、时长、模型，我们在收集样例改进评分策略。',
       'faq.7.q':'怎么发布到 B 站和海外平台？','faq.7.a':'在设置里配 Upload-Post 密钥和 B 站 Cookie，切片页勾选平台，默认先发到「仅自己」。逐步说明见 <a class="link" href="guides/publish/">发布教程</a>。','faq.6.q':'第一次怎么试？','faq.6.a':'自备短样片。多为英语对白，可开官方字幕或走 Whisper / 自备 SRT。示例 · 非托管 · 自担使用权：<a class="link" href="https://www.youtube.com/watch?v=VeizK1M7V7E" target="_blank" rel="noopener">Sources Podcast · Sam Altman on Astra/AGI</a>（Sources Podcast，不是 OpenAI 频道）。卡住时看 <a class="link" href="https://github.com/zhouxiaoka/autoclip/discussions/128" target="_blank" rel="noopener">第一次出片问答</a>。',
-      'feat.eyebrow':'新能力','feat.h2':'v1.3.5 里的发布与封面。','feat.note':'v1.3.5 已包含发布和自动封面。仍在用 v1.3.1 的，请更新到 v1.3.5。',
-      'feat.publish.h':'发布','feat.publish.p':'切片直达海外平台与 B 站','feat.cover.h':'自动封面','feat.cover.p':'发布前生成封面，降低空封面拒稿',
+      'feat.eyebrow':'新能力','feat.h2':'v1.4.0 的重点，以及更早已经有的。','feat.note':'请从 GitHub Releases 下载最新版。发布和自动封面自 v1.3.2 起就有，不是 v1.4.0 新做的。游戏视觉分析和双分析路线是 v1.4.0 的重点。验证样本是一段跑酷录屏，不代表所有游戏；成片仍要人工看边界、裁切和文案，不承诺广告投放效果。Windows 安装包已提供，实机安装、导入与保存尚待验收。',
+      'feat.game.h':'游戏视觉分析','feat.game.p':'v1.4.0。确认后，用你配置的多模态模型识别录屏里的独立事件，生成可编辑高光和推广草稿。',
+      'feat.routes.h':'双分析路线','feat.routes.p':'v1.4.0。字幕路线仍在，旧配置默认走字幕。视觉初筛要单独打开，付费调用需你显式启用。',
+      'feat.flow.h':'导入到导出','feat.flow.p':'v1.4.0。导入、确认、编辑、导出在同一条路上。未确认的导入可以恢复；确认之后才正式理解和剪辑。',
+      'feat.editor.h':'共用编辑器','feat.editor.p':'v1.4.0。字幕高光和推广草稿进同一个编辑器，带文字模板、语言配置、候选边界和导出历史。',
+      'feat.publish.h':'发布','feat.publish.p':'自 v1.3.2 起。切片发到已连接的海外平台和 B 站。','feat.cover.h':'自动封面','feat.cover.p':'自 v1.3.2 起。发布前生成封面，减少空封面被退回。不保证任意平台零拒稿。',
       'footer.publish':'发布教程','footer.feature':'发布','footer.cover':'自动封面','footer.podcast':'播客切片','footer.course':'课程高光','footer.releases':'版本','footer.privacy':'隐私政策','footer.copy':'© 2025–2026 AutoClip · MIT 许可'
     },
     en: {
@@ -707,32 +729,36 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       'how.eyebrow':'How it works','how.h2':'Three steps from one long video to a set of clips.',
       'how.1.h':'Import','how.1.p':'Paste a Bilibili or YouTube link, or drag in a local file. No subtitles? Install Whisper with one click and transcribe locally — no need to generate captions elsewhere first.',
       'how.1.chip.local':'Local mp4 / mov / mkv','how.1.chip.srt':'Optional SRT',
-      'how.2.h':'Understand','how.2.p':'A language model reads the whole video, splits it by topic, scores each segment and picks the ones worth watching on their own — with a title for each. You choose the model: Qwen, OpenAI, Gemini, SiliconFlow, or any OpenAI-compatible endpoint.',
+      'how.2.h':'Understand','how.2.p':'A language model reads the whole video, splits it by topic, scores each segment and picks the ones worth watching on their own — with a title for each. Bring your own key: Qwen, OpenAI, Gemini, DeepSeek, Doubao Seed, Kimi, GLM, Grok, or local Ollama / LM Studio. Cloud use is billed by the provider you choose.',
       'how.2.r1':'Why I gave up on subscriptions','how.2.r2':'How the first paying customer showed up','how.2.r3':'The scariest part of building alone','how.2.r4':'Small talk: books I\'m reading',
       'how.3.h':'Export','how.3.p':'Clips and collections land on your disk. Tweak titles inline and drag to reorder a collection. Publish a clip to the overseas platforms and Bilibili you have connected. The time you save goes to the next video.',
       'how.3.foot':'Collection · A year of indie development · 3 clips','how.3.pill':'Published to Bilibili',
       'why.eyebrow':'Why AutoClip','why.h2':'The tool a serious creator would want.',
       'why.1.h':'Local end to end','why.1.p':'Downloading, transcribing, cutting and rendering happen on your machine; only subtitle text is sent to the model you pick. The finished clip leaves only after you publish it to a connected platform. You can also just download and not publish.',
       'why.2.h':'Zero-dependency install','why.2.p':'The installer bundles a portable Python and static ffmpeg. No environment setup, no Docker — download and run.',
-      'why.3.h':'Bring your own model','why.3.p':'No vendor lock-in. Your API key lives in your own settings; switch providers any time or point it at a custom OpenAI-compatible URL, including local models.',
+      'why.3.h':'Bring your own model','why.3.p':'No vendor lock-in. Bring your own key: Qwen, OpenAI, Gemini, DeepSeek, Doubao Seed, Kimi, GLM, Grok, or local Ollama / LM Studio. A custom OpenAI-compatible URL still works. Cloud use is billed by the provider you choose, not by AutoClip.',
       'why.4.h':'Open source, MIT','why.4.p':'All the code is on GitHub. Read how it handles your video, change it, or self-host it.',
       'dl.eyebrow':'Download','dl.h2':'macOS and Windows. Free.',
       'dl.mac.req':'Apple Silicon (M-series) · macOS 13 or later. Intel Macs are not supported yet.','dl.mac.btn':'Download .dmg',
       'dl.mac.sum':'First launch','dl.mac.note':'The build is not notarized by Apple yet. On first launch, right-click the app → Open to bypass Gatekeeper. It opens normally after that.',
-      'dl.win.req':'Windows 10 / 11, x64. Per-user install, no admin rights; the installer fetches WebView2 if it is missing.','dl.win.btn':'Download installer',
+      'dl.win.req':'Windows 10 / 11, x64. Per-user install, no admin rights; the installer fetches WebView2 if it is missing. The installer is published; install, import, and save on a real Windows machine are still awaiting acceptance.','dl.win.btn':'Download installer',
       'dl.win.sum':'First run','dl.win.note':'The installer is not code-signed yet, so SmartScreen will warn once. Choose “More info → Run anyway”.',
       'dl.alt':'Running on a server or NAS? <a href="https://github.com/zhouxiaoka/autoclip#readme" target="_blank" rel="noopener">Docker and source setup</a> are in the GitHub README.',
       'faq.eyebrow':'FAQ','faq.h2':'The questions you were about to ask.',
       'fb.t':'Found a bug or have an idea? Tell us.','fb.m':'A one-minute form, no sign-up. Include version and platform for bugs so we can reproduce; leave a contact and we\'ll follow up once it\'s fixed.','fb.btn':'Send feedback','fb.alt':'Reproducible bugs: <a href="https://github.com/zhouxiaoka/autoclip/issues/new/choose" target="_blank" rel="noopener">GitHub Issues</a>. Discussions: <a href="https://github.com/zhouxiaoka/autoclip/discussions/127" target="_blank" rel="noopener">Announcements</a>, <a href="https://github.com/zhouxiaoka/autoclip/discussions/128" target="_blank" rel="noopener">first clip</a>, <a href="https://github.com/zhouxiaoka/autoclip/discussions/129" target="_blank" rel="noopener">ideas and roadmap</a>. Known issues: <a href="https://github.com/zhouxiaoka/autoclip/issues/96" target="_blank" rel="noopener">pinned issue</a>.',
       'fb.stuck':'Stuck on your first clip? See the <a href="https://github.com/zhouxiaoka/autoclip/discussions/128" target="_blank" rel="noopener">first-clip Q&A</a>.',
-      'faq.1.q':'Does it cost anything?','faq.1.a':'AutoClip itself is free and open source (MIT). The only cost is your own model\'s API usage — typically a few cents per video, depending on length and model.',
+      'faq.1.q':'Does it cost anything?','faq.1.a':'Text, vision and transcription costs depend on your setup and provider. Smart selection starts with local evidence; paid visual screening requires separate opt-in. AutoClip itself is free and open source (MIT), and does not pay model fees for you.',
       'faq.2.q':'Is my video uploaded anywhere?','faq.2.a':'Editing does not upload the video. Files stay on your machine; the model receives subtitle text only (to understand and score content), and you choose the provider. The finished clip leaves only after you tap Publish, and only to platforms you have connected. You can also just download and not publish.',
       'faq.3.q':'Which sources are supported?','faq.3.a':'Bilibili links, YouTube links and local files. Videos with subtitles work directly; for the rest, install Whisper from Settings and transcribe locally.',
       'faq.4.q':'Why does the OS warn me on first launch?','faq.4.a':'The builds are not yet notarized (macOS) or code-signed (Windows). macOS: right-click → Open. Windows: “More info → Run anyway”. It only happens once. Signing is on the roadmap.',
       'faq.5.q':'What if the clips aren\'t good?','faq.5.a':'Try a stronger model first. If results are still off, report it in the <a class="link" href="https://github.com/zhouxiaoka/autoclip/issues/96" target="_blank" rel="noopener">pinned GitHub issue</a> with video type, length and model — we are collecting samples to improve scoring.',
       'faq.7.q':'How do I publish to Bilibili and overseas platforms?','faq.7.a':'Add an Upload-Post key and a Bilibili cookie in Settings, pick platforms on a clip, and keep Only me for a first try. Step-by-step: <a class="link" href="guides/publish/">publish guide</a>.','faq.6.q':'How should I try it the first time?','faq.6.a':'Bring your own short clip. Most speech is in English; turn on official captions, use Whisper, or bring your own SRT. Example · not hosted · you are responsible for the rights: <a class="link" href="https://www.youtube.com/watch?v=VeizK1M7V7E" target="_blank" rel="noopener">Sources Podcast · Sam Altman on Astra/AGI</a> (Sources Podcast, not the OpenAI channel). If you get stuck, see the <a class="link" href="https://github.com/zhouxiaoka/autoclip/discussions/128" target="_blank" rel="noopener">first-clip Q&A</a>.',
-      'feat.eyebrow':'New','feat.h2':'Publish and auto-cover in v1.3.5.','feat.note':'Included in v1.3.5. If you are still on v1.3.1, update to v1.3.5.',
-      'feat.publish.h':'Publish','feat.publish.p':'Send a clip to overseas platforms and Bilibili','feat.cover.h':'Auto cover','feat.cover.p':'Generate a cover before publish, to reduce empty-cover rejections',
+      'feat.eyebrow':'New','feat.h2':'v1.4.0 highlights, and what was already here.','feat.note':'Download the latest build from GitHub Releases. Publish and auto-cover have been available since v1.3.2; they are not new in v1.4.0. Game visual analysis and the two analysis routes are the v1.4.0 highlights. The checked sample is one parkour recording, not every game. A person still needs to review boundaries, crops, and copy. There is no promise of ad performance. A Windows installer is published; install, import, and save on a real Windows machine are still awaiting acceptance.',
+      'feat.game.h':'Game visual analysis','feat.game.p':'v1.4.0. After you confirm, a multimodal model you configure looks for separate events in a gameplay recording and drafts editable highlights and promo copy.',
+      'feat.routes.h':'Two analysis routes','feat.routes.p':'v1.4.0. Subtitle analysis stays, and older setups default to it. Visual screening is separate; paid visual calls need an explicit enable.',
+      'feat.flow.h':'Import through export','feat.flow.p':'v1.4.0. Import, confirm, edit, and export sit on one path. An unconfirmed import can be resumed; understanding and cutting start only after you confirm.',
+      'feat.editor.h':'Shared editor','feat.editor.p':'v1.4.0. Subtitle highlights and promo drafts use one editor, with text templates, language settings, candidate-boundary edits, and export history.',
+      'feat.publish.h':'Publish','feat.publish.p':'Since v1.3.2. Send a clip to overseas platforms and Bilibili you have connected.','feat.cover.h':'Auto cover','feat.cover.p':'Since v1.3.2. Generate a cover before publish to reduce empty-cover rejections. This does not promise zero rejections on every platform.',
       'footer.publish':'Publish guide','footer.feature':'Publish','footer.cover':'Auto cover','footer.podcast':'Podcast clips','footer.course':'Course highlights','footer.releases':'Releases','footer.privacy':'Privacy','footer.copy':'© 2025–2026 AutoClip · MIT License'
     },
     ja: {
@@ -752,32 +778,36 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       'how.eyebrow':'仕組み','how.h2':'3 ステップで、1 本の長い動画からクリップ一式へ。',
       'how.1.h':'読み込む','how.1.p':'Bilibili か YouTube のリンクを貼るか、ローカル動画をドラッグ。字幕のない動画は、Whisper をワンクリックでローカルにインストールして文字起こしできます。',
       'how.1.chip.local':'ローカル mp4 / mov / mkv','how.1.chip.srt':'SRT 字幕（任意）',
-      'how.2.h':'理解する','how.2.p':'大規模言語モデルが動画全体を読み、話題ごとに分割・採点し、単独で見る価値のある部分を選び、タイトルを付けます。モデルは自由に選択：通義千問、OpenAI、Gemini、SiliconFlow、または OpenAI 互換エンドポイント。',
+      'how.2.h':'理解する','how.2.p':'大規模言語モデルが動画全体を読み、話題ごとに分割・採点し、単独で見る価値のある部分を選び、タイトルを付けます。キーは自分で用意：Qwen、OpenAI、Gemini、DeepSeek、Doubao Seed、Kimi、GLM、Grok、またはローカルの Ollama / LM Studio。クラウド利用料は選んだ事業者が請求します。',
       'how.2.r1':'サブスクをやめた理由','how.2.r2':'最初の有料ユーザーはどう来たか','how.2.r3':'一人で作るとき一番怖いこと','how.2.r4':'雑談：最近読んでいる本',
       'how.3.h':'書き出す','how.3.p':'クリップとコレクションはローカルに直接生成。タイトルはその場で編集、コレクションはドラッグで並べ替え。つながっている海外プラットフォームと Bilibili に公開できます。',
       'how.3.foot':'コレクション · 個人開発の 1 年 · 3 本','how.3.pill':'Bilibili に投稿済み',
       'why.eyebrow':'AutoClip を選ぶ理由','why.h2':'本気でコンテンツを作る人のためのツール。',
       'why.1.h':'すべてローカル','why.1.p':'ダウンロード・文字起こし・カット・合成はすべて PC 上で完了し、モデルに送るのは字幕テキストのみです。公開を押したときだけ、完成した動画がつながっているプラットフォームへ出ます。ダウンロードだけして、公開しないこともできます。',
       'why.2.h':'依存ゼロで導入','why.2.p':'インストーラーにポータブル Python と静的 ffmpeg を同梱。環境構築も Docker も不要、ダウンロードしてすぐ使えます。',
-      'why.3.h':'モデルは自分で選ぶ','why.3.p':'特定ベンダーに縛られません。API キーは自分の設定画面に保存し、いつでもプロバイダーを切り替え、ローカルモデルを含む OpenAI 互換 URL にも接続できます。',
+      'why.3.h':'モデルは自分で選ぶ','why.3.p':'特定ベンダーに縛られません。キーは自分で用意：Qwen、OpenAI、Gemini、DeepSeek、Doubao Seed、Kimi、GLM、Grok、またはローカルの Ollama / LM Studio。OpenAI 互換 URL も使えます。クラウド利用料は選んだ事業者が請求し、AutoClip の料金ではありません。',
       'why.4.h':'オープンソース MIT','why.4.p':'コードはすべて GitHub に。動画がどう処理されるかを読み、変更し、自分でホストすることもできます。',
       'dl.eyebrow':'ダウンロード','dl.h2':'macOS と Windows。無料。',
       'dl.mac.req':'Apple Silicon（M シリーズ）· macOS 13 以降。Intel Mac は未対応。','dl.mac.btn':'.dmg をダウンロード',
       'dl.mac.sum':'初回起動について','dl.mac.note':'Apple の公証はまだ行っていません。初回はアプリを右クリック →「開く」で Gatekeeper を回避できます。以降は通常どおり起動します。',
-      'dl.win.req':'Windows 10 / 11、x64。ユーザー単位のインストールで管理者権限不要。WebView2 がない場合は自動で取得します。','dl.win.btn':'インストーラーをダウンロード',
+      'dl.win.req':'Windows 10 / 11、x64。ユーザー単位のインストールで管理者権限不要。WebView2 がない場合は自動で取得します。インストーラーは公開済みですが、実機でのインストール、読み込み、保存はまだ受け入れ確認前です。','dl.win.btn':'インストーラーをダウンロード',
       'dl.win.sum':'初回実行について','dl.win.note':'コード署名はまだ行っていないため、SmartScreen が一度警告します。「詳細情報」→「実行」を選択してください。',
       'dl.alt':'サーバーや NAS で動かす場合は、GitHub README の <a href="https://github.com/zhouxiaoka/autoclip#readme" target="_blank" rel="noopener">Docker / ソースからの実行</a>をご覧ください。',
       'faq.eyebrow':'よくある質問','faq.h2':'聞きたくなることを、先に。',
       'fb.t':'不具合や要望があれば、直接お知らせください。','fb.m':'1 分で書けるフォーム、登録不要。バグはバージョンと OS を添えると再現が早くなります。連絡先を残していただければ、解決後にお知らせします。','fb.btn':'フィードバックを送る','fb.alt':'再現できる不具合は <a href="https://github.com/zhouxiaoka/autoclip/issues/new/choose" target="_blank" rel="noopener">GitHub Issues</a> へ。議論：<a href="https://github.com/zhouxiaoka/autoclip/discussions/127" target="_blank" rel="noopener">お知らせ</a>、<a href="https://github.com/zhouxiaoka/autoclip/discussions/128" target="_blank" rel="noopener">はじめてのクリップ</a>、<a href="https://github.com/zhouxiaoka/autoclip/discussions/129" target="_blank" rel="noopener">アイデアとロードマップ</a>。既知の問題は <a href="https://github.com/zhouxiaoka/autoclip/issues/96" target="_blank" rel="noopener">ピン留め Issue</a>。',
       'fb.stuck':'最初の書き出しで止まったら、<a href="https://github.com/zhouxiaoka/autoclip/discussions/128" target="_blank" rel="noopener">はじめてのクリップ Q&A</a> へ。',
-      'faq.1.q':'費用はかかりますか？','faq.1.a':'AutoClip 自体は無料でオープンソース（MIT）です。かかるのは選んだモデルの API 利用料のみで、動画 1 本あたり通常は数円程度です。',
+      'faq.1.q':'費用はかかりますか？','faq.1.a':'テキスト・視覚・文字起こしの費用は設定と提供元によります。自動選択はローカル情報から開始。有料の視覚簡易判定は個別に有効化します。AutoClip 自体は無料のオープンソース（MIT）で、モデル料金は肩代わりしません。',
       'faq.2.q':'動画はアップロードされますか？','faq.2.a':'編集ではアップロードしません。動画ファイルは PC 上で処理し、モデルに送るのは字幕テキストだけです。送信先は設定で選べます。公開を押したときだけ、完成した動画がつながっているプラットフォームへ出ます。ダウンロードだけして、公開しないこともできます。',
       'faq.3.q':'対応する動画ソースは？','faq.3.a':'Bilibili リンク、YouTube リンク、ローカルファイル。字幕付きはそのまま、字幕なしは設定から Whisper をインストールしてローカルで文字起こしできます。',
       'faq.4.q':'初回起動時に OS が警告するのはなぜ？','faq.4.a':'まだ Apple 公証 / Windows コード署名を行っていないためです。macOS は右クリック →「開く」、Windows は「詳細情報」→「実行」。表示は一度だけです。署名は計画中です。',
       'faq.5.q':'クリップの品質が良くない場合は？','faq.5.a':'まずより強いモデルを試してください。それでも改善しない場合は <a class="link" href="https://github.com/zhouxiaoka/autoclip/issues/96" target="_blank" rel="noopener">GitHub のピン留め Issue</a> に動画の種類・長さ・モデルを添えて報告してください。採点戦略の改善に使います。',
       'faq.7.q':'Bilibili と海外へはどう公開する？','faq.7.a':'設定で Upload-Post のキーと Bilibili の Cookie を入れ、切片ページで配信先を選び、最初は「自分のみ」のまま。手順は <a class="link" href="guides/publish/">公開ガイド</a>。','faq.6.q':'最初はどう試せばいい？','faq.6.a':'自分で短いサンプルを用意してください。多くは英語の対白です。公式字幕、Whisper、または自前の SRT。例 · 非ホスト · 利用権はご自身で：<a class="link" href="https://www.youtube.com/watch?v=VeizK1M7V7E" target="_blank" rel="noopener">Sources Podcast · Sam Altman on Astra/AGI</a>（Sources Podcast。OpenAI 公式チャンネルではありません）。止まったら <a class="link" href="https://github.com/zhouxiaoka/autoclip/discussions/128" target="_blank" rel="noopener">はじめてのクリップ Q&A</a> を見てください。',
-      'feat.eyebrow':'新しい機能','feat.h2':'v1.3.5 の公開と自動カバー。','feat.note':'v1.3.5 に含まれています。v1.3.1 のままなら v1.3.5 に更新してください。',
-      'feat.publish.h':'公開','feat.publish.p':'クリップを海外プラットフォームと Bilibili へ','feat.cover.h':'自動カバー','feat.cover.p':'公開前にカバーを付け、空カバーの却下を減らす',
+      'feat.eyebrow':'新しい機能','feat.h2':'v1.4.0 の重点と、それ以前からある機能。','feat.note':'最新版は GitHub Releases から入手してください。公開と自動カバーは v1.3.2 からあり、v1.4.0 の新機能ではありません。ゲーム映像解析と二つの解析ルートが v1.4.0 の重点です。確認したのはパルクールの単一サンプルで、すべてのゲームを代表しません。境界、トリミング、文言は人が確認する必要があり、広告効果は約束しません。Windows 用インストーラーは公開済みですが、実機でのインストール、読み込み、保存はまだ受け入れ確認前です。',
+      'feat.game.h':'ゲーム映像解析','feat.game.p':'v1.4.0。確認後、自分で設定したマルチモーダルモデルが録画内の独立した出来事を見分け、編集できるハイライトと宣伝文の下書きを作ります。',
+      'feat.routes.h':'二つの解析ルート','feat.routes.p':'v1.4.0。字幕解析はそのまま使え、古い設定は字幕が既定です。映像の下見は別途オンにし、有料の映像呼び出しは明示的な有効化が必要です。',
+      'feat.flow.h':'読み込みから書き出し','feat.flow.p':'v1.4.0。読み込み、確認、編集、書き出しが一つの流れです。未確認の読み込みは再開でき、確認後にはじめて理解とカットが始まります。',
+      'feat.editor.h':'共通エディタ','feat.editor.p':'v1.4.0。字幕ハイライトと宣伝文の下書きが同じエディタに入り、文字テンプレート、言語設定、候補の境界調整、書き出し履歴があります。',
+      'feat.publish.h':'公開','feat.publish.p':'v1.3.2 から。つながっている海外プラットフォームと Bilibili へ。','feat.cover.h':'自動カバー','feat.cover.p':'v1.3.2 から。公開前にカバーを作り、空カバーの差し戻しを減らします。どのプラットフォームでも拒否ゼロとは限りません。',
       'footer.publish':'公開ガイド','footer.feature':'公開','footer.cover':'自動カバー','footer.podcast':'ポッドキャスト','footer.course':'講義ハイライト','footer.releases':'リリース','footer.privacy':'プライバシー','footer.copy':'© 2025–2026 AutoClip · MIT ライセンス'
     },
     ko: {
@@ -797,32 +827,36 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       'how.eyebrow':'작동 방식','how.h2':'세 단계로, 긴 영상 하나에서 클립 세트까지.',
       'how.1.h':'가져오기','how.1.p':'Bilibili나 YouTube 링크를 붙여 넣거나 로컬 영상을 끌어다 놓으세요. 자막이 없는 영상은 Whisper를 한 번에 로컬 설치해 전사할 수 있습니다.',
       'how.1.chip.local':'로컬 mp4 / mov / mkv','how.1.chip.srt':'SRT 자막(선택)',
-      'how.2.h':'이해하기','how.2.p':'대규모 언어 모델이 영상 전체를 읽고 주제별로 나누어 점수를 매긴 뒤, 따로 볼 가치가 있는 구간을 고르고 제목을 붙입니다. 모델은 직접 선택: 통이첸원, OpenAI, Gemini, SiliconFlow 또는 OpenAI 호환 엔드포인트.',
+      'how.2.h':'이해하기','how.2.p':'대규모 언어 모델이 영상 전체를 읽고 주제별로 나누어 점수를 매긴 뒤, 따로 볼 가치가 있는 구간을 고르고 제목을 붙입니다. 키는 직접 준비: Qwen, OpenAI, Gemini, DeepSeek, Doubao Seed, Kimi, GLM, Grok 또는 로컬 Ollama / LM Studio. 클라우드 요금은 선택한 사업자가 청구합니다.',
       'how.2.r1':'구독제를 포기한 이유','how.2.r2':'첫 유료 사용자는 어떻게 왔나','how.2.r3':'혼자 만들 때 가장 두려운 것','how.2.r4':'잡담: 요즘 읽는 책',
       'how.3.h':'내보내기','how.3.p':'클립과 컬렉션이 로컬에 바로 생성됩니다. 제목은 바로 수정하고, 컬렉션은 드래그로 정렬합니다. 연결해 둔 해외 플랫폼과 Bilibili로 게시할 수 있습니다.',
       'how.3.foot':'컬렉션 · 1인 개발자의 1년 · 3개','how.3.pill':'Bilibili에 업로드됨',
       'why.eyebrow':'왜 AutoClip인가','why.h2':'진지하게 콘텐츠를 만드는 사람을 위한 도구.',
       'why.1.h':'전 과정 로컬','why.1.p':'다운로드·전사·컷·합성은 모두 내 컴퓨터에서 이루어지며, 모델에는 자막 텍스트만 전송됩니다. 게시를 눌렀을 때만 완성본이 연결한 플랫폼으로 나갑니다. 다운로드만 하고 게시하지 않을 수도 있습니다.',
       'why.2.h':'의존성 없는 설치','why.2.p':'설치 파일에 포터블 Python과 정적 ffmpeg가 포함되어 있습니다. 환경 설정도 Docker도 필요 없이 내려받아 바로 실행.',
-      'why.3.h':'모델은 직접 선택','why.3.p':'특정 업체에 묶이지 않습니다. API 키는 내 설정 페이지에 저장되고, 언제든 제공자를 바꾸거나 로컬 모델을 포함한 OpenAI 호환 주소에 연결할 수 있습니다.',
+      'why.3.h':'모델은 직접 선택','why.3.p':'특정 업체에 묶이지 않습니다. 키는 직접 준비: Qwen, OpenAI, Gemini, DeepSeek, Doubao Seed, Kimi, GLM, Grok 또는 로컬 Ollama / LM Studio. OpenAI 호환 주소도 사용할 수 있습니다. 클라우드 요금은 선택한 사업자가 청구하며 AutoClip의 가격이 아닙니다.',
       'why.4.h':'오픈소스 MIT','why.4.p':'모든 코드가 GitHub에 있습니다. 내 영상을 어떻게 처리하는지 읽고, 고치고, 직접 배포할 수 있습니다.',
       'dl.eyebrow':'다운로드','dl.h2':'macOS와 Windows. 무료.',
       'dl.mac.req':'Apple Silicon(M 시리즈) · macOS 13 이상. Intel Mac은 아직 지원하지 않습니다.','dl.mac.btn':'.dmg 다운로드',
       'dl.mac.sum':'첫 실행 안내','dl.mac.note':'아직 Apple 공증을 받지 않았습니다. 첫 실행 시 앱을 우클릭 → 「열기」를 선택하면 Gatekeeper를 우회할 수 있고, 이후에는 정상적으로 열립니다.',
-      'dl.win.req':'Windows 10 / 11, x64. 사용자 단위 설치로 관리자 권한이 필요 없으며, WebView2가 없으면 설치 프로그램이 자동으로 내려받습니다.','dl.win.btn':'설치 파일 다운로드',
+      'dl.win.req':'Windows 10 / 11, x64. 사용자 단위 설치로 관리자 권한이 필요 없으며, WebView2가 없으면 설치 프로그램이 자동으로 내려받습니다. 설치 파일은 제공되며, 실제 기기에서의 설치·가져오기·저장은 아직 검수 전입니다.','dl.win.btn':'설치 파일 다운로드',
       'dl.win.sum':'첫 실행 안내','dl.win.note':'아직 코드 서명이 되어 있지 않아 SmartScreen이 한 번 경고합니다. 「추가 정보」→「실행」을 선택하세요.',
       'dl.alt':'서버나 NAS에서 실행하려면 GitHub README의 <a href="https://github.com/zhouxiaoka/autoclip#readme" target="_blank" rel="noopener">Docker 및 소스 실행</a>을 참고하세요.',
       'faq.eyebrow':'자주 묻는 질문','faq.h2':'물어보실 것 같은 질문에 먼저 답합니다.',
       'fb.t':'문제나 아이디어가 있나요? 바로 알려 주세요.','fb.m':'1분이면 되는 폼, 가입 불필요. 버그는 버전과 플랫폼을 함께 적어 주면 재현이 빨라지고, 연락처를 남기면 해결 후 알려 드립니다.','fb.btn':'피드백 보내기','fb.alt':'재현 가능한 버그는 <a href="https://github.com/zhouxiaoka/autoclip/issues/new/choose" target="_blank" rel="noopener">GitHub Issues</a>로. 토론: <a href="https://github.com/zhouxiaoka/autoclip/discussions/127" target="_blank" rel="noopener">공지</a>, <a href="https://github.com/zhouxiaoka/autoclip/discussions/128" target="_blank" rel="noopener">첫 클립</a>, <a href="https://github.com/zhouxiaoka/autoclip/discussions/129" target="_blank" rel="noopener">아이디어와 로드맵</a>. 알려진 문제는 <a href="https://github.com/zhouxiaoka/autoclip/issues/96" target="_blank" rel="noopener">고정 이슈</a>.',
       'fb.stuck':'첫 클립에서 막히면 <a href="https://github.com/zhouxiaoka/autoclip/discussions/128" target="_blank" rel="noopener">첫 클립 Q&A</a>를 보세요.',
-      'faq.1.q':'비용이 드나요?','faq.1.a':'AutoClip 자체는 무료 오픈소스(MIT)입니다. 유일한 비용은 선택한 모델의 API 사용료로, 영상 한 편에 보통 몇십 원 수준입니다.',
+      'faq.1.q':'비용이 드나요?','faq.1.a':'텍스트·시각·전사 비용은 설정과 제공업체에 따라 달라집니다. 스마트 선택은 로컬 정보부터 사용하며 유료 시각 사전 판별은 별도로 활성화해야 합니다. AutoClip 자체는 무료 오픈소스(MIT)이며 모델 요금을 대신 내지 않습니다.',
       'faq.2.q':'내 영상이 업로드되나요?','faq.2.a':'편집은 영상을 올리지 않습니다. 영상 파일은 내 컴퓨터에서 처리되고, 모델에는 자막 텍스트만 갑니다. 어느 제공자로 보낼지는 설정에서 정합니다. 게시를 눌렀을 때만 완성본이 연결한 플랫폼으로 나갑니다. 다운로드만 하고 게시하지 않을 수도 있습니다.',
       'faq.3.q':'어떤 영상 소스를 지원하나요?','faq.3.a':'Bilibili 링크, YouTube 링크, 로컬 파일. 자막이 있으면 바로 사용하고, 없으면 설정에서 Whisper를 설치해 로컬로 전사합니다.',
       'faq.4.q':'첫 실행 시 OS가 경고하는 이유는?','faq.4.a':'아직 Apple 공증 / Windows 코드 서명을 하지 않았기 때문입니다. macOS는 우클릭 → 열기, Windows는 「추가 정보」→「실행」. 한 번만 표시됩니다. 서명은 계획 중입니다.',
       'faq.5.q':'클립 품질이 좋지 않으면?','faq.5.a':'먼저 더 강한 모델을 시도해 보세요. 그래도 아쉬우면 <a class="link" href="https://github.com/zhouxiaoka/autoclip/issues/96" target="_blank" rel="noopener">GitHub 고정 이슈</a>에 영상 유형·길이·모델을 적어 알려 주세요. 채점 전략 개선에 사용합니다.',
       'faq.7.q':'빌리빌리와 해외에는 어떻게 올리나요?','faq.7.a':'설정에 Upload-Post 키와 빌리빌리 Cookie를 넣고, 클립에서 플랫폼을 고른 뒤 처음에는 「나만」으로 두세요. 단계는 <a class="link" href="guides/publish/">게시 가이드</a>에 있습니다.','faq.6.q':'처음에는 어떻게 시험해 보나요?','faq.6.a':'짧은 샘플을 직접 준비하세요. 대부분은 영어 대사입니다. 공식 자막, Whisper, 또는 직접 준비한 SRT. 예시 · 비호스팅 · 사용권은 본인 책임: <a class="link" href="https://www.youtube.com/watch?v=VeizK1M7V7E" target="_blank" rel="noopener">Sources Podcast · Sam Altman on Astra/AGI</a>（Sources Podcast이며 OpenAI 공식 채널이 아닙니다）. 막히면 <a class="link" href="https://github.com/zhouxiaoka/autoclip/discussions/128" target="_blank" rel="noopener">첫 클립 Q&A</a>를 보세요.',
-      'feat.eyebrow':'새 기능','feat.h2':'v1.3.2의 게시와 자동 커버.','feat.note':'v1.3.2에 포함되어 있습니다. v1.3.1이라면 v1.3.2로 업데이트하세요.',
-      'feat.publish.h':'게시','feat.publish.p':'클립을 해외 플랫폼과 Bilibili로','feat.cover.h':'자동 커버','feat.cover.p':'게시 전에 커버를 만들어 빈 커버 거절을 줄입니다',
+      'feat.eyebrow':'새 기능','feat.h2':'v1.4.0의 핵심, 그리고 그 전부터 있던 기능.','feat.note':'최신판은 GitHub Releases에서 받으세요. 게시와 자동 커버는 v1.3.2부터 있으며 v1.4.0의 새 기능이 아닙니다. 게임 시각 분석과 두 분석 경로가 v1.4.0의 핵심입니다. 확인한 샘플은 파쿠르 영상 하나이며 모든 게임을 대표하지 않습니다. 경계, 자르기, 문구는 사람이 확인해야 하고, 광고 성과는 약속하지 않습니다. Windows 설치 파일은 제공되며, 실제 기기에서의 설치·가져오기·저장은 아직 검수 전입니다.',
+      'feat.game.h':'게임 시각 분석','feat.game.p':'v1.4.0. 확인 후, 직접 구성한 멀티모달 모델이 녹화 속 독립 사건을 찾고, 편집 가능한 하이라이트와 홍보 초안을 만듭니다.',
+      'feat.routes.h':'두 분석 경로','feat.routes.p':'v1.4.0. 자막 분석은 그대로이고, 이전 설정은 자막이 기본입니다. 시각 선별은 따로 켜야 하며, 유료 시각 호출은 명시적으로 활성화해야 합니다.',
+      'feat.flow.h':'가져오기부터 내보내기','feat.flow.p':'v1.4.0. 가져오기, 확인, 편집, 내보내기가 한 경로에 있습니다. 확인하지 않은 가져오기는 이어서 할 수 있고, 확인한 뒤에야 이해와 편집이 시작됩니다.',
+      'feat.editor.h':'공유 편집기','feat.editor.p':'v1.4.0. 자막 하이라이트와 홍보 초안이 같은 편집기로 들어가며, 텍스트 템플릿, 언어 설정, 후보 경계 조정, 내보내기 기록이 있습니다.',
+      'feat.publish.h':'게시','feat.publish.p':'v1.3.2부터. 연결한 해외 플랫폼과 Bilibili로 보냅니다.','feat.cover.h':'자동 커버','feat.cover.p':'v1.3.2부터. 게시 전에 커버를 만들어 빈 커버 거절을 줄입니다. 모든 플랫폼에서 거절이 없다는 뜻은 아닙니다.',
       'footer.publish':'게시 가이드','footer.feature':'게시','footer.cover':'자동 커버','footer.podcast':'팟캐스트','footer.course':'강의 하이라이트','footer.releases':'릴리스','footer.privacy':'개인정보','footer.copy':'© 2025–2026 AutoClip · MIT 라이선스'
     },
     es: {
@@ -868,7 +902,7 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       "how.1.chip.local": "Archivos mp4 / mov / mkv",
       "how.1.chip.srt": "SRT opcional",
       "how.2.h": "Analiza",
-      "how.2.p": "Un modelo de lenguaje analiza todo el contenido, lo divide por temas, puntúa cada segmento y elige los que funcionan por sí solos, con un título para cada uno. Tú eliges el modelo: Qwen, OpenAI, Gemini, SiliconFlow o cualquier API compatible con OpenAI.",
+      "how.2.p": "Un modelo de lenguaje analiza todo el contenido, lo divide por temas, puntúa cada segmento y elige los que funcionan por sí solos, con un título para cada uno. Trae tu propia clave: Qwen, OpenAI, Gemini, DeepSeek, Doubao Seed, Kimi, GLM, Grok, u Ollama / LM Studio en local. El uso en la nube lo cobra el proveedor que elijas.",
       "how.2.r1": "Por qué dejé las suscripciones",
       "how.2.r2": "Cómo llegó mi primer cliente de pago",
       "how.2.r3": "Lo más difícil de crear un producto en solitario",
@@ -884,7 +918,7 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       "why.2.h": "Instala y empieza",
       "why.2.p": "El instalador incluye Python portátil y ffmpeg estático. Sin configurar entornos ni instalar Docker: descarga y empieza.",
       "why.3.h": "Elige tu modelo",
-      "why.3.p": "Sin depender de un proveedor. Guarda tu clave API en los ajustes, cambia de proveedor cuando quieras o usa una URL compatible con OpenAI, incluidos modelos locales.",
+      "why.3.p": "Sin depender de un proveedor. Trae tu clave: Qwen, OpenAI, Gemini, DeepSeek, Doubao Seed, Kimi, GLM, Grok, u Ollama / LM Studio en local. También puedes usar una URL compatible con OpenAI. El uso en la nube lo cobra el proveedor que elijas, no AutoClip.",
       "why.4.h": "Código abierto, MIT",
       "why.4.p": "Todo el código está en GitHub. Revisa cómo procesa tus videos, modifícalo o ejecútalo en tu propio servidor.",
       "dl.eyebrow": "Descargar",
@@ -893,7 +927,7 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       "dl.mac.btn": "Descargar .dmg",
       "dl.mac.sum": "Primer inicio",
       "dl.mac.note": "La app aún no está notarizada por Apple. Si Gatekeeper la bloquea, haz clic derecho en la app y elige «Abrir».",
-      "dl.win.req": "Windows 10 / 11, x64. Instalación por usuario, sin permisos de administrador. El instalador descarga WebView2 si falta.",
+      "dl.win.req": "Windows 10 / 11, x64. Instalación por usuario, sin permisos de administrador. El instalador descarga WebView2 si falta. El instalador está publicado; la instalación, la importación y el guardado en un equipo real siguen pendientes de aceptación.",
       "dl.win.btn": "Descargar instalador",
       "dl.win.sum": "Primera ejecución",
       "dl.win.note": "El instalador aún no tiene firma de código. Si SmartScreen muestra una advertencia, elige «Más información» → «Ejecutar de todas formas».",
@@ -920,12 +954,20 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       "faq.6.q": "¿Cómo probarlo la primera vez?",
       "faq.6.a": "Trae tu propio clip corto. Casi todo el diálogo está en inglés; activa los subtítulos oficiales, usa Whisper o trae tu SRT. Ejemplo · no alojado · los derechos son tuyos: <a class=\"link\" href=\"https://www.youtube.com/watch?v=VeizK1M7V7E\" target=\"_blank\" rel=\"noopener\">Sources Podcast · Sam Altman on Astra/AGI</a> (Sources Podcast, no el canal de OpenAI). Si te atascas, mira las <a class=\"link\" href=\"https://github.com/zhouxiaoka/autoclip/discussions/128\" target=\"_blank\" rel=\"noopener\">preguntas del primer clip</a>.",
       "feat.eyebrow": "Novedades",
-      "feat.h2": "Publicar y portada automática en v1.3.5.",
-      "feat.note": "Incluido en v1.3.5. Si sigues en v1.3.1, actualiza a v1.3.5.",
+      "feat.h2": "Lo destacado de v1.4.0, y lo que ya estaba antes.",
+      "feat.note": "Descarga la última versión en GitHub Releases. Publicar y la portada automática existen desde v1.3.2; no son novedades de v1.4.0. El análisis visual de juegos y las dos rutas de análisis son lo destacado de v1.4.0. La muestra revisada es una grabación de parkour, no todos los juegos. Una persona debe revisar bordes, recortes y texto. No hay promesa de rendimiento publicitario. El instalador de Windows está publicado; la instalación, la importación y el guardado en un equipo real siguen pendientes de aceptación.",
+      "feat.game.h": "Análisis visual de juegos",
+      "feat.game.p": "v1.4.0. Tras confirmar, un modelo multimodal que configuras reconoce eventos separados en la grabación y genera momentos editables y borradores promocionales.",
+      "feat.routes.h": "Dos rutas de análisis",
+      "feat.routes.p": "v1.4.0. El análisis por subtítulos sigue; las configuraciones antiguas usan subtítulos por defecto. El cribado visual es aparte y las llamadas de pago hay que activarlas expresamente.",
+      "feat.flow.h": "De la importación a la exportación",
+      "feat.flow.p": "v1.4.0. Importar, confirmar, editar y exportar van por un mismo camino. Una importación sin confirmar se puede retomar; el análisis y el corte empiezan solo después de confirmar.",
+      "feat.editor.h": "Editor compartido",
+      "feat.editor.p": "v1.4.0. Los momentos por subtítulos y los borradores promocionales usan el mismo editor, con plantillas de texto, idioma, ajuste de límites e historial de exportación.",
       "feat.publish.h": "Publicar",
-      "feat.publish.p": "El clip va a plataformas de fuera y a Bilibili",
+      "feat.publish.p": "Desde v1.3.2. El clip va a plataformas de fuera y a Bilibili ya conectadas.",
       "feat.cover.h": "Portada automática",
-      "feat.cover.p": "Genera una portada antes de publicar, para reducir rechazos por portada vacía",
+      "feat.cover.p": "Desde v1.3.2. Genera una portada antes de publicar para reducir rechazos por portada vacía. No promete cero rechazos en todas las plataformas.",
       "footer.publish": "Guía de publicación",
       "footer.feature": "Publicar",
       "footer.podcast": "Pódcast",
@@ -978,7 +1020,7 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       "how.1.chip.local": "Arquivos mp4 / mov / mkv",
       "how.1.chip.srt": "SRT opcional",
       "how.2.h": "Analise",
-      "how.2.p": "Um modelo de linguagem analisa todo o conteúdo, divide por temas, pontua cada trecho e escolhe os que funcionam sozinhos, com um título para cada um. Você escolhe o modelo: Qwen, OpenAI, Gemini, SiliconFlow ou qualquer API compatível com OpenAI.",
+      "how.2.p": "Um modelo de linguagem analisa todo o conteúdo, divide por temas, pontua cada trecho e escolhe os que funcionam sozinhos, com um título para cada um. Traga sua própria chave: Qwen, OpenAI, Gemini, DeepSeek, Doubao Seed, Kimi, GLM, Grok, ou Ollama / LM Studio local. O uso na nuvem é cobrado pelo provedor que você escolhe.",
       "how.2.r1": "Por que abandonei as assinaturas",
       "how.2.r2": "Como conquistei meu primeiro cliente pagante",
       "how.2.r3": "O maior medo de criar um produto sozinho",
@@ -994,7 +1036,7 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       "why.2.h": "Instale e comece",
       "why.2.p": "O instalador inclui Python portátil e ffmpeg estático. Sem configurar ambientes nem instalar Docker: baixe e comece.",
       "why.3.h": "Escolha seu modelo",
-      "why.3.p": "Sem depender de um fornecedor. Salve sua chave de API nas configurações, troque de provedor quando quiser ou use uma URL compatível com OpenAI, incluindo modelos locais.",
+      "why.3.p": "Sem depender de um fornecedor. Traga sua chave: Qwen, OpenAI, Gemini, DeepSeek, Doubao Seed, Kimi, GLM, Grok, ou Ollama / LM Studio local. Também vale uma URL compatível com OpenAI. O uso na nuvem é cobrado pelo provedor escolhido, não pelo AutoClip.",
       "why.4.h": "Código aberto, MIT",
       "why.4.p": "Todo o código está no GitHub. Veja como seus vídeos são processados, modifique o código ou hospede por conta própria.",
       "dl.eyebrow": "Baixar",
@@ -1003,7 +1045,7 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       "dl.mac.btn": "Baixar .dmg",
       "dl.mac.sum": "Primeira execução",
       "dl.mac.note": "O app ainda não tem notarização da Apple. Se o Gatekeeper bloquear, clique com o botão direito no app e escolha “Abrir”.",
-      "dl.win.req": "Windows 10 / 11, x64. Instalação por usuário, sem permissão de administrador. O instalador baixa o WebView2 se necessário.",
+      "dl.win.req": "Windows 10 / 11, x64. Instalação por usuário, sem permissão de administrador. O instalador baixa o WebView2 se necessário. O instalador está publicado; instalação, importação e salvamento em um computador real ainda aguardam aceitação.",
       "dl.win.btn": "Baixar instalador",
       "dl.win.sum": "Primeira execução",
       "dl.win.note": "O instalador ainda não tem assinatura de código. Se o SmartScreen exibir um aviso, escolha “Mais informações” → “Executar assim mesmo”.",
@@ -1030,12 +1072,20 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       "faq.6.q": "Como experimentar na primeira vez?",
       "faq.6.a": "Traga seu próprio clipe curto. A maioria da fala está em inglês; ative as legendas oficiais, use o Whisper ou traga um SRT. Exemplo · não hospedado · os direitos são seus: <a class=\"link\" href=\"https://www.youtube.com/watch?v=VeizK1M7V7E\" target=\"_blank\" rel=\"noopener\">Sources Podcast · Sam Altman on Astra/AGI</a> (Sources Podcast, não o canal da OpenAI). Se travar, veja as <a class=\"link\" href=\"https://github.com/zhouxiaoka/autoclip/discussions/128\" target=\"_blank\" rel=\"noopener\">perguntas do primeiro clipe</a>.",
       "feat.eyebrow": "Novidades",
-      "feat.h2": "Publicar e capa automática no v1.3.5.",
-      "feat.note": "Incluído no v1.3.5. Se ainda estiver no v1.3.1, atualize para o v1.3.5.",
+      "feat.h2": "O que o v1.4.0 destaca, e o que já existia antes.",
+      "feat.note": "Baixe a versão mais recente nas GitHub Releases. Publicar e a capa automática existem desde o v1.3.2; não são novidades do v1.4.0. A análise visual de jogos e as duas rotas de análise são o destaque do v1.4.0. A amostra verificada é uma gravação de parkour, não todos os jogos. Uma pessoa ainda precisa revisar limites, cortes e texto. Não há promessa de desempenho de anúncio. O instalador do Windows está publicado; instalação, importação e salvamento em um computador real ainda aguardam aceitação.",
+      "feat.game.h": "Análise visual de jogos",
+      "feat.game.p": "v1.4.0. Depois da confirmação, um modelo multimodal que você configura reconhece eventos separados na gravação e gera destaques editáveis e rascunhos promocionais.",
+      "feat.routes.h": "Duas rotas de análise",
+      "feat.routes.p": "v1.4.0. A análise por legendas continua; configurações antigas usam legendas por padrão. A triagem visual é separada, e chamadas visuais pagas exigem ativação explícita.",
+      "feat.flow.h": "Da importação à exportação",
+      "feat.flow.p": "v1.4.0. Importar, confirmar, editar e exportar seguem um mesmo caminho. Uma importação não confirmada pode ser retomada; entender e cortar só começa depois da confirmação.",
+      "feat.editor.h": "Editor compartilhado",
+      "feat.editor.p": "v1.4.0. Destaques por legenda e rascunhos promocionais usam o mesmo editor, com modelos de texto, idioma, ajuste de limites e histórico de exportação.",
       "feat.publish.h": "Publicar",
-      "feat.publish.p": "O clipe vai para plataformas no exterior e o Bilibili",
+      "feat.publish.p": "Desde o v1.3.2. O clipe vai para plataformas no exterior e o Bilibili já conectados.",
       "feat.cover.h": "Capa automática",
-      "feat.cover.p": "Gera uma capa antes de publicar, para reduzir recusas por capa vazia",
+      "feat.cover.p": "Desde o v1.3.2. Gera uma capa antes de publicar para reduzir recusas por capa vazia. Não promete zero recusas em todas as plataformas.",
       "footer.publish": "Guia de publicação",
       "footer.feature": "Publicar",
       "footer.podcast": "Podcast",
@@ -1088,7 +1138,7 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       "how.1.chip.local": "Файлы mp4 / mov / mkv",
       "how.1.chip.srt": "SRT по желанию",
       "how.2.h": "Анализ",
-      "how.2.p": "Языковая модель анализирует содержание, делит его по темам, оценивает фрагменты и выбирает те, которые интересны сами по себе, добавляя названия. Вы выбираете модель: Qwen, OpenAI, Gemini, SiliconFlow или любой API, совместимый с OpenAI.",
+      "how.2.p": "Языковая модель анализирует содержание, делит его по темам, оценивает фрагменты и выбирает те, которые интересны сами по себе, добавляя названия. Свой ключ: Qwen, OpenAI, Gemini, DeepSeek, Doubao Seed, Kimi, GLM, Grok или локальные Ollama / LM Studio. Облачные вызовы оплачиваются выбранному провайдеру.",
       "how.2.r1": "Почему я отказался от подписок",
       "how.2.r2": "Как появился первый платящий клиент",
       "how.2.r3": "Что пугает в работе в одиночку",
@@ -1104,7 +1154,7 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       "why.2.h": "Простая установка",
       "why.2.p": "Установщик включает переносимый Python и статический ffmpeg. Не нужно настраивать среду или устанавливать Docker — скачайте и запускайте.",
       "why.3.h": "Выбор модели за вами",
-      "why.3.p": "Без привязки к провайдеру. Храните API-ключ в настройках, меняйте провайдера или подключайте свой адрес API, совместимого с OpenAI, включая локальные модели.",
+      "why.3.p": "Без привязки к провайдеру. Свой ключ: Qwen, OpenAI, Gemini, DeepSeek, Doubao Seed, Kimi, GLM, Grok или локальные Ollama / LM Studio. Можно указать свой адрес API, совместимого с OpenAI. Облачные вызовы оплачиваются выбранному провайдеру, не AutoClip.",
       "why.4.h": "Открытый код, MIT",
       "why.4.p": "Весь код на GitHub. Изучайте обработку видео, меняйте код или размещайте приложение на своём сервере.",
       "dl.eyebrow": "Скачать",
@@ -1113,7 +1163,7 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       "dl.mac.btn": "Скачать .dmg",
       "dl.mac.sum": "Первый запуск",
       "dl.mac.note": "Приложение пока не заверено Apple. Если Gatekeeper блокирует запуск, нажмите на приложение правой кнопкой и выберите «Открыть».",
-      "dl.win.req": "Windows 10 / 11, x64. Установка для пользователя без прав администратора. При необходимости установщик скачает WebView2.",
+      "dl.win.req": "Windows 10 / 11, x64. Установка для пользователя без прав администратора. При необходимости установщик скачает WebView2. Установщик опубликован; установка, импорт и сохранение на реальном компьютере ещё ждут приёмки.",
       "dl.win.btn": "Скачать установщик",
       "dl.win.sum": "Первый запуск",
       "dl.win.note": "Установщик пока не имеет цифровой подписи. При предупреждении SmartScreen выберите «Подробнее» → «Выполнить в любом случае».",
@@ -1140,12 +1190,20 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       "faq.6.q": "С чего начать в первый раз?",
       "faq.6.a": "Возьмите свой короткий ролик. Речь чаще на английском; включите официальные субтитры, используйте Whisper или подготовьте SRT. Пример · не размещён нами · права на вас: <a class=\"link\" href=\"https://www.youtube.com/watch?v=VeizK1M7V7E\" target=\"_blank\" rel=\"noopener\">Sources Podcast · Sam Altman on Astra/AGI</a> (Sources Podcast, не канал OpenAI). Если застрянете, смотрите <a class=\"link\" href=\"https://github.com/zhouxiaoka/autoclip/discussions/128\" target=\"_blank\" rel=\"noopener\">вопросы и ответы</a>.",
       "feat.eyebrow": "Новое",
-      "feat.h2": "Публикация и автообложка в v1.3.5.",
-      "feat.note": "Уже в v1.3.5. Если у вас v1.3.1, обновитесь до v1.3.5.",
+      "feat.h2": "Главное в v1.4.0 и то, что было раньше.",
+      "feat.note": "Скачайте последнюю сборку в GitHub Releases. Публикация и автообложка есть с v1.3.2; это не новинки v1.4.0. Визуальный анализ игр и два маршрута анализа — главное в v1.4.0. Проверен один образец паркура, это не все игры. Границы, кадрирование и текст всё ещё нужно проверять вручную. Эффективность рекламы не обещается. Установщик Windows опубликован; установка, импорт и сохранение на реальном компьютере ещё ждут приёмки.",
+      "feat.game.h": "Визуальный анализ игр",
+      "feat.game.p": "v1.4.0. После подтверждения настроенная вами мультимодальная модель выделяет отдельные события в записи и готовит редактируемые хайлайты и черновики промо.",
+      "feat.routes.h": "Два маршрута анализа",
+      "feat.routes.p": "v1.4.0. Анализ по субтитрам остаётся, старые настройки по умолчанию идут через него. Визуальный отбор включается отдельно; платные визуальные вызовы нужно явно разрешить.",
+      "feat.flow.h": "От импорта до экспорта",
+      "feat.flow.p": "v1.4.0. Импорт, подтверждение, правка и экспорт идут одним путём. Неподтверждённый импорт можно продолжить; разбор и нарезка начинаются только после подтверждения.",
+      "feat.editor.h": "Общий редактор",
+      "feat.editor.p": "v1.4.0. Хайлайты по субтитрам и промо-черновики открываются в одном редакторе: текстовые шаблоны, язык, правка границ кандидатов и история экспорта.",
       "feat.publish.h": "Публикация",
-      "feat.publish.p": "Клип сразу на зарубежные площадки и Bilibili",
+      "feat.publish.p": "С v1.3.2. Клип уходит на уже подключённые зарубежные площадки и Bilibili.",
       "feat.cover.h": "Автообложка",
-      "feat.cover.p": "Обложка перед публикацией, меньше отказов из‑за пустой обложки",
+      "feat.cover.p": "С v1.3.2. Обложка перед публикацией, меньше отказов из‑за пустой обложки. Это не обещание нуля отказов на любой площадке.",
       "footer.publish": "Как публиковать",
       "footer.feature": "Публикация",
       "footer.podcast": "Подкаст",
@@ -1198,7 +1256,7 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       "how.1.chip.local": "Fichiers mp4 / mov / mkv",
       "how.1.chip.srt": "SRT facultatif",
       "how.2.h": "Analysez",
-      "how.2.p": "Un modèle de langage analyse le contenu, le divise par thèmes, évalue chaque passage et sélectionne ceux qui méritent d’être vus seuls, avec un titre pour chacun. Choisissez Qwen, OpenAI, Gemini, SiliconFlow ou toute API compatible OpenAI.",
+      "how.2.p": "Un modèle de langage analyse le contenu, le divise par thèmes, évalue chaque passage et sélectionne ceux qui méritent d’être vus seuls, avec un titre pour chacun. Apportez votre clé : Qwen, OpenAI, Gemini, DeepSeek, Doubao Seed, Kimi, GLM, Grok, ou Ollama / LM Studio en local. L’usage cloud est facturé par le fournisseur choisi.",
       "how.2.r1": "Pourquoi j’ai abandonné les abonnements",
       "how.2.r2": "Comment j’ai trouvé mon premier client payant",
       "how.2.r3": "Ce qui fait peur quand on crée seul",
@@ -1214,7 +1272,7 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       "why.2.h": "Installation simple",
       "why.2.p": "L’installateur inclut Python portable et ffmpeg statique. Aucun environnement à configurer ni Docker à installer : téléchargez et lancez.",
       "why.3.h": "Choisissez votre modèle",
-      "why.3.p": "Sans dépendre d’un fournisseur. Enregistrez votre clé API dans les paramètres, changez de fournisseur ou utilisez une URL compatible OpenAI, y compris pour des modèles locaux.",
+      "why.3.p": "Sans dépendre d’un fournisseur. Apportez votre clé : Qwen, OpenAI, Gemini, DeepSeek, Doubao Seed, Kimi, GLM, Grok, ou Ollama / LM Studio en local. Une URL compatible OpenAI reste possible. L’usage cloud est facturé par le fournisseur choisi, pas par AutoClip.",
       "why.4.h": "Code ouvert, MIT",
       "why.4.p": "Tout le code est sur GitHub. Découvrez comment vos vidéos sont traitées, modifiez le code ou hébergez l’application vous-même.",
       "dl.eyebrow": "Télécharger",
@@ -1223,7 +1281,7 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       "dl.mac.btn": "Télécharger le .dmg",
       "dl.mac.sum": "Premier lancement",
       "dl.mac.note": "L’application n’est pas encore notariée par Apple. Si Gatekeeper la bloque, faites un clic droit sur l’app, puis « Ouvrir ».",
-      "dl.win.req": "Windows 10 / 11, x64. Installation par utilisateur, sans droits administrateur. L’installateur télécharge WebView2 si nécessaire.",
+      "dl.win.req": "Windows 10 / 11, x64. Installation par utilisateur, sans droits administrateur. L’installateur télécharge WebView2 si nécessaire. L’installateur est publié ; l’installation, l’import et l’enregistrement sur une machine réelle attendent encore l’acceptation.",
       "dl.win.btn": "Télécharger l’installateur",
       "dl.win.sum": "Première exécution",
       "dl.win.note": "L’installateur n’est pas encore signé. Si SmartScreen affiche un avertissement, choisissez « Informations complémentaires » → « Exécuter quand même ».",
@@ -1250,12 +1308,20 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       "faq.6.q": "Comment essayer pour la première fois ?",
       "faq.6.a": "Apportez votre propre extrait court. La parole est surtout en anglais ; activez les sous-titres officiels, utilisez Whisper ou apportez un SRT. Exemple · non hébergé · les droits d’usage vous incombent : <a class=\"link\" href=\"https://www.youtube.com/watch?v=VeizK1M7V7E\" target=\"_blank\" rel=\"noopener\">Sources Podcast · Sam Altman on Astra/AGI</a> (Sources Podcast, pas la chaîne OpenAI). Si vous êtes bloqué, voir la <a class=\"link\" href=\"https://github.com/zhouxiaoka/autoclip/discussions/128\" target=\"_blank\" rel=\"noopener\">FAQ du premier extrait</a>.",
       "feat.eyebrow": "Nouveautés",
-      "feat.h2": "Publication et couverture automatique dans v1.3.5.",
-      "feat.note": "Inclus dans v1.3.5. Si vous êtes encore en v1.3.1, passez à v1.3.5.",
+      "feat.h2": "Les points forts de v1.4.0, et ce qui existait déjà.",
+      "feat.note": "Téléchargez la dernière version sur GitHub Releases. La publication et la couverture automatique existent depuis v1.3.2 ; elles ne sont pas nouvelles dans v1.4.0. L’analyse visuelle de jeux et les deux parcours d’analyse sont les points forts de v1.4.0. L’échantillon vérifié est un enregistrement de parkour, pas tous les jeux. Une personne doit encore vérifier les limites, le cadrage et le texte. Aucune promesse de performance publicitaire. L’installateur Windows est publié ; l’installation, l’import et l’enregistrement sur une machine réelle attendent encore l’acceptation.",
+      "feat.game.h": "Analyse visuelle de jeux",
+      "feat.game.p": "v1.4.0. Après confirmation, un modèle multimodal que vous configurez repère des événements distincts dans l’enregistrement et prépare des extraits modifiables et des brouillons promo.",
+      "feat.routes.h": "Deux parcours d’analyse",
+      "feat.routes.p": "v1.4.0. L’analyse par sous-titres reste, et les anciens réglages l’utilisent par défaut. Le préfiltrage visuel est séparé ; les appels visuels payants doivent être activés explicitement.",
+      "feat.flow.h": "De l’import à l’export",
+      "feat.flow.p": "v1.4.0. Import, confirmation, édition et export suivent le même chemin. Un import non confirmé peut être repris ; la compréhension et la découpe ne commencent qu’après confirmation.",
+      "feat.editor.h": "Éditeur partagé",
+      "feat.editor.p": "v1.4.0. Les extraits issus des sous-titres et les brouillons promo passent par le même éditeur, avec modèles de texte, langue, ajustement des limites et historique d’export.",
       "feat.publish.h": "Publier",
-      "feat.publish.p": "L’extrait part vers les plateformes étrangères et Bilibili",
+      "feat.publish.p": "Depuis v1.3.2. L’extrait part vers les plateformes étrangères et Bilibili déjà connectées.",
       "feat.cover.h": "Couverture auto",
-      "feat.cover.p": "Une couverture avant publication, pour limiter un refus si elle est vide",
+      "feat.cover.p": "Depuis v1.3.2. Une couverture avant publication, pour limiter un refus si elle est vide. Cela ne promet pas zéro refus sur toutes les plateformes.",
       "footer.publish": "Guide de publication",
       "footer.feature": "Publier",
       "footer.podcast": "Podcast",

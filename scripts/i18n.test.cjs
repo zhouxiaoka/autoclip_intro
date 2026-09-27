@@ -37,6 +37,21 @@ test('URL, saved selection, regional browser preferences and fallback have the r
  assert.equal(launch({languages:['es-419']}).document.documentElement.lang,'es')
  assert.equal(launch({saved:'__proto__',search:'?lang=constructor',languages:['de']}).document.documentElement.lang,'en')
 })
+test('feat dating and model list do not keep removed providers or v1.3.5',()=>{
+ assert.equal(/1\.3\.5|SiliconFlow|硅基流动/.test(html), false)
+ for(const lang of langs){
+  const blob=JSON.stringify(c.T[lang])
+  assert.equal(/1\.3\.5|SiliconFlow|硅基流动/.test(blob), false, lang)
+  assert.match(c.T[lang]['feat.note'], /v1\.3\.2/)
+  assert.match(c.T[lang]['feat.note'], /v1\.4\.0/)
+  assert.match(c.T[lang]['feat.game.p'], /v1\.4\.0/)
+  assert.match(c.T[lang]['why.3.p'], /Qwen/)
+  assert.match(c.T[lang]['why.3.p'], /Doubao Seed/)
+  assert.match(c.T[lang]['why.3.p'], /Ollama/)
+  assert.match(c.T[lang]['why.3.p'], /Grok/)
+  assert.equal(/SiliconFlow|Claude|免费模型|free model|0 元/.test(c.T[lang]['why.3.p']), false)
+ }
+})
 test('switches translate the whole page, update metadata, persist and retain download targets',()=>{
  const page=launch({windows:true})
  for(const lang of langs){
