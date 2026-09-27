@@ -1,0 +1,5 @@
+# Gameplay hero v2
+
+Generated with the built-in image_gen tool, 2026-09-27. Input references: the previously reviewed Subway Princess Runner gameplay frame (`portrait-review/template-background.jpg`) and actual title-template render (`title-v4-review/comic-v4.jpg`). This is a generated marketing composition based on those examples, not an application screenshot or evidence of ad performance. The localized figure caption states this distinction. Game imagery belongs to its respective owner; this page describes an AutoClip example, not a game publisher partnership.
+
+Creative brief / prompt: landscape 3:2 editorial before/after pair of portrait video prints on a warm off-white studio background. Preserve supplied pink-striped runner, green pipe gameplay and exact CAN YOU ESCAPE? title. Source smaller behind-left, title render dominant right, soft shadows, subtle connecting line, cropped reference filmstrip. No invented gameplay, interface, brand logos, metrics, buttons or CTA endcard. Full selected image is checked into this directory so the site does not depend on local generation paths.

@@ -64,10 +64,13 @@ def current_version(html: str) -> str:
 
 def rewrite(html: str, old: str, new: str, assets: dict[str, dict]) -> str:
     old_re = re.escape(old)
-    # 1. 下载链接、JS 里的 REL / MAC / WIN、hero.note 等所有版本号（以 v 或 Desktop_ 为前缀，避免误伤别的数字）
+    # 1. 只同步下载链接、安装包文件名与下载版本提示；保留功能首次支持版本。
     html = re.sub(rf"(?<=/v){old_re}(?=/)", new, html)                 # releases/download/v1.2.1/
     html = re.sub(rf"(?<=Desktop_){old_re}(?=_)", new, html)           # AutoClip.Desktop_1.2.1_...
-    html = re.sub(rf"\bv{old_re}\b", f"v{new}", html)                  # 文案里的 v1.2.1
+    # Only release-dependent notes/sizes; historical feature versions stay fixed.
+    html = re.sub(rf'(<span class="ver">)v{old_re}\b', rf'\g<1>v{new}', html)
+    html = re.sub(rf'([\'"]hero\.note[\'"]\s*:\s*[\'"])v{old_re}\b', rf'\g<1>v{new}', html)
+    html = re.sub(rf'(data-i18n="hero.note">)v{old_re}\b', rf'\g<1>v{new}', html)
     # 2. 下载卡体积：<span class="ver">vX.Y.Z · NNN MB</span>，第一个是 macOS 卡，第二个是 Windows 卡
     sizes = iter([assets["mac"]["size_mb"], assets["win"]["size_mb"]])
 

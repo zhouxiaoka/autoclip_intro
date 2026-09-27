@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AutoClip — 本地 AI 高光切片（开源 MIT）</title>
-<meta name="description" content="导入本地 / B站 / YouTube，基于字幕自动出切片与合集。视频本地处理；可选云端模型只发字幕文本。macOS / Windows / Docker / CLI。">
+<meta name="description" content="导入访谈、课程或游戏录屏，确认建议的制作方式，在同一个工作区完成切片、高光与推广草稿的编辑和导出。字幕分析兼顾成本，视觉分析发现画面事件。">
 <meta property="og:title" content="AutoClip — 本地 AI 高光切片（开源 MIT）">
-<meta property="og:description" content="导入本地 / B站 / YouTube，基于字幕自动出切片与合集。视频本地处理；可选云端模型只发字幕文本。macOS / Windows / Docker / CLI。">
+<meta property="og:description" content="导入访谈、课程或游戏录屏，确认建议的制作方式，在同一个工作区完成切片、高光与推广草稿的编辑和导出。字幕分析兼顾成本，视觉分析发现画面事件。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://zhouxiaoka.github.io/autoclip_intro/">
 <link rel="canonical" href="https://zhouxiaoka.github.io/autoclip_intro/">
@@ -16,7 +16,7 @@
 <meta property="og:image:alt" content="AutoClip — 长视频的高光，自动剪出来">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="AutoClip — 本地 AI 高光切片（开源 MIT）">
-<meta name="twitter:description" content="导入本地 / B站 / YouTube，基于字幕自动出切片与合集。视频本地处理；可选云端模型只发字幕文本。macOS / Windows / Docker / CLI。">
+<meta name="twitter:description" content="导入访谈、课程或游戏录屏，确认建议的制作方式，在同一个工作区完成切片、高光与推广草稿的编辑和导出。字幕分析兼顾成本，视觉分析发现画面事件。">
 <meta name="twitter:image" content="https://zhouxiaoka.github.io/autoclip_intro/img/og.png">
 <meta name="twitter:image:alt" content="AutoClip — 长视频的高光，自动剪出来">
 <script type="application/ld+json">
@@ -27,7 +27,7 @@
       "@type": "SoftwareApplication",
       "name": "AutoClip",
       "url": "https://zhouxiaoka.github.io/autoclip_intro/",
-      "description": "导入本地 / B站 / YouTube，基于字幕自动出切片与合集。视频本地处理；可选云端模型只发字幕文本。macOS / Windows / Docker / CLI。",
+      "description": "导入访谈、课程或游戏录屏，确认建议的制作方式，在同一个工作区完成切片、高光与推广草稿的编辑和导出。字幕分析兼顾成本，视觉分析发现画面事件。",
       "applicationCategory": "MultimediaApplication",
       "operatingSystem": "macOS (Apple Silicon), Windows 10/11",
       "downloadUrl": "https://github.com/zhouxiaoka/autoclip/releases/latest",
@@ -49,7 +49,7 @@
           "name": "要花钱吗？",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "AutoClip 本身免费、开源（MIT）。唯一的成本是你自己模型的 API 调用费——每条视频通常只是几分钱到几毛钱，取决于时长和所选模型。"
+            "text": "文字、视觉与转写费用取决于你的配置和服务商。智能选择先用本地证据；付费视觉初筛需单独启用。"
           }
         },
         {
@@ -57,7 +57,7 @@
           "name": "我的视频会被上传吗？",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "剪辑不上传。下载、转写、切片、合成都在你的电脑上；发给模型的只有字幕文本（用于理解内容和评分），发给哪家由你在设置里决定。点了发布，成片才会发到你连的平台；也可以只下载，不发布。"
+            "text": "剪辑与渲染在本机完成。云端文字分析发送相关字幕/文案；云端视觉分析发送抽样画面及必要文字。由你选择服务商，发布时才上传成片到目标平台。"
           }
         },
         {
@@ -326,6 +326,7 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
 }
 @media (prefers-reduced-motion: reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
+<link rel="stylesheet" href="site-shell.css">
 </head>
 <body>
 
@@ -336,6 +337,7 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
     <nav class="nav-links" aria-label="主导航">
       <a href="#how" data-i18n="nav.how">怎么工作</a>
       <a href="#why" data-i18n="nav.why">为什么</a>
+      <a href="use-cases/gameplay/" data-i18n="game.label">游戏素材</a>
       <a href="#features" data-i18n="nav.features">新能力</a>
       <a href="#download" data-i18n="nav.download">下载</a>
       <a href="#faq" data-i18n="nav.faq">常见问题</a>
@@ -368,8 +370,9 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
 <section class="hero">
   <div class="container">
     <div class="wordmark serif">AutoClip</div>
-    <h1 data-i18n-html="hero.h1">长视频里值得看的部分，<br>自动剪出来。</h1>
-    <p class="lede" data-i18n="hero.lede">粘一条 B站 / YouTube 链接，或拖入本地视频。AI 读懂内容、找出高光，生成切片与合集——全程在你自己的电脑上完成。</p>
+    <p class="eyebrow" data-i18n="game.version">1.4.0 功能预告 · 正式发布后提供</p>
+    <h1 data-i18n-html="hero.h1">把长视频里的精彩，<br>做成可以分享的短视频。</h1>
+    <p class="lede" data-i18n="hero.lede">导入访谈、课程或游戏录屏，确认建议的制作方式，在同一个工作区完成切片、高光与推广草稿的编辑和导出。字幕分析兼顾成本，视觉分析发现画面事件。</p>
     <div class="hero-cta">
       <a class="btn btn-primary" id="cta-primary" href="https://github.com/zhouxiaoka/autoclip/releases/download/v1.3.5/AutoClip.Desktop_1.3.5_aarch64.dmg">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg>
@@ -425,14 +428,14 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
 <section class="section" id="how">
   <div class="container">
     <div class="eyebrow" data-i18n="how.eyebrow">怎么工作</div>
-    <h2 data-i18n="how.h2">三步，从一条长视频到一组切片。</h2>
+    <h2 data-i18n="how.h2">导入、确认、剪辑，一条连贯的流程。</h2>
 
     <div class="steps">
       <div class="step">
         <div>
           <div class="n">01</div>
-          <h3 data-i18n="how.1.h">导入</h3>
-          <p data-i18n="how.1.p">粘一条 B站或 YouTube 链接，或者直接拖入本地视频。没有字幕的视频，可以一键在本地安装 Whisper 转写，不必先去别处生成字幕。</p>
+          <h3 data-i18n="how.1.h">导入素材</h3>
+          <p data-i18n="how.1.p">导入本地录屏或 B站、YouTube 链接。先做有界快速识别，暂存可恢复。</p>
         </div>
         <div class="vis" aria-hidden="true">
           <div class="import">
@@ -447,8 +450,8 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       <div class="step">
         <div>
           <div class="n">02</div>
-          <h3 data-i18n="how.2.h">理解</h3>
-          <p data-i18n="how.2.p">大模型读完整条视频的内容，按话题切分、逐段评分，挑出真正值得单独看的片段，并为每段写好标题。用哪个模型你自己定：通义千问、OpenAI、Gemini、硅基流动，或任何 OpenAI 兼容接口。</p>
+          <h3 data-i18n="how.2.h">确认制作方式</h3>
+          <p data-i18n="how.2.p">自动勾选建议的制作类型；你可以取消、补选或切换分析方式。确认后才开始正式理解与剪辑。</p>
         </div>
         <div class="vis" aria-hidden="true">
           <div class="rows">
@@ -463,8 +466,8 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       <div class="step">
         <div>
           <div class="n">03</div>
-          <h3 data-i18n="how.3.h">出片</h3>
-          <p data-i18n="how.3.p">切片和合集直接生成到本地。标题可以顺手改，合集里拖拽排序。切片可发布到海外平台与 B 站，发到已连接的平台。剩下的时间，留给下一条视频。</p>
+          <h3 data-i18n="how.3.h">编辑与导出</h3>
+          <p data-i18n="how.3.p">复看候选，调整完整事件的起止点。推广自动匹配竖屏，手动选择优先；使用六款文字预设，在本机渲染并保存。</p>
         </div>
         <div class="vis" aria-hidden="true">
           <div class="clips">
@@ -487,7 +490,7 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
     <div class="eyebrow" data-i18n="why.eyebrow">为什么是 AutoClip</div>
     <h2 data-i18n="why.h2">一个认真做内容的人，会想要的工具。</h2>
     <div class="why">
-      <div class="item"><span class="k">01</span><h3 data-i18n="why.1.h">全程本地</h3><p data-i18n="why.1.p">下载、转写、切片、合成都在你的电脑上，只有字幕文本会发给你选择的模型。点了发布，成片才会发到你连的平台；也可以只下载，不发布。</p></div>
+      <div class="item"><span class="k">01</span><h3 data-i18n="why.1.h">本机剪辑与渲染</h3><p data-i18n="why.1.p">剪辑与渲染在本机完成。云端文字分析发送相关字幕/文案；云端视觉分析发送抽样画面及必要文字。由你选择服务商，发布时才上传成片到目标平台。</p></div>
       <div class="item"><span class="k">02</span><h3 data-i18n="why.2.h">零依赖安装</h3><p data-i18n="why.2.p">安装包自带便携 Python 与静态 ffmpeg。不用配环境、不用装 Docker，下载即用。</p></div>
       <div class="item"><span class="k">03</span><h3 data-i18n="why.3.h">模型自选</h3><p data-i18n="why.3.p">不绑定任何厂商。API Key 填在自己的设置页里，随时切换提供商或接入自定义 OpenAI 兼容地址，包括本地模型。</p></div>
       <div class="item"><span class="k">04</span><h3 data-i18n="why.4.h">开源 MIT</h3><p data-i18n="why.4.p">全部代码在 GitHub。想看它怎么处理你的视频、想改、想自己部署，都可以。</p></div>
@@ -550,11 +553,11 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       <div class="faq">
         <details open>
           <summary data-i18n="faq.1.q">要花钱吗？</summary>
-          <p data-i18n="faq.1.a">AutoClip 本身免费、开源（MIT）。唯一的成本是你自己模型的 API 调用费——每条视频通常只是几分钱到几毛钱，取决于时长和所选模型。</p>
+          <p data-i18n="faq.1.a">文字、视觉与转写费用取决于你的配置和服务商。智能选择先用本地证据；付费视觉初筛需单独启用。</p>
         </details>
         <details>
           <summary data-i18n="faq.2.q">我的视频会被上传吗？</summary>
-          <p data-i18n="faq.2.a">剪辑不上传。下载、转写、切片、合成都在你的电脑上；发给模型的只有字幕文本（用于理解内容和评分），发给哪家由你在设置里决定。点了发布，成片才会发到你连的平台；也可以只下载，不发布。</p>
+          <p data-i18n="faq.2.a">剪辑与渲染在本机完成。云端文字分析发送相关字幕/文案；云端视觉分析发送抽样画面及必要文字。由你选择服务商，发布时才上传成片到目标平台。</p>
         </details>
         <details>
           <summary data-i18n="faq.3.q">支持哪些视频来源？</summary>
@@ -579,6 +582,20 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       </div>
     </div>
   </div>
+</section>
+
+<section class="section game-launch" id="gameplay">
+ <div class="container">
+  <div class="eyebrow" data-i18n="game.version">1.4.0 功能预告 · 正式发布后提供</div>
+  <h2 data-i18n="game.headline">从游戏录屏，到值得分享的高光。</h2>
+  <p class="lede" data-i18n="game.intro">用视觉理解寻找画面中的精彩事件，生成可编辑的高光与推广草稿。在同一个工作区调整边界、画幅和文字，再导出成片。</p>
+  <div class="feat-grid">
+   <article class="feat-card"><h3 data-i18n="game.subtitle">字幕分析 · 低成本</h3><p data-i18n="game.subtitleText">适合访谈、课程和有解说的视频。使用字幕与文字模型；旧配置默认保留此路线，无对白的游戏动作不靠字幕判断。</p></article>
+   <article class="feat-card"><h3 data-i18n="game.visual">视觉分析 · 画面事件</h3><p data-i18n="game.visualText">适合需要理解动作的录屏。自行配置多模态模型并选择视觉分析；仅配置模型不代表授权调用。</p></article>
+  </div>
+  <p class="lede" data-i18n="game.cost">文字、视觉与转写费用取决于你的配置和服务商。智能选择先用本地证据；付费视觉初筛需单独启用。</p>
+  <p style="margin-top:24px"><a class="btn btn-primary" href="use-cases/gameplay/" data-i18n="game.label">游戏素材</a></p>
+ </div>
 </section>
 
 <!-- ============ FEATURES (in v1.3.5) ============ -->
@@ -608,6 +625,7 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
     <a class="brand serif" href="#top">AutoClip</a>
     <nav class="footer-links" aria-label="页脚">
       <a href="use-cases/podcast/" data-i18n="footer.podcast">播客切片</a>
+      <a href="use-cases/gameplay/" data-i18n="game.label">游戏素材</a>
       <a href="use-cases/course/" data-i18n="footer.course">课程高光</a>
       <a href="guides/publish/" data-i18n="footer.publish">发布教程</a>
       <a href="features/publish/" data-i18n="footer.feature">发布</a>
@@ -1248,6 +1266,203 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
       "footer.copy": "© 2025–2026 AutoClip · Licence MIT"
     }
   };
+  // Fixed feature copy; stable download versions remain release-managed.
+  var LAUNCH_COPY = {
+  "zh": {
+    "hero.h1": "把长视频里的精彩，<br>做成可以分享的短视频。",
+    "hero.lede": "导入访谈、课程或游戏录屏，确认建议的制作方式，在同一个工作区完成切片、高光与推广草稿的编辑和导出。字幕分析兼顾成本，视觉分析发现画面事件。",
+    "meta.desc": "导入访谈、课程或游戏录屏，确认建议的制作方式，在同一个工作区完成切片、高光与推广草稿的编辑和导出。字幕分析兼顾成本，视觉分析发现画面事件。",
+    "how.h2": "导入、确认、剪辑，一条连贯的流程。",
+    "how.1.h": "导入素材",
+    "how.1.p": "导入本地录屏或 B站、YouTube 链接。先做有界快速识别，暂存可恢复。",
+    "how.2.h": "确认制作方式",
+    "how.2.p": "自动勾选建议的制作类型；你可以取消、补选或切换分析方式。确认后才开始正式理解与剪辑。",
+    "how.3.h": "编辑与导出",
+    "how.3.p": "复看候选，调整完整事件的起止点。推广自动匹配竖屏，手动选择优先；使用六款文字预设，在本机渲染并保存。",
+    "why.1.p": "剪辑与渲染在本机完成。云端文字分析发送相关字幕/文案；云端视觉分析发送抽样画面及必要文字。由你选择服务商，发布时才上传成片到目标平台。",
+    "faq.2.a": "剪辑与渲染在本机完成。云端文字分析发送相关字幕/文案；云端视觉分析发送抽样画面及必要文字。由你选择服务商，发布时才上传成片到目标平台。",
+    "faq.1.a": "文字、视觉与转写费用取决于你的配置和服务商。智能选择先用本地证据；付费视觉初筛需单独启用。",
+    "game.label": "游戏素材",
+    "game.headline": "从游戏录屏，到值得分享的高光。",
+    "game.intro": "用视觉理解寻找画面中的精彩事件，生成可编辑的高光与推广草稿。在同一个工作区调整边界、画幅和文字，再导出成片。",
+    "game.version": "1.4.0 功能预告 · 正式发布后提供",
+    "game.subtitle": "字幕分析 · 低成本",
+    "game.subtitleText": "适合访谈、课程和有解说的视频。使用字幕与文字模型；旧配置默认保留此路线，无对白的游戏动作不靠字幕判断。",
+    "game.visual": "视觉分析 · 画面事件",
+    "game.visualText": "适合需要理解动作的录屏。自行配置多模态模型并选择视觉分析；仅配置模型不代表授权调用。",
+    "game.cost": "文字、视觉与转写费用取决于你的配置和服务商。智能选择先用本地证据；付费视觉初筛需单独启用。"
+  },
+  "en": {
+    "hero.h1": "Turn the best moments in long videos<br>into shorts worth sharing.",
+    "hero.lede": "Import interviews, courses or gameplay, confirm a suggested approach, then edit and export clips, highlights and promotional drafts in one workspace. Choose subtitle analysis for lower costs or visual analysis for on-screen events.",
+    "meta.desc": "Import interviews, courses or gameplay, confirm a suggested approach, then edit and export clips, highlights and promotional drafts in one workspace. Choose subtitle analysis for lower costs or visual analysis for on-screen events.",
+    "how.h2": "Import, confirm, edit. One connected workflow.",
+    "how.1.h": "Import footage",
+    "how.1.p": "Import a recording or a Bilibili / YouTube link. Bounded screening comes first; unfinished imports can be resumed.",
+    "how.2.h": "Confirm the approach",
+    "how.2.p": "Suggested output types are preselected. Deselect, add or change the analysis route. Full analysis and editing start only after confirmation.",
+    "how.3.h": "Edit and export",
+    "how.3.p": "Review event boundaries. Promotional drafts default to portrait when settings are automatic; manual choices take priority. Use six text presets, render locally and save.",
+    "why.1.p": "Editing and rendering run locally. Cloud text analysis sends relevant subtitles/copy; cloud visual analysis sends sampled frames and necessary text. You choose the provider. Finished videos are uploaded to a destination only when publishing.",
+    "faq.2.a": "Editing and rendering run locally. Cloud text analysis sends relevant subtitles/copy; cloud visual analysis sends sampled frames and necessary text. You choose the provider. Finished videos are uploaded to a destination only when publishing.",
+    "faq.1.a": "Text, vision and transcription costs depend on your setup and provider. Smart selection starts with local evidence; paid visual screening requires separate opt-in.",
+    "game.label": "Game videos",
+    "game.headline": "Turn gameplay recordings into moments worth sharing.",
+    "game.intro": "Find on-screen events with visual analysis and create editable highlights and promotional drafts. Refine boundaries, framing and text in one workspace, then export.",
+    "game.version": "1.4.0 preview · Available after release",
+    "game.subtitle": "Subtitle analysis · Lower cost",
+    "game.subtitleText": "For interviews, courses and narrated videos. Uses subtitles and a text model; existing configurations keep this route. It does not identify silent gameplay actions.",
+    "game.visual": "Visual analysis · On-screen events",
+    "game.visualText": "For recordings that need action understanding. Configure a multimodal model and choose visual analysis. Configuration alone does not authorize calls.",
+    "game.cost": "Text, vision and transcription costs depend on your setup and provider. Smart selection starts with local evidence; paid visual screening requires separate opt-in."
+  },
+  "ja": {
+    "hero.h1": "長い動画の見どころを、<br>共有できる短い動画に。",
+    "hero.lede": "対談・講座・ゲーム録画を取り込み、提案を確認して同じ場所で切り抜き・ハイライト・宣伝下書きを編集・出力。字幕分析は費用を抑え、視覚分析は画面のイベントを捉えます。",
+    "meta.desc": "対談・講座・ゲーム録画を取り込み、提案を確認して同じ場所で切り抜き・ハイライト・宣伝下書きを編集・出力。字幕分析は費用を抑え、視覚分析は画面のイベントを捉えます。",
+    "how.h2": "取り込み、確認、編集をひとつの流れに。",
+    "how.1.h": "素材を取り込む",
+    "how.1.p": "ローカル録画またはBilibili・YouTubeリンクを取り込みます。まず範囲を限定した簡易判定を行い、未完了の取り込みは再開できます。",
+    "how.2.h": "制作方法を確認",
+    "how.2.p": "推奨する制作タイプを選択済みで表示。解除・追加・分析方法の変更ができ、確認後に本分析と編集を開始します。",
+    "how.3.h": "編集して書き出す",
+    "how.3.p": "イベントの始点・終点を確認。自動設定のプロモーションは縦型、手動指定を優先。6種の文字プリセットでローカル出力・保存できます。",
+    "why.1.p": "編集・描画はローカル。クラウドのテキスト分析には関連字幕や文案、視覚分析には抽出フレームと必要な文字を送信します。提供元を選べ、完成動画は公開操作時のみ配信先へ送信されます。",
+    "faq.2.a": "編集・描画はローカル。クラウドのテキスト分析には関連字幕や文案、視覚分析には抽出フレームと必要な文字を送信します。提供元を選べ、完成動画は公開操作時のみ配信先へ送信されます。",
+    "faq.1.a": "テキスト・視覚・文字起こしの費用は設定と提供元によります。自動選択はローカル情報から開始。有料の視覚簡易判定は個別に有効化します。",
+    "game.label": "ゲーム動画",
+    "game.headline": "ゲーム録画から、共有したくなる瞬間へ。",
+    "game.intro": "視覚分析で画面上のイベントを見つけ、編集可能なハイライトとプロモーション下書きを作成。同じ画面で範囲・画角・文字を調整して書き出せます。",
+    "game.version": "1.4.0 プレビュー · 正式公開後に提供",
+    "game.subtitle": "字幕分析 · 低コスト",
+    "game.subtitleText": "対談、講座、解説付き動画向け。字幕とテキストモデルを使用し、既存設定はこの方法を維持。無音のゲーム動作は識別しません。",
+    "game.visual": "視覚分析 · 画面イベント",
+    "game.visualText": "動作理解が必要な録画向け。マルチモーダルモデルを設定し、視覚分析を選択します。設定だけでは呼び出しを許可しません。",
+    "game.cost": "テキスト・視覚・文字起こしの費用は設定と提供元によります。自動選択はローカル情報から開始。有料の視覚簡易判定は個別に有効化します。"
+  },
+  "ko": {
+    "hero.h1": "긴 영상의 멋진 순간을<br>공유할 수 있는 짧은 영상으로.",
+    "hero.lede": "인터뷰, 강의, 게임 녹화를 가져와 추천 방식을 확인하고 한 곳에서 클립·하이라이트·홍보 초안을 편집 및 내보내세요. 저비용 자막 분석과 화면 이벤트를 찾는 시각 분석을 선택할 수 있습니다.",
+    "meta.desc": "인터뷰, 강의, 게임 녹화를 가져와 추천 방식을 확인하고 한 곳에서 클립·하이라이트·홍보 초안을 편집 및 내보내세요. 저비용 자막 분석과 화면 이벤트를 찾는 시각 분석을 선택할 수 있습니다.",
+    "how.h2": "가져오기, 확인, 편집을 하나의 흐름으로.",
+    "how.1.h": "소재 가져오기",
+    "how.1.p": "로컬 녹화나 Bilibili·YouTube 링크를 가져옵니다. 제한된 빠른 판별부터 진행하며 미완료 가져오기는 복구할 수 있습니다.",
+    "how.2.h": "제작 방식 확인",
+    "how.2.p": "추천 제작 유형이 미리 선택됩니다. 해제·추가하거나 분석 방식을 바꿀 수 있으며 확인 후에만 본 분석과 편집을 시작합니다.",
+    "how.3.h": "편집 및 내보내기",
+    "how.3.p": "이벤트의 시작과 끝을 검토하세요. 자동 설정의 홍보 초안은 세로형이며 수동 선택이 우선합니다. 6가지 글자 프리셋으로 로컬 렌더링 및 저장합니다.",
+    "why.1.p": "편집과 렌더링은 로컬에서 실행됩니다. 클라우드 텍스트 분석은 관련 자막·문구를, 시각 분석은 추출 프레임과 필요한 텍스트를 전송합니다. 제공업체는 사용자가 선택하며 완성 영상은 게시할 때만 대상 플랫폼으로 전송됩니다.",
+    "faq.2.a": "편집과 렌더링은 로컬에서 실행됩니다. 클라우드 텍스트 분석은 관련 자막·문구를, 시각 분석은 추출 프레임과 필요한 텍스트를 전송합니다. 제공업체는 사용자가 선택하며 완성 영상은 게시할 때만 대상 플랫폼으로 전송됩니다.",
+    "faq.1.a": "텍스트·시각·전사 비용은 설정과 제공업체에 따라 달라집니다. 스마트 선택은 로컬 정보부터 사용하며 유료 시각 사전 판별은 별도로 활성화해야 합니다.",
+    "game.label": "게임 영상",
+    "game.headline": "게임 녹화에서 공유하고 싶은 순간으로.",
+    "game.intro": "시각 분석으로 화면 속 이벤트를 찾아 편집 가능한 하이라이트와 홍보 초안을 만듭니다. 한 작업 공간에서 구간, 화면 비율, 문구를 조정하고 내보내세요.",
+    "game.version": "1.4.0 미리보기 · 정식 출시 후 제공",
+    "game.subtitle": "자막 분석 · 낮은 비용",
+    "game.subtitleText": "인터뷰, 강의, 해설 영상에 적합합니다. 자막과 텍스트 모델을 사용하며 기존 설정은 이 경로를 유지합니다. 대사 없는 게임 동작은 판별하지 않습니다.",
+    "game.visual": "시각 분석 · 화면 이벤트",
+    "game.visualText": "동작 이해가 필요한 녹화용입니다. 멀티모달 모델을 설정하고 시각 분석을 선택하세요. 설정만으로 호출이 허용되지는 않습니다.",
+    "game.cost": "텍스트·시각·전사 비용은 설정과 제공업체에 따라 달라집니다. 스마트 선택은 로컬 정보부터 사용하며 유료 시각 사전 판별은 별도로 활성화해야 합니다."
+  },
+  "es": {
+    "hero.h1": "Convierte los mejores momentos<br>en vídeos para compartir.",
+    "hero.lede": "Importa entrevistas, cursos o partidas, confirma el método sugerido y edita clips, destacados y borradores en un mismo espacio. Elige subtítulos para reducir costes o análisis visual para eventos en pantalla.",
+    "meta.desc": "Importa entrevistas, cursos o partidas, confirma el método sugerido y edita clips, destacados y borradores en un mismo espacio. Elige subtítulos para reducir costes o análisis visual para eventos en pantalla.",
+    "how.h2": "Importar, confirmar y editar. Un solo flujo.",
+    "how.1.h": "Importa el material",
+    "how.1.p": "Importa una grabación local o un enlace de Bilibili o YouTube. Primero se realiza una evaluación limitada; puedes retomar una importación pendiente.",
+    "how.2.h": "Confirma el método",
+    "how.2.p": "Los tipos de salida sugeridos aparecen seleccionados. Puedes quitarlos, añadirlos o cambiar el análisis. El análisis completo y la edición empiezan tras confirmar.",
+    "how.3.h": "Edita y exporta",
+    "how.3.p": "Revisa los límites del evento. Los borradores promocionales usan formato vertical en automático; manda tu elección manual. Aplica seis estilos de texto, renderiza localmente y guarda.",
+    "why.1.p": "La edición y el renderizado son locales. El análisis de texto en la nube envía subtítulos o textos pertinentes; el visual envía fotogramas seleccionados y texto necesario. Tú eliges el proveedor. El vídeo terminado se sube al destino solo al publicar.",
+    "faq.2.a": "La edición y el renderizado son locales. El análisis de texto en la nube envía subtítulos o textos pertinentes; el visual envía fotogramas seleccionados y texto necesario. Tú eliges el proveedor. El vídeo terminado se sube al destino solo al publicar.",
+    "faq.1.a": "Los costes de texto, visión y transcripción dependen del proveedor y la configuración. La selección inteligente empieza con información local; la evaluación visual de pago requiere activación aparte.",
+    "game.label": "Vídeos de juegos",
+    "game.headline": "De una partida grabada a momentos que vale la pena compartir.",
+    "game.intro": "Encuentra eventos visuales y crea destacados y borradores promocionales editables. Ajusta los cortes, el encuadre y el texto en un mismo espacio y exporta.",
+    "game.version": "Avance de 1.4.0 · Disponible tras el lanzamiento",
+    "game.subtitle": "Análisis de subtítulos · Menor coste",
+    "game.subtitleText": "Para entrevistas, cursos y vídeos narrados. Usa subtítulos y un modelo de texto; las configuraciones existentes mantienen esta opción. No reconoce acciones de juego sin diálogo.",
+    "game.visual": "Análisis visual · Eventos en pantalla",
+    "game.visualText": "Para grabaciones que requieren comprender acciones. Configura un modelo multimodal y elige análisis visual. Configurarlo no autoriza llamadas.",
+    "game.cost": "Los costes de texto, visión y transcripción dependen del proveedor y la configuración. La selección inteligente empieza con información local; la evaluación visual de pago requiere activación aparte."
+  },
+  "pt": {
+    "hero.h1": "Transforme os melhores momentos<br>em vídeos para compartilhar.",
+    "hero.lede": "Importe entrevistas, cursos ou partidas, confirme o método e edite clipes, destaques e rascunhos no mesmo espaço. Escolha legendas para reduzir custos ou análise visual para eventos na tela.",
+    "meta.desc": "Importe entrevistas, cursos ou partidas, confirme o método e edite clipes, destaques e rascunhos no mesmo espaço. Escolha legendas para reduzir custos ou análise visual para eventos na tela.",
+    "how.h2": "Importar, confirmar e editar. Um fluxo contínuo.",
+    "how.1.h": "Importe o material",
+    "how.1.p": "Importe uma gravação local ou link do Bilibili ou YouTube. Primeiro ocorre uma avaliação limitada; importações pendentes podem ser retomadas.",
+    "how.2.h": "Confirme o método",
+    "how.2.p": "Os tipos de saída sugeridos vêm selecionados. Remova, adicione ou altere a análise. A análise completa e a edição começam apenas após a confirmação.",
+    "how.3.h": "Edite e exporte",
+    "how.3.p": "Revise o início e o fim do evento. Rascunhos promocionais automáticos usam formato vertical; a escolha manual tem prioridade. Use seis estilos de texto, renderize localmente e salve.",
+    "why.1.p": "Edição e renderização são locais. A análise de texto na nuvem envia legendas ou textos relevantes; a visual envia quadros selecionados e texto necessário. Você escolhe o provedor. O vídeo final só é enviado ao destino ao publicar.",
+    "faq.2.a": "Edição e renderização são locais. A análise de texto na nuvem envia legendas ou textos relevantes; a visual envia quadros selecionados e texto necessário. Você escolhe o provedor. O vídeo final só é enviado ao destino ao publicar.",
+    "faq.1.a": "Custos de texto, visão e transcrição dependem da configuração e do provedor. A seleção inteligente começa com dados locais; a avaliação visual paga exige ativação separada.",
+    "game.label": "Vídeos de jogos",
+    "game.headline": "Da gravação de uma partida a momentos que merecem ser compartilhados.",
+    "game.intro": "Encontre eventos visuais e crie destaques e rascunhos promocionais editáveis. Ajuste cortes, enquadramento e texto no mesmo espaço e exporte.",
+    "game.version": "Prévia de 1.4.0 · Disponível após o lançamento",
+    "game.subtitle": "Análise de legendas · Menor custo",
+    "game.subtitleText": "Para entrevistas, cursos e vídeos narrados. Usa legendas e modelo de texto; configurações existentes mantêm essa opção. Não identifica ações de jogos sem diálogo.",
+    "game.visual": "Análise visual · Eventos na tela",
+    "game.visualText": "Para gravações que exigem compreensão de ações. Configure um modelo multimodal e selecione análise visual. Configurar não autoriza chamadas.",
+    "game.cost": "Custos de texto, visão e transcrição dependem da configuração e do provedor. A seleção inteligente começa com dados locais; a avaliação visual paga exige ativação separada."
+  },
+  "ru": {
+    "hero.h1": "Лучшие моменты длинных видео —<br>в короткие ролики для всех.",
+    "hero.lede": "Импортируйте интервью, курсы или игры, подтвердите способ и редактируйте клипы, моменты и рекламные черновики в одном месте. Субтитры помогают снизить стоимость, визуальный анализ находит события на экране.",
+    "meta.desc": "Импортируйте интервью, курсы или игры, подтвердите способ и редактируйте клипы, моменты и рекламные черновики в одном месте. Субтитры помогают снизить стоимость, визуальный анализ находит события на экране.",
+    "how.h2": "Импорт, подтверждение, монтаж — единый процесс.",
+    "how.1.h": "Импорт материала",
+    "how.1.p": "Импортируйте запись или ссылку Bilibili / YouTube. Сначала выполняется ограниченная предварительная оценка; незавершённый импорт можно продолжить.",
+    "how.2.h": "Подтверждение способа",
+    "how.2.p": "Рекомендуемые типы результата уже отмечены. Их можно убрать, добавить или сменить способ анализа. Полный анализ и монтаж начинаются после подтверждения.",
+    "how.3.h": "Монтаж и экспорт",
+    "how.3.p": "Проверьте начало и конец события. Автоматические рекламные черновики — вертикальные; ручной выбор важнее. Шесть стилей текста, локальный рендеринг и сохранение.",
+    "why.1.p": "Монтаж и рендеринг выполняются локально. Облачный текстовый анализ получает нужные субтитры и тексты, визуальный — выбранные кадры и необходимый текст. Провайдера выбираете вы. Готовое видео отправляется на площадку только при публикации.",
+    "faq.2.a": "Монтаж и рендеринг выполняются локально. Облачный текстовый анализ получает нужные субтитры и тексты, визуальный — выбранные кадры и необходимый текст. Провайдера выбираете вы. Готовое видео отправляется на площадку только при публикации.",
+    "faq.1.a": "Стоимость текста, изображений и транскрипции зависит от настроек и провайдера. Умный выбор начинает с локальных данных; платная визуальная оценка включается отдельно.",
+    "game.label": "Игровые видео",
+    "game.headline": "Из записи игры — в моменты, которыми хочется поделиться.",
+    "game.intro": "Находите события на экране с помощью визуального анализа и создавайте редактируемые моменты и рекламные черновики. Уточняйте границы, кадрирование и текст в одном рабочем пространстве.",
+    "game.version": "Предпросмотр 1.4.0 · После выпуска",
+    "game.subtitle": "Анализ субтитров · Ниже стоимость",
+    "game.subtitleText": "Для интервью, курсов и видео с комментариями. Использует субтитры и текстовую модель; старые настройки сохраняют этот путь. Действия без речи не распознаются.",
+    "game.visual": "Визуальный анализ · События на экране",
+    "game.visualText": "Для записей, где важно понять действия. Настройте мультимодальную модель и выберите визуальный анализ. Одна настройка не разрешает вызовы.",
+    "game.cost": "Стоимость текста, изображений и транскрипции зависит от настроек и провайдера. Умный выбор начинает с локальных данных; платная визуальная оценка включается отдельно."
+  },
+  "fr": {
+    "hero.h1": "Les meilleurs moments de vos vidéos,<br>prêts à être partagés.",
+    "hero.lede": "Importez entretiens, cours ou parties, confirmez la méthode puis montez extraits, moments forts et brouillons au même endroit. Choisissez les sous-titres pour limiter les coûts ou la vision pour les événements à l’écran.",
+    "meta.desc": "Importez entretiens, cours ou parties, confirmez la méthode puis montez extraits, moments forts et brouillons au même endroit. Choisissez les sous-titres pour limiter les coûts ou la vision pour les événements à l’écran.",
+    "how.h2": "Importer, confirmer, monter. Un seul parcours.",
+    "how.1.h": "Importer la vidéo",
+    "how.1.p": "Importez une vidéo locale ou un lien Bilibili / YouTube. Une évaluation limitée vient en premier ; une importation en attente peut être reprise.",
+    "how.2.h": "Confirmer la méthode",
+    "how.2.p": "Les types de sortie suggérés sont présélectionnés. Retirez-en, ajoutez-en ou changez de méthode. L’analyse complète et le montage commencent après confirmation.",
+    "how.3.h": "Monter et exporter",
+    "how.3.p": "Vérifiez les limites des événements. Les brouillons promotionnels automatiques sont verticaux ; le choix manuel prime. Six styles de texte, rendu local et enregistrement.",
+    "why.1.p": "Le montage et le rendu sont locaux. L’analyse texte dans le cloud reçoit les sous-titres ou textes utiles ; l’analyse visuelle reçoit des images échantillonnées et le texte nécessaire. Vous choisissez le fournisseur. La vidéo finale est envoyée à la plateforme uniquement à la publication.",
+    "faq.2.a": "Le montage et le rendu sont locaux. L’analyse texte dans le cloud reçoit les sous-titres ou textes utiles ; l’analyse visuelle reçoit des images échantillonnées et le texte nécessaire. Vous choisissez le fournisseur. La vidéo finale est envoyée à la plateforme uniquement à la publication.",
+    "faq.1.a": "Les coûts de texte, vision et transcription dépendent de la configuration et du fournisseur. Le choix intelligent commence par les données locales ; l’évaluation visuelle payante nécessite une activation distincte.",
+    "game.label": "Vidéos de jeux",
+    "game.headline": "De vos parties enregistrées aux moments à partager.",
+    "game.intro": "Repérez les événements à l’écran avec l’analyse visuelle et créez des moments forts et des brouillons promotionnels modifiables. Ajustez les coupes, le cadrage et le texte dans un même espace.",
+    "game.version": "Aperçu 1.4.0 · Disponible après publication",
+    "game.subtitle": "Analyse des sous-titres · Coût réduit",
+    "game.subtitleText": "Pour entretiens, cours et vidéos commentées. Utilise sous-titres et modèle texte ; les réglages existants conservent cette méthode. Ne reconnaît pas les actions sans dialogue.",
+    "game.visual": "Analyse visuelle · Événements à l’écran",
+    "game.visualText": "Pour comprendre les actions des vidéos. Configurez un modèle multimodal et choisissez l’analyse visuelle. La configuration seule n’autorise pas les appels.",
+    "game.cost": "Les coûts de texte, vision et transcription dépendent de la configuration et du fournisseur. Le choix intelligent commence par les données locales ; l’évaluation visuelle payante nécessite une activation distincte."
+  }
+};
+  Object.entries({"zh": "本机剪辑与渲染", "en": "Local editing and rendering", "ja": "編集とレンダリングはローカルで", "ko": "로컬 편집 및 렌더링", "es": "Edición y renderizado local", "pt": "Edição e renderização local", "ru": "Локальный монтаж и рендеринг", "fr": "Montage et rendu en local"}).forEach(([lang,label]) => { LAUNCH_COPY[lang]["why.1.h"] = label; });
+  Object.keys(LAUNCH_COPY).forEach(function(lang){ Object.assign(T[lang], LAUNCH_COPY[lang]); });
   var LANG_ATTR = {zh:'zh-CN', en:'en', ja:'ja', ko:'ko', es:'es', pt:'pt-BR', ru:'ru', fr:'fr'};
 
   var isWin = /Windows/i.test(navigator.userAgent) || (navigator.userAgentData && navigator.userAgentData.platform === 'Windows');

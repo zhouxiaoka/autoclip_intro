@@ -1,0 +1,27 @@
+/* Shared homepage and gameplay page shell. */
+.nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--ac-bg) 82%,transparent);backdrop-filter:saturate(1.2) blur(14px);-webkit-backdrop-filter:saturate(1.2) blur(14px);border-bottom:1px solid var(--ac-line)}
+.nav-in{height:60px;display:flex;align-items:center;gap:28px}
+.brand{display:flex;align-items:center;gap:10px;font-size:1.375rem;line-height:1;margin-right:auto}
+.brand img{width:26px;height:26px;border-radius:7px}
+.nav-links{display:flex;gap:24px;font-size:var(--ac-fs-small);color:var(--ac-sub)}
+.nav-links a:hover{color:var(--ac-ink)}
+.nav-right{display:flex;min-width:0;align-items:center;gap:16px}
+.gh{display:inline-flex;align-items:center;gap:7px;font-size:var(--ac-fs-small);color:var(--ac-sub)}
+.gh:hover{color:var(--ac-ink)}
+.gh svg{width:16px;height:16px}
+.lang select{font:inherit;font-size:.8125rem;color:var(--ac-ink);background:var(--ac-card);border:1px solid var(--ac-line);border-radius:var(--ac-r-pill);padding:7px 10px;max-width:160px;cursor:pointer}
+.lang select:focus-visible{outline:2px solid var(--ac-accent);outline-offset:3px}
+.nav-menu{display:none}
+
+
+.footer{border-top:1px solid var(--ac-line);padding:40px 0 48px}
+.footer-in{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:var(--ac-fs-meta);color:var(--ac-muted)}
+.footer .brand{font-size:1.25rem;margin-right:0}
+.footer-links{display:flex;gap:20px;flex-wrap:wrap}
+.footer-links a:hover{color:var(--ac-ink)}
+.nav>.container,.footer>.container{max-width:var(--ac-container);padding-inline:var(--ac-gutter)}
+.nav .brand{color:var(--ac-ink)}.nav .btn-primary{height:36px;background:var(--ac-cta-bg);color:var(--ac-cta-fg);padding:0 16px;font-size:.875rem}.nav-links a[aria-current="page"],.footer-links a[aria-current="page"]{color:var(--ac-ink)}
+.footer{display:block}.footer .brand{color:var(--ac-ink)}
+@media(max-width:1100px){.nav-links{gap:14px}.nav-in{gap:16px}.nav .gh{display:none}}
+@media(max-width:900px){.nav-links{display:none}}
+@media(max-width:720px){.nav .gh,.nav-right>.btn{display:none}.nav-in{gap:12px}.nav .brand{font-size:1.25rem}}
