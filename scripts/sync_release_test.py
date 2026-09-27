@@ -13,7 +13,7 @@ class ReleaseScope(unittest.TestCase):
         self.assertIn("'hero.note':'v1.4.0", updated)
         self.assertIn('v1.3.5 里的发布与封面', updated)
         future = rewrite(updated, '1.4.0', '1.4.1', assets)
-        self.assertIn('1.4.0 功能预告', future)
+        self.assertIn('1.4.0 已发布', future)
         self.assertIn('/v1.4.1/', future)
         self.assertEqual(rewrite(future, '1.4.1', '1.4.1', assets), future)
 
