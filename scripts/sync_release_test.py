@@ -11,9 +11,11 @@ class ReleaseScope(unittest.TestCase):
         self.assertIn('/v1.4.0/AutoClip.Desktop_1.4.0_aarch64.dmg', updated)
         self.assertIn('<span class="ver">v1.4.0 · 240 MB</span>', updated)
         self.assertIn("'hero.note':'v1.4.0", updated)
-        self.assertIn('v1.3.5 里的发布与封面', updated)
+        self.assertIn('自 v1.3.2 起可用，不是 v1.4.0 的新功能', updated)
         future = rewrite(updated, '1.4.0', '1.4.1', assets)
+        self.assertIn('自 v1.3.2 起可用，不是 v1.4.0 的新功能', future)
         self.assertIn('1.4.0 已发布', future)
+        self.assertIn('v1.4.0：游戏视觉', future)
         self.assertIn('/v1.4.1/', future)
         self.assertEqual(rewrite(future, '1.4.1', '1.4.1', assets), future)
 
