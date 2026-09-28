@@ -1,0 +1,1 @@
+Platform marks from Simple Icons 11.15.0 (CC0), downloaded from https://cdn.jsdelivr.net/npm/simple-icons@11.15.0/icons/. Brand names and marks belong to their respective owners. Used to identify supported publishing destinations, not partnerships or endorsements. Only fill colors adjusted; path geometry unchanged.
