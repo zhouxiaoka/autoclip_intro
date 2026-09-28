@@ -57,7 +57,7 @@ python3 scripts/sync_release.py v1.3.0   # 更新到指定已发布 Release
 
 ## 语言
 
-支持中文、英语、日语、韩语、西班牙语、巴西葡萄牙语、俄语、法语。优先级：URL 的 `?lang=es` 等参数 → 上次手动选择 → 浏览器偏好语言列表 → 英语。`pt-BR` 和 `pt-PT` 均使用巴西葡语文案；西语使用通用表达。导航中的原生语言选择器支持键盘与移动端，选择后更新 URL，可直接分享对应语言。
+支持中文、英语、日语、韩语、西班牙语、巴西葡萄牙语、俄语、法语。优先级：URL 的 `?lang=es` 等参数 → 上次手动选择 → 浏览器偏好语言列表 → 英语。`pt-BR` 和 `pt-PT` 均使用巴西葡语文案；西语使用通用表达。导航中的自定义语言菜单支持键盘与移动端，选择后更新 URL，可直接分享对应语言。
 
 所有文案仍在 `index.html` 的 `T` 对象中，发布版本同步脚本会更新八语中的版本号。页面标题、说明与 `html[lang]` 随语言切换；静态社交爬虫未执行 JavaScript 时仍看到默认中文元信息。Canonical、分享图，以及 FAQPage / SoftwareApplication JSON-LD，都按这份默认中文 HTML 编写，不随语言切换。
 
@@ -74,3 +74,31 @@ python3 scripts/sync_release.py v1.3.0   # 更新到指定已发布 Release
 合并该PR会触发Pages公开部署。1.4正式发布前页面使用“功能预告”说明；发布时将首页LAUNCH_COPY中的game.version及游戏页content.js中的version更新为正式提供状态（八语一起），并复核1.4.0安装包已经可下载。不要用未发布包链接替代稳定下载。
 
 验证：`node --test scripts/*.test.cjs`；`python3 -m unittest discover -s scripts -p '*_test.py'`。游戏页母语审校、最终1.4包的公开演示仍待发布验收，不能将内部样片数目当作广告效果证据。
+
+## 官网设计迭代（2026-09-28）
+
+开发分支：`website/upgrade-strategy`。保留静态 Pages 部署、既有地址、原 logo / Instrument Serif 品牌字和自动发版同步。
+
+- `assets/redesign.css`：共用导航、页脚、首页与场景页视觉层，包含手机与深色适配。
+- `assets/site.js`：导航菜单、场景 tabs、案例播放器、八语展示文案、随滚动可逆的卡片渐显。滚动使用缓存布局、transform / opacity，支持 reduced motion。
+- `assets/case-copy.js`：访谈、课程页八语工作流说明。
+- `assets/showcase/`：真实片段、原片静帧、中英两套海报。其他语言使用英文海报。视频仅点击后请求，原片链接回 Sources Podcast。
+- 保留 `use-cases/podcast/`、`course/`、`gameplay/` 和已有功能、指南链接。发布、自动封面说明页已重做首屏与内容结构，并与首页、三类场景页一样支持八语和共用语言菜单。
+
+海报是网站设计资产，基于真实静帧通过生图重设计，不代表 AutoClip 自动产出的原始封面。视频保持真实工作流输出，未重新剪辑或伪造竖屏内容。原片：<https://www.youtube.com/watch?v=VeizK1M7V7E>。原始视频没有复制进官网，四段视频合计约 70 MB，各文件低于 100 MB。
+
+检查：
+
+```sh
+node --test scripts/*.test.cjs
+python3 -m unittest discover -s scripts -p '*_test.py'
+# 启动具有 Range 支持的本地服务器：
+python3 scripts/preview.py --port 8770
+# 另一终端运行浏览器回归：
+SITE_URL=http://127.0.0.1:8770/ node scripts/website-review.cjs
+# Playwright 不在本地 node_modules 时用 PLAYWRIGHT_MODULE 指定安装路径。
+```
+
+浏览器回归覆盖八语切换、桌面/手机排版、菜单键盘行为、场景 tabs、四段视频播放与拖动、关闭释放、按需加载、深色和减少动态效果。仅本地预览不触发发布。
+
+发布 / 自动封面页使用 `assets/feature-{content,page}.js` 和 `assets/feature-redesign.css`。首屏海报为设计示例，下方保留应用内预览。平台滚动带只使用悬停暂停，减少动态效果模式仍为静态排列；不显示暂停按钮。

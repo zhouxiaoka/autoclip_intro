@@ -327,8 +327,9 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
 @media (prefers-reduced-motion: reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 <link rel="stylesheet" href="site-shell.css">
+<link rel="stylesheet" href="assets/redesign.css">
 </head>
-<body>
+<body class="site-home">
 
 <!-- ============ NAV ============ -->
 <header class="nav">
@@ -369,8 +370,6 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
 <!-- ============ HERO ============ -->
 <section class="hero">
   <div class="container">
-    <div class="wordmark serif">AutoClip</div>
-    <p class="eyebrow" data-i18n="game.version">1.4.0 已发布 · 游戏视觉现已提供</p>
     <h1 data-i18n-html="hero.h1">把长视频里的精彩，<br>做成可以分享的短视频。</h1>
     <p class="lede" data-i18n="hero.lede">导入访谈、课程或游戏录屏，确认建议的制作方式，在同一个工作区完成切片、高光与推广草稿的编辑和导出。字幕分析兼顾成本，视觉分析发现画面事件。</p>
     <div class="hero-cta">
@@ -390,100 +389,12 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
     <p class="hero-note mono" data-i18n="hero.note">v1.4.0 · 开源 MIT · 免费</p>
   </div>
 
-  <!-- product frame -->
-  <div class="container frame-wrap">
-    <div class="frame" aria-hidden="true">
-      <div class="frame-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="title">AutoClip</span></div>
-      <div class="app">
-        <div class="app-top">
-          <span class="wm serif">AutoClip</span>
-          <div class="tabs"><span class="on" data-i18n="mock.tab.projects">项目</span><span data-i18n="mock.tab.uploads">上传</span><span data-i18n="mock.tab.settings">设置</span></div>
-        </div>
-        <div class="import">
-          <div class="seg"><span class="on" data-i18n="mock.seg.link">链接</span><span data-i18n="mock.seg.file">文件</span></div>
-          <div class="field" data-i18n="mock.placeholder">粘贴 B站 / YouTube 链接…</div>
-          <span class="go" data-i18n="mock.go">开始</span>
-        </div>
-        <div class="app-label" data-i18n="mock.recent">最近项目</div>
-        <div class="pgrid">
-          <div class="pcard">
-            <div class="thumb t1"><span class="status run"><i></i><span data-i18n="mock.status.analyzing">分析中</span></span><div class="progress"><b></b></div></div>
-            <div class="pbody"><div class="t" data-i18n="mock.p1.title">对谈：独立开发者的一年</div><div class="m mono"><span>01:42:16</span><span>63%</span></div></div>
-          </div>
-          <div class="pcard">
-            <div class="thumb t2"><span class="status"><i></i><span data-i18n="mock.status.done">已完成</span></span></div>
-            <div class="pbody"><div class="t" data-i18n="mock.p2.title">直播回放 · 产品发布问答</div><div class="m mono"><span data-i18n="mock.p2.meta">7 切片 · 1 合集</span><span data-i18n="mock.p2.time">2 小时前</span></div></div>
-          </div>
-          <div class="pcard">
-            <div class="thumb t3"><span class="status"><i></i><span data-i18n="mock.status.done">已完成</span></span></div>
-            <div class="pbody"><div class="t" data-i18n="mock.p3.title">公开课：概率论第 3 讲</div><div class="m mono"><span data-i18n="mock.p3.meta">12 切片 · 2 合集</span><span data-i18n="mock.p3.time">昨天</span></div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </section>
+<section class="showcase container" id="case" data-showcase></section>
+<section class="section usecase-section" id="use-cases"><div class="container" data-usecases></div></section>
 
 <!-- ============ HOW ============ -->
-<section class="section" id="how">
-  <div class="container">
-    <div class="eyebrow" data-i18n="how.eyebrow">怎么工作</div>
-    <h2 data-i18n="how.h2">导入、确认、剪辑，一条连贯的流程。</h2>
-
-    <div class="steps">
-      <div class="step">
-        <div>
-          <div class="n">01</div>
-          <h3 data-i18n="how.1.h">导入素材</h3>
-          <p data-i18n="how.1.p">导入本地录屏或 B站、YouTube 链接。先做有界快速识别，暂存可恢复。</p>
-        </div>
-        <div class="vis" aria-hidden="true">
-          <div class="import">
-            <div class="seg"><span class="on" data-i18n="mock.seg.link">链接</span><span data-i18n="mock.seg.file">文件</span></div>
-            <div class="field">https://www.bilibili.com/video/BV1…</div>
-            <span class="go" data-i18n="mock.go">开始</span>
-          </div>
-          <div class="srcrow"><span class="chip">bilibili</span><span class="chip">YouTube</span><span class="chip" data-i18n="how.1.chip.local">本地 mp4 / mov / mkv</span><span class="chip" data-i18n="how.1.chip.srt">可选 SRT 字幕</span></div>
-        </div>
-      </div>
-
-      <div class="step">
-        <div>
-          <div class="n">02</div>
-          <h3 data-i18n="how.2.h">确认制作方式</h3>
-          <p data-i18n="how.2.p">自动勾选建议的制作类型；你可以取消、补选或切换分析方式。确认后才开始正式理解与剪辑。 云端可选 Qwen、OpenAI、Gemini、DeepSeek、Doubao Seed、Kimi、GLM、Grok（BYOK，费用由所选服务商计费）；本地可用 Ollama / LM Studio。</p>
-        </div>
-        <div class="vis" aria-hidden="true">
-          <div class="rows">
-            <div class="row pick"><span class="d"></span><span class="tc">12:04–14:31</span><span class="tt" data-i18n="how.2.r1">为什么我放弃了订阅制</span><span class="sc">9.2</span></div>
-            <div class="row pick"><span class="d"></span><span class="tc">27:50–31:12</span><span class="tt" data-i18n="how.2.r2">第一个付费用户是怎么来的</span><span class="sc">8.8</span></div>
-            <div class="row pick"><span class="d"></span><span class="tc">48:19–50:02</span><span class="tt" data-i18n="how.2.r3">一个人做产品最怕的事</span><span class="sc">8.5</span></div>
-            <div class="row"><span class="d"></span><span class="tc">55:40–57:10</span><span class="tt" data-i18n="how.2.r4">闲聊：最近在看的书</span><span class="sc">6.1</span></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="step">
-        <div>
-          <div class="n">03</div>
-          <h3 data-i18n="how.3.h">编辑与导出</h3>
-          <p data-i18n="how.3.p">复看候选，调整完整事件的起止点。推广自动匹配竖屏，手动选择优先；使用六款文字预设，在本机渲染并保存。</p>
-        </div>
-        <div class="vis" aria-hidden="true">
-          <div class="clips">
-            <div class="clip"><div class="thumb t1 pos-l"></div><div class="t" data-i18n="how.2.r1">为什么我放弃了订阅制</div><div class="m mono">02:27</div></div>
-            <div class="clip"><div class="thumb t1 pos-r"></div><div class="t" data-i18n="how.2.r2">第一个付费用户是怎么来的</div><div class="m mono">03:22</div></div>
-          </div>
-          <div class="vis-foot">
-            <span class="lbl" data-i18n="how.3.foot">合集 · 独立开发者的一年 · 3 段</span>
-            <span class="pill"><i></i><span data-i18n="how.3.pill">已上传到 B站</span></span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
+<section class="section" id="how"><div class="container"><h2 data-i18n="how.h2"></h2><div class="steps"><article class="step"><span class="n">01</span><h3 data-i18n="how.1.h"></h3><p data-i18n="how.1.p"></p></article><article class="step"><span class="n">02</span><h3 data-i18n="how.2.h"></h3><p data-i18n="how.2.p"></p></article><article class="step"><span class="n">03</span><h3 data-i18n="how.3.h"></h3><p data-i18n="how.3.p"></p></article></div></div></section>
 <!-- ============ WHY ============ -->
 <section class="section" id="why">
   <div class="container">
@@ -498,41 +409,6 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
   </div>
 </section>
 
-<!-- ============ DOWNLOAD ============ -->
-<section class="section" id="download">
-  <div class="container">
-    <div class="eyebrow" data-i18n="dl.eyebrow">下载</div>
-    <h2 data-i18n="dl.h2">macOS 与 Windows，免费。</h2>
-    <div class="dl">
-      <div class="dlcard">
-        <div class="hd">
-          <h3><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.365 1.43c0 1.14-.493 2.27-1.177 3.08-.744.9-1.99 1.57-2.987 1.57-.12 0-.23-.02-.3-.03-.01-.06-.04-.22-.04-.39 0-1.15.572-2.27 1.206-2.98.804-.94 2.142-1.64 3.248-1.68.03.13.05.28.05.43zm4.565 15.71c-.03.07-.463 1.58-1.518 3.12-.945 1.34-1.94 2.71-3.43 2.71-1.517 0-1.9-.88-3.63-.88-1.698 0-2.302.91-3.67.91-1.377 0-2.332-1.26-3.428-2.8-1.287-1.82-2.323-4.63-2.323-7.28 0-4.28 2.797-6.55 5.552-6.55 1.448 0 2.675.95 3.6.95.865 0 2.222-1.01 3.902-1.01.613 0 2.886.06 4.374 2.19-.13.09-2.383 1.37-2.383 4.19 0 3.26 2.854 4.42 2.955 4.45z"/></svg>macOS</h3>
-          <span class="ver">v1.4.0 · 247 MB</span>
-        </div>
-        <p class="req" data-i18n="dl.mac.req">Apple Silicon（M 系列）· macOS 13 或更高。Intel Mac 暂不支持。</p>
-        <a class="btn btn-primary" href="https://github.com/zhouxiaoka/autoclip/releases/download/v1.4.0/AutoClip.Desktop_1.4.0_aarch64.dmg" data-i18n="dl.mac.btn">下载 .dmg</a>
-        <details>
-          <summary data-i18n="dl.mac.sum">首次打开提示</summary>
-          <p data-i18n="dl.mac.note">安装包尚未做 Apple 公证。第一次打开时请在应用上右键 → 选「打开」，即可绕过 Gatekeeper；之后双击正常启动。</p>
-        </details>
-      </div>
-      <div class="dlcard">
-        <div class="hd">
-          <h3><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 5.5l7.5-1.03v7.25H3V5.5zm0 13l7.5 1.03v-7.16H3v6.13zm8.32 1.14L21 21v-8.63h-9.68v7.27zm0-15.28v7.36H21V3l-9.68 1.36z"/></svg>Windows</h3>
-          <span class="ver">v1.4.0 · 175 MB</span>
-        </div>
-        <p class="req" data-i18n="dl.win.req">Windows 10 / 11，x64。按用户安装，不需要管理员权限；缺少 WebView2 时安装器会自动下载。</p>
-        <a class="btn btn-primary" href="https://github.com/zhouxiaoka/autoclip/releases/download/v1.4.0/AutoClip.Desktop_1.4.0_x64-setup.exe" data-i18n="dl.win.btn">下载安装包</a>
-        <details>
-          <summary data-i18n="dl.win.sum">首次运行提示</summary>
-          <p data-i18n="dl.win.note">安装包尚未做代码签名，SmartScreen 会拦一次。点「更多信息」→「仍要运行」即可。真机上的安装、导入和保存仍在等待验收。</p>
-        </details>
-      </div>
-    </div>
-    <p class="dl-alt" data-i18n-html="dl.alt">想跑在服务器或 NAS 上？<a href="https://github.com/zhouxiaoka/autoclip#readme" target="_blank" rel="noopener">Docker 部署与源码运行</a>见 GitHub README。</p>
-  </div>
-</section>
-
 <!-- ============ FAQ ============ -->
 <section class="section" id="faq">
   <div class="container">
@@ -544,7 +420,7 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
           <div class="t" data-i18n="fb.t">有问题或想法？直接告诉我们。</div>
           <div class="m" data-i18n="fb.m">一分钟的表单，不用注册。Bug 带上版本和平台就能更快复现；留了联系方式的，解决后会回你一声。</div>
           <div class="row">
-            <a class="btn btn-primary btn-sm" href="https://my.feishu.cn/share/base/shrcn8hKUG2icIJLpNry6uWVNJe" target="_blank" rel="noopener" data-i18n="fb.btn">提交反馈</a>
+            <a class="btn btn-primary btn-sm" href="https://github.com/zhouxiaoka/autoclip/discussions" target="_blank" rel="noopener" data-i18n="fb.btn">提交反馈</a>
           </div>
           <p class="alt" data-i18n-html="fb.alt">可复现的 Bug 用 <a href="https://github.com/zhouxiaoka/autoclip/issues/new/choose" target="_blank" rel="noopener">GitHub Issues</a>。讨论：<a href="https://github.com/zhouxiaoka/autoclip/discussions/127" target="_blank" rel="noopener">公告</a>、<a href="https://github.com/zhouxiaoka/autoclip/discussions/128" target="_blank" rel="noopener">第一次出片</a>、<a href="https://github.com/zhouxiaoka/autoclip/discussions/129" target="_blank" rel="noopener">想法与路线图</a>。已知问题见 <a href="https://github.com/zhouxiaoka/autoclip/issues/96" target="_blank" rel="noopener">置顶帖</a>。</p>
           <p class="alt" data-i18n-html="fb.stuck">第一次出片卡住？去 <a href="https://github.com/zhouxiaoka/autoclip/discussions/128" target="_blank" rel="noopener">第一次出片问答</a>。</p>
@@ -626,6 +502,41 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
         <p data-i18n="feat.cover.p">自 v1.3.2 起，可在发布前生成封面</p>
       </a>
     </div>
+  </div>
+</section>
+
+<!-- ============ DOWNLOAD ============ -->
+<section class="section" id="download">
+  <div class="container">
+    <div class="eyebrow" data-i18n="dl.eyebrow">下载</div>
+    <h2 data-i18n="dl.h2">下一条精彩，从这里开始。</h2>
+    <div class="dl">
+      <div class="dlcard">
+        <div class="hd">
+          <h3><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.365 1.43c0 1.14-.493 2.27-1.177 3.08-.744.9-1.99 1.57-2.987 1.57-.12 0-.23-.02-.3-.03-.01-.06-.04-.22-.04-.39 0-1.15.572-2.27 1.206-2.98.804-.94 2.142-1.64 3.248-1.68.03.13.05.28.05.43zm4.565 15.71c-.03.07-.463 1.58-1.518 3.12-.945 1.34-1.94 2.71-3.43 2.71-1.517 0-1.9-.88-3.63-.88-1.698 0-2.302.91-3.67.91-1.377 0-2.332-1.26-3.428-2.8-1.287-1.82-2.323-4.63-2.323-7.28 0-4.28 2.797-6.55 5.552-6.55 1.448 0 2.675.95 3.6.95.865 0 2.222-1.01 3.902-1.01.613 0 2.886.06 4.374 2.19-.13.09-2.383 1.37-2.383 4.19 0 3.26 2.854 4.42 2.955 4.45z"/></svg>macOS</h3>
+          <span class="ver">v1.4.0 · 247 MB</span>
+        </div>
+        <p class="req" data-i18n="dl.mac.req">Apple Silicon（M 系列）· macOS 13 或更高。Intel Mac 暂不支持。</p>
+        <a class="btn btn-primary" href="https://github.com/zhouxiaoka/autoclip/releases/download/v1.4.0/AutoClip.Desktop_1.4.0_aarch64.dmg" data-i18n="dl.mac.btn">下载 .dmg</a>
+        <details>
+          <summary data-i18n="dl.mac.sum">首次打开提示</summary>
+          <p data-i18n="dl.mac.note">安装包尚未做 Apple 公证。第一次打开时请在应用上右键 → 选「打开」，即可绕过 Gatekeeper；之后双击正常启动。</p>
+        </details>
+      </div>
+      <div class="dlcard">
+        <div class="hd">
+          <h3><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 5.5l7.5-1.03v7.25H3V5.5zm0 13l7.5 1.03v-7.16H3v6.13zm8.32 1.14L21 21v-8.63h-9.68v7.27zm0-15.28v7.36H21V3l-9.68 1.36z"/></svg>Windows</h3>
+          <span class="ver">v1.4.0 · 175 MB</span>
+        </div>
+        <p class="req" data-i18n="dl.win.req">Windows 10 / 11，x64。按用户安装，不需要管理员权限；缺少 WebView2 时安装器会自动下载。</p>
+        <a class="btn btn-primary" href="https://github.com/zhouxiaoka/autoclip/releases/download/v1.4.0/AutoClip.Desktop_1.4.0_x64-setup.exe" data-i18n="dl.win.btn">下载安装包</a>
+        <details>
+          <summary data-i18n="dl.win.sum">首次运行提示</summary>
+          <p data-i18n="dl.win.note">安装包尚未做代码签名，SmartScreen 会拦一次。点「更多信息」→「仍要运行」即可。真机上的安装、导入和保存仍在等待验收。</p>
+        </details>
+      </div>
+    </div>
+    <p class="dl-alt" data-i18n-html="dl.alt">想跑在服务器或 NAS 上？<a href="https://github.com/zhouxiaoka/autoclip#readme" target="_blank" rel="noopener">Docker 部署与源码运行</a>见 GitHub README。</p>
   </div>
 </section>
 
@@ -1568,5 +1479,7 @@ h3{font-size:var(--ac-fs-h3);font-weight:500;line-height:1.4}
   });
 })();
 </script>
+<script src="assets/site.js"></script>
+<script src="assets/ui-polish.js"></script>
 </body>
 </html>
