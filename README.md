@@ -102,3 +102,7 @@ SITE_URL=http://127.0.0.1:8770/ node scripts/website-review.cjs
 浏览器回归覆盖八语切换、桌面/手机排版、菜单键盘行为、场景 tabs、四段视频播放与拖动、关闭释放、按需加载、深色和减少动态效果。仅本地预览不触发发布。
 
 发布 / 自动封面页使用 `assets/feature-{content,page}.js` 和 `assets/feature-redesign.css`。首屏海报为设计示例，下方保留应用内预览。平台滚动带只使用悬停暂停，减少动态效果模式仍为静态排列；不显示暂停按钮。
+
+## 官网访问统计
+
+全站采用访客主动允许后才启用的 PostHog 匿名统计，页脚可随时关闭，并尊重 DNT / GPC。官网与客户端事件通过 `surface = website` 区分；本地预览不发送数据。事件口径、赞助链接标记、看板与 SQL 查询、验收步骤见 [ANALYTICS.md](ANALYTICS.md)，访客说明见 [访问统计](analytics/index.html)。
