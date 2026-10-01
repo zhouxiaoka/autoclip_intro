@@ -11,5 +11,11 @@ ffmpeg -i in.png -c:v libwebp -q:v 82 assets/art/<name>.webp
 | `lemon-marks.webp`（3:4） | 首屏拼贴左块 | 柠檬黄 #F4DC3C 孔版纸、纸纹；黑色油性笔的剪辑记号：入点出点方括号、圈、乱线、时间尺刻度、裁切角；大量留白 |
 | `burst.webp`（3:4） | 首屏拼贴右块 | 放映机镜头的放射光束，粗网点，珊瑚 #FF6F59 与蓝 #5A8BFF 两色套印、轻微错版，暖白纸 |
 | `filmstrip-band.webp`（16:9） | 下载区横幅 | 撕开的 35mm 胶片条、网点方块、铅笔弧线，薄荷 #46D3A6、柠檬黄、蓝与软黑，暖奶油纸 |
+| `footer-strip.webp`（16:9，裁成横条） | 页脚最底部 | 满幅撕纸拼贴，柠檬黄、薄荷、蓝、珊瑚四色网点，胶片齿孔碎片和油性笔乱线 |
+| `spot-link-film.webp`（1:1） | 「一键」标题旁 | 链条扣环变成三格胶片；黑色手绘线 + 珊瑚、柠檬黄网点；纯米白底 |
+| `spot-scissors.webp`（1:1） | 「怎么做到的」标题旁 | 剪刀剪开胶片、掉下一格；蓝、薄荷网点 |
+| `spot-stopwatch.webp`（1:1） | 「速度与成本」标题旁 | 秒表靠着一枚硬币；柠檬黄、蓝网点 |
+
+小插画导出时把近白色压成纯白（`colorlevels=rimax=0.9:gimax=0.9:bimax=0.88`），页面上用 `mix-blend-mode: multiply` 融进底色；深色模式下改为米白圆角卡片承托。
 
 规则：墨色只用产品内容配色（azure / amber / coral / mint / lemon / rose / lilac）；画面只出现在拼贴块和横幅里，不放在正文或按钮背后；每张底下都压一块 `--bg` 或 `--card` 的卡片承载文字。
