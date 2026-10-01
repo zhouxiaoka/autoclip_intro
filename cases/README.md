@@ -27,29 +27,26 @@ cases/
 
 交付包弹窗按字段是否存在展示：有 `cover` 显示封面，有 `post` 显示标题、简介、话题和「复制文案」；都没有时注明「生成于发布包上线之前，只有成片」。不要手写或补写文案，只收 AutoClip 实际产出的内容。
 
-## 加一个案例
+## 换一批 demo（日常迭代）
 
-从 AutoClip 项目一键导入（读取已完成的成片、发布包文案和封面）：
+两份数据是唯一来源，页面不写死任何数字：
 
-```bash
-python3 scripts/add_case.py --id jensen-dwarkesh --scene interview \
-  --project ~/Library/Application\ Support/AutoClip/projects/<项目 ID> \
-  --source-url https://www.youtube.com/watch?v=Hrbq66XqtCo --source-duration 6193 \
-  --run run.json --featured
-```
+- `data/benchmarks.json`：每次实测一行（时长、各阶段用时、调用、tokens、费用）。首页「速度与成本」的大数字、阶段耗时图和对比表都由它算出来；`headline` 指定首屏引用哪一次，`chart` 指定图里画哪几次。
+- `cases/manifest.json`：案例清单。每个案例写项目目录（`project`）或成片文件（`files`），加上原片链接，可选 `skip`（排除个别成片）和 `benchmark`（引用上面的实测，案例卡上的用时和费用就从这里来）。
 
-`--skip <渲染任务 ID 前缀>` 可排除个别不合格的成片；`run.json` 里写这次运行的实测数据，`found` / `rendered` 由脚本从项目里统计。
-
-只有成片文件时（社区投稿、旧 demo）：
+新一批 demo 跑完后：
 
 ```bash
-python3 scripts/add_case.py --id kojima-wired --scene interview \
-  --source-url https://www.youtube.com/watch?v=02Ah5VQrzvA --source-title "..." --source-channel WIRED --source-duration 1033 \
-  --file "douyin:interview:/path/clip.mp4:第一行标题|第二行标题" \
-  --contributor-name someone --contributor-url https://github.com/someone
+# 1. 有新的实测：在 data/benchmarks.json 加一行或改数字
+# 2. 有新项目：在 cases/manifest.json 加一条，或改 project 路径；批次号 batch 改成新的
+python3 scripts/build_cases.py            # 全部重建；只重建某几个：build_cases.py tim-luoyonghao
+python3 scripts/build_cases.py --prune    # 同时删掉清单里已经去掉的案例
+node --test scripts/*.test.cjs
 ```
 
-导入后跑 `node --test scripts/*.test.cjs`，再本地预览 `python3 -m http.server` 打开 `/cases/`。
+路径里的 `{projects}` / `{demos}` 来自清单顶部的 `projects_root` / `demos_root`，可用环境变量 `AUTOCLIP_PROJECTS` / `AUTOCLIP_DEMOS` 覆盖。`batch` 会作为媒体地址的 `?v=` 参数，换批后浏览器和 CDN 不会继续用旧视频。
+
+单个案例也可以直接用 `scripts/add_case.py`（参数见文件头），适合临时收录社区投稿。
 
 ## 社区投稿
 
@@ -61,6 +58,12 @@ python3 scripts/add_case.py --id kojima-wired --scene interview \
 
 维护者挑选后用上面的 `--file` 或 `--project` 方式导入，`contributor` 写投稿人。
 
-## 体积
+## 媒体放在哪
 
-当前约 4 MB / 条（三份媒体合计）。案例数过百或仓库超过 500 MB 时，把媒体移到 GitHub Release 附件或对象存储，`library.js` 里的 `media()` 改成读 `case.media_base`。
+每条成片三份媒体合计约 4 MB。默认和网页一起放在本仓库；移到对象存储只改一个配置：
+
+```bash
+AUTOCLIP_MEDIA_BASE=https://media.example.com/cases/ scripts/upload_media.sh   # rclone 上传并写入 index.json
+```
+
+之后重建时在环境里保留 `AUTOCLIP_MEDIA_BASE`（清单里的 `media_base` 读它）。`library.js` 从 `media_base` 读媒体，埋点也会识别这个域名。迁移后可以把 `cases/*/*.mp4` 从仓库里删掉、加进 `.gitignore`，只留 `case.json`。

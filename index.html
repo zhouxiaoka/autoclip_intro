@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AutoClip — 一条长视频，一键剪成各平台能直接发的短视频</title>
+<title>AutoClip — 一个链接，一键出片</title>
 <meta name="description" content="开源免费的 AI 视频切片工具。贴一个链接、选好平台，AutoClip 挑出最值得发的片段，自动取景、配双语字幕和标题，直接导出抖音、小红书、TikTok、YouTube Shorts 成片。在你的电脑上运行。">
 <meta property="og:title" content="AutoClip — 一条长视频，一键剪成各平台能直接发的短视频">
 <meta property="og:description" content="开源免费的 AI 视频切片工具。贴一个链接、选好平台，AutoClip 挑出最值得发的片段，自动取景、配双语字幕和标题，直接导出抖音、小红书、TikTok、YouTube Shorts 成片。在你的电脑上运行。">
@@ -58,6 +58,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="tokens.css">
 <link rel="stylesheet" href="assets/home.css">
+<script data-serif-preview>if(/[?&]serif=1/.test(location.search)){document.documentElement.classList.add('serif-preview');var l=document.createElement('link');l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;600&display=swap';document.head.append(l);}</script>
 </head>
 <body class="site-home v2">
 
@@ -95,33 +96,78 @@
 
 <main id="top">
 
-<section class="hero">
-  <div class="container">
-    <span class="badge"><i></i><span data-i18n="hero.badge">开源 · 免费 · 在你的电脑上运行</span></span>
-    <h1 data-i18n-html="hero.h1">一条长视频，<br>一键剪成能直接发的短视频。</h1>
-    <p class="lede" data-i18n="hero.lede"></p>
-    <div class="hero-cta">
-      <a class="btn btn-primary" id="cta-primary" href="https://github.com/zhouxiaoka/autoclip/releases/download/v1.4.0/AutoClip.Desktop_1.4.0_aarch64.dmg">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg>
-        <span id="cta-primary-label" data-i18n="hero.cta.mac">下载 macOS 版</span>
-      </a>
-      <a class="btn btn-secondary" href="#clips" data-i18n="hero.watch">看真实成片</a>
-    </div>
-    <div class="hero-alt">
-      <span data-i18n="hero.alt.also">也支持</span>
-      <a id="cta-alt" href="https://github.com/zhouxiaoka/autoclip/releases/download/v1.4.0/AutoClip.Desktop_1.4.0_x64-setup.exe"><span id="cta-alt-label" data-i18n="hero.alt.win">Windows</span></a>
-      <span>·</span>
-      <a href="#developers" data-i18n="hero.alt.docker">Docker / CLI / MCP</a>
-      <span>·</span>
-      <span class="mono" data-i18n="hero.note">v1.4.0 · 开源 MIT · 免费</span>
+<section class="hero hero-split">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <span class="badge"><i></i><span data-i18n="hero.badge">开源 · 免费 · 在你的电脑上运行</span></span>
+      <h1 data-i18n-html="hero.h1">一个链接，<br>一键出片。</h1>
+      <p class="lede" data-i18n="hero.lede"></p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" id="cta-primary" href="https://github.com/zhouxiaoka/autoclip/releases/download/v1.4.0/AutoClip.Desktop_1.4.0_aarch64.dmg">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg>
+          <span id="cta-primary-label" data-i18n="hero.cta.mac">下载 macOS 版</span>
+        </a>
+        <a class="btn btn-secondary" href="#clips" data-i18n="hero.watch">看真实成片</a>
+      </div>
+      <div class="hero-alt">
+        <span data-i18n="hero.alt.also">也支持</span>
+        <a id="cta-alt" href="https://github.com/zhouxiaoka/autoclip/releases/download/v1.4.0/AutoClip.Desktop_1.4.0_x64-setup.exe"><span id="cta-alt-label" data-i18n="hero.alt.win">Windows</span></a>
+        <span>·</span>
+        <a href="#developers" data-i18n="hero.alt.docker">Docker / CLI / MCP</a>
+        <span>·</span>
+        <span class="mono" data-i18n="hero.note">v1.4.0 · 开源 MIT · 免费</span>
+      </div>
     </div>
 
-    <div class="flow" aria-hidden="true">
-      <div class="flow-url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M10 14a5 5 0 007.07 0l3-3a5 5 0 00-7.07-7.07l-1 1M14 10a5 5 0 00-7.07 0l-3 3a5 5 0 007.07 7.07l1-1"/></svg><span data-i18n="flow.url">youtube.com/watch?v=… · 1:43:12</span></div>
-      <span class="flow-arrow">→</span>
-      <div class="flow-platforms"><span class="on" data-i18n="flow.p1">抖音</span><span class="on" data-i18n="flow.p2">小红书</span><span class="on">TikTok</span><span>Reels</span><span class="on">Shorts</span><span data-i18n="flow.p6">B 站</span><span>YouTube</span></div>
-      <span class="flow-arrow">→</span>
-      <span class="flow-out"><i></i><span data-i18n="flow.out">10 条成片 · 7.5 分钟</span></span>
+    <div class="hero-art" aria-hidden="true">
+      <div class="art-bg" data-poster-bg="tim-luoyonghao/01"></div>
+      <div class="demo" data-demo>
+        <div class="demo-bar"><i></i><i></i><i></i><span>AutoClip</span></div>
+        <div class="demo-body">
+          <div class="demo-url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M10 14a5 5 0 007.07 0l3-3a5 5 0 00-7.07-7.07l-1 1M14 10a5 5 0 00-7.07 0l-3 3a5 5 0 007.07 7.07l1-1"/></svg><span data-typed="https://youtube.com/watch?v=Hrbq66XqtCo"></span><b class="caret"></b></div>
+          <div class="demo-pills"><span data-pill data-i18n="flow.p1">抖音</span><span data-pill data-i18n="flow.p2">小红书</span><span data-pill>TikTok</span><span data-pill>Shorts</span><span data-i18n="flow.p6">B 站</span><span>Reels</span></div>
+          <button class="demo-go" type="button" tabindex="-1"><span data-i18n="demo.go">一键出片</span></button>
+          <ol class="demo-steps">
+            <li data-step><span data-i18n="demo.s1">下载</span><em class="mono">1:00</em></li>
+            <li data-step><span data-i18n="demo.s2">字幕</span><em class="mono" data-i18n="demo.s2v">作者字幕</em></li>
+            <li data-step><span data-i18n="demo.s3">挑片段</span><em class="mono">0:25</em></li>
+            <li data-step><span data-i18n="demo.s4">取景 · 包装</span><em class="mono">2:30</em></li>
+            <li data-step><span data-i18n="demo.s5">渲染 10 条</span><em class="mono">3:00</em></li>
+          </ol>
+          <div class="demo-done"><span class="mono" data-clock>0:00</span><span data-bench="flow">10 条成片 · 7.5 分钟</span></div>
+        </div>
+      </div>
+      <div class="demo-out">
+        <img data-poster="jensen-dwarkesh/02" alt="">
+        <img data-poster="tim-luoyonghao/05" alt="">
+        <img data-poster="dario-dwarkesh/04" alt="">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section band-white" id="oneclick">
+  <div class="container">
+    <span class="eyebrow" data-i18n="one.eyebrow">一键</span>
+    <h2 data-i18n-html="one.h2">不用剪辑器，<br>也不用跟 AI 聊天。</h2>
+    <p class="lede" data-i18n="one.lede"></p>
+    <div class="ways">
+      <article class="way old">
+        <span class="way-k mono" data-i18n="one.a.k">剪辑软件</span>
+        <div class="tline" aria-hidden="true"><i class="ph"></i><div class="tr"><b style="left:4%;width:22%"></b><b style="left:30%;width:14%"></b><b style="left:50%;width:30%"></b></div><div class="tr"><b style="left:8%;width:38%"></b><b style="left:52%;width:18%"></b></div><div class="tr sub"><b style="left:2%;width:10%"></b><b style="left:14%;width:9%"></b><b style="left:25%;width:12%"></b><b style="left:39%;width:8%"></b><b style="left:49%;width:11%"></b><b style="left:62%;width:9%"></b></div></div>
+        <p data-i18n="one.a.p"></p>
+      </article>
+      <article class="way old">
+        <span class="way-k mono" data-i18n="one.b.k">AI 对话</span>
+        <div class="chat" aria-hidden="true" data-chat></div>
+        <p data-i18n="one.b.p"></p>
+      </article>
+      <article class="way now">
+        <span class="way-k mono" data-i18n="one.c.k">AutoClip</span>
+        <div class="one-btn" aria-hidden="true"><span data-i18n="demo.go">一键出片</span></div>
+        <ul class="one-list"><li data-i18n="one.c.1"></li><li data-i18n="one.c.2"></li><li data-i18n="one.c.3"></li></ul>
+        <p data-i18n="one.c.p"></p>
+      </article>
     </div>
   </div>
 </section>
@@ -138,72 +184,63 @@
     </div>
   </div>
   <div data-library="home" data-limit="12"></div>
-  <div class="container">
-
-    <div class="templates" id="templates">
-      <span class="eyebrow" data-i18n="tpl.eyebrow">包装模板</span>
-      <h2 data-i18n="tpl.h2">每个平台，各有各的样子。</h2>
-      <p class="lede" data-i18n="tpl.lede"></p>
-      <div class="tpl-grid">
-        <article class="tpl">
-          <span data-output-ref="altman-yc/01"></span>
-          <div>
-            <span class="k" data-i18n="tpl.a.k">抖音 · 小红书</span>
-            <h3 data-i18n="tpl.a.h">访谈式</h3>
-            <ul><li data-i18n="tpl.a.1"></li><li data-i18n="tpl.a.2"></li><li data-i18n="tpl.a.3"></li><li data-i18n="tpl.a.4"></li></ul>
-          </div>
-        </article>
-        <article class="tpl">
-          <span data-output-ref="dario-dwarkesh/04"></span>
-          <div>
-            <span class="k" data-i18n="tpl.b.k">TikTok · Reels · Shorts</span>
-            <h3 data-i18n="tpl.b.h">播客式</h3>
-            <ul><li data-i18n="tpl.b.1"></li><li data-i18n="tpl.b.2"></li><li data-i18n="tpl.b.3"></li><li data-i18n="tpl.b.4"></li></ul>
-          </div>
-        </article>
-      </div>
-      <div class="mood">
-        <span class="sw" aria-hidden="true"><i style="background:#5A8BFF"></i><i style="background:#F2B544"></i><i style="background:#FF6F59"></i><i style="background:#46D3A6"></i><i style="background:#F4DC3C"></i><i style="background:#FF7FA9"></i><i style="background:#B69CFF"></i></span>
-        <span data-i18n="tpl.mood"></span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="numbers">
-  <div class="container">
-    <span class="eyebrow" data-i18n="num.eyebrow">速度与成本</span>
-    <h2 data-i18n="num.h2">更快，也更便宜。</h2>
-    <p class="lede" data-i18n="num.lede"></p>
-    <div class="stats">
-      <div class="stat"><b data-i18n-html="num.1.b">7.5 分钟</b><span data-i18n="num.1.s"></span></div>
-      <div class="stat"><b data-i18n="num.2.b">¥0.09</b><span data-i18n="num.2.s"></span></div>
-      <div class="stat"><b data-i18n="num.3.b">−83%</b><span data-i18n="num.3.s"></span></div>
-      <div class="stat"><b data-i18n-html="num.4.b">约 7×</b><span data-i18n="num.4.s"></span></div>
-    </div>
-    <div class="runs">
-      <table>
-        <thead><tr><th data-i18n="run.h.video">视频</th><th data-i18n="run.h.ver">流程</th><th data-i18n="run.h.time">链接到出片</th><th data-i18n="run.h.calls">模型调用</th><th data-i18n="run.h.tokens">Tokens（输入 / 输出）</th><th data-i18n="run.h.cost">模型费用</th><th data-i18n="run.h.clips">片段 → 渲染</th></tr></thead>
-        <tbody>
-          <tr><td><span class="dot"></span>MrBeast · 2h06m</td><td data-i18n="run.old">旧版</td><td class="mono" data-i18n="run.t1">65 分钟</td><td class="mono">194</td><td class="mono">531k / 106k</td><td class="mono">¥0.64</td><td class="mono" data-i18n="run.c1">33 → 33</td></tr>
-          <tr><td><span class="dot"></span>Karpathy · 2h26m</td><td data-i18n="run.mid">部分新版</td><td class="mono" data-i18n="run.t2">34 分钟</td><td class="mono">53</td><td class="mono">143k / 25k</td><td class="mono">¥0.16</td><td class="mono" data-i18n="run.c2">25 → 25</td></tr>
-          <tr class="new"><td><span class="dot"></span>Jensen Huang · 1h43m</td><td data-i18n="run.new">新版</td><td class="mono" data-i18n="run.t3">7.5 分钟</td><td class="mono">34</td><td class="mono">77k / 12k</td><td class="mono">¥0.09</td><td class="mono" data-i18n="run.c3">21 → 前 10 条</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="footnote" data-i18n="num.foot"></p>
-  </div>
 </section>
 
 <section class="section" id="how">
   <div class="container">
-    <span class="eyebrow" data-i18n="how.eyebrow">怎么用</span>
-    <h2 data-i18n="how.h2">贴链接，选平台，拿成片。</h2>
-    <div class="steps">
-      <article class="step"><span class="n">01</span><h3 data-i18n="how.1.h"></h3><p data-i18n="how.1.p"></p></article>
-      <article class="step"><span class="n">02</span><h3 data-i18n="how.2.h"></h3><p data-i18n="how.2.p"></p></article>
-      <article class="step"><span class="n">03</span><h3 data-i18n="how.3.h"></h3><p data-i18n="how.3.p"></p></article>
+    <span class="eyebrow" data-i18n="how.eyebrow">怎么做到的</span>
+    <h2 data-i18n="how.h2">你只做第一步。</h2>
+    <div class="story">
+      <ol class="story-nav">
+        <li data-story-nav="0"><span class="mono">01</span><b data-i18n="how.1.h"></b></li>
+        <li data-story-nav="1"><span class="mono">02</span><b data-i18n="how.2.h"></b></li>
+        <li data-story-nav="2"><span class="mono">03</span><b data-i18n="how.3.h"></b></li>
+        <li data-story-nav="3"><span class="mono">04</span><b data-i18n="how.4.h"></b></li>
+      </ol>
+      <div class="story-panels">
+        <article class="panel" data-story="0">
+          <h3 data-i18n="how.1.h"></h3><p data-i18n="how.1.p"></p>
+          <div class="pane">
+            <div class="demo-url still"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M10 14a5 5 0 007.07 0l3-3a5 5 0 00-7.07-7.07l-1 1M14 10a5 5 0 00-7.07 0l-3 3a5 5 0 007.07 7.07l1-1"/></svg><span>https://www.bilibili.com/video/BV1B5xkzPEhx</span></div>
+            <div class="plat-grid"><span class="on" data-i18n="flow.p1">抖音</span><span class="on" data-i18n="flow.p2">小红书</span><span data-i18n="flow.p6">B 站</span><span class="on">TikTok</span><span>Reels</span><span class="on">Shorts</span><span>YouTube</span></div>
+          </div>
+        </article>
+        <article class="panel" data-story="1">
+          <h3 data-i18n="how.2.h"></h3><p data-i18n="how.2.p"></p>
+          <div class="pane"><ol class="cands" data-cands="tim-luoyonghao"></ol><p class="pane-foot mono" data-i18n="how.2.foot"></p></div>
+        </article>
+        <article class="panel" data-story="2">
+          <h3 data-i18n="how.3.h"></h3><p data-i18n="how.3.p"></p>
+          <div class="pane pane-tpl">
+            <div class="tpl-mini"><span data-output-ref="altman-yc/01"></span><b data-i18n="tpl.a.h">访谈式</b><span class="mono" data-i18n="tpl.a.k">抖音 · 小红书</span></div>
+            <div class="tpl-mini"><span data-output-ref="dario-dwarkesh/04"></span><b data-i18n="tpl.b.h">播客式</b><span class="mono" data-i18n="tpl.b.k">TikTok · Reels · Shorts</span></div>
+            <div class="mood"><span class="sw"><i style="background:#5A8BFF"></i><i style="background:#F2B544"></i><i style="background:#FF6F59"></i><i style="background:#46D3A6"></i><i style="background:#F4DC3C"></i><i style="background:#FF7FA9"></i><i style="background:#B69CFF"></i></span><span data-i18n="tpl.mood"></span></div>
+          </div>
+        </article>
+        <article class="panel" data-story="3">
+          <h3 data-i18n="how.4.h"></h3><p data-i18n="how.4.p"></p>
+          <div class="pane pane-kit">
+            <img data-poster="tim-luoyonghao/07" alt="">
+            <div class="kit-mock">
+              <span class="mono" data-i18n="how.4.k">发布包 · 抖音</span>
+              <b data-kit-title="tim-luoyonghao/07"></b>
+              <i class="sk w90"></i><i class="sk w70"></i><i class="sk w40 accent"></i>
+              <div class="kit-files mono"><span data-i18n="how.4.f1">成片.mp4</span><span data-i18n="how.4.f2">封面.jpg</span><span data-i18n="how.4.f3">发布文案.txt</span></div>
+              <div class="kit-btns"><span data-i18n="how.4.b1">复制文案</span><span class="cta" data-i18n="how.4.b2">下载发布包</span></div>
+            </div>
+          </div>
+        </article>
+      </div>
     </div>
+  </div>
+</section>
+
+<section class="section band-white" id="numbers">
+  <div class="container">
+    <span class="eyebrow" data-i18n="num.eyebrow">速度与成本</span>
+    <h2 data-i18n="num.h2">更快，也更便宜。</h2>
+    <p class="lede" data-i18n="num.lede"></p>
+    <div data-benchmarks></div>
   </div>
 </section>
 
@@ -324,130 +361,306 @@
 
   var T = {
     zh: {
-      'title':'AutoClip — 一条长视频，一键剪成各平台能直接发的短视频',
-      'meta.desc':'开源免费的 AI 视频切片工具。贴一个链接、选好平台，AutoClip 挑出最值得发的片段，自动取景、配双语字幕和标题，直接导出抖音、小红书、TikTok、YouTube Shorts 成片。在你的电脑上运行。',
-      'nav.clips':'案例','nav.templates':'模板','nav.numbers':'速度与成本','nav.developers':'开发者','nav.faq':'常见问题','nav.cta':'下载',
+      'title':'AutoClip — 一个链接，一键出片',
+      'meta.desc':'开源免费、在你电脑上运行的 AI 视频切片工具。贴一个链接、选好平台，一键得到能直接发布的成片、封面、标题和简介。不用剪辑器，也不用跟 AI 来回对话。',
+      'nav.clips':'案例',
+      'nav.templates':'模板',
+      'nav.numbers':'速度与成本',
+      'nav.developers':'开发者',
+      'nav.faq':'常见问题',
+      'nav.cta':'下载',
       'hero.badge':'开源 · 免费 · 在你的电脑上运行',
-      'hero.h1':'一条长视频，<br>一键剪成能直接发的短视频。',
-      'hero.lede':'贴一个链接，选好要发的平台。AutoClip 挑出最值得发的片段，跟着说话人取景，配好双语字幕和标题，直接导出抖音、小红书、TikTok、YouTube Shorts 成片。',
-      'hero.cta.mac':'下载 macOS 版','hero.cta.win':'下载 Windows 版','hero.watch':'看真实成片',
-      'hero.alt.also':'也支持','hero.alt.win':'Windows','hero.alt.mac':'macOS','hero.alt.releases':'全部版本','hero.alt.docker':'Docker / CLI / MCP',
+      'hero.h1':'一个链接，<br>一键出片。',
+      'hero.lede':'贴一个视频链接，选好平台。AutoClip 在你的电脑上挑出最值得发的片段，配好字幕、标题、封面和简介，直接交出能发布的成片。又快，又便宜。',
+      'hero.cta.mac':'下载 macOS 版',
+      'hero.cta.win':'下载 Windows 版',
+      'hero.watch':'看真实成片',
+      'hero.alt.also':'也支持',
+      'hero.alt.win':'Windows',
+      'hero.alt.mac':'macOS',
+      'hero.alt.releases':'全部版本',
+      'hero.alt.docker':'Docker / CLI / MCP',
       'hero.note':'v1.4.0 · 开源 MIT · 免费',
-      'flow.url':'youtube.com/watch?v=… · 1:43:12','flow.p1':'抖音','flow.p2':'小红书','flow.p6':'B 站','flow.out':'10 条成片 · 7.5 分钟',
-      'clips.eyebrow':'案例库','clips.h2':'贴一个链接，交出一整套发布物。',
+      'flow.p1':'抖音',
+      'flow.p2':'小红书',
+      'flow.p6':'B 站',
+      'clips.eyebrow':'案例库',
+      'clips.h2':'贴一个链接，交出一整套发布物。',
       'clips.lede':'这里收录 AutoClip 直接产出的真实成片，没有人工修改，并持续更新。点开任意一条，看它为目标平台准备的交付包：成片、封面、标题、简介和话题。也欢迎投稿你做的成片。',
-      'tpl.eyebrow':'包装模板','tpl.h2':'每个平台，各有各的样子。',
+      'tpl.eyebrow':'包装模板',
+      'tpl.h2':'每个平台，各有各的样子。',
       'tpl.lede':'同一个片段，发抖音和发 TikTok 不该长得一样。AutoClip 按平台的画幅、时长和观看习惯分别包装，可以随时追加平台版本。',
-      'tpl.a.k':'抖音 · 小红书','tpl.a.h':'访谈式',
-      'tpl.a.1':'上方两行标题，一眼知道在讲什么','tpl.a.2':'4:3 说话人窗口，主持人与嘉宾切换时跟着说话的人走','tpl.a.3':'中英双语字幕，外语素材自动翻成中文','tpl.a.4':'左下名牌与编辑点评标签',
-      'tpl.b.k':'TikTok · Reels · Shorts','tpl.b.h':'播客式',
-      'tpl.b.1':'全屏跟随说话人取景','tpl.b.2':'逐词高亮字幕，关键词自动强调','tpl.b.3':'开头一句 hook，前三秒留住人','tpl.b.4':'说话人名牌，原片自带字幕时保留完整画面',
+      'tpl.a.k':'抖音 · 小红书',
+      'tpl.a.h':'访谈式',
+      'tpl.a.1':'上方两行标题，一眼知道在讲什么',
+      'tpl.a.2':'4:3 说话人窗口，主持人与嘉宾切换时跟着说话的人走',
+      'tpl.a.3':'中英双语字幕，外语素材自动翻成中文',
+      'tpl.a.4':'左下名牌与编辑点评标签',
+      'tpl.b.k':'TikTok · Reels · Shorts',
+      'tpl.b.h':'播客式',
+      'tpl.b.1':'全屏跟随说话人取景',
+      'tpl.b.2':'逐词高亮字幕，关键词自动强调',
+      'tpl.b.3':'开头一句 hook，前三秒留住人',
+      'tpl.b.4':'说话人名牌，原片自带字幕时保留完整画面',
       'tpl.mood':'模型先判断每段内容的情绪（冷静、严肃、强观点、真诚、轻松），再从 7 套配色和多种字幕动效里挑。每条风格不同，同一条在各平台保持一致。',
-      'num.eyebrow':'速度与成本','num.h2':'更快，也更便宜。',
-      'num.lede':'这一版把挑片从几十次模型调用改成一次通读全文，模型调用并行执行，有作者字幕就直接用，渲染改用电脑自带的硬件编码器。',
-      'num.1.b':'7.5<small>分钟</small>','num.1.s':'1 小时 43 分钟的访谈，从贴链接到 10 条成片',
-      'num.2.b':'¥0.09','num.2.s':'这条视频全部的模型费用',
-      'num.3.b':'−83%','num.3.s':'每小时原片消耗的 tokens，对比旧版',
-      'num.4.b':'7×','num.4.s':'每小时原片的出片速度，约为旧版的 7 倍',
-      'run.h.video':'视频','run.h.ver':'流程','run.h.time':'链接到出片','run.h.calls':'模型调用','run.h.tokens':'Tokens（输入 / 输出）','run.h.cost':'模型费用','run.h.clips':'片段 → 渲染',
-      'run.old':'旧版','run.mid':'部分新版','run.new':'新版','run.t1':'65 分钟','run.t2':'34 分钟','run.t3':'7.5 分钟','run.c1':'33 → 33','run.c2':'25 → 25','run.c3':'21 → 前 10 条',
-      'num.foot':'2026 年 10 月 1 日在同一台 Mac 上实测，分析模型 qwen-plus（每百万 tokens 输入 ¥0.8、输出 ¥2），费用只含模型调用。三条是不同的视频：Jensen 那条有作者上传的字幕，没有跑本地语音识别；没有字幕的视频需要先转写，用时会更长。新版默认只自动渲染评分最高的 10 条，其余列为备选，点一下再做。按每小时原片折算，出片用时约 31 → 4.4 分钟，模型费用约 ¥0.30 → ¥0.05。',
-      'how.eyebrow':'怎么用','how.h2':'贴链接，选平台，拿成片。',
-      'how.1.h':'贴链接','how.1.p':'YouTube、B 站链接，或者直接拖入本地视频。有作者上传的字幕就直接用；没有的话在本地用 Whisper 或 SenseVoice 转写。',
-      'how.2.h':'选平台','how.2.p':'抖音、小红书、TikTok、Reels、YouTube Shorts、B 站、YouTube，可以多选。之后想追加平台，不用从头再来。',
-      'how.3.h':'拿成片','how.3.p':'先自动做评分最高的 10 条，其余列为备选，点「生成这条」再做。成片可以在编辑器里改边界、文字和画幅，然后下载或直接发布。',
-      'cmp.eyebrow':'为什么是 AutoClip','cmp.h2':'同样的成片，不用按月付订阅。',
+      'num.eyebrow':'速度与成本',
+      'num.h2':'更快，也更便宜。',
+      'num.lede':'这一版把挑片从上百次模型调用改成一次通读全文，调用并行执行，有作者字幕就直接用，渲染改用电脑自带的硬件编码器。下面是同一台 Mac 上的实测。',
+      'cmp.eyebrow':'为什么是 AutoClip',
+      'cmp.h2':'同样的成片，不用按月付订阅。',
       'cmp.col.b':'云端订阅工具（如 OpusClip）',
-      'cmp.1.l':'费用','cmp.1.a':'软件免费；模型按量付费，实测一条 1h43m 访谈 ¥0.09','cmp.1.b':'按月订阅，按处理时长计额度',
-      'cmp.2.l':'视频在哪处理','cmp.2.a':'你的电脑。云端模型只收到字幕文本','cmp.2.b':'上传到服务商的云端',
-      'cmp.3.l':'模型','cmp.3.a':'自选 Qwen、DeepSeek、GPT、Gemini 等，或本地 Ollama','cmp.3.b':'平台指定',
-      'cmp.4.l':'中文平台','cmp.4.a':'抖音、小红书、B 站专属模板，外语素材自动配中文字幕','cmp.4.b':'以海外平台为主',
-      'cmp.5.l':'代码与自动化','cmp.5.a':'MIT 开源，可改、可自部署；CLI / MCP 直接接 Agent','cmp.5.b':'闭源；API 视套餐而定',
+      'cmp.1.l':'费用',
+      'cmp.1.a':'软件免费；模型按量付费，实测一条 1h43m 访谈 ¥0.09',
+      'cmp.1.b':'按月订阅，按处理时长计额度',
+      'cmp.2.l':'视频在哪处理',
+      'cmp.2.a':'你的电脑。云端模型只收到字幕文本',
+      'cmp.2.b':'上传到服务商的云端',
+      'cmp.3.l':'模型',
+      'cmp.3.a':'自选 Qwen、DeepSeek、GPT、Gemini 等，或本地 Ollama',
+      'cmp.3.b':'平台指定',
+      'cmp.4.l':'中文平台',
+      'cmp.4.a':'抖音、小红书、B 站专属模板，外语素材自动配中文字幕',
+      'cmp.4.b':'以海外平台为主',
+      'cmp.5.l':'代码与自动化',
+      'cmp.5.a':'MIT 开源，可改、可自部署；CLI / MCP 直接接 Agent',
+      'cmp.5.b':'闭源；API 视套餐而定',
       'cmp.foot':'右栏按同类云端产品 2026 年 10 月的公开页面整理，具体以各产品最新说明为准。',
-      'dev.eyebrow':'开发者','dev.h2':'一条命令出片，也能交给 Agent。',
+      'dev.eyebrow':'开发者',
+      'dev.h2':'一条命令出片，也能交给 Agent。',
       'dev.lede':'桌面应用、命令行和 MCP 共用同一套流程和数据目录。命令行出的项目，在桌面端首页直接可见。',
-      'dev.1':'批量处理，--json 输出给脚本和流水线。','dev.2':'7 个工具，Claude、Cursor、opencode 等 Agent 可以直接调用出片。','dev.3':'自建 Web 服务，跑在服务器或 NAS 上。',
-      'dev.c1':'# 本地模型，一条命令出片','dev.c2':'# 导出 Shorts 竖屏版','dev.c3':'# 接入 opencode 等 MCP 客户端','dev.docs':'CLI / MCP 文档 →',
-      'faq.eyebrow':'常见问题','faq.h2':'你大概想问的。',
+      'dev.1':'批量处理，--json 输出给脚本和流水线。',
+      'dev.2':'7 个工具，Claude、Cursor、opencode 等 Agent 可以直接调用出片。',
+      'dev.3':'自建 Web 服务，跑在服务器或 NAS 上。',
+      'dev.c1':'# 本地模型，一条命令出片',
+      'dev.c2':'# 导出 Shorts 竖屏版',
+      'dev.c3':'# 接入 opencode 等 MCP 客户端',
+      'dev.docs':'CLI / MCP 文档 →',
+      'faq.eyebrow':'常见问题',
+      'faq.h2':'你大概想问的。',
       'fb.alt':'可复现的 Bug 用 <a href="https://github.com/zhouxiaoka/autoclip/issues/new/choose" target="_blank" rel="noopener">GitHub Issues</a>。讨论：<a href="https://github.com/zhouxiaoka/autoclip/discussions/127" target="_blank" rel="noopener">公告</a>、<a href="https://github.com/zhouxiaoka/autoclip/discussions/128" target="_blank" rel="noopener">第一次出片</a>、<a href="https://github.com/zhouxiaoka/autoclip/discussions/129" target="_blank" rel="noopener">想法与路线图</a>。已知问题见 <a href="https://github.com/zhouxiaoka/autoclip/issues/96" target="_blank" rel="noopener">置顶帖</a>。',
       'fb.stuck':'第一次出片卡住？去 <a href="https://github.com/zhouxiaoka/autoclip/discussions/128" target="_blank" rel="noopener">第一次出片问答</a>。',
-      'faq.1.q':'要花钱吗？','faq.1.a':'AutoClip 免费开源。分析用你自己的模型 Key，费用由服务商按量收取：实测一条 1 小时 43 分钟的访谈约 ¥0.09。用本地 Ollama / LM Studio 则没有模型费用。',
-      'faq.2.q':'我的视频会被上传吗？','faq.2.a':'剪辑与渲染都在你的电脑上。使用云端模型时，只发送字幕文本；成片只有在你点「发布」时才会上传到你连接的平台。',
-      'faq.3.q':'支持哪些视频来源？','faq.3.a':'YouTube、B 站链接和本地文件。有作者上传的字幕时直接使用；没有字幕可以在本地用 Whisper 或 SenseVoice 转写。',
-      'faq.4.q':'为什么第一次打开系统会警告？','faq.4.a':'安装包还没有做 Apple 公证和 Windows 代码签名。macOS 右键应用选「打开」；Windows 点「更多信息」再选「仍要运行」。之后不会再提示。',
-      'faq.5.q':'片段选得不好怎么办？','faq.5.a':'先换一个更强的模型试试。仍不理想，请在 <a class="link" href="https://github.com/zhouxiaoka/autoclip/issues/96" target="_blank" rel="noopener">GitHub 置顶帖</a>告诉我们视频类型、时长和模型，我们在收集样例改进挑片。',
-      'faq.6.q':'第一次怎么试？','faq.6.a':'先用一条 10–30 分钟、有字幕的访谈或播客，选一两个平台。卡住时看 <a class="link" href="https://github.com/zhouxiaoka/autoclip/discussions/128" target="_blank" rel="noopener">第一次出片问答</a>。',
-      'faq.7.q':'怎么发布到 B 站和海外平台？','faq.7.a':'在设置里配 Upload-Post 密钥和 B 站 Cookie，成片页勾选平台，默认先发到「仅自己」。逐步说明见 <a class="link" href="guides/publish/">发布教程</a>。',
-      'dl.eyebrow':'下载','dl.h2':'下一条好内容，从这里开始。','dl.lede':'macOS 与 Windows，免费。安装包自带 Python 和 FFmpeg，下载即用。',
-      'dl.mac.req':'Apple Silicon（M 系列）· macOS 13 或更高。Intel Mac 暂不支持。','dl.mac.btn':'下载 .dmg',
-      'dl.mac.sum':'首次打开提示','dl.mac.note':'安装包尚未做 Apple 公证。第一次打开时请在应用上右键，选「打开」；之后双击正常启动。',
-      'dl.win.req':'Windows 10 / 11，x64。按用户安装，不需要管理员权限；缺少 WebView2 时安装器会自动下载。','dl.win.btn':'下载安装包',
-      'dl.win.sum':'首次运行提示','dl.win.note':'安装包尚未做代码签名，SmartScreen 会拦一次。点「更多信息」再选「仍要运行」即可。',
+      'faq.1.q':'要花钱吗？',
+      'faq.1.a':'AutoClip 免费开源。分析用你自己的模型 Key，费用由服务商按量收取：实测一条 1 小时 43 分钟的访谈约 ¥0.09。用本地 Ollama / LM Studio 则没有模型费用。',
+      'faq.2.q':'我的视频会被上传吗？',
+      'faq.2.a':'剪辑与渲染都在你的电脑上。使用云端模型时，只发送字幕文本；成片只有在你点「发布」时才会上传到你连接的平台。',
+      'faq.3.q':'支持哪些视频来源？',
+      'faq.3.a':'YouTube、B 站链接和本地文件。有作者上传的字幕时直接使用；没有字幕可以在本地用 Whisper 或 SenseVoice 转写。',
+      'faq.4.q':'为什么第一次打开系统会警告？',
+      'faq.4.a':'安装包还没有做 Apple 公证和 Windows 代码签名。macOS 右键应用选「打开」；Windows 点「更多信息」再选「仍要运行」。之后不会再提示。',
+      'faq.5.q':'片段选得不好怎么办？',
+      'faq.5.a':'先换一个更强的模型试试。仍不理想，请在 <a class="link" href="https://github.com/zhouxiaoka/autoclip/issues/96" target="_blank" rel="noopener">GitHub 置顶帖</a>告诉我们视频类型、时长和模型，我们在收集样例改进挑片。',
+      'faq.6.q':'第一次怎么试？',
+      'faq.6.a':'先用一条 10–30 分钟、有字幕的访谈或播客，选一两个平台。卡住时看 <a class="link" href="https://github.com/zhouxiaoka/autoclip/discussions/128" target="_blank" rel="noopener">第一次出片问答</a>。',
+      'faq.7.q':'怎么发布到 B 站和海外平台？',
+      'faq.7.a':'在设置里配 Upload-Post 密钥和 B 站 Cookie，成片页勾选平台，默认先发到「仅自己」。逐步说明见 <a class="link" href="guides/publish/">发布教程</a>。',
+      'dl.eyebrow':'下载',
+      'dl.h2':'下一条好内容，从这里开始。',
+      'dl.lede':'macOS 与 Windows，免费。安装包自带 Python 和 FFmpeg，下载即用。',
+      'dl.mac.req':'Apple Silicon（M 系列）· macOS 13 或更高。Intel Mac 暂不支持。',
+      'dl.mac.btn':'下载 .dmg',
+      'dl.mac.sum':'首次打开提示',
+      'dl.mac.note':'安装包尚未做 Apple 公证。第一次打开时请在应用上右键，选「打开」；之后双击正常启动。',
+      'dl.win.req':'Windows 10 / 11，x64。按用户安装，不需要管理员权限；缺少 WebView2 时安装器会自动下载。',
+      'dl.win.btn':'下载安装包',
+      'dl.win.sum':'首次运行提示',
+      'dl.win.note':'安装包尚未做代码签名，SmartScreen 会拦一次。点「更多信息」再选「仍要运行」即可。',
       'dl.alt':'想跑在服务器或 NAS 上？<a href="https://github.com/zhouxiaoka/autoclip#readme" target="_blank" rel="noopener">Docker 部署与源码运行</a>见 GitHub README。',
-      'footer.cases':'案例库','footer.podcast':'访谈播客','footer.course':'课程讲解','footer.game':'游戏高光','footer.publish':'发布教程','footer.cover':'自动封面','footer.releases':'版本','footer.privacy':'隐私政策','footer.copy':'© 2025–2026 AutoClip · MIT 许可'
+      'footer.cases':'案例库',
+      'footer.podcast':'访谈播客',
+      'footer.course':'课程讲解',
+      'footer.game':'游戏高光',
+      'footer.publish':'发布教程',
+      'footer.cover':'自动封面',
+      'footer.releases':'版本',
+      'footer.privacy':'隐私政策',
+      'footer.copy':'© 2025–2026 AutoClip · MIT 许可',
+      'demo.go':'一键出片',
+      'demo.s1':'下载',
+      'demo.s2':'字幕',
+      'demo.s2v':'作者字幕',
+      'demo.s3':'挑片段',
+      'demo.s4':'取景 · 包装',
+      'demo.s5':'渲染 10 条',
+      'one.eyebrow':'一键',
+      'one.h2':'不用剪辑器，<br>也不用跟 AI 聊天。',
+      'one.lede':'做切片本来有两条路：在剪辑软件里一帧一帧拖，或者在对话框里跟 AI 一遍遍解释需求。AutoClip 把这两件事都拿掉了。',
+      'one.a.k':'剪辑软件',
+      'one.a.p':'找片段、拖时间线、对字幕、调样式、导出，换个平台再来一遍。',
+      'one.b.k':'AI 对话 / Agent',
+      'one.b.p':'解释需求，等它追问，纠正它，再解释一遍。一个下午过去了。',
+      'one.c.k':'AutoClip',
+      'one.c.1':'贴链接，选平台',
+      'one.c.2':'按一次',
+      'one.c.3':'拿到成片、封面、标题、简介和话题',
+      'one.c.p':'全部在你的电脑上完成。2–3 小时的访谈，模型费用一两毛钱。',
+      'how.eyebrow':'怎么做到的',
+      'how.h2':'你只做第一步。',
+      'how.1.h':'贴链接，选平台',
+      'how.1.p':'YouTube、B 站链接或本地视频。抖音、小红书、B 站、TikTok、Reels、Shorts、YouTube 可以多选，之后想加平台也不用重来。',
+      'how.2.h':'它读完全片，挑出值得发的',
+      'how.2.p':'整段字幕一次读完，挑出完整的问答和观点：从问题的第一句开始，到回答讲完、说话人停顿才结束。有作者字幕直接用，没有就在本地转写。',
+      'how.2.foot':'2–3 小时访谈通常挑出 18–33 段 · 自动做评分最高的 10 条 · 其余点一下再做',
+      'how.3.h':'按平台包装',
+      'how.3.p':'跟着说话人取景，外语自动翻成目标平台的语言，按内容情绪选配色和字幕动效。抖音和 TikTok 各有各的样子。',
+      'how.4.h':'交出整套发布包',
+      'how.4.p':'每条成片附带按平台规则写好的标题、简介和话题，和一张风格一致的封面。复制文案，或者打包下载，直接去发。',
+      'how.4.k':'发布包 · 抖音',
+      'how.4.f1':'成片.mp4',
+      'how.4.f2':'封面.jpg',
+      'how.4.f3':'发布文案.txt',
+      'how.4.b1':'复制文案',
+      'how.4.b2':'下载发布包'
     },
     en: {
-      'title':'AutoClip — One long video, ready-to-post clips for every platform',
-      'meta.desc':'Free, open-source AI clipping. Paste a link and pick your platforms: AutoClip finds the moments worth posting, frames the speaker, adds captions and titles, and exports finished clips for TikTok, Reels, YouTube Shorts and more. Runs on your computer.',
-      'nav.clips':'Cases','nav.templates':'Templates','nav.numbers':'Speed & cost','nav.developers':'Developers','nav.faq':'FAQ','nav.cta':'Download',
+      'title':'AutoClip — One link. One click. Ready-to-post clips.',
+      'meta.desc':'Free, open-source AI clipping that runs on your computer. Paste a link, pick platforms, and get ready-to-post clips with covers, titles and descriptions in one click. No editor, no back-and-forth with an AI chat.',
+      'nav.clips':'Cases',
+      'nav.templates':'Templates',
+      'nav.numbers':'Speed & cost',
+      'nav.developers':'Developers',
+      'nav.faq':'FAQ',
+      'nav.cta':'Download',
       'hero.badge':'Open source · Free · Runs on your computer',
-      'hero.h1':'One long video.<br>Ready-to-post clips for <em>every</em> platform.',
-      'hero.lede':'Paste a link and pick where you post. AutoClip finds the moments worth sharing, follows the speaker, adds captions and titles, and exports finished clips for TikTok, Reels, YouTube Shorts, Douyin and Xiaohongshu.',
-      'hero.cta.mac':'Download for macOS','hero.cta.win':'Download for Windows','hero.watch':'See real outputs',
-      'hero.alt.also':'Also for','hero.alt.win':'Windows','hero.alt.mac':'macOS','hero.alt.releases':'All releases','hero.alt.docker':'Docker / CLI / MCP',
+      'hero.h1':'One link.<br><em>One click.</em>',
+      'hero.lede':'Paste a video link and pick your platforms. AutoClip finds the moments worth posting on your own computer, adds captions, titles, a cover and a description, and hands you clips ready to publish. Fast, and cheap.',
+      'hero.cta.mac':'Download for macOS',
+      'hero.cta.win':'Download for Windows',
+      'hero.watch':'See real outputs',
+      'hero.alt.also':'Also for',
+      'hero.alt.win':'Windows',
+      'hero.alt.mac':'macOS',
+      'hero.alt.releases':'All releases',
+      'hero.alt.docker':'Docker / CLI / MCP',
       'hero.note':'v1.4.0 · Open source, MIT · Free',
-      'flow.url':'youtube.com/watch?v=… · 1:43:12','flow.p1':'Douyin','flow.p2':'Xiaohongshu','flow.p6':'Bilibili','flow.out':'10 clips · 7.5 min',
-      'clips.eyebrow':'Case library','clips.h2':'Paste one link. Get everything you need to post.',
+      'flow.p1':'Douyin',
+      'flow.p2':'Xiaohongshu',
+      'flow.p6':'Bilibili',
+      'clips.eyebrow':'Case library',
+      'clips.h2':'Paste one link. Get everything you need to post.',
       'clips.lede':'Real, untouched AutoClip outputs, updated as we go. Open any clip to see the delivery kit made for its platform: the video, cover, title, description and tags. Made something good? Share it.',
-      'tpl.eyebrow':'Templates','tpl.h2':'Each platform gets its own look.',
+      'tpl.eyebrow':'Templates',
+      'tpl.h2':'Each platform gets its own look.',
       'tpl.lede':'A clip for Douyin shouldn’t look like a clip for TikTok. AutoClip packages each version for the platform’s frame, length and viewing habits, and you can add another platform any time.',
-      'tpl.a.k':'Douyin · Xiaohongshu','tpl.a.h':'Interview',
-      'tpl.a.1':'Two-line headline on top, so viewers know the topic at a glance','tpl.a.2':'4:3 speaker window that follows whoever is talking','tpl.a.3':'Bilingual captions; foreign sources are translated automatically','tpl.a.4':'Name tag and editor’s-note labels',
-      'tpl.b.k':'TikTok · Reels · Shorts','tpl.b.h':'Podcast',
-      'tpl.b.1':'Full-frame framing that tracks the speaker','tpl.b.2':'Word-by-word captions with key words emphasised','tpl.b.3':'A one-line hook to hold the first three seconds','tpl.b.4':'Speaker name tag; burned-in source captions keep the full frame',
+      'tpl.a.k':'Douyin · Xiaohongshu',
+      'tpl.a.h':'Interview',
+      'tpl.a.1':'Two-line headline on top, so viewers know the topic at a glance',
+      'tpl.a.2':'4:3 speaker window that follows whoever is talking',
+      'tpl.a.3':'Bilingual captions; foreign sources are translated automatically',
+      'tpl.a.4':'Name tag and editor’s-note labels',
+      'tpl.b.k':'TikTok · Reels · Shorts',
+      'tpl.b.h':'Podcast',
+      'tpl.b.1':'Full-frame framing that tracks the speaker',
+      'tpl.b.2':'Word-by-word captions with key words emphasised',
+      'tpl.b.3':'A one-line hook to hold the first three seconds',
+      'tpl.b.4':'Speaker name tag; burned-in source captions keep the full frame',
       'tpl.mood':'The model reads each clip’s mood (calm, serious, bold, sincere or light) and picks from 7 palettes and several caption motions. Clips vary; each clip stays consistent across platforms.',
-      'num.eyebrow':'Speed & cost','num.h2':'Faster, and cheaper.',
-      'num.lede':'This version picks clips in one pass over the whole transcript instead of dozens of model calls, runs calls in parallel, uses the creator’s subtitles when they exist, and renders with your computer’s hardware encoder.',
-      'num.1.b':'7.5<small>min</small>','num.1.s':'From pasted link to 10 finished clips, for a 1h43m interview',
-      'num.2.b':'¥0.09','num.2.s':'Total model cost for that video (about US$0.01)',
-      'num.3.b':'−83%','num.3.s':'Tokens per hour of source, vs. the previous version',
-      'num.4.b':'7×','num.4.s':'Roughly 7× faster per hour of source than the previous version',
-      'run.h.video':'Video','run.h.ver':'Pipeline','run.h.time':'Link to clips','run.h.calls':'Model calls','run.h.tokens':'Tokens (in / out)','run.h.cost':'Model cost','run.h.clips':'Clips → rendered',
-      'run.old':'Previous','run.mid':'Partly new','run.new':'New','run.t1':'65 min','run.t2':'34 min','run.t3':'7.5 min','run.c1':'33 → 33','run.c2':'25 → 25','run.c3':'21 → top 10',
-      'num.foot':'Measured on 1 Oct 2026 on the same Mac with qwen-plus (¥0.8 per million input tokens, ¥2 per million output tokens); cost covers model calls only. These are three different videos: the Jensen interview had creator-uploaded subtitles, so no local speech recognition ran. Videos without subtitles need transcription first and take longer. The new version renders the top 10 clips automatically and lists the rest as backups you can make with one click. Per hour of source, time to clips went from about 31 to 4.4 minutes and model cost from about ¥0.30 to ¥0.05.',
-      'how.eyebrow':'How it works','how.h2':'Paste a link. Pick platforms. Get clips.',
-      'how.1.h':'Paste a link','how.1.p':'A YouTube or Bilibili link, or drop in a local file. Creator subtitles are used directly; without them, transcribe locally with Whisper or SenseVoice.',
-      'how.2.h':'Pick platforms','how.2.p':'Douyin, Xiaohongshu, TikTok, Reels, YouTube Shorts, Bilibili and YouTube. Pick several, and add more later without starting over.',
-      'how.3.h':'Get clips','how.3.p':'The 10 highest-scoring clips are made automatically; the rest wait as backups until you click “Make this one”. Adjust boundaries, text and framing in the editor, then download or publish.',
-      'cmp.eyebrow':'Why AutoClip','cmp.h2':'The same finished clips, without a monthly subscription.',
+      'num.eyebrow':'Speed & cost',
+      'num.h2':'Faster, and cheaper.',
+      'num.lede':'This version picks clips in one pass instead of over a hundred model calls, runs calls in parallel, uses creator subtitles when they exist, and renders with your computer’s hardware encoder. Measured on the same Mac.',
+      'cmp.eyebrow':'Why AutoClip',
+      'cmp.h2':'The same finished clips, without a monthly subscription.',
       'cmp.col.b':'Cloud subscription tools (e.g. OpusClip)',
-      'cmp.1.l':'Cost','cmp.1.a':'Free software; pay-as-you-go models. A 1h43m interview cost ¥0.09','cmp.1.b':'Monthly plans with processing-minute quotas',
-      'cmp.2.l':'Where your video goes','cmp.2.a':'Your computer. Cloud models only receive subtitle text','cmp.2.b':'Uploaded to the vendor’s cloud',
-      'cmp.3.l':'Models','cmp.3.a':'Your choice: Qwen, DeepSeek, GPT, Gemini and more, or local Ollama','cmp.3.b':'Chosen by the vendor',
-      'cmp.4.l':'Chinese platforms','cmp.4.a':'Templates for Douyin, Xiaohongshu and Bilibili, with Chinese captions for foreign sources','cmp.4.b':'Mostly global platforms',
-      'cmp.5.l':'Code & automation','cmp.5.a':'MIT open source, hackable and self-hostable; CLI / MCP for agents','cmp.5.b':'Closed source; API depends on plan',
+      'cmp.1.l':'Cost',
+      'cmp.1.a':'Free software; pay-as-you-go models. A 1h43m interview cost ¥0.09',
+      'cmp.1.b':'Monthly plans with processing-minute quotas',
+      'cmp.2.l':'Where your video goes',
+      'cmp.2.a':'Your computer. Cloud models only receive subtitle text',
+      'cmp.2.b':'Uploaded to the vendor’s cloud',
+      'cmp.3.l':'Models',
+      'cmp.3.a':'Your choice: Qwen, DeepSeek, GPT, Gemini and more, or local Ollama',
+      'cmp.3.b':'Chosen by the vendor',
+      'cmp.4.l':'Chinese platforms',
+      'cmp.4.a':'Templates for Douyin, Xiaohongshu and Bilibili, with Chinese captions for foreign sources',
+      'cmp.4.b':'Mostly global platforms',
+      'cmp.5.l':'Code & automation',
+      'cmp.5.a':'MIT open source, hackable and self-hostable; CLI / MCP for agents',
+      'cmp.5.b':'Closed source; API depends on plan',
       'cmp.foot':'The right column summarises public pages of comparable cloud products as of October 2026. Check each product’s latest terms.',
-      'dev.eyebrow':'Developers','dev.h2':'One command to clips, or hand it to an agent.',
+      'dev.eyebrow':'Developers',
+      'dev.h2':'One command to clips, or hand it to an agent.',
       'dev.lede':'The desktop app, CLI and MCP server share one pipeline and one data folder. Projects made from the command line show up in the desktop app.',
-      'dev.1':'Batch jobs, with --json output for scripts and pipelines.','dev.2':'Seven tools that Claude, Cursor, opencode and other agents can call to make clips.','dev.3':'Self-host the web app on a server or NAS.',
-      'dev.c1':'# Local model, one command to clips','dev.c2':'# Export a vertical Shorts version','dev.c3':'# Connect opencode or another MCP client','dev.docs':'CLI / MCP docs →',
-      'faq.eyebrow':'FAQ','faq.h2':'The questions you were about to ask.',
+      'dev.1':'Batch jobs, with --json output for scripts and pipelines.',
+      'dev.2':'Seven tools that Claude, Cursor, opencode and other agents can call to make clips.',
+      'dev.3':'Self-host the web app on a server or NAS.',
+      'dev.c1':'# Local model, one command to clips',
+      'dev.c2':'# Export a vertical Shorts version',
+      'dev.c3':'# Connect opencode or another MCP client',
+      'dev.docs':'CLI / MCP docs →',
+      'faq.eyebrow':'FAQ',
+      'faq.h2':'The questions you were about to ask.',
       'fb.alt':'Reproducible bugs: <a href="https://github.com/zhouxiaoka/autoclip/issues/new/choose" target="_blank" rel="noopener">GitHub Issues</a>. Discussions: <a href="https://github.com/zhouxiaoka/autoclip/discussions/127" target="_blank" rel="noopener">Announcements</a>, <a href="https://github.com/zhouxiaoka/autoclip/discussions/128" target="_blank" rel="noopener">first clip</a>, <a href="https://github.com/zhouxiaoka/autoclip/discussions/129" target="_blank" rel="noopener">ideas and roadmap</a>. Known issues: <a href="https://github.com/zhouxiaoka/autoclip/issues/96" target="_blank" rel="noopener">pinned issue</a>.',
       'fb.stuck':'Stuck on your first clip? See the <a href="https://github.com/zhouxiaoka/autoclip/discussions/128" target="_blank" rel="noopener">first-clip Q&amp;A</a>.',
-      'faq.1.q':'Does it cost anything?','faq.1.a':'AutoClip is free and open source. Analysis uses your own model key, billed by the provider per use: a 1h43m interview cost about ¥0.09 (roughly US$0.01). Local Ollama / LM Studio costs nothing.',
-      'faq.2.q':'Is my video uploaded anywhere?','faq.2.a':'Editing and rendering happen on your computer. With a cloud model, only subtitle text is sent. Finished clips leave your machine only when you press Publish, and only to platforms you connected.',
-      'faq.3.q':'Which sources are supported?','faq.3.a':'YouTube and Bilibili links, and local files. Creator subtitles are used directly; without subtitles, transcribe locally with Whisper or SenseVoice.',
-      'faq.4.q':'Why does the OS warn me on first launch?','faq.4.a':'The builds are not notarized (macOS) or code-signed (Windows) yet. macOS: right-click the app and choose Open. Windows: More info, then Run anyway. It only happens once.',
-      'faq.5.q':'What if the picks aren’t good?','faq.5.a':'Try a stronger model first. If results are still off, tell us the video type, length and model in the <a class="link" href="https://github.com/zhouxiaoka/autoclip/issues/96" target="_blank" rel="noopener">pinned GitHub issue</a>. We collect samples to improve clip picking.',
-      'faq.6.q':'How should I try it the first time?','faq.6.a':'Start with a 10–30 minute interview or podcast that has subtitles, and pick one or two platforms. If you get stuck, see the <a class="link" href="https://github.com/zhouxiaoka/autoclip/discussions/128" target="_blank" rel="noopener">first-clip Q&amp;A</a>.',
-      'faq.7.q':'How do I publish to Bilibili and global platforms?','faq.7.a':'Add an Upload-Post key and a Bilibili cookie in Settings, pick platforms on a clip, and keep Only me for a first try. Step-by-step: <a class="link" href="guides/publish/">publish guide</a>.',
-      'dl.eyebrow':'Download','dl.h2':'Your next great clip starts here.','dl.lede':'macOS and Windows. Free. Python and FFmpeg are bundled, so there is nothing else to install.',
-      'dl.mac.req':'Apple Silicon (M-series) · macOS 13 or later. Intel Macs are not supported yet.','dl.mac.btn':'Download .dmg',
-      'dl.mac.sum':'First launch','dl.mac.note':'The build is not notarized by Apple yet. On first launch, right-click the app and choose Open. It opens normally after that.',
-      'dl.win.req':'Windows 10 / 11, x64. Per-user install, no admin rights; the installer fetches WebView2 if it is missing.','dl.win.btn':'Download installer',
-      'dl.win.sum':'First run','dl.win.note':'The installer is not code-signed yet, so SmartScreen warns once. Choose More info, then Run anyway.',
+      'faq.1.q':'Does it cost anything?',
+      'faq.1.a':'AutoClip is free and open source. Analysis uses your own model key, billed by the provider per use: a 1h43m interview cost about ¥0.09 (roughly US$0.01). Local Ollama / LM Studio costs nothing.',
+      'faq.2.q':'Is my video uploaded anywhere?',
+      'faq.2.a':'Editing and rendering happen on your computer. With a cloud model, only subtitle text is sent. Finished clips leave your machine only when you press Publish, and only to platforms you connected.',
+      'faq.3.q':'Which sources are supported?',
+      'faq.3.a':'YouTube and Bilibili links, and local files. Creator subtitles are used directly; without subtitles, transcribe locally with Whisper or SenseVoice.',
+      'faq.4.q':'Why does the OS warn me on first launch?',
+      'faq.4.a':'The builds are not notarized (macOS) or code-signed (Windows) yet. macOS: right-click the app and choose Open. Windows: More info, then Run anyway. It only happens once.',
+      'faq.5.q':'What if the picks aren’t good?',
+      'faq.5.a':'Try a stronger model first. If results are still off, tell us the video type, length and model in the <a class="link" href="https://github.com/zhouxiaoka/autoclip/issues/96" target="_blank" rel="noopener">pinned GitHub issue</a>. We collect samples to improve clip picking.',
+      'faq.6.q':'How should I try it the first time?',
+      'faq.6.a':'Start with a 10–30 minute interview or podcast that has subtitles, and pick one or two platforms. If you get stuck, see the <a class="link" href="https://github.com/zhouxiaoka/autoclip/discussions/128" target="_blank" rel="noopener">first-clip Q&amp;A</a>.',
+      'faq.7.q':'How do I publish to Bilibili and global platforms?',
+      'faq.7.a':'Add an Upload-Post key and a Bilibili cookie in Settings, pick platforms on a clip, and keep Only me for a first try. Step-by-step: <a class="link" href="guides/publish/">publish guide</a>.',
+      'dl.eyebrow':'Download',
+      'dl.h2':'Your next great clip starts here.',
+      'dl.lede':'macOS and Windows. Free. Python and FFmpeg are bundled, so there is nothing else to install.',
+      'dl.mac.req':'Apple Silicon (M-series) · macOS 13 or later. Intel Macs are not supported yet.',
+      'dl.mac.btn':'Download .dmg',
+      'dl.mac.sum':'First launch',
+      'dl.mac.note':'The build is not notarized by Apple yet. On first launch, right-click the app and choose Open. It opens normally after that.',
+      'dl.win.req':'Windows 10 / 11, x64. Per-user install, no admin rights; the installer fetches WebView2 if it is missing.',
+      'dl.win.btn':'Download installer',
+      'dl.win.sum':'First run',
+      'dl.win.note':'The installer is not code-signed yet, so SmartScreen warns once. Choose More info, then Run anyway.',
       'dl.alt':'Running on a server or NAS? <a href="https://github.com/zhouxiaoka/autoclip#readme" target="_blank" rel="noopener">Docker and source setup</a> are in the GitHub README.',
-      'footer.cases':'Case library','footer.podcast':'Interviews & podcasts','footer.course':'Courses','footer.game':'Gaming highlights','footer.publish':'Publish guide','footer.cover':'Auto cover','footer.releases':'Releases','footer.privacy':'Privacy','footer.copy':'© 2025–2026 AutoClip · MIT License'
+      'footer.cases':'Case library',
+      'footer.podcast':'Interviews & podcasts',
+      'footer.course':'Courses',
+      'footer.game':'Gaming highlights',
+      'footer.publish':'Publish guide',
+      'footer.cover':'Auto cover',
+      'footer.releases':'Releases',
+      'footer.privacy':'Privacy',
+      'footer.copy':'© 2025–2026 AutoClip · MIT License',
+      'demo.go':'Make clips',
+      'demo.s1':'Download',
+      'demo.s2':'Subtitles',
+      'demo.s2v':'creator’s',
+      'demo.s3':'Pick moments',
+      'demo.s4':'Frame · package',
+      'demo.s5':'Render 10 clips',
+      'one.eyebrow':'One click',
+      'one.h2':'No editor.<br>No chatting with an AI.',
+      'one.lede':'Clipping used to mean one of two things: dragging a timeline frame by frame, or explaining what you want to an AI, again and again. AutoClip removes both.',
+      'one.a.k':'Video editor',
+      'one.a.p':'Find the moment, drag the timeline, fix captions, style them, export. Then do it again for the next platform.',
+      'one.b.k':'AI chat / agent',
+      'one.b.p':'Explain what you want, answer its questions, correct it, explain again. There goes the afternoon.',
+      'one.c.k':'AutoClip',
+      'one.c.1':'Paste a link, pick platforms',
+      'one.c.2':'Press once',
+      'one.c.3':'Get clips, covers, titles, descriptions and tags',
+      'one.c.p':'All on your computer. A 2–3 hour interview costs a couple of cents in model fees.',
+      'how.eyebrow':'How it works',
+      'how.h2':'You do the first step.',
+      'how.1.h':'Paste a link, pick platforms',
+      'how.1.p':'A YouTube or Bilibili link, or a local file. Pick any of Douyin, Xiaohongshu, Bilibili, TikTok, Reels, Shorts and YouTube, and add more later without starting over.',
+      'how.2.h':'It reads the whole thing and picks',
+      'how.2.p':'The full transcript is read in one pass to find complete questions and answers: starting at the first line of the question, ending when the answer is done and the speaker pauses. Creator subtitles are used directly; otherwise it transcribes locally.',
+      'how.2.foot':'A 2–3 hour interview usually yields 18–33 moments · the top 10 are made automatically · the rest wait for one click',
+      'how.3.h':'Packaged per platform',
+      'how.3.p':'Framing follows the speaker, foreign speech is translated to the platform’s language, and colour and caption motion follow each clip’s mood. Douyin and TikTok each get their own look.',
+      'how.4.h':'A full publish kit',
+      'how.4.p':'Every clip comes with a title, description and tags written for the platform’s rules, plus a matching cover. Copy the post text or download the kit, and publish.',
+      'how.4.k':'Publish kit · Douyin',
+      'how.4.f1':'clip.mp4',
+      'how.4.f2':'cover.jpg',
+      'how.4.f3':'post.txt',
+      'how.4.b1':'Copy post text',
+      'how.4.b2':'Download kit'
     }
   };
   // Japanese, Korean, Spanish, Portuguese, Russian and French show English until the Chinese copy is final and translated.
@@ -507,6 +720,8 @@
 })();
 </script>
 <script src="assets/library.js"></script>
+<script src="assets/benchmarks.js"></script>
+<script src="assets/hero.js"></script>
 <script src="assets/analytics-config.js"></script>
 <script src="assets/analytics.js"></script>
 </body>

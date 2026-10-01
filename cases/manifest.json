@@ -1,0 +1,90 @@
+{
+ "schema": 1,
+ "batch": "2026-10-01b",
+ "media_base": "${AUTOCLIP_MEDIA_BASE:-}",
+ "projects_root": "${AUTOCLIP_PROJECTS:-/private/tmp/autoclip-e2e/projects}",
+ "demos_root": "${AUTOCLIP_DEMOS:-/private/tmp/autoclip-e2e/demos}",
+ "cases": [
+  {
+   "id": "jensen-dwarkesh",
+   "scene": "interview",
+   "featured": true,
+   "added": "2026-10-01",
+   "project": "{projects}/aea49c3d-254c-440f-ad22-987ab482ae83",
+   "skip": [
+    "88ef9cb6"
+   ],
+   "benchmark": "jensen-new",
+   "source": {
+    "url": "https://www.youtube.com/watch?v=Hrbq66XqtCo",
+    "duration_sec": 6193,
+    "language": "en"
+   }
+  },
+  {
+   "id": "tim-luoyonghao",
+   "scene": "interview",
+   "featured": true,
+   "added": "2026-10-01",
+   "project": "{projects}/eb4ec4e3-04bc-4589-92bb-c902da81d173",
+   "benchmark": "tim-new",
+   "source": {
+    "url": "https://www.bilibili.com/video/BV1B5xkzPEhx",
+    "channel": "罗永浩的十字路口",
+    "duration_sec": 10347,
+    "language": "zh"
+   }
+  },
+  {
+   "id": "dario-dwarkesh",
+   "scene": "interview",
+   "added": "2026-10-01",
+   "files": [
+    "douyin:interview:{demos}/demo-01-douyin-boxed.mp4:AI学不会视频编辑的真本事|边干边学的能力是最大缺口",
+    "douyin:interview:{demos}/demo-02-douyin-classic.mp4:AI军备竞赛：晚一年=破产|10倍增速的残酷数学",
+    "xiaohongshu:interview:{demos}/demo-03-xiaohongshu-classic.mp4:AI编辑=人类编辑？|1–3年见分晓",
+    "tiktok:podcast:{demos}/demo-04-tiktok-pop.mp4:API pricing won't die—token value|asymmetry will redefine AGI economics",
+    "youtube_shorts:podcast:{demos}/demo-06-youtube_shorts-pop.mp4:Anthropic built Claude Code|by using it internally first"
+   ],
+   "source": {
+    "url": "https://www.youtube.com/watch?v=n1E9IZfvGMA",
+    "title": "Dario Amodei — “We are near the end of the exponential”",
+    "channel": "Dwarkesh Patel",
+    "duration_sec": 8540,
+    "language": "en"
+   }
+  },
+  {
+   "id": "altman-yc",
+   "scene": "interview",
+   "added": "2026-10-01",
+   "files": [
+    "xiaohongshu:interview:{demos}/demo-07-xiaohongshu-boxed.mp4:AI是权力放大器|均质化还是垄断化？",
+    "youtube_shorts:podcast:{demos}/demo-08-youtube_shorts-pop.mp4:Starting a Startup Is Your|Contribution to Equitable AI"
+   ],
+   "source": {
+    "url": "https://www.youtube.com/watch?v=ZIaOBAjvc38",
+    "title": "Sam Altman: “Never a Better Time to Do a Startup”",
+    "channel": "Y Combinator",
+    "duration_sec": 2340,
+    "language": "en"
+   }
+  },
+  {
+   "id": "kojima-wired",
+   "scene": "interview",
+   "added": "2026-10-01",
+   "files": [
+    "douyin:interview:{demos}/demo-09-douyin-boxed.mp4:休学一年打马里奥|确信游戏将超越电影",
+    "douyin:interview:{demos}/demo-10-douyin-boxed.mp4:《死亡搁浅》主题即机制|故事与设计从一开始就不分家"
+   ],
+   "source": {
+    "url": "https://www.youtube.com/watch?v=02Ah5VQrzvA",
+    "title": "Hideo Kojima Answers Hideo Kojima Questions | Tech Support",
+    "channel": "WIRED",
+    "duration_sec": 1033,
+    "language": "en"
+   }
+  }
+ ]
+}

@@ -114,9 +114,10 @@
     if (video.tagName !== 'VIDEO') return;
     try {
       const u = new URL(video.currentSrc || video.src, location.href);
-      if (u.origin !== root.origin) return;
-      const legacy = u.pathname.startsWith(root.pathname + 'assets/showcase/') && u.pathname.match(/\/clip-(9|11|12|13)\.mp4$/);
-      const library = u.pathname.startsWith(root.pathname + 'cases/') && u.pathname.slice((root.pathname + 'cases/').length).match(/^([a-z0-9-]{1,48})\/(\d{2})\.mp4$/);
+      const own = u.origin === root.origin, mediaOrigin = document.documentElement.dataset?.mediaOrigin;
+      if (!own && u.origin !== mediaOrigin) return;
+      const legacy = own && u.pathname.startsWith(root.pathname + 'assets/showcase/') && u.pathname.match(/\/clip-(9|11|12|13)\.mp4$/);
+      const library = u.pathname.match(/\/cases\/([a-z0-9-]{1,48})\/(\d{2})\.mp4$/);
       if (!legacy && !library) return;
       const clip = legacy ? legacy[1] : library[1] + '_' + library[2];
       const seen = played.get(video) || new Set();

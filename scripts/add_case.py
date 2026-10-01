@@ -5,7 +5,7 @@ From an AutoClip project (completed outputs, with publish-kit copy and covers wh
 
     python scripts/add_case.py --id jensen-dwarkesh --scene interview \
         --project ~/.../projects/<project-id> --source-url https://www.youtube.com/watch?v=... \
-        --run run.json [--skip <render-job-prefix> ...] [--featured]
+        --benchmark jensen-new [--skip <render-job-prefix> ...] [--featured]
 
 From finished files (community submissions, older demos):
 
@@ -21,6 +21,7 @@ from __future__ import annotations
 import argparse
 import datetime as dt
 import json
+import os
 import shutil
 import subprocess
 import sys
@@ -28,6 +29,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 CASES = ROOT / 'cases'
+BENCHMARKS = ROOT / 'data' / 'benchmarks.json'
 PLATFORMS = {'douyin', 'xiaohongshu', 'bilibili', 'tiktok', 'instagram_reels', 'youtube_shorts', 'youtube_long'}
 TEMPLATES = {'interview', 'podcast', 'original'}
 SCENES = {'interview', 'podcast', 'course', 'gameplay', 'talk'}
@@ -118,11 +120,70 @@ def from_files(entries: list[str], folder: Path) -> list[dict]:
     return outputs
 
 
+def build_case(spec: dict) -> dict:
+    """Write cases/<id>/ from one spec (same keys as the CLI flags, see cases/manifest.json)."""
+    cid = spec['id']
+    if not cid.replace('-', '').isalnum() or cid != cid.lower():
+        raise SystemExit(f'{cid}: id 只能用小写字母、数字和连字符')
+    if spec.get('scene') not in SCENES:
+        raise SystemExit(f'{cid}: scene 须为 {sorted(SCENES)}')
+    project, files = spec.get('project'), spec.get('files') or []
+    if bool(project) == bool(files):
+        raise SystemExit(f'{cid}: project 与 files 二选一')
+    folder = CASES / cid
+    if folder.exists():
+        shutil.rmtree(folder)
+    folder.mkdir(parents=True)
+    meta, counts = {}, {}
+    if project:
+        outputs, meta, counts = from_project(Path(os.path.expandvars(project)).expanduser(), folder, spec.get('skip') or [])
+    else:
+        outputs = from_files([os.path.expandvars(f) for f in files], folder)
+    if not outputs:
+        raise SystemExit(f'{cid}: 没有可收录的成片')
+    source = spec.get('source') or {}
+    contributor = spec.get('contributor')
+    case = {
+        'schema': 1, 'id': cid, 'added': spec.get('added') or dt.date.today().isoformat(), 'scene': spec['scene'],
+        'featured': bool(spec.get('featured')), 'contributor': contributor if contributor and contributor.get('name') else None,
+        'source': {'title': source.get('title') or meta.get('title', ''), 'channel': source.get('channel') or meta.get('channel', ''),
+                   'url': source['url'], 'duration_sec': source.get('duration_sec'), 'language': source.get('language', 'en')},
+        'run': None, 'outputs': outputs,
+    }
+    run = dict(spec.get('run') or {})
+    if spec.get('benchmark'):
+        bench = json.loads(BENCHMARKS.read_text())
+        found = next((r for r in bench['runs'] if r['id'] == spec['benchmark']), None)
+        if not found:
+            raise SystemExit(f"{cid}: data/benchmarks.json 里没有 {spec['benchmark']}")
+        run = {'benchmark': found['id'], 'minutes': found['minutes'], 'cost_cny': found['cost_cny'], 'model': bench['model'],
+               'model_calls': found['model_calls'], 'tokens_in': found['tokens_in'], 'tokens_out': found['tokens_out'],
+               'subtitles': found['subtitles'], **run}
+    if run:
+        case['run'] = {**run, **counts}
+    (folder / 'case.json').write_text(json.dumps(case, ensure_ascii=False, indent=1) + '\n')
+    print(f'{cid}: {len(outputs)} 条成片 → {folder.relative_to(ROOT)}', file=sys.stderr)
+    return case
+
+
+def write_index(batch: str | None = None, media_base: str | None = None) -> dict:
+    """Rebuild cases/index.json from the case folders, newest first; keeps media_base."""
+    path = CASES / 'index.json'
+    old = json.loads(path.read_text()) if path.exists() else {}
+    cases = [json.loads(p.read_text()) for p in CASES.glob('*/case.json')]
+    cases.sort(key=lambda c: (c['added'], c.get('featured', False), c['id']), reverse=True)
+    index = {'schema': 1, 'batch': batch or old.get('batch') or dt.date.today().isoformat(),
+             'media_base': old.get('media_base', '') if media_base is None else media_base, 'updated': cases[0]['added'] if cases else '',
+             'cases': [c['id'] for c in cases]}
+    path.write_text(json.dumps(index, ensure_ascii=False, indent=1) + '\n')
+    return index
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('--id', required=True, help='小写字母、数字和连字符，例如 jensen-dwarkesh')
     ap.add_argument('--scene', required=True, choices=sorted(SCENES))
-    ap.add_argument('--project', type=Path)
+    ap.add_argument('--project')
     ap.add_argument('--file', action='append', default=[], help='platform:template:path[:第一行|第二行]')
     ap.add_argument('--skip', action='append', default=[], help='不收录的渲染任务 ID 前缀')
     ap.add_argument('--source-url', required=True)
@@ -130,51 +191,18 @@ def main() -> None:
     ap.add_argument('--source-channel')
     ap.add_argument('--source-duration', type=int, help='原片秒数')
     ap.add_argument('--source-language', default='en')
-    ap.add_argument('--run', type=Path, help='实测数据 JSON：minutes、model、model_calls、tokens_in、tokens_out、cost_cny、subtitles')
+    ap.add_argument('--benchmark', help='data/benchmarks.json 里的实测 ID')
     ap.add_argument('--contributor-name')
     ap.add_argument('--contributor-url')
     ap.add_argument('--added', default=dt.date.today().isoformat())
     ap.add_argument('--featured', action='store_true')
     args = ap.parse_args()
-
-    if not args.id.replace('-', '').isalnum() or args.id != args.id.lower():
-        raise SystemExit('--id 只能用小写字母、数字和连字符')
-    if bool(args.project) == bool(args.file):
-        raise SystemExit('--project 与 --file 二选一')
-
-    folder = CASES / args.id
-    if folder.exists():
-        shutil.rmtree(folder)
-    folder.mkdir(parents=True)
-
-    meta, counts = {}, {}
-    if args.project:
-        outputs, meta, counts = from_project(args.project.expanduser(), folder, args.skip)
-    else:
-        outputs = from_files(args.file, folder)
-    if not outputs:
-        raise SystemExit('没有可收录的成片')
-
-    case = {
-        'schema': 1, 'id': args.id, 'added': args.added, 'scene': args.scene, 'featured': args.featured,
-        'contributor': {'name': args.contributor_name, 'url': args.contributor_url} if args.contributor_name else None,
-        'source': {'title': args.source_title or meta.get('title', ''), 'channel': args.source_channel or meta.get('channel', ''),
-                   'url': args.source_url, 'duration_sec': args.source_duration, 'language': args.source_language},
-        'run': None, 'outputs': outputs,
-    }
-    if args.run:
-        case['run'] = {**json.loads(args.run.read_text()), **counts}
-    (folder / 'case.json').write_text(json.dumps(case, ensure_ascii=False, indent=1) + '\n')
-
-    index_path = CASES / 'index.json'
-    index = json.loads(index_path.read_text()) if index_path.exists() else {'schema': 1, 'cases': []}
-    others = [c for c in index['cases'] if c != args.id]
-    added = {c: json.loads((CASES / c / 'case.json').read_text())['added'] for c in others}
-    added[args.id] = args.added
-    index['cases'] = sorted(added, key=lambda c: (added[c], c == args.id), reverse=True)
-    index['updated'] = max(added.values())
-    index_path.write_text(json.dumps(index, ensure_ascii=False, indent=1) + '\n')
-    print(f'{args.id}: {len(outputs)} 条成片 → {folder.relative_to(ROOT)}', file=sys.stderr)
+    build_case({'id': args.id, 'scene': args.scene, 'project': args.project, 'files': args.file, 'skip': args.skip,
+                'source': {'url': args.source_url, 'title': args.source_title, 'channel': args.source_channel,
+                           'duration_sec': args.source_duration, 'language': args.source_language},
+                'benchmark': args.benchmark, 'added': args.added, 'featured': args.featured,
+                'contributor': {'name': args.contributor_name, 'url': args.contributor_url}})
+    write_index()
 
 
 if __name__ == '__main__':

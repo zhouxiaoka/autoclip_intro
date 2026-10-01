@@ -13,13 +13,13 @@
   "language": "en"
  },
  "run": {
-  "pipeline": "v2",
+  "benchmark": "jensen-new",
   "minutes": 7.5,
+  "cost_cny": 0.09,
   "model": "qwen-plus",
   "model_calls": 34,
   "tokens_in": 77000,
   "tokens_out": 12000,
-  "cost_cny": 0.09,
   "subtitles": "creator",
   "found": 21,
   "rendered": 10

@@ -22,7 +22,7 @@ let lang='en',lib=null,dialog,video,lastTrigger,io;
 const L=()=>T[lang]||T.en,pick=m=>m?(lang==='zh'?m[0]:m[1]):'';
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const clock=s=>{s=Math.round(s||0);const h=Math.floor(s/3600),m=Math.floor(s%3600/60),x=String(s%60).padStart(2,'0');return h?`${h}:${String(m).padStart(2,'0')}:${x}`:`${m}:${x}`;};
-const media=(o,f)=>at(`cases/${o.case.id}/${o[f]}`);
+const media=(o,f)=>`${lib.base}${o.case.id}/${o[f]}?v=${encodeURIComponent(lib.index.batch||'')}`;
 const title=o=>(o.title_lines||[]).join(' ');
 const tag=o=>pick(PLATFORM[o.platform])+' · '+pick(TEMPLATE[o.template]);
 const credit=o=>o.case.contributor?`${L().by} ${o.case.contributor.name}`:o.case.source.channel;
@@ -32,7 +32,9 @@ async function load(){
  const index=await (await fetch(at('cases/index.json'))).json();
  const cases=await Promise.all(index.cases.map(async id=>{const c=await (await fetch(at(`cases/${id}/case.json`))).json();c.outputs.forEach(o=>o.case=c);return c;}));
  const outputs=cases.flatMap(c=>c.outputs);
- lib={index,cases,outputs};return lib;
+ const base=index.media_base?index.media_base.replace(/\/?$/,'/'):at('cases/');
+ if(index.media_base)document.documentElement.dataset.mediaOrigin=new URL(base).origin;
+ lib={index,cases,outputs,base};return lib;
 }
 function roundRobin(list,cases){const lanes=cases.map(c=>list.filter(o=>o.case===c)).filter(l=>l.length),out=[];
  for(let i=0;out.length<list.length;i++)lanes.forEach(l=>{if(l[i])out.push(l[i]);});return out;}
@@ -94,5 +96,6 @@ document.querySelectorAll('[data-wall-step]').forEach(b=>b.addEventListener('cli
 fetch('https://api.github.com/repos/zhouxiaoka/autoclip').then(r=>r.ok?r.json():null).then(d=>{const n=d?.stargazers_count;if(!n)return;document.querySelectorAll('[data-stars]').forEach(el=>el.textContent=n>=1000?(n/1000).toFixed(1).replace(/\.0$/,'')+'k':String(n));}).catch(()=>{});
 document.addEventListener('visibilitychange',()=>{if(document.hidden)video?.pause();});
 reduce.addEventListener('change',observe);
+window.ACLibrary={load,find:ref=>{const [c,id]=ref.split('/');return lib?.outputs.find(o=>o.case.id===c&&o.id===id);},media:(o,f)=>media(o,f),open:ref=>open(ref)};
 render();new MutationObserver(render).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
 })();

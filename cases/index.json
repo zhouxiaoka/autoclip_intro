@@ -1,10 +1,13 @@
 {
  "schema": 1,
+ "batch": "2026-10-01b",
+ "media_base": "",
+ "updated": "2026-10-01",
  "cases": [
+  "tim-luoyonghao",
   "jensen-dwarkesh",
+  "kojima-wired",
   "dario-dwarkesh",
-  "altman-yc",
-  "kojima-wired"
- ],
- "updated": "2026-10-01"
+  "altman-yc"
+ ]
 }
