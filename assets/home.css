@@ -557,12 +557,12 @@ img[data-develop].developed{opacity:1}
 .hero-art .demo{translate:calc(var(--mx,0) * 3px) calc(var(--my,0) * 3px)}
 
 /* reel: clips from the hero's link fan out under the hero */
-.hero-split{padding-bottom:clamp(24px,3vw,40px)}
+.hero-split{padding-bottom:clamp(16px,2vw,24px)}
 @media (min-width: 961px){
-  .hero-split{min-height:calc(100vh - 60px);min-height:calc(100svh - 60px);display:flex;align-items:center;padding-top:32px;padding-bottom:40px}
+  .hero-split{display:flex;align-items:center;padding-top:28px;padding-bottom:0}
   .hero-split > .container{width:100%}
 }
-.reel{padding:0 0 clamp(64px,7vw,104px);overflow-x:clip}
+.reel{padding:8px 0 clamp(48px,5vw,72px);overflow-x:clip}
 .reel-label{font-size:.75rem;color:var(--ac-muted);display:flex;gap:10px;flex-wrap:wrap;align-items:baseline}
 .reel-label b{font-weight:500;color:var(--ac-sub)}
 .reel-row{margin-top:18px;display:flex;justify-content:center;gap:16px;padding:8px var(--ac-gutter) 4px}
@@ -574,8 +574,7 @@ img[data-develop].developed{opacity:1}
 .reel-more b{font-family:var(--ac-font-serif);font-weight:400;font-size:2.5rem;line-height:1;color:var(--ac-ink)}
 .reel-more span span{font-size:.75rem;color:var(--ac-sub)}
 @media (max-width: 960px){
-  .reel-row{justify-content:flex-start;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--ac-gutter);scrollbar-width:none}
-  .reel-row .clip{scroll-snap-align:start}
+  .reel{display:none}
 }
 
 /* reel flight: the hero's three outputs travel down and become the row */
