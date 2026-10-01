@@ -5,16 +5,16 @@ const T={
  zh:{min:'分钟',stage:{download:'下载',asr:'语音识别',pick:'挑片段',package:'切点 · 取景 · 包装',render:'渲染'},
   pipeline:{old:'旧版',mid:'过渡版',new:'新版'},subs:{creator:'作者字幕',none:'无字幕'},
   s1:r=>`一条 ${hours(r.duration_sec,'zh')}的访谈，从贴链接到 ${r.rendered} 条成片（有作者字幕）`,
-  s2:'一条 2–3 小时访谈的全部模型费用',s3:'每多一条备选、多一个平台，大约多花这么多',s4:'次点击。不用剪辑器，也不用和 AI 来回对话',
+  s2:'一条 2–3 小时访谈的全部模型费用',s3:'条高质量成片，每条附封面、标题、简介和话题；更多备选点一下再做',s4:'次点击。不用剪辑器，也不用和 AI 来回对话',
   head:['视频','流程','链接到出片','片段 → 自动出片','模型调用','Tokens（入 / 出）','模型费用'],calls:n=>`${n} 次`,
-  chartTitle:'时间花在哪',chartNote:'没有字幕时，时间的大头变成本地语音识别；下一步是用 Apple 芯片的 GPU 加速，或可选云端语音识别。',
+  chartTitle:'时间花在哪',chartNote:'没有作者字幕时，语音识别在本地完成，用时会长一些，视频同样不离开你的电脑。',
   foot:b=>`${b.measured} 实测。${b.machine.zh}；分析模型 ${b.model}，每百万 tokens 输入 ¥${b.price.in_per_million}、输出 ¥${b.price.out_per_million}（${b.price.note.zh}），费用只含模型调用；语音识别为${b.asr.zh}。四条是不同的视频。默认只自动生成评分最高的 10 条，其余列为备选，点一下再做。`},
  en:{min:'min',stage:{download:'Download',asr:'Speech recognition',pick:'Clip picking',package:'Cuts · framing · packaging',render:'Rendering'},
   pipeline:{old:'Previous',mid:'Transitional',new:'New'},subs:{creator:'creator subtitles',none:'no subtitles'},
   s1:r=>`From pasted link to ${r.rendered} finished clips, for a ${hours(r.duration_sec,'en')} interview with creator subtitles`,
-  s2:'Total model cost for a 2–3 hour interview',s3:'Roughly what each extra backup clip or extra platform adds',s4:'click. No editor, and no back-and-forth with an AI chat',
+  s2:'Total model cost for a 2–3 hour interview',s3:'high-quality clips, each with a cover, title, description and tags; more backups are one click away',s4:'click. No editor, and no back-and-forth with an AI chat',
   head:['Video','Pipeline','Link to clips','Clips → made','Model calls','Tokens (in / out)','Model cost'],calls:n=>`${n}`,
-  chartTitle:'Where the time goes',chartNote:'Without subtitles, local speech recognition becomes most of the time. Next: GPU acceleration on Apple silicon, or optional cloud speech recognition.',
+  chartTitle:'Where the time goes',chartNote:'Without creator subtitles, speech recognition runs locally. It takes longer, and your video still never leaves your computer.',
   foot:b=>`Measured ${b.measured}. ${b.machine.en}; analysis model ${b.model} at ¥${b.price.in_per_million} per million input tokens and ¥${b.price.out_per_million} per million output tokens (${b.price.note.en}); cost covers model calls only. Speech recognition: ${b.asr.en}. These are four different videos. The top 10 clips are made automatically; the rest wait as one-click backups.`}};
 function hours(sec,lang){const h=Math.floor(sec/3600),m=Math.round(sec%3600/60);return lang==='zh'?`${h} 小时 ${m} 分钟`:`${h}h${String(m).padStart(2,'0')}m`;}
 const k=n=>n>=10000?(n/10000).toFixed(1).replace(/\.0$/,'')+'万':String(n);
@@ -30,7 +30,7 @@ function render(){
  const stats=`<div class="stats">
   <div class="stat"><b>${head.minutes}<small>${u.min}</small></b><span>${esc(u.s1(head))}</span></div>
   <div class="stat"><b>¥${lo.toFixed(1)}–${hi.toFixed(1)}</b><span>${u.s2}</span></div>
-  <div class="stat"><b>¥${data.marginal_cost_cny}</b><span>${u.s3}</span></div>
+  <div class="stat"><b>${Math.min(...fresh.map(r=>r.rendered))}+</b><span>${u.s3}</span></div>
   <div class="stat"><b>1</b><span>${u.s4}</span></div></div>`;
  const chartRuns=data.chart.map(id=>data.runs.find(r=>r.id===id)).filter(r=>r&&r.stages);
  const max=Math.max(...chartRuns.map(r=>STAGES.reduce((a,s)=>a+r.stages[s],0)));
