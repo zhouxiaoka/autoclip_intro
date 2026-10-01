@@ -96,6 +96,6 @@ document.querySelectorAll('[data-wall-step]').forEach(b=>b.addEventListener('cli
 fetch('https://api.github.com/repos/zhouxiaoka/autoclip').then(r=>r.ok?r.json():null).then(d=>{const n=d?.stargazers_count;if(!n)return;document.querySelectorAll('[data-stars]').forEach(el=>el.textContent=n>=1000?(n/1000).toFixed(1).replace(/\.0$/,'')+'k':String(n));}).catch(()=>{});
 document.addEventListener('visibilitychange',()=>{if(document.hidden)video?.pause();});
 reduce.addEventListener('change',observe);
-window.ACLibrary={load,find:ref=>{const [c,id]=ref.split('/');return lib?.outputs.find(o=>o.case.id===c&&o.id===id);},media:(o,f)=>media(o,f),open:ref=>open(ref)};
+window.ACLibrary={load,card:o=>card(o),wire:scope=>wire(scope),platform:p=>pick(PLATFORM[p]),find:ref=>{const [c,id]=ref.split('/');return lib?.outputs.find(o=>o.case.id===c&&o.id===id);},media:(o,f)=>media(o,f),open:ref=>open(ref)};
 render();new MutationObserver(render).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
 })();

@@ -18,29 +18,45 @@ async function library(){
   const rows=lib.outputs.slice(0,6);ol.innerHTML=rows.map((o,i)=>`<li class="${i<4?'pick':''}"><span class="d"></span><span class="tc mono">${clock(o.source_start_sec||0)}</span><span class="tt">${o.title_lines.join(' ')}</span><span class="du mono">${clock(o.duration_sec)}</span></li>`).join('')+`<li class="more mono">+ ${Math.max(0,(lib.run?.found||rows.length)-rows.length)}</li>`;});
 }
 
-/* hero: paste → pick → one click → done */
+/* hero: paste → pick → one click → done.
+   Wide screens: scroll scrubs the run (reversible); narrow screens loop on a timer. */
 let running=false,visible=true;
+const clamp=v=>Math.max(0,Math.min(1,v));
+function parts(){const box=document.querySelector('[data-demo]');if(!box)return null;return {box,art:box.closest('.hero-art'),typed:box.querySelector('[data-typed]'),pills:[...box.querySelectorAll('[data-pill]')],steps:[...box.querySelectorAll('[data-step]')],clockEl:box.querySelector('[data-clock]')};}
+function finalState(d){d.typed.textContent=d.typed.dataset.typed;d.pills.forEach(p=>p.classList.add('on'));d.steps.forEach(s=>{s.classList.add('done');s.classList.remove('now');});d.clockEl.textContent='7:30';d.art.classList.add('go','done');}
+async function intro(d){d.typed.textContent='';await wait(500);for(const ch of d.typed.dataset.typed){if(d.typed.dataset.skip)break;d.typed.textContent+=ch;await wait(26);}d.typed.textContent=d.typed.dataset.typed;for(const p of d.pills){await wait(220);p.classList.add('on');}}
 async function demo(){
- const box=document.querySelector('[data-demo]');if(!box||running)return;running=true;
- const art=box.closest('.hero-art'),typed=box.querySelector('[data-typed]'),pills=[...box.querySelectorAll('[data-pill]')],steps=[...box.querySelectorAll('[data-step]')],clockEl=box.querySelector('[data-clock]');
- const final=()=>{typed.textContent=typed.dataset.typed;pills.forEach(p=>p.classList.add('on'));steps.forEach(s=>s.classList.add('done'));clockEl.textContent='7:30';art.classList.add('go','done');};
- if(reduce.matches){final();running=false;return;}
+ const d=parts();if(!d||running)return;running=true;
+ if(reduce.matches){finalState(d);return;}
  while(true){
   while(!visible||document.hidden)await wait(400);
-  art.classList.remove('go','done');pills.forEach(p=>p.classList.remove('on'));steps.forEach(s=>s.classList.remove('done','now'));typed.textContent='';clockEl.textContent='0:00';
-  await wait(700);
-  for(const ch of typed.dataset.typed){typed.textContent+=ch;await wait(28);}
-  await wait(350);
-  for(const p of pills){p.classList.add('on');await wait(260);}
-  await wait(450);art.classList.add('go');await wait(500);
-  const total=450,t0=performance.now();
-  const tick=()=>{const p=Math.min(1,(performance.now()-t0)/2600);clockEl.textContent=clock(total*p);if(p<1&&art.classList.contains('go'))requestAnimationFrame(tick);};requestAnimationFrame(tick);
-  for(const s of steps){s.classList.add('now');await wait(480);s.classList.remove('now');s.classList.add('done');}
-  await wait(250);art.classList.add('done');
-  await wait(5200);
-  if(reduce.matches){final();break;}
+  d.art.classList.remove('go','done');d.pills.forEach(p=>p.classList.remove('on'));d.steps.forEach(s=>s.classList.remove('done','now'));d.clockEl.textContent='0:00';
+  await intro(d);await wait(450);d.art.classList.add('go');await wait(500);
+  const t0=performance.now();const tick=()=>{const p=Math.min(1,(performance.now()-t0)/2600);d.clockEl.textContent=clock(450*p);if(p<1&&d.art.classList.contains('go'))requestAnimationFrame(tick);};requestAnimationFrame(tick);
+  for(const s of d.steps){s.classList.add('now');await wait(480);s.classList.remove('now');s.classList.add('done');}
+  await wait(250);d.art.classList.add('done');await wait(5200);
+  if(reduce.matches){finalState(d);break;}
  }
- running=false;
+}
+
+/* the reel: clips from the demo's link fan out of the hero collage as you scroll */
+async function reel(){
+ const host=document.querySelector('[data-reel]'),row=host?.querySelector('[data-reel-row]'),api=window.ACLibrary;if(!row||!api)return;
+ await api.load().catch(()=>null);const c=api.find(host.dataset.reel+'/01')?.case;if(!c)return;
+ const zh=L()==='zh',r=c.run,shown=c.outputs.slice(0,6),rest=Math.max(0,(r?.rendered||c.outputs.length)-shown.length);
+ const hrs=`${Math.floor(c.source.duration_sec/3600)}h${String(Math.round(c.source.duration_sec%3600/60)).padStart(2,'0')}m`;
+ host.querySelector('[data-reel-stats]').textContent=r?(zh?`${c.source.channel} · ${hrs} 访谈 → ${r.rendered} 条${api.platform(shown[0].platform)}成片 · ${r.minutes} 分钟 · 模型费用 ¥${r.cost_cny.toFixed(2)}`:`${c.source.channel} · ${hrs} interview → ${r.rendered} ${api.platform(shown[0].platform)} clips · ${r.minutes} min · ¥${r.cost_cny.toFixed(2)} in model fees`):'';
+ row.innerHTML=shown.map(o=>api.card(o)).join('')+(rest?`<a class="clip reel-more" href="#clips"><span class="clip-media"><b>+${rest}</b><span>${zh?'更多成片在案例库':'More in the case library'}</span></span></a>`:'');
+ api.wire(row);
+ const cards=[...row.children];if(reduce.matches||!matchMedia('(min-width: 961px)').matches)return;
+ const src=document.querySelector('.demo-out');let vec=[];
+ const measure=()=>{const t=src?.getBoundingClientRect();vec=cards.map(el=>{el.style.transform='none';const b=el.getBoundingClientRect();return t?[t.left+t.width/2-(b.left+b.width/2),t.top+t.height/2-(b.top+b.height/2)]:[0,-200];});update();};
+ let frame=0;const update=()=>{frame=0;const b=host.getBoundingClientRect();const q=Math.max(0,Math.min(1,(innerHeight-b.top)/(innerHeight*.75)));
+  cards.forEach((el,i)=>{const k=Math.max(0,Math.min(1,q*1.35-i*.06)),e=1-Math.pow(1-k,3),[dx,dy]=vec[i]||[0,0];
+   el.style.transform=`translate(${dx*(1-e)}px,${dy*(1-e)}px) rotate(${(i-2.5)*7*(1-e)}deg) scale(${.55+.45*e})`;el.style.opacity=String(Math.min(1,.15+e*1.2));});};
+ const onScroll=()=>{if(!frame)frame=requestAnimationFrame(update);};
+ addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',()=>requestAnimationFrame(measure),{passive:true});
+ requestAnimationFrame(measure);
 }
 
 /* endless clarifying questions */
@@ -62,6 +78,6 @@ function story(){
 
 const heroEl=document.querySelector('.hero-art');
 if(heroEl)new IntersectionObserver(es=>{visible=es[0].isIntersecting;}).observe(heroEl);
-library();demo();chat();story();
+library();demo();chat();story();reel();
 new MutationObserver(()=>{library();}).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
 })();

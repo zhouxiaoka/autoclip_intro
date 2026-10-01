@@ -117,10 +117,9 @@
         <span class="mono" data-i18n="hero.note">v1.4.0 · 开源 MIT · 免费</span>
       </div>
     </div>
-
     <div class="hero-art" aria-hidden="true">
-      <div class="art-panel art-a"><img src="assets/art/lemon-marks.webp" width="864" height="1152" alt=""></div>
-      <div class="art-panel art-b"><img src="assets/art/burst.webp" width="864" height="1152" alt=""></div>
+      <div class="art-panel art-a"><img data-develop src="assets/art/lemon-marks.webp" width="864" height="1152" alt=""></div>
+      <div class="art-panel art-b"><img data-develop src="assets/art/burst.webp" width="864" height="1152" alt=""></div>
       <div class="demo" data-demo>
         <div class="demo-bar"><i></i><i></i><i></i><span>AutoClip</span></div>
         <div class="demo-body">
@@ -138,17 +137,23 @@
         </div>
       </div>
       <div class="demo-out">
+        <img data-poster="jensen-dwarkesh/01" alt="">
         <img data-poster="jensen-dwarkesh/02" alt="">
-        <img data-poster="tim-luoyonghao/05" alt="">
-        <img data-poster="dario-dwarkesh/04" alt="">
+        <img data-poster="jensen-dwarkesh/03" alt="">
       </div>
     </div>
   </div>
 </section>
 
+<section class="reel" data-reel="jensen-dwarkesh" aria-labelledby="reel-label">
+  <div class="container">
+    <p class="reel-label mono" id="reel-label"><span data-i18n="reel.k">这一个链接 →</span> <b data-reel-stats></b></p>
+  </div>
+  <div class="reel-row" data-reel-row></div>
+</section>
+
 <section class="section band-white" id="oneclick">
-  <div class="container has-spot">
-    <img class="spot" src="assets/art/spot-link-film.webp" width="480" height="480" alt="" loading="lazy">
+  <div class="container">
     <span class="eyebrow" data-i18n="one.eyebrow">一键</span>
     <h2 data-i18n-html="one.h2">不用剪辑器，<br>也不用跟 AI 聊天。</h2>
     <p class="lede" data-i18n="one.lede"></p>
@@ -188,8 +193,7 @@
 </section>
 
 <section class="section" id="how">
-  <div class="container has-spot">
-    <img class="spot" src="assets/art/spot-scissors.webp" width="480" height="480" alt="" loading="lazy">
+  <div class="container">
     <span class="eyebrow" data-i18n="how.eyebrow">怎么做到的</span>
     <h2 data-i18n="how.h2">你只做第一步。</h2>
     <div class="story">
@@ -238,8 +242,7 @@
 </section>
 
 <section class="section band-white" id="numbers">
-  <div class="container has-spot">
-    <img class="spot" src="assets/art/spot-stopwatch.webp" width="480" height="480" alt="" loading="lazy">
+  <div class="container">
     <span class="eyebrow" data-i18n="num.eyebrow">速度与成本</span>
     <h2 data-i18n="num.h2">更快，也更便宜。</h2>
     <p class="lede" data-i18n="num.lede"></p>
@@ -308,7 +311,7 @@
 <section class="section" id="download">
   <div class="container">
     <div class="cta-band">
-      <img class="cta-art" src="assets/art/filmstrip-band.webp" width="1280" height="720" alt="" loading="lazy">
+      <img class="cta-art" data-develop src="assets/art/filmstrip-band.webp" width="1280" height="720" alt="" loading="lazy">
       <div class="cta-card">
         <span class="eyebrow" data-i18n="dl.eyebrow">下载</span>
         <h2 data-i18n="dl.h2">下一条好内容，从这里开始。</h2>
@@ -363,7 +366,7 @@
     </div>
     <a class="footer-mark" href="#top" aria-label="AutoClip"><img src="logo.svg" alt=""><span class="serif">AutoClip</span></a>
   </div>
-  <img class="footer-art" src="assets/art/footer-strip.webp" width="1280" height="720" alt="" loading="lazy">
+  <div class="footer-art-wrap"><img class="footer-art" data-develop src="assets/art/footer-strip.webp" width="1280" height="720" alt="" loading="lazy"></div>
 </footer>
 
 <script>
@@ -485,7 +488,7 @@
       'demo.s3':'挑片段',
       'demo.s4':'取景 · 包装',
       'demo.s5':'渲染 10 条',
-      'one.eyebrow':'一键',
+      'one.eyebrow':'一键','reel.k':'这一个链接 →',
       'one.h2':'不用剪辑器，<br>也不用跟 AI 聊天。',
       'one.lede':'做切片本来有两条路：在剪辑软件里一帧一帧拖，或者在对话框里跟 AI 一遍遍解释需求。AutoClip 把这两件事都拿掉了。',
       'one.a.k':'剪辑软件',
@@ -627,7 +630,7 @@
       'demo.s3':'Pick moments',
       'demo.s4':'Frame · package',
       'demo.s5':'Render 10 clips',
-      'one.eyebrow':'One click',
+      'one.eyebrow':'One click','reel.k':'That one link →',
       'one.h2':'No editor.<br>No chatting with an AI.',
       'one.lede':'Clipping used to mean one of two things: dragging a timeline frame by frame, or explaining what you want to an AI, again and again. AutoClip removes both.',
       'one.a.k':'Video editor',
@@ -717,6 +720,7 @@
 <script src="assets/footer.js"></script>
 <script src="assets/benchmarks.js"></script>
 <script src="assets/hero.js"></script>
+<script src="assets/motion.js"></script>
 <script src="assets/analytics-config.js"></script>
 <script src="assets/analytics.js"></script>
 </body>
