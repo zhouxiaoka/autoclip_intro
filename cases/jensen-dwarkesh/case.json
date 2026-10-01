@@ -1,0 +1,171 @@
+{
+ "schema": 1,
+ "id": "jensen-dwarkesh",
+ "added": "2026-10-01",
+ "scene": "interview",
+ "featured": true,
+ "contributor": null,
+ "source": {
+  "title": "Jensen Huang – Will Nvidia’s moat persist?",
+  "channel": "Dwarkesh Patel",
+  "url": "https://www.youtube.com/watch?v=Hrbq66XqtCo",
+  "duration_sec": 6193,
+  "language": "en"
+ },
+ "run": {
+  "pipeline": "v2",
+  "minutes": 7.5,
+  "model": "qwen-plus",
+  "model_calls": 34,
+  "tokens_in": 77000,
+  "tokens_out": 12000,
+  "cost_cny": 0.09,
+  "subtitles": "creator",
+  "found": 21,
+  "rendered": 10
+ },
+ "outputs": [
+  {
+   "id": "01",
+   "platform": "xiaohongshu",
+   "template": "interview",
+   "title_lines": [
+    "电子变Token",
+    "无法被完全商品化"
+   ],
+   "source_start_sec": 25,
+   "mood": "bold",
+   "palette": "coral",
+   "duration_sec": 73,
+   "video": "01.mp4",
+   "loop": "01-loop.mp4",
+   "poster": "01.jpg"
+  },
+  {
+   "id": "02",
+   "platform": "xiaohongshu",
+   "template": "interview",
+   "title_lines": [
+    "Nvidia真正的护城河",
+    "是供应链信任与规模引力"
+   ],
+   "source_start_sec": 285,
+   "mood": "bold",
+   "palette": "coral",
+   "duration_sec": 125,
+   "video": "02.mp4",
+   "loop": "02-loop.mp4",
+   "poster": "02.jpg"
+  },
+  {
+   "id": "03",
+   "platform": "xiaohongshu",
+   "template": "interview",
+   "title_lines": [
+    "Nvidia不是TPU",
+    "是通用加速计算平台"
+   ],
+   "source_start_sec": 999,
+   "mood": "bold",
+   "palette": "coral",
+   "duration_sec": 203,
+   "video": "03.mp4",
+   "loop": "03-loop.mp4",
+   "poster": "03.jpg"
+  },
+  {
+   "id": "04",
+   "platform": "xiaohongshu",
+   "template": "interview",
+   "title_lines": [
+    "AI进步靠算法革命",
+    "GPU是唯一能承载它的架构"
+   ],
+   "source_start_sec": 1261,
+   "mood": "bold",
+   "palette": "lemon",
+   "duration_sec": 169,
+   "video": "04.mp4",
+   "loop": "04-loop.mp4",
+   "poster": "04.jpg"
+  },
+  {
+   "id": "05",
+   "platform": "xiaohongshu",
+   "template": "interview",
+   "title_lines": [
+    "Nvidia：唯一能赌上",
+    "全部生意的AI基石"
+   ],
+   "source_start_sec": 3357,
+   "mood": "bold",
+   "palette": "lemon",
+   "duration_sec": 66,
+   "video": "05.mp4",
+   "loop": "05-loop.mp4",
+   "poster": "05.jpg"
+  },
+  {
+   "id": "06",
+   "platform": "xiaohongshu",
+   "template": "interview",
+   "title_lines": [
+    "AI安全靠千个AI守一个AI"
+   ],
+   "source_start_sec": 3623,
+   "mood": "bold",
+   "palette": "coral",
+   "duration_sec": 102,
+   "video": "06.mp4",
+   "loop": "06-loop.mp4",
+   "poster": "06.jpg"
+  },
+  {
+   "id": "07",
+   "platform": "xiaohongshu",
+   "template": "interview",
+   "title_lines": [
+    "AI是五层蛋糕",
+    "能源才是底层"
+   ],
+   "source_start_sec": 4024,
+   "mood": "bold",
+   "palette": "coral",
+   "duration_sec": 76,
+   "video": "07.mp4",
+   "loop": "07-loop.mp4",
+   "poster": "07.jpg"
+  },
+  {
+   "id": "08",
+   "platform": "xiaohongshu",
+   "template": "interview",
+   "title_lines": [
+    "算法进步比摩尔定律快10倍"
+   ],
+   "source_start_sec": 4179,
+   "mood": "bold",
+   "palette": "lemon",
+   "duration_sec": 42,
+   "video": "08.mp4",
+   "loop": "08-loop.mp4",
+   "poster": "08.jpg"
+  },
+  {
+   "id": "09",
+   "platform": "xiaohongshu",
+   "template": "interview",
+   "title_lines": [
+    "CUDA为何不可替代？",
+    "AI时代的核心栈"
+   ],
+   "source_start_sec": 5582,
+   "mood": "bold",
+   "palette": "lemon",
+   "duration_sec": 87,
+   "video": "09.mp4",
+   "loop": "09-loop.mp4",
+   "poster": "09.jpg"
+  }
+ ]
+}

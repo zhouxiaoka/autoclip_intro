@@ -65,7 +65,7 @@
   <div class="container nav-in">
     <a class="brand serif" href="#top" aria-label="AutoClip"><img src="logo.svg" alt="">AutoClip</a>
     <nav class="nav-links" aria-label="主导航">
-      <a href="#clips" data-i18n="nav.clips">成片</a>
+      <a href="#clips" data-i18n="nav.clips">案例</a>
       <a href="#templates" data-i18n="nav.templates">模板</a>
       <a href="#numbers" data-i18n="nav.numbers">速度与成本</a>
       <a href="#developers" data-i18n="nav.developers">开发者</a>
@@ -130,16 +130,15 @@
   <div class="container">
     <div class="stage-head">
       <div>
-        <span class="eyebrow" data-i18n="clips.eyebrow">真实成片</span>
-        <h2 data-i18n="clips.h2">没有人工修改，这就是它直接交出来的。</h2>
+        <span class="eyebrow" data-i18n="clips.eyebrow">案例库</span>
+        <h2 data-i18n="clips.h2">贴一个链接，交出一整套发布物。</h2>
         <p class="lede" data-i18n="clips.lede"></p>
       </div>
       <div class="wall-nav"><button type="button" data-wall-step="-1" aria-label="←">←</button><button type="button" data-wall-step="1" aria-label="→">→</button></div>
     </div>
   </div>
-  <div class="wall" data-wall></div>
+  <div data-library="home" data-limit="12"></div>
   <div class="container">
-    <p class="credit" data-credit></p>
 
     <div class="templates" id="templates">
       <span class="eyebrow" data-i18n="tpl.eyebrow">包装模板</span>
@@ -147,7 +146,7 @@
       <p class="lede" data-i18n="tpl.lede"></p>
       <div class="tpl-grid">
         <article class="tpl">
-          <span data-tpl="07"></span>
+          <span data-output-ref="altman-yc/01"></span>
           <div>
             <span class="k" data-i18n="tpl.a.k">抖音 · 小红书</span>
             <h3 data-i18n="tpl.a.h">访谈式</h3>
@@ -155,7 +154,7 @@
           </div>
         </article>
         <article class="tpl">
-          <span data-tpl="04"></span>
+          <span data-output-ref="dario-dwarkesh/04"></span>
           <div>
             <span class="k" data-i18n="tpl.b.k">TikTok · Reels · Shorts</span>
             <h3 data-i18n="tpl.b.h">播客式</h3>
@@ -303,6 +302,7 @@
   <div class="container footer-in">
     <a class="brand serif" href="#top"><img src="logo.svg" alt="">AutoClip</a>
     <nav class="footer-links" aria-label="页脚">
+      <a href="cases/" data-i18n="footer.cases">案例库</a>
       <a href="use-cases/podcast/" data-i18n="footer.podcast">访谈播客</a>
       <a href="use-cases/course/" data-i18n="footer.course">课程讲解</a>
       <a href="use-cases/gameplay/" data-i18n="footer.game">游戏高光</a>
@@ -326,7 +326,7 @@
     zh: {
       'title':'AutoClip — 一条长视频，一键剪成各平台能直接发的短视频',
       'meta.desc':'开源免费的 AI 视频切片工具。贴一个链接、选好平台，AutoClip 挑出最值得发的片段，自动取景、配双语字幕和标题，直接导出抖音、小红书、TikTok、YouTube Shorts 成片。在你的电脑上运行。',
-      'nav.clips':'成片','nav.templates':'模板','nav.numbers':'速度与成本','nav.developers':'开发者','nav.faq':'常见问题','nav.cta':'下载',
+      'nav.clips':'案例','nav.templates':'模板','nav.numbers':'速度与成本','nav.developers':'开发者','nav.faq':'常见问题','nav.cta':'下载',
       'hero.badge':'开源 · 免费 · 在你的电脑上运行',
       'hero.h1':'一条长视频，<br>一键剪成能直接发的短视频。',
       'hero.lede':'贴一个链接，选好要发的平台。AutoClip 挑出最值得发的片段，跟着说话人取景，配好双语字幕和标题，直接导出抖音、小红书、TikTok、YouTube Shorts 成片。',
@@ -334,8 +334,8 @@
       'hero.alt.also':'也支持','hero.alt.win':'Windows','hero.alt.mac':'macOS','hero.alt.releases':'全部版本','hero.alt.docker':'Docker / CLI / MCP',
       'hero.note':'v1.4.0 · 开源 MIT · 免费',
       'flow.url':'youtube.com/watch?v=… · 1:43:12','flow.p1':'抖音','flow.p2':'小红书','flow.p6':'B 站','flow.out':'10 条成片 · 7.5 分钟',
-      'clips.eyebrow':'真实成片','clips.h2':'没有人工修改，这就是它直接交出来的。',
-      'clips.lede':'三场英文访谈，各贴一个链接。下面每一条都是 AutoClip 自动挑片、取景、翻译、包装后的原样输出。点开有声音。',
+      'clips.eyebrow':'案例库','clips.h2':'贴一个链接，交出一整套发布物。',
+      'clips.lede':'这里收录 AutoClip 直接产出的真实成片，没有人工修改，并持续更新。点开任意一条，看它为目标平台准备的交付包：成片、封面、标题、简介和话题。也欢迎投稿你做的成片。',
       'tpl.eyebrow':'包装模板','tpl.h2':'每个平台，各有各的样子。',
       'tpl.lede':'同一个片段，发抖音和发 TikTok 不该长得一样。AutoClip 按平台的画幅、时长和观看习惯分别包装，可以随时追加平台版本。',
       'tpl.a.k':'抖音 · 小红书','tpl.a.h':'访谈式',
@@ -384,12 +384,12 @@
       'dl.win.req':'Windows 10 / 11，x64。按用户安装，不需要管理员权限；缺少 WebView2 时安装器会自动下载。','dl.win.btn':'下载安装包',
       'dl.win.sum':'首次运行提示','dl.win.note':'安装包尚未做代码签名，SmartScreen 会拦一次。点「更多信息」再选「仍要运行」即可。',
       'dl.alt':'想跑在服务器或 NAS 上？<a href="https://github.com/zhouxiaoka/autoclip#readme" target="_blank" rel="noopener">Docker 部署与源码运行</a>见 GitHub README。',
-      'footer.podcast':'访谈播客','footer.course':'课程讲解','footer.game':'游戏高光','footer.publish':'发布教程','footer.cover':'自动封面','footer.releases':'版本','footer.privacy':'隐私政策','footer.copy':'© 2025–2026 AutoClip · MIT 许可'
+      'footer.cases':'案例库','footer.podcast':'访谈播客','footer.course':'课程讲解','footer.game':'游戏高光','footer.publish':'发布教程','footer.cover':'自动封面','footer.releases':'版本','footer.privacy':'隐私政策','footer.copy':'© 2025–2026 AutoClip · MIT 许可'
     },
     en: {
       'title':'AutoClip — One long video, ready-to-post clips for every platform',
       'meta.desc':'Free, open-source AI clipping. Paste a link and pick your platforms: AutoClip finds the moments worth posting, frames the speaker, adds captions and titles, and exports finished clips for TikTok, Reels, YouTube Shorts and more. Runs on your computer.',
-      'nav.clips':'Clips','nav.templates':'Templates','nav.numbers':'Speed & cost','nav.developers':'Developers','nav.faq':'FAQ','nav.cta':'Download',
+      'nav.clips':'Cases','nav.templates':'Templates','nav.numbers':'Speed & cost','nav.developers':'Developers','nav.faq':'FAQ','nav.cta':'Download',
       'hero.badge':'Open source · Free · Runs on your computer',
       'hero.h1':'One long video.<br>Ready-to-post clips for <em>every</em> platform.',
       'hero.lede':'Paste a link and pick where you post. AutoClip finds the moments worth sharing, follows the speaker, adds captions and titles, and exports finished clips for TikTok, Reels, YouTube Shorts, Douyin and Xiaohongshu.',
@@ -397,8 +397,8 @@
       'hero.alt.also':'Also for','hero.alt.win':'Windows','hero.alt.mac':'macOS','hero.alt.releases':'All releases','hero.alt.docker':'Docker / CLI / MCP',
       'hero.note':'v1.4.0 · Open source, MIT · Free',
       'flow.url':'youtube.com/watch?v=… · 1:43:12','flow.p1':'Douyin','flow.p2':'Xiaohongshu','flow.p6':'Bilibili','flow.out':'10 clips · 7.5 min',
-      'clips.eyebrow':'Real outputs','clips.h2':'No manual edits. This is what it hands you.',
-      'clips.lede':'Three English interviews, one link each. Every clip below is AutoClip’s untouched output: picked, framed, translated and packaged automatically. Open one for sound.',
+      'clips.eyebrow':'Case library','clips.h2':'Paste one link. Get everything you need to post.',
+      'clips.lede':'Real, untouched AutoClip outputs, updated as we go. Open any clip to see the delivery kit made for its platform: the video, cover, title, description and tags. Made something good? Share it.',
       'tpl.eyebrow':'Templates','tpl.h2':'Each platform gets its own look.',
       'tpl.lede':'A clip for Douyin shouldn’t look like a clip for TikTok. AutoClip packages each version for the platform’s frame, length and viewing habits, and you can add another platform any time.',
       'tpl.a.k':'Douyin · Xiaohongshu','tpl.a.h':'Interview',
@@ -447,7 +447,7 @@
       'dl.win.req':'Windows 10 / 11, x64. Per-user install, no admin rights; the installer fetches WebView2 if it is missing.','dl.win.btn':'Download installer',
       'dl.win.sum':'First run','dl.win.note':'The installer is not code-signed yet, so SmartScreen warns once. Choose More info, then Run anyway.',
       'dl.alt':'Running on a server or NAS? <a href="https://github.com/zhouxiaoka/autoclip#readme" target="_blank" rel="noopener">Docker and source setup</a> are in the GitHub README.',
-      'footer.podcast':'Interviews & podcasts','footer.course':'Courses','footer.game':'Gaming highlights','footer.publish':'Publish guide','footer.cover':'Auto cover','footer.releases':'Releases','footer.privacy':'Privacy','footer.copy':'© 2025–2026 AutoClip · MIT License'
+      'footer.cases':'Case library','footer.podcast':'Interviews & podcasts','footer.course':'Courses','footer.game':'Gaming highlights','footer.publish':'Publish guide','footer.cover':'Auto cover','footer.releases':'Releases','footer.privacy':'Privacy','footer.copy':'© 2025–2026 AutoClip · MIT License'
     }
   };
   // Japanese, Korean, Spanish, Portuguese, Russian and French show English until the Chinese copy is final and translated.
@@ -506,7 +506,7 @@
   });
 })();
 </script>
-<script src="assets/home.js"></script>
+<script src="assets/library.js"></script>
 <script src="assets/analytics-config.js"></script>
 <script src="assets/analytics.js"></script>
 </body>

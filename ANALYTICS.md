@@ -20,7 +20,7 @@
 | `website_demo_play` | 示例视频实际开始播放，每页每个播放器中的片段去重 | clip_id |
 | `website_demo_complete` | 示例视频 ended，每页每个播放器中的片段去重 | clip_id |
 
-`clip_id`：旧案例为 `9` / `11` / `12` / `13`；新版首页成片为 `v2-01` … `v2-10`，只统计播放器里的完整成片，成片墙上自动循环的静音预览不计入。
+`clip_id`：旧案例为 `9` / `11` / `12` / `13`；案例库成片为 `<案例 ID>_<成片编号>`（如 `jensen-dwarkesh_03`），只统计交付包弹窗里的完整成片，成片墙上自动循环的静音预览不计入。
 | `website_sponsor_click` | 点击显式标记的赞助链接 | sponsor_id；placement |
 | `website_resource_click` | 打开仓库、文档、发布列表、社区或站内发布指南 | resource；placement |
 | `website_language_change` | 切换页面语言 | from_language；to_language |

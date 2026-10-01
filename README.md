@@ -106,3 +106,11 @@ SITE_URL=http://127.0.0.1:8770/ node scripts/website-review.cjs
 ## 官网访问统计
 
 全站采用访客主动允许后才启用的 PostHog 匿名统计，页脚可随时关闭，并尊重 DNT / GPC。官网与客户端事件通过 `surface = website` 区分；本地预览不发送数据。事件口径、赞助链接标记、看板与 SQL 查询、验收步骤见 [ANALYTICS.md](ANALYTICS.md)，访客说明见 [访问统计](analytics/index.html)。
+
+## 首页 v2 与案例库（2026-10-01）
+
+开发分支：`cursor/homepage-v2`，随出片链路 V2 发版上线。
+
+- `index.html` + `assets/home.css`：新首页。浅色主体，加一条深色「成片展示带」（规范见主仓库 `DESIGN.md` Web 层）。首页不再加载 `site.js` / `ui-polish.js` / `redesign.css`，子页面照旧。
+- `cases/` + `assets/library.js`：数据驱动的案例库。首页展示带按原片轮流取 12 条，`/cases/` 展示全部并可按平台、原片筛选；点开一条显示该平台的交付包（成片、封面、标题、简介、话题）。加案例只加数据，见 [`cases/README.md`](cases/README.md)。
+- 日、韩、西、葡、俄、法暂时显示英文，中文定稿后统一翻译。

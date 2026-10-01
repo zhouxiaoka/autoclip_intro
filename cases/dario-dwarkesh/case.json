@@ -1,0 +1,83 @@
+{
+ "schema": 1,
+ "id": "dario-dwarkesh",
+ "added": "2026-10-01",
+ "scene": "interview",
+ "featured": false,
+ "contributor": null,
+ "source": {
+  "title": "Dario Amodei — “We are near the end of the exponential”",
+  "channel": "Dwarkesh Patel",
+  "url": "https://www.youtube.com/watch?v=n1E9IZfvGMA",
+  "duration_sec": 8540,
+  "language": "en"
+ },
+ "run": null,
+ "outputs": [
+  {
+   "id": "01",
+   "platform": "douyin",
+   "template": "interview",
+   "title_lines": [
+    "AI学不会视频编辑的真本事",
+    "边干边学的能力是最大缺口"
+   ],
+   "duration_sec": 84,
+   "video": "01.mp4",
+   "loop": "01-loop.mp4",
+   "poster": "01.jpg"
+  },
+  {
+   "id": "02",
+   "platform": "douyin",
+   "template": "interview",
+   "title_lines": [
+    "AI军备竞赛：晚一年=破产",
+    "10倍增速的残酷数学"
+   ],
+   "duration_sec": 190,
+   "video": "02.mp4",
+   "loop": "02-loop.mp4",
+   "poster": "02.jpg"
+  },
+  {
+   "id": "03",
+   "platform": "xiaohongshu",
+   "template": "interview",
+   "title_lines": [
+    "AI编辑=人类编辑？",
+    "1–3年见分晓"
+   ],
+   "duration_sec": 150,
+   "video": "03.mp4",
+   "loop": "03-loop.mp4",
+   "poster": "03.jpg"
+  },
+  {
+   "id": "04",
+   "platform": "tiktok",
+   "template": "podcast",
+   "title_lines": [
+    "API pricing won't die—token value",
+    "asymmetry will redefine AGI economics"
+   ],
+   "duration_sec": 136,
+   "video": "04.mp4",
+   "loop": "04-loop.mp4",
+   "poster": "04.jpg"
+  },
+  {
+   "id": "05",
+   "platform": "youtube_shorts",
+   "template": "podcast",
+   "title_lines": [
+    "Anthropic built Claude Code",
+    "by using it internally first"
+   ],
+   "duration_sec": 122,
+   "video": "05.mp4",
+   "loop": "05-loop.mp4",
+   "poster": "05.jpg"
+  }
+ ]
+}

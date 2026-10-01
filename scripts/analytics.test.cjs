@@ -105,10 +105,10 @@ test('playback counts actual playing once per clip, completion separately, and n
   video.currentSrc='https://another.example/clip-9.mp4'; b.listeners.playing({type:'playing',target:video});
   assert.deepEqual(b.events(),['website_pageview','website_demo_play','website_demo_complete']);
 });
-test('homepage v2 counts full clips in the player but not the muted wall loops', () => {
-  const b=boot({consent:'yes'}), base='https://zhouxiaoka.github.io/autoclip_intro/assets/v2/';
-  b.listeners.playing({type:'playing',target:{tagName:'VIDEO',currentSrc:base+'clip-07-loop.mp4'}});
-  const player={tagName:'VIDEO',currentSrc:base+'clip-07.mp4'};
+test('case library counts full clips in the player but not the muted wall loops', () => {
+  const b=boot({consent:'yes'}), base='https://zhouxiaoka.github.io/autoclip_intro/cases/altman-yc/';
+  b.listeners.playing({type:'playing',target:{tagName:'VIDEO',currentSrc:base+'01-loop.mp4'}});
+  const player={tagName:'VIDEO',currentSrc:base+'01.mp4'};
   b.listeners.playing({type:'playing',target:player}); b.listeners.ended({type:'ended',target:player});
   assert.deepEqual(b.events(),['website_pageview','website_demo_play','website_demo_complete']);
 });
@@ -181,7 +181,7 @@ test('storage denial and synchronous/asynchronous network failures do not break 
 });
 test('all marketing pages load config then analytics once, using existing local paths',()=>{
   const root=path.join(__dirname,'..');
-  for(const p of ['','use-cases/podcast','use-cases/course','use-cases/gameplay','features/publish','features/auto-cover','guides/publish']) {
+  for(const p of ['','cases','use-cases/podcast','use-cases/course','use-cases/gameplay','features/publish','features/auto-cover','guides/publish']) {
     const html=fs.readFileSync(path.join(root,p,'index.html'),'utf8');
     for(const asset of ['analytics-config.js','analytics.js']) {
       const links=[...html.matchAll(new RegExp('<script src="([^\"]*assets/'+asset.replace('.','\\.')+')"></script>','g'))];
