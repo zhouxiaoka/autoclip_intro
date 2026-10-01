@@ -126,17 +126,21 @@ test('cross-tab revocation stops capture',()=>{
   b.click('https://github.com/zhouxiaoka/autoclip/releases/download/v1/a.dmg');
   assert.equal(b.requests.length,1); assert.equal(b.api.isEnabled(),false);
 });
-test('first-visit choices appear outside the footer and stay hidden after either decision', () => {
-  for (const allow of [true, false]) {
-    const b = boot();
-    const panel = b.nodes.get('site-analytics-preferences');
-    assert.equal(panel.className, 'analytics-banner');
-    assert.ok(b.context.document.body.children.includes(panel));
-    assert.equal(b.footer.children.length, 0);
-    panel.children[1].children[allow ? 0 : 1].click();
-    assert.equal(b.nodes.has('site-analytics-preferences'), false);
-    assert.equal(b.requests.length, allow ? 1 : 0);
-    const next = boot({memory: b.memory});
+test('first-visit allow closes the banner; managing preferences keeps the choice pending', () => {
+  const b = boot();
+  const panel = b.nodes.get('site-analytics-preferences');
+  assert.equal(panel.className, 'analytics-banner');
+  assert.ok(b.context.document.body.children.includes(panel));
+  assert.equal(b.footer.children.length, 0);
+  const [allow, preferences] = panel.children[1].children;
+  assert.equal(preferences.href, 'https://zhouxiaoka.github.io/autoclip_intro/analytics/?lang=zh');
+  assert.equal(b.memory.size, 0);
+  assert.equal(b.requests.length, 0);
+  allow.click();
+  assert.equal(b.nodes.has('site-analytics-preferences'), false);
+  assert.equal(b.requests.length, 1);
+  for (const consent of ['yes', 'no']) {
+    const next = boot({consent});
     assert.equal(next.nodes.has('site-analytics-preferences'), false);
   }
   assert.equal(boot({navigator: {doNotTrack: '1'}}).nodes.has('site-analytics-preferences'), false);

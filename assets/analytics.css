@@ -15,14 +15,20 @@
   z-index: 110;
   right: 24px;
   bottom: max(24px, env(safe-area-inset-bottom));
-  left: 24px;
-  width: calc(100% - 48px);
-  max-width: 960px;
+  width: 360px;
+  max-width: calc(100% - 48px);
   max-height: calc(100dvh - 48px);
   overflow: auto;
-  margin: 0 auto;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 16px;
+  padding: 20px;
+  font-size: 14px;
+  margin: 0;
   box-shadow: 0 12px 48px #0002;
 }
+#site-analytics-preferences.analytics-banner h2 { font-size: 18px; }
+#site-analytics-preferences.analytics-banner .analytics-actions { flex-direction: column; }
 #site-analytics-preferences h2 {
   margin: 0 0 8px;
   font-size: 20px;
@@ -34,7 +40,10 @@
 #site-analytics-preferences .analytics-copy { flex: 1; min-width: 0; }
 #site-analytics-preferences .analytics-status { font-weight: 600; }
 #site-analytics-preferences .analytics-actions { display: flex; gap: 10px; flex-shrink: 0; }
-#site-analytics-preferences button {
+#site-analytics-preferences button,
+#site-analytics-preferences .analytics-action {
+  box-sizing: border-box;
+  display: block;
   min-height: 44px;
   padding: 10px 18px;
   border: 1px solid #d2d0cb;
@@ -43,17 +52,22 @@
   color: #252525;
   font: inherit;
   font-weight: 500;
+  text-align: center;
+  text-decoration: none;
   cursor: pointer;
 }
 #site-analytics-preferences button:hover { background: #eeede9; }
+#site-analytics-preferences .analytics-allow { background: #171717; color: #fff; border-color: #171717; }
+#site-analytics-preferences .analytics-allow:hover { background: #333; border-color: #333; }
+#site-analytics-preferences .analytics-action { background: #e8e7e4; border-color: #e8e7e4; }
+#site-analytics-preferences .analytics-action:hover { background: #dad9d6; border-color: #dad9d6; }
 #site-analytics-preferences :focus-visible { outline: 2px solid #235ca8; outline-offset: 3px; }
 @media (max-width: 640px) {
   #site-analytics-preferences { flex-direction: column; align-items: stretch; gap: 16px; padding: 20px; }
   #site-analytics-preferences.analytics-banner {
-    left: 12px;
     right: 12px;
     bottom: max(12px, env(safe-area-inset-bottom));
-    width: calc(100% - 24px);
+    max-width: calc(100% - 24px);
   }
   #site-analytics-preferences .analytics-actions { flex-wrap: wrap; }
   #site-analytics-preferences button { flex: 1; }
