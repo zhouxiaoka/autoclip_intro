@@ -55,10 +55,9 @@
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500&family=Noto+Serif+SC:wght@600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="tokens.css">
 <link rel="stylesheet" href="assets/home.css">
-<script data-serif-preview>if(/[?&]serif=1/.test(location.search)){document.documentElement.classList.add('serif-preview');var l=document.createElement('link');l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;600&display=swap';document.head.append(l);}</script>
 </head>
 <body class="site-home v2">
 
@@ -120,7 +119,8 @@
     </div>
 
     <div class="hero-art" aria-hidden="true">
-      <div class="art-bg" data-poster-bg="tim-luoyonghao/01"></div>
+      <div class="art-panel art-a"><img src="assets/art/lemon-marks.webp" width="864" height="1152" alt=""></div>
+      <div class="art-panel art-b"><img src="assets/art/burst.webp" width="864" height="1152" alt=""></div>
       <div class="demo" data-demo>
         <div class="demo-bar"><i></i><i></i><i></i><span>AutoClip</span></div>
         <div class="demo-body">
@@ -304,10 +304,13 @@
 
 <section class="section" id="download">
   <div class="container">
-    <div class="dl-head">
-      <span class="eyebrow" data-i18n="dl.eyebrow">下载</span>
-      <h2 data-i18n="dl.h2">下一条好内容，从这里开始。</h2>
-      <p class="lede" data-i18n="dl.lede"></p>
+    <div class="cta-band">
+      <img class="cta-art" src="assets/art/filmstrip-band.webp" width="1280" height="720" alt="" loading="lazy">
+      <div class="cta-card">
+        <span class="eyebrow" data-i18n="dl.eyebrow">下载</span>
+        <h2 data-i18n="dl.h2">下一条好内容，从这里开始。</h2>
+        <p class="lede" data-i18n="dl.lede"></p>
+      </div>
     </div>
     <div class="dl">
       <div class="dlcard">
@@ -351,6 +354,7 @@
     </nav>
     <span data-i18n="footer.copy">© 2025–2026 AutoClip · MIT 许可</span>
   </div>
+  <div class="container"><p class="wordmark-xl serif" aria-hidden="true">AutoClip</p></div>
 </footer>
 
 <script>

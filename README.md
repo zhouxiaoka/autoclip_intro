@@ -113,6 +113,7 @@ SITE_URL=http://127.0.0.1:8770/ node scripts/website-review.cjs
 
 - `index.html` + `assets/home.css`：新首页。浅色主体，加一条深色「成片展示带」（规范见主仓库 `DESIGN.md` Web 层）。首页不再加载 `site.js` / `ui-polish.js` / `redesign.css`，子页面照旧。
 - `data/benchmarks.json` + `assets/benchmarks.js`：实测数据，首页速度与成本区的数字、阶段耗时图和表格都从这里算。
-- `assets/hero.js`：首屏「贴链接 → 选平台 → 一键出片」演示、AI 对话对照、滚动步骤导航；减少动态效果时直接显示终态。`?serif=1` 预览衬线标题。
+- `assets/hero.js`：首屏「贴链接 → 选平台 → 一键出片」演示、AI 对话对照、滚动步骤导航；减少动态效果时直接显示终态。标题默认衬线（拉丁 Instrument Serif、中文 Noto Serif SC）。
+- `assets/art/`：孔版风艺术素材（AI 生成），首屏拼贴、下载区横幅；说明与提示词见 `assets/art/README.md`。
 - `cases/` + `assets/library.js`：数据驱动的案例库，`cases/manifest.json` + `scripts/build_cases.py` 一条命令换一批 demo。首页展示带按原片轮流取 12 条，`/cases/` 展示全部并可按平台、原片筛选；点开一条显示该平台的交付包（成片、封面、标题、简介、话题）。加案例只加数据，见 [`cases/README.md`](cases/README.md)。
 - 日、韩、西、葡、俄、法暂时显示英文，中文定稿后统一翻译。
