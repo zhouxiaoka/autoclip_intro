@@ -12,8 +12,11 @@ tokens.css          设计 token，与产品 frontend/src/index.css 的 --ac-* �
 logo.svg            品牌标记（矢量）；favicon-32.png / apple-touch-icon.png 由它渲染
 img/                hero 与示例卡里的视频静帧（WebP），以及 1200×630 的 og.png
 use-cases/          静态用法页：podcast/、course/，以及共用 case.css；引用根目录 tokens.css 与图标
-robots.txt          允许抓取 /，Sitemap 指向 GitHub Pages
-sitemap.xml         首页、播客用法、课程用法
+robots.txt          允许抓取 /，并指向 Sitemap 与 llms.txt
+sitemap.xml         首页、案例库、场景页、功能页、llms
+llms.txt            给回答引擎的短说明（现行 1.5 口径）
+llms-full.txt       完整产品事实，供引用
+SEO.md              官网流量事实与创始人要做的三步
 ```
 
 零构建：改完 `index.html` 直接 push 到 `main`，Pages 约一分钟后生效。
@@ -61,7 +64,9 @@ python3 scripts/sync_release.py v1.3.0   # 更新到指定已发布 Release
 
 所有文案仍在 `index.html` 的 `T` 对象中，发布版本同步脚本会更新八语中的版本号。页面标题、说明与 `html[lang]` 随语言切换；静态社交爬虫未执行 JavaScript 时仍看到默认中文元信息。Canonical、分享图，以及 FAQPage / SoftwareApplication JSON-LD，都按这份默认中文 HTML 编写，不随语言切换。
 
-验证：`node --test scripts/i18n.test.cjs`。
+验证：`node --test scripts/i18n.test.cjs scripts/seo.test.cjs`。
+
+搜索与回答引擎口径见 [SEO.md](SEO.md)。静态爬虫现在能读到首页 FAQ / 对照表的中文默认正文；语言切换仍只改运行中的 DOM。
 
 本次八语改动已验证目录中的文案键、语言优先级、切换后的标题/描述/下载目标、语言选择持久化，以及八语在桌面和约 400 CSS 像素宽度下的排版。新增四语尚未经过母语用户审校。部署前继续使用现有 Pages 流程；本地验证本身不会发布官网。
 
