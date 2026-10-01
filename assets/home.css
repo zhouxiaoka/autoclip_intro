@@ -347,6 +347,29 @@ h2{font-size:var(--ac-fs-h2);font-weight:500;line-height:1.2;letter-spacing:-.01
 .cases-cta .btn:hover{border-color:var(--stage-muted);color:var(--stage-ink)}
 .cases-page .btn-primary{background:var(--stage-ink);color:var(--stage-bg)}
 .cases-page .lang select{background:var(--stage-card);color:var(--stage-ink);border-color:var(--stage-line)}
+.inner-points{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 24px;margin:48px 0 8px}
+.inner-points article .mono{color:var(--stage-muted)}
+.inner-points h3{margin-top:8px;font-size:1.0625rem;font-weight:500}
+.inner-points p{margin-top:8px;font-size:.9375rem;color:var(--stage-sub);line-height:1.6}
+.inner-note{margin-top:28px;font-size:.8125rem;color:var(--stage-muted);line-height:1.65;max-width:62ch}
+.inner-cta{display:flex;flex-wrap:wrap;gap:12px;margin:36px 0 8px}
+.inner-cta .btn-secondary{border-color:var(--stage-line);color:var(--stage-sub)}
+.cover-grid{margin-top:28px;display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:22px 16px;padding:0 max(var(--ac-gutter),calc((100vw - var(--ac-container))/2 + var(--ac-gutter)))}
+.cover-tile{padding:0;border:0;background:transparent;text-align:left}
+.cover-tile img{display:block;width:100%;height:auto;aspect-ratio:var(--clip-ar,9/16);object-fit:cover;border-radius:12px;border:1px solid var(--stage-line);background:var(--stage-card)}
+.cover-tile.is-wide{grid-column:span 2}
+.cover-tile span{display:block;margin-top:10px;font-size:.8125rem;color:var(--stage-ink);line-height:1.45}
+.cover-tile:hover img{border-color:var(--stage-muted)}
+.inner-metrics{display:flex;gap:32px;flex-wrap:wrap;margin:28px 0 8px}
+.inner-metrics strong{display:block;font-family:var(--ac-font-serif);font-size:2rem;font-weight:400;line-height:1;color:var(--stage-ink)}
+.inner-metrics span{display:block;margin-top:6px;font-size:.75rem;color:var(--stage-muted)}
+.inner-hero-fig{margin:36px 0 0;max-width:720px}
+.inner-hero-fig img{display:block;width:100%;height:auto;border-radius:16px;border:1px solid var(--stage-line)}
+.inner-hero-fig figcaption{margin-top:10px;font-size:.75rem;color:var(--stage-muted)}
+@media (max-width: 760px){
+  .inner-points{grid-template-columns:minmax(0,1fr);gap:22px}
+  .cover-tile.is-wide{grid-column:span 1}
+}
 
 /* ===== v2.1: Granola-style rhythm ===== */
 .band-white{background:var(--ac-card)}
@@ -525,6 +548,7 @@ h2{font-size:var(--ac-fs-h2);font-weight:500;line-height:1.2;letter-spacing:-.01
 }
 @media (max-width: 720px){
   .hero-split h1{font-size:clamp(2.25rem,10vw,3rem)}
+  .hero-split .lede{margin-top:16px;font-size:.9375rem;line-height:1.55;max-width:32ch}
   .hero-art{aspect-ratio:auto;padding:28px 0 64px}
   .hero-art .demo{position:relative;left:auto;top:auto;width:86%;margin:0 auto}
   .art-a{top:0;height:70%;width:52%}

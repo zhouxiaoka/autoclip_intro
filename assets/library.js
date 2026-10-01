@@ -97,20 +97,28 @@ function matchQuery(o,q){
 }
 
 async function mount(host){
- const full=host.dataset.library==='full',limit=+host.dataset.limit||Infinity;
+ const mode=host.dataset.library,full=mode==='full',sceneMode=mode==='scene',limit=+host.dataset.limit||Infinity;
  let data;try{data=await load();}catch{host.innerHTML=`<p class="lib-empty">${L().loadErr}</p>`;return;}
- const st=host._state||(host._state={platform:'all',scene:'all',q:''});
+ const scenesWanted=(host.dataset.scenes||'').split(',').map(s=>s.trim()).filter(Boolean);
+ const ids=new Set((host.dataset.ids||'').split(',').map(s=>s.trim()).filter(Boolean));
+ const st=host._state||(host._state={platform:'all',scene:host.dataset.scene||'all',q:''});
  const u=L(),plats=[...new Set(data.outputs.map(o=>o.platform))],scenes=[...new Set(data.cases.map(c=>c.scene))];
- const list=data.outputs.filter(o=>(st.platform==='all'||o.platform===st.platform)&&(st.scene==='all'||o.case.scene===st.scene)&&matchQuery(o,st.q||''));
- const ordered=full?list:roundRobin(list,data.cases);
+ const list=data.outputs.filter(o=>{
+  if(st.platform!=='all'&&o.platform!==st.platform)return false;
+  if(ids.size){if(!ids.has(o.case.id))return false;}
+  else if(scenesWanted.length?!scenesWanted.includes(o.case.scene):st.scene!=='all'&&o.case.scene!==st.scene)return false;
+  return matchQuery(o,st.q||'');
+ });
+ const ordered=full||sceneMode?list:roundRobin(list,data.cases);
  const cut=ordered.slice(0,limit);
- const shown=full?[...cut.filter(o=>!wide(o)),...cut.filter(o=>wide(o))]:cut;
+ const shown=full||sceneMode?[...cut.filter(o=>!wide(o)),...cut.filter(o=>wide(o))]:cut;
  const filters=chips('platform',[['all',u.all],...plats.map(p=>[p,pick(PLATFORM[p])])],st.platform)
   +(full&&scenes.length>1?chips('scene',[['all',u.all],...scenes.map(s=>[s,pick(SCENE[s])])],st.scene):'')
   +(full?`<label class="lib-search"><span class="visually-hidden">${u.searchPh}</span><input type="search" value="${esc(st.q||'')}" placeholder="${esc(u.searchPh)}" autocomplete="off"></label>`:'');
- host.innerHTML=`<div class="container lib-bar"><p class="lib-stats mono">${u.stats(data.cases.length,data.outputs.length,plats.length,data.index.updated)}</p>${filters}</div>`
-  +(shown.length?`<div class="${full?'lib-grid':'wall'}" data-wall>${shown.map(o=>card(o)).join('')}${submitTile(full?0:data.outputs.length,full)}</div>`:`<div class="container"><p class="lib-empty">${st.q?u.searchEmpty:u.empty}</p></div>`)
-  +`<div class="container"><p class="credit">${u.credit}</p></div>`;
+ const bar=sceneMode?'':`<div class="container lib-bar"><p class="lib-stats mono">${u.stats(data.cases.length,data.outputs.length,plats.length,data.index.updated)}</p>${filters}</div>`;
+ host.innerHTML=bar
+  +(shown.length?`<div class="${full||sceneMode?'lib-grid':'wall'}" data-wall>${shown.map(o=>card(o)).join('')}${sceneMode?'':submitTile(full?0:data.outputs.length,full)}</div>`:`<div class="container"><p class="lib-empty">${st.q?u.searchEmpty:u.empty}</p></div>`)
+  +(sceneMode?'':`<div class="container"><p class="credit">${u.credit}</p></div>`);
  host.querySelectorAll('.chips button').forEach(b=>b.addEventListener('click',()=>{const k=Object.keys(b.dataset)[0];st[k]=b.dataset[k];mount(host);}));
  const box=host.querySelector('.lib-search input');
  if(box){box.addEventListener('input',()=>{st.q=box.value;host._caret=box.selectionStart;mount(host);});
@@ -188,7 +196,15 @@ function open(ref,trigger){
  video.src=media(o,'video');if(!dialog.open)dialog.showModal();video.play().catch(()=>{});
 }
 async function refs(){await load().catch(()=>null);document.querySelectorAll('[data-output-ref]').forEach(el=>{const o=find(el.dataset.outputRef);if(!o)return;const tmp=document.createElement('div');tmp.innerHTML=card(o,` data-output-ref="${el.dataset.outputRef}"`);el.replaceWith(tmp.firstElementChild);});wire(document);}
-function render(){lang=(document.documentElement.lang||'en').split('-')[0];if(!T[lang])lang='en';document.querySelectorAll('[data-library]').forEach(mount);refs();}
+function mountCovers(host){
+ load().then(()=>{
+  const refs=(host.dataset.covers||'').split(',').map(s=>s.trim()).filter(Boolean);
+  const items=refs.map(find).filter(o=>o&&o.cover);
+  host.innerHTML=items.length?`<div class="cover-grid">${items.map(o=>`<button type="button" class="cover-tile${wide(o)?' is-wide':''}" data-out="${o.case.id}/${o.id}" style="--clip-ar:${arCss(o)}"><img src="${media(o,'cover')}" alt="${esc(title(o))}" width="${arSize(o)[0]}" height="${arSize(o)[1]}" loading="lazy"><span>${esc(title(o))}</span></button>`).join('')}</div>`:`<p class="lib-empty">${L().empty}</p>`;
+  wire(host);
+ }).catch(()=>{host.innerHTML=`<p class="lib-empty">${L().loadErr}</p>`;});
+}
+function render(){lang=(document.documentElement.lang||'en').split('-')[0];if(!T[lang])lang='en';document.querySelectorAll('[data-library]').forEach(mount);document.querySelectorAll('[data-covers]').forEach(mountCovers);refs();}
 document.querySelectorAll('[data-wall-step]').forEach(b=>b.addEventListener('click',()=>{const w=document.querySelector('[data-library] [data-wall]');if(!w)return;const step=(w.querySelector('.clip')?.offsetWidth||220)+18;w.scrollBy({left:step*2*(+b.dataset.wallStep),behavior:reduce.matches?'auto':'smooth'});}));
 fetch('https://api.github.com/repos/zhouxiaoka/autoclip').then(r=>r.ok?r.json():null).then(d=>{const n=d?.stargazers_count;if(!n)return;document.querySelectorAll('[data-stars]').forEach(el=>el.textContent=n>=1000?(n/1000).toFixed(1).replace(/\.0$/,'')+'k':String(n));}).catch(()=>{});
 document.addEventListener('visibilitychange',()=>{if(document.hidden)video?.pause();});
