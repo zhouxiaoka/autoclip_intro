@@ -10,8 +10,11 @@ const wait=ms=>new Promise(r=>setTimeout(r,ms));
 
 /* posters and real copy from the case library */
 async function library(){
- const api=window.ACLibrary;if(!api)return;await api.load().catch(()=>null);
- document.querySelectorAll('[data-poster]').forEach(img=>{const o=api.find(img.dataset.poster);if(o){img.src=api.media(o,'poster');img.loading='lazy';}});
+ const api=window.ACLibrary;if(!api)return;
+ const needed=[...document.querySelectorAll('[data-poster],[data-poster-bg],[data-kit-title],[data-cands],[data-reel]')]
+  .map(el=>(el.dataset.poster||el.dataset.posterBg||el.dataset.kitTitle||el.dataset.cands||el.dataset.reel||'').split('/')[0]).filter(Boolean);
+ await Promise.all([...new Set(needed)].map(id=>api.ensure?api.ensure(id).catch(()=>null):api.load().catch(()=>null)));
+ document.querySelectorAll('[data-poster]').forEach(img=>{const o=api.find(img.dataset.poster);if(o){img.src=api.media(o,'poster');if(!img.closest('.hero-art'))img.loading='lazy';}});
  document.querySelectorAll('[data-poster-bg]').forEach(el=>{const o=api.find(el.dataset.posterBg);if(o)el.style.backgroundImage=`url("${api.media(o,'poster')}")`;});
  document.querySelectorAll('[data-kit-title]').forEach(el=>{const o=api.find(el.dataset.kitTitle);if(o)el.textContent=o.title_lines.join(' ');});
  document.querySelectorAll('[data-cands]').forEach(ol=>{const lib=api.find(ol.dataset.cands+'/01')?.case;if(!lib)return;
@@ -43,19 +46,26 @@ async function demo(){
 }
 
 /* the reel: clips from the demo's link fan out of the hero collage as you scroll */
+const ready=img=>!img?Promise.resolve():(img.decode?img.decode().catch(()=>{}):Promise.resolve()).then(()=>img.complete||new Promise(r=>img.addEventListener('load',r,{once:true})));
 async function reel(){
- const host=document.querySelector('[data-reel]'),row=host?.querySelector('[data-reel-row]'),api=window.ACLibrary;if(!row||!api)return;
- await api.load().catch(()=>null);const c=api.find(host.dataset.reel+'/01')?.case;if(!c)return;
+ const host=document.querySelector('[data-reel]'),row=host?.querySelector('[data-reel-row]'),api=window.ACLibrary;
+ const land=()=>host?.classList.add('landed');
+ if(!row)return;if(!api){land();return;}
+ try{await (api.ensure?api.ensure(host.dataset.reel):api.load());}catch{land();return;}
+ const c=api.find(host.dataset.reel+'/01')?.case;if(!c){land();return;}
  const zh=L()==='zh',r=c.run,shown=c.outputs.slice(0,6),rest=Math.max(0,(r?.rendered||c.outputs.length)-shown.length);
  const hrs=`${Math.floor(c.source.duration_sec/3600)}h${String(Math.round(c.source.duration_sec%3600/60)).padStart(2,'0')}m`;
  host.querySelector('[data-reel-stats]').textContent=r?(zh?`${c.source.channel} · ${hrs} 访谈 → ${r.rendered} 条${api.platform(shown[0].platform)}成片 · ${r.minutes} 分钟 · 模型费用 ¥${r.cost_cny.toFixed(2)}`:`${c.source.channel} · ${hrs} interview → ${r.rendered} ${api.platform(shown[0].platform)} clips · ${r.minutes} min · ¥${r.cost_cny.toFixed(2)} in model fees`):'';
  row.innerHTML=shown.map(o=>api.card(o)).join('')+(rest?`<a class="clip reel-more" href="#clips"><span class="clip-media"><b>+${rest}</b><span>${zh?'更多成片在案例库':'More in the case library'}</span></span></a>`:'');
  api.wire(row);
- const cards=[...row.children];if(reduce.matches||!matchMedia('(min-width: 961px)').matches){host.classList.add('landed');return;}
+ const cards=[...row.children];if(reduce.matches||!matchMedia('(min-width: 961px)').matches){land();return;}
  const srcs=[...document.querySelectorAll('.demo-out img')],label=host.querySelector('.reel-label'),art=document.querySelector('.hero-art');
  const fly=document.createElement('div');fly.className='reel-fly';fly.setAttribute('aria-hidden','true');
  const ghosts=cards.map((el,i)=>{const g=document.createElement('div');g.className='ghost';const img=el.querySelector('img');g.innerHTML=img?`<img src="${img.src}" alt="">`:el.querySelector('.clip-media').innerHTML;if(!img)g.classList.add('more');g.style.zIndex=String(img?20-i:10-i);fly.append(g);return g;});
  document.body.append(fly);
+ await Promise.race([Promise.all([...srcs,...ghosts.map(g=>g.querySelector('img'))].map(ready)),wait(1800)]);
+ if(scrollY>80){land();return;}
+ host.classList.add('armed');
  const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2,lerp=(a,b,t)=>a+(b-a)*t;
  const rotOf=el=>{const m=getComputedStyle(el).transform;if(!m||m==='none')return 0;const [a,b]=m.slice(7,-1).split(',').map(Number);return Math.atan2(b,a)*180/Math.PI;};
  const doc=el=>{const r=el.getBoundingClientRect();return {x:r.left+r.width/2+scrollX,y:r.top+r.height/2+scrollY,w:r.width,h:r.height};};
@@ -66,8 +76,9 @@ async function reel(){
   spots=ghosts.map((g,i)=>{
    const src=srcs[i]||mid,media=cards[i].querySelector('.clip-media');if(!src||!media)return null;
    const S=doc(src),T=doc(media);
+   if(T.w<8||T.h<8)return null;
    g.style.width=T.w+'px';g.style.height=T.h+'px';
-   return {sx:S.x,sy:S.y,sw:S.w,sh:S.h,rot:srcs[i]?rotOf(src):0,tx:T.x,ty:T.y,tw:T.w,th:T.h,own:!!srcs[i]};
+   return {sx:S.x,sy:S.y,sw:S.w||T.w,sh:S.h||T.h,rot:srcs[i]?rotOf(src):0,tx:T.x,ty:T.y,tw:T.w,th:T.h,own:!!srcs[i]};
   });
   lastY=-1;update();
  };
@@ -78,7 +89,7 @@ async function reel(){
   if(q>0&&!demoParts?.frozen){freeze();requestAnimationFrame(measure);return;}
   label.style.opacity=String(Math.max(0,Math.min(1,(q-.72)/.25)));
   if(q<=0){set('home');return;}if(q>=1){set('landed');return;}
-  if(!spots){measure();return;}
+  if(!spots||spots.some(p=>!p)){measure();return;}
   set('fly');
   const sx=scrollX,sy=scrollY;
   ghosts.forEach((g,i)=>{const p=spots[i];if(!p)return;
@@ -91,7 +102,7 @@ async function reel(){
  };
  addEventListener('scroll',()=>{if(!frame)frame=requestAnimationFrame(update);},{passive:true});
  addEventListener('resize',()=>{spots=null;requestAnimationFrame(measure);},{passive:true});
- requestAnimationFrame(measure);
+ requestAnimationFrame(()=>requestAnimationFrame(measure));
 }
 
 /* endless clarifying questions */

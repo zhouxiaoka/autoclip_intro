@@ -39,12 +39,36 @@ function develop(img){
 if(!reduce)document.querySelectorAll('img[data-develop]').forEach(develop);
 else document.querySelectorAll('img[data-develop]').forEach(i=>i.classList.add('developed'));
 
-/* footer: wordmark letters rise, art strip drifts with scroll */
-const mark=document.querySelector('.footer-mark span');
-if(mark&&!reduce){mark.innerHTML=[...mark.textContent].map((ch,i)=>`<span class="ch" style="--i:${i}">${ch}</span>`).join('');
- new IntersectionObserver((es,ob)=>{if(es[0].isIntersecting){mark.parentElement.classList.add('in');ob.disconnect();}},{threshold:.4}).observe(mark.parentElement);}
-const strip=document.querySelector('.footer-art');
-if(strip&&!reduce){const drift=()=>{const r=strip.getBoundingClientRect();if(r.top>innerHeight||r.bottom<0)return;const p=1-r.top/innerHeight;strip.style.objectPosition=`center ${20+p*40}%`;};addEventListener('scroll',drift,{passive:true});drift();}
+/* footer overscroll: lift the page sheet, flip the art underneath */
+const sheet=document.querySelector('.page-sheet');
+const reveal=document.querySelector('.footer-reveal');
+const revealEnd=document.querySelector('.footer-reveal-end');
+if(sheet&&reveal&&revealEnd){
+ if(reduce)reveal.querySelector('img')?.style.setProperty('opacity','1');
+ else{
+  const frames=[...reveal.querySelectorAll('img')];
+  let atEnd=false,pull=0,hold=0,cur=-1,y=0,v=0,tgt=0,raf=0;
+  new IntersectionObserver(([e])=>{atEnd=e.isIntersecting},{threshold:0}).observe(revealEnd);
+  const setY=val=>{tgt=val;if(!raf)raf=requestAnimationFrame(step);};
+  const reset=()=>{pull=0;hold=0;setY(0);};
+  const drag=d=>{pull=Math.max(0,pull+d);setY(-(260*(1-Math.exp(-pull/500))));};
+  const flip=now=>{const n=Math.floor(now/150)%frames.length;if(n===cur)return;if(cur>=0)frames[cur].style.opacity='0';frames[n].style.opacity='1';cur=n;};
+  const step=now=>{
+   const dt=Math.min(.032,1/60);
+   v+=(260*(tgt-y)-24*v)/.9*dt;y+=v*dt;
+   if(Math.abs(y)<.15&&Math.abs(v)<.15&&tgt===0){y=v=0;sheet.style.transform='';}
+   else sheet.style.transform=`translate3d(0,${y.toFixed(2)}px,0)`;
+   if(hold&&now>=hold)reset();
+   if(pull>0||Math.abs(y)>.5)flip(now);
+   raf=(pull>0||hold||Math.abs(y)>.15||Math.abs(v)>.15||tgt!==0)?requestAnimationFrame(step):0;
+  };
+  addEventListener('wheel',e=>{if(pull>0||(e.deltaY>0&&atEnd)){drag(e.deltaY);hold=performance.now()+140;}},{passive:true});
+  let touchY=null;
+  addEventListener('touchstart',e=>{touchY=e.touches[0].clientY},{passive:true});
+  addEventListener('touchmove',e=>{if(touchY==null)return;const y0=e.touches[0].clientY,d=touchY-y0;touchY=y0;if(pull>0||(d>0&&atEnd))drag(d);},{passive:true});
+  addEventListener('touchend',()=>{touchY=null;reset();},{passive:true});
+ }
+}
 
 /* hero collage follows the pointer a little */
 const art=document.querySelector('.hero-art');

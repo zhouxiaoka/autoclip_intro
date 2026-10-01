@@ -18,7 +18,7 @@ const PLATFORM={douyin:['抖音','Douyin'],xiaohongshu:['小红书','Xiaohongshu
 const TEMPLATE={interview:['访谈式','Interview'],podcast:['播客式','Podcast'],original:['原画','Original']};
 const SCENE={interview:['访谈','Interviews'],podcast:['播客','Podcasts'],course:['课程','Courses'],gameplay:['游戏','Gameplay'],talk:['演讲','Talks']};
 const reduce=matchMedia('(prefers-reduced-motion: reduce)');
-let lang='en',lib=null,dialog,video,lastTrigger,io;
+let lang='en',lib=null,pending=null,idxP=null,dialog,video,lastTrigger,io;
 const L=()=>T[lang]||T.en,pick=m=>m?(lang==='zh'?m[0]:m[1]):'';
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const clock=s=>{s=Math.round(s||0);const h=Math.floor(s/3600),m=Math.floor(s%3600/60),x=String(s%60).padStart(2,'0');return h?`${h}:${String(m).padStart(2,'0')}:${x}`:`${m}:${x}`;};
@@ -27,14 +27,35 @@ const title=o=>(o.title_lines||[]).join(' ');
 const tag=o=>pick(PLATFORM[o.platform])+' · '+pick(TEMPLATE[o.template]);
 const credit=o=>o.case.contributor?`${L().by} ${o.case.contributor.name}`:o.case.source.channel;
 
-async function load(){
- if(lib)return lib;
- const index=await (await fetch(at('cases/index.json'))).json();
- const cases=await Promise.all(index.cases.map(async id=>{const c=await (await fetch(at(`cases/${id}/case.json`))).json();c.outputs.forEach(o=>o.case=c);return c;}));
+const attach=c=>{c.outputs.forEach(o=>o.case=c);return c;};
+const getIndex=()=>idxP||(idxP=fetch(at('cases/index.json')).then(r=>r.json()));
+function pack(index,cases){
  const outputs=cases.flatMap(c=>c.outputs);
  const base=index.media_base?index.media_base.replace(/\/?$/,'/'):at('cases/');
  if(index.media_base)document.documentElement.dataset.mediaOrigin=new URL(base).origin;
- lib={index,cases,outputs,base};return lib;
+ return {index,cases,outputs,base,full:cases.length===index.cases.length};
+}
+async function ensure(id){
+ if(lib?.cases.some(c=>c.id===id))return lib;
+ const index=await getIndex();
+ if(lib?.cases.some(c=>c.id===id))return lib;
+ const c=attach(await (await fetch(at(`cases/${id}/case.json`))).json());
+ if(lib?.cases.some(x=>x.id===id))return lib;
+ lib=lib?pack(index,[...lib.cases,c]):pack(index,[c]);
+ return lib;
+}
+async function load(){
+ if(lib?.full)return lib;
+ if(pending)return pending;
+ pending=(async()=>{
+  const index=await getIndex();
+  const have=new Set((lib?.cases||[]).map(c=>c.id));
+  const more=await Promise.all(index.cases.filter(id=>!have.has(id)).map(async id=>attach(await(await fetch(at(`cases/${id}/case.json`))).json())));
+  const now=new Set((lib?.cases||[]).map(c=>c.id));
+  lib=pack(index,[...(lib?.cases||[]),...more.filter(c=>!now.has(c.id))]);
+  return lib;
+ })();
+ try{return await pending;}finally{pending=null;}
 }
 function roundRobin(list,cases){const lanes=cases.map(c=>list.filter(o=>o.case===c)).filter(l=>l.length),out=[];
  for(let i=0;out.length<list.length;i++)lanes.forEach(l=>{if(l[i])out.push(l[i]);});return out;}
@@ -96,6 +117,6 @@ document.querySelectorAll('[data-wall-step]').forEach(b=>b.addEventListener('cli
 fetch('https://api.github.com/repos/zhouxiaoka/autoclip').then(r=>r.ok?r.json():null).then(d=>{const n=d?.stargazers_count;if(!n)return;document.querySelectorAll('[data-stars]').forEach(el=>el.textContent=n>=1000?(n/1000).toFixed(1).replace(/\.0$/,'')+'k':String(n));}).catch(()=>{});
 document.addEventListener('visibilitychange',()=>{if(document.hidden)video?.pause();});
 reduce.addEventListener('change',observe);
-window.ACLibrary={load,card:o=>card(o),wire:scope=>wire(scope),platform:p=>pick(PLATFORM[p]),find:ref=>{const [c,id]=ref.split('/');return lib?.outputs.find(o=>o.case.id===c&&o.id===id);},media:(o,f)=>media(o,f),open:ref=>open(ref)};
+window.ACLibrary={load,ensure,card:o=>card(o),wire:scope=>wire(scope),platform:p=>pick(PLATFORM[p]),find:ref=>{const [c,id]=ref.split('/');return lib?.outputs.find(o=>o.case.id===c&&o.id===id);},media:(o,f)=>media(o,f),open:ref=>open(ref)};
 render();new MutationObserver(render).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
 })();
