@@ -28,7 +28,8 @@ const tag=o=>pick(PLATFORM[o.platform])+' · '+pick(TEMPLATE[o.template]);
 const credit=o=>o.case.contributor?`${L().by} ${o.case.contributor.name}`:o.case.source.channel;
 
 const attach=c=>{c.outputs.forEach(o=>o.case=c);return c;};
-const getIndex=()=>idxP||(idxP=fetch(at('cases/index.json')).then(r=>r.json()));
+const getIndex=()=>idxP||(idxP=fetch(at('cases/index.json'),{cache:'reload'}).then(r=>r.json()));
+const caseUrl=(index,id)=>at(`cases/${id}/case.json`)+(index.batch?`?v=${encodeURIComponent(index.batch)}`:'');
 function pack(index,cases){
  const outputs=cases.flatMap(c=>c.outputs);
  const base=index.media_base?index.media_base.replace(/\/?$/,'/'):at('cases/');
@@ -39,7 +40,7 @@ async function ensure(id){
  if(lib?.cases.some(c=>c.id===id))return lib;
  const index=await getIndex();
  if(lib?.cases.some(c=>c.id===id))return lib;
- const c=attach(await (await fetch(at(`cases/${id}/case.json`))).json());
+ const c=attach(await (await fetch(caseUrl(index,id))).json());
  if(lib?.cases.some(x=>x.id===id))return lib;
  lib=lib?pack(index,[...lib.cases,c]):pack(index,[c]);
  return lib;
@@ -50,7 +51,7 @@ async function load(){
  pending=(async()=>{
   const index=await getIndex();
   const have=new Set((lib?.cases||[]).map(c=>c.id));
-  const more=await Promise.all(index.cases.filter(id=>!have.has(id)).map(async id=>attach(await(await fetch(at(`cases/${id}/case.json`))).json())));
+  const more=await Promise.all(index.cases.filter(id=>!have.has(id)).map(async id=>attach(await(await fetch(caseUrl(index,id))).json())));
   const now=new Set((lib?.cases||[]).map(c=>c.id));
   lib=pack(index,[...(lib?.cases||[]),...more.filter(c=>!now.has(c.id))]);
   return lib;

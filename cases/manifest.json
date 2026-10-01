@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "batch": "2026-10-01c",
+ "batch": "2026-10-01d",
  "media_base": "${AUTOCLIP_MEDIA_BASE:-}",
  "projects_root": "${AUTOCLIP_PROJECTS:-/private/tmp/autoclip-e2e/projects}",
  "demos_root": "${AUTOCLIP_DEMOS:-/private/tmp/autoclip-e2e/demos}",
@@ -186,7 +186,11 @@
    "added": "2026-10-01",
    "files": [
     "xiaohongshu:interview:jensen-dwarkesh/01.mp4:AI是五层蛋糕|能源才是底层",
-    "xiaohongshu:interview:jensen-dwarkesh/02.mp4:算法进步比摩尔定律快10倍"
+    "xiaohongshu:interview:jensen-dwarkesh/02.mp4:算法进步比摩尔定律快10倍",
+    "xiaohongshu:interview:jensen-dwarkesh/03.mp4:Nvidia不是TPU|是通用加速计算平台",
+    "xiaohongshu:interview:jensen-dwarkesh/04.mp4:AI进步靠算法革命|GPU是唯一能承载它的架构",
+    "xiaohongshu:interview:jensen-dwarkesh/05.mp4:Nvidia：唯一能赌上|全部生意的AI基石",
+    "xiaohongshu:interview:jensen-dwarkesh/09.mp4:CUDA为何不可替代？|AI时代的核心栈"
    ],
    "source": {
     "title": "Jensen Huang – Will Nvidia’s moat persist?",

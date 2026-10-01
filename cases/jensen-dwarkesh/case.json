@@ -67,6 +67,70 @@
    },
    "mood": "bold",
    "palette": "lemon"
+  },
+  {
+   "id": "03",
+   "platform": "xiaohongshu",
+   "template": "interview",
+   "title_lines": [
+    "Nvidia不是TPU",
+    "是通用加速计算平台"
+   ],
+   "source_start_sec": 999,
+   "mood": "bold",
+   "palette": "coral",
+   "duration_sec": 203,
+   "video": "03.mp4",
+   "loop": "03-loop.mp4",
+   "poster": "03.jpg"
+  },
+  {
+   "id": "04",
+   "platform": "xiaohongshu",
+   "template": "interview",
+   "title_lines": [
+    "AI进步靠算法革命",
+    "GPU是唯一能承载它的架构"
+   ],
+   "source_start_sec": 1261,
+   "mood": "bold",
+   "palette": "lemon",
+   "duration_sec": 169,
+   "video": "04.mp4",
+   "loop": "04-loop.mp4",
+   "poster": "04.jpg"
+  },
+  {
+   "id": "05",
+   "platform": "xiaohongshu",
+   "template": "interview",
+   "title_lines": [
+    "Nvidia：唯一能赌上",
+    "全部生意的AI基石"
+   ],
+   "source_start_sec": 3357,
+   "mood": "bold",
+   "palette": "lemon",
+   "duration_sec": 66,
+   "video": "05.mp4",
+   "loop": "05-loop.mp4",
+   "poster": "05.jpg"
+  },
+  {
+   "id": "09",
+   "platform": "xiaohongshu",
+   "template": "interview",
+   "title_lines": [
+    "CUDA为何不可替代？",
+    "AI时代的核心栈"
+   ],
+   "source_start_sec": 5582,
+   "mood": "bold",
+   "palette": "lemon",
+   "duration_sec": 87,
+   "video": "09.mp4",
+   "loop": "09-loop.mp4",
+   "poster": "09.jpg"
   }
  ]
 }
