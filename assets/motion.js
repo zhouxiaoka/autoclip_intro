@@ -50,5 +50,5 @@ if(strip&&!reduce){const drift=()=>{const r=strip.getBoundingClientRect();if(r.t
 const art=document.querySelector('.hero-art');
 if(art&&!reduce&&matchMedia('(pointer: fine)').matches){let tx=0,ty=0,x=0,y=0,raf=0;
  const loop=()=>{x+=(tx-x)*.08;y+=(ty-y)*.08;art.style.setProperty('--mx',x.toFixed(3));art.style.setProperty('--my',y.toFixed(3));raf=Math.abs(tx-x)+Math.abs(ty-y)>.002?requestAnimationFrame(loop):0;};
- addEventListener('pointermove',e=>{tx=e.clientX/innerWidth*2-1;ty=e.clientY/innerHeight*2-1;if(!raf)raf=requestAnimationFrame(loop);},{passive:true});}
+ addEventListener('pointermove',e=>{if(art.classList.contains('sent'))return;tx=e.clientX/innerWidth*2-1;ty=e.clientY/innerHeight*2-1;if(!raf)raf=requestAnimationFrame(loop);},{passive:true});}
 })();

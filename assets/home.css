@@ -5,7 +5,7 @@
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--stage-bg:#111012;--stage-card:#1B1A1C;--stage-line:#262427}}
 
 *,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html{scroll-behavior:auto;-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--ac-bg);color:var(--ac-ink);font-family:var(--ac-font-sans);font-size:var(--ac-fs-body);line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 a{color:inherit;text-decoration:none}
 img,video{display:block;max-width:100%}
@@ -579,13 +579,14 @@ img[data-develop].developed{opacity:1}
 }
 
 /* reel flight: the hero's three outputs travel down and become the row */
-.reel-fly{position:fixed;inset:0;z-index:40;pointer-events:none;display:none}
-.reel-fly.on{display:block}
-.reel-fly .ghost{position:absolute;left:0;top:0;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.12);box-shadow:0 24px 60px -20px rgba(0,0,0,.55);background:var(--stage-card);will-change:transform,width,height}
+.reel-fly{position:fixed;inset:0;z-index:40;pointer-events:none;visibility:hidden}
+.reel-fly.on{visibility:visible}
+.reel-fly .ghost{position:absolute;left:0;top:0;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.12);background:var(--stage-card);transform-origin:0 0;will-change:transform;backface-visibility:hidden}
 .reel-fly .ghost img{width:100%;height:100%;object-fit:cover;display:block}
 .reel-fly .ghost.more{display:flex;flex-direction:column;justify-content:flex-end;gap:6px;padding:16px;background:var(--ac-card);border:1px dashed var(--ac-line);color:var(--ac-ink)}
 .reel-fly .ghost.more b{font-family:var(--ac-font-serif);font-weight:400;font-size:2.5rem;line-height:1}
 .reel-fly .ghost.more span{font-size:.75rem;color:var(--ac-sub)}
+.hero-art.sent{--mx:0;--my:0}
 .hero-art.sent .demo-out img{opacity:0!important;transition:none}
 @media (min-width: 961px){
   .motion .reel-label{opacity:0}
