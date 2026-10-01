@@ -3,24 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>播客自动切片｜AutoClip 本地 AI 高光</title>
-<meta name="description" content="把长播客切成可分享高光。自备对白清楚的短样片，可开官方字幕或走 Whisper / 自备 SRT。">
-<link rel="canonical" href="https://zhouxiaoka.github.io/autoclip_intro/use-cases/podcast/">
-<meta property="og:title" content="播客自动切片｜AutoClip 本地 AI 高光">
-<meta property="og:description" content="把长播客切成可分享高光。自备对白清楚的短样片，可开官方字幕或走 Whisper / 自备 SRT。">
+<title>访谈播客 | AutoClip</title>
+<meta name="description" content="把长访谈和播客切成能直接发的短成片。贴一个链接，AutoClip 挑高光、取景、配字幕和标题。">
+<meta property="og:title" content="访谈播客 | AutoClip">
+<meta property="og:description" content="把长访谈和播客切成能直接发的短成片。贴一个链接，AutoClip 挑高光、取景、配字幕和标题。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://zhouxiaoka.github.io/autoclip_intro/use-cases/podcast/">
+<link rel="canonical" href="https://zhouxiaoka.github.io/autoclip_intro/use-cases/podcast/">
 <meta property="og:image" content="https://zhouxiaoka.github.io/autoclip_intro/img/og.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="长播客里的高光段落，自动剪出来">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="播客自动切片｜AutoClip 本地 AI 高光">
-<meta name="twitter:description" content="把长播客切成可分享高光。自备对白清楚的短样片，可开官方字幕或走 Whisper / 自备 SRT。">
-<meta name="twitter:image" content="https://zhouxiaoka.github.io/autoclip_intro/img/og.png">
-<meta name="twitter:image:alt" content="长播客里的高光段落，自动剪出来">
-<meta name="theme-color" content="#F6F5F3" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#19181A" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#141315">
 <link rel="icon" type="image/svg+xml" href="../../logo.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
@@ -28,25 +20,22 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../tokens.css">
-<link rel="stylesheet" href="../case.css">
-<link rel="stylesheet" href="../../assets/redesign.css">
-<link rel="stylesheet" href="../../site-shell.css"></head>
-<body class="site-usecase" data-case-kind="podcast"><header class="nav">
+<link rel="stylesheet" href="../../assets/home.css?v=2026-10-01-inner">
+</head>
+<body class="cases-page">
+<div class="footer-reveal" aria-hidden="true">
+  <img src="../../assets/art/reveal-01-camera.webp" alt="" width="1280" height="720">
+  <img src="../../assets/art/reveal-02-wash.webp" alt="" width="1280" height="720">
+  <img src="../../assets/art/reveal-03-scissors.webp" alt="" width="1280" height="720">
+  <img src="../../assets/art/reveal-04-stamp.webp" alt="" width="1280" height="720">
+  <img src="../../assets/art/reveal-05-lens.webp" alt="" width="1280" height="720">
+  <img src="../../assets/art/reveal-06-clips.webp" alt="" width="1280" height="720">
+</div>
+<div class="page-sheet">
+<header class="nav">
   <div class="container nav-in">
-    <a class="brand serif" href="../../#top" aria-label="AutoClip"><img src="../../logo.svg" alt="">AutoClip</a>
-    <nav class="nav-links" aria-label="主导航">
-      <a href="../../#how" data-i18n="nav.how">怎么工作</a>
-      <a href="../../#why" data-i18n="nav.why">为什么</a>
-      <a href="use-cases/gameplay/" data-i18n="game.label">游戏素材</a>
-      <a href="../../#features" data-i18n="nav.features">新能力</a>
-      <a href="../../#download" data-i18n="nav.download">下载</a>
-      <a href="../../#faq" data-i18n="nav.faq">常见问题</a>
-    </nav>
+    <a class="brand serif" href="../../" data-home aria-label="AutoClip"><img src="../../logo.svg" alt="">AutoClip</a>
     <div class="nav-right">
-      <a class="gh" href="https://github.com/zhouxiaoka/autoclip" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.66-.22.66-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.45-1.15-1.1-1.46-1.1-1.46-.9-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85.004 1.71.11 2.51.32 1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.85-2.34 4.7-4.57 4.95.36.31.68.92.68 1.85 0 1.33-.01 2.4-.01 2.73 0 .27.16.58.67.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"/></svg>
-        <span>GitHub</span>
-      </a>
       <div class="lang">
         <select id="language" aria-label="Language / 语言">
           <option value="zh" lang="zh-CN">简体中文</option>
@@ -59,10 +48,74 @@
           <option value="fr" lang="fr">Français</option>
         </select>
       </div>
-      <a class="btn btn-primary btn-sm" href="../../#download" data-i18n="nav.cta">下载</a>
+      <a class="btn btn-primary btn-sm" href="../../#download" data-home data-copy="download">下载</a>
     </div>
   </div>
-</header><main><section class="hero"><div class="container hero-grid"><div><p class="eyebrow" data-case-label></p><h1 data-case-title></h1><p class="lede" data-case-intro></p><div class="hero-cta"><a class="btn btn-primary" data-case-download href="../../#download"></a><a class="btn btn-secondary" data-case-explore href="#case"></a></div></div><div class="case-art "><img data-poster-id="11" src="../../assets/showcase/poster-11-v1.jpg" width="675" height="1200" alt="Sam Altman"><img data-poster-id="13" src="../../assets/showcase/poster-13-v1.jpg" width="675" height="1200" alt="Sam Altman"></div></div></section><section id="case" class="showcase container" data-showcase></section><section class="section" id="workflow"><div class="container"><h2 data-case-copy="how.h2"></h2><div class="steps"><article class="step"><span class="n">01</span><h3 data-case-copy="how.1.h"></h3><p data-case-copy="how.1.p"></p></article><article class="step"><span class="n">02</span><h3 data-case-copy="how.2.h"></h3><p data-case-copy="how.2.p"></p></article><article class="step"><span class="n">03</span><h3 data-case-copy="how.3.h"></h3><p data-case-copy="how.3.p"></p></article></div></div></section><section class="section"><div class="container"><div class="pair"><article class="card"><h2 data-case-copy="why.1.h"></h2><p data-case-copy="why.1.p"></p></article><article class="card"><h2 data-case-copy="why.3.h"></h2><p data-case-copy="why.3.p"></p></article></div></div></section><section class="closing-section"><div class="container case-copy"><h2 data-closing-title></h2><p data-closing-copy></p><a class="btn btn-primary" data-case-download href="../../#download"></a></div></section></main><footer class="footer"></footer><script src="../../assets/case-copy.js"></script><script src="../../assets/site.js"></script><script src="../../assets/ui-polish.js"></script>
+</header>
+<main class="stage cases-main">
+  <div class="container">
+    <a class="back" href="../../" data-home data-copy="back">‹ 首页</a>
+    <span class="eyebrow" data-copy="eyebrow"></span>
+    <h1 data-copy="h1"></h1>
+    <p class="lede" data-copy="lede"></p>
+    <div class="inner-points">
+      <article><span class="mono">01</span><h3 data-copy="p1h"></h3><p data-copy="p1"></p></article>
+      <article><span class="mono">02</span><h3 data-copy="p2h"></h3><p data-copy="p2"></p></article>
+      <article><span class="mono">03</span><h3 data-copy="p3h"></h3><p data-copy="p3"></p></article>
+    </div>
+    <div class="inner-cta">
+      <a class="btn btn-primary btn-sm" href="../../#download" data-home data-copy="download">下载</a>
+      <a class="btn btn-secondary btn-sm" href="../../cases/" data-home data-copy="all">查看全部案例</a>
+    </div>
+  </div>
+  <div data-library="scene" data-scenes="interview,podcast" data-limit="10"></div>
+</main>
+<footer class="footer site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+      <div class="fcol"><h3 data-f="h.product"></h3><a href="../../#how" data-f="oneclick"></a><a href="../../cases/" data-f="cases"></a><a href="../../#numbers" data-f="numbers"></a><a href="../../#download" data-f="download"></a><a href="https://github.com/zhouxiaoka/autoclip/releases" target="_blank" rel="noopener" data-f="releases"></a><a href="https://github.com/zhouxiaoka/autoclip/blob/main/CHANGELOG.md" target="_blank" rel="noopener" data-f="changelog"></a></div>
+      </div>
+      <nav class="footer-links" aria-label="页脚">
+      <div class="fcol"><h3 data-f="h.uses"></h3><a href="../../use-cases/podcast/" data-f="podcast"></a><a href="../../use-cases/course/" data-f="course"></a><a href="../../use-cases/gameplay/" data-f="game"></a><a href="../../features/publish/" data-f="publish"></a><a href="../../features/auto-cover/" data-f="cover"></a></div>
+      <div class="fcol"><h3 data-f="h.res"></h3><a href="https://github.com/zhouxiaoka/autoclip/blob/main/docs/USER_INSTALLATION_GUIDE.md" target="_blank" rel="noopener" data-f="install"></a><a href="../../guides/publish/" data-f="guide"></a><a href="https://github.com/zhouxiaoka/autoclip/blob/main/docs/MULTI_LLM_PROVIDER_GUIDE.md" target="_blank" rel="noopener" data-f="models"></a><a href="https://github.com/zhouxiaoka/autoclip/blob/main/docs/FAQ.md" target="_blank" rel="noopener" data-f="faq"></a><a href="../../analytics/" data-f="privacy"></a></div>
+      <div class="fcol"><h3 data-f="h.dev"></h3><a href="https://github.com/zhouxiaoka/autoclip" target="_blank" rel="noopener" data-f="github"></a><a href="https://github.com/zhouxiaoka/autoclip/blob/main/docs/CLI_AND_MCP.md" target="_blank" rel="noopener" data-f="cli"></a><a href="https://github.com/zhouxiaoka/autoclip/blob/main/DOCKER.md" target="_blank" rel="noopener" data-f="docker"></a><a href="https://github.com/zhouxiaoka/autoclip/blob/main/skills/autoclip/SKILL.md" target="_blank" rel="noopener" data-f="skill"></a><a href="https://github.com/zhouxiaoka/autoclip/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener" data-f="contrib"></a><a href="https://github.com/zhouxiaoka/autoclip/blob/main/LICENSE" target="_blank" rel="noopener" data-f="license"></a></div>
+      <div class="fcol"><h3 data-f="h.comm"></h3><a href="https://github.com/zhouxiaoka/autoclip/discussions" target="_blank" rel="noopener" data-f="discuss"></a><a href="https://github.com/zhouxiaoka/autoclip/discussions/new?category=show-and-tell" target="_blank" rel="noopener" data-f="submit"></a><a href="https://github.com/zhouxiaoka/autoclip/issues/new/choose" target="_blank" rel="noopener" data-f="issue"></a><a href="https://github.com/zhouxiaoka/autoclip/issues/96" target="_blank" rel="noopener" data-f="known"></a><a href="mailto:christine_zhouye@163.com" data-f="contact"></a></div>
+      </nav>
+    </div>
+    <div class="footer-meta">
+      <div class="footer-social">
+        <a href="https://github.com/zhouxiaoka/autoclip" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.66-.22.66-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.45-1.15-1.1-1.46-1.1-1.46-.9-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85.004 1.71.11 2.51.32 1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.85-2.34 4.7-4.57 4.95.36.31.68.92.68 1.85 0 1.33-.01 2.4-.01 2.73 0 .27.16.58.67.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"/></svg></a>
+        <a href="mailto:christine_zhouye@163.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 6 8.5-6"/></svg></a>
+      </div>
+      <span data-f="copy"></span>
+    </div>
+    <a class="footer-mark" href="../../" aria-label="AutoClip">
+      <svg class="footer-wordmark" viewBox="0 0 920 168" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <text x="460" y="148" text-anchor="middle">AutoClip</text>
+      </svg>
+    </a>
+  </div>
+</footer>
+<div class="footer-reveal-end" aria-hidden="true"></div>
+</div>
+<script>window.INNER_COPY = {
+    zh:{title:'访谈播客 | AutoClip',download:'下载',back:'‹ 首页',eyebrow:'使用场景',h1:'长访谈里的那一句，单独拿出来。',
+      lede:'鲁豫、Dwarkesh、The Diary Of A CEO 这类对谈，贴一个链接就能出一排竖屏和横屏成片。下面是这次新做的真实输出，没有人工改。',
+      p1h:'贴进原片',p1:'B 站、YouTube 或本地文件。有字幕就直接用，没有就在本地转写。',
+      p2h:'它来挑片',p2:'自动找出值得发的段落，按抖音、小红书、TikTok、B 站分别包装。',
+      p3h:'拿走去发',p3:'成片、封面、标题和简介一起给你。点开就能复制和保存。',all:'查看全部案例'},
+    en:{title:'Interviews & podcasts | AutoClip',download:'Download',back:'‹ Home',eyebrow:'Use case',h1:'The line worth keeping, already cut.',
+      lede:'Long conversations — Lu Yu, Dwarkesh, The Diary Of A CEO — become a row of ready clips from one pasted link. These are new, untouched outputs.',
+      p1h:'Paste the source',p1:'Bilibili, YouTube or a local file. Official captions if they exist; local transcription if not.',
+      p2h:'It picks the moments',p2:'The strongest passages, framed and packaged for Douyin, Xiaohongshu, TikTok and Bilibili.',
+      p3h:'Take them out',p3:'Video, cover, title and description come together. Copy or save from the kit.',all:'See all clips'}
+  };</script>
+<script src="../../assets/inner-page.js"></script>
+<script src="../../assets/library.js?v=2026-10-01-inner"></script>
+<script src="../../assets/footer.js"></script>
+<script src="../../assets/motion.js"></script>
 <script src="../../assets/analytics-config.js"></script>
 <script src="../../assets/analytics.js"></script>
-</body></html>
+</body>
+</html>
