@@ -105,6 +105,13 @@ test('playback counts actual playing once per clip, completion separately, and n
   video.currentSrc='https://another.example/clip-9.mp4'; b.listeners.playing({type:'playing',target:video});
   assert.deepEqual(b.events(),['website_pageview','website_demo_play','website_demo_complete']);
 });
+test('homepage v2 counts full clips in the player but not the muted wall loops', () => {
+  const b=boot({consent:'yes'}), base='https://zhouxiaoka.github.io/autoclip_intro/assets/v2/';
+  b.listeners.playing({type:'playing',target:{tagName:'VIDEO',currentSrc:base+'clip-07-loop.mp4'}});
+  const player={tagName:'VIDEO',currentSrc:base+'clip-07.mp4'};
+  b.listeners.playing({type:'playing',target:player}); b.listeners.ended({type:'ended',target:player});
+  assert.deepEqual(b.events(),['website_pageview','website_demo_play','website_demo_complete']);
+});
 test('language changes rerender eight translated preferences and do not create extra pageviews', () => {
   const b=boot();
   for(const lang of ['en','ja','ko','es','pt','ru','fr','zh']) {
