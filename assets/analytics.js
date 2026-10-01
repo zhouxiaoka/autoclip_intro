@@ -137,26 +137,51 @@
     ru: ['Статистика сайта', 'Разрешить анонимную статистику посещений, скачиваний, демо и переходов к спонсорам? Данные отправляются в PostHog, без записи сеансов.', 'Разрешить', 'Отказаться', 'Отключить', 'Включена', 'Отключена', 'Браузер запрещает отслеживание', 'Подробнее'],
     fr: ['Statistiques', 'Autoriser les statistiques anonymes de visites, téléchargements, démos et clics sponsors ? Envoyées à PostHog, sans enregistrement de session.', 'Autoriser', 'Refuser', 'Désactiver', 'Activées', 'Désactivées', 'Votre navigateur refuse le suivi', 'Détails'],
   };
+  const stylesheet = document.createElement('link');
+  stylesheet.rel = 'stylesheet';
+  stylesheet.href = new URL('assets/analytics.css', root).href;
+  document.head.append(stylesheet);
+  const settingsPage = location.pathname.replace(/index\.html$/, '') === new URL('analytics/', root).pathname;
   function renderPreferences() {
     document.getElementById('site-analytics-preferences')?.remove();
-    const host = document.querySelector('footer') || document.body;
-    const panel = document.createElement('details');
+    // Show the first-visit choice in the viewport. Saved choices live on the privacy page.
+    if (!settingsPage && (consent !== null || blocked())) return;
+    const host = settingsPage ? document.getElementById('site-analytics-settings') : document.body;
+    if (!host) return;
+    const panel = document.createElement('section');
     panel.id = 'site-analytics-preferences';
-    panel.style.cssText = 'padding:12px 24px;max-width:760px;margin:auto;font:inherit;line-height:1.6';
-    panel.open = consent === null && !blocked();
+    panel.className = settingsPage ? 'analytics-settings' : 'analytics-banner';
+    panel.setAttribute('aria-labelledby', 'site-analytics-title');
     const c = copy[language()];
-    const summary = document.createElement('summary');
-    summary.textContent = c[0] + ' · ' + (blocked() ? c[7] : consent === 'yes' ? c[5] : c[6]);
-    panel.append(summary);
-    const text = document.createElement('p'); text.textContent = c[1]; panel.append(text);
-    const link = document.createElement('a'); link.href = new URL('analytics/', root).href; link.textContent = c[8]; panel.append(link);
+    const content = document.createElement('div');
+    content.className = 'analytics-copy';
+    const title = document.createElement('h2');
+    title.id = 'site-analytics-title'; title.tabIndex = -1; title.textContent = c[0];
+    content.append(title);
+    const text = document.createElement('p'); text.textContent = c[1]; content.append(text);
+    if (settingsPage) {
+      const status = document.createElement('p');
+      status.className = 'analytics-status';
+      status.setAttribute('role', 'status');
+      status.textContent = blocked() ? c[7] : consent === 'yes' ? c[5] : c[6];
+      content.append(status);
+    } else {
+      const link = document.createElement('a');
+      link.href = new URL('analytics/?lang=' + language(), root).href;
+      link.textContent = c[8]; content.append(link);
+    }
+    panel.append(content);
     if (!blocked()) {
+      const actions = document.createElement('div'); actions.className = 'analytics-actions';
       for (const [label, value] of [[c[2], true], [consent === 'yes' ? c[4] : c[3], false]]) {
         const button = document.createElement('button'); button.type = 'button'; button.textContent = label;
-        button.style.cssText = 'margin:8px;padding:6px 12px;font:inherit;cursor:pointer';
-        button.addEventListener('click', () => { setConsent(value); document.querySelector('#site-analytics-preferences summary')?.focus(); });
-        panel.append(button);
+        button.addEventListener('click', () => {
+          setConsent(value);
+          if (settingsPage) document.getElementById('site-analytics-title')?.focus({preventScroll: true});
+        });
+        actions.append(button);
       }
+      panel.append(actions);
     }
     host.append(panel);
   }

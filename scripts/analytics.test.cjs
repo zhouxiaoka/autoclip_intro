@@ -14,13 +14,15 @@ function boot(options = {}) {
   function node(tagName) {
     return {tagName: tagName.toUpperCase(), style: {}, children: [], dataset: {},
       append(child) { this.children.push(child); if (child.id) nodes.set(child.id, child); },
+      setAttribute(k, v) { this[k] = v; },
       remove() { nodes.delete(this.id); }, addEventListener(type, fn) { this[type] = fn; }, focus() {},
     };
   }
   const footer = node('footer');
+  const settings = node('div'); nodes.set('site-analytics-settings', settings);
   const document = {
     currentScript: {src: root + 'assets/analytics.js'},
-    documentElement: {lang: 'zh'}, referrer: options.referrer || '', body: node('body'),
+    documentElement: {lang: 'zh'}, referrer: options.referrer || '', body: node('body'), head: node('head'),
     getElementById: id => nodes.get(id), createElement: node,
     querySelector: s => s === 'footer' ? footer : null,
     addEventListener: (type, fn) => { listeners[type] = fn; },
@@ -43,7 +45,7 @@ function boot(options = {}) {
     listeners[type]({type, button, target: {closest: selector => selector === 'a[href]' ? anchor : null}});
   }
   return {context, requests, memory, click, nodes, listeners, windowListeners, observers,
-    api: context.window.AutoClipAnalytics, events: () => requests.map(r => r.payload.event)};
+    footer, settings, api: context.window.AutoClipAnalytics, events: () => requests.map(r => r.payload.event)};
 }
 test('no requests or visitor identifier before consent; allow once; revoke clears ID and stops events', () => {
   const b = boot(); b.click('https://github.com/zhouxiaoka/autoclip/releases/download/v1/a.dmg');
@@ -104,19 +106,60 @@ test('playback counts actual playing once per clip, completion separately, and n
   assert.deepEqual(b.events(),['website_pageview','website_demo_play','website_demo_complete']);
 });
 test('language changes rerender eight translated preferences and do not create extra pageviews', () => {
-  const b=boot({consent:'yes'});
+  const b=boot();
   for(const lang of ['en','ja','ko','es','pt','ru','fr','zh']) {
     b.context.document.documentElement.lang=lang; b.observers[0]();
-    assert.ok(b.nodes.get('site-analytics-preferences').children[0].textContent);
+    assert.ok(b.nodes.get('site-analytics-preferences').children[0].children[0].textContent);
   }
-  assert.equal(b.events().filter(x=>x==='website_pageview').length,1);
-  assert.equal(b.events().filter(x=>x==='website_language_change').length,8);
+  assert.equal(b.events().length, 0);
+  const allowed = boot({consent:'yes'});
+  for (const lang of ['en','ja','ko','es','pt','ru','fr','zh']) {
+    allowed.context.document.documentElement.lang=lang; allowed.observers[0]();
+    assert.equal(allowed.nodes.has('site-analytics-preferences'), false);
+  }
+  assert.equal(allowed.events().filter(x=>x==='website_pageview').length,1);
+  assert.equal(allowed.events().filter(x=>x==='website_language_change').length,8);
 });
 test('cross-tab revocation stops capture',()=>{
   const b=boot({consent:'yes'}); b.memory.set('autoclip.website.analytics.consent','no');
   b.windowListeners.storage({key:'autoclip.website.analytics.consent'});
   b.click('https://github.com/zhouxiaoka/autoclip/releases/download/v1/a.dmg');
   assert.equal(b.requests.length,1); assert.equal(b.api.isEnabled(),false);
+});
+test('first-visit choices appear outside the footer and stay hidden after either decision', () => {
+  for (const allow of [true, false]) {
+    const b = boot();
+    const panel = b.nodes.get('site-analytics-preferences');
+    assert.equal(panel.className, 'analytics-banner');
+    assert.ok(b.context.document.body.children.includes(panel));
+    assert.equal(b.footer.children.length, 0);
+    panel.children[1].children[allow ? 0 : 1].click();
+    assert.equal(b.nodes.has('site-analytics-preferences'), false);
+    assert.equal(b.requests.length, allow ? 1 : 0);
+    const next = boot({memory: b.memory});
+    assert.equal(next.nodes.has('site-analytics-preferences'), false);
+  }
+  assert.equal(boot({navigator: {doNotTrack: '1'}}).nodes.has('site-analytics-preferences'), false);
+  assert.equal(boot({navigator: {globalPrivacyControl: true}}).nodes.has('site-analytics-preferences'), false);
+});
+test('privacy page keeps controls available for changing saved consent and respects browser blocking', () => {
+  for (const suffix of ['', 'index.html?lang=en']) {
+    const b = boot({url: 'https://zhouxiaoka.github.io/autoclip_intro/analytics/' + suffix, consent: 'yes'});
+    const panel = b.nodes.get('site-analytics-preferences');
+    assert.equal(panel.className, 'analytics-settings');
+    assert.ok(b.settings.children.includes(panel));
+    panel.children[1].children[1].click();
+    assert.equal(b.memory.get('autoclip.website.analytics.consent'), 'no');
+    const disabled = b.nodes.get('site-analytics-preferences');
+    assert.equal(disabled.children[0].children[2].textContent, '已关闭');
+    disabled.children[1].children[0].click();
+    assert.equal(b.memory.get('autoclip.website.analytics.consent'), 'yes');
+    assert.equal(b.requests.length, 0);
+  }
+  const blocked = boot({url: 'https://zhouxiaoka.github.io/autoclip_intro/analytics/', navigator: {globalPrivacyControl: true}});
+  const panel = blocked.nodes.get('site-analytics-preferences');
+  assert.equal(panel.children[0].children[2].textContent, '浏览器已要求不跟踪');
+  assert.equal(panel.children.length, 1);
 });
 test('storage denial and synchronous/asynchronous network failures do not break UI',async()=>{
   for(const options of [{storageBlocked:true},{throwFetch:true},{rejectFetch:true}]) {
