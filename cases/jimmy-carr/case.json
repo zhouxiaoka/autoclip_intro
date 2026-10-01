@@ -1,0 +1,56 @@
+{
+ "schema": 1,
+ "id": "jimmy-carr",
+ "added": "2026-10-01",
+ "scene": "talk",
+ "featured": false,
+ "contributor": null,
+ "source": {
+  "title": "Jimmy Carr: Convenience is Stealing Your Life",
+  "channel": "Jimmy Carr",
+  "url": "https://www.youtube.com/watch?v=ssOaEejtEwM",
+  "duration_sec": null,
+  "language": "zh"
+ },
+ "run": null,
+ "outputs": [
+  {
+   "id": "01",
+   "platform": "bilibili",
+   "template": "original",
+   "title_lines": [
+    "当AI角色进入同一个虚拟世界"
+   ],
+   "duration_sec": 124,
+   "aspect": "16:9",
+   "video": "01.mp4",
+   "loop": "01-loop.mp4",
+   "poster": "01.jpg",
+   "cover": "01-cover.jpg",
+   "post": {
+    "title": "当AI角色进入同一个虚拟世界",
+    "description": "访谈回顾多个 AI 角色在虚拟环境中的不同表现，讨论这些实验能揭示什么、又有哪些边界。",
+    "tags": []
+   }
+  },
+  {
+   "id": "02",
+   "platform": "bilibili",
+   "template": "original",
+   "title_lines": [
+    "AI虚拟世界中的自主权实验"
+   ],
+   "duration_sec": 135,
+   "aspect": "16:9",
+   "video": "02.mp4",
+   "loop": "02-loop.mp4",
+   "poster": "02.jpg",
+   "cover": "02-cover.jpg",
+   "post": {
+    "title": "AI虚拟世界中的自主权实验",
+    "description": "从两个 AI 角色在虚拟世界中的行为谈起，讨论自主性、角色设定与实验观察之间的关系。",
+    "tags": []
+   }
+  }
+ ]
+}

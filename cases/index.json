@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "batch": "2026-10-01f",
+ "batch": "2026-10-01g",
  "media_base": "https://pub-3fb92949b9c2480b89feec5ec03f3540.r2.dev/cases/",
  "updated": "2026-10-01",
  "cases": [
@@ -16,15 +16,18 @@
   "robbins-36months",
   "openai-devday-2026",
   "mrbeast-colin-samir",
+  "luyu-tongliya",
   "lidan-wangzuxian",
   "kojima-wired",
   "karpathy-dwarkesh",
+  "jimmy-carr",
   "jensen-dwarkesh",
   "druski-doac",
   "dreamforce-keynote",
   "dario-dwarkesh",
   "apple-a20",
   "altman-yc",
+  "altman-uses-ai",
   "ai-labs-debate"
  ]
 }

@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "batch": "2026-10-01f",
+ "batch": "2026-10-01g",
  "media_base": "${AUTOCLIP_MEDIA_BASE:-}",
  "projects_root": "${AUTOCLIP_PROJECTS:-/private/tmp/autoclip-e2e/projects}",
  "demos_root": "${AUTOCLIP_DEMOS:-/private/tmp/autoclip-e2e/demos}",
@@ -95,6 +95,51 @@
     "title": "在iPhone Duo的现场，我们却想聊聊A20 Pro｜ft.极客湾云飞，虽然但是张黑黑｜2026苹果秋季发布会现场特别播客",
     "channel": "虽然但是",
     "url": "https://www.bilibili.com/video/BV1e4Y96FEaJ/",
+    "language": "zh"
+   }
+  },
+  {
+   "id": "luyu-tongliya",
+   "scene": "interview",
+   "added": "2026-10-01",
+   "files": [
+    "bilibili:original:luyu-tongliya/01.mp4:舞蹈是我骨子里的东西",
+    "bilibili:original:luyu-tongliya/02.mp4:离家很远：不是逃离，是奔向自由"
+   ],
+   "source": {
+    "title": "陈鲁豫对话佟丽娅丨EP04正片",
+    "channel": "陈鲁豫",
+    "url": "https://www.bilibili.com/video/BV1qheu6kEFV/",
+    "language": "zh"
+   }
+  },
+  {
+   "id": "altman-uses-ai",
+   "scene": "interview",
+   "added": "2026-10-01",
+   "files": [
+    "bilibili:original:altman-uses-ai/01.mp4:AI是文艺复兴，还是工业革命？",
+    "bilibili:original:altman-uses-ai/02.mp4:把AI的“火种”交给所有人"
+   ],
+   "source": {
+    "title": "How Sam Altman Actually Uses AI to Run OpenAI and His Life",
+    "channel": "Sam Altman",
+    "url": "https://www.youtube.com/watch?v=jZh55CQwSh8",
+    "language": "zh"
+   }
+  },
+  {
+   "id": "jimmy-carr",
+   "scene": "talk",
+   "added": "2026-10-01",
+   "files": [
+    "bilibili:original:jimmy-carr/01.mp4:当AI角色进入同一个虚拟世界",
+    "bilibili:original:jimmy-carr/02.mp4:AI虚拟世界中的自主权实验"
+   ],
+   "source": {
+    "title": "Jimmy Carr: Convenience is Stealing Your Life",
+    "channel": "Jimmy Carr",
+    "url": "https://www.youtube.com/watch?v=ssOaEejtEwM",
     "language": "zh"
    }
   },

@@ -40,6 +40,15 @@ def probe_duration(path: Path) -> float:
     return float(out)
 
 
+def probe_aspect(path: Path) -> str:
+    out = subprocess.check_output([
+        'ffprobe', '-v', 'error', '-select_streams', 'v:0',
+        '-show_entries', 'stream=width,height', '-of', 'csv=p=0', str(path),
+    ]).decode().strip()
+    width, height = (int(x) for x in out.split(',')[:2])
+    return '16:9' if width > height else '9:16'
+
+
 def ffmpeg(*args: str) -> None:
     subprocess.run(['ffmpeg', '-v', 'error', '-y', *args], check=True)
 
@@ -53,7 +62,8 @@ def web_media(master: Path, folder: Path, oid: str) -> dict:
     ffmpeg('-ss', at, '-i', str(master), '-t', '8', '-an', '-vf', 'scale=360:-2,fps=24', '-c:v', 'libx264', '-crf', '30',
            '-preset', 'slow', '-pix_fmt', 'yuv420p', '-movflags', '+faststart', str(folder / f'{oid}-loop.mp4'))
     ffmpeg('-ss', at, '-i', str(master), '-frames:v', '1', '-vf', 'scale=540:-2', '-q:v', '4', str(folder / f'{oid}.jpg'))
-    return {'duration_sec': round(duration), 'video': f'{oid}.mp4', 'loop': f'{oid}-loop.mp4', 'poster': f'{oid}.jpg'}
+    return {'duration_sec': round(duration), 'aspect': probe_aspect(master),
+            'video': f'{oid}.mp4', 'loop': f'{oid}-loop.mp4', 'poster': f'{oid}.jpg'}
 
 
 def web_cover(cover: Path, folder: Path, oid: str) -> str:

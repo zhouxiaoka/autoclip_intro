@@ -21,7 +21,7 @@ test('every case is complete and every referenced file exists',()=>{
   assert.ok(SCENES.includes(c.scene),where+'scene');
   assert.match(c.source.url,/^https:\/\//,where+'source url');
   assert.ok(c.source.title&&c.source.channel,where+'source title/channel');
-  if(c.contributor){assert.ok(c.contributor.name,where+'contributor name');if(c.contributor.url)assert.match(c.contributor.url,/^https:\/\//,where+'contributor url');}
+  if(c.contributor){assert.ok(c.contributor.name||c.contributor.id,where+'contributor');if(c.contributor.url)assert.match(c.contributor.url,/^https:\/\//,where+'contributor url');if(c.contributor.avatar)assert.match(c.contributor.avatar,/^https:\/\//,where+'contributor avatar');}
   if(c.run)for(const k of ['minutes','cost_cny','found','rendered'])assert.equal(typeof c.run[k],'number',where+'run.'+k);
   assert.ok(c.outputs.length>0,where+'outputs');
   assert.equal(new Set(c.outputs.map(o=>o.id)).size,c.outputs.length,where+'unique output ids');
@@ -31,6 +31,7 @@ test('every case is complete and every referenced file exists',()=>{
    assert.ok(PLATFORMS.includes(o.platform),w+'platform');assert.ok(TEMPLATES.includes(o.template),w+'template');
    assert.ok(o.title_lines.length&&o.title_lines.every(Boolean),w+'title');
    assert.ok(o.duration_sec>0,w+'duration');
+   if(o.aspect)assert.ok(['9:16','16:9'].includes(o.aspect),w+'aspect');
    for(const f of ['video','loop','poster','cover'])if(o[f]||f!=='cover')assert.ok(fs.existsSync(path.join(dir,id,o[f])),w+f);
    if(o.post){assert.ok(o.post.title&&o.post.title.length<=100,w+'post title');assert.ok((o.post.description||'').length<=2000,w+'post description');assert.ok(Array.isArray(o.post.tags)&&o.post.tags.length<=12,w+'post tags');}
   }
