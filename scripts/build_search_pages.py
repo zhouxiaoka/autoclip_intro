@@ -18,6 +18,7 @@ SITE = 'https://zhouxiaoka.github.io/autoclip_intro/'
 SOURCES = ['index.html', 'cases/index.html', 'use-cases/podcast/index.html',
            'use-cases/course/index.html', 'use-cases/gameplay/index.html',
            'features/publish/index.html', 'features/auto-cover/index.html']
+SOURCES += [p+'index.html' for p in json.loads((ROOT/'data/growth-content.json').read_text())]
 ROUTES = {str(Path(p).parent).replace('.', '') + ('/' if Path(p).parent != Path('.') else '') for p in SOURCES}
 VOID = {'area','base','br','col','embed','hr','img','input','link','meta','param','source','track','wbr'}
 
@@ -31,6 +32,7 @@ const context={};vm.runInNewContext(script.slice(script.indexOf('  var T ='),scr
 const footer=fs.readFileSync('assets/footer.js','utf8');
 const f={};vm.runInNewContext(footer.slice(footer.indexOf('const C='),footer.indexOf('function apply'))+';globalThis.copy=C',f);
 const pages={};for(const p of process.argv.slice(1)){
+ if(!fs.existsSync(p))continue;
  const h=fs.readFileSync(p,'utf8'),s=h.match(/<script>window.INNER_COPY\s*=([\s\S]*?)<\/script>/);
  if(s){const c={window:{}};vm.runInNewContext('window.INNER_COPY='+s[1],c);pages[p]=c.window.INNER_COPY;}
  else if(p==='cases/index.html') {const t=h.match(/<script>([\s\S]*?)<\/script>/)[1],c={};vm.runInNewContext(t.slice(t.indexOf('  var COPY ='),t.indexOf('  var ATTR')),c);pages[p]=c.COPY;}
@@ -130,10 +132,17 @@ class Render(HTMLParser):
     def handle_decl(self, data): self.out.append('<!'+data+'>')
 
 
-def schema(text, language, copy):
+def schema(text, language, copy, source='index.html'):
     def replace(m):
         d = json.loads(m[1])
         for item in d.get('@graph', []):
+            if item['@type'] in ('Article','VideoObject'):
+                item['inLanguage'] = 'zh-CN' if language == 'zh' else 'en'
+                item['url'] = SITE + ('en/' if language == 'en' else '') + route(source)
+                item['description'] = copy['lede']
+                if item['@type'] == 'Article':
+                    item['headline'] = copy['h1'];item['mainEntityOfPage'] = item['url']
+                else: item['name'] = copy['h1']
             if item['@type'] == 'SoftwareApplication':
                 item['description'] = copy['meta.desc']
                 item['softwareVersion'] = re.search(r"var REL = .*?v([\d.]+)/",text).group(1)
@@ -146,6 +155,8 @@ def schema(text, language, copy):
 
 
 def build(check=False):
+    from build_growth_content import build as build_content
+    content_changed = build_content(check)
     c = catalogs()
     changed = []
     for source in SOURCES:
@@ -157,7 +168,7 @@ def build(check=False):
         for language in ('zh','en'):
             destination = source if language == 'zh' else 'en/'+source
             copy = c['home'][language] if source == 'index.html' else c['pages'].get(source,{}).get(language,{})
-            content = schema(text,language,copy) if source == 'index.html' else text
+            content = schema(text,language,copy,source)
             parser = Render(source,destination,language,copy,c['footer'][language]); parser.feed(content)
             result = ''.join(parser.out)
             target = ROOT/destination
@@ -167,7 +178,7 @@ def build(check=False):
                     target.parent.mkdir(parents=True,exist_ok=True);target.write_text(result)
     if changed: print(('Out of date: ' if check else 'Updated: ')+', '.join(changed))
     else: print('Search pages are current')
-    return bool(changed) if check else False
+    return bool(changed) or content_changed if check else False
 
 
 if __name__ == '__main__':

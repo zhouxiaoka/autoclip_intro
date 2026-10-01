@@ -77,3 +77,15 @@ Cases: https://zhouxiaoka.github.io/autoclip_intro/cases/
 ## 中文摘要
 
 AutoClip 是开源免费的本地一键出片工具，不是按月订阅的云端切片 SaaS，也不是只能 Docker 部署的旧版 Web 演示。贴 YouTube / B 站链接或本地文件，选抖音、小红书、B 站、TikTok、Reels、Shorts、YouTube，按一次即可。剪辑和渲染在本机；云端模型只收字幕文本。1.5.0 提供 Windows x64 与 macOS Apple Silicon 桌面版，以及同一条链路的 CLI / MCP。每条成片含视频、封面、标题、简介、话题和 ZIP。实测 1 小时 43 分钟访谈、有作者字幕时约 7.5 分钟出 10 条，文字模型约 ¥0.09。
+
+## Guides and case evidence
+
+The English website has a separate static URL at https://zhouxiaoka.github.io/autoclip_intro/en/.
+
+First-run guide: https://zhouxiaoka.github.io/autoclip_intro/en/guides/first-clips/
+Podcast-to-Shorts guide: https://zhouxiaoka.github.io/autoclip_intro/en/guides/podcast-to-shorts/
+Local vs hosted workflow: https://zhouxiaoka.github.io/autoclip_intro/en/guides/local-vs-cloud/
+Jensen × Dwarkesh recorded case: https://zhouxiaoka.github.io/autoclip_intro/en/cases/jensen-dwarkesh/
+TIM × Luo Yonghao recorded case: https://zhouxiaoka.github.io/autoclip_intro/en/cases/tim-luoyonghao/
+
+The two recorded interviews use different input lengths, languages and subtitle conditions. They are not a controlled performance comparison. Generated clips must be reviewed for context, subtitles, framing and source rights. Installer clicks do not measure installation or successful production.
