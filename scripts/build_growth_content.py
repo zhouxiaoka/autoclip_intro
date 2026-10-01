@@ -34,6 +34,12 @@ def render(path, item, contents):
              'cli':'CLI / MCP 文档' if lang=='zh' else 'CLI / MCP documentation',
              'models':'模型配置文档' if lang=='zh' else 'Model configuration'}
         for i,(h,p) in enumerate(d['sections']): c.update({f's{i}h':h,f's{i}p':p})
+        if item.get('original'):
+            c['rights'] = '原创教程与合成旁白，可用于介绍 AutoClip，请保留来源标注。' if lang=='zh' else 'Original lesson with synthetic narration. Reuse to introduce AutoClip with source attribution.'
+            c['srt'] = '下载配套 SRT' if lang=='zh' else 'Download matching SRT'
+            c['receipt'] = '查看运行记录' if lang=='zh' else 'View run receipt'
+            c['workflow'] = '55 秒流程演示（静音双语）' if lang=='zh' else '55-second workflow film (silent, bilingual)'
+            c['library'] = '查看完整案例库' if lang=='zh' else 'Open the complete case library'
         for i,link in enumerate(item['links']): c[f'link{i}'] = contents[link][lang]['title'].removesuffix(' | AutoClip')
         copies[lang]=c
     c=copies['zh']
@@ -50,7 +56,7 @@ def render(path, item, contents):
         main+=f'<p class="source-note"><a href="{e(case["source"]["url"])}" target="_blank" rel="noopener" data-copy="source">{c["source"]}</a> · <span data-copy="rights">{c["rights"]}</span></p>'
         graph.append({'@type':'VideoObject','name':c['h1'],'description':c['lede'],'inLanguage':'zh-CN',
                       'thumbnailUrl':media+out['poster'],'contentUrl':media+out['video'],
-                      'uploadDate':'2026-10-01T00:00:00+08:00','duration':f'PT{out["duration_sec"]}S','url':SITE+path})
+                      'uploadDate':case['added']+'T00:00:00+08:00','duration':f'PT{out["duration_sec"]}S','url':SITE+path})
     main+=f'<p class="lede" data-copy="lede">{e(c["lede"])}</p>'
     for i,_ in enumerate(item['zh']['sections']):
         main+=f'<section class="article-section"><h2 data-copy="s{i}h">{e(c[f"s{i}h"])}</h2><p data-copy="s{i}p">{e(c[f"s{i}p"])}</p></section>'
@@ -59,6 +65,10 @@ def render(path, item, contents):
     main+=f'<nav class="article-related"><h2 data-copy="related">{c["related"]}</h2>'
     for i,link in enumerate(item['links']):main+=f'<a href="../../{link}" data-copy="link{i}">{e(c[f"link{i}"])}</a>'
     main+='</nav><div class="article-resources">'
+    if item.get('original'):
+        for key,file in [('srt','source.srt'),('receipt','run-receipt.json'),('workflow','workflow-55s.mp4')]:
+            main+=f'<a href="{e(media+file)}" data-copy="{key}">{c[key]}</a>'
+        main+=f'<a href="../../cases/" data-copy="library">{c["library"]}</a>'
     for key,file in [('install','USER_INSTALLATION_GUIDE.md'),('models','MULTI_LLM_PROVIDER_GUIDE.md'),('cli','CLI_AND_MCP.md')]:
         main+=f'<a href="https://github.com/zhouxiaoka/autoclip/blob/main/docs/{file}" target="_blank" rel="noopener" data-copy="{key}">{c[key]}</a>'
     main+='</div><div class="inner-cta"><a class="btn btn-primary" href="../../#download" data-copy="download">下载</a></div>'

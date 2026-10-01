@@ -49,7 +49,7 @@ jobs:
 
       - name: Commit and push if changed
         run: |
-          if git diff --quiet -- index.html en cases/index.html use-cases features; then
+          if git diff --quiet -- index.html en cases use-cases features guides; then
             echo "官网已是最新"; exit 0
           fi
           VER=$(grep -oE 'releases/download/v[0-9]+\.[0-9]+\.[0-9]+/' index.html | head -1 | grep -oE 'v[0-9.]+')

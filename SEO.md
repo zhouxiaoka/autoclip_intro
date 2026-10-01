@@ -27,3 +27,7 @@ GitHub 仓库流量、官网已同意访客和实际使用结果分别记录，�
 `llms.txt` / `llms-full.txt` 是可引用的事实摘要，不是保证排名的机制。Google AI 搜索不要求额外 AI 文本文件，仍依赖可索引的可靠正文与内部链接：[Google AI 搜索指南](https://developers.google.com/search/docs/appearance/ai-features)。多语言 URL 的依据见[官方指南](https://developers.google.com/search/docs/specialty/international/managing-multi-regional-sites)。
 
 继续使用 GitHub Pages。自定义域名不是本轮前置条件，也没有自动排名加成。域根 robots.txt 的 404 不等于 Google 被禁止抓取；项目子目录的 robots.txt 不能管理域根抓取规则：[robots.txt 规范](https://developers.google.com/crawling/docs/robots-txt/robots-txt-spec)。
+
+### Original first-run case — 2026-10-02
+
+`cases/autoclip-first-run/` and its English pair record official 1.5.0 outputs from an original 127.3-second lesson with supplied SRT. Production-stage elapsed 62.4 seconds excludes setup, source creation, first model download, review and publishing. API bill not independently measured; preserve the two automatic-description review findings. The source and matching SRT are reproducible; this case does not benchmark transcription or long-podcast speed.

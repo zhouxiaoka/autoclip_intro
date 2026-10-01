@@ -89,3 +89,7 @@ Jensen × Dwarkesh recorded case: https://zhouxiaoka.github.io/autoclip_intro/en
 TIM × Luo Yonghao recorded case: https://zhouxiaoka.github.io/autoclip_intro/en/cases/tim-luoyonghao/
 
 The two recorded interviews use different input lengths, languages and subtitle conditions. They are not a controlled performance comparison. Generated clips must be reviewed for context, subtitles, framing and source rights. Installer clicks do not measure installation or successful production.
+
+## Original first-run case (2026-10-02)
+Official AutoClip 1.5.0 produced three Shorts from an original 127.3-second lesson with a supplied SRT. Production start to finish: 62.4 seconds; installation, source creation, first model download, pre-start queueing, review and publishing excluded. No independently measured API bill. Two output descriptions need correction before posting. This short graphics lesson does not benchmark transcription or long podcasts.
+https://zhouxiaoka.github.io/autoclip_intro/en/cases/autoclip-first-run/

@@ -5,27 +5,68 @@
       "title": "AutoClip 首次出片教程：有字幕与无字幕的视频怎么开始",
       "lede": "先用一段自己拥有或获授权的 10–30 分钟素材，跑通输入、分析、成片和交付包，再处理整期播客。AutoClip 是开源桌面工具，视频剪辑与渲染在本地完成，模型可选云端或本地。",
       "sections": [
-        ["1. 安装正式版本，先检查机器", "从官网或 GitHub Releases 下载适合机器的安装包。当前桌面包面向 macOS Apple Silicon 和 Windows x64；操作系统与安装问题以仓库的安装指南为准。首次启动可能需要下载转写模型，请给下载和磁盘空间留出余量。不要把安装完成当作已能成功出片。"],
-        ["2. 配好分析模型，测试连接", "在设置中选择模型服务，填写你自己的 API Key 并测试连接；也可以配置 Ollama 或 LM Studio 的本地模型。软件免费不代表云端模型调用免费，实际账单由服务商决定。先关闭不需要的云端转写、参考帧分析或生图选项，减少首次排查的变量。"],
-        ["3. 根据字幕条件选择输入", "YouTube、B 站链接或本地视频都可以作为输入。有作者字幕时优先使用现成字幕；本地文件可配套导入 SRT。没有字幕时，使用已安装的本地转写模型，或主动选择已配置的云端转写。云端转写会发送音频；字幕、时间轴和说话人错误都需要检查。"],
-        ["4. 先选一个平台，运行一键出片", "先选抖音、小红书或 YouTube Shorts 中的一个目标平台，再运行一键出片。平台选择影响画幅、字幕、封面与发布文案；短于三分钟的素材适合先试 Shorts 或 B 站，当前 YouTube 长视频入口至少生成 180 秒完整片段。处理时间受视频长度、字幕、模型和硬件影响。"],
-        ["5. 检查完整片段，再保存交付包", "播放每条成片，确认问题与回答完整、字幕没有遮住脸或关键信息、开头能独立理解、结尾没有截断。保存视频、封面和发布文案，核对标题是否忠实于原意。自动生成后仍需你判断是否适合发布；选择发布功能时才上传到对应平台。"],
-        ["卡住时，先区分是哪一步", "下载失败先确认链接与网络；转写失败先确认模型下载完成，也可以用配套 SRT 做对照；模型调用失败先测试连接和余额；渲染失败记录平台、原片信息、版本与日志。反馈时不要公开 API Key。安装包点击、安装成功和首次成功出片是三个不同结果。"]
+        [
+          "1. 安装正式版本，先检查机器",
+          "从官网或 GitHub Releases 下载适合机器的安装包。当前桌面包面向 macOS Apple Silicon 和 Windows x64；操作系统与安装问题以仓库的安装指南为准。首次启动可能需要下载转写模型，请给下载和磁盘空间留出余量。不要把安装完成当作已能成功出片。"
+        ],
+        [
+          "2. 配好分析模型，测试连接",
+          "在设置中选择模型服务，填写你自己的 API Key 并测试连接；也可以配置 Ollama 或 LM Studio 的本地模型。软件免费不代表云端模型调用免费，实际账单由服务商决定。先关闭不需要的云端转写、参考帧分析或生图选项，减少首次排查的变量。"
+        ],
+        [
+          "3. 根据字幕条件选择输入",
+          "YouTube、B 站链接或本地视频都可以作为输入。有作者字幕时优先使用现成字幕；本地文件可配套导入 SRT。没有字幕时，使用已安装的本地转写模型，或主动选择已配置的云端转写。云端转写会发送音频；字幕、时间轴和说话人错误都需要检查。"
+        ],
+        [
+          "4. 先选一个平台，运行一键出片",
+          "先选抖音、小红书或 YouTube Shorts 中的一个目标平台，再运行一键出片。平台选择影响画幅、字幕、封面与发布文案；短于三分钟的素材适合先试 Shorts 或 B 站，当前 YouTube 长视频入口至少生成 180 秒完整片段。处理时间受视频长度、字幕、模型和硬件影响。"
+        ],
+        [
+          "5. 检查完整片段，再保存交付包",
+          "播放每条成片，确认问题与回答完整、字幕没有遮住脸或关键信息、开头能独立理解、结尾没有截断。保存视频、封面和发布文案，核对标题是否忠实于原意。自动生成后仍需你判断是否适合发布；选择发布功能时才上传到对应平台。"
+        ],
+        [
+          "卡住时，先区分是哪一步",
+          "下载失败先确认链接与网络；转写失败先确认模型下载完成，也可以用配套 SRT 做对照；模型调用失败先测试连接和余额；渲染失败记录平台、原片信息、版本与日志。反馈时不要公开 API Key。安装包点击、安装成功和首次成功出片是三个不同结果。"
+        ]
       ]
     },
     "en": {
       "title": "First clips with AutoClip: start with captions or local transcription",
       "lede": "Start with 10–30 minutes of footage you own or have permission to use. Complete the input, analysis, rendering and export-kit workflow before processing a whole podcast. AutoClip is an open-source desktop tool with local editing and rendering, and a choice of cloud or local models.",
       "sections": [
-        ["1. Install the official release and check your machine", "Download the package for your machine from the website or GitHub Releases. Current desktop packages target Apple Silicon macOS and Windows x64; consult the repository installation guide for operating-system requirements and troubleshooting. Your first run may need a transcription-model download and free disk space. Installing the app is only the first step."],
-        ["2. Configure and test an analysis model", "Choose a provider in Settings, enter your own API key and test the connection. Ollama and LM Studio are local alternatives. The application is free; cloud API usage follows the provider's billing. Disable optional cloud transcription, reference-frame analysis and image generation for an easier first test."],
-        ["3. Choose input based on available captions", "Use a YouTube or Bilibili link, or a local video. Prefer creator-provided captions when available; a local file can use a matching SRT. Without captions, use an installed local transcription model or explicitly configure cloud transcription. Cloud transcription sends audio. Check caption text, timestamps and speaker attribution."],
-        ["4. Choose one destination and produce", "Start with one destination: Douyin, Xiaohongshu or YouTube Shorts. The destination affects framing, captions, covers and post copy. For footage under three minutes, try Shorts or Bilibili first; the current YouTube long-form destination requires a complete segment of at least 180 seconds. Runtime depends on source length, captions, models and hardware."],
-        ["5. Review complete clips and save the kit", "Watch every clip. Keep the question and answer complete, captions clear of faces and important details, the opening understandable and the ending intact. Save the video, cover and post copy, and check that the title reflects the source. Review before publishing; platform uploads happen when you choose a publishing action."],
-        ["If it stalls, identify the stage", "For downloads, check the link and network. For transcription, confirm the model finished downloading and try a matching SRT as a control. For model calls, test the connection and balance. For rendering, record the destination, source details, version and logs. Never share API keys. An installer click, a successful installation and a first successful clip are separate outcomes."]
+        [
+          "1. Install the official release and check your machine",
+          "Download the package for your machine from the website or GitHub Releases. Current desktop packages target Apple Silicon macOS and Windows x64; consult the repository installation guide for operating-system requirements and troubleshooting. Your first run may need a transcription-model download and free disk space. Installing the app is only the first step."
+        ],
+        [
+          "2. Configure and test an analysis model",
+          "Choose a provider in Settings, enter your own API key and test the connection. Ollama and LM Studio are local alternatives. The application is free; cloud API usage follows the provider's billing. Disable optional cloud transcription, reference-frame analysis and image generation for an easier first test."
+        ],
+        [
+          "3. Choose input based on available captions",
+          "Use a YouTube or Bilibili link, or a local video. Prefer creator-provided captions when available; a local file can use a matching SRT. Without captions, use an installed local transcription model or explicitly configure cloud transcription. Cloud transcription sends audio. Check caption text, timestamps and speaker attribution."
+        ],
+        [
+          "4. Choose one destination and produce",
+          "Start with one destination: Douyin, Xiaohongshu or YouTube Shorts. The destination affects framing, captions, covers and post copy. For footage under three minutes, try Shorts or Bilibili first; the current YouTube long-form destination requires a complete segment of at least 180 seconds. Runtime depends on source length, captions, models and hardware."
+        ],
+        [
+          "5. Review complete clips and save the kit",
+          "Watch every clip. Keep the question and answer complete, captions clear of faces and important details, the opening understandable and the ending intact. Save the video, cover and post copy, and check that the title reflects the source. Review before publishing; platform uploads happen when you choose a publishing action."
+        ],
+        [
+          "If it stalls, identify the stage",
+          "For downloads, check the link and network. For transcription, confirm the model finished downloading and try a matching SRT as a control. For model calls, test the connection and balance. For rendering, record the destination, source details, version and logs. Never share API keys. An installer click, a successful installation and a first successful clip are separate outcomes."
+        ]
       ]
     },
-    "links": ["guides/podcast-to-shorts/", "cases/jensen-dwarkesh/", "guides/local-vs-cloud/"]
+    "links": [
+      "cases/autoclip-first-run/",
+      "guides/podcast-to-shorts/",
+      "cases/jensen-dwarkesh/",
+      "guides/local-vs-cloud/"
+    ]
   },
   "guides/podcast-to-shorts/": {
     "kind": "guide",
@@ -33,27 +74,67 @@
       "title": "播客如何自动剪成 Shorts：从长访谈到可发布短视频",
       "lede": "适合短视频的播客片段，需要一个完整观点和足够的上下文。AutoClip 可从长视频中分析候选段落，按平台渲染视频、字幕、封面和发布文案；发布前仍应检查原意和观看体验。",
       "sections": [
-        ["先判断这句话能否独立成立", "一句吸引人的金句不一定是一条完整短视频。优先选择有明确问题、解释或例子、收束结论的段落；避免把反问、引用或假设剪成说话人的直接观点。需要背景才能理解的片段，可以保留提问或换一个候选。"],
-        ["字幕决定第一次分析的基础", "有作者字幕时直接利用；没有字幕时先完成本地或所选云端转写。专有名词、数字、否定句和说话人标签要重点复核。错误字幕会影响段落选择和标题，先修输入比在所有成片中逐一改错更有效。"],
-        ["平台和访谈版式一起选", "为 TikTok、Reels、Shorts 选择相应平台；中文内容可以先试抖音或小红书。访谈或播客版式适合人物对谈；自动取景受镜头、人脸与画面质量影响，不能保证每个原片都正确。竖屏输出请检查切换说话人时是否裁掉另一位嘉宾。"],
-        ["看两个真实输入条件", "Jensen × Dwarkesh 案例使用作者字幕：103 分钟访谈选出 21 个候选、渲染 10 条，历史实测约 7.5 分钟。TIM × 罗永浩案例没有字幕：172 分钟视频先本地转写再分析，18 个候选、渲染 10 条，约 29.5 分钟。素材与条件不同，不能据此做字幕速度的严格对照实验。"],
-        ["发布前做四项检查", "第一，片段脱离原视频仍能理解。第二，标题和封面没有夸大或改变原意。第三，手机上字幕清晰，人物与关键图表没有被遮挡。第四，视频、封面和文案都属于你有权使用的内容。先完成一条满意的片段，再批量发布。"],
-        ["把结果当作可迭代的交付包", "保存成片、封面与发布文案，按平台调整措辞后使用。首次试用记录可用片段数量和手动修改耗时，而不仅是生成条数。持续记录观众反馈，再决定下一期采用哪些段落和版式；自动选片数量不等于最终可发布数量。"]
+        [
+          "先判断这句话能否独立成立",
+          "一句吸引人的金句不一定是一条完整短视频。优先选择有明确问题、解释或例子、收束结论的段落；避免把反问、引用或假设剪成说话人的直接观点。需要背景才能理解的片段，可以保留提问或换一个候选。"
+        ],
+        [
+          "字幕决定第一次分析的基础",
+          "有作者字幕时直接利用；没有字幕时先完成本地或所选云端转写。专有名词、数字、否定句和说话人标签要重点复核。错误字幕会影响段落选择和标题，先修输入比在所有成片中逐一改错更有效。"
+        ],
+        [
+          "平台和访谈版式一起选",
+          "为 TikTok、Reels、Shorts 选择相应平台；中文内容可以先试抖音或小红书。访谈或播客版式适合人物对谈；自动取景受镜头、人脸与画面质量影响，不能保证每个原片都正确。竖屏输出请检查切换说话人时是否裁掉另一位嘉宾。"
+        ],
+        [
+          "看两个真实输入条件",
+          "Jensen × Dwarkesh 案例使用作者字幕：103 分钟访谈选出 21 个候选、渲染 10 条，历史实测约 7.5 分钟。TIM × 罗永浩案例没有字幕：172 分钟视频先本地转写再分析，18 个候选、渲染 10 条，约 29.5 分钟。素材与条件不同，不能据此做字幕速度的严格对照实验。"
+        ],
+        [
+          "发布前做四项检查",
+          "第一，片段脱离原视频仍能理解。第二，标题和封面没有夸大或改变原意。第三，手机上字幕清晰，人物与关键图表没有被遮挡。第四，视频、封面和文案都属于你有权使用的内容。先完成一条满意的片段，再批量发布。"
+        ],
+        [
+          "把结果当作可迭代的交付包",
+          "保存成片、封面与发布文案，按平台调整措辞后使用。首次试用记录可用片段数量和手动修改耗时，而不仅是生成条数。持续记录观众反馈，再决定下一期采用哪些段落和版式；自动选片数量不等于最终可发布数量。"
+        ]
       ]
     },
     "en": {
       "title": "How to turn a podcast into Shorts with AutoClip",
       "lede": "A useful podcast short needs a complete idea and enough context. AutoClip analyzes candidate segments and renders platform-specific video, captions, covers and post copy. Review the meaning and viewing experience before publishing.",
       "sections": [
-        ["Check whether the idea stands on its own", "An appealing quote is not necessarily a complete short. Prefer a clear question, an explanation or example, and a conclusion. Do not turn a rhetorical question, quotation or hypothetical into the speaker's direct claim. Keep the question when it supplies essential context, or choose another segment."],
-        ["Captions are the basis for analysis", "Use creator captions when available. Otherwise complete local or configured cloud transcription first. Review names, numbers, negation and speaker labels. Caption errors can affect segment selection and titles, so fixing input can prevent repeated corrections across outputs."],
-        ["Choose the destination and conversation layout", "Select the relevant TikTok, Reels or Shorts destination; for Chinese content, try Douyin or Xiaohongshu. Interview and podcast layouts suit conversations. Automatic framing depends on the shot, faces and image quality. Check that a vertical crop does not lose the other speaker during a change of turn."],
-        ["Compare two documented input conditions", "Jensen × Dwarkesh used creator captions: a 103-minute interview produced 21 candidates and 10 rendered clips in about 7.5 minutes in a historical test. TIM × Luo Yonghao had no captions: a 172-minute source used local transcription, then analysis, yielding 18 candidates and 10 rendered clips in about 29.5 minutes. Different sources and conditions make this unsuitable as a controlled speed comparison."],
-        ["Review four things before publishing", "The clip should make sense without the original. The title and cover should preserve the speaker's meaning. Captions, faces and important charts should remain clear on a phone. You should own or have permission to use the video, cover and copy. Finish one usable clip before publishing a batch."],
-        ["Treat the kit as an editable starting point", "Save the video, cover and post copy, then adjust wording for the destination. Record usable clips and manual correction time, not just generated clips. Use audience feedback to choose future segments and layouts. Generated output count is different from publishable output count."]
+        [
+          "Check whether the idea stands on its own",
+          "An appealing quote is not necessarily a complete short. Prefer a clear question, an explanation or example, and a conclusion. Do not turn a rhetorical question, quotation or hypothetical into the speaker's direct claim. Keep the question when it supplies essential context, or choose another segment."
+        ],
+        [
+          "Captions are the basis for analysis",
+          "Use creator captions when available. Otherwise complete local or configured cloud transcription first. Review names, numbers, negation and speaker labels. Caption errors can affect segment selection and titles, so fixing input can prevent repeated corrections across outputs."
+        ],
+        [
+          "Choose the destination and conversation layout",
+          "Select the relevant TikTok, Reels or Shorts destination; for Chinese content, try Douyin or Xiaohongshu. Interview and podcast layouts suit conversations. Automatic framing depends on the shot, faces and image quality. Check that a vertical crop does not lose the other speaker during a change of turn."
+        ],
+        [
+          "Compare two documented input conditions",
+          "Jensen × Dwarkesh used creator captions: a 103-minute interview produced 21 candidates and 10 rendered clips in about 7.5 minutes in a historical test. TIM × Luo Yonghao had no captions: a 172-minute source used local transcription, then analysis, yielding 18 candidates and 10 rendered clips in about 29.5 minutes. Different sources and conditions make this unsuitable as a controlled speed comparison."
+        ],
+        [
+          "Review four things before publishing",
+          "The clip should make sense without the original. The title and cover should preserve the speaker's meaning. Captions, faces and important charts should remain clear on a phone. You should own or have permission to use the video, cover and copy. Finish one usable clip before publishing a batch."
+        ],
+        [
+          "Treat the kit as an editable starting point",
+          "Save the video, cover and post copy, then adjust wording for the destination. Record usable clips and manual correction time, not just generated clips. Use audience feedback to choose future segments and layouts. Generated output count is different from publishable output count."
+        ]
       ]
     },
-    "links": ["cases/jensen-dwarkesh/", "cases/tim-luoyonghao/", "guides/first-clips/"]
+    "links": [
+      "cases/jensen-dwarkesh/",
+      "cases/tim-luoyonghao/",
+      "guides/first-clips/"
+    ]
   },
   "guides/local-vs-cloud/": {
     "kind": "guide",
@@ -61,74 +142,234 @@
       "title": "本地开源视频切片工具与云端剪辑服务怎么选",
       "lede": "选择长视频转短视频工具，先比较可用成片、数据处理范围、总费用和首次配置成本。AutoClip 适合希望本地剪辑渲染、自己选模型，并需要 CLI 或 MCP 自动化的用户。",
       "sections": [
-        ["先看工作方式是否适合你", "AutoClip 在桌面完成视频剪辑与渲染，开源代码可检查，模型服务自行配置。托管云端工具通常在浏览器中完成工作，安装和环境维护较少，但上传、功能与额度取决于具体服务。不要默认所有云端工具使用相同隐私条款，也不要默认本地工具无需配置。"],
-        ["本地渲染不等于所有步骤离线", "选择云端分析模型时，会发送相关字幕与生成文案；可选视觉分析或参考帧生图会发送所选帧，云端转写会发送音频。使用本地分析与本地转写可避免这些云端 API。向平台发布成片则涉及上传。先明确自己启用了哪些功能，再判断数据边界。"],
-        ["把费用拆开算", "AutoClip 软件本身免费、MIT 开源。云端文本模型、转写、图像生成和发布服务按相应服务商计费；本地模型仍消耗硬件、存储和时间。订阅服务还要比较导出数量、时长和额度。不要用单个低费用案例代表全部工作流，更不要把费用估算当成账单。"],
-        ["用同一素材比较实际可用率", "选择自己有权使用的同一段访谈，使用相同字幕与目标平台，分别检查观点完整性、标题准确度、字幕、人脸取景和可用条数。记录首次配置、处理等待和手动修正时间。先看能否得到你愿意发布的成片，再看总生成数量。"],
-        ["何时更适合 AutoClip", "你希望在本地保留原片，接受首次模型配置，需要自选云端或本地模型，或想通过 CLI / MCP 把出片接到现有流程。终端入口与桌面一键出片共用逻辑，正式版文档提供 produce 和 outputs 命令。首次仍建议用小素材验证，不要直接接入无人值守的大批量任务。"],
-        ["何时应先试托管服务", "如果你更在意浏览器内即开即用，不想维护桌面环境，或需要某个服务已有的团队协作功能，可先试对应托管服务。核对它当前的官方功能、计费和隐私条款，实测同一素材。没有一种工具能保证所有题材都自动生成满意片段。"]
+        [
+          "先看工作方式是否适合你",
+          "AutoClip 在桌面完成视频剪辑与渲染，开源代码可检查，模型服务自行配置。托管云端工具通常在浏览器中完成工作，安装和环境维护较少，但上传、功能与额度取决于具体服务。不要默认所有云端工具使用相同隐私条款，也不要默认本地工具无需配置。"
+        ],
+        [
+          "本地渲染不等于所有步骤离线",
+          "选择云端分析模型时，会发送相关字幕与生成文案；可选视觉分析或参考帧生图会发送所选帧，云端转写会发送音频。使用本地分析与本地转写可避免这些云端 API。向平台发布成片则涉及上传。先明确自己启用了哪些功能，再判断数据边界。"
+        ],
+        [
+          "把费用拆开算",
+          "AutoClip 软件本身免费、MIT 开源。云端文本模型、转写、图像生成和发布服务按相应服务商计费；本地模型仍消耗硬件、存储和时间。订阅服务还要比较导出数量、时长和额度。不要用单个低费用案例代表全部工作流，更不要把费用估算当成账单。"
+        ],
+        [
+          "用同一素材比较实际可用率",
+          "选择自己有权使用的同一段访谈，使用相同字幕与目标平台，分别检查观点完整性、标题准确度、字幕、人脸取景和可用条数。记录首次配置、处理等待和手动修正时间。先看能否得到你愿意发布的成片，再看总生成数量。"
+        ],
+        [
+          "何时更适合 AutoClip",
+          "你希望在本地保留原片，接受首次模型配置，需要自选云端或本地模型，或想通过 CLI / MCP 把出片接到现有流程。终端入口与桌面一键出片共用逻辑，正式版文档提供 produce 和 outputs 命令。首次仍建议用小素材验证，不要直接接入无人值守的大批量任务。"
+        ],
+        [
+          "何时应先试托管服务",
+          "如果你更在意浏览器内即开即用，不想维护桌面环境，或需要某个服务已有的团队协作功能，可先试对应托管服务。核对它当前的官方功能、计费和隐私条款，实测同一素材。没有一种工具能保证所有题材都自动生成满意片段。"
+        ]
       ]
     },
     "en": {
       "title": "Local open-source video clipping vs hosted cloud services",
       "lede": "Compare usable clips, data processing, total cost and first-run setup before choosing a long-video-to-shorts tool. AutoClip suits users who want local editing and rendering, their own model choice, and CLI or MCP automation.",
       "sections": [
-        ["Match the workflow to your needs", "AutoClip edits and renders on your desktop, provides inspectable open-source code and lets you configure model services. Hosted tools usually work in a browser and reduce local installation and maintenance. Uploads, features and limits depend on the service. Cloud tools do not all share the same privacy terms; local tools still need setup."],
-        ["Local rendering does not make every step offline", "Cloud analysis sends relevant captions and generated copy. Optional vision analysis or reference-frame image generation sends selected frames; cloud transcription sends audio. Local analysis and local transcription avoid those cloud APIs. Publishing a finished clip to a platform uploads it. Check which features you have enabled before evaluating the data boundary."],
-        ["Separate the costs", "AutoClip is free software under the MIT license. Cloud text models, transcription, image generation and publishing services follow their providers' billing. Local models still use hardware, storage and time. For subscription services, compare export counts, duration and quotas. A low-cost example does not represent every workflow; an estimate is not a bill."],
-        ["Test usability with the same source", "Use the same permitted interview, captions and destination. Check complete ideas, accurate titles, subtitles, framing and usable output count. Record setup time, processing wait and manual correction time. Compare clips you would actually publish before comparing raw output counts."],
-        ["When AutoClip is a good fit", "You want to retain source footage locally, accept initial model setup, need your own cloud or local model, or want CLI / MCP integration. Terminal commands and desktop one-click production share the production logic; official documentation includes produce and outputs. Validate a small source before connecting unattended batch jobs."],
-        ["When to try a hosted service first", "A hosted service may suit you if browser convenience matters most, you prefer to avoid a desktop environment, or you need a specific collaboration feature it offers. Read its current official feature, billing and privacy documentation and test the same source. No tool guarantees satisfying automatic clips for every subject."]
+        [
+          "Match the workflow to your needs",
+          "AutoClip edits and renders on your desktop, provides inspectable open-source code and lets you configure model services. Hosted tools usually work in a browser and reduce local installation and maintenance. Uploads, features and limits depend on the service. Cloud tools do not all share the same privacy terms; local tools still need setup."
+        ],
+        [
+          "Local rendering does not make every step offline",
+          "Cloud analysis sends relevant captions and generated copy. Optional vision analysis or reference-frame image generation sends selected frames; cloud transcription sends audio. Local analysis and local transcription avoid those cloud APIs. Publishing a finished clip to a platform uploads it. Check which features you have enabled before evaluating the data boundary."
+        ],
+        [
+          "Separate the costs",
+          "AutoClip is free software under the MIT license. Cloud text models, transcription, image generation and publishing services follow their providers' billing. Local models still use hardware, storage and time. For subscription services, compare export counts, duration and quotas. A low-cost example does not represent every workflow; an estimate is not a bill."
+        ],
+        [
+          "Test usability with the same source",
+          "Use the same permitted interview, captions and destination. Check complete ideas, accurate titles, subtitles, framing and usable output count. Record setup time, processing wait and manual correction time. Compare clips you would actually publish before comparing raw output counts."
+        ],
+        [
+          "When AutoClip is a good fit",
+          "You want to retain source footage locally, accept initial model setup, need your own cloud or local model, or want CLI / MCP integration. Terminal commands and desktop one-click production share the production logic; official documentation includes produce and outputs. Validate a small source before connecting unattended batch jobs."
+        ],
+        [
+          "When to try a hosted service first",
+          "A hosted service may suit you if browser convenience matters most, you prefer to avoid a desktop environment, or you need a specific collaboration feature it offers. Read its current official feature, billing and privacy documentation and test the same source. No tool guarantees satisfying automatic clips for every subject."
+        ]
       ]
     },
-    "links": ["guides/first-clips/", "cases/jensen-dwarkesh/", "cases/tim-luoyonghao/"]
+    "links": [
+      "guides/first-clips/",
+      "cases/jensen-dwarkesh/",
+      "cases/tim-luoyonghao/"
+    ]
   },
   "cases/jensen-dwarkesh/": {
-    "kind": "case", "case_id": "jensen-dwarkesh",
+    "kind": "case",
+    "case_id": "jensen-dwarkesh",
     "zh": {
       "title": "Jensen × Dwarkesh：作者字幕访谈自动切片案例 | AutoClip",
       "lede": "这条约 77 秒的自动成片，保留黄仁勋解释 AI 五层结构的连续段落。从 1 小时 43 分钟访谈中分析并渲染，附平台封面和发布文案。",
       "sections": [
-        ["原片与这条输出", "原片为 Dwarkesh Patel 的 Jensen Huang – Will Nvidia’s moat persist?，长度约 1 小时 43 分钟，英语，使用作者字幕。这条输出选择小红书平台与访谈版式，原片约 01:07:04 起，时长约 77 秒。它展示能源作为 AI 基础层的论述。"],
-        ["实测过程与条件", "2026 年 10 月 1 日，Apple Silicon Mac、单队列低优先级运行，分析模型为 qwen-plus。历史记录为 21 个候选、10 条渲染成片，约 7.5 分钟。费用约 ¥0.09 是按记录的文本 token 和当时估算单价计算，未包含云端转写、生图、发布服务、硬件和时间成本，不是服务商账单。"],
-        ["视频之外还交付什么", "这条片段同时生成封面和发布文案。封面标题为「AI是五层蛋糕 / 能源才是底层」，发布标题为「AI是五层蛋糕：能源才是底层」。请先核对英文原意、字幕、人物取景和发布权利，再使用交付包。"],
-        ["如何用自己的素材复现", "导入有作者字幕或匹配 SRT 的访谈，配置分析模型，先选择一个目标平台，运行一键出片。逐条检查开头和结尾，再导出视频、封面与文案。这里的数量、耗时和估算费用来自该次输入，换素材或模型后会变化。"]
+        [
+          "原片与这条输出",
+          "原片为 Dwarkesh Patel 的 Jensen Huang – Will Nvidia’s moat persist?，长度约 1 小时 43 分钟，英语，使用作者字幕。这条输出选择小红书平台与访谈版式，原片约 01:07:04 起，时长约 77 秒。它展示能源作为 AI 基础层的论述。"
+        ],
+        [
+          "实测过程与条件",
+          "2026 年 10 月 1 日，Apple Silicon Mac、单队列低优先级运行，分析模型为 qwen-plus。历史记录为 21 个候选、10 条渲染成片，约 7.5 分钟。费用约 ¥0.09 是按记录的文本 token 和当时估算单价计算，未包含云端转写、生图、发布服务、硬件和时间成本，不是服务商账单。"
+        ],
+        [
+          "视频之外还交付什么",
+          "这条片段同时生成封面和发布文案。封面标题为「AI是五层蛋糕 / 能源才是底层」，发布标题为「AI是五层蛋糕：能源才是底层」。请先核对英文原意、字幕、人物取景和发布权利，再使用交付包。"
+        ],
+        [
+          "如何用自己的素材复现",
+          "导入有作者字幕或匹配 SRT 的访谈，配置分析模型，先选择一个目标平台，运行一键出片。逐条检查开头和结尾，再导出视频、封面与文案。这里的数量、耗时和估算费用来自该次输入，换素材或模型后会变化。"
+        ]
       ]
     },
     "en": {
       "title": "Jensen × Dwarkesh: podcast clips using creator captions | AutoClip",
       "lede": "This roughly 77-second automatic output keeps a continuous explanation of AI's five-layer stack. It comes from a 1-hour-43-minute interview and includes a platform cover and post copy.",
       "sections": [
-        ["Source and featured output", "The source is Dwarkesh Patel's Jensen Huang – Will Nvidia’s moat persist?, roughly 1 hour 43 minutes, in English, with creator-provided captions. This output uses the Xiaohongshu destination and interview layout, starts around 01:07:04 in the source and lasts about 77 seconds. It features energy as the foundation of the AI stack."],
-        ["Recorded run and conditions", "The October 1, 2026 run used an Apple Silicon Mac, one low-priority queue and qwen-plus for analysis. It recorded 21 candidates, 10 rendered clips and about 7.5 minutes. About ¥0.09 is an estimate from recorded text tokens and the unit prices used then. It excludes cloud transcription, image generation, publishing services, hardware and time; it is not a provider bill."],
-        ["What comes with the video", "The output also includes a cover and post copy. The Chinese cover and post title describe the five-layer AI stack and energy as its base. Review the English meaning, subtitles, framing and publishing rights before using the kit."],
-        ["Try the workflow with your footage", "Import an interview with creator captions or a matching SRT, configure an analysis model, choose one destination and produce. Review the opening and ending of each clip, then export the video, cover and copy. Counts, runtime and estimated fees depend on the input and model."]
+        [
+          "Source and featured output",
+          "The source is Dwarkesh Patel's Jensen Huang – Will Nvidia’s moat persist?, roughly 1 hour 43 minutes, in English, with creator-provided captions. This output uses the Xiaohongshu destination and interview layout, starts around 01:07:04 in the source and lasts about 77 seconds. It features energy as the foundation of the AI stack."
+        ],
+        [
+          "Recorded run and conditions",
+          "The October 1, 2026 run used an Apple Silicon Mac, one low-priority queue and qwen-plus for analysis. It recorded 21 candidates, 10 rendered clips and about 7.5 minutes. About ¥0.09 is an estimate from recorded text tokens and the unit prices used then. It excludes cloud transcription, image generation, publishing services, hardware and time; it is not a provider bill."
+        ],
+        [
+          "What comes with the video",
+          "The output also includes a cover and post copy. The Chinese cover and post title describe the five-layer AI stack and energy as its base. Review the English meaning, subtitles, framing and publishing rights before using the kit."
+        ],
+        [
+          "Try the workflow with your footage",
+          "Import an interview with creator captions or a matching SRT, configure an analysis model, choose one destination and produce. Review the opening and ending of each clip, then export the video, cover and copy. Counts, runtime and estimated fees depend on the input and model."
+        ]
       ]
     },
-    "links": ["guides/podcast-to-shorts/", "guides/first-clips/", "cases/tim-luoyonghao/"]
+    "links": [
+      "guides/podcast-to-shorts/",
+      "guides/first-clips/",
+      "cases/tim-luoyonghao/"
+    ]
   },
   "cases/tim-luoyonghao/": {
-    "kind": "case", "case_id": "tim-luoyonghao",
+    "kind": "case",
+    "case_id": "tim-luoyonghao",
     "zh": {
       "title": "TIM × 罗永浩：无字幕长访谈本地转写与切片 | AutoClip",
       "lede": "这条约 65 秒成片，讨论创作者面对快速走红时如何保持清醒。原片没有字幕，先用本地 Whisper base 转写，再分析并生成平台视频、封面和文案。",
       "sections": [
-        ["原片与这条输出", "原片为「【正片】影视飓风TIM×罗永浩！用影像打开世界的梦想家」，来自罗永浩的十字路口，长度约 2 小时 52 分钟，中文，没有现成字幕。这条输出选择抖音平台与访谈版式，原片约 01:46:49 起，时长约 65 秒。"],
-        ["实测过程与条件", "2026 年 10 月 1 日，Apple Silicon Mac、单队列低优先级运行。先本地 Whisper base 转写，再用 qwen-plus 分析；18 个候选、10 条渲染成片，约 29.5 分钟。文本模型费用估算约 ¥0.20，按历史 token 与当时估算单价计算；本地转写无云端转写 API 费，硬件、时间、生图与发布服务等费用未包含。"],
-        ["视频之外还交付什么", "这条片段的封面标题为「红得快的网红 / 糊得更快」，发布文案围绕保持清醒、长期创作。自动标题需要结合完整对话复核，避免只保留刺激的表述而丢失语境。检查字幕专有名词和说话人变化，再保存交付包。"],
-        ["这次输入说明什么", "没有作者字幕时，本地转写可以成为输入步骤，也会增加处理时间。此例与 Jensen 访谈的素材、语言和时长均不同，不能当作严格速度对照，也不能保证其他无字幕视频得到相同数量或质量。首次建议用较短的自有素材跑通流程。"]
+        [
+          "原片与这条输出",
+          "原片为「【正片】影视飓风TIM×罗永浩！用影像打开世界的梦想家」，来自罗永浩的十字路口，长度约 2 小时 52 分钟，中文，没有现成字幕。这条输出选择抖音平台与访谈版式，原片约 01:46:49 起，时长约 65 秒。"
+        ],
+        [
+          "实测过程与条件",
+          "2026 年 10 月 1 日，Apple Silicon Mac、单队列低优先级运行。先本地 Whisper base 转写，再用 qwen-plus 分析；18 个候选、10 条渲染成片，约 29.5 分钟。文本模型费用估算约 ¥0.20，按历史 token 与当时估算单价计算；本地转写无云端转写 API 费，硬件、时间、生图与发布服务等费用未包含。"
+        ],
+        [
+          "视频之外还交付什么",
+          "这条片段的封面标题为「红得快的网红 / 糊得更快」，发布文案围绕保持清醒、长期创作。自动标题需要结合完整对话复核，避免只保留刺激的表述而丢失语境。检查字幕专有名词和说话人变化，再保存交付包。"
+        ],
+        [
+          "这次输入说明什么",
+          "没有作者字幕时，本地转写可以成为输入步骤，也会增加处理时间。此例与 Jensen 访谈的素材、语言和时长均不同，不能当作严格速度对照，也不能保证其他无字幕视频得到相同数量或质量。首次建议用较短的自有素材跑通流程。"
+        ]
       ]
     },
     "en": {
       "title": "TIM × Luo Yonghao: local transcription for a long interview | AutoClip",
       "lede": "This roughly 65-second output discusses staying grounded when a creator becomes popular quickly. The source had no captions: local Whisper base transcription preceded analysis, platform video, cover and post-copy generation.",
       "sections": [
-        ["Source and featured output", "The source is TIM's interview with Luo Yonghao, published by Luo Yonghao's Crossroads, roughly 2 hours 52 minutes, in Chinese, without ready-made captions. This output uses the Douyin destination and interview layout. It starts around 01:46:49 in the source and lasts about 65 seconds."],
-        ["Recorded run and conditions", "The October 1, 2026 run used an Apple Silicon Mac and one low-priority queue. Local Whisper base transcription preceded qwen-plus analysis: 18 candidates, 10 rendered clips and about 29.5 minutes. The text-model estimate was about ¥0.20, based on historical tokens and the unit prices used then. Local transcription had no cloud-transcription API fee; hardware, time, image generation and publishing services were excluded."],
-        ["What comes with the video", "The Chinese cover says that creators who become popular quickly can fade just as fast; the post copy discusses staying grounded and creating for the long term. Review automatic titles in the context of the whole conversation. Check names and speaker changes in the captions, then save the kit."],
-        ["What this input demonstrates", "Without creator captions, local transcription can supply input and adds processing time. This source differs from the Jensen interview in footage, language and duration. It is not a controlled speed comparison or a guarantee of output quantity or quality. Start with a shorter source you own."]
+        [
+          "Source and featured output",
+          "The source is TIM's interview with Luo Yonghao, published by Luo Yonghao's Crossroads, roughly 2 hours 52 minutes, in Chinese, without ready-made captions. This output uses the Douyin destination and interview layout. It starts around 01:46:49 in the source and lasts about 65 seconds."
+        ],
+        [
+          "Recorded run and conditions",
+          "The October 1, 2026 run used an Apple Silicon Mac and one low-priority queue. Local Whisper base transcription preceded qwen-plus analysis: 18 candidates, 10 rendered clips and about 29.5 minutes. The text-model estimate was about ¥0.20, based on historical tokens and the unit prices used then. Local transcription had no cloud-transcription API fee; hardware, time, image generation and publishing services were excluded."
+        ],
+        [
+          "What comes with the video",
+          "The Chinese cover says that creators who become popular quickly can fade just as fast; the post copy discusses staying grounded and creating for the long term. Review automatic titles in the context of the whole conversation. Check names and speaker changes in the captions, then save the kit."
+        ],
+        [
+          "What this input demonstrates",
+          "Without creator captions, local transcription can supply input and adds processing time. This source differs from the Jensen interview in footage, language and duration. It is not a controlled speed comparison or a guarantee of output quantity or quality. Start with a shorter source you own."
+        ]
       ]
     },
-    "links": ["guides/first-clips/", "guides/podcast-to-shorts/", "cases/jensen-dwarkesh/"]
+    "links": [
+      "guides/first-clips/",
+      "guides/podcast-to-shorts/",
+      "cases/jensen-dwarkesh/"
+    ]
+  },
+  "cases/autoclip-first-run/": {
+    "kind": "case",
+    "case_id": "autoclip-first-run",
+    "original": true,
+    "links": [
+      "guides/first-clips/",
+      "guides/local-vs-cloud/",
+      "guides/podcast-to-shorts/"
+    ],
+    "zh": {
+      "title": "AutoClip 1.5 首次出片实测：原创教程生成三条 Shorts | AutoClip",
+      "lede": "正式版 AutoClip 1.5.0 用 2 分 7 秒原创教程和配套 SRT，自动生成三条竖屏 Shorts、封面和发布素材包。本页保留输入条件、生产阶段耗时及人工审核发现，方便按相同流程复现。",
+      "sections": [
+        [
+          "输入与运行条件",
+          "素材由 AutoClip 为这次流程验证原创制作：无人物教学画面，英文合成旁白，配套 SRT。使用 GitHub Releases 的 1.5.0 CLI wheel，通过 produce 指令选择 YouTube Shorts；分析模型配置为 qwen-plus，未启用云端转写或 AI 生图。视频编辑与渲染在本机完成。"
+        ],
+        [
+          "实际输出与耗时",
+          "生产开始至完成约 62.4 秒，完成三条成片，时长约 44.3、23.1 和 22.1 秒。这个数字不包含素材制作、安装、首次模型下载、启动前排队、人工审核及发布。使用现成 SRT 的两分钟教学素材，不能据此推算两小时播客的耗时；本次未独立核算云模型账单。"
+        ],
+        [
+          "得到哪些发布素材",
+          "每条输出包含竖屏视频、设计封面、标题、描述、标签和发布素材包。上方播放器展示第一条，完整案例库可查看另外两条。封面与画面来自这次实际运行。原片采用无人物版式，这次验证不评估人物追踪或多人访谈裁切效果。"
+        ],
+        [
+          "自动输出仍需审核",
+          "检查发现第一条描述句尾截断，第三条描述出现 “From .” 和缩短的标签。成片完成不等于可直接发布：先完整观看视频，核对字幕、上下文、封面、标题及描述，再修正文案并发布。案例保留原始自动输出，便于看清实际能力与限制。"
+        ],
+        [
+          "如何复现第一次成功出片",
+          "使用本页原创素材和配套 SRT，按首次出片教程配置自己的分析模型，选择一个平台后运行。运行记录列出版本、时间戳及产物数量。素材和本页流程演示可用于介绍 AutoClip，请保留来源标注；历史访谈案例的原作者版权仍按各页说明处理。"
+        ]
+      ]
+    },
+    "en": {
+      "title": "AutoClip 1.5 first-run case: an original lesson becomes three Shorts | AutoClip",
+      "lede": "AutoClip 1.5.0 produced three portrait Shorts, covers and export kits from a 2-minute-7-second original lesson with a matching SRT. This case records the input conditions, production-stage timing and manual review findings for reproduction.",
+      "sections": [
+        [
+          "Input and run conditions",
+          "AutoClip authored this lesson for the workflow test: graphics without people, a synthetic English voice and a matching SRT. The official 1.5.0 CLI wheel from GitHub Releases ran produce for YouTube Shorts. The analysis configuration used qwen-plus; cloud transcription and AI image generation were disabled. Video editing and rendering ran locally."
+        ],
+        [
+          "Outputs and measured timing",
+          "Production start to completion took about 62.4 seconds and produced three clips of approximately 44.3, 23.1 and 22.1 seconds. This excludes source creation, installation, first model downloads, queueing before production starts, manual review and publishing. A two-minute lesson with supplied captions does not predict two-hour podcast performance. Cloud model charges were not independently measured."
+        ],
+        [
+          "What the export kits contain",
+          "Each output includes a portrait video, designed cover, title, description, tags and export kit. The player above shows the first output; the case library has the other two. The cover and video come from the actual run. This graphics-based source does not test face tracking or multi-speaker framing."
+        ],
+        [
+          "Automatic output still needs review",
+          "Review found a description ending mid-sentence in output one, and “From .” plus a shortened tag in output three. Completed rendering does not mean ready to publish. Watch each full clip, check captions and context, then review the cover, title and description before posting. This case preserves the automatic output to show its practical limits."
+        ],
+        [
+          "Reproduce a first successful run",
+          "Download the original source and matching SRT below, follow the first-clips guide, configure your own analysis model and choose one destination. The run receipt records the release, timestamps and output count. You may reuse this original source and workflow film to introduce AutoClip with source attribution. Historical interview cases retain their separate creator-rights notices."
+        ]
+      ]
+    }
   }
 }
