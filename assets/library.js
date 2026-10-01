@@ -76,7 +76,7 @@ async function mount(host){
   +(full?chips('source',[['all',u.all],...data.cases.map(c=>[c.id,c.source.channel+' · '+c.source.title.split(/[–—:|]/)[0].trim()])],st.source):'');
  host.innerHTML=`<div class="container lib-bar"><p class="lib-stats mono">${u.stats(data.cases.length,data.outputs.length,plats.length,data.index.updated)}</p>${filters}</div>`
   +(shown.length?`<div class="${full?'lib-grid':'wall'}" data-wall>${shown.map(o=>card(o)).join('')}${submitTile(full?0:data.outputs.length,full)}</div>`:`<div class="container"><p class="lib-empty">${u.empty}</p></div>`)
-  +`<div class="container"><p class="credit">${u.credit} ${data.cases.map(c=>`<a href="${esc(c.source.url)}" target="_blank" rel="noopener">${esc(c.source.channel)} — ${esc(c.source.title)}</a>`).join(lang==='zh'?'；':'; ')}</p></div>`;
+  +`<div class="container"><p class="credit">${u.credit}</p></div>`;
  host.querySelectorAll('.chips button').forEach(b=>b.addEventListener('click',()=>{const k=Object.keys(b.dataset)[0];st[k]=b.dataset[k];mount(host);}));
  wire(host);
 }
