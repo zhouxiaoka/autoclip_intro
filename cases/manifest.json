@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "batch": "2026-10-01d",
+ "batch": "2026-10-01e",
  "media_base": "${AUTOCLIP_MEDIA_BASE:-}",
  "projects_root": "${AUTOCLIP_PROJECTS:-/private/tmp/autoclip-e2e/projects}",
  "demos_root": "${AUTOCLIP_DEMOS:-/private/tmp/autoclip-e2e/demos}",
@@ -66,7 +66,13 @@
    "added": "2026-10-01",
    "files": [
     "douyin:interview:tim-luoyonghao/01.mp4:红得快的网红|糊得更快",
-    "douyin:interview:tim-luoyonghao/02.mp4:五秒留存率最重要|五秒看不到就废了"
+    "douyin:interview:tim-luoyonghao/02.mp4:五秒留存率最重要|五秒看不到就废了",
+    "douyin:interview:tim-luoyonghao/03.mp4:企业荒岛大乱斗|100家员工求生",
+    "douyin:interview:tim-luoyonghao/04.mp4:超级网红躲不掉|上街就被认出",
+    "douyin:interview:tim-luoyonghao/06.mp4:飞书多维表格监测竞品数据|实时抓取+自动分析",
+    "douyin:interview:tim-luoyonghao/08.mp4:短视频拼成长视频|才是未来",
+    "douyin:interview:tim-luoyonghao/09.mp4:AI时代努力已无回报|努力配不上价值",
+    "douyin:interview:tim-luoyonghao/10.mp4:当老板是产品人的唯一出路"
    ],
    "source": {
     "title": "【正片】影视飓风TIM×罗永浩！用影像打开世界的梦想家",

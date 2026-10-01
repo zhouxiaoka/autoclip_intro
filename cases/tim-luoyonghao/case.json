@@ -68,6 +68,101 @@
    },
    "mood": "bold",
    "palette": "coral"
+  },
+  {
+   "id": "03",
+   "platform": "douyin",
+   "template": "interview",
+   "title_lines": [
+    "企业荒岛大乱斗",
+    "100家员工求生"
+   ],
+   "source_start_sec": 3431,
+   "mood": "bold",
+   "palette": "lemon",
+   "duration_sec": 83,
+   "video": "03.mp4",
+   "loop": "03-loop.mp4",
+   "poster": "03.jpg"
+  },
+  {
+   "id": "04",
+   "platform": "douyin",
+   "template": "interview",
+   "title_lines": [
+    "超级网红躲不掉",
+    "上街就被认出"
+   ],
+   "source_start_sec": 4815,
+   "mood": "bold",
+   "palette": "lemon",
+   "duration_sec": 72,
+   "video": "04.mp4",
+   "loop": "04-loop.mp4",
+   "poster": "04.jpg"
+  },
+  {
+   "id": "06",
+   "platform": "douyin",
+   "template": "interview",
+   "title_lines": [
+    "飞书多维表格监测竞品数据",
+    "实时抓取+自动分析"
+   ],
+   "source_start_sec": 6897,
+   "mood": "bold",
+   "palette": "lemon",
+   "duration_sec": 96,
+   "video": "06.mp4",
+   "loop": "06-loop.mp4",
+   "poster": "06.jpg"
+  },
+  {
+   "id": "08",
+   "platform": "douyin",
+   "template": "interview",
+   "title_lines": [
+    "短视频拼成长视频",
+    "才是未来"
+   ],
+   "source_start_sec": 7724,
+   "mood": "bold",
+   "palette": "coral",
+   "duration_sec": 131,
+   "video": "08.mp4",
+   "loop": "08-loop.mp4",
+   "poster": "08.jpg"
+  },
+  {
+   "id": "09",
+   "platform": "douyin",
+   "template": "interview",
+   "title_lines": [
+    "AI时代努力已无回报",
+    "努力配不上价值"
+   ],
+   "source_start_sec": 8088,
+   "mood": "bold",
+   "palette": "coral",
+   "duration_sec": 85,
+   "video": "09.mp4",
+   "loop": "09-loop.mp4",
+   "poster": "09.jpg"
+  },
+  {
+   "id": "10",
+   "platform": "douyin",
+   "template": "interview",
+   "title_lines": [
+    "当老板是产品人的唯一出路"
+   ],
+   "source_start_sec": 10160,
+   "mood": "bold",
+   "palette": "coral",
+   "duration_sec": 85,
+   "video": "10.mp4",
+   "loop": "10-loop.mp4",
+   "poster": "10.jpg"
   }
  ]
 }
