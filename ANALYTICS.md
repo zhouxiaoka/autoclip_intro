@@ -8,7 +8,9 @@
 
 尊重 DNT / Global Privacy Control。仅正式 `https://zhouxiaoka.github.io/autoclip_intro/` 下的已知页面上报，本地、其他域名与未知路径禁用。浏览器拦截统计、网络失败或不同意的访问不会计入；因此看板应命名「已同意访客统计」，不要把它当成全站精确流量。提示不遮罩页面、不锁定滚动、不强制同意；DNT / GPC 开启时不显示首次访问提示，隐私页仍显示浏览器不跟踪状态。
 
-访客说明在 [访问统计说明](analytics/index.html)。不启用自动点击采集、录屏、用户档案或跨客户端身份关联；不发送页面文字、表单、邮件地址、API key、完整页面/目标/来源 URL。仅保留有限页面分类、语言、来源分类以及 `utm_source` / `utm_medium` / `utm_campaign`（字母数字、下划线、连字符，最多 64 字符）。推广标记只填写渠道和活动代号，不填个人信息。来源仅归类为常见公开平台、internal、other、direct。
+访客说明在 [访问统计说明](analytics/index.html)。不启用自动点击采集、录屏、用户档案或跨客户端身份关联；不发送页面文字、表单、邮件地址、API key、完整页面/目标/来源 URL。仅保留有限页面分类、语言、来源分类以及 `utm_source` / `utm_medium` / `utm_campaign`（字母数字、下划线、连字符，最多 64 字符）。推广标记只填写渠道和活动代号，不填个人信息。来源归类为常见公开平台、internal、other、direct，以及 chatgpt / perplexity / claude / gemini / copilot。
+
+已知 AI 入口的域名式 `utm_source`（例如 ChatGPT 自动附带的 `chatgpt.com`）转换成上面的固定分类；不会放开任意域名或邮件地址。只处理明确列出的域名，路径和查询仍不发送。英文 `/en/` 路径使用同一页面分类，以 `language` 区分；新增指南与精选案例页同样遵守页面白名单。
 
 ## 事件
 

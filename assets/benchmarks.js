@@ -12,9 +12,9 @@ const T={
  en:{min:'min',stage:{download:'Download',asr:'Speech recognition',pick:'Clip picking',package:'Cuts · framing · packaging',render:'Rendering'},
   pipeline:{old:'Previous',mid:'Transitional',new:'New'},subs:{creator:'creator subtitles',none:'no subtitles'},
   s1:r=>`From pasted link to ${r.rendered} finished clips, for a ${hours(r.duration_sec,'en')} interview with creator subtitles`,
-  s2:'Total model cost for a 2–3 hour interview',s3:'high-quality clips, each with a cover, title, description and tags; more backups are one click away',s4:'click. No editor, and no back-and-forth with an AI chat',
+  s2:'Estimated text-model fees in two measured interviews',s3:'high-quality clips, each with a cover, title, description and tags; more backups are one click away',s4:'click. No editor, and no back-and-forth with an AI chat',
   head:['Video','Pipeline','Link to clips','Clips → made','Model calls','Tokens (in / out)','Model cost'],calls:n=>`${n}`,
-  chartTitle:'Where the time goes',chartNote:'Without creator subtitles, speech recognition runs locally. It takes longer, and your video still never leaves your computer.',
+  chartTitle:'Where the time goes',chartNote:'In these samples, missing subtitles were transcribed with local Whisper base. Cloud transcription is optional and sends audio to your selected provider.',
   foot:b=>`Measured ${b.measured}. ${b.machine.en}; analysis model ${b.model} at ¥${b.price.in_per_million} per million input tokens and ¥${b.price.out_per_million} per million output tokens (${b.price.note.en}); cost covers model calls only. Speech recognition: ${b.asr.en}. These are four different videos. The top 10 clips are made automatically; the rest wait as one-click backups.`}};
 function hours(sec,lang){const h=Math.floor(sec/3600),m=Math.round(sec%3600/60);return lang==='zh'?`${h} 小时 ${m} 分钟`:`${h}h${String(m).padStart(2,'0')}m`;}
 const k=n=>n>=10000?(n/10000).toFixed(1).replace(/\.0$/,'')+'万':String(n);

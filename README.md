@@ -7,7 +7,8 @@
 ## 结构
 
 ```
-index.html          单页官网，含 zh / en / ja / ko / es / pt / ru / fr 八语文案（页尾 <script> 里的 T 对象）
+index.html          中文静态首页与中英文文案目录
+en/                 生成的英文静态首页、场景与功能页
 tokens.css          设计 token，与产品 frontend/src/index.css 的 --ac-* 同名（规范见主仓库 DESIGN.md）
 logo.svg            品牌标记（矢量）；favicon-32.png / apple-touch-icon.png 由它渲染
 img/                hero 与示例卡里的视频静帧（WebP），以及 1200×630 的 og.png
@@ -19,7 +20,7 @@ llms-full.txt       完整产品事实，供引用
 SEO.md              官网流量事实与创始人要做的三步
 ```
 
-零构建：改完 `index.html` 直接 push 到 `main`，Pages 约一分钟后生效。
+静态 Pages 部署：修改正文或发版信息后运行 `python3 scripts/build_search_pages.py`，将中文默认正文和英文镜像一并提交。CI 校验生成结果是否最新；版本同步也会重建并提交英文页面。
 
 ## 本地预览
 
@@ -60,13 +61,13 @@ python3 scripts/sync_release.py v1.3.0   # 更新到指定已发布 Release
 
 ## 语言
 
-支持中文、英语、日语、韩语、西班牙语、巴西葡萄牙语、俄语、法语。优先级：URL 的 `?lang=es` 等参数 → 上次手动选择 → 浏览器偏好语言列表 → 英语。`pt-BR` 和 `pt-PT` 均使用巴西葡语文案；西语使用通用表达。导航中的自定义语言菜单支持键盘与移动端，选择后更新 URL，可直接分享对应语言。
+主要营销页面提供中文与英文静态正文。中文路径与 `/en/` 英文路径各有 canonical，并互相声明 zh-CN / en hreflang。旧的 `?lang=en` 和明确语言切换会前往对应静态路径，保留推广参数和锚点；直接访问静态页面时语言与 URL 一致。没有自动按浏览器语言重定向。
 
-所有文案仍在 `index.html` 的 `T` 对象中，发布版本同步脚本会更新八语中的版本号。页面标题、说明与 `html[lang]` 随语言切换；静态社交爬虫未执行 JavaScript 时仍看到默认中文元信息。Canonical、分享图，以及 FAQPage / SoftwareApplication JSON-LD，都按这份默认中文 HTML 编写，不随语言切换。
+首页中文与英文文案仍在 `index.html` 的 `T` 对象中，内页在各页的 `INNER_COPY` 中，页脚在 `assets/footer.js` 中。生成脚本把正文、标题、说明和 FAQ JSON-LD 写入 HTML，英文资源路径相应调整。日、韩、西、葡、俄、法在新版营销页面暂时回退英文，不声明为已翻译的 hreflang 页面；发布教程保留其既有八语内容。
 
 验证：`node --test scripts/i18n.test.cjs scripts/seo.test.cjs`。
 
-搜索与回答引擎口径见 [SEO.md](SEO.md)。静态爬虫现在能读到首页 FAQ / 对照表的中文默认正文；语言切换仍只改运行中的 DOM。
+搜索与回答引擎口径见 [SEO.md](SEO.md)。维护后运行 `python3 scripts/build_search_pages.py --check`、Node 测试与 Python 测试；它们会检查静态正文、语言配对、FAQ 事实一致性和本地资源路径。
 
 本次八语改动已验证目录中的文案键、语言优先级、切换后的标题/描述/下载目标、语言选择持久化，以及八语在桌面和约 400 CSS 像素宽度下的排版。新增四语尚未经过母语用户审校。部署前继续使用现有 Pages 流程；本地验证本身不会发布官网。
 

@@ -333,6 +333,14 @@ h2{font-size:var(--ac-fs-h2);font-weight:500;line-height:1.2;letter-spacing:-.01
   .lib-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 12px}
   .lang select{max-width:116px}
 }
+@media (max-width: 420px){
+  .nav .container{width:calc(100% - 32px)}
+  .nav-in,.nav-right{gap:8px}
+  .nav .brand{flex-shrink:0;font-size:1.25rem;gap:8px}
+  .nav .brand img{width:22px;height:22px}
+  .nav .lang select{max-width:92px}
+  .nav .btn-sm{padding-inline:12px}
+}
 
 /* /cases/ page */
 .cases-page{background:var(--stage-bg)}
