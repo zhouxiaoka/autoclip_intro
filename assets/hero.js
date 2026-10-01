@@ -24,17 +24,20 @@ let running=false,visible=true;
 const clamp=v=>Math.max(0,Math.min(1,v));
 function parts(){const box=document.querySelector('[data-demo]');if(!box)return null;return {box,art:box.closest('.hero-art'),typed:box.querySelector('[data-typed]'),pills:[...box.querySelectorAll('[data-pill]')],steps:[...box.querySelectorAll('[data-step]')],clockEl:box.querySelector('[data-clock]')};}
 function finalState(d){d.typed.textContent=d.typed.dataset.typed;d.pills.forEach(p=>p.classList.add('on'));d.steps.forEach(s=>{s.classList.add('done');s.classList.remove('now');});d.clockEl.textContent='7:30';d.art.classList.add('go','done');}
-async function intro(d){d.typed.textContent='';await wait(500);for(const ch of d.typed.dataset.typed){if(d.typed.dataset.skip)break;d.typed.textContent+=ch;await wait(26);}d.typed.textContent=d.typed.dataset.typed;for(const p of d.pills){await wait(220);p.classList.add('on');}}
+async function intro(d){d.typed.textContent='';await wait(500);for(const ch of d.typed.dataset.typed){if(d.typed.dataset.skip||d.frozen)break;d.typed.textContent+=ch;await wait(26);}d.typed.textContent=d.typed.dataset.typed;for(const p of d.pills){await wait(220);p.classList.add('on');}}
+let demoParts=null;
+function freeze(){const d=demoParts;if(!d||d.frozen)return;d.frozen=true;finalState(d);}
 async function demo(){
- const d=parts();if(!d||running)return;running=true;
+ const d=parts();if(!d||running)return;running=true;demoParts=d;
  if(reduce.matches){finalState(d);return;}
  while(true){
   while(!visible||document.hidden)await wait(400);
+  if(d.frozen)return;
   d.art.classList.remove('go','done');d.pills.forEach(p=>p.classList.remove('on'));d.steps.forEach(s=>s.classList.remove('done','now'));d.clockEl.textContent='0:00';
   await intro(d);await wait(450);d.art.classList.add('go');await wait(500);
   const t0=performance.now();const tick=()=>{const p=Math.min(1,(performance.now()-t0)/2600);d.clockEl.textContent=clock(450*p);if(p<1&&d.art.classList.contains('go'))requestAnimationFrame(tick);};requestAnimationFrame(tick);
-  for(const s of d.steps){s.classList.add('now');await wait(480);s.classList.remove('now');s.classList.add('done');}
-  await wait(250);d.art.classList.add('done');await wait(5200);
+  for(const s of d.steps){if(d.frozen)return;s.classList.add('now');await wait(480);s.classList.remove('now');s.classList.add('done');}
+  await wait(250);if(d.frozen)return;d.art.classList.add('done');await wait(5200);if(d.frozen)return;
   if(reduce.matches){finalState(d);break;}
  }
 }
@@ -48,16 +51,30 @@ async function reel(){
  host.querySelector('[data-reel-stats]').textContent=r?(zh?`${c.source.channel} · ${hrs} 访谈 → ${r.rendered} 条${api.platform(shown[0].platform)}成片 · ${r.minutes} 分钟 · 模型费用 ¥${r.cost_cny.toFixed(2)}`:`${c.source.channel} · ${hrs} interview → ${r.rendered} ${api.platform(shown[0].platform)} clips · ${r.minutes} min · ¥${r.cost_cny.toFixed(2)} in model fees`):'';
  row.innerHTML=shown.map(o=>api.card(o)).join('')+(rest?`<a class="clip reel-more" href="#clips"><span class="clip-media"><b>+${rest}</b><span>${zh?'更多成片在案例库':'More in the case library'}</span></span></a>`:'');
  api.wire(row);
- const cards=[...row.children];if(reduce.matches||!matchMedia('(min-width: 961px)').matches)return;
- let off=[];const mid=(cards.length-1)/2;
- const measure=()=>{cards.forEach(el=>el.style.transform='none');const r=row.getBoundingClientRect(),cx=r.left+r.width/2;off=cards.map(el=>{const b=el.getBoundingClientRect();return cx-(b.left+b.width/2);});update();};
- const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
- let frame=0;const update=()=>{frame=0;const b=host.getBoundingClientRect();const q=Math.max(0,Math.min(1,(innerHeight*.88-b.top)/(innerHeight*.5)));
-  cards.forEach((el,i)=>{const k=ease(Math.max(0,Math.min(1,q*1.12-Math.abs(i-mid)*.02))),d=i-mid;
-   el.style.transform=`translate(${(off[i]||0)*(1-k)}px,${Math.abs(d)*6*(1-k)}px) rotate(${d*5*(1-k)}deg) scale(${.94+.06*k})`;
-   el.style.zIndex=String(100-Math.round(Math.abs(d)*2));});};
- const onScroll=()=>{if(!frame)frame=requestAnimationFrame(update);};
- addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',()=>requestAnimationFrame(measure),{passive:true});
+ const cards=[...row.children];if(reduce.matches||!matchMedia('(min-width: 961px)').matches){host.classList.add('landed');return;}
+ const srcs=[...document.querySelectorAll('.demo-out img')],label=host.querySelector('.reel-label');
+ const fly=document.createElement('div');fly.className='reel-fly';fly.setAttribute('aria-hidden','true');
+ const ghosts=cards.map((el,i)=>{const g=document.createElement('div');g.className='ghost';const img=el.querySelector('img');g.innerHTML=img?`<img src="${img.src}" alt="">`:el.querySelector('.clip-media').innerHTML;if(!img)g.classList.add('more');fly.append(g);return g;});
+ document.body.append(fly);
+ const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2,lerp=(a,b,t)=>a+(b-a)*t;
+ const box=el=>{const r=el.getBoundingClientRect(),w=el.offsetWidth,h=el.offsetHeight;return {x:r.left+r.width/2,y:r.top+r.height/2,w,h};};
+ const rot=el=>{const m=getComputedStyle(el).transform;if(!m||m==='none')return 0;const [a,b]=m.slice(7,-1).split(',').map(Number);return Math.atan2(b,a)*180/Math.PI;};
+ let end=1,frame=0,state='';
+ const measure=()=>{const r=row.getBoundingClientRect();end=Math.max(240,r.top+scrollY-innerHeight*.42);update();};
+ const set=(next)=>{if(next===state)return;state=next;fly.classList.toggle('on',next==='fly');host.classList.toggle('landed',next==='landed');document.querySelector('.hero-art')?.classList.toggle('sent',next!=='home');};
+ const update=()=>{frame=0;const q=Math.max(0,Math.min(1,scrollY/end));
+  if(q>0)freeze();
+  label.style.opacity=String(Math.max(0,Math.min(1,(q-.72)/.25)));
+  if(q<=0){set('home');return;}if(q>=1){set('landed');return;}
+  set('fly');
+  const centre=srcs[1]||srcs[0];
+  ghosts.forEach((g,i)=>{const src=srcs[i]||centre;if(!src)return;const S=box(src),T=box(cards[i].querySelector('.clip-media'));
+   const k=ease(Math.max(0,Math.min(1,q*1.1-(i>2?(i-2)*.02:0)))),w=lerp(S.w,T.w,k),h=lerp(S.h,T.h,k);
+   const x=lerp(S.x,T.x,k)-w/2,y=lerp(S.y,T.y,k)-h/2,r=lerp(srcs[i]?rot(src):0,0,k);
+   g.style.width=w+'px';g.style.height=h+'px';g.style.transform=`translate(${x}px,${y}px) rotate(${r}deg)`;
+   g.style.opacity=srcs[i]?'1':String(Math.min(1,k*2.2));g.style.zIndex=String(srcs[i]?20-i:10-i);});};
+ addEventListener('scroll',()=>{if(!frame)frame=requestAnimationFrame(update);},{passive:true});
+ addEventListener('resize',()=>requestAnimationFrame(measure),{passive:true});
  requestAnimationFrame(measure);
 }
 

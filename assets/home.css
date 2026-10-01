@@ -562,7 +562,7 @@ img[data-develop].developed{opacity:1}
 /* reel: clips from the hero's link fan out under the hero */
 .hero-split{padding-bottom:clamp(24px,3vw,40px)}
 @media (min-width: 961px){
-  .hero-split{min-height:calc(100vh - 200px);min-height:calc(100svh - 200px);display:flex;align-items:center;padding-top:32px;padding-bottom:28px}
+  .hero-split{min-height:calc(100vh - 60px);min-height:calc(100svh - 60px);display:flex;align-items:center;padding-top:32px;padding-bottom:40px}
   .hero-split > .container{width:100%}
 }
 .reel{padding:0 0 clamp(64px,7vw,104px);overflow-x:clip}
@@ -579,4 +579,20 @@ img[data-develop].developed{opacity:1}
 @media (max-width: 960px){
   .reel-row{justify-content:flex-start;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--ac-gutter);scrollbar-width:none}
   .reel-row .clip{scroll-snap-align:start}
+}
+
+/* reel flight: the hero's three outputs travel down and become the row */
+.reel-fly{position:fixed;inset:0;z-index:40;pointer-events:none;display:none}
+.reel-fly.on{display:block}
+.reel-fly .ghost{position:absolute;left:0;top:0;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.12);box-shadow:0 24px 60px -20px rgba(0,0,0,.55);background:var(--stage-card);will-change:transform,width,height}
+.reel-fly .ghost img{width:100%;height:100%;object-fit:cover;display:block}
+.reel-fly .ghost.more{display:flex;flex-direction:column;justify-content:flex-end;gap:6px;padding:16px;background:var(--ac-card);border:1px dashed var(--ac-line);color:var(--ac-ink)}
+.reel-fly .ghost.more b{font-family:var(--ac-font-serif);font-weight:400;font-size:2.5rem;line-height:1}
+.reel-fly .ghost.more span{font-size:.75rem;color:var(--ac-sub)}
+.hero-art.sent .demo-out img{opacity:0!important;transition:none}
+@media (min-width: 961px){
+  .motion .reel-label{opacity:0}
+  .motion .reel:not(.landed) .reel-row .clip{visibility:hidden}
+  .motion .reel-row .clip h3,.motion .reel-row .clip p{opacity:0;transform:translateY(6px);transition:opacity .45s ease-out,transform .45s ease-out}
+  .motion .reel.landed .reel-row .clip h3,.motion .reel.landed .reel-row .clip p{opacity:1;transform:none}
 }
