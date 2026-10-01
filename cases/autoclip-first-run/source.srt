@@ -1,0 +1,23 @@
+1
+00:00:00,000 --> 00:00:19,840
+Before publishing a podcast short, ask whether the idea makes sense without the full conversation. A memorable sentence can still be misleading when the question is missing. Keep enough context for a new viewer to understand what the speaker means. Choose a complete idea, then check the opening and the ending.
+
+2
+00:00:20,490 --> 00:00:42,399
+Listen to the original around the selected segment. A speaker may be quoting someone else, asking a rhetorical question, or describing a hypothetical situation. Cutting away those signals can change the meaning. If a viewer needs the question to understand the answer, preserve it. If the context is too long, choose another moment.
+
+3
+00:00:43,049 --> 00:01:04,148
+Captions are part of the story. Review names, numbers, technical terms, and words like not or never. A small transcription error can reverse a claim or produce a misleading title. When creator captions are available, start there. Otherwise check the transcription before using it to select and package every clip.
+
+4
+00:01:04,798 --> 00:01:25,065
+A vertical crop changes what the audience can see. Watch the result on a phone and check both speakers when the camera changes. Captions should not hide faces, charts, or important details. Automatic framing gives you a starting point. Your final review decides whether the clip works for the destination.
+
+5
+00:01:25,715 --> 00:01:45,725
+Review the video, cover, title, and description as one package. The cover should invite the viewer without overstating the claim. The title should preserve the speaker's meaning. Save the files together so that you can revise them for each platform. Publishing is a separate choice after the finished clip is ready.
+
+6
+00:01:46,375 --> 00:02:06,642
+For your first run, use a short source that you own or have permission to use. Try one destination and finish one clip you would actually publish. Record the processing time and the edits you needed. Useful output matters more than raw output count. Once the small workflow works, move on to a longer interview.

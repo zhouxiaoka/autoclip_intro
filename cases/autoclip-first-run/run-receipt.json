@@ -1,0 +1,33 @@
+{
+  "version": "1.5.0",
+  "release_commit": "e940f5aef485409b13950c405fab6a9344376c88",
+  "release_wheel_sha256": "20a0ff8304f089bf0b4773eed4afeb449d2b70b0c4184610d73ccf9bc58f674f",
+  "source_duration_sec": 127.3,
+  "source_kind": "original animated lesson with synthetic English voice",
+  "captions": "matching authored SRT supplied; no transcription benchmark",
+  "analysis_model_configuration": "qwen-plus",
+  "platform": "youtube_shorts",
+  "started_at": "2026-10-01T17:57:32.172123+00:00",
+  "finished_at": "2026-10-01T17:58:34.532691+00:00",
+  "production_elapsed_sec": 62.361,
+  "completed_outputs": 3,
+  "output_durations_sec": [
+    44.3,
+    23.13,
+    22.1
+  ],
+  "excludes": [
+    "source creation",
+    "installation",
+    "first model download",
+    "queue wait before production start",
+    "manual review",
+    "publishing"
+  ],
+  "cloud_api_cost": "not independently measured",
+  "manual_review_findings": [
+    "Output 1 description ends mid-sentence",
+    "Output 3 description contains From . and a shortened tag"
+  ],
+  "note": "Single short input with supplied captions; cannot predict long-podcast performance."
+}

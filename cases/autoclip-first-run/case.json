@@ -1,0 +1,134 @@
+{
+ "schema": 1,
+ "id": "autoclip-first-run",
+ "added": "2026-10-02",
+ "scene": "course",
+ "featured": true,
+ "contributor": null,
+ "source": {
+  "title": "Review before publishing a podcast short",
+  "channel": "AutoClip",
+  "url": "https://pub-3fb92949b9c2480b89feec5ec03f3540.r2.dev/cases/autoclip-first-run/source.mp4",
+  "duration_sec": 127,
+  "language": "en"
+ },
+ "run": null,
+ "outputs": [
+  {
+   "id": "01",
+   "platform": "youtube_shorts",
+   "template": "podcast",
+   "title_lines": [
+    "Before publishing a short, ask:",
+    "Does this idea stand alone?"
+   ],
+   "source_start_sec": 0,
+   "mood": "serious",
+   "palette": "amber",
+   "duration_sec": 44,
+   "aspect": "9:16",
+   "video": "01.mp4",
+   "loop": "01-loop.mp4",
+   "poster": "01.jpg",
+   "cover": "01-cover.jpg",
+   "post": {
+    "title": "Before publishing a podcast short: Does this idea make sense without context?",
+    "description": "Editing podcast clips for YouTube Shorts? A memorable sentence can mislead if the question or context is missing. Keep enough context so new viewers understand the speaker’s meaning—check opening, ending, and surrounding audio. The speaker may be quoting, asking rhetorically, or describing a",
+    "tags": [
+     "podcastediting",
+     "YouTubeShorts",
+     "audiocontext",
+     "contentintegrity",
+     "podcastproduction"
+    ]
+   }
+  },
+  {
+   "id": "02",
+   "platform": "youtube_shorts",
+   "template": "podcast",
+   "title_lines": [
+    "Captions are part of the story",
+    "A small error can reverse a claim"
+   ],
+   "source_start_sec": 43,
+   "mood": "serious",
+   "palette": "amber",
+   "duration_sec": 23,
+   "aspect": "9:16",
+   "video": "02.mp4",
+   "loop": "02-loop.mp4",
+   "poster": "02.jpg",
+   "cover": "02-cover.jpg",
+   "post": {
+    "title": "How a Single Caption Error Can Reverse Your Message",
+    "description": "Captions are part of the story — misspelling names, numbers, or words like 'not' or 'never' can flip meaning entirely. Always review creator captions first; if unavailable, verify transcriptions before clipping. From the captioning best practices series.",
+    "tags": [
+     "captionaccuracy",
+     "transcriptionerror",
+     "medialiteracy"
+    ]
+   }
+  },
+  {
+   "id": "03",
+   "platform": "youtube_shorts",
+   "template": "podcast",
+   "title_lines": [
+    "How to Review Video, Cover, Title, and Description as One Package"
+   ],
+   "source_start_sec": 86,
+   "mood": "calm",
+   "palette": "lilac",
+   "duration_sec": 22,
+   "aspect": "9:16",
+   "video": "03.mp4",
+   "loop": "03-loop.mp4",
+   "poster": "03.jpg",
+   "cover": "03-cover.jpg",
+   "post": {
+    "title": "How to Review Video, Cover, Title, and Description as One Package",
+    "description": "A practical tip on treating video, cover, title, and description as a unified package—keeping the cover inviting but accurate, preserving the speaker's original meaning in the title, and saving files together for cross-platform revision. From .",
+    "tags": [
+     "videoediting",
+     "contentpackaging",
+     "YouTubeShortsbestpra"
+    ]
+   }
+  }
+ ],
+ "original": true,
+ "run_receipt": {
+  "version": "1.5.0",
+  "release_commit": "e940f5aef485409b13950c405fab6a9344376c88",
+  "release_wheel_sha256": "20a0ff8304f089bf0b4773eed4afeb449d2b70b0c4184610d73ccf9bc58f674f",
+  "source_duration_sec": 127.3,
+  "source_kind": "original animated lesson with synthetic English voice",
+  "captions": "matching authored SRT supplied; no transcription benchmark",
+  "analysis_model_configuration": "qwen-plus",
+  "platform": "youtube_shorts",
+  "started_at": "2026-10-01T17:57:32.172123+00:00",
+  "finished_at": "2026-10-01T17:58:34.532691+00:00",
+  "production_elapsed_sec": 62.361,
+  "completed_outputs": 3,
+  "output_durations_sec": [
+   44.3,
+   23.13,
+   22.1
+  ],
+  "excludes": [
+   "source creation",
+   "installation",
+   "first model download",
+   "queue wait before production start",
+   "manual review",
+   "publishing"
+  ],
+  "cloud_api_cost": "not independently measured",
+  "manual_review_findings": [
+   "Output 1 description ends mid-sentence",
+   "Output 3 description contains From . and a shortened tag"
+  ],
+  "note": "Single short input with supplied captions; cannot predict long-podcast performance."
+ }
+}
