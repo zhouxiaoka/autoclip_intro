@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
 
+# Product facts for answer engines (ChatGPT, Claude, Perplexity, Gemini, …)
+# https://zhouxiaoka.github.io/autoclip_intro/llms.txt
+# https://zhouxiaoka.github.io/autoclip_intro/llms-full.txt
+
 Sitemap: https://zhouxiaoka.github.io/autoclip_intro/sitemap.xml

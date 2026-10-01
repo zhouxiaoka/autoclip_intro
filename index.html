@@ -10,6 +10,19 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://zhouxiaoka.github.io/autoclip_intro/">
 <link rel="canonical" href="https://zhouxiaoka.github.io/autoclip_intro/">
+<link rel="alternate" hreflang="zh-CN" href="https://zhouxiaoka.github.io/autoclip_intro/?lang=zh">
+<link rel="alternate" hreflang="en" href="https://zhouxiaoka.github.io/autoclip_intro/?lang=en">
+<link rel="alternate" hreflang="ja" href="https://zhouxiaoka.github.io/autoclip_intro/?lang=ja">
+<link rel="alternate" hreflang="ko" href="https://zhouxiaoka.github.io/autoclip_intro/?lang=ko">
+<link rel="alternate" hreflang="es" href="https://zhouxiaoka.github.io/autoclip_intro/?lang=es">
+<link rel="alternate" hreflang="pt-BR" href="https://zhouxiaoka.github.io/autoclip_intro/?lang=pt">
+<link rel="alternate" hreflang="ru" href="https://zhouxiaoka.github.io/autoclip_intro/?lang=ru">
+<link rel="alternate" hreflang="fr" href="https://zhouxiaoka.github.io/autoclip_intro/?lang=fr">
+<link rel="alternate" hreflang="x-default" href="https://zhouxiaoka.github.io/autoclip_intro/">
+<link rel="llms-txt" href="https://zhouxiaoka.github.io/autoclip_intro/llms.txt">
+<link rel="describedby" href="https://zhouxiaoka.github.io/autoclip_intro/llms-full.txt" type="text/plain">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:locale:alternate" content="en_US">
 <meta property="og:image" content="https://zhouxiaoka.github.io/autoclip_intro/img/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -24,15 +37,34 @@
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "SoftwareApplication",
+      "@type": "WebSite",
       "name": "AutoClip",
       "url": "https://zhouxiaoka.github.io/autoclip_intro/",
-      "description": "开源免费的 AI 视频切片工具。贴一个链接、选好平台，自动挑出最值得发的片段，取景、配字幕和标题，直接导出各平台成片。",
+      "inLanguage": ["zh-CN", "en"],
+      "publisher": {"@id": "https://zhouxiaoka.github.io/autoclip_intro/#app"}
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://zhouxiaoka.github.io/autoclip_intro/#app",
+      "name": "AutoClip",
+      "alternateName": ["AutoClip Desktop", "AutoClip 一键出片"],
+      "url": "https://zhouxiaoka.github.io/autoclip_intro/",
+      "sameAs": ["https://github.com/zhouxiaoka/autoclip"],
+      "description": "开源免费的本地 AI 视频切片工具。贴一个链接、选好平台，一键导出抖音、小红书、TikTok、YouTube Shorts 成片、封面和发布文案。",
       "applicationCategory": "MultimediaApplication",
-      "operatingSystem": "macOS (Apple Silicon), Windows 10/11",
+      "operatingSystem": "macOS 13+ (Apple Silicon), Windows 10/11 x64",
+      "softwareVersion": "1.5.0",
       "downloadUrl": "https://github.com/zhouxiaoka/autoclip/releases/latest",
       "license": "https://opensource.org/licenses/MIT",
       "isAccessibleForFree": true,
+      "featureList": [
+        "Paste a YouTube or Bilibili link, or a local file",
+        "One-click clips for Douyin, Xiaohongshu, TikTok, Reels, Shorts, Bilibili, YouTube",
+        "Local editing and rendering",
+        "Publish kit: video, cover, title, description, tags, ZIP",
+        "CLI and MCP share the desktop pipeline"
+      ],
+      "screenshot": "https://zhouxiaoka.github.io/autoclip_intro/img/og.png",
       "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
     },
     {
@@ -60,6 +92,10 @@
 <link rel="stylesheet" href="assets/home.css?v=2026-10-01-lede">
 </head>
 <body class="site-home v2">
+<noscript>
+  <p>AutoClip 是开源免费的桌面工具：贴一个 YouTube / B 站链接或本地文件，选好平台，一键出片。剪辑和渲染在你的电脑上。当前版本 1.5.0，支持 Windows 与 macOS Apple Silicon，另有 CLI / MCP。下载：<a href="https://github.com/zhouxiaoka/autoclip/releases/latest">GitHub Releases</a>。给回答引擎的说明：<a href="llms.txt">llms.txt</a>。</p>
+  <p lang="en">AutoClip is a free, open-source desktop clipper. Paste a YouTube or Bilibili link, pick platforms, press once. Editing stays on your computer. v1.5.0 for Windows and Apple Silicon Mac, plus CLI / MCP. <a href="https://github.com/zhouxiaoka/autoclip/releases/latest">Download</a>. Machine-readable brief: <a href="llms-full.txt">llms-full.txt</a>.</p>
+</noscript>
 <div class="footer-reveal" aria-hidden="true">
   <img src="assets/art/reveal-01-camera.webp" alt="" width="1280" height="720">
   <img src="assets/art/reveal-02-wash.webp" alt="" width="1280" height="720">
@@ -108,7 +144,7 @@
     <div class="hero-copy">
       <span class="badge"><i></i><span data-i18n="hero.badge">开源 · 免费 · 本地运行</span></span>
       <h1 data-i18n-html="hero.h1">一个链接，<br>一键出片。</h1>
-      <p class="lede" data-i18n="hero.lede"></p>
+      <p class="lede" data-i18n="hero.lede">贴链接，选平台，按一次。一两毛钱出 10+ 条成片，封面和文案都配好，直接能发。</p>
       <div class="hero-cta">
         <a class="btn btn-primary" id="cta-primary" href="https://github.com/zhouxiaoka/autoclip/releases/download/v1.5.0/AutoClip.Desktop_1.5.0_aarch64.dmg">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg>
@@ -253,7 +289,7 @@
   <div class="container">
     <span class="eyebrow" data-i18n="num.eyebrow">速度与成本</span>
     <h2 data-i18n="num.h2">更快，也更便宜。</h2>
-    <p class="lede" data-i18n="num.lede"></p>
+    <p class="lede" data-i18n="num.lede">这一版把挑片从上百次模型调用改成一次通读全文，调用并行执行，有作者字幕就直接用，渲染改用电脑自带的硬件编码器。下面是同一台 Mac 上的实测。</p>
     <div data-benchmarks></div>
   </div>
 </section>
@@ -264,13 +300,13 @@
     <h2 data-i18n="cmp.h2">同样的成片，不用按月付订阅。</h2>
     <div class="compare">
       <div class="crow head"><span class="l"></span><span class="a">AutoClip</span><span class="b" data-i18n="cmp.col.b">按月订阅的云端工具</span></div>
-      <div class="crow"><span class="l" data-i18n="cmp.1.l"></span><span class="a" data-i18n="cmp.1.a"></span><span class="b" data-i18n="cmp.1.b"></span></div>
-      <div class="crow"><span class="l" data-i18n="cmp.2.l"></span><span class="a" data-i18n="cmp.2.a"></span><span class="b" data-i18n="cmp.2.b"></span></div>
-      <div class="crow"><span class="l" data-i18n="cmp.3.l"></span><span class="a" data-i18n="cmp.3.a"></span><span class="b" data-i18n="cmp.3.b"></span></div>
-      <div class="crow"><span class="l" data-i18n="cmp.4.l"></span><span class="a" data-i18n="cmp.4.a"></span><span class="b" data-i18n="cmp.4.b"></span></div>
-      <div class="crow"><span class="l" data-i18n="cmp.5.l"></span><span class="a" data-i18n="cmp.5.a"></span><span class="b" data-i18n="cmp.5.b"></span></div>
+      <div class="crow"><span class="l" data-i18n="cmp.1.l">费用</span><span class="a" data-i18n="cmp.1.a">软件免费；一条 2–3 小时访谈，模型费用一两毛钱</span><span class="b" data-i18n="cmp.1.b">按月订阅，按处理时长计额度</span></div>
+      <div class="crow"><span class="l" data-i18n="cmp.2.l">视频在哪处理</span><span class="a" data-i18n="cmp.2.a">你的电脑。云端模型只收到字幕文本</span><span class="b" data-i18n="cmp.2.b">上传到服务商的云端</span></div>
+      <div class="crow"><span class="l" data-i18n="cmp.3.l">模型</span><span class="a" data-i18n="cmp.3.a">自选 Qwen、DeepSeek、GPT、Gemini 等，或本地 Ollama</span><span class="b" data-i18n="cmp.3.b">平台指定</span></div>
+      <div class="crow"><span class="l" data-i18n="cmp.4.l">中文平台</span><span class="a" data-i18n="cmp.4.a">抖音、小红书、B 站专属模板，外语素材自动配中文字幕</span><span class="b" data-i18n="cmp.4.b">以海外平台为主</span></div>
+      <div class="crow"><span class="l" data-i18n="cmp.5.l">代码与自动化</span><span class="a" data-i18n="cmp.5.a">MIT 开源，可改、可自部署；CLI / MCP 直接接 Agent</span><span class="b" data-i18n="cmp.5.b">闭源；API 视套餐而定</span></div>
     </div>
-    <p class="footnote" data-i18n="cmp.foot"></p>
+    <p class="footnote" data-i18n="cmp.foot">右栏按同类云端产品 2026 年 10 月的公开页面整理，具体以各产品最新说明为准。</p>
   </div>
 </section>
 
@@ -278,12 +314,12 @@
   <div class="container">
     <span class="eyebrow" data-i18n="dev.eyebrow">开发者</span>
     <h2 data-i18n="dev.h2">一条命令出片，也能交给 Agent。</h2>
-    <p class="lede" data-i18n="dev.lede"></p>
+    <p class="lede" data-i18n="dev.lede">桌面应用、命令行和 MCP 共用同一套流程和数据目录。命令行出的项目，在桌面端首页直接可见。</p>
     <div class="dev">
       <ul>
-        <li><b>CLI</b><span data-i18n="dev.1"></span></li>
-        <li><b>MCP</b><span data-i18n="dev.2"></span></li>
-        <li><b>Docker</b><span data-i18n="dev.3"></span></li>
+        <li><b>CLI</b><span data-i18n="dev.1">批量处理，--json 输出给脚本和流水线。</span></li>
+        <li><b>MCP</b><span data-i18n="dev.2">7 个工具，Claude、Cursor、opencode 等 Agent 可以直接调用出片。</span></li>
+        <li><b>Docker</b><span data-i18n="dev.3">自建 Web 服务，跑在服务器或 NAS 上。</span></li>
       </ul>
 <div class="term"><span class="c" data-i18n="dev.c1"># 本地模型，一条命令出片</span>
 <span class="p">$ </span>autoclip run talk.mp4 --provider ollama --json
@@ -305,13 +341,13 @@
       <p class="fb" data-i18n-html="fb.stuck"></p>
     </div>
     <div class="faq">
-      <details open><summary data-i18n="faq.1.q"></summary><p data-i18n="faq.1.a"></p></details>
-      <details><summary data-i18n="faq.2.q"></summary><p data-i18n="faq.2.a"></p></details>
-      <details><summary data-i18n="faq.3.q"></summary><p data-i18n="faq.3.a"></p></details>
-      <details><summary data-i18n="faq.4.q"></summary><p data-i18n="faq.4.a"></p></details>
-      <details><summary data-i18n="faq.5.q"></summary><p data-i18n-html="faq.5.a"></p></details>
-      <details><summary data-i18n="faq.6.q"></summary><p data-i18n-html="faq.6.a"></p></details>
-      <details><summary data-i18n="faq.7.q"></summary><p data-i18n-html="faq.7.a"></p></details>
+      <details open><summary data-i18n="faq.1.q">要花钱吗？</summary><p data-i18n="faq.1.a">AutoClip 免费开源。分析用你自己的模型 Key，费用由服务商按量收取：实测一条 1 小时 43 分钟的访谈约 ¥0.09。用本地 Ollama / LM Studio 则没有模型费用。</p></details>
+      <details><summary data-i18n="faq.2.q">我的视频会被上传吗？</summary><p data-i18n="faq.2.a">剪辑与渲染都在你的电脑上。使用云端模型时，只发送字幕文本；成片只有在你点「发布」时才会上传到你连接的平台。</p></details>
+      <details><summary data-i18n="faq.3.q">支持哪些视频来源？</summary><p data-i18n="faq.3.a">YouTube、B 站链接和本地文件。有作者上传的字幕时直接使用；没有字幕可以在本地用 Whisper 或 SenseVoice 转写。</p></details>
+      <details><summary data-i18n="faq.4.q">为什么第一次打开系统会警告？</summary><p data-i18n="faq.4.a">安装包还没有做 Apple 公证和 Windows 代码签名。macOS 右键应用选「打开」；Windows 点「更多信息」再选「仍要运行」。之后不会再提示。</p></details>
+      <details><summary data-i18n="faq.5.q">片段选得不好怎么办？</summary><p data-i18n-html="faq.5.a">先换一个更强的模型试试。仍不理想，请在 <a class="link" href="https://github.com/zhouxiaoka/autoclip/issues/96" target="_blank" rel="noopener">GitHub 置顶帖</a>告诉我们视频类型、时长和模型，我们在收集样例改进挑片。</p></details>
+      <details><summary data-i18n="faq.6.q">第一次怎么试？</summary><p data-i18n-html="faq.6.a">先用一条 10–30 分钟、有字幕的访谈或播客，选一两个平台。卡住时看 <a class="link" href="https://github.com/zhouxiaoka/autoclip/discussions/128" target="_blank" rel="noopener">第一次出片问答</a>。</p></details>
+      <details><summary data-i18n="faq.7.q">怎么发布到 B 站和海外平台？</summary><p data-i18n-html="faq.7.a">在设置里配 Upload-Post 密钥和 B 站 Cookie，成片页勾选平台，默认先发到「仅自己」。逐步说明见 <a class="link" href="guides/publish/">发布教程</a>。</p></details>
     </div>
   </div>
 </section>
@@ -323,7 +359,7 @@
       <div class="cta-card">
         <span class="eyebrow" data-i18n="dl.eyebrow">下载</span>
         <h2 data-i18n="dl.h2">下一条好内容，从这里开始。</h2>
-        <p class="lede" data-i18n="dl.lede"></p>
+        <p class="lede" data-i18n="dl.lede">macOS 与 Windows，免费。安装包自带 Python 和 FFmpeg，下载即用。</p>
       </div>
     </div>
     <div class="dl">
@@ -360,7 +396,7 @@
       </div>
       <nav class="footer-links" aria-label="页脚">
       <div class="fcol"><h3 data-f="h.uses"></h3><a href="use-cases/podcast/" data-f="podcast"></a><a href="use-cases/course/" data-f="course"></a><a href="use-cases/gameplay/" data-f="game"></a><a href="features/publish/" data-f="publish"></a><a href="features/auto-cover/" data-f="cover"></a></div>
-      <div class="fcol"><h3 data-f="h.res"></h3><a href="https://github.com/zhouxiaoka/autoclip/blob/main/docs/USER_INSTALLATION_GUIDE.md" target="_blank" rel="noopener" data-f="install"></a><a href="guides/publish/" data-f="guide"></a><a href="https://github.com/zhouxiaoka/autoclip/blob/main/docs/MULTI_LLM_PROVIDER_GUIDE.md" target="_blank" rel="noopener" data-f="models"></a><a href="https://github.com/zhouxiaoka/autoclip/blob/main/docs/FAQ.md" target="_blank" rel="noopener" data-f="faq"></a><a href="analytics/" data-f="privacy"></a></div>
+      <div class="fcol"><h3 data-f="h.res"></h3><a href="https://github.com/zhouxiaoka/autoclip/blob/main/docs/USER_INSTALLATION_GUIDE.md" target="_blank" rel="noopener" data-f="install"></a><a href="guides/publish/" data-f="guide"></a><a href="https://github.com/zhouxiaoka/autoclip/blob/main/docs/MULTI_LLM_PROVIDER_GUIDE.md" target="_blank" rel="noopener" data-f="models"></a><a href="https://github.com/zhouxiaoka/autoclip/blob/main/docs/FAQ.md" target="_blank" rel="noopener" data-f="faq"></a><a href="llms.txt" data-f="llms"></a><a href="analytics/" data-f="privacy"></a></div>
       <div class="fcol"><h3 data-f="h.dev"></h3><a href="https://github.com/zhouxiaoka/autoclip" target="_blank" rel="noopener" data-f="github"></a><a href="https://github.com/zhouxiaoka/autoclip/blob/main/docs/CLI_AND_MCP.md" target="_blank" rel="noopener" data-f="cli"></a><a href="https://github.com/zhouxiaoka/autoclip/blob/main/DOCKER.md" target="_blank" rel="noopener" data-f="docker"></a><a href="https://github.com/zhouxiaoka/autoclip/blob/main/skills/autoclip/SKILL.md" target="_blank" rel="noopener" data-f="skill"></a><a href="https://github.com/zhouxiaoka/autoclip/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener" data-f="contrib"></a><a href="https://github.com/zhouxiaoka/autoclip/blob/main/LICENSE" target="_blank" rel="noopener" data-f="license"></a></div>
       <div class="fcol"><h3 data-f="h.comm"></h3><a href="https://github.com/zhouxiaoka/autoclip/discussions" target="_blank" rel="noopener" data-f="discuss"></a><a href="https://github.com/zhouxiaoka/autoclip/discussions/new?category=show-and-tell" target="_blank" rel="noopener" data-f="submit"></a><a href="https://github.com/zhouxiaoka/autoclip/issues/new/choose" target="_blank" rel="noopener" data-f="issue"></a><a href="https://github.com/zhouxiaoka/autoclip/issues/96" target="_blank" rel="noopener" data-f="known"></a><a href="mailto:christine_zhouye@163.com" data-f="contact"></a></div>
       </nav>

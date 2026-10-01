@@ -1,0 +1,23 @@
+# AutoClip
+
+> Open-source desktop app that turns one long video into ready-to-post short clips. Paste a YouTube or Bilibili link (or a local file), pick platforms, press once. Editing and rendering stay on your computer.
+
+AutoClip is not a hosted clipper and not a chat-based editor. Version 1.5.0 ships a desktop app (Windows x64, macOS Apple Silicon), plus CLI and MCP that share the same pipeline. The software is free (MIT). Cloud models are billed by the provider you choose; a 1h43m interview measured about ¥0.09 in text-model cost. Local Ollama / LM Studio has no model fee.
+
+Each finished clip is a publish kit: video, cover, title, description, tags, and a ZIP. Douyin and Xiaohongshu use an interview layout; TikTok, Reels and Shorts use a full-frame podcast layout; Bilibili and YouTube stay landscape.
+
+## Docs
+
+- [Website](https://zhouxiaoka.github.io/autoclip_intro/): product page, FAQ, download
+- [Case library](https://zhouxiaoka.github.io/autoclip_intro/cases/): real untouched outputs
+- [Interviews & podcasts](https://zhouxiaoka.github.io/autoclip_intro/use-cases/podcast/)
+- [Courses](https://zhouxiaoka.github.io/autoclip_intro/use-cases/course/)
+- [Gaming highlights](https://zhouxiaoka.github.io/autoclip_intro/use-cases/gameplay/)
+- [Publish guide](https://zhouxiaoka.github.io/autoclip_intro/guides/publish/)
+- [GitHub repository](https://github.com/zhouxiaoka/autoclip): source, issues, latest release
+- [CLI / MCP](https://github.com/zhouxiaoka/autoclip/blob/main/docs/CLI_AND_MCP.md)
+- [Full machine-readable brief](https://zhouxiaoka.github.io/autoclip_intro/llms-full.txt)
+
+## 中文
+
+AutoClip 是开源免费的桌面工具：贴一个链接，选好平台，一键出片。剪辑和渲染在你的电脑上。1.5.0 同时提供 Windows / macOS 桌面版、CLI 和 MCP。云端模型用你自己的 Key；本地模型没有模型费用。每条成片带封面、标题、简介、话题和 ZIP 发布包。
