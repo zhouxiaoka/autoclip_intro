@@ -658,3 +658,5 @@ img[data-develop].developed{opacity:1}
   .motion .reel-row .clip h3,.motion .reel-row .clip p{opacity:0;transform:translateY(6px);transition:opacity .45s ease-out,transform .45s ease-out}
   .motion .reel.landed .reel-row .clip h3,.motion .reel.landed .reel-row .clip p{opacity:1;transform:none}
 }
+
+.evidence-links{display:flex;flex-wrap:wrap;gap:12px 24px;margin:24px auto;font-size:15px}.evidence-links a{text-decoration:underline;text-underline-offset:4px}

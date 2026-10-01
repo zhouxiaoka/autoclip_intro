@@ -6,7 +6,7 @@ AutoClip（zhouxiaoka/autoclip）当前定位：开源 AI 视频剪辑桌面工�
 
 ## 搜索入口
 
-首页、案例库、三个场景页和两个功能页提供中文、英文静态 HTML。各自使用 canonical，zh-CN / en 互相声明 hreflang；x-default 指中文默认入口。其余六种语言在新版营销页面回退英文，不作为已翻译版本声明。显式语言切换和旧 `?lang=en` 链接会前往对应静态页面，保留 UTM 与锚点；不按浏览器语言自动重定向。
+首页、案例库、三个场景页、两个功能页、三篇教程和两个精选案例提供中文、英文静态 HTML。各自使用 canonical，zh-CN / en 互相声明 hreflang；x-default 指中文默认入口。其余六种语言在新版营销页面回退英文，不作为已翻译版本声明。显式语言切换和旧 `?lang=en` 链接会前往对应静态页面，保留 UTM 与锚点；不按浏览器语言自动重定向。
 
 修改文案后运行 `python3 scripts/build_search_pages.py` 并提交生成文件。发版同步脚本同样重建英文页面，CI 检查生成结果、元信息、静态正文、FAQ 与资源路径。正文、FAQ JSON-LD、README 和 llms 文件的费用与上传范围应保持一致。
 
@@ -14,7 +14,7 @@ AutoClip（zhouxiaoka/autoclip）当前定位：开源 AI 视频剪辑桌面工�
 
 GitHub About 和 Topics 已更新。Google / Bing 已验证并提交 sitemap 和首页重抓。2026-10-02 上一轮提交时，Google sitemap 后台仍显示 Couldn't fetch，但实时 URL 检查抓取成功；提交不代表已收录。用 Search Console 查看各页面的真实状态，不重复提交以代替处理。
 
-本次读取的 GitHub 近 14 日仓库数据：45,768 次访问；Google 4,482 次、t.co 4,376 次。它们是仓库数据，不是官网访客、下载或活跃用户；t.co 不一定来自项目自己的账号。
+GitHub 仓库流量、官网已同意访客和实际使用结果分别记录，不互相代替；t.co 来源也不一定来自项目自己的账号。
 
 官网 AI 入口归类为 chatgpt / perplexity / claude / gemini / copilot。ChatGPT 自动附带的 `utm_source=chatgpt.com` 转换为固定类别，未知域名与邮件地址仍过滤。推广链接使用渠道与活动代号；复盘按漏斗第一步来源查看。详见 ANALYTICS.md。
 
@@ -22,7 +22,7 @@ GitHub About 和 Topics 已更新。Google / Bing 已验证并提交 sitemap 和
 
 ## 持续内容
 
-优先补真实案例、首次出片教程、播客转短视频步骤和本地/云端选择依据。每个案例写清来源、输入、平台、输出、版本、测试条件与限制；旧链路样本保留历史标签。首页与场景页通过真实链接连接案例和教程。使用真实结果做集中推广，再用渠道下载点击和首次出片反馈复盘。
+教程和精选案例正文集中在 `data/growth-content.json`，由 `scripts/build_growth_content.py` 和搜索页面生成器生成可抓取的正文。修改正文后运行 `python3 scripts/build_search_pages.py`，不要只修改生成 HTML。每个案例保留来源、字幕条件、平台、输出、历史测试条件与限制；两个不同访谈的记录不作为严格速度对照。单视频案例提供与可播放文件一致的 VideoObject，它不保证获得视频搜索展示。
 
 `llms.txt` / `llms-full.txt` 是可引用的事实摘要，不是保证排名的机制。Google AI 搜索不要求额外 AI 文本文件，仍依赖可索引的可靠正文与内部链接：[Google AI 搜索指南](https://developers.google.com/search/docs/appearance/ai-features)。多语言 URL 的依据见[官方指南](https://developers.google.com/search/docs/specialty/international/managing-multi-regional-sites)。
 
