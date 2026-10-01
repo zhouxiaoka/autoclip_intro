@@ -561,11 +561,15 @@ img[data-develop].developed{opacity:1}
 
 /* reel: clips from the hero's link fan out under the hero */
 .hero-split{padding-bottom:clamp(24px,3vw,40px)}
-.reel{padding:0 0 clamp(64px,7vw,104px);overflow:hidden}
+@media (min-width: 961px){
+  .hero-split{min-height:calc(100vh - 200px);min-height:calc(100svh - 200px);display:flex;align-items:center;padding-top:32px;padding-bottom:28px}
+  .hero-split > .container{width:100%}
+}
+.reel{padding:0 0 clamp(64px,7vw,104px);overflow-x:clip}
 .reel-label{font-size:.75rem;color:var(--ac-muted);display:flex;gap:10px;flex-wrap:wrap;align-items:baseline}
 .reel-label b{font-weight:500;color:var(--ac-sub)}
 .reel-row{margin-top:18px;display:flex;justify-content:center;gap:16px;padding:8px var(--ac-gutter) 4px}
-.reel-row .clip{flex:none;width:clamp(150px,12.4vw,186px);will-change:transform,opacity}
+.reel-row .clip{flex:none;width:clamp(150px,12.4vw,186px);will-change:transform;position:relative}
 .reel-row .clip-media{border-color:var(--ac-line);box-shadow:0 18px 40px -22px rgba(26,26,25,.45)}
 .reel-row .clip h3{color:var(--ac-ink);font-size:.8125rem}
 .reel-row .clip p{color:var(--ac-muted)}

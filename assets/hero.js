@@ -49,11 +49,13 @@ async function reel(){
  row.innerHTML=shown.map(o=>api.card(o)).join('')+(rest?`<a class="clip reel-more" href="#clips"><span class="clip-media"><b>+${rest}</b><span>${zh?'更多成片在案例库':'More in the case library'}</span></span></a>`:'');
  api.wire(row);
  const cards=[...row.children];if(reduce.matches||!matchMedia('(min-width: 961px)').matches)return;
- const src=document.querySelector('.demo-out');let vec=[];
- const measure=()=>{const t=src?.getBoundingClientRect();vec=cards.map(el=>{el.style.transform='none';const b=el.getBoundingClientRect();return t?[t.left+t.width/2-(b.left+b.width/2),t.top+t.height/2-(b.top+b.height/2)]:[0,-200];});update();};
- let frame=0;const update=()=>{frame=0;const b=host.getBoundingClientRect();const q=Math.max(0,Math.min(1,(innerHeight-b.top)/(innerHeight*.75)));
-  cards.forEach((el,i)=>{const k=Math.max(0,Math.min(1,q*1.35-i*.06)),e=1-Math.pow(1-k,3),[dx,dy]=vec[i]||[0,0];
-   el.style.transform=`translate(${dx*(1-e)}px,${dy*(1-e)}px) rotate(${(i-2.5)*7*(1-e)}deg) scale(${.55+.45*e})`;el.style.opacity=String(Math.min(1,.15+e*1.2));});};
+ let off=[];const mid=(cards.length-1)/2;
+ const measure=()=>{cards.forEach(el=>el.style.transform='none');const r=row.getBoundingClientRect(),cx=r.left+r.width/2;off=cards.map(el=>{const b=el.getBoundingClientRect();return cx-(b.left+b.width/2);});update();};
+ const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+ let frame=0;const update=()=>{frame=0;const b=host.getBoundingClientRect();const q=Math.max(0,Math.min(1,(innerHeight*.88-b.top)/(innerHeight*.5)));
+  cards.forEach((el,i)=>{const k=ease(Math.max(0,Math.min(1,q*1.12-Math.abs(i-mid)*.02))),d=i-mid;
+   el.style.transform=`translate(${(off[i]||0)*(1-k)}px,${Math.abs(d)*6*(1-k)}px) rotate(${d*5*(1-k)}deg) scale(${.94+.06*k})`;
+   el.style.zIndex=String(100-Math.round(Math.abs(d)*2));});};
  const onScroll=()=>{if(!frame)frame=requestAnimationFrame(update);};
  addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',()=>requestAnimationFrame(measure),{passive:true});
  requestAnimationFrame(measure);
