@@ -1,0 +1,84 @@
+{
+  "schema": 1,
+  "id": "openai-devday-2026",
+  "added": "2026-10-01",
+  "scene": "talk",
+  "featured": false,
+  "contributor": null,
+  "source": {
+    "title": "OpenAI DevDay 2026 Keynote (FULL)",
+    "channel": "OpenAI",
+    "url": "https://www.youtube.com/watch?v=Fls_onRviPM",
+    "duration_sec": 3214,
+    "language": "en"
+  },
+  "run": null,
+  "outputs": [
+    {
+      "id": "01",
+      "platform": "tiktok",
+      "template": "podcast",
+      "title_lines": [
+        "AI that knows what matters",
+        "without you asking"
+      ],
+      "duration_sec": 98,
+      "source_start_sec": 74,
+      "video": "01.mp4",
+      "loop": "01-loop.mp4",
+      "poster": "01.jpg",
+      "cover": "01-cover.jpg",
+      "post": {
+        "title": "AI that just gets you—no commands needed 🤯",
+        "description": "An introduction to Dots and the idea of AI assistants that understand context and act proactively. From OpenAI DevDay.",
+        "tags": []
+      },
+      "mood": "bold",
+      "palette": "lemon"
+    },
+    {
+      "id": "02",
+      "platform": "tiktok",
+      "template": "podcast",
+      "title_lines": [
+        "ChatGPT Space: A new workspace",
+        "for humans and AI to collaborate"
+      ],
+      "duration_sec": 92,
+      "source_start_sec": 488,
+      "video": "02.mp4",
+      "loop": "02-loop.mp4",
+      "poster": "02.jpg",
+      "cover": "02-cover.jpg",
+      "post": {
+        "title": "ChatGPT Space: A new workspace for humans and AI to collaborate",
+        "description": "A presentation of ChatGPT Space, showing people and AI Dots working together across pages and product demos. From OpenAI DevDay.",
+        "tags": []
+      },
+      "mood": "bold",
+      "palette": "lemon"
+    },
+    {
+      "id": "03",
+      "platform": "tiktok",
+      "template": "podcast",
+      "title_lines": [
+        "UltraFast: 300 tokens/sec",
+        "Rocket-speed AI is live"
+      ],
+      "duration_sec": 106,
+      "source_start_sec": 1226,
+      "video": "03.mp4",
+      "loop": "03-loop.mp4",
+      "poster": "03.jpg",
+      "cover": "03-cover.jpg",
+      "post": {
+        "title": "UltraFast is LIVE: 300 tokens/sec — rocket already launched 🚀",
+        "description": "A stage presentation and side-by-side demo of UltraFast response speed. From the OpenAI DevDay keynote.",
+        "tags": []
+      },
+      "mood": "bold",
+      "palette": "coral"
+    }
+  ]
+}

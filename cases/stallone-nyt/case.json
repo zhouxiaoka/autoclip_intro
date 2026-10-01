@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "id": "stallone-nyt",
+  "added": "2026-10-01",
+  "scene": "interview",
+  "featured": false,
+  "contributor": null,
+  "source": {
+    "title": "Sylvester Stallone Hid His Struggles. At 80, He’s Coming Clean. | The Interview",
+    "channel": "The Interview",
+    "url": "https://www.youtube.com/watch?v=ccs-B_nTfZs",
+    "duration_sec": 4644,
+    "language": "en"
+  },
+  "run": null,
+  "outputs": [
+    {
+      "id": "01",
+      "platform": "douyin",
+      "template": "interview",
+      "title_lines": [
+        "60岁写《洛奇》",
+        "是向衰老宣战"
+      ],
+      "duration_sec": 99,
+      "source_start_sec": 3702,
+      "video": "01.mp4",
+      "loop": "01-loop.mp4",
+      "poster": "01.jpg",
+      "cover": "01-cover.jpg",
+      "post": {
+        "title": "60岁写《洛奇》？好莱坞说：你该去钓鱼了！",
+        "description": "史泰龙回顾创作《洛奇》续作时遭遇的拒绝，以及如何把衰老与失落写进角色。",
+        "tags": []
+      },
+      "mood": "bold",
+      "palette": "lemon"
+    },
+    {
+      "id": "02",
+      "platform": "douyin",
+      "template": "interview",
+      "title_lines": [
+        "洛奇是我心理医生弗洛伊德",
+        "他救过我的人生"
+      ],
+      "duration_sec": 97,
+      "source_start_sec": 3992,
+      "video": "02.mp4",
+      "loop": "02-loop.mp4",
+      "poster": "02.jpg",
+      "cover": "02-cover.jpg",
+      "post": {
+        "title": "洛奇就是我的心理医生弗洛伊德！",
+        "description": "史泰龙讲述《洛奇》如何承载他的经历与情绪，并成为长期创作中的精神出口。",
+        "tags": []
+      },
+      "mood": "warm",
+      "palette": "amber"
+    }
+  ]
+}

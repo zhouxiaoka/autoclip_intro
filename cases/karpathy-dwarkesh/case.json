@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "id": "karpathy-dwarkesh",
+  "added": "2026-10-01",
+  "scene": "interview",
+  "featured": false,
+  "contributor": null,
+  "source": {
+    "title": "Andrej Karpathy — “We’re summoning ghosts, not building animals”",
+    "channel": "Dwarkesh Patel",
+    "url": "https://www.youtube.com/watch?v=lXUZvyajciY",
+    "duration_sec": 8768,
+    "language": "en"
+  },
+  "run": null,
+  "outputs": [
+    {
+      "id": "01",
+      "platform": "douyin",
+      "template": "interview",
+      "title_lines": [
+        "AI还不能当实习生用",
+        "因认知能力严重不足"
+      ],
+      "duration_sec": 43,
+      "source_start_sec": 112,
+      "video": "01.mp4",
+      "loop": "01-loop.mp4",
+      "poster": "01.jpg",
+      "cover": "01-cover.jpg",
+      "post": {
+        "title": "AI还不能当实习生用，因认知能力不足",
+        "description": "Karpathy 在 Dwarkesh 访谈中讨论 AI 智能体的认知局限，以及距离胜任日常工作还有哪些差距。",
+        "tags": []
+      },
+      "mood": "serious",
+      "palette": "azure"
+    },
+    {
+      "id": "02",
+      "platform": "douyin",
+      "template": "interview",
+      "title_lines": [
+        "权重是模糊记忆",
+        "KV缓存才是工作记忆"
+      ],
+      "duration_sec": 93,
+      "source_start_sec": 1112,
+      "video": "02.mp4",
+      "loop": "02-loop.mp4",
+      "poster": "02.jpg",
+      "cover": "02-cover.jpg",
+      "post": {
+        "title": "权重是模糊记忆，KV缓存才是工作记忆",
+        "description": "Karpathy 用记忆作类比，解释模型权重与 KV 缓存的区别，以及上下文在推理中的作用。",
+        "tags": []
+      },
+      "mood": "calm",
+      "palette": "mint"
+    }
+  ]
+}

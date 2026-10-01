@@ -1,0 +1,84 @@
+{
+  "schema": 1,
+  "id": "dreamforce-keynote",
+  "added": "2026-10-01",
+  "scene": "talk",
+  "featured": false,
+  "contributor": null,
+  "source": {
+    "title": "Dreamforce Main Keynote 2026",
+    "channel": "Salesforce",
+    "url": "https://www.youtube.com/watch?v=wYFt9NCYaVI",
+    "duration_sec": 6495,
+    "language": "en"
+  },
+  "run": null,
+  "outputs": [
+    {
+      "id": "01",
+      "platform": "douyin",
+      "template": "interview",
+      "title_lines": [
+        "AI界面革命",
+        "动态、智能、可组合"
+      ],
+      "duration_sec": 78,
+      "source_start_sec": 1481,
+      "video": "01.mp4",
+      "loop": "01-loop.mp4",
+      "poster": "01.jpg",
+      "cover": "01-cover.jpg",
+      "post": {
+        "title": "AI界面革命：动态、智能、可组合",
+        "description": "Dreamforce 现场片段，介绍动态、智能、可组合的 AI 界面，以及人与 AI 协同使用应用的方式。",
+        "tags": []
+      },
+      "mood": "bold",
+      "palette": "coral"
+    },
+    {
+      "id": "02",
+      "platform": "douyin",
+      "template": "interview",
+      "title_lines": [
+        "AI 90分钟学会SAP",
+        "供应商入驻全流程"
+      ],
+      "duration_sec": 62,
+      "source_start_sec": 3567,
+      "video": "02.mp4",
+      "loop": "02-loop.mp4",
+      "poster": "02.jpg",
+      "cover": "02-cover.jpg",
+      "post": {
+        "title": "AI 90分钟学会SAP后台操作？",
+        "description": "Dreamforce 现场片段，演示 AI 代理在 SAP 沙箱中学习供应商入驻流程。",
+        "tags": []
+      },
+      "mood": "bold",
+      "palette": "lemon"
+    },
+    {
+      "id": "03",
+      "platform": "douyin",
+      "template": "interview",
+      "title_lines": [
+        "AI安全是工程问题",
+        "不是哲学问题"
+      ],
+      "duration_sec": 79,
+      "source_start_sec": 4935,
+      "video": "03.mp4",
+      "loop": "03-loop.mp4",
+      "poster": "03.jpg",
+      "cover": "03-cover.jpg",
+      "post": {
+        "title": "AI安全不是哲学题，是工程题！",
+        "description": "Dreamforce 对谈片段，讨论通过测试环境与严格验证落实 AI 安全。",
+        "tags": []
+      },
+      "mood": "bold",
+      "palette": "coral"
+    }
+  ]
+}

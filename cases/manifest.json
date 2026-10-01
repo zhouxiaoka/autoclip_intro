@@ -1,38 +1,234 @@
 {
  "schema": 1,
- "batch": "2026-10-01b",
+ "batch": "2026-10-01c",
  "media_base": "${AUTOCLIP_MEDIA_BASE:-}",
  "projects_root": "${AUTOCLIP_PROJECTS:-/private/tmp/autoclip-e2e/projects}",
  "demos_root": "${AUTOCLIP_DEMOS:-/private/tmp/autoclip-e2e/demos}",
  "cases": [
   {
-   "id": "jensen-dwarkesh",
+   "id": "neumann-doac",
    "scene": "interview",
    "featured": true,
    "added": "2026-10-01",
-   "project": "{projects}/aea49c3d-254c-440f-ad22-987ab482ae83",
-   "skip": [
-    "88ef9cb6"
+   "files": [
+    "tiktok:podcast:neumann-doac/01.mp4:Success is how you feel one minute|before death—full of love, no regret",
+    "tiktok:podcast:neumann-doac/02.mp4:WeWork is a factory of dreams|Not just office space",
+    "douyin:interview:neumann-doac/03.mp4:选伴侣不是为最好时光|而是最坏那天"
    ],
-   "benchmark": "jensen-new",
    "source": {
-    "url": "https://www.youtube.com/watch?v=Hrbq66XqtCo",
-    "duration_sec": 6193,
+    "title": "WeWork Founder: His $47 Billion Empire Collapsed! | Adam Neumann",
+    "channel": "The Diary Of A CEO",
+    "url": "https://www.youtube.com/watch?v=IQ4JVWdj4Q0",
+    "duration_sec": 8104,
+    "language": "en"
+   }
+  },
+  {
+   "id": "luyu-guokeyu",
+   "scene": "interview",
+   "featured": true,
+   "added": "2026-10-01",
+   "files": [
+    "douyin:interview:luyu-guokeyu/01.mp4:演员的快感在创作过程|不在结果",
+    "douyin:interview:luyu-guokeyu/02.mp4:AI取代不了演员的心流|最核心的创作无法复制"
+   ],
+   "source": {
+    "title": "鲁豫对话郭柯宇：一个影后的消失与归来 | 陈鲁豫·慢谈EP25【视频播客】",
+    "channel": "陈鲁豫-慢谈",
+    "url": "https://www.bilibili.com/video/BV1LDYV6HEXR/",
+    "duration_sec": 9931,
+    "language": "zh"
+   }
+  },
+  {
+   "id": "dafoe-hot-ones",
+   "scene": "interview",
+   "featured": true,
+   "added": "2026-10-01",
+   "files": [
+    "tiktok:podcast:dafoe-hot-ones/01.mp4:Fake teeth made him feel lascivious|and instantly became the character",
+    "douyin:interview:dafoe-hot-ones/02.mp4:拉雪橇不是演|是活下来",
+    "tiktok:podcast:dafoe-hot-ones/03.mp4:Action breeds inspiration|not the other way around",
+    "tiktok:podcast:dafoe-hot-ones/04.mp4:What makes you feel alive?|Melting into the present"
+   ],
+   "source": {
+    "title": "Willem Dafoe Comes Alive While Eating Spicy Wings | Hot Ones",
+    "channel": "First We Feast",
+    "url": "https://www.youtube.com/watch?v=YqugY2zTIoI",
+    "duration_sec": 1403,
     "language": "en"
    }
   },
   {
    "id": "tim-luoyonghao",
    "scene": "interview",
-   "featured": true,
+   "featured": false,
    "added": "2026-10-01",
-   "project": "{projects}/eb4ec4e3-04bc-4589-92bb-c902da81d173",
-   "benchmark": "tim-new",
+   "files": [
+    "douyin:interview:tim-luoyonghao/01.mp4:红得快的网红|糊得更快",
+    "douyin:interview:tim-luoyonghao/02.mp4:五秒留存率最重要|五秒看不到就废了"
+   ],
    "source": {
-    "url": "https://www.bilibili.com/video/BV1B5xkzPEhx",
+    "title": "【正片】影视飓风TIM×罗永浩！用影像打开世界的梦想家",
     "channel": "罗永浩的十字路口",
+    "url": "https://www.bilibili.com/video/BV1B5xkzPEhx/",
     "duration_sec": 10347,
     "language": "zh"
+   },
+   "benchmark": "tim-new"
+  },
+  {
+   "id": "stallone-nyt",
+   "scene": "interview",
+   "featured": false,
+   "added": "2026-10-01",
+   "files": [
+    "douyin:interview:stallone-nyt/01.mp4:60岁写《洛奇》|是向衰老宣战",
+    "douyin:interview:stallone-nyt/02.mp4:洛奇是我心理医生弗洛伊德|他救过我的人生"
+   ],
+   "source": {
+    "title": "Sylvester Stallone Hid His Struggles. At 80, He’s Coming Clean. | The Interview",
+    "channel": "The Interview",
+    "url": "https://www.youtube.com/watch?v=ccs-B_nTfZs",
+    "duration_sec": 4644,
+    "language": "en"
+   }
+  },
+  {
+   "id": "rubin-doac",
+   "scene": "interview",
+   "featured": false,
+   "added": "2026-10-01",
+   "files": [
+    "youtube_shorts:podcast:rubin-doac/01.mp4:'Indefensible' is the highest|standard for art",
+    "youtube_shorts:podcast:rubin-doac/02.mp4:Creation is an offering to God|Not a product for metrics"
+   ],
+   "source": {
+    "title": "Rick Rubin: The Only Skill That Matters Now Is The One Thing AI Can Never Steal!",
+    "channel": "The Diary Of A CEO",
+    "url": "https://www.youtube.com/watch?v=a_GiFiHXJ6g",
+    "duration_sec": 9989,
+    "language": "en"
+   }
+  },
+  {
+   "id": "openai-devday-2026",
+   "scene": "talk",
+   "featured": false,
+   "added": "2026-10-01",
+   "files": [
+    "tiktok:podcast:openai-devday-2026/01.mp4:AI that knows what matters|without you asking",
+    "tiktok:podcast:openai-devday-2026/02.mp4:ChatGPT Space: A new workspace|for humans and AI to collaborate",
+    "tiktok:podcast:openai-devday-2026/03.mp4:UltraFast: 300 tokens/sec|Rocket-speed AI is live"
+   ],
+   "source": {
+    "title": "OpenAI DevDay 2026 Keynote (FULL)",
+    "channel": "OpenAI",
+    "url": "https://www.youtube.com/watch?v=Fls_onRviPM",
+    "duration_sec": 3214,
+    "language": "en"
+   }
+  },
+  {
+   "id": "mrbeast-colin-samir",
+   "scene": "interview",
+   "featured": false,
+   "added": "2026-10-01",
+   "files": [
+    "tiktok:podcast:mrbeast-colin-samir/01.mp4:YouTube's first 5 seconds|matter more than thumbnails"
+   ],
+   "source": {
+    "title": "A Brutally Honest Conversation with MrBeast",
+    "channel": "Colin and Samir",
+    "url": "https://www.youtube.com/watch?v=9IQ_ldV9z_A",
+    "duration_sec": 7574,
+    "language": "en"
+   }
+  },
+  {
+   "id": "lidan-wangzuxian",
+   "scene": "interview",
+   "featured": false,
+   "added": "2026-10-01",
+   "files": [
+    "douyin:interview:lidan-wangzuxian/01.mp4:19岁捐建祖贤路|乡亲至今还在走",
+    "xiaohongshu:interview:lidan-wangzuxian/02.mp4:哥哥是片场唯一讲国语的人|他让我安心"
+   ],
+   "source": {
+    "title": "李诞对话王祖贤丨EP05正片",
+    "channel": "新浪丨互相关注",
+    "url": "https://www.bilibili.com/video/BV1XHhW6PEpf/",
+    "duration_sec": 7251,
+    "language": "zh"
+   }
+  },
+  {
+   "id": "karpathy-dwarkesh",
+   "scene": "interview",
+   "featured": false,
+   "added": "2026-10-01",
+   "files": [
+    "douyin:interview:karpathy-dwarkesh/01.mp4:AI还不能当实习生用|因认知能力严重不足",
+    "douyin:interview:karpathy-dwarkesh/02.mp4:权重是模糊记忆|KV缓存才是工作记忆"
+   ],
+   "source": {
+    "title": "Andrej Karpathy — “We’re summoning ghosts, not building animals”",
+    "channel": "Dwarkesh Patel",
+    "url": "https://www.youtube.com/watch?v=lXUZvyajciY",
+    "duration_sec": 8768,
+    "language": "en"
+   }
+  },
+  {
+   "id": "jensen-dwarkesh",
+   "scene": "interview",
+   "featured": false,
+   "added": "2026-10-01",
+   "files": [
+    "xiaohongshu:interview:jensen-dwarkesh/01.mp4:AI是五层蛋糕|能源才是底层",
+    "xiaohongshu:interview:jensen-dwarkesh/02.mp4:算法进步比摩尔定律快10倍"
+   ],
+   "source": {
+    "title": "Jensen Huang – Will Nvidia’s moat persist?",
+    "channel": "Dwarkesh Patel",
+    "url": "https://www.youtube.com/watch?v=Hrbq66XqtCo",
+    "duration_sec": 6192,
+    "language": "en"
+   },
+   "benchmark": "jensen-new"
+  },
+  {
+   "id": "druski-doac",
+   "scene": "interview",
+   "featured": false,
+   "added": "2026-10-01",
+   "files": [
+    "tiktok:podcast:druski-doac/01.mp4:Rejected by Netflix & Amazon,|I bet on myself instead."
+   ],
+   "source": {
+    "title": "Druski: They're Lying To You About Overnight Success!",
+    "channel": "The Diary Of A CEO",
+    "url": "https://www.youtube.com/watch?v=UhzI1fg8rCA",
+    "duration_sec": 6522,
+    "language": "en"
+   }
+  },
+  {
+   "id": "dreamforce-keynote",
+   "scene": "talk",
+   "featured": false,
+   "added": "2026-10-01",
+   "files": [
+    "douyin:interview:dreamforce-keynote/01.mp4:AI界面革命|动态、智能、可组合",
+    "douyin:interview:dreamforce-keynote/02.mp4:AI 90分钟学会SAP|供应商入驻全流程",
+    "douyin:interview:dreamforce-keynote/03.mp4:AI安全是工程问题|不是哲学问题"
+   ],
+   "source": {
+    "title": "Dreamforce Main Keynote 2026",
+    "channel": "Salesforce",
+    "url": "https://www.youtube.com/watch?v=wYFt9NCYaVI",
+    "duration_sec": 6495,
+    "language": "en"
    }
   },
   {

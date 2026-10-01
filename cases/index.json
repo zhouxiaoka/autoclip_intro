@@ -1,12 +1,23 @@
 {
  "schema": 1,
- "batch": "2026-10-01b",
- "media_base": "",
+ "batch": "2026-10-01c",
+ "media_base": "https://pub-3fb92949b9c2480b89feec5ec03f3540.r2.dev/cases/",
  "updated": "2026-10-01",
  "cases": [
+  "neumann-doac",
+  "luyu-guokeyu",
+  "dafoe-hot-ones",
   "tim-luoyonghao",
-  "jensen-dwarkesh",
+  "stallone-nyt",
+  "rubin-doac",
+  "openai-devday-2026",
+  "mrbeast-colin-samir",
+  "lidan-wangzuxian",
   "kojima-wired",
+  "karpathy-dwarkesh",
+  "jensen-dwarkesh",
+  "druski-doac",
+  "dreamforce-keynote",
   "dario-dwarkesh",
   "altman-yc"
  ]
