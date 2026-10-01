@@ -5,7 +5,7 @@
   const config = window.AUTOCLIP_ANALYTICS_CONFIG || {};
   const root = new URL('../', document.currentScript.src);
   const prefix = 'autoclip.website.analytics.';
-  const pages = new Set(['', 'cases/', 'use-cases/podcast/', 'use-cases/course/', 'use-cases/gameplay/', 'features/publish/', 'features/auto-cover/', 'guides/publish/']);
+  const pages = new Set(['', 'cases/', 'use-cases/podcast/', 'use-cases/course/', 'use-cases/gameplay/', 'features/publish/', 'features/auto-cover/', 'guides/publish/', 'guides/first-clips/', 'guides/podcast-to-shorts/', 'guides/local-vs-cloud/', 'cases/jensen-dwarkesh/', 'cases/tim-luoyonghao/', 'cases/autoclip-first-run/']);
   const languages = ['zh', 'en', 'ja', 'ko', 'es', 'pt', 'ru', 'fr'];
   const read = key => { try { return localStorage.getItem(prefix + key); } catch { return null; } };
   const write = (key, value) => { try { localStorage.setItem(prefix + key, value); } catch {} };
@@ -20,21 +20,23 @@
   const language = () => { const l = document.documentElement.lang.split('-')[0]; return languages.includes(l) ? l : 'en'; };
   function pagePath(url) {
     if (url.origin !== root.origin || !url.pathname.startsWith(root.pathname)) return null;
-    const p = url.pathname.slice(root.pathname.length).replace(/index\.html$/, '');
+    const p = url.pathname.slice(root.pathname.length).replace(/index\.html$/, '').replace(/^en\//, '');
     return pages.has(p) ? '/' + p : null;
   }
   const slug = value => /^[a-zA-Z0-9_-]{1,64}$/.test(value || '') ? value : undefined;
+  const aiSources = Object.freeze({'chatgpt.com': 'chatgpt', 'chat.openai.com': 'chatgpt', 'perplexity.ai': 'perplexity', 'www.perplexity.ai': 'perplexity', 'claude.ai': 'claude', 'gemini.google.com': 'gemini', 'copilot.microsoft.com': 'copilot'});
   function attribution() {
     const props = {};
     const u = new URL(location.href);
     for (const key of ['utm_source', 'utm_medium', 'utm_campaign']) {
-      const value = slug(u.searchParams.get(key));
+      const raw = u.searchParams.get(key);
+      const value = key === 'utm_source' && Object.hasOwn(aiSources, raw || '') ? aiSources[raw] : slug(raw);
       if (value) props[key] = value;
     }
     try {
       const ref = new URL(document.referrer);
       const hosts = ['github.com', 'google.com', 'www.google.com', 'bing.com', 'www.bing.com', 'baidu.com', 'www.baidu.com', 't.co', 'www.youtube.com'];
-      props.referrer_source = ref.origin === location.origin ? 'internal' : hosts.includes(ref.hostname) ? ref.hostname : 'other';
+      props.referrer_source = ref.origin === location.origin ? 'internal' : Object.hasOwn(aiSources, ref.hostname) ? aiSources[ref.hostname] : hosts.includes(ref.hostname) ? ref.hostname : 'other';
     } catch { props.referrer_source = 'direct'; }
     return props;
   }

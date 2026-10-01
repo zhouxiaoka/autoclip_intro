@@ -1,50 +1,29 @@
-# 官网流量、SEO 与 GEO
+# 官网 SEO 与 GEO
 
-日期：2026-10-01。站点：https://zhouxiaoka.github.io/autoclip_intro/
+更新：2026-10-02。官网：https://zhouxiaoka.github.io/autoclip_intro/；英文：https://zhouxiaoka.github.io/autoclip_intro/en/。
 
-官网访问量低，主要不是首页不好看，而是**发现层还在引用旧产品**。来了的人转化不差。不要把时间花在再做一版落地页。
+AutoClip（zhouxiaoka/autoclip）当前定位：开源 AI 视频剪辑桌面工具，一个链接、一键出片，交付视频、封面和发布文案。剪辑与渲染在本机，分析模型自选。当前产品事实和费用范围以 README、隐私说明、案例记录为依据。
 
-## 线上事实（已同意访客，PostHog `surface=website`）
+## 搜索入口
 
-近 30 日：`website_pageview` 69 次 / 38 个浏览器；几乎都发生在 2026-10-01。
+首页、案例库、三个场景页和两个功能页提供中文、英文静态 HTML。各自使用 canonical，zh-CN / en 互相声明 hreflang；x-default 指中文默认入口。其余六种语言在新版营销页面回退英文，不作为已翻译版本声明。显式语言切换和旧 `?lang=en` 链接会前往对应静态页面，保留 UTM 与锚点；不按浏览器语言自动重定向。
 
-同窗口：下载安装包点击 24 次 / 20 人，案例播放 13 次 / 9 人。同意访客里大约一半点了下载。
+修改文案后运行 `python3 scripts/build_search_pages.py` 并提交生成文件。发版同步脚本同样重建英文页面，CI 检查生成结果、元信息、静态正文、FAQ 与资源路径。正文、FAQ JSON-LD、README 和 llms 文件的费用与上传范围应保持一致。
 
-来源（近 14 日 pageview）：直接访问最多，Google 英文 6 个访客，Bing 1 个，GitHub 2 个。百度几乎没有。语言以英文为主。
+## 发现与归因
 
-这是**同意后才上报**的下限，不是全站精确 UV。DNT / GPC、拦截器和未点「允许」的人都不计入。网站 `$pageview` 为 0，因为官网不用 PostHog 默认像素。
+GitHub About 和 Topics 已更新。Google / Bing 已验证并提交 sitemap 和首页重抓。2026-10-02 上一轮提交时，Google sitemap 后台仍显示 Couldn't fetch，但实时 URL 检查抓取成功；提交不代表已收录。用 Search Console 查看各页面的真实状态，不重复提交以代替处理。
 
-客户端 1.5.0 当天 Windows 生产日活已经到十几台。人和下载主要不经过官网搜索。
+本次读取的 GitHub 近 14 日仓库数据：45,768 次访问；Google 4,482 次、t.co 4,376 次。它们是仓库数据，不是官网访客、下载或活跃用户；t.co 不一定来自项目自己的账号。
 
-## 为什么搜索和 AI 帮不上忙
+官网 AI 入口归类为 chatgpt / perplexity / claude / gemini / copilot。ChatGPT 自动附带的 `utm_source=chatgpt.com` 转换为固定类别，未知域名与邮件地址仍过滤。推广链接使用渠道与活动代号；复盘按漏斗第一步来源查看。详见 ANALYTICS.md。
 
-1. GitHub About 仍是旧句：`AI-powered video clipping and highlight generation · 一款智能高光提取与剪辑的二创工具`。Google 和多数模型先读这一行，不是官网 H1。
-2. 外站和旧索引还在引用「视频高光 / Docker / 申请内测」。
-3. `github.io` 项目站权重低，`llms.txt` 也不在域名根路径 `zhouxiaoka.github.io/llms.txt`。
-4. 首页对比表和 FAQ 以前在静态 HTML 里是空的，不执行 JS 的爬虫看不到。这次已把中文默认正文写进 HTML，并加了 `llms.txt` / `llms-full.txt`、刷新 sitemap。
+2026-10-01 的 PostHog 历史记录为 69 次官网 pageview / 38 个已同意浏览器，安装包点击 24 次 / 20 个浏览器。覆盖范围只含已同意访客，是小样本；不能据此认定稳定转化率，也不能与仓库访问相除。客户端首次出片、官网点击和 GitHub Stars 分别观察。
 
-## 你这周做的三件事（比再改官网值钱）
+## 持续内容
 
-1. **改 GitHub About**（Settings → General）  
-   Description：`一个链接，一键出片。开源桌面工具，本地把长视频剪成抖音 / 小红书 / TikTok / Shorts。`  
-   英文可作副句：`Open-source local clipper. One link, ready-to-post shorts.`  
-   Website 保持官网。Topics 建议加上：`tiktok` `youtube-shorts` `douyin` `podcast` `opensource` `tauri`，拿掉空泛的 `auto` / `videos`。
-2. **让爬虫重抓新文案**  
-   [Google Search Console](https://search.google.com/search-console) 验证 `zhouxiaoka.github.io`，提交 `https://zhouxiaoka.github.io/autoclip_intro/sitemap.xml`，对首页和 `llms-full.txt` 点「请求编入索引」。Bing Webmaster 同样做一遍。
-3. **把流量送到已经能转化的入口**  
-   README 顶栏加官网（本次已改中英）。发 1.5.0 的地方（HelloGitHub、Trendshift、讨论区、你常去的创作者群）用现在这句「一个链接，一键出片」，不要再用「高光 / 内测」。
+优先补真实案例、首次出片教程、播客转短视频步骤和本地/云端选择依据。每个案例写清来源、输入、平台、输出、版本、测试条件与限制；旧链路样本保留历史标签。首页与场景页通过真实链接连接案例和教程。使用真实结果做集中推广，再用渠道下载点击和首次出片反馈复盘。
 
-自定义域名（例如 `autoclip.sh` / `getautoclip.com`）能同时抬 SEO 和 GEO：`/llms.txt` 会出现在域根。有域名再做，不挡上面三步。
+`llms.txt` / `llms-full.txt` 是可引用的事实摘要，不是保证排名的机制。Google AI 搜索不要求额外 AI 文本文件，仍依赖可索引的可靠正文与内部链接：[Google AI 搜索指南](https://developers.google.com/search/docs/appearance/ai-features)。多语言 URL 的依据见[官方指南](https://developers.google.com/search/docs/specialty/international/managing-multi-regional-sites)。
 
-## 不要做的
-
-- 不要再堆关键词页或「OpusClip 平替」薄页。首页已有对照表，`llms-full.txt` 已写给回答引擎。
-- 不要为了统计关掉同意墙。看板名字继续叫「已同意访客」。
-- 不要把 Sentry 或客户端日活解释成官网 UV。
-
-## 本次仓库改动
-
-- `llms.txt` / `llms-full.txt`：给 ChatGPT / Claude / Perplexity / Gemini 的现行口径
-- `sitemap.xml` lastmod 提到 2026-10-01，补上案例库和 llms
-- 首页静态 FAQ、对照表、首屏导语可被无 JS 抓取
-- JSON-LD 补了版本、sameAs、WebSite
+继续使用 GitHub Pages。自定义域名不是本轮前置条件，也没有自动排名加成。域根 robots.txt 的 404 不等于 Google 被禁止抓取；项目子目录的 robots.txt 不能管理域根抓取规则：[robots.txt 规范](https://developers.google.com/crawling/docs/robots-txt/robots-txt-spec)。

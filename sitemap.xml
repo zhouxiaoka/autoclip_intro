@@ -2,23 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://zhouxiaoka.github.io/autoclip_intro/</loc>
-    <lastmod>2026-10-01</lastmod>
+    <lastmod>2026-10-02</lastmod>
   </url>
   <url>
     <loc>https://zhouxiaoka.github.io/autoclip_intro/cases/</loc>
-    <lastmod>2026-10-01</lastmod>
+    <lastmod>2026-10-02</lastmod>
   </url>
   <url>
     <loc>https://zhouxiaoka.github.io/autoclip_intro/use-cases/podcast/</loc>
-    <lastmod>2026-10-01</lastmod>
+    <lastmod>2026-10-02</lastmod>
   </url>
   <url>
     <loc>https://zhouxiaoka.github.io/autoclip_intro/use-cases/course/</loc>
-    <lastmod>2026-10-01</lastmod>
+    <lastmod>2026-10-02</lastmod>
   </url>
   <url>
     <loc>https://zhouxiaoka.github.io/autoclip_intro/use-cases/gameplay/</loc>
-    <lastmod>2026-10-01</lastmod>
+    <lastmod>2026-10-02</lastmod>
   </url>
   <url>
     <loc>https://zhouxiaoka.github.io/autoclip_intro/guides/publish/</loc>
@@ -26,11 +26,11 @@
   </url>
   <url>
     <loc>https://zhouxiaoka.github.io/autoclip_intro/features/publish/</loc>
-    <lastmod>2026-10-01</lastmod>
+    <lastmod>2026-10-02</lastmod>
   </url>
   <url>
     <loc>https://zhouxiaoka.github.io/autoclip_intro/features/auto-cover/</loc>
-    <lastmod>2026-10-01</lastmod>
+    <lastmod>2026-10-02</lastmod>
   </url>
   <url>
     <loc>https://zhouxiaoka.github.io/autoclip_intro/llms.txt</loc>
@@ -38,6 +38,34 @@
   </url>
   <url>
     <loc>https://zhouxiaoka.github.io/autoclip_intro/llms-full.txt</loc>
-    <lastmod>2026-10-01</lastmod>
+    <lastmod>2026-10-02</lastmod>
+  </url>
+  <url>
+    <loc>https://zhouxiaoka.github.io/autoclip_intro/en/</loc>
+    <lastmod>2026-10-02</lastmod>
+  </url>
+  <url>
+    <loc>https://zhouxiaoka.github.io/autoclip_intro/en/cases/</loc>
+    <lastmod>2026-10-02</lastmod>
+  </url>
+  <url>
+    <loc>https://zhouxiaoka.github.io/autoclip_intro/en/use-cases/podcast/</loc>
+    <lastmod>2026-10-02</lastmod>
+  </url>
+  <url>
+    <loc>https://zhouxiaoka.github.io/autoclip_intro/en/use-cases/course/</loc>
+    <lastmod>2026-10-02</lastmod>
+  </url>
+  <url>
+    <loc>https://zhouxiaoka.github.io/autoclip_intro/en/use-cases/gameplay/</loc>
+    <lastmod>2026-10-02</lastmod>
+  </url>
+  <url>
+    <loc>https://zhouxiaoka.github.io/autoclip_intro/en/features/publish/</loc>
+    <lastmod>2026-10-02</lastmod>
+  </url>
+  <url>
+    <loc>https://zhouxiaoka.github.io/autoclip_intro/en/features/auto-cover/</loc>
+    <lastmod>2026-10-02</lastmod>
   </url>
 </urlset>

@@ -14,7 +14,7 @@ function apply(lang){
 let saved=null;try{saved=localStorage.getItem('autoclip.lang');}catch(e){}
 const q=new URLSearchParams(location.search).get('lang');
 const nav=(navigator.languages||[navigator.language||'en']).map(l=>l.toLowerCase().split('-')[0]).filter(l=>ATTR[l])[0];
-apply(ATTR[q]?q:ATTR[saved]?saved:nav||'en');
+apply(ATTR[q]?q:document.documentElement.dataset?.staticLanguage|| (ATTR[saved]?saved:nav||'en'));
 document.getElementById('language')?.addEventListener('change',e=>{
  apply(e.target.value);
  const u=new URL(location.href);u.searchParams.set('lang',e.target.value);history.replaceState(null,'',u);

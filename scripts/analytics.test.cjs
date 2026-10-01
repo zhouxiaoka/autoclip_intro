@@ -98,6 +98,30 @@ test('actual downloads, anchor intent, release browsing and sponsor attribution 
   assert.equal(b.requests[2].payload.properties.platform,'windows');
   assert.equal(b.requests[5].payload.properties.sponsor_id,'partner-a'); assert.equal(b.requests[5].body.includes('secret'),false);
 });
+test('AI sources use fixed categories and do not admit arbitrary domains or email addresses', () => {
+  for (const [host, category] of [['chatgpt.com','chatgpt'],['www.perplexity.ai','perplexity'],['claude.ai','claude'],['gemini.google.com','gemini'],['copilot.microsoft.com','copilot']]) {
+    const b=boot({consent:'yes',url:'https://zhouxiaoka.github.io/autoclip_intro/?utm_source='+host,referrer:'https://'+host+'/private-conversation?secret=yes'});
+    const p=b.requests[0].payload.properties;
+    assert.equal(p.utm_source,category); assert.equal(p.referrer_source,category);
+    assert.equal(b.requests[0].body.includes('private-conversation'),false);
+    assert.equal(b.requests[0].body.includes('secret'),false);
+  }
+  for (const value of ['person@mail.com','private.example','chatgpt.com.evil.example']) {
+    const b=boot({consent:'yes',url:'https://zhouxiaoka.github.io/autoclip_intro/?utm_source='+value});
+    assert.equal(b.requests[0].payload.properties.utm_source,undefined);
+  }
+});
+test('English and case pages have stable page categories and count English download intent', () => {
+  for (const p of ['en/','en/use-cases/podcast/','cases/jensen-dwarkesh/','en/guides/first-clips/']) {
+    const b=boot({consent:'yes',url:'https://zhouxiaoka.github.io/autoclip_intro/'+p});
+    assert.equal(b.requests.length,1);
+    assert.equal(b.requests[0].payload.properties.page,'/'+p.replace(/^en\//,''));
+    b.click('https://zhouxiaoka.github.io/autoclip_intro/en/#download');
+    assert.equal(b.events().at(-1),'website_download_intent');
+  }
+  const unknown=boot({consent:'yes',url:'https://zhouxiaoka.github.io/autoclip_intro/en/private/'});
+  assert.equal(unknown.requests.length,0);
+});
 test('playback counts actual playing once per clip, completion separately, and no unrelated media', () => {
   const b=boot({consent:'yes'}), video={tagName:'VIDEO',currentSrc:'https://zhouxiaoka.github.io/autoclip_intro/assets/showcase/clip-9.mp4'};
   b.listeners.playing({type:'playing',target:video}); b.listeners.playing({type:'playing',target:video});

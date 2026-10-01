@@ -51,9 +51,9 @@ test('GEO files describe the 1.5 desktop product, not the old Docker demo', () =
 })
 
 test('homepage is crawlable without JavaScript', () => {
-  assert.match(html, /<p class="lede" data-i18n="hero.lede">贴链接/)
+  assert.match(html, /<p class="lede" data-i18n="hero.lede">[^<]*\S/)
   assert.match(html, /<summary data-i18n="faq.1.q">要花钱吗？<\/summary>/)
-  assert.match(html, /<p data-i18n="faq.1.a">AutoClip 免费开源/)
+  assert.match(html, /<p data-i18n="faq.1.a">AutoClip 免费、MIT 开源/)
   assert.match(html, /<span class="a" data-i18n="cmp.1.a">软件免费/)
   assert.match(html, /rel="llms-txt"/)
   assert.match(html, /hreflang="en"/)

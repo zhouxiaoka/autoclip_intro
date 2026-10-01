@@ -23,6 +23,7 @@ import re
 import sys
 import urllib.request
 from pathlib import Path
+from build_search_pages import build as build_search_pages
 
 ROOT = Path(__file__).resolve().parents[1]
 INDEX = ROOT / "index.html"
@@ -101,11 +102,12 @@ def main(argv: list[str] | None = None) -> int:
     updated = rewrite(html, old, new, assets)
     if updated == html:
         print("已是最新，无需改动")
-        return 0
+        return int(build_search_pages(check=args.check))
     if args.check:
         print("官网落后于最新 Release")
         return 1
     INDEX.write_text(updated, encoding="utf-8")
+    build_search_pages()
     changed = sum(1 for a, b in zip(html.splitlines(), updated.splitlines()) if a != b)
     print(f"index.html 已更新（{changed} 行）")
     return 0

@@ -18,7 +18,7 @@ const C={
 function apply(){
  const lang=(document.documentElement.lang||'en').split('-')[0],d=C[lang]||C.en;
  document.querySelectorAll('.site-footer [data-f]').forEach(el=>{const v=d[el.dataset.f];if(v!=null)el.textContent=v;});
- document.querySelectorAll('.site-footer a[href]').forEach(a=>{const u=new URL(a.getAttribute('href'),location.href);if(u.origin!==location.origin||u.hash&&u.pathname===location.pathname)return;u.searchParams.set('lang',lang);a.href=u.href;});
+ document.querySelectorAll('.site-footer a[href]').forEach(a=>{const u=new URL(a.getAttribute('href'),location.href);if(u.origin!==location.origin||u.hash&&u.pathname===location.pathname)return;u.searchParams.set('lang',lang);a.href=window.AutoClipLocale?window.AutoClipLocale.localized(u,lang).href:u.href;});
 }
 apply();new MutationObserver(apply).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
 })();
