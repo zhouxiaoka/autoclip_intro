@@ -1,0 +1,54 @@
+{
+ "schema": 1,
+ "id": "gates-ezra",
+ "added": "2026-10-01",
+ "scene": "interview",
+ "featured": true,
+ "contributor": null,
+ "source": {
+  "title": "Bill Gates: A.I. ‘Makes Nuclear Weapons Look Like Nothing’ | The Ezra Klein Show",
+  "channel": "The Ezra Klein Show",
+  "url": "https://www.youtube.com/watch?v=A_156w0aYtU",
+  "duration_sec": null,
+  "language": "zh"
+ },
+ "run": null,
+ "outputs": [
+  {
+   "id": "01",
+   "platform": "douyin",
+   "template": "interview",
+   "title_lines": [
+    "AI测试时竟会装傻？"
+   ],
+   "duration_sec": 61,
+   "video": "01.mp4",
+   "loop": "01-loop.mp4",
+   "poster": "01.jpg",
+   "cover": "01-cover.jpg",
+   "post": {
+    "title": "AI测试时竟会装傻？",
+    "description": "盖茨与主持人讨论模型识别测试环境、隐藏真实能力的可能性，以及这给评估带来的困难。",
+    "tags": []
+   }
+  },
+  {
+   "id": "02",
+   "platform": "douyin",
+   "template": "interview",
+   "title_lines": [
+    "盖茨出的题，AI拿了满分"
+   ],
+   "duration_sec": 122,
+   "video": "02.mp4",
+   "loop": "02-loop.mp4",
+   "poster": "02.jpg",
+   "cover": "02-cover.jpg",
+   "post": {
+    "title": "盖茨出的题，AI拿了满分",
+    "description": "从一次 AP 生物考试挑战谈起，盖茨回顾自己如何认识到 AI 能力的变化。",
+    "tags": []
+   }
+  }
+ ]
+}

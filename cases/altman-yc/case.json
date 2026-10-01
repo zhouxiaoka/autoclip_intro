@@ -1,0 +1,44 @@
+{
+ "schema": 1,
+ "id": "altman-yc",
+ "added": "2026-10-01",
+ "scene": "interview",
+ "featured": false,
+ "contributor": null,
+ "source": {
+  "title": "Sam Altman: “Never a Better Time to Do a Startup”",
+  "channel": "Y Combinator",
+  "url": "https://www.youtube.com/watch?v=ZIaOBAjvc38",
+  "duration_sec": 2340,
+  "language": "en"
+ },
+ "run": null,
+ "outputs": [
+  {
+   "id": "01",
+   "platform": "xiaohongshu",
+   "template": "interview",
+   "title_lines": [
+    "AI是权力放大器",
+    "均质化还是垄断化？"
+   ],
+   "duration_sec": 173,
+   "video": "01.mp4",
+   "loop": "01-loop.mp4",
+   "poster": "01.jpg"
+  },
+  {
+   "id": "02",
+   "platform": "youtube_shorts",
+   "template": "podcast",
+   "title_lines": [
+    "Starting a Startup Is Your",
+    "Contribution to Equitable AI"
+   ],
+   "duration_sec": 160,
+   "video": "02.mp4",
+   "loop": "02-loop.mp4",
+   "poster": "02.jpg"
+  }
+ ]
+}

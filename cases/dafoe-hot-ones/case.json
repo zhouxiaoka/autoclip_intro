@@ -1,0 +1,106 @@
+{
+  "schema": 1,
+  "id": "dafoe-hot-ones",
+  "added": "2026-10-01",
+  "scene": "interview",
+  "featured": true,
+  "contributor": null,
+  "source": {
+    "title": "Willem Dafoe Comes Alive While Eating Spicy Wings | Hot Ones",
+    "channel": "First We Feast",
+    "url": "https://www.youtube.com/watch?v=YqugY2zTIoI",
+    "duration_sec": 1403,
+    "language": "en"
+  },
+  "run": null,
+  "outputs": [
+    {
+      "id": "01",
+      "platform": "tiktok",
+      "template": "podcast",
+      "title_lines": [
+        "Fake teeth made him feel lascivious",
+        "and instantly became the character"
+      ],
+      "duration_sec": 67,
+      "source_start_sec": 296,
+      "video": "01.mp4",
+      "loop": "01-loop.mp4",
+      "poster": "01.jpg",
+      "cover": "01-cover.jpg",
+      "post": {
+        "title": "Fake teeth made him feel lascivious and instantly become the character",
+        "description": "Willem Dafoe describes how a pair of fake teeth changed his body language and helped him find a character. From Hot Ones.",
+        "tags": []
+      },
+      "mood": "playful",
+      "palette": "lemon"
+    },
+    {
+      "id": "02",
+      "platform": "douyin",
+      "template": "interview",
+      "title_lines": [
+        "拉雪橇不是演",
+        "是活下来"
+      ],
+      "duration_sec": 73,
+      "source_start_sec": 416,
+      "video": "02.mp4",
+      "loop": "02-loop.mp4",
+      "poster": "02.jpg",
+      "cover": "02-cover.jpg",
+      "post": {
+        "title": "拉雪橇不是演戏，是拼命稳住别被狗拽飞！",
+        "description": "威廉·达福分享拍摄《多哥》时驾驭雪橇犬的经历，讲述真实体验如何进入表演。",
+        "tags": []
+      },
+      "mood": "bold",
+      "palette": "coral"
+    },
+    {
+      "id": "03",
+      "platform": "tiktok",
+      "template": "podcast",
+      "title_lines": [
+        "Action breeds inspiration",
+        "not the other way around"
+      ],
+      "duration_sec": 40,
+      "source_start_sec": 913,
+      "video": "03.mp4",
+      "loop": "03-loop.mp4",
+      "poster": "03.jpg",
+      "cover": "03-cover.jpg",
+      "post": {
+        "title": "Action breeds inspiration—not the other way around.",
+        "description": "Willem Dafoe on why action, listening, and unexpected moments shape the creative process. From Hot Ones.",
+        "tags": []
+      },
+      "mood": "bold",
+      "palette": "coral"
+    },
+    {
+      "id": "04",
+      "platform": "tiktok",
+      "template": "podcast",
+      "title_lines": [
+        "What makes you feel alive?",
+        "Melting into the present"
+      ],
+      "duration_sec": 45,
+      "source_start_sec": 1248,
+      "video": "04.mp4",
+      "loop": "04-loop.mp4",
+      "poster": "04.jpg",
+      "cover": "04-cover.jpg",
+      "post": {
+        "title": "What makes you feel alive? Willem Dafoe’s answer melted me.",
+        "description": "Willem Dafoe reflects on feeling alive by being fully present in the moment. From Hot Ones.",
+        "tags": []
+      },
+      "mood": "warm",
+      "palette": "amber"
+    }
+  ]
+}

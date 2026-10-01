@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "id": "luyu-guokeyu",
+  "added": "2026-10-01",
+  "scene": "interview",
+  "featured": true,
+  "contributor": null,
+  "source": {
+    "title": "鲁豫对话郭柯宇：一个影后的消失与归来 | 陈鲁豫·慢谈EP25【视频播客】",
+    "channel": "陈鲁豫-慢谈",
+    "url": "https://www.bilibili.com/video/BV1LDYV6HEXR/",
+    "duration_sec": 9931,
+    "language": "zh"
+  },
+  "run": null,
+  "outputs": [
+    {
+      "id": "01",
+      "platform": "douyin",
+      "template": "interview",
+      "title_lines": [
+        "演员的快感在创作过程",
+        "不在结果"
+      ],
+      "duration_sec": 71,
+      "source_start_sec": 429,
+      "video": "01.mp4",
+      "loop": "01-loop.mp4",
+      "poster": "01.jpg",
+      "cover": "01-cover.jpg",
+      "post": {
+        "title": "演员的快感在创作过程，不在结果",
+        "description": "郭柯宇在与鲁豫的对谈中分享表演体验：创作过程、团队投入与角色的形成，如何带来演员的快乐。",
+        "tags": []
+      },
+      "mood": "warm",
+      "palette": "amber"
+    },
+    {
+      "id": "02",
+      "platform": "douyin",
+      "template": "interview",
+      "title_lines": [
+        "AI取代不了演员的心流",
+        "最核心的创作无法复制"
+      ],
+      "duration_sec": 67,
+      "source_start_sec": 596,
+      "video": "02.mp4",
+      "loop": "02-loop.mp4",
+      "poster": "02.jpg",
+      "cover": "02-cover.jpg",
+      "post": {
+        "title": "AI能演戏？郭柯宇：它连我的心流都抓不住！",
+        "description": "郭柯宇与鲁豫聊 AI 与表演，探讨心流、即兴和演员之间的真实碰撞。",
+        "tags": []
+      },
+      "mood": "bold",
+      "palette": "coral"
+    }
+  ]
+}

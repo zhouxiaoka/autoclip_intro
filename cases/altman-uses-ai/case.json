@@ -1,0 +1,56 @@
+{
+ "schema": 1,
+ "id": "altman-uses-ai",
+ "added": "2026-10-01",
+ "scene": "interview",
+ "featured": false,
+ "contributor": null,
+ "source": {
+  "title": "How Sam Altman Actually Uses AI to Run OpenAI and His Life",
+  "channel": "Sam Altman",
+  "url": "https://www.youtube.com/watch?v=jZh55CQwSh8",
+  "duration_sec": null,
+  "language": "zh"
+ },
+ "run": null,
+ "outputs": [
+  {
+   "id": "01",
+   "platform": "bilibili",
+   "template": "original",
+   "title_lines": [
+    "AI是文艺复兴，还是工业革命？"
+   ],
+   "duration_sec": 122,
+   "aspect": "16:9",
+   "video": "01.mp4",
+   "loop": "01-loop.mp4",
+   "poster": "01.jpg",
+   "cover": "01-cover.jpg",
+   "post": {
+    "title": "AI是文艺复兴，还是工业革命？",
+    "description": "访谈从人的创造力和文化价值出发，讨论 AI 对社会的影响为什么可能超出一次产业升级。",
+    "tags": []
+   }
+  },
+  {
+   "id": "02",
+   "platform": "bilibili",
+   "template": "original",
+   "title_lines": [
+    "把AI的“火种”交给所有人"
+   ],
+   "duration_sec": 73,
+   "aspect": "16:9",
+   "video": "02.mp4",
+   "loop": "02-loop.mp4",
+   "poster": "02.jpg",
+   "cover": "02-cover.jpg",
+   "post": {
+    "title": "把AI的“火种”交给所有人",
+    "description": "围绕平台与创业公司的关系，受访者讨论怎样让更多人利用 AI 创造自己的产品。",
+    "tags": []
+   }
+  }
+ ]
+}

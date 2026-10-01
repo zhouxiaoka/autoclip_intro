@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "id": "rubin-doac",
+  "added": "2026-10-01",
+  "scene": "interview",
+  "featured": false,
+  "contributor": null,
+  "source": {
+    "title": "Rick Rubin: The Only Skill That Matters Now Is The One Thing AI Can Never Steal!",
+    "channel": "The Diary Of A CEO",
+    "url": "https://www.youtube.com/watch?v=a_GiFiHXJ6g",
+    "duration_sec": 9989,
+    "language": "en"
+  },
+  "run": null,
+  "outputs": [
+    {
+      "id": "01",
+      "platform": "youtube_shorts",
+      "template": "podcast",
+      "title_lines": [
+        "'Indefensible' is the highest",
+        "standard for art"
+      ],
+      "duration_sec": 93,
+      "source_start_sec": 229,
+      "video": "01.mp4",
+      "loop": "01-loop.mp4",
+      "poster": "01.jpg",
+      "cover": "01-cover.jpg",
+      "post": {
+        "title": "‘Indefensible’ is the highest standard for art",
+        "description": "Rick Rubin discusses intuition in art and why creative choices do not always need a logical defense. From The Diary Of A CEO.",
+        "tags": []
+      },
+      "mood": "bold",
+      "palette": "lemon"
+    },
+    {
+      "id": "02",
+      "platform": "youtube_shorts",
+      "template": "podcast",
+      "title_lines": [
+        "Creation is an offering to God",
+        "Not a product for metrics"
+      ],
+      "duration_sec": 59,
+      "source_start_sec": 6484,
+      "video": "02.mp4",
+      "loop": "02-loop.mp4",
+      "poster": "02.jpg",
+      "cover": "02-cover.jpg",
+      "post": {
+        "title": "Rick Rubin: Creating Music as an Offering to God, Not for Hits or Metrics",
+        "description": "Rick Rubin shares an approach to music driven by the creative process rather than hits or metrics. From The Diary Of A CEO.",
+        "tags": []
+      },
+      "mood": "warm",
+      "palette": "amber"
+    }
+  ]
+}

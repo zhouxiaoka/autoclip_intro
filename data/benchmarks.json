@@ -1,0 +1,30 @@
+{
+ "schema": 1,
+ "measured": "2026-10-01",
+ "machine": {"zh": "Apple Silicon Mac，渲染低优先级、单线程排队", "en": "Apple Silicon Mac, low-priority single-queue rendering"},
+ "model": "qwen-plus",
+ "price": {"in_per_million": 0.8, "out_per_million": 2, "currency": "CNY",
+  "note": {"zh": "按阿里云百炼第三方汇总价估算，以官网为准", "en": "Estimated from third-party Alibaba Cloud Model Studio price summaries; check the official page"}},
+ "asr": {"zh": "本地 Whisper base（免费，占用本机 CPU）", "en": "Local Whisper base (free, uses your CPU)"},
+ "marginal_cost_cny": 0.005,
+ "headline": "jensen-new",
+ "chart": ["mrbeast-old", "jensen-new", "tim-new"],
+ "runs": [
+  {"id": "mrbeast-old", "pipeline": "old", "subtitles": "none",
+   "video": {"zh": "MrBeast", "en": "MrBeast"}, "route": {"zh": "英文 → TikTok", "en": "English → TikTok"},
+   "duration_sec": 7560, "minutes": 65, "found": 33, "rendered": 33, "model_calls": 194, "tokens_in": 531000, "tokens_out": 106000, "cost_cny": 0.64,
+   "stages": {"download": 1, "asr": 9.3, "pick": 35, "package": 6, "render": 14}},
+  {"id": "karpathy-mid", "pipeline": "mid", "subtitles": "none",
+   "video": {"zh": "Karpathy", "en": "Karpathy"}, "route": {"zh": "英文 → 抖音", "en": "English → Douyin"},
+   "duration_sec": 8760, "minutes": 34, "found": 25, "rendered": 25, "model_calls": 53, "tokens_in": 143000, "tokens_out": 25000, "cost_cny": 0.16,
+   "stages": null},
+  {"id": "jensen-new", "pipeline": "new", "subtitles": "creator",
+   "video": {"zh": "Jensen Huang", "en": "Jensen Huang"}, "route": {"zh": "英文 → 小红书", "en": "English → Xiaohongshu"},
+   "duration_sec": 6193, "minutes": 7.5, "found": 21, "rendered": 10, "model_calls": 34, "tokens_in": 77000, "tokens_out": 12000, "cost_cny": 0.09,
+   "stages": {"download": 1, "asr": 0, "pick": 0.42, "package": 2.5, "render": 3}},
+  {"id": "tim-new", "pipeline": "new", "subtitles": "none",
+   "video": {"zh": "TIM × 罗永浩", "en": "TIM × Luo Yonghao"}, "route": {"zh": "中文 → 抖音", "en": "Chinese → Douyin"},
+   "duration_sec": 10347, "minutes": 29.5, "found": 18, "rendered": 10, "model_calls": 32, "tokens_in": 222000, "tokens_out": 11000, "cost_cny": 0.20,
+   "stages": {"download": 1, "asr": 23, "pick": 0.67, "package": 3, "render": 2.8}}
+ ]
+}

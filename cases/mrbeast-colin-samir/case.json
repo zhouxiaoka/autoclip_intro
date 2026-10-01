@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "id": "mrbeast-colin-samir",
+  "added": "2026-10-01",
+  "scene": "interview",
+  "featured": false,
+  "contributor": null,
+  "source": {
+    "title": "A Brutally Honest Conversation with MrBeast",
+    "channel": "Colin and Samir",
+    "url": "https://www.youtube.com/watch?v=9IQ_ldV9z_A",
+    "duration_sec": 7574,
+    "language": "en"
+  },
+  "run": null,
+  "outputs": [
+    {
+      "id": "01",
+      "platform": "tiktok",
+      "template": "podcast",
+      "title_lines": [
+        "YouTube's first 5 seconds",
+        "matter more than thumbnails"
+      ],
+      "duration_sec": 102,
+      "source_start_sec": 3032,
+      "video": "01.mp4",
+      "loop": "01-loop.mp4",
+      "poster": "01.jpg",
+      "cover": "01-cover.jpg",
+      "post": {
+        "title": "YouTube’s first 5 seconds matter more than thumbnails",
+        "description": "MrBeast’s team explains how autoplay changes thumbnail strategy and why the opening five seconds matter. From Colin and Samir.",
+        "tags": []
+      },
+      "mood": "bold",
+      "palette": "coral"
+    }
+  ]
+}

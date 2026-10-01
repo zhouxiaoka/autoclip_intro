@@ -1,0 +1,56 @@
+{
+ "schema": 1,
+ "id": "luyu-tongliya",
+ "added": "2026-10-01",
+ "scene": "interview",
+ "featured": false,
+ "contributor": null,
+ "source": {
+  "title": "陈鲁豫对话佟丽娅丨EP04正片",
+  "channel": "陈鲁豫",
+  "url": "https://www.bilibili.com/video/BV1qheu6kEFV/",
+  "duration_sec": null,
+  "language": "zh"
+ },
+ "run": null,
+ "outputs": [
+  {
+   "id": "01",
+   "platform": "bilibili",
+   "template": "original",
+   "title_lines": [
+    "舞蹈是我骨子里的东西"
+   ],
+   "duration_sec": 101,
+   "aspect": "16:9",
+   "video": "01.mp4",
+   "loop": "01-loop.mp4",
+   "poster": "01.jpg",
+   "cover": "01-cover.jpg",
+   "post": {
+    "title": "舞蹈是我骨子里的东西",
+    "description": "佟丽娅回忆童年跳舞的经历，聊起舞蹈如何成为她身体和生活的一部分。",
+    "tags": []
+   }
+  },
+  {
+   "id": "02",
+   "platform": "bilibili",
+   "template": "original",
+   "title_lines": [
+    "离家很远：不是逃离，是奔向自由"
+   ],
+   "duration_sec": 77,
+   "aspect": "16:9",
+   "video": "02.mp4",
+   "loop": "02-loop.mp4",
+   "poster": "02.jpg",
+   "cover": "02-cover.jpg",
+   "post": {
+    "title": "离家很远：不是逃离，是奔向自由",
+    "description": "从离家到在北京独立生活，佟丽娅回顾摆脱熟悉环境、建立自我认同的过程。",
+    "tags": []
+   }
+  }
+ ]
+}

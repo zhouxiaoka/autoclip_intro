@@ -1,0 +1,84 @@
+{
+  "schema": 1,
+  "id": "neumann-doac",
+  "added": "2026-10-01",
+  "scene": "interview",
+  "featured": true,
+  "contributor": null,
+  "source": {
+    "title": "WeWork Founder: His $47 Billion Empire Collapsed! | Adam Neumann",
+    "channel": "The Diary Of A CEO",
+    "url": "https://www.youtube.com/watch?v=IQ4JVWdj4Q0",
+    "duration_sec": 8104,
+    "language": "en"
+  },
+  "run": null,
+  "outputs": [
+    {
+      "id": "01",
+      "platform": "tiktok",
+      "template": "podcast",
+      "title_lines": [
+        "Success is how you feel one minute",
+        "before death—full of love, no regret"
+      ],
+      "duration_sec": 59,
+      "source_start_sec": 1074,
+      "video": "01.mp4",
+      "loop": "01-loop.mp4",
+      "poster": "01.jpg",
+      "cover": "01-cover.jpg",
+      "post": {
+        "title": "What does success really feel like one minute before you die?",
+        "description": "Adam Neumann reflects on success, love, and what matters at the end of life. From The Diary Of A CEO.",
+        "tags": []
+      },
+      "mood": "warm",
+      "palette": "amber"
+    },
+    {
+      "id": "02",
+      "platform": "tiktok",
+      "template": "podcast",
+      "title_lines": [
+        "WeWork is a factory of dreams",
+        "Not just office space"
+      ],
+      "duration_sec": 37,
+      "source_start_sec": 3767,
+      "video": "02.mp4",
+      "loop": "02-loop.mp4",
+      "poster": "02.jpg",
+      "cover": "02-cover.jpg",
+      "post": {
+        "title": "WeWork is a factory of dreams, not just office space",
+        "description": "Adam Neumann explains the ambition behind WeWork and why he saw it as a place for people to build their dreams.",
+        "tags": []
+      },
+      "mood": "bold",
+      "palette": "lemon"
+    },
+    {
+      "id": "03",
+      "platform": "douyin",
+      "template": "interview",
+      "title_lines": [
+        "选伴侣不是为最好时光",
+        "而是最坏那天"
+      ],
+      "duration_sec": 55,
+      "source_start_sec": 7851,
+      "video": "03.mp4",
+      "loop": "03-loop.mp4",
+      "poster": "03.jpg",
+      "cover": "03-cover.jpg",
+      "post": {
+        "title": "选伴侣，不是为最好时光，而是最坏那天",
+        "description": "亚当·诺伊曼谈伴侣选择：人生低谷中的陪伴，如何影响关系与自我成长。",
+        "tags": []
+      },
+      "mood": "bold",
+      "palette": "coral"
+    }
+  ]
+}

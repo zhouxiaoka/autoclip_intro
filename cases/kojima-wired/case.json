@@ -1,0 +1,44 @@
+{
+ "schema": 1,
+ "id": "kojima-wired",
+ "added": "2026-10-01",
+ "scene": "interview",
+ "featured": false,
+ "contributor": null,
+ "source": {
+  "title": "Hideo Kojima Answers Hideo Kojima Questions | Tech Support",
+  "channel": "WIRED",
+  "url": "https://www.youtube.com/watch?v=02Ah5VQrzvA",
+  "duration_sec": 1033,
+  "language": "en"
+ },
+ "run": null,
+ "outputs": [
+  {
+   "id": "01",
+   "platform": "douyin",
+   "template": "interview",
+   "title_lines": [
+    "休学一年打马里奥",
+    "确信游戏将超越电影"
+   ],
+   "duration_sec": 73,
+   "video": "01.mp4",
+   "loop": "01-loop.mp4",
+   "poster": "01.jpg"
+  },
+  {
+   "id": "02",
+   "platform": "douyin",
+   "template": "interview",
+   "title_lines": [
+    "《死亡搁浅》主题即机制",
+    "故事与设计从一开始就不分家"
+   ],
+   "duration_sec": 59,
+   "video": "02.mp4",
+   "loop": "02-loop.mp4",
+   "poster": "02.jpg"
+  }
+ ]
+}

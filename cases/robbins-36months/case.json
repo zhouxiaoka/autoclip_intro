@@ -1,0 +1,54 @@
+{
+ "schema": 1,
+ "id": "robbins-36months",
+ "added": "2026-10-01",
+ "scene": "podcast",
+ "featured": false,
+ "contributor": null,
+ "source": {
+  "title": "The Next 36 Months Will Change Everything - Tony Robbins (4K)",
+  "channel": "Tony Robbins",
+  "url": "https://www.youtube.com/watch?v=DuRcrbP3kag",
+  "duration_sec": null,
+  "language": "zh"
+ },
+ "run": null,
+ "outputs": [
+  {
+   "id": "01",
+   "platform": "douyin",
+   "template": "podcast",
+   "title_lines": [
+    "风险极小，回报极大？"
+   ],
+   "duration_sec": 105,
+   "video": "01.mp4",
+   "loop": "01-loop.mp4",
+   "poster": "01.jpg",
+   "cover": "01-cover.jpg",
+   "post": {
+    "title": "风险极小，回报极大？",
+    "description": "托尼·罗宾斯分享他对风险与回报的思考，以及做重要决策时如何评估可能的损失。",
+    "tags": []
+   }
+  },
+  {
+   "id": "02",
+   "platform": "douyin",
+   "template": "podcast",
+   "title_lines": [
+    "决策卡住？试试这套六步法"
+   ],
+   "duration_sec": 183,
+   "video": "02.mp4",
+   "loop": "02-loop.mp4",
+   "poster": "02.jpg",
+   "cover": "02-cover.jpg",
+   "post": {
+    "title": "决策卡住？试试这套六步法",
+    "description": "从目标、选择到行动，托尼·罗宾斯用六步流程解释怎样拆解一个迟迟无法决定的问题。",
+    "tags": []
+   }
+  }
+ ]
+}

@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "id": "druski-doac",
+  "added": "2026-10-01",
+  "scene": "interview",
+  "featured": false,
+  "contributor": null,
+  "source": {
+    "title": "Druski: They're Lying To You About Overnight Success!",
+    "channel": "The Diary Of A CEO",
+    "url": "https://www.youtube.com/watch?v=UhzI1fg8rCA",
+    "duration_sec": 6522,
+    "language": "en"
+  },
+  "run": null,
+  "outputs": [
+    {
+      "id": "01",
+      "platform": "tiktok",
+      "template": "podcast",
+      "title_lines": [
+        "Rejected by Netflix & Amazon,",
+        "I bet on myself instead."
+      ],
+      "duration_sec": 129,
+      "source_start_sec": 5032,
+      "video": "01.mp4",
+      "loop": "01-loop.mp4",
+      "poster": "01.jpg",
+      "cover": "01-cover.jpg",
+      "post": {
+        "title": "Netflix & Amazon said NO... so I bet on myself instead",
+        "description": "Druski explains how rejections from major platforms led him to self-fund his shows. From The Diary Of A CEO.",
+        "tags": []
+      },
+      "mood": "bold",
+      "palette": "coral"
+    }
+  ]
+}

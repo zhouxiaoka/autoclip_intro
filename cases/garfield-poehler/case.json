@@ -1,0 +1,54 @@
+{
+ "schema": 1,
+ "id": "garfield-poehler",
+ "added": "2026-10-01",
+ "scene": "podcast",
+ "featured": true,
+ "contributor": null,
+ "source": {
+  "title": "Andrew Garfield | Good Hang with Amy Poehler",
+  "channel": "Good Hang with Amy Poehler",
+  "url": "https://www.youtube.com/watch?v=OJV8AaWCxQQ",
+  "duration_sec": null,
+  "language": "en"
+ },
+ "run": null,
+ "outputs": [
+  {
+   "id": "01",
+   "platform": "youtube_shorts",
+   "template": "podcast",
+   "title_lines": [
+    "I Love Competition—but Hate Fake Casualness"
+   ],
+   "duration_sec": 60,
+   "video": "01.mp4",
+   "loop": "01-loop.mp4",
+   "poster": "01.jpg",
+   "cover": "01-cover.jpg",
+   "post": {
+    "title": "I Love Competition—but Hate Fake Casualness",
+    "description": "Andrew Garfield and Amy Poehler talk about loving games and taking competition seriously.",
+    "tags": []
+   }
+  },
+  {
+   "id": "02",
+   "platform": "youtube_shorts",
+   "template": "podcast",
+   "title_lines": [
+    "Not a Method Actor—an Actor With a Method"
+   ],
+   "duration_sec": 136,
+   "video": "02.mp4",
+   "loop": "02-loop.mp4",
+   "poster": "02.jpg",
+   "cover": "02-cover.jpg",
+   "post": {
+    "title": "Not a Method Actor—an Actor With a Method",
+    "description": "Andrew Garfield reflects on acting technique and the difference between a label and a personal creative process.",
+    "tags": []
+   }
+  }
+ ]
+}

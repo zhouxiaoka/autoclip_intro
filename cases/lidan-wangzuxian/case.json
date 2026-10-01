@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "id": "lidan-wangzuxian",
+  "added": "2026-10-01",
+  "scene": "interview",
+  "featured": false,
+  "contributor": null,
+  "source": {
+    "title": "李诞对话王祖贤丨EP05正片",
+    "channel": "新浪丨互相关注",
+    "url": "https://www.bilibili.com/video/BV1XHhW6PEpf/",
+    "duration_sec": 7251,
+    "language": "zh"
+  },
+  "run": null,
+  "outputs": [
+    {
+      "id": "01",
+      "platform": "douyin",
+      "template": "interview",
+      "title_lines": [
+        "19岁捐建祖贤路",
+        "乡亲至今还在走"
+      ],
+      "duration_sec": 73,
+      "source_start_sec": 3035,
+      "video": "01.mp4",
+      "loop": "01-loop.mp4",
+      "poster": "01.jpg",
+      "cover": "01-cover.jpg",
+      "post": {
+        "title": "19岁捐建祖贤路，乡亲至今还在走",
+        "description": "王祖贤在与李诞的对谈中回忆返乡捐建“祖贤路”的故事，讲述自己与故乡的联系。",
+        "tags": []
+      },
+      "mood": "warm",
+      "palette": "amber"
+    },
+    {
+      "id": "02",
+      "platform": "xiaohongshu",
+      "template": "interview",
+      "title_lines": [
+        "哥哥是片场唯一讲国语的人",
+        "他让我安心"
+      ],
+      "duration_sec": 95,
+      "source_start_sec": 3427,
+      "video": "02.mp4",
+      "loop": "02-loop.mp4",
+      "poster": "02.jpg",
+      "cover": "02-cover.jpg",
+      "post": {
+        "title": "19岁在港拍戏，靠哥哥的国语稳住心神",
+        "description": "王祖贤与李诞回顾初到香港拍戏的经历，讲述张国荣用国语交流给予她的安心与照顾。",
+        "tags": []
+      },
+      "mood": "warm",
+      "palette": "rose"
+    }
+  ]
+}
