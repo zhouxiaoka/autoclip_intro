@@ -1,14 +1,24 @@
 <!doctype html>
 <html lang="zh">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AutoClip · 访问统计 / Site analytics</title><link rel="stylesheet" href="../tokens.css"><style>body{margin:0;padding:32px 20px;font:16px/1.8 system-ui,sans-serif;background:#f6f5f2;color:#252525}main,header,footer{max-width:760px;margin:auto}h1,h2{line-height:1.3}a{color:#235ca8}section{margin:32px 0}button:focus-visible,summary:focus-visible,a:focus-visible{outline:2px solid #235ca8;outline-offset:3px}</style></head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AutoClip · 隐私政策 / Privacy</title><link rel="stylesheet" href="../tokens.css"><style>body{margin:0;padding:32px 20px;font:16px/1.8 system-ui,sans-serif;background:#f6f5f2;color:#252525}main,header,footer{max-width:760px;margin:auto}h1,h2{line-height:1.3}a{color:#235ca8}section{margin:32px 0}button:focus-visible,summary:focus-visible,a:focus-visible{outline:2px solid #235ca8;outline-offset:3px}</style></head>
 <body><header><a href="../">← AutoClip</a> · <a href="#english" lang="en">English</a></header>
-<main><h1>官网访问统计</h1><p>更新日期：2026-09-29</p>
-<p>我们希望了解哪些页面、案例和下载入口对访客有帮助。只有你在官网页脚选择「允许」后，才会向 PostHog 发送访问统计。拒绝不影响浏览、播放或下载；你可以随时在页脚关闭。</p>
+<main><h1>隐私政策与访问统计</h1><p>更新日期：2026-10-01</p>
+<div id="site-analytics-settings"></div>
+<noscript><p>JavaScript 未开启，官网不会发送访问统计。/ JavaScript is disabled; no website analytics are sent.</p></noscript>
+<p>我们希望了解哪些页面、案例和下载入口对访客有帮助。只有你在首次访问提示中选择「允许并继续」，或在本页选择「允许」后，才会向 PostHog 发送访问统计。拒绝不影响浏览、播放或下载；你可以随时通过官网页脚「隐私政策」返回本页关闭。选择保存在浏览器本地存储中，本统计功能不使用 Cookie。</p>
 <ul><li>记录匿名浏览器标识、页面分类、语言、来源分类和推广活动标记，以及下载、案例播放、赞助链接和文档入口点击。</li><li>不记录屏幕、表单内容、完整网址或用户提供的素材；不与 AutoClip 客户端身份关联，不创建个人档案。关闭后删除本浏览器的网站统计标识并停止新上报，不会自动删除此前已发送的数据。</li><li>浏览器的「不跟踪」或 Global Privacy Control 开启时，不发送统计。选择和允许后生成的随机标识保存在本浏览器，直到你关闭统计或清理网站存储。</li><li>数据由现有 PostHog 项目接收。网络传输会让接收服务获得连接 IP；事件关闭地理位置解析，不主动附带 IP 字段。服务区域见下方说明。</li></ul>
 <p>查询、删除或其他问题请联系 <a href="mailto:christine_zhouye@163.com">christine_zhouye@163.com</a>。<a href="https://posthog.com/privacy">PostHog 隐私政策</a>。</p>
-<section id="english" lang="en"><h2>Website analytics</h2><p>Updated: 2026-09-29</p><p>Analytics starts only after you choose Allow in the website footer. Declining does not affect browsing, playback or downloads. You can disable collection at any time.</p>
+<section id="english" lang="en"><h2>Website analytics</h2><p>Updated: 2026-10-01</p><p>Analytics starts only after you choose Allow and continue in the first-visit notice, or Allow on this page. Declining does not affect browsing, playback or downloads. Return here through the website footer’s Privacy link to change your choice at any time. Your preference is saved in browser local storage; this analytics feature does not use cookies.</p>
 <ul><li>We collect a random browser identifier, page category, language, source category, campaign tags, and download, demo, sponsor and resource interactions.</li><li>No session recording, form contents, full URLs or uploaded media. Website identifiers are separate from the AutoClip app; no person profiles are created. Disabling deletes the local website identifier and stops new events, but does not delete previously sent data.</li><li>Do Not Track and Global Privacy Control are respected. Your preference and, after consent, a random identifier are stored in this browser until you disable analytics or clear website storage.</li><li>Data goes to our existing PostHog project. The receiving service sees your connection IP; geographic enrichment is disabled and no IP field is explicitly sent. See the service region below.</li></ul>
 <p>For access, deletion or other questions: <a href="mailto:christine_zhouye@163.com">christine_zhouye@163.com</a>. <a href="https://posthog.com/privacy">PostHog privacy policy</a>.</p></section>
+<section><h2>AutoClip 客户端 / AutoClip app</h2><p>以上设置仅控制官网统计。客户端的数据处理与设置见 <a href="https://github.com/zhouxiaoka/autoclip/blob/main/docs/PRIVACY.md">客户端隐私政策</a> / <a href="https://github.com/zhouxiaoka/autoclip/blob/main/docs/PRIVACY.en.md" lang="en">App privacy policy</a>。</p></section>
 <p id="region"></p></main><footer></footer>
+<script>
+(() => {
+  const languages = ['zh', 'en', 'ja', 'ko', 'es', 'pt', 'ru', 'fr'];
+  const lang = new URLSearchParams(location.search).get('lang');
+  if (languages.includes(lang)) document.documentElement.lang = lang;
+})();
+</script>
 <script src="../assets/analytics-config.js"></script><script>document.getElementById('region').textContent=window.AUTOCLIP_ANALYTICS_CONFIG.host.includes('eu.i.')?'服务区域：欧盟 / Service region: EU':'服务区域：美国 / Service region: US';</script><script src="../assets/analytics.js"></script>
 </body></html>
