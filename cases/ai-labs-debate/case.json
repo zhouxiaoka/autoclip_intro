@@ -1,0 +1,54 @@
+{
+ "schema": 1,
+ "id": "ai-labs-debate",
+ "added": "2026-10-01",
+ "scene": "interview",
+ "featured": false,
+ "contributor": null,
+ "source": {
+  "title": "AI Experts Debate: The AI Labs Are Lying To Everyone, Is There A 99% Chance Of Human Extinction?",
+  "channel": "AI Experts Debate",
+  "url": "https://www.youtube.com/watch?v=OhOmLqR5nN4",
+  "duration_sec": null,
+  "language": "en"
+ },
+ "run": null,
+ "outputs": [
+  {
+   "id": "01",
+   "platform": "youtube_shorts",
+   "template": "interview",
+   "title_lines": [
+    "We're Driving Toward a Cliff in the Fog"
+   ],
+   "duration_sec": 85,
+   "video": "01.mp4",
+   "loop": "01-loop.mp4",
+   "poster": "01.jpg",
+   "cover": "01-cover.jpg",
+   "post": {
+    "title": "We're Driving Toward a Cliff in the Fog",
+    "description": "A discussion about uncertainty in AI development, told through the image of driving toward a cliff in the fog.",
+    "tags": []
+   }
+  },
+  {
+   "id": "02",
+   "platform": "youtube_shorts",
+   "template": "interview",
+   "title_lines": [
+    "AI Is Hiding Its Thinking Process"
+   ],
+   "duration_sec": 98,
+   "video": "02.mp4",
+   "loop": "02-loop.mp4",
+   "poster": "02.jpg",
+   "cover": "02-cover.jpg",
+   "post": {
+    "title": "AI Is Hiding Its Thinking Process",
+    "description": "The speakers examine why interpreting an AI system’s reasoning can be difficult, even when its output looks convincing.",
+    "tags": []
+   }
+  }
+ ]
+}

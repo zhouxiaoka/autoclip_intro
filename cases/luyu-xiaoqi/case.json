@@ -1,0 +1,54 @@
+{
+ "schema": 1,
+ "id": "luyu-xiaoqi",
+ "added": "2026-10-01",
+ "scene": "interview",
+ "featured": true,
+ "contributor": null,
+ "source": {
+  "title": "鲁豫对话小奇 林简七：从「怪小孩」到脱口秀冠军，通过喜剧看见世界的另一面 | 陈鲁豫·慢谈EP26【视频播客】",
+  "channel": "陈鲁豫-慢谈",
+  "url": "https://www.bilibili.com/video/BV1ighy6AEPz/",
+  "duration_sec": null,
+  "language": "zh"
+ },
+ "run": null,
+ "outputs": [
+  {
+   "id": "01",
+   "platform": "tiktok",
+   "template": "podcast",
+   "title_lines": [
+    "I Dare to Win—Just Not the Biggest Win"
+   ],
+   "duration_sec": 43,
+   "video": "01.mp4",
+   "loop": "01-loop.mp4",
+   "poster": "01.jpg",
+   "cover": "01-cover.jpg",
+   "post": {
+    "title": "I Dare to Win—Just Not the Biggest Win",
+    "description": "A candid conversation about ambition, small victories, and the pressure that comes with winning the biggest prize.",
+    "tags": []
+   }
+  },
+  {
+   "id": "02",
+   "platform": "douyin",
+   "template": "interview",
+   "title_lines": [
+    "想证明自己，又怕被注视"
+   ],
+   "duration_sec": 50,
+   "video": "02.mp4",
+   "loop": "02-loop.mp4",
+   "poster": "02.jpg",
+   "cover": "02-cover.jpg",
+   "post": {
+    "title": "想证明自己，又怕被注视",
+    "description": "一次关于参赛动机的坦诚对话：既想证明自己、拿出好作品，也会抗拒随之而来的注视和压力。",
+    "tags": []
+   }
+  }
+ ]
+}

@@ -1,10 +1,103 @@
 {
  "schema": 1,
- "batch": "2026-10-01e",
+ "batch": "2026-10-01f",
  "media_base": "${AUTOCLIP_MEDIA_BASE:-}",
  "projects_root": "${AUTOCLIP_PROJECTS:-/private/tmp/autoclip-e2e/projects}",
  "demos_root": "${AUTOCLIP_DEMOS:-/private/tmp/autoclip-e2e/demos}",
  "cases": [
+  {
+   "id": "gates-ezra",
+   "scene": "interview",
+   "featured": true,
+   "added": "2026-10-01",
+   "files": [
+    "douyin:interview:gates-ezra/01.mp4:AI测试时竟会装傻？",
+    "douyin:interview:gates-ezra/02.mp4:盖茨出的题，AI拿了满分"
+   ],
+   "source": {
+    "title": "Bill Gates: A.I. ‘Makes Nuclear Weapons Look Like Nothing’ | The Ezra Klein Show",
+    "channel": "The Ezra Klein Show",
+    "url": "https://www.youtube.com/watch?v=A_156w0aYtU",
+    "language": "zh"
+   }
+  },
+  {
+   "id": "garfield-poehler",
+   "scene": "podcast",
+   "featured": true,
+   "added": "2026-10-01",
+   "files": [
+    "youtube_shorts:podcast:garfield-poehler/01.mp4:I Love Competition—but Hate Fake Casualness",
+    "youtube_shorts:podcast:garfield-poehler/02.mp4:Not a Method Actor—an Actor With a Method"
+   ],
+   "source": {
+    "title": "Andrew Garfield | Good Hang with Amy Poehler",
+    "channel": "Good Hang with Amy Poehler",
+    "url": "https://www.youtube.com/watch?v=OJV8AaWCxQQ",
+    "language": "en"
+   }
+  },
+  {
+   "id": "ai-labs-debate",
+   "scene": "interview",
+   "added": "2026-10-01",
+   "files": [
+    "youtube_shorts:interview:ai-labs-debate/01.mp4:We're Driving Toward a Cliff in the Fog",
+    "youtube_shorts:interview:ai-labs-debate/02.mp4:AI Is Hiding Its Thinking Process"
+   ],
+   "source": {
+    "title": "AI Experts Debate: The AI Labs Are Lying To Everyone, Is There A 99% Chance Of Human Extinction?",
+    "channel": "AI Experts Debate",
+    "url": "https://www.youtube.com/watch?v=OhOmLqR5nN4",
+    "language": "en"
+   }
+  },
+  {
+   "id": "robbins-36months",
+   "scene": "podcast",
+   "added": "2026-10-01",
+   "files": [
+    "douyin:podcast:robbins-36months/01.mp4:风险极小，回报极大？",
+    "douyin:podcast:robbins-36months/02.mp4:决策卡住？试试这套六步法"
+   ],
+   "source": {
+    "title": "The Next 36 Months Will Change Everything - Tony Robbins (4K)",
+    "channel": "Tony Robbins",
+    "url": "https://www.youtube.com/watch?v=DuRcrbP3kag",
+    "language": "zh"
+   }
+  },
+  {
+   "id": "luyu-xiaoqi",
+   "scene": "interview",
+   "featured": true,
+   "added": "2026-10-01",
+   "files": [
+    "tiktok:podcast:luyu-xiaoqi/01.mp4:I Dare to Win—Just Not the Biggest Win",
+    "douyin:interview:luyu-xiaoqi/02.mp4:想证明自己，又怕被注视"
+   ],
+   "source": {
+    "title": "鲁豫对话小奇 林简七：从「怪小孩」到脱口秀冠军，通过喜剧看见世界的另一面 | 陈鲁豫·慢谈EP26【视频播客】",
+    "channel": "陈鲁豫-慢谈",
+    "url": "https://www.bilibili.com/video/BV1ighy6AEPz/",
+    "language": "zh"
+   }
+  },
+  {
+   "id": "apple-a20",
+   "scene": "interview",
+   "added": "2026-10-01",
+   "files": [
+    "xiaohongshu:interview:apple-a20/01.mp4:苹果芯片不是拼乐高",
+    "xiaohongshu:interview:apple-a20/02.mp4:苹果散热：从捂着到主动导热"
+   ],
+   "source": {
+    "title": "在iPhone Duo的现场，我们却想聊聊A20 Pro｜ft.极客湾云飞，虽然但是张黑黑｜2026苹果秋季发布会现场特别播客",
+    "channel": "虽然但是",
+    "url": "https://www.bilibili.com/video/BV1e4Y96FEaJ/",
+    "language": "zh"
+   }
+  },
   {
    "id": "neumann-doac",
    "scene": "interview",
