@@ -76,7 +76,7 @@ def render(path, item, contents):
 <html lang="zh-CN" data-media-origin="https://pub-3fb92949b9c2480b89feec5ec03f3540.r2.dev"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{e(c['title'])}</title><meta name="description" content="{e(c['lede'])}">
 <link rel="canonical" href="{SITE+path}"><meta property="og:title" content="{e(c['title'])}"><meta property="og:description" content="{e(c['lede'])}"><meta property="og:url" content="{SITE+path}"><meta property="og:type" content="article">
-<link rel="icon" href="../../logo.svg"><link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Noto+Sans+SC:wght@400;500&amp;display=swap" rel="stylesheet"><link rel="stylesheet" href="../../tokens.css"><link rel="stylesheet" href="../../assets/home.css"><link rel="stylesheet" href="../../assets/article.css">
+<link rel="icon" href="../../logo.svg"><link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Noto+Sans+SC:wght@400;500&amp;display=swap" rel="stylesheet"><link rel="stylesheet" href="../../tokens.css"><link rel="stylesheet" href="../../assets/home.css?v=2026-10-02-player"><link rel="stylesheet" href="../../assets/article.css">
 <script type="application/ld+json">{json.dumps({'@context':'https://schema.org','@graph':graph},ensure_ascii=False)}</script>
 </head><body class="cases-page"><div class="site-flow">{header}<main class="stage article-main"><article class="container article-content">{main}</article></main>{footer}<div class="footer-reveal-end" aria-hidden="true"></div></div>
 <script>window.INNER_COPY = {json.dumps(copies,ensure_ascii=False)};</script>
