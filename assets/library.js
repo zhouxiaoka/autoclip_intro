@@ -193,7 +193,7 @@ function open(ref,trigger){
  dialog.querySelectorAll('[data-copy]').forEach(b=>b.onclick=()=>navigator.clipboard?.writeText(b.dataset.copy).then(()=>{b.textContent=u.copied;}).catch(()=>{}));
  dialog.querySelectorAll('[data-cover-zoom]').forEach(b=>b.onclick=()=>zoomCover(b.dataset.coverZoom,aspect(o),fileName(o,'cover'),takeUrl(o,'cover')));
  bindSave(dialog);
- video.src=media(o,'video');if(!dialog.open)dialog.showModal();video.play().catch(()=>{});
+ video.src=media(o,'video');if(!dialog.open)dialog.showModal();dialog.scrollTop=0;video.play().catch(()=>{});
 }
 async function refs(){await load().catch(()=>null);document.querySelectorAll('[data-output-ref]').forEach(el=>{const o=find(el.dataset.outputRef);if(!o)return;const tmp=document.createElement('div');tmp.innerHTML=card(o,` data-output-ref="${el.dataset.outputRef}"`);el.replaceWith(tmp.firstElementChild);});wire(document);}
 function mountCovers(host){
