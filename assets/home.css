@@ -643,6 +643,14 @@ img[data-develop].developed{opacity:1}
   .reel{display:none}
 }
 
+/* launch film: its own section under the first screen */
+.film-frame{position:relative;margin:clamp(28px,4vw,44px) 0 0;aspect-ratio:16/9;border-radius:var(--ac-r-card);overflow:hidden;border:1px solid var(--ac-line);background:#F6F5F3;box-shadow:var(--ac-shadow-frame)}
+.film-frame video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#F6F5F3}
+.film-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media (max-width: 720px){
+  .film-frame{margin-top:24px;border-radius:14px}
+}
+
 /* reel flight: the hero's three outputs travel down and become the row */
 .reel-fly{position:fixed;inset:0;z-index:40;pointer-events:none;visibility:hidden}
 .reel-fly.on{visibility:visible}
