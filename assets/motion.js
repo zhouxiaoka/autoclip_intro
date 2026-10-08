@@ -9,7 +9,7 @@ const onNav=()=>nav?.classList.toggle('scrolled',scrollY>12);
 addEventListener('scroll',onNav,{passive:true});onNav();
 
 /* reveal on enter, staggered among siblings; also picks up nodes rendered later */
-const SEL='.section .eyebrow,.section h2,.section .lede,.way,.stat,.ribbon-row,.runs,.panel .pane,.dlcard,.cta-card,.crow,.fcol,.stage-head,.lib-bar,.faq details,.dev li,.term';
+const SEL='.section .eyebrow,.section h2,.section .lede,.film-frame,.way,.stat,.ribbon-row,.runs,.panel .pane,.dlcard,.cta-card,.crow,.fcol,.stage-head,.lib-bar,.faq details,.dev li,.term';
 const seen=new WeakSet();
 const io=reduce?null:new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{rootMargin:'0px 0px -8% 0px',threshold:.12});
 function scan(){if(reduce)return;document.querySelectorAll(SEL).forEach(el=>{if(seen.has(el))return;seen.add(el);el.classList.add('rv');const sib=[...el.parentElement.children].filter(c=>c.matches(SEL));el.style.setProperty('--rv',Math.min(sib.indexOf(el),8));io.observe(el);});}

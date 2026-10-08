@@ -117,7 +117,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500&amp;family=Noto+Sans+SC:wght@400;500&amp;family=Noto+Serif+SC:wght@600&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../tokens.css">
-<link rel="stylesheet" href="../assets/home.css?v=2026-10-02-player">
+<link rel="stylesheet" href="../assets/home.css?v=2026-10-08-film">
 <link rel="alternate" hreflang="zh-CN" href="https://zhouxiaoka.github.io/autoclip_intro/">
 <link rel="alternate" hreflang="en" href="https://zhouxiaoka.github.io/autoclip_intro/en/">
 <link rel="alternate" hreflang="x-default" href="https://zhouxiaoka.github.io/autoclip_intro/">
@@ -226,6 +226,22 @@
     <p class="reel-label mono" id="reel-label"><span data-i18n="reel.k">That one link →</span> <b data-reel-stats></b></p>
   </div>
   <div class="reel-row" data-reel-row></div>
+</section>
+
+<section class="section film" id="film" aria-labelledby="film-title">
+  <div class="container">
+    <span class="eyebrow" data-i18n="film.eyebrow">30 seconds</span>
+    <h2 id="film-title" data-i18n-html="film.h2">One link.<br>Ready-to-post clips.</h2>
+    <p class="lede" data-i18n="film.lede">Paste a long interview and watch it become vertical clips.</p>
+    <figure class="film-frame">
+      <video autoplay muted loop playsinline controls preload="metadata" poster="../assets/video/autoclip-promo-en-poster.jpg" width="1920" height="1080" aria-labelledby="film-label">
+        <source src="../assets/video/autoclip-promo-en-1080p.webm" type="video/webm; codecs=vp9,opus">
+        <source src="../assets/video/autoclip-promo-en-1080p.mp4" type="video/mp4; codecs=avc1.640029,mp4a.40.2">
+        <a href="../assets/video/autoclip-promo-en-1080p.mp4" data-i18n="film.fallback">Watch the film (MP4, 30 s)</a>
+      </video>
+      <span id="film-label" class="film-sr" data-i18n="film.label">AutoClip: paste one link to a long interview and get ready-to-post vertical clips</span>
+    </figure>
+  </div>
 </section>
 
 <section class="section band-white" id="oneclick">
@@ -570,6 +586,11 @@
       'demo.s4':'取景 · 包装',
       'demo.s5':'渲染 10 条',
       'one.eyebrow':'一键','reel.k':'这一个链接 →',
+      'film.eyebrow':'三十秒',
+      'film.h2':'一个链接，<br>能直接发的成片。',
+      'film.lede':'贴一条长访谈，看它变成竖屏成片。',
+      'film.label':'AutoClip：贴一条长访谈链接，得到能直接发的竖屏成片',
+      'film.fallback':'观看宣传片（MP4，30 秒）',
       'one.h2':'不用剪辑器，<br>也不用跟 AI 聊天。',
       'one.lede':'做切片本来有两条路：在剪辑软件里一帧一帧拖，或者在对话框里跟 AI 一遍遍解释需求。AutoClip 把这两件事都拿掉了。',
       'one.a.k':'剪辑软件',
@@ -711,6 +732,11 @@
       'demo.s4':'Frame · package',
       'demo.s5':'Render 10 clips',
       'one.eyebrow':'One click','reel.k':'That one link →',
+      'film.eyebrow':'30 seconds',
+      'film.h2':'One link.<br>Ready-to-post clips.',
+      'film.lede':'Paste a long interview and watch it become vertical clips.',
+      'film.label':'AutoClip: paste one link to a long interview and get ready-to-post vertical clips',
+      'film.fallback':'Watch the film (MP4, 30 s)',
       'one.h2':'No editor.<br>No chatting with an AI.',
       'one.lede':'Clipping used to mean one of two things: dragging a timeline frame by frame, or explaining what you want to an AI, again and again. AutoClip removes both.',
       'one.a.k':'Video editor',
@@ -794,6 +820,13 @@
     url.searchParams.set('lang', lang);
     history.replaceState(null, '', url);
   });
+
+  if (typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.film-frame video').forEach(function(v){
+      v.removeAttribute('autoplay');
+      v.pause();
+    });
+  }
 })();
 </script>
 <script src="../assets/library.js?v=2026-10-02-player"></script>
