@@ -26,7 +26,7 @@ const arSize=o=>wide(o)?[960,540]:[540,960];
 const L=()=>T[lang]||T.en,pick=m=>m?(lang==='zh'?m[0]:m[1]):'';
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const clock=s=>{s=Math.round(s||0);const h=Math.floor(s/3600),m=Math.floor(s%3600/60),x=String(s%60).padStart(2,'0');return h?`${h}:${String(m).padStart(2,'0')}:${x}`:`${m}:${x}`;};
-const media=(o,f)=>`${lib.base}${o.case.id}/${o[f]}?v=${encodeURIComponent(lib.index.batch||'')}`;
+const media=(o,f)=>{const file=o[f];if(!file)return '';const v=`?v=${encodeURIComponent(lib.index.batch||'')}`;return (o.serve==='local'?at(`cases/${o.case.id}/${file}`):`${lib.base}${o.case.id}/${file}`)+v;};
 const takeUrl=(o,f)=>at(`cases/${o.case.id}/${o[f]}`);
 const title=o=>(o.title_lines||[]).join(' ');
 const tag=o=>pick(PLATFORM[o.platform])+' · '+pick(TEMPLATE[o.template]);
