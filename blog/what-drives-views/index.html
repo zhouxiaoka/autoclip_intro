@@ -24,7 +24,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Noto+Sans+SC:wght@400;500&amp;family=Noto+Serif+SC:wght@600&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../tokens.css">
 <link rel="stylesheet" href="../../assets/home.css?v=2026-10-09-blog">
-<link rel="stylesheet" href="../../assets/blog.css">
+<link rel="stylesheet" href="../../assets/blog.css?v=2026-10-09-toc">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -71,7 +71,7 @@
 </header>
 <main>
   <div class="blog-wrap post-layout">
-    <nav class="toc" aria-label="目录"><p>目录</p><ol><li><a href="#s-1">1. 为什么做这件事</a></li><li><a href="#s-2">2. 数据与方法</a></li><li class="toc-h3"><a href="#s-2-1">2.1 样本</a></li><li class="toc-h3"><a href="#s-2-2">2.2 证据卫生：怎么避免自己骗自己</a></li><li class="toc-h3"><a href="#s-2-3">2.3 本文用到的术语</a></li><li><a href="#s-3">3. 发现：什么在预测播放</a></li><li class="toc-h3"><a href="#s-3-1">发现 1：同一个模板，结果天差地别（证据：高）</a></li><li class="toc-h3"><a href="#s-3-2">发现 2：入点。前约 1.5 秒要有人脸或&quot;看得见的事件&quot;（证据：中）</a></li><li class="toc-h3"><a href="#s-3-3">发现 3：具体的标题写&quot;人名 + 具体行为 / 数字&quot;（证据：低–中，方向一致）</a></li><li class="toc-h3"><a href="#s-3-4">发现 4：能独立成立的一句话，胜过需要上下文的（证据：低–中）</a></li><li class="toc-h3"><a href="#s-3-5">发现 5：默认越短越好，但有一个明确的例外（证据：中）</a></li><li class="toc-h3"><a href="#s-3-6">发现 6：包装手法是手艺，高播低播都在用（&quot;没有一致效果&quot;这一点，证据：高）</a></li><li><a href="#s-4">4. 这对 AutoClip 意味着什么</a></li><li><a href="#s-5">5. 我们保留的包装手法 Top 10（附参数）</a></li><li class="toc-h3"><a href="#s-5-1">每条手法的画面示例</a></li><li class="toc-h3"><a href="#s-5-2">不要照抄</a></li><li><a href="#s-6">6. 四轮自制模板，我们学到的包装经验</a></li><li><a href="#s-7">7. 准备在我们自己的切片号上验证的假设</a></li><li><a href="#s-8">8. 局限</a></li><li><a href="#s-9">9. 开放问题</a></li><li><a href="#s-10">附录：完整缩略图总览（我们自己的成片）</a></li><li><a href="#s-11">图片来源 / 参考</a></li></ol></nav>
+    <nav class="toc" aria-label="目录"><p>目录</p><ol><li class="toc-section"><a href="#s-1">1. 为什么做这件事</a></li><li class="toc-section"><a href="#s-2">2. 数据与方法</a><ol><li><a href="#s-2-1">2.1 样本</a></li><li><a href="#s-2-2">2.2 证据卫生</a></li><li><a href="#s-2-3">2.3 术语</a></li></ol></li><li class="toc-section"><a href="#s-3">3. 发现</a><ol><li><a href="#s-3-1">发现 1：同模板，结果天差地别</a></li><li><a href="#s-3-2">发现 2：入点</a></li><li><a href="#s-3-3">发现 3：具体的标题</a></li><li><a href="#s-3-4">发现 4：能独立成立</a></li><li><a href="#s-3-5">发现 5：默认越短越好</a></li><li><a href="#s-3-6">发现 6：包装是手艺</a></li></ol></li><li class="toc-section"><a href="#s-4">4. 对 AutoClip</a></li><li class="toc-section"><a href="#s-5">5. 包装手法 Top 10</a><ol><li><a href="#s-5-1">画面示例</a></li><li><a href="#s-5-2">不要照抄</a></li></ol></li><li class="toc-section"><a href="#s-6">6. 四轮模板</a></li><li class="toc-section"><a href="#s-7">7. 待验证的假设</a></li><li class="toc-section"><a href="#s-8">8. 局限</a></li><li class="toc-section"><a href="#s-9">9. 开放问题</a></li><li class="toc-section"><a href="#s-10">附录</a></li><li class="toc-section"><a href="#s-11">图片来源</a></li></ol></nav>
     <a class="post-back" href="../">‹ 博客</a>
     <header class="post-hero"><p class="post-kicker"><span class="tag">研究</span><time datetime="2026-10-09">2026 年 10 月 9 日</time><span>28 分钟阅读</span><span>AutoClip 团队（Charlie Zhou 等）</span></p></header>
     <article class="post-body" lang="zh-CN"><h1>选对瞬间，而不是堆特效：158 条短视频告诉我们什么在驱动播放</h1>
@@ -239,7 +239,7 @@ document.getElementById('language').addEventListener('change', function (event) 
 });
 (function () {
   var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
-  if (!links.length || !('IntersectionObserver' in window)) return;
+  if (!links.length) return;
   var byId = {};
   links.forEach(function (link) { byId[link.getAttribute('href').slice(1)] = link; });
   var current = null;
@@ -249,15 +249,34 @@ document.getElementById('language').addEventListener('change', function (event) 
     if (current) current.removeAttribute('aria-current');
     current = next;
     current.setAttribute('aria-current', 'true');
-  }
-  var observer = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) setCurrent(entry.target.id);
+    document.querySelectorAll('.toc-section.is-open').forEach(function (el) {
+      el.classList.remove('is-open');
     });
-  }, { rootMargin: '-20% 0px -65% 0px', threshold: 0 });
-  document.querySelectorAll('.post-body h2[id], .post-body h3[id]').forEach(function (heading) {
-    observer.observe(heading);
-  });
+    var section = next.closest('.toc-section');
+    if (section) section.classList.add('is-open');
+  }
+  var headings = Array.prototype.slice.call(document.querySelectorAll('.post-body h2[id], .post-body h3[id]'));
+  var frame = 0;
+  function update() {
+    var line = window.innerHeight * 0.32;
+    var id = null;
+    headings.forEach(function (heading) {
+      if (heading.getBoundingClientRect().top <= line) id = heading.id;
+    });
+    if (!id) {
+      if (current) current.removeAttribute('aria-current');
+      current = null;
+      document.querySelectorAll('.toc-section.is-open').forEach(function (el) {
+        el.classList.remove('is-open');
+      });
+      return;
+    }
+    setCurrent(id);
+  }
+  window.addEventListener('scroll', function () {
+    if (!frame) frame = requestAnimationFrame(function () { frame = 0; update(); });
+  }, { passive: true });
+  update();
 })();
 </script>
 </body>

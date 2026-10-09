@@ -24,7 +24,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Noto+Sans+SC:wght@400;500&amp;family=Noto+Serif+SC:wght@600&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../../tokens.css">
 <link rel="stylesheet" href="../../../assets/home.css?v=2026-10-09-blog">
-<link rel="stylesheet" href="../../../assets/blog.css">
+<link rel="stylesheet" href="../../../assets/blog.css?v=2026-10-09-toc">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -71,7 +71,7 @@
 </header>
 <main>
   <div class="blog-wrap post-layout">
-    <nav class="toc" aria-label="目录"><p>目录</p><ol><li><a href="#s-1">Internal source files (AutoClip research workspace)</a></li><li><a href="#s-2">Posts cited in the article</a></li><li class="toc-h3"><a href="#s-2-1">Distribution confound (X, ~04:18)</a></li><li class="toc-h3"><a href="#s-2-2">Interview / podcast &amp; design-forward accounts (X)</a></li><li class="toc-h3"><a href="#s-2-3">Batch 1 — news + documentary (X, fetched 05:18–05:35)</a></li><li class="toc-h3"><a href="#s-2-4">Batch 2 — variety + film (YouTube 06:25–06:28; X 05:50–05:53)</a></li><li class="toc-h3"><a href="#s-2-5">Batch 3 — gaming + live facecam (YouTube, 07:06–07:21)</a></li><li class="toc-h3"><a href="#s-2-6">Batch 4 — vlog + editorial (YouTube, 07:33–07:47)</a></li><li><a href="#s-3">Our renders (own data, 2026-10-09)</a></li><li><a href="#s-4">Selection radar v1</a></li><li><a href="#s-5">Figure credits / References (case figures C1–C23)</a></li></ol></nav>
+    <nav class="toc" aria-label="目录"><p>目录</p><ol><li class="toc-section"><a href="#s-1">Internal source files (AutoClip research workspace)</a></li><li class="toc-section"><a href="#s-2">Posts cited in the article</a><ol><li><a href="#s-2-1">Distribution confound (X, ~04:18)</a></li><li><a href="#s-2-2">Interview / podcast &amp; design-forward accounts (X)</a></li><li><a href="#s-2-3">Batch 1 — news + documentary (X, fetched 05:18–05:35)</a></li><li><a href="#s-2-4">Batch 2 — variety + film (YouTube 06:25–06:28; X 05:50–05:53)</a></li><li><a href="#s-2-5">Batch 3 — gaming + live facecam (YouTube, 07:06–07:21)</a></li><li><a href="#s-2-6">Batch 4 — vlog + editorial (YouTube, 07:33–07:47)</a></li></ol></li><li class="toc-section"><a href="#s-3">Our renders (own data, 2026-10-09)</a></li><li class="toc-section"><a href="#s-4">Selection radar v1</a></li><li class="toc-section"><a href="#s-5">Figure credits / References (case figures C1–C23)</a></li></ol></nav>
     <a class="post-back" href="../">‹ 返回文章</a>
     <header class="post-hero"><p class="post-kicker"><span class="tag">研究</span><time datetime="2026-10-09">2026 年 10 月 9 日</time><span>13 分钟阅读</span></p></header>
     <article class="post-body" lang="en"><h1>Sources · AutoClip Research Note #1 (2026-10-09)</h1>
@@ -147,7 +147,7 @@ document.getElementById('language').addEventListener('change', function (event) 
 });
 (function () {
   var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
-  if (!links.length || !('IntersectionObserver' in window)) return;
+  if (!links.length) return;
   var byId = {};
   links.forEach(function (link) { byId[link.getAttribute('href').slice(1)] = link; });
   var current = null;
@@ -157,15 +157,34 @@ document.getElementById('language').addEventListener('change', function (event) 
     if (current) current.removeAttribute('aria-current');
     current = next;
     current.setAttribute('aria-current', 'true');
-  }
-  var observer = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) setCurrent(entry.target.id);
+    document.querySelectorAll('.toc-section.is-open').forEach(function (el) {
+      el.classList.remove('is-open');
     });
-  }, { rootMargin: '-20% 0px -65% 0px', threshold: 0 });
-  document.querySelectorAll('.post-body h2[id], .post-body h3[id]').forEach(function (heading) {
-    observer.observe(heading);
-  });
+    var section = next.closest('.toc-section');
+    if (section) section.classList.add('is-open');
+  }
+  var headings = Array.prototype.slice.call(document.querySelectorAll('.post-body h2[id], .post-body h3[id]'));
+  var frame = 0;
+  function update() {
+    var line = window.innerHeight * 0.32;
+    var id = null;
+    headings.forEach(function (heading) {
+      if (heading.getBoundingClientRect().top <= line) id = heading.id;
+    });
+    if (!id) {
+      if (current) current.removeAttribute('aria-current');
+      current = null;
+      document.querySelectorAll('.toc-section.is-open').forEach(function (el) {
+        el.classList.remove('is-open');
+      });
+      return;
+    }
+    setCurrent(id);
+  }
+  window.addEventListener('scroll', function () {
+    if (!frame) frame = requestAnimationFrame(function () { frame = 0; update(); });
+  }, { passive: true });
+  update();
 })();
 </script>
 </body>

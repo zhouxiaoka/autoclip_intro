@@ -24,7 +24,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Noto+Sans+SC:wght@400;500&amp;family=Noto+Serif+SC:wght@600&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../tokens.css">
 <link rel="stylesheet" href="../../assets/home.css?v=2026-10-09-blog">
-<link rel="stylesheet" href="../../assets/blog.css">
+<link rel="stylesheet" href="../../assets/blog.css?v=2026-10-09-toc">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -116,7 +116,7 @@ document.getElementById('language').addEventListener('change', function (event) 
 });
 (function () {
   var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
-  if (!links.length || !('IntersectionObserver' in window)) return;
+  if (!links.length) return;
   var byId = {};
   links.forEach(function (link) { byId[link.getAttribute('href').slice(1)] = link; });
   var current = null;
@@ -126,15 +126,34 @@ document.getElementById('language').addEventListener('change', function (event) 
     if (current) current.removeAttribute('aria-current');
     current = next;
     current.setAttribute('aria-current', 'true');
-  }
-  var observer = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) setCurrent(entry.target.id);
+    document.querySelectorAll('.toc-section.is-open').forEach(function (el) {
+      el.classList.remove('is-open');
     });
-  }, { rootMargin: '-20% 0px -65% 0px', threshold: 0 });
-  document.querySelectorAll('.post-body h2[id], .post-body h3[id]').forEach(function (heading) {
-    observer.observe(heading);
-  });
+    var section = next.closest('.toc-section');
+    if (section) section.classList.add('is-open');
+  }
+  var headings = Array.prototype.slice.call(document.querySelectorAll('.post-body h2[id], .post-body h3[id]'));
+  var frame = 0;
+  function update() {
+    var line = window.innerHeight * 0.32;
+    var id = null;
+    headings.forEach(function (heading) {
+      if (heading.getBoundingClientRect().top <= line) id = heading.id;
+    });
+    if (!id) {
+      if (current) current.removeAttribute('aria-current');
+      current = null;
+      document.querySelectorAll('.toc-section.is-open').forEach(function (el) {
+        el.classList.remove('is-open');
+      });
+      return;
+    }
+    setCurrent(id);
+  }
+  window.addEventListener('scroll', function () {
+    if (!frame) frame = requestAnimationFrame(function () { frame = 0; update(); });
+  }, { passive: true });
+  update();
 })();
 </script>
 </body>

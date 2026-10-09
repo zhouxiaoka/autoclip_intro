@@ -620,14 +620,70 @@ def header_html(page_route, language, home):
 </header>'''
 
 
+_EVIDENCE = re.compile(
+    r'\s*(?:（[^）]*证据[:：][^）]*）|\([^)]*(?:High|Medium|Low)[^)]*\))\s*$'
+)
+_TOC_SHORT = {
+    '3. 发现：什么在预测播放': '3. 发现',
+    '4. 这对 AutoClip 意味着什么': '4. 对 AutoClip',
+    '5. 我们保留的包装手法 Top 10（附参数）': '5. 包装手法 Top 10',
+    '6. 四轮自制模板，我们学到的包装经验': '6. 四轮模板',
+    '7. 准备在我们自己的切片号上验证的假设': '7. 待验证的假设',
+    '附录：完整缩略图总览（我们自己的成片）': '附录',
+    '图片来源 / 参考': '图片来源',
+    '2.2 证据卫生：怎么避免自己骗自己': '2.2 证据卫生',
+    '2.3 本文用到的术语': '2.3 术语',
+    '发现 1：同一个模板，结果天差地别': '发现 1：同模板，结果天差地别',
+    '发现 2：入点。前约 1.5 秒要有人脸或"看得见的事件"': '发现 2：入点',
+    '发现 3：具体的标题写"人名 + 具体行为 / 数字"': '发现 3：具体的标题',
+    '发现 4：能独立成立的一句话，胜过需要上下文的': '发现 4：能独立成立',
+    '发现 5：默认越短越好，但有一个明确的例外': '发现 5：默认越短越好',
+    '发现 6：包装手法是手艺，高播低播都在用': '发现 6：包装是手艺',
+    '每条手法的画面示例': '画面示例',
+    '3. Findings: what predicts views': '3. Findings',
+    '4. What this means for AutoClip': '4. For AutoClip',
+    '5. The top-10 packaging techniques we kept (with parameters)': '5. Top 10 techniques',
+    '6. What four rounds of our own templates taught us about packaging': '6. Four template rounds',
+    '7. Open hypotheses we will test on our own clip account': '7. Hypotheses',
+    'Appendix: full thumbnail overviews (our renders)': 'Appendix',
+    'Figure credits / References': 'Credits',
+    '2.1 What we sampled': '2.1 Sample',
+    '2.2 Evidence hygiene: how we tried not to fool ourselves': '2.2 Evidence hygiene',
+    '2.3 Terms used in this note': '2.3 Terms',
+    'Finding 1 — Same template, wildly different outcomes': 'Finding 1: Same template',
+    'Finding 2 — The start point: a face or a visible event in the first ~1.5 s': 'Finding 2: The start',
+    'Finding 3 — Specific titles name a person plus a concrete act or number': 'Finding 3: Specific titles',
+    'Finding 4 — A self-contained line beats context-dependent ones': 'Finding 4: A complete line',
+    'Finding 5 — Shorter by default, with a clear exception': 'Finding 5: Shorter by default',
+    'Finding 6 — Packaging techniques are craft, used by hits and flops alike': 'Finding 6: Packaging is craft',
+    'Visual examples, one figure per technique': 'Visual examples',
+}
+
+
+def short_toc(text):
+    cleaned = _EVIDENCE.sub('', text).strip()
+    return _TOC_SHORT.get(cleaned, cleaned)
+
+
 def toc_html(toc, language):
     if not toc:
         return ''
     label = COPY[language]['toc']
-    items = []
+    sections = []
+    current = None
     for level, anchor, text in toc:
-        klass = ' class="toc-h3"' if level == 3 else ''
-        items.append(f'<li{klass}><a href="#{esc(anchor)}">{esc(text)}</a></li>')
+        link = f'<a href="#{esc(anchor)}">{esc(short_toc(text))}</a>'
+        if level == 2 or current is None:
+            current = [link, []]
+            sections.append(current)
+        else:
+            current[1].append(link)
+    items = []
+    for link, children in sections:
+        nested = ''
+        if children:
+            nested = '<ol>' + ''.join(f'<li>{child}</li>' for child in children) + '</ol>'
+        items.append(f'<li class="toc-section">{link}{nested}</li>')
     return f'<nav class="toc" aria-label="{esc(label)}"><p>{esc(label)}</p><ol>{"".join(items)}</ol></nav>'
 
 
@@ -687,7 +743,7 @@ def document(page_route, language, title, description, image, zh_url, en_url, js
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Noto+Sans+SC:wght@400;500&amp;family=Noto+Serif+SC:wght@600&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{esc(asset(page_route, 'tokens.css'))}">
 <link rel="stylesheet" href="{esc(asset(page_route, 'assets/home.css?v=2026-10-09-blog'))}">
-<link rel="stylesheet" href="{esc(asset(page_route, 'assets/blog.css'))}">
+<link rel="stylesheet" href="{esc(asset(page_route, 'assets/blog.css?v=2026-10-09-toc'))}">
 <script type="application/ld+json">
 {json.dumps(jsonld, ensure_ascii=False, indent=2)}
 </script>
@@ -709,7 +765,7 @@ document.getElementById('language').addEventListener('change', function (event) 
 }});
 (function () {{
   var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
-  if (!links.length || !('IntersectionObserver' in window)) return;
+  if (!links.length) return;
   var byId = {{}};
   links.forEach(function (link) {{ byId[link.getAttribute('href').slice(1)] = link; }});
   var current = null;
@@ -719,15 +775,34 @@ document.getElementById('language').addEventListener('change', function (event) 
     if (current) current.removeAttribute('aria-current');
     current = next;
     current.setAttribute('aria-current', 'true');
-  }}
-  var observer = new IntersectionObserver(function (entries) {{
-    entries.forEach(function (entry) {{
-      if (entry.isIntersecting) setCurrent(entry.target.id);
+    document.querySelectorAll('.toc-section.is-open').forEach(function (el) {{
+      el.classList.remove('is-open');
     }});
-  }}, {{ rootMargin: '-20% 0px -65% 0px', threshold: 0 }});
-  document.querySelectorAll('.post-body h2[id], .post-body h3[id]').forEach(function (heading) {{
-    observer.observe(heading);
-  }});
+    var section = next.closest('.toc-section');
+    if (section) section.classList.add('is-open');
+  }}
+  var headings = Array.prototype.slice.call(document.querySelectorAll('.post-body h2[id], .post-body h3[id]'));
+  var frame = 0;
+  function update() {{
+    var line = window.innerHeight * 0.32;
+    var id = null;
+    headings.forEach(function (heading) {{
+      if (heading.getBoundingClientRect().top <= line) id = heading.id;
+    }});
+    if (!id) {{
+      if (current) current.removeAttribute('aria-current');
+      current = null;
+      document.querySelectorAll('.toc-section.is-open').forEach(function (el) {{
+        el.classList.remove('is-open');
+      }});
+      return;
+    }}
+    setCurrent(id);
+  }}
+  window.addEventListener('scroll', function () {{
+    if (!frame) frame = requestAnimationFrame(function () {{ frame = 0; update(); }});
+  }}, {{ passive: true }});
+  update();
 }})();
 </script>
 </body>

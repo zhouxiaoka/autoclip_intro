@@ -232,7 +232,7 @@ body.blog-page .site-footer { border-top-color: #322F2C; }
 
 .toc { display: none; }
 .toc p {
-  margin: 0 0 12px;
+  margin: 0 0 16px;
   color: #9A938A;
   font-size: .75rem;
   font-weight: 600;
@@ -241,18 +241,36 @@ body.blog-page .site-footer { border-top-color: #322F2C; }
 }
 :lang(zh-CN) .toc p { letter-spacing: .14em; text-transform: none; font-size: .8125rem; }
 .toc ol { list-style: none; margin: 0; padding: 0; }
-.toc li { margin: 0; }
+.toc-section { margin: 0 0 2px; }
+.toc-section > ol { display: none; margin: 2px 0 8px; }
+.toc-section.is-open > ol { display: block; }
 .toc a {
   display: block;
-  padding: 5px 0 5px 12px;
-  border-left: 1px solid #322F2C;
+  position: relative;
+  padding: 8px 8px 8px 14px;
   color: #9A938A;
   font-size: .8125rem;
-  line-height: 1.4;
+  line-height: 1.5;
   text-decoration: none;
+  border-radius: 6px;
 }
-.toc .toc-h3 a { padding-left: 24px; }
-.toc a[aria-current="true"] { color: #F4F1EB; border-left-color: #FF6F59; }
+.toc-section > ol a {
+  padding: 5px 8px 5px 22px;
+  font-size: .75rem;
+  line-height: 1.45;
+}
+.toc-section.is-open > a { color: #C9C2B8; }
+.toc a[aria-current="true"] { color: #F4F1EB; background: rgba(255, 111, 89, .1); }
+.toc a[aria-current="true"]::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 9px;
+  bottom: 9px;
+  width: 2px;
+  border-radius: 2px;
+  background: #FF6F59;
+}
 .toc a:hover { color: #F4F1EB; }
 
 .post-pager {
@@ -280,7 +298,7 @@ body.blog-page .site-footer { border-top-color: #322F2C; }
 @media (min-width: 1200px) {
   .post-layout {
     display: grid;
-    grid-template-columns: 200px minmax(0, 1fr);
+    grid-template-columns: 248px minmax(0, 1fr);
     column-gap: 48px;
     align-items: start;
   }
@@ -291,10 +309,17 @@ body.blog-page .site-footer { border-top-color: #322F2C; }
     grid-row: 1 / span 5;
     position: sticky;
     top: 84px;
-    max-height: calc(100vh - 110px);
+    max-height: calc(100vh - 108px);
     overflow: auto;
     padding-top: 8px;
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
   }
+  .toc:hover { scrollbar-color: rgba(244, 241, 235, .28) transparent; }
+  .toc::-webkit-scrollbar { width: 4px; }
+  .toc::-webkit-scrollbar-track { background: transparent; }
+  .toc::-webkit-scrollbar-thumb { background: transparent; border-radius: 4px; }
+  .toc:hover::-webkit-scrollbar-thumb { background: rgba(244, 241, 235, .28); }
 }
 
 @media (max-width: 800px) {
