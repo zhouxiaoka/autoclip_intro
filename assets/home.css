@@ -514,8 +514,12 @@ h2{font-size:var(--ac-fs-h2);font-weight:500;line-height:1.2;letter-spacing:-.01
 .kit-files{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
 .kit-files span{padding:4px 10px;border-radius:8px;background:var(--ac-bg);border:1px solid var(--ac-line-2);font-size:.75rem;color:var(--ac-sub)}
 .kit-btns{display:flex;gap:8px;margin-top:6px}
-.kit-btns span{height:34px;display:inline-flex;align-items:center;padding:0 14px;border-radius:999px;border:1px solid var(--ac-line);font-size:.8125rem;color:var(--ac-sub)}
+.kit-btns span{min-height:34px;display:inline-flex;align-items:center;justify-content:center;padding:0 14px;border-radius:999px;border:1px solid var(--ac-line);font-size:.8125rem;color:var(--ac-sub);white-space:nowrap;flex:0 0 auto}
 .kit-btns .cta{background:var(--ac-cta-bg);color:var(--ac-cta-fg);border-color:var(--ac-cta-bg)}
+@media (max-width: 520px){
+  .kit-btns{flex-direction:column;align-items:stretch}
+  .kit-btns span{width:100%;box-sizing:border-box;min-height:40px;padding:8px 16px}
+}
 
 /* benchmarks ribbon */
 .ribbon{margin-top:clamp(48px,5vw,72px)}
