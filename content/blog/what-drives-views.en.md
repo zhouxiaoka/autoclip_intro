@@ -1,7 +1,7 @@
 ---
 title: "Pick the moment, not the effect: what 158 short clips taught us about what drives views"
 date: 2026-10-09
-authors: AutoClip team (Charlie Zhou et al.)
+authors: AutoClip Team
 tags: [Research]
 lang: en
 slug: what-drives-views

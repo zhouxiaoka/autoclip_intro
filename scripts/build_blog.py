@@ -743,7 +743,7 @@ def document(page_route, language, title, description, image, zh_url, en_url, js
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Noto+Sans+SC:wght@400;500&amp;family=Noto+Serif+SC:wght@600&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{esc(asset(page_route, 'tokens.css'))}">
 <link rel="stylesheet" href="{esc(asset(page_route, 'assets/home.css?v=2026-10-09-blog'))}">
-<link rel="stylesheet" href="{esc(asset(page_route, 'assets/blog.css?v=2026-10-09-toc'))}">
+<link rel="stylesheet" href="{esc(asset(page_route, 'assets/blog.css?v=2026-10-09-meta'))}">
 <script type="application/ld+json">
 {json.dumps(jsonld, ensure_ascii=False, indent=2)}
 </script>
@@ -868,6 +868,12 @@ def post_main(post, posts, page_route, language):
     )
 
 
+def author_name(post, language):
+    if post.authors:
+        return post.authors
+    return 'AutoClip 团队' if language == 'zh' else 'AutoClip Team'
+
+
 def article_jsonld(post, page_route, language, image):
     return {
         '@context': 'https://schema.org',
@@ -881,7 +887,7 @@ def article_jsonld(post, page_route, language, image):
         'keywords': ', '.join(tag_text(tag, language) for tag in post.tags),
         'url': SITE + page_route,
         'mainEntityOfPage': SITE + page_route,
-        'author': {'@type': 'Organization', 'name': 'AutoClip', 'url': SITE},
+        'author': {'@type': 'Organization', 'name': author_name(post, language), 'url': SITE},
         'publisher': {'@type': 'Organization', 'name': 'AutoClip', 'url': SITE},
     }
 
@@ -896,6 +902,7 @@ def index_jsonld(posts, language):
             'url': SITE + post.site_path(language),
             'image': SITE + post.cover_path(),
             'description': post.summary,
+            'author': {'@type': 'Organization', 'name': author_name(post, language), 'url': SITE},
         })
     return {
         '@context': 'https://schema.org',
@@ -920,12 +927,13 @@ def feed_xml(posts, language):
             f'<link>{esc(link)}</link>'
             f'<guid isPermaLink="true">{esc(link)}</guid>'
             f'<pubDate>{rss_date(post.date)}</pubDate>'
+            f'<dc:creator>{esc(author_name(post, language))}</dc:creator>'
             f'<description>{esc(post.summary)}</description>'
             '</item>'
         )
     return (
         '<?xml version="1.0" encoding="utf-8"?>\n'
-        '<rss version="2.0">\n<channel>\n'
+        '<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">\n<channel>\n'
         f'<title>{esc(copy["index_title"])}</title>\n'
         f'<link>{esc(SITE + page)}</link>\n'
         f'<description>{esc(copy["index_desc"])}</description>\n'

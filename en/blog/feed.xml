@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0">
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <channel>
 <title>Blog · AutoClip</title>
 <link>https://zhouxiaoka.github.io/autoclip_intro/en/blog/</link>
 <description>Research notes and memos from the AutoClip team, newest first.</description>
 <language>en</language>
 <lastBuildDate>Fri, 09 Oct 2026 00:00:00 +0000</lastBuildDate>
-<item><title>Pick the moment, not the effect: what 158 short clips taught us about what drives views</title><link>https://zhouxiaoka.github.io/autoclip_intro/en/blog/what-drives-views/</link><guid isPermaLink="true">https://zhouxiaoka.github.io/autoclip_intro/en/blog/what-drives-views/</guid><pubDate>Fri, 09 Oct 2026 00:00:00 +0000</pubDate><description>We logged 158 public short clips and compared high and low performers within the same account. Who or what is in the clip, and where the clip starts, predicted views far better than how it was edited.</description></item>
+<item><title>Pick the moment, not the effect: what 158 short clips taught us about what drives views</title><link>https://zhouxiaoka.github.io/autoclip_intro/en/blog/what-drives-views/</link><guid isPermaLink="true">https://zhouxiaoka.github.io/autoclip_intro/en/blog/what-drives-views/</guid><pubDate>Fri, 09 Oct 2026 00:00:00 +0000</pubDate><dc:creator>AutoClip Team</dc:creator><description>We logged 158 public short clips and compared high and low performers within the same account. Who or what is in the clip, and where the clip starts, predicted views far better than how it was edited.</description></item>
 </channel>
 </rss>

@@ -98,12 +98,13 @@ body.blog-page .site-footer { border-top-color: #322F2C; }
 .post-kicker {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px 14px;
+  gap: 10px 20px;
   align-items: center;
   margin: 0 0 4px;
   color: #9A938A;
   font-size: .875rem;
 }
+.post-kicker > * { white-space: nowrap; }
 .tag {
   color: #FF6F59;
   font-weight: 600;
@@ -112,6 +113,21 @@ body.blog-page .site-footer { border-top-color: #322F2C; }
   font-size: .75rem;
 }
 :lang(zh-CN) .tag { letter-spacing: .12em; text-transform: none; font-size: .8125rem; }
+/* home.css pins .tag to clip cards. Blog kickers and cards keep it in the line. */
+.post-kicker .tag,
+.blog-card .tag {
+  position: static;
+  z-index: auto;
+  inset: auto;
+  display: inline;
+  background: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-radius: 0;
+  padding: 0;
+  font-family: inherit;
+  line-height: inherit;
+}
 
 .post-layout { margin-top: 8px; }
 .post-back {
