@@ -51,7 +51,7 @@ def render(path, item, contents):
     if item['kind']=='case':
         case=json.loads((ROOT/'cases'/item['case_id']/'case.json').read_text())
         out=case['outputs'][0]
-        media=MEDIA+item['case_id']+'/'
+        media='' if out.get('serve')=='local' else MEDIA+item['case_id']+'/'
         main+=f'<video class="case-watch" controls playsinline preload="metadata" poster="{e(media+out["poster"])}"><source src="{e(media+out["video"])}" type="video/mp4"></video>'
         main+=f'<p class="source-note"><a href="{e(case["source"]["url"])}" target="_blank" rel="noopener" data-copy="source">{c["source"]}</a> · <span data-copy="rights">{c["rights"]}</span></p>'
         graph.append({'@type':'VideoObject','name':c['h1'],'description':c['lede'],'inLanguage':'zh-CN',

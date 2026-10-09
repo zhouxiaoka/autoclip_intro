@@ -33,8 +33,9 @@
     "AI是五层蛋糕",
     "能源才是底层"
    ],
-   "duration_sec": 77,
+   "duration_sec": 70,
    "source_start_sec": 4024,
+   "serve": "local",
    "video": "01.mp4",
    "loop": "01-loop.mp4",
    "poster": "01.jpg",
@@ -56,6 +57,7 @@
    ],
    "duration_sec": 43,
    "source_start_sec": 4179,
+   "serve": "local",
    "video": "02.mp4",
    "loop": "02-loop.mp4",
    "poster": "02.jpg",
@@ -79,7 +81,8 @@
    "source_start_sec": 999,
    "mood": "bold",
    "palette": "coral",
-   "duration_sec": 203,
+   "duration_sec": 67,
+   "serve": "local",
    "video": "03.mp4",
    "loop": "03-loop.mp4",
    "poster": "03.jpg"
@@ -95,7 +98,8 @@
    "source_start_sec": 1261,
    "mood": "bold",
    "palette": "lemon",
-   "duration_sec": 169,
+   "duration_sec": 70,
+   "serve": "local",
    "video": "04.mp4",
    "loop": "04-loop.mp4",
    "poster": "04.jpg"

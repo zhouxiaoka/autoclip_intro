@@ -53,7 +53,7 @@ async function reel(){
  if(!row)return;if(!api){land();return;}
  try{await (api.ensure?api.ensure(host.dataset.reel):api.load());}catch{land();return;}
  const c=api.find(host.dataset.reel+'/01')?.case;if(!c){land();return;}
- const zh=L()==='zh',r=c.run,shown=c.outputs.slice(0,6),rest=Math.max(0,(r?.rendered||c.outputs.length)-shown.length);
+ const zh=L()==='zh',r=c.run,fresh=c.outputs.filter(o=>o.serve==='local'),shown=(fresh.length?fresh:c.outputs).slice(0,6),rest=Math.max(0,(r?.rendered||c.outputs.length)-shown.length);
  const hrs=`${Math.floor(c.source.duration_sec/3600)}h${String(Math.round(c.source.duration_sec%3600/60)).padStart(2,'0')}m`;
  host.querySelector('[data-reel-stats]').textContent=r?(zh?`${c.source.channel} · ${hrs} 访谈 → ${r.rendered} 条${api.platform(shown[0].platform)}成片 · ${r.minutes} 分钟 · 模型费用 ¥${r.cost_cny.toFixed(2)}`:`${c.source.channel} · ${hrs} interview → ${r.rendered} ${api.platform(shown[0].platform)} clips · ${r.minutes} min · ¥${r.cost_cny.toFixed(2)} in model fees`):'';
  row.innerHTML=shown.map(o=>api.card(o)).join('')+(rest?`<a class="clip reel-more" href="#clips"><span class="clip-media"><b>+${rest}</b><span>${zh?'更多成片在案例库':'More in the case library'}</span></span></a>`:'');
