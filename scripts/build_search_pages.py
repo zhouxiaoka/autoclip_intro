@@ -47,6 +47,22 @@ def route(path):
     return str(Path(path).parent).replace('.', '') + ('/' if Path(path).parent != Path('.') else '')
 
 
+def relocate(value, source, destination, language, tag):
+    """Rewrite a relative URL for the page that will contain it."""
+    u = urlsplit(value)
+    if u.scheme or u.netloc or not u.path or u.path.startswith('/'):
+        return value
+    target = os.path.normpath(os.path.join(os.path.dirname(source), u.path))
+    normalized = target.removesuffix('/index.html') + '/' if target != '.' else ''
+    if tag == 'a' and language == 'en' and normalized in ROUTES:
+        target = 'en/' + normalized
+    elif tag == 'a' and language == 'en' and normalized == 'guides/publish/':
+        u = u._replace(query='lang=en')
+    rel = os.path.relpath(target, os.path.dirname(destination) or '.')
+    if u.path.endswith('/') or target.endswith('/') or target == '.': rel += '/'
+    return urlunsplit(('', '', rel, u.query, u.fragment))
+
+
 class Render(HTMLParser):
     def __init__(self, source, destination, language, copy, footer):
         super().__init__(convert_charrefs=False)
@@ -57,18 +73,7 @@ class Render(HTMLParser):
         self.canonical = SITE + ('en/' if language == 'en' else '') + self.page
 
     def link(self, value, tag, key):
-        u = urlsplit(value)
-        if u.scheme or u.netloc or not u.path or u.path.startswith('/'):
-            return value
-        target = os.path.normpath(os.path.join(os.path.dirname(self.source), u.path))
-        normalized = target.removesuffix('/index.html') + '/' if target != '.' else ''
-        if tag == 'a' and self.language == 'en' and normalized in ROUTES:
-            target = 'en/' + normalized
-        elif tag == 'a' and self.language == 'en' and normalized == 'guides/publish/':
-            u = u._replace(query='lang=en')
-        rel = os.path.relpath(target, os.path.dirname(self.destination) or '.')
-        if u.path.endswith('/') or target.endswith('/') or target == '.': rel += '/'
-        return urlunsplit(('', '', rel, u.query, u.fragment))
+        return relocate(value, self.source, self.destination, self.language, tag)
 
     def handle_starttag(self, tag, attrs):
         if self.skip:
@@ -143,7 +148,11 @@ def schema(text, language, copy, source='index.html'):
                 item['description'] = copy['lede']
                 if item['@type'] == 'Article':
                     item['headline'] = copy['h1'];item['mainEntityOfPage'] = item['url']
-                else: item['name'] = copy['h1']
+                else:
+                    item['name'] = copy['h1']
+                    dest = source if language == 'zh' else 'en/'+source
+                    for key in ('contentUrl', 'thumbnailUrl'):
+                        if item.get(key): item[key] = relocate(item[key], source, dest, language, 'video')
             if item['@type'] == 'SoftwareApplication':
                 item['description'] = copy['meta.desc']
                 item['softwareVersion'] = re.search(r"var REL = .*?v([\d.]+)/",text).group(1)
