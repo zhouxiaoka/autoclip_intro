@@ -20,6 +20,7 @@ SOURCES = ['index.html', 'cases/index.html', 'use-cases/podcast/index.html',
            'features/publish/index.html', 'features/auto-cover/index.html']
 SOURCES += [p+'index.html' for p in json.loads((ROOT/'data/growth-content.json').read_text())]
 ROUTES = {str(Path(p).parent).replace('.', '') + ('/' if Path(p).parent != Path('.') else '') for p in SOURCES}
+ROUTES.update({'research/what-drives-views/', 'research/what-drives-views/sources/'})
 VOID = {'area','base','br','col','embed','hr','img','input','link','meta','param','source','track','wbr'}
 
 
@@ -156,8 +157,10 @@ def schema(text, language, copy, source='index.html'):
 
 def build(check=False):
     from build_growth_content import build as build_content
+    from build_research import build as build_research
     content_changed = build_content(check)
     c = catalogs()
+    research_changed = build_research(check, c['footer'], c['home'])
     changed = []
     for source in SOURCES:
         text = (ROOT/source).read_text()
@@ -178,7 +181,7 @@ def build(check=False):
                     target.parent.mkdir(parents=True,exist_ok=True);target.write_text(result)
     if changed: print(('Out of date: ' if check else 'Updated: ')+', '.join(changed))
     else: print('Search pages are current')
-    return bool(changed) or content_changed if check else False
+    return bool(changed) or content_changed or research_changed if check else False
 
 
 if __name__ == '__main__':

@@ -214,6 +214,9 @@ h2{font-size:var(--ac-fs-h2);font-weight:500;line-height:1.2;letter-spacing:-.01
 .player-foot a{color:#ECEAE6;border-bottom:1px solid rgba(236,234,230,.25)}
 
 /* responsive */
+@media (max-width: 1100px){
+  .nav-links{gap:14px}
+}
 @media (max-width: 1080px){
   .flow{grid-template-columns:minmax(0,1fr);justify-items:stretch}
   .flow-platforms{justify-content:flex-start}
@@ -589,6 +592,14 @@ h2{font-size:var(--ac-fs-h2);font-weight:500;line-height:1.2;letter-spacing:-.01
 .footer-wordmark{display:block;width:100%;height:auto}
 .footer-wordmark text{fill:currentColor;font-family:var(--ac-font-serif),Georgia,serif;font-size:168px;letter-spacing:-6px}
 .cases-page .site-footer{border-top-color:var(--stage-line);color:var(--stage-ink)}
+.research-tease{padding-top:0;border-top:0}
+.research-tease-card{display:grid;gap:12px;background:#171615;color:#F4F1EB;border-radius:18px;padding:clamp(28px,4vw,44px)}
+.research-tease-card .eyebrow{color:#FF6F59}
+.research-tease-card h2{font-family:"Noto Serif SC","Instrument Serif",Georgia,serif;font-weight:600;color:#F7F4EE;max-width:22em;letter-spacing:0}
+:lang(en) .research-tease-card h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400;letter-spacing:-.02em}
+.research-tease-card p{margin:0;color:#C9C2B8;max-width:40em}
+.research-tease-more{color:#FF8F7D;font-size:.9375rem;font-weight:500}
+.research-tease-card:hover .research-tease-more{color:#FFB2A6}
 .cases-page .fcol a,.cases-page .footer-social a{color:var(--stage-sub)}
 .cases-page .fcol a:hover{color:var(--stage-ink)}
 .cases-page .footer-mark{color:var(--stage-ink)}

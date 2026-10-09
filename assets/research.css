@@ -1,0 +1,171 @@
+/* Research note: charcoal page, off-white text, coral accent, serif headings. */
+body.research-page {
+  --ac-bg: #171615;
+  --ac-card: #221F1D;
+  --ac-ink: #F4F1EB;
+  --ac-sub: #C9C2B8;
+  --ac-muted: #8F8880;
+  --ac-line: #322F2C;
+  --ac-line-2: #282624;
+  --ac-thumb: #221F1D;
+  --ac-accent: #FF6F59;
+  --ac-cta-bg: #F4F1EB;
+  --ac-cta-fg: #171615;
+  background: #171615;
+  color: #F3EFE8;
+  color-scheme: dark;
+}
+body.research-page .nav {
+  background: color-mix(in srgb, #171615 88%, transparent);
+  border-bottom-color: #322F2C;
+}
+body.research-page .site-footer { border-top-color: #322F2C; }
+
+.research-main { padding: 8px 0 0; }
+.research-back {
+  display: inline-block;
+  margin: 22px 0 8px;
+  color: #C9C2B8;
+  font-size: .875rem;
+}
+.research-back:hover { color: #FF8F7D; }
+
+.research-article {
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 12px 0 72px;
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: #F3EFE8;
+}
+.research-article h1,
+.research-article h2,
+.research-article h3 {
+  font-family: "Instrument Serif", "Noto Serif SC", Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -.02em;
+  color: #F7F4EE;
+  text-wrap: balance;
+}
+:lang(zh-CN) .research-article h1,
+:lang(zh-CN) .research-article h2,
+:lang(zh-CN) .research-article h3 {
+  font-family: "Noto Serif SC", "Instrument Serif", Georgia, serif;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+.research-article h1 {
+  font-size: clamp(2rem, 4.4vw, 3.15rem);
+  line-height: 1.18;
+  margin: .35rem 0 1rem;
+}
+.research-article h2 {
+  font-size: clamp(1.55rem, 2.4vw, 2.05rem);
+  line-height: 1.28;
+  margin: 2.75rem 0 .9rem;
+}
+.research-article h3 {
+  font-size: 1.35rem;
+  line-height: 1.35;
+  margin: 2rem 0 .7rem;
+}
+.research-article p { margin: 0 0 1.05rem; }
+.research-article .kicker {
+  color: #C9C2B8;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+.research-article .kicker em { font-style: italic; }
+.research-article a {
+  color: #FF8F7D;
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 111, 89, .55);
+  text-underline-offset: .18em;
+  overflow-wrap: anywhere;
+}
+.research-article a:hover { color: #FFB2A6; }
+.research-article strong { color: #F7F4EE; font-weight: 600; }
+.research-article em { font-style: italic; }
+.research-article blockquote {
+  margin: 1.4rem 0 1.7rem;
+  padding: .1rem 0 .1rem 1.05rem;
+  border-left: 3px solid #FF6F59;
+  color: #F7F4EE;
+}
+.research-article blockquote p:last-child { margin-bottom: 0; }
+.research-article hr {
+  border: 0;
+  border-top: 1px solid #322F2C;
+  margin: 2.1rem 0;
+}
+.research-article ul,
+.research-article ol {
+  margin: 0 0 1.15rem;
+  padding-left: 1.25rem;
+}
+.research-article ol { list-style: none; padding-left: 0; }
+.research-article li { margin: .4rem 0; }
+.research-article li::marker { color: #FF6F59; }
+.research-article code {
+  font-family: var(--ac-font-mono);
+  font-size: .86em;
+  color: #F7F4EE;
+  background: #262320;
+  padding: .05em .35em;
+  border-radius: 4px;
+}
+.research-article figure { margin: 1.6rem 0 1.85rem; }
+.research-article figure img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  background: #0E0D0C;
+}
+.research-article figcaption {
+  margin-top: .7rem;
+  font-size: .92rem;
+  line-height: 1.55;
+  color: #C9C2B8;
+}
+.research-article figcaption .credit {
+  display: block;
+  margin-top: .4rem;
+  color: #9A938A;
+  font-size: .82rem;
+  line-height: 1.55;
+}
+.research-article .table-scroll {
+  overflow-x: auto;
+  margin: 1.15rem 0 1.6rem;
+  border-top: 1px solid #3A3633;
+  -webkit-overflow-scrolling: touch;
+}
+.research-article table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .92rem;
+  line-height: 1.45;
+  min-width: 36rem;
+}
+.research-article th {
+  text-align: left;
+  font-weight: 600;
+  color: #F7F4EE;
+  border-bottom: 2px solid #FF6F59;
+  padding: .6rem .75rem .6rem 0;
+  vertical-align: bottom;
+}
+.research-article td {
+  border-bottom: 1px solid #322F2C;
+  padding: .55rem .75rem .55rem 0;
+  vertical-align: top;
+  color: #E7E1D8;
+}
+.research-article :focus-visible { outline-color: #FF6F59; }
+
+@media (max-width: 640px) {
+  .research-article { font-size: 1.05rem; line-height: 1.7; padding-bottom: 56px; }
+  .research-article h1 { font-size: 1.85rem; }
+  .research-article h2 { font-size: 1.45rem; }
+  .research-article table { min-width: 32rem; }
+}
