@@ -1,3 +1,15 @@
+---
+title: "Sources · AutoClip Research Note #1 (2026-10-09)"
+date: 2026-10-09
+lang: en
+tags: [Research]
+slug: what-drives-views
+summary: "Snapshots, URLs and figure credits for AutoClip Research Note #1."
+cover: figures/fig1-same-template-contrasts-zh-dark.png
+listed: false
+role: sources
+---
+
 # Sources · AutoClip Research Note #1 (2026-10-09)
 
 All metrics are **snapshots at fetch time** (UTC+8, 2026-10-09). They are copied from our working files and have not been re-fetched. X metrics are `impression_count` / `like_count` / `bookmark_count` / `media.view_count` as returned by X's read-only API. `view_count` merges views when a video is reused. YouTube metrics come from public pages read with `yt-dlp` (no cookies, proxy or login).

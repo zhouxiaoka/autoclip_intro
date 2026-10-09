@@ -20,7 +20,7 @@ SOURCES = ['index.html', 'cases/index.html', 'use-cases/podcast/index.html',
            'features/publish/index.html', 'features/auto-cover/index.html']
 SOURCES += [p+'index.html' for p in json.loads((ROOT/'data/growth-content.json').read_text())]
 ROUTES = {str(Path(p).parent).replace('.', '') + ('/' if Path(p).parent != Path('.') else '') for p in SOURCES}
-ROUTES.update({'research/what-drives-views/', 'research/what-drives-views/sources/'})
+ROUTES.update({'blog/'})
 VOID = {'area','base','br','col','embed','hr','img','input','link','meta','param','source','track','wbr'}
 
 
@@ -157,10 +157,11 @@ def schema(text, language, copy, source='index.html'):
 
 def build(check=False):
     from build_growth_content import build as build_content
-    from build_research import build as build_research
+    from build_blog import public_routes, build as build_blog
+    ROUTES.update(public_routes())
     content_changed = build_content(check)
     c = catalogs()
-    research_changed = build_research(check, c['footer'], c['home'])
+    research_changed = build_blog(check, c['footer'], c['home'])
     changed = []
     for source in SOURCES:
         text = (ROOT/source).read_text()

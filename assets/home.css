@@ -224,7 +224,7 @@ h2{font-size:var(--ac-fs-h2);font-weight:500;line-height:1.2;letter-spacing:-.01
   .nav-links{gap:8px}
 }
 @media (max-width: 860px){
-  .nav-research{display:none}
+  .nav-blog{display:none}
 }
 @media (max-width: 1080px){
   .flow{grid-template-columns:minmax(0,1fr);justify-items:stretch}

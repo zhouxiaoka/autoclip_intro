@@ -12,7 +12,8 @@ Each finished clip is a publish kit: video, cover, title, description, tags, and
 - [First clips](https://zhouxiaoka.github.io/autoclip_intro/en/guides/first-clips/)
 - [Podcast to Shorts](https://zhouxiaoka.github.io/autoclip_intro/en/guides/podcast-to-shorts/)
 - [Local vs cloud](https://zhouxiaoka.github.io/autoclip_intro/en/guides/local-vs-cloud/)
-- [Research: what drives views](https://zhouxiaoka.github.io/autoclip_intro/en/research/what-drives-views/)
+- [Blog](https://zhouxiaoka.github.io/autoclip_intro/en/blog/)
+- [Research: what drives views](https://zhouxiaoka.github.io/autoclip_intro/en/blog/what-drives-views/)
 - [Jensen × Dwarkesh, creator captions](https://zhouxiaoka.github.io/autoclip_intro/en/cases/jensen-dwarkesh/)
 - [TIM × Luo Yonghao, local transcription](https://zhouxiaoka.github.io/autoclip_intro/en/cases/tim-luoyonghao/)
 
@@ -33,4 +34,5 @@ Each finished clip is a publish kit: video, cover, title, description, tags, and
 AutoClip 是开源免费的桌面工具：贴一个链接，选好平台，一键出片。剪辑和渲染在你的电脑上。1.5.0 同时提供 Windows / macOS 桌面版、CLI 和 MCP。云端模型用你自己的 Key；本地模型没有模型费用。每条成片带封面、标题、简介、话题和 ZIP 发布包。
 
 - [Original first-run case](https://zhouxiaoka.github.io/autoclip_intro/en/cases/autoclip-first-run/): official 1.5.0, supplied SRT, three Shorts and manual review findings.
-- [研究：选对瞬间，而不是堆特效](https://zhouxiaoka.github.io/autoclip_intro/research/what-drives-views/)
+- [博客](https://zhouxiaoka.github.io/autoclip_intro/blog/)
+- [研究：选对瞬间，而不是堆特效](https://zhouxiaoka.github.io/autoclip_intro/blog/what-drives-views/)

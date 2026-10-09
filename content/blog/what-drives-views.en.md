@@ -2,8 +2,11 @@
 title: "Pick the moment, not the effect: what 158 short clips taught us about what drives views"
 date: 2026-10-09
 authors: AutoClip team (Charlie Zhou et al.)
-tags: [research, short-video, clipping, packaging, evidence]
+tags: [Research]
 lang: en
+slug: what-drives-views
+summary: "We logged 158 public short clips and compared high and low performers within the same account. Who or what is in the clip, and where the clip starts, predicted views far better than how it was edited."
+cover: figures/fig1-same-template-contrasts-en-dark.png
 ---
 
 # Pick the moment, not the effect: what 158 short clips taught us about what drives views

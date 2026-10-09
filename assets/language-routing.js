@@ -2,7 +2,7 @@
 (() => {
   'use strict';
   const root = new URL('../', document.currentScript.src);
-  const routes = new Set(['', 'cases/', 'use-cases/podcast/', 'use-cases/course/', 'use-cases/gameplay/', 'features/publish/', 'features/auto-cover/', 'guides/first-clips/', 'guides/podcast-to-shorts/', 'guides/local-vs-cloud/', 'cases/jensen-dwarkesh/', 'cases/tim-luoyonghao/', 'cases/autoclip-first-run/', 'research/what-drives-views/', 'research/what-drives-views/sources/']);
+  const routes = new Set(['', 'cases/', 'use-cases/podcast/', 'use-cases/course/', 'use-cases/gameplay/', 'features/publish/', 'features/auto-cover/', 'guides/first-clips/', 'guides/podcast-to-shorts/', 'guides/local-vs-cloud/', 'cases/jensen-dwarkesh/', 'cases/tim-luoyonghao/', 'cases/autoclip-first-run/', 'blog/', 'blog/what-drives-views/', 'blog/what-drives-views/sources/']);
   function path(url) {
     if (url.origin !== root.origin || !url.pathname.startsWith(root.pathname)) return null;
     return url.pathname.slice(root.pathname.length).replace(/^en\//, '').replace(/index\.html$/, '');

@@ -22,6 +22,18 @@ SEO.md              官网流量事实与创始人要做的三步
 
 静态 Pages 部署：修改正文或发版信息后运行 `python3 scripts/build_search_pages.py`，将中文默认正文和英文镜像一并提交。CI 校验生成结果是否最新；版本同步也会重建并提交英文页面。
 
+## 博客
+
+研究笔记和备忘放在 `content/blog/`。每种语言一个 Markdown 文件，前置信息要有 `title`、`date`、`lang`、`tags`、`summary`、`cover`、`slug`。`tags` 用 `Research` 或 `Memo`。同一个 `slug` 的中英文文件互为翻译。图片放在 `blog/<slug>/figures/`，正文里用 `figures/...` 引用。附录可以加 `listed: false`，这样不会出现在索引卡片里。
+
+新加一篇之后运行：
+
+```bash
+python3 scripts/build_search_pages.py
+```
+
+脚本会写出 `/blog/` 和 `/en/blog/` 的索引、文章页、`sitemap.xml`，以及 RSS：`blog/feed.xml`、`en/blog/feed.xml`。生成的 HTML 和改过的 `assets/language-routing.js` 一起提交。GitHub Pages 和 Vercel 都直接发布仓库里的静态文件。
+
 ## 本地预览
 
 ```bash

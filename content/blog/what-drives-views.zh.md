@@ -2,8 +2,11 @@
 title: "选对瞬间，而不是堆特效：158 条短视频告诉我们什么在驱动播放"
 date: 2026-10-09
 authors: AutoClip 团队（Charlie Zhou 等）
-tags: [研究, 短视频, 切片, 包装, 证据]
+tags: [Research]
 lang: zh
+slug: what-drives-views
+summary: "我们记录了 158 条公开短视频，只在同一个账号内部比较高播和低播。片子里是谁、讲什么，以及从哪一秒开始，比怎么剪更能预测播放。"
+cover: figures/fig1-same-template-contrasts-zh-dark.png
 ---
 
 # 选对瞬间，而不是堆特效：158 条短视频告诉我们什么在驱动播放
