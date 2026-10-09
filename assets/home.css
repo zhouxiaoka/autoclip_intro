@@ -215,7 +215,16 @@ h2{font-size:var(--ac-fs-h2);font-weight:500;line-height:1.2;letter-spacing:-.01
 
 /* responsive */
 @media (max-width: 1100px){
-  .nav-links{gap:14px}
+  .nav-in{gap:16px}
+  .nav-links{gap:12px}
+  .nav-links a{white-space:nowrap}
+  .nav-right{gap:10px}
+}
+@media (max-width: 900px){
+  .nav-links{gap:8px}
+}
+@media (max-width: 860px){
+  .nav-research{display:none}
 }
 @media (max-width: 1080px){
   .flow{grid-template-columns:minmax(0,1fr);justify-items:stretch}

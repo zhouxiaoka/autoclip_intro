@@ -32,6 +32,7 @@ def rel_to(page_route, target):
 def site_href(page_route, target, language):
     if target.startswith(('http://', 'https://', 'mailto:')):
         return target
+    from build_search_pages import ROUTES
     fragment = ''
     path = target
     if '#' in path:
@@ -42,16 +43,17 @@ def site_href(page_route, target, language):
         path, query = path.split('?', 1)
         query = '?' + query
     localized = path
-    if language == 'en' and (path == '' or path.endswith('/')) and path != 'guides/publish/':
-        localized = 'en/' + path
-    if path == 'guides/publish/' and language == 'en':
+    # English mirrors exist only for registered routes. Files such as
+    # analytics/ and llms.txt stay at the site root.
+    if language == 'en' and path == 'guides/publish/':
         localized = 'guides/publish/'
         query = '?lang=en'
-    if localized == '' and not fragment:
-        localized = './'
-    rel = rel_to(page_route, localized if localized not in ('', './') else ('en/' if language == 'en' else './'))
+    elif language == 'en' and (path == '' or path in ROUTES):
+        localized = 'en/' + path
     if localized in ('', './'):
         rel = rel_to(page_route, 'en/' if language == 'en' else './')
+    else:
+        rel = rel_to(page_route, localized)
     return rel + query + fragment
 
 
@@ -412,7 +414,8 @@ def header_html(page_route, language, home):
     on_article = page_route.rstrip('/') in (NOTE.rstrip('/'), ('en/' + NOTE).rstrip('/'))
     for href, key in nav:
         current = ' aria-current="page"' if href == NOTE and on_article else ''
-        links.append(f'<a href="{esc(site_href(page_route, href, language))}"{current}>{esc(copy[key])}</a>')
+        extra = ' class="nav-research"' if key == 'nav.research' else ''
+        links.append(f'<a{extra} href="{esc(site_href(page_route, href, language))}"{current}>{esc(copy[key])}</a>')
     options = [
         ('zh', 'zh-CN', '简体中文'),
         ('en', 'en', 'English'),
