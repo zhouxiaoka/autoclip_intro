@@ -25,10 +25,10 @@ MONTHS = ['', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'A
 COPY = {
     'zh': {
         'index_title': '博客 · AutoClip',
-        'index_desc': 'AutoClip 的研究笔记和备忘，新的在最上面。',
+        'index_desc': 'AutoClip 的研究笔记和备忘。',
         'index_kicker': '博客',
         'index_h1': '研究与备忘',
-        'index_lede': '研究笔记和备忘。新的在最上面。',
+        'index_lede': '研究笔记和备忘。',
         'feed': '订阅 RSS',
         'toc': '目录',
         'back': '‹ 博客',
@@ -40,10 +40,10 @@ COPY = {
     },
     'en': {
         'index_title': 'Blog · AutoClip',
-        'index_desc': 'Research notes and memos from the AutoClip team, newest first.',
+        'index_desc': 'Research notes and memos from the AutoClip team.',
         'index_kicker': 'Blog',
         'index_h1': 'Research and memos',
-        'index_lede': 'Research notes and memos. Newest first.',
+        'index_lede': 'Research notes and memos.',
         'feed': 'RSS feed',
         'toc': 'On this page',
         'back': '‹ Blog',
