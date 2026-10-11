@@ -724,7 +724,7 @@ img[data-develop].developed{opacity:1}
 .agents-page .tpl .sty::after{content:"";position:absolute;right:10px;bottom:10px;width:28px;height:28px;border-radius:50%;background:rgba(0,0,0,.55) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='white' d='M8 5v14l11-7z'/%3E%3C/svg%3E") center/14px no-repeat;transition:opacity .2s}
 .agents-page .tpl .sty.playing::after{opacity:0}
 .agents-page .sty-note{margin-top:18px;font-size:.8125rem;color:var(--stage-muted)}
-.agents-page .tpl-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.agents-page .tpl{grid-template-columns:1fr}
+.agents-page .tpl-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.agents-page .tpl{grid-template-columns:1fr;align-content:start;align-items:start}
 .agents-page .cta-card .term{margin-top:20px;padding:14px 18px}
 .agents-page .cta-card .hero-cta{justify-content:flex-start;margin-top:20px}
 .agents-mod .dev{align-items:center}
