@@ -5,7 +5,7 @@
   const config = window.AUTOCLIP_ANALYTICS_CONFIG || {};
   const root = new URL('../', document.currentScript.src);
   const prefix = 'autoclip.website.analytics.';
-  const pages = new Set(['', 'cases/', 'use-cases/podcast/', 'use-cases/course/', 'use-cases/gameplay/', 'features/publish/', 'features/auto-cover/', 'guides/publish/', 'guides/first-clips/', 'guides/podcast-to-shorts/', 'guides/local-vs-cloud/', 'cases/jensen-dwarkesh/', 'cases/tim-luoyonghao/', 'cases/autoclip-first-run/']);
+  const pages = new Set(['', 'cases/', 'use-cases/podcast/', 'use-cases/course/', 'use-cases/gameplay/', 'features/publish/', 'features/auto-cover/', 'agents/', 'guides/publish/', 'guides/first-clips/', 'guides/podcast-to-shorts/', 'guides/local-vs-cloud/', 'cases/jensen-dwarkesh/', 'cases/tim-luoyonghao/', 'cases/autoclip-first-run/']);
   const languages = ['zh', 'en', 'ja', 'ko', 'es', 'pt', 'ru', 'fr'];
   const read = key => { try { return localStorage.getItem(prefix + key); } catch { return null; } };
   const write = (key, value) => { try { localStorage.setItem(prefix + key, value); } catch {} };
@@ -49,6 +49,12 @@
     website_sponsor_click: ['sponsor_id', 'placement'],
     website_resource_click: ['resource', 'placement'],
     website_language_change: ['from_language', 'to_language'],
+    agents_page_view: [],
+    agents_install_copy: ['client', 'cmd'],
+    agents_tab_switch: ['client'],
+    agents_github_click: ['position'],
+    agents_style_play: ['style'],
+    home_agents_module_click: ['variant'],
   };
   function capture(event, details = {}) {
     if (!enabled() || !Object.hasOwn(allowed, event)) return;
@@ -206,7 +212,36 @@
     }
     host.append(panel);
   }
-  window.AutoClipAnalytics = Object.freeze({setConsent, isEnabled: enabled});
+  /*
+   * Site feature flags. Build default first (data-flag-default / FLAG_DEFAULTS), so a visitor
+   * without consent, with DNT/GPC or offline always gets the default and nothing is requested.
+   * With consent, PostHog /flags can override it for the same anonymous website_ visitor.
+   */
+  const FLAG_DEFAULTS = Object.freeze({site_agents_module: true});
+  const flagCache = {};
+  function flag(name, callback) {
+    const fallback = FLAG_DEFAULTS[name] === true;
+    const done = value => { try { callback(value); } catch {} };
+    if (!Object.hasOwn(FLAG_DEFAULTS, name) || !enabled()) { done(fallback); return; }
+    if (Object.hasOwn(flagCache, name)) { done(flagCache[name]); return; }
+    try {
+      if (!visitor) {
+        const stored = read('visitor');
+        visitor = /^website_[a-f0-9-]{36}$/.test(stored || '') ? stored : 'website_' + crypto.randomUUID();
+        write('visitor', visitor);
+      }
+      fetch(config.host + '/flags/?v=2', {
+        method: 'POST', body: JSON.stringify({api_key: config.key, distinct_id: visitor}),
+        headers: {'Content-Type': 'text/plain'}, credentials: 'omit', referrerPolicy: 'no-referrer',
+      }).then(r => r.ok ? r.json() : null).then(data => {
+        const entry = data?.flags?.[name];
+        const value = entry && typeof entry.enabled === 'boolean' ? entry.enabled
+          : typeof data?.featureFlags?.[name] === 'boolean' ? data.featureFlags[name] : fallback;
+        flagCache[name] = value; done(value);
+      }).catch(() => done(fallback));
+    } catch { done(fallback); }
+  }
+  window.AutoClipAnalytics = Object.freeze({setConsent, isEnabled: enabled, capture, flag, flagDefault: name => FLAG_DEFAULTS[name] === true});
   window.addEventListener('storage', event => {
     if (event.key !== prefix + 'consent' && event.key !== null) return;
     consent = read('consent');
