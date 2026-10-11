@@ -53,6 +53,7 @@
     agents_install_copy: ['client'],
     agents_tab_switch: ['client'],
     agents_github_click: ['position'],
+    agents_style_play: ['style'],
     home_agents_module_click: ['variant'],
   };
   function capture(event, details = {}) {

@@ -718,7 +718,12 @@ img[data-develop].developed{opacity:1}
 .agents-page .term[hidden]{display:none}
 .agents-page .copy-btn{position:absolute;top:10px;right:10px;font:500 .75rem var(--ac-font-sans);color:var(--stage-muted);background:transparent;border:1px solid currentColor;border-radius:999px;padding:4px 10px;cursor:pointer}
 .agents-page .copy-btn:hover{color:var(--stage-ink)}
-.agents-page .tpl img{width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:12px}
+.agents-page .tpl .sty{position:relative;width:100%;aspect-ratio:9/16;border-radius:12px;overflow:hidden;background:#111;cursor:pointer}
+.agents-page .tpl .sty video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.agents-page .tpl .sty:focus-visible{outline:2px solid var(--ac-accent,#3b82f6);outline-offset:3px}
+.agents-page .tpl .sty::after{content:"";position:absolute;right:10px;bottom:10px;width:28px;height:28px;border-radius:50%;background:rgba(0,0,0,.55) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='white' d='M8 5v14l11-7z'/%3E%3C/svg%3E") center/14px no-repeat;transition:opacity .2s}
+.agents-page .tpl .sty.playing::after{opacity:0}
+.agents-page .sty-note{margin-top:18px;font-size:.8125rem;color:var(--stage-muted)}
 .agents-page .tpl-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.agents-page .tpl{grid-template-columns:1fr}
 .agents-page .cta-card .term{margin-top:20px;padding:14px 18px}
 .agents-page .cta-card .hero-cta{justify-content:flex-start;margin-top:20px}
@@ -730,7 +735,7 @@ img[data-develop].developed{opacity:1}
 .out3 .kit-mock{border:1px solid var(--ac-line-2);border-radius:10px;padding:12px;font-size:.75rem;color:var(--ac-sub);gap:6px}
 .mod-chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:22px}
 .mod-chips span{height:30px;display:inline-flex;align-items:center;padding:0 13px;border-radius:999px;border:1px solid var(--ac-line);font-size:.8125rem;color:var(--ac-sub)}
-@media (max-width:960px){.agents-page .tpl-grid{grid-template-columns:1fr}}
+@media (max-width:960px){.agents-page .tpl-grid{grid-template-columns:1fr}.agents-page .tpl{grid-template-columns:minmax(0,160px) minmax(0,1fr);align-items:center}}
 @media (max-width:720px){.agent-grid{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:28px}.agent-grid div:nth-child(odd){padding-left:0;border-left:0}.agent-grid div:nth-child(even){padding-left:16px}}
 /* Metric-matched fallbacks so the web-font swap does not move the /agents hero (CLS). */
 @font-face{font-family:"Geist Fallback";src:local("Arial"),local("Arimo"),local("Liberation Sans"),local("Helvetica");size-adjust:100%;ascent-override:100.49%;descent-override:29.5%;line-gap-override:0%}

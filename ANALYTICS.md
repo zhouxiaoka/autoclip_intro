@@ -30,6 +30,7 @@
 | `agents_tab_switch` | 安装区切换客户端 | client: claude / cursor / codex / opencode / skill / cli |
 | `agents_install_copy` | 安装区点击「复制」且写入剪贴板成功 | client |
 | `agents_github_click` | /agents 上点 GitHub 链接 | position: nav / hero / cta |
+| `agents_style_play` | /agents 风格示例点按播放（移动端 tap / 键盘） | style: editorial / street / classic |
 | `home_agents_module_click` | 首页 Agent 模块点「了解 Agent 接入」 | variant: on |
 
 共同属性：page、language、referrer_source、可选 UTM、surface、analytics_environment、schema_version。匿名 `distinct_id` 使用独立 `website_` 前缀；刷新和跳页复用，不与客户端 ID 拼接。来源和 UTM 按当前页面记录，不跨页面重新归因；查看转化来源时使用漏斗第一步的属性。

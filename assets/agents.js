@@ -30,6 +30,29 @@
     const a = event.target.closest?.('a[data-gh]');
     if (a) track('agents_github_click', {position: a.dataset.gh});
   }, true);
+
+  // Style samples: hover/focus plays, tap toggles, in-view autoplay unless reduced motion.
+  const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)');
+  const tiles = [...document.querySelectorAll('#styles .sty')];
+  const label = () => { const c = copy(); tiles.forEach((t, i) => { const v = c[`s${i + 1}.v`]; if (v) t.setAttribute('aria-label', v); }); };
+  label();
+  for (const tile of tiles) {
+    const video = tile.querySelector('video');
+    if (!video) continue;
+    let pinned = false; let visible = false;
+    const play = () => { video.preload = 'auto'; const r = video.play(); r?.catch?.(() => {}); tile.classList.add('playing'); };
+    const stop = () => { video.pause(); tile.classList.remove('playing'); };
+    const sync = () => (pinned || (visible && !reduce?.matches)) ? play() : stop();
+    tile.addEventListener('mouseenter', play);
+    tile.addEventListener('mouseleave', sync);
+    tile.addEventListener('focus', play);
+    tile.addEventListener('blur', sync);
+    const toggle = () => { pinned = !pinned; tile.setAttribute('aria-pressed', String(pinned)); pinned ? play() : stop(); if (pinned) track('agents_style_play', {style: tile.dataset.style}); };
+    tile.addEventListener('click', toggle);
+    tile.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
+    if ('IntersectionObserver' in window) new IntersectionObserver(([e]) => { visible = e.isIntersecting && e.intersectionRatio >= .6; sync(); }, {threshold: [0, .6]}).observe(tile);
+    reduce?.addEventListener?.('change', sync);
+  }
   // analytics.js loads after this file; send the page event once it exists.
   window.addEventListener('load', () => track('agents_page_view'));
 })();
