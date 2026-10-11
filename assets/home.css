@@ -714,10 +714,15 @@ img[data-develop].developed{opacity:1}
 .agents-page .dev li.on b::after{content:" ●";font-size:.6rem;color:var(--ac-ok);vertical-align:middle}
 .agents-page .dev li.on{color:var(--ac-ink)}.agents-page .dev li:not(.on) b{color:var(--ac-sub)}
 .agents-page .term-wrap{position:relative}
-.agents-page .term[data-client]{min-height:15.5em;white-space:pre-wrap;word-break:break-all}
+.agents-page .term[data-client]{min-height:15.5em;white-space:normal;overflow-x:hidden}
 .agents-page .term[hidden]{display:none}
-.agents-page .copy-btn{position:absolute;top:10px;right:10px;font:500 .75rem var(--ac-font-sans);color:var(--stage-muted);background:transparent;border:1px solid currentColor;border-radius:999px;padding:4px 10px;cursor:pointer}
-.agents-page .copy-btn:hover{color:var(--stage-ink)}
+.agents-page .term > .c{display:block;white-space:pre-wrap;word-break:break-word}
+.agents-page .cmd{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:start;margin:4px 0 14px;padding:10px 12px;border-radius:10px;background:rgba(255,255,255,.04)}
+.agents-page .cmd:last-child{margin-bottom:0}
+.agents-page .cmd-text{margin:0;padding:0;font:inherit;color:inherit;white-space:pre-wrap;word-break:break-word;overflow-wrap:anywhere;min-width:0}
+.agents-page .cmd .copy-btn{position:static;flex:none;align-self:start;white-space:nowrap;font:500 .75rem var(--ac-font-sans);color:var(--stage-muted);background:transparent;border:1px solid currentColor;border-radius:999px;padding:4px 10px;cursor:pointer}
+.agents-page .cmd .copy-btn:hover{color:var(--stage-ink)}
+@media (max-width:560px){.agents-page .cmd{grid-template-columns:minmax(0,1fr);gap:6px}.agents-page .cmd .copy-btn{justify-self:end}}
 .agents-page .tpl .sty{position:relative;width:100%;aspect-ratio:9/16;border-radius:12px;overflow:hidden;background:#111;cursor:pointer}
 .agents-page .tpl .sty video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .agents-page .tpl .sty:focus-visible{outline:2px solid var(--ac-accent,#3b82f6);outline-offset:3px}

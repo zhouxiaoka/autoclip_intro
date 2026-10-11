@@ -1,4 +1,4 @@
-/* /agents: install tabs, copy buttons and consent-gated agents_* events. */
+/* /agents: install tabs, per-command copy buttons and consent-gated agents_* events. */
 (() => {
   'use strict';
   const track = (event, details) => { try { window.AutoClipAnalytics?.capture(event, details); } catch {} };
@@ -13,19 +13,30 @@
     if (user) track('agents_tab_switch', {client});
   }
   buttons.forEach(b => b.addEventListener('click', () => select(b.dataset.client, true)));
-  const btn = document.querySelector('#install .copy-btn');
-  btn?.addEventListener('click', async () => {
-    const term = terms.find(t => t.dataset.client === current);
-    if (!term) return;
-    // Copy the commands/config only: drop comment lines and the "$ " prompt.
-    const text = [...term.childNodes].filter(n => !(n.nodeType === 1 && n.classList.contains('c')) && !(n.nodeType === 1 && n.classList.contains('p')))
-      .map(n => n.textContent).join('').split('\n').map(l => l.trimEnd()).filter(Boolean).join('\n');
-    try { await navigator.clipboard.writeText(text); } catch { return; }
-    track('agents_install_copy', {client: current});
-    const label = copy().copied || 'Copied';
-    btn.textContent = label;
-    setTimeout(() => { btn.textContent = copy().copy || 'Copy'; }, 1600);
+
+  function textOf(cmd) {
+    // Copy the command/config only: drop "$ " prompts; keep every other line as written.
+    return [...cmd.querySelectorAll('.cmd-text')].map(node =>
+      [...node.childNodes].filter(n => !(n.nodeType === 1 && n.classList.contains('p')))
+        .map(n => n.textContent).join('')
+    ).join('\n').split('\n').map(l => l.trimEnd()).filter(Boolean).join('\n');
+  }
+
+  document.querySelectorAll('#install .cmd .copy-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const block = btn.closest('.cmd');
+      if (!block) return;
+      const text = textOf(block);
+      if (!text) return;
+      try { await navigator.clipboard.writeText(text); } catch { return; }
+      track('agents_install_copy', {client: current, cmd: block.dataset.cmd || 'mcp'});
+      const label = copy().copied || 'Copied';
+      const idle = copy().copy || 'Copy';
+      btn.textContent = label;
+      setTimeout(() => { btn.textContent = idle; }, 1600);
+    });
   });
+
   document.addEventListener('click', event => {
     const a = event.target.closest?.('a[data-gh]');
     if (a) track('agents_github_click', {position: a.dataset.gh});

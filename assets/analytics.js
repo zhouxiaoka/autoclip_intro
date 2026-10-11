@@ -50,7 +50,7 @@
     website_resource_click: ['resource', 'placement'],
     website_language_change: ['from_language', 'to_language'],
     agents_page_view: [],
-    agents_install_copy: ['client'],
+    agents_install_copy: ['client', 'cmd'],
     agents_tab_switch: ['client'],
     agents_github_click: ['position'],
     agents_style_play: ['style'],

@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500&amp;family=Noto+Sans+SC:wght@400;500&amp;family=Noto+Serif+SC:wght@600&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../tokens.css">
-<link rel="stylesheet" href="../../assets/home.css?v=2026-10-11-agents4">
+<link rel="stylesheet" href="../../assets/home.css?v=2026-10-11-agents5">
 <link rel="alternate" hreflang="zh-CN" href="https://zhouxiaoka.github.io/autoclip_intro/agents/">
 <link rel="alternate" hreflang="en" href="https://zhouxiaoka.github.io/autoclip_intro/en/agents/">
 <link rel="alternate" hreflang="x-default" href="https://zhouxiaoka.github.io/autoclip_intro/agents/">
@@ -99,24 +99,41 @@
 <section class="section" id="install"><div class="container">
 <span class="eyebrow" data-copy="install.eyebrow">Install</span><h2 data-copy="install.h2">One line to plug AutoClip into your agent.</h2><span class="en-sub" data-copy="install.sub"></span>
 <div class="dev"><ul role="group" aria-label="Client"><li class="on"><button type="button" data-client="claude" aria-pressed="true"><b>Claude Code</b><span data-copy="i.claude">One line with claude mcp add-json</span></button></li><li><button type="button" data-client="cursor" aria-pressed="false"><b>Cursor</b><span data-copy="i.cursor">~/.cursor/mcp.json</span></button></li><li><button type="button" data-client="codex" aria-pressed="false"><b>Codex</b><span data-copy="i.codex">~/.codex/config.toml</span></button></li><li><button type="button" data-client="opencode" aria-pressed="false"><b>OpenCode</b><span data-copy="i.opencode">autoclip mcp install opencode</span></button></li><li><button type="button" data-client="skill" aria-pressed="false"><b>Skill</b><span data-copy="i.skill">Tells the agent when to call it and what to hand back</span></button></li><li><button type="button" data-client="cli" aria-pressed="false"><b>CLI</b><span data-copy="i.cli">autoclip produce … --json</span></button></li></ul>
-<div><div class="term-wrap"><div class="term" data-client="claude"><span class="c" data-copy="t.mcp"># 1. Add the MCP server (needs ffmpeg)</span>
-<span class="p">$ </span>claude mcp add-json autoclip '{"command":"uvx","args":["autoclip-mcp"],"env":{"AUTOCLIP_API_KEY":"${AUTOCLIP_API_KEY}"}}'
-
+<div><div class="term-wrap">
+<div class="term" data-client="claude">
+<span class="c" data-copy="t.mcp"># 1. Add the MCP server (needs ffmpeg)</span>
+<div class="cmd" data-cmd="mcp"><pre class="cmd-text"><span class="p">$ </span>claude mcp add-json autoclip '{"command":"uvx","args":["autoclip-mcp"],"env":{"AUTOCLIP_API_KEY":"${AUTOCLIP_API_KEY}"}}'</pre><button type="button" class="copy-btn" data-copy="copy">Copy</button></div>
 <span class="c" data-copy="t.skill"># 2. Add the skill</span>
-<span class="p">$ </span>npx skills add zhouxiaoka/autoclip
-
+<div class="cmd" data-cmd="skill"><pre class="cmd-text"><span class="p">$ </span>npx skills add zhouxiaoka/autoclip</pre><button type="button" class="copy-btn" data-copy="copy">Copy</button></div>
 <span class="c" data-copy="t.ask"># 3. Then just ask:</span>
-<span class="c" data-copy="t.ask2">#    Turn this link into a Shorts clip https://youtube.com/…</span></div><div class="term" data-client="cursor" hidden><span class="c" data-copy="t.cursor"># ~/.cursor/mcp.json</span>
-{"mcpServers":{"autoclip":{"command":"uvx","args":["autoclip-mcp"],"env":{"AUTOCLIP_API_KEY":"${env:AUTOCLIP_API_KEY}"}}}}</div><div class="term" data-client="codex" hidden><span class="c" data-copy="t.codex"># ~/.codex/config.toml</span>
-[mcp_servers.autoclip]
+<span class="c" data-copy="t.ask2">#    Turn this link into a Shorts clip https://youtube.com/…</span>
+</div>
+<div class="term" data-client="cursor" hidden>
+<span class="c" data-copy="t.cursor"># ~/.cursor/mcp.json</span>
+<div class="cmd" data-cmd="config"><pre class="cmd-text">{"mcpServers":{"autoclip":{"command":"uvx","args":["autoclip-mcp"],"env":{"AUTOCLIP_API_KEY":"${env:AUTOCLIP_API_KEY}"}}}}</pre><button type="button" class="copy-btn" data-copy="copy">Copy</button></div>
+</div>
+<div class="term" data-client="codex" hidden>
+<span class="c" data-copy="t.codex"># ~/.codex/config.toml</span>
+<div class="cmd" data-cmd="config"><pre class="cmd-text">[mcp_servers.autoclip]
 command = "uvx"
 args = ["autoclip-mcp"]
 env_vars = ["AUTOCLIP_API_KEY"]
 startup_timeout_sec = 120
-tool_timeout_sec = 3600</div><div class="term" data-client="opencode" hidden><span class="c" data-copy="t.opencode"># With the AutoClip CLI installed, write the opencode config</span>
-<span class="p">$ </span>autoclip mcp install opencode</div><div class="term" data-client="skill" hidden><span class="c" data-copy="t.skillonly"># Tells the agent when to call AutoClip and what to deliver</span>
-<span class="p">$ </span>npx skills add zhouxiaoka/autoclip</div><div class="term" data-client="cli" hidden><span class="c" data-copy="t.cli"># One command, --json for scripts and pipelines</span>
-<span class="p">$ </span>autoclip produce talk.mp4 --platform youtube_shorts --json</div><button type="button" class="copy-btn" data-copy="copy">Copy</button></div>
+tool_timeout_sec = 3600</pre><button type="button" class="copy-btn" data-copy="copy">Copy</button></div>
+</div>
+<div class="term" data-client="opencode" hidden>
+<span class="c" data-copy="t.opencode"># With the AutoClip CLI installed, write the opencode config</span>
+<div class="cmd" data-cmd="mcp"><pre class="cmd-text"><span class="p">$ </span>autoclip mcp install opencode</pre><button type="button" class="copy-btn" data-copy="copy">Copy</button></div>
+</div>
+<div class="term" data-client="skill" hidden>
+<span class="c" data-copy="t.skillonly"># Tells the agent when to call AutoClip and what to deliver</span>
+<div class="cmd" data-cmd="skill"><pre class="cmd-text"><span class="p">$ </span>npx skills add zhouxiaoka/autoclip</pre><button type="button" class="copy-btn" data-copy="copy">Copy</button></div>
+</div>
+<div class="term" data-client="cli" hidden>
+<span class="c" data-copy="t.cli"># One command, --json for scripts and pipelines</span>
+<div class="cmd" data-cmd="mcp"><pre class="cmd-text"><span class="p">$ </span>autoclip produce talk.mp4 --platform youtube_shorts --json</pre><button type="button" class="copy-btn" data-copy="copy">Copy</button></div>
+</div>
+</div>
 <p class="footnote" data-copy="install.note">The config only holds the ${AUTOCLIP_API_KEY} reference, read from your environment at launch, never a plaintext key. You can also skip the variable and set the model key in the desktop app&#x27;s settings. Never paste keys into the chat. Ollama / LM Studio local models work too.</p></div></div></div></section>
 
 <section class="section band-white" id="agents"><div class="container">

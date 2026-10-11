@@ -28,7 +28,7 @@
 | `website_language_change` | 切换页面语言 | from_language；to_language |
 | `agents_page_view` | 同意后打开 /agents（中英） | 无 |
 | `agents_tab_switch` | 安装区切换客户端 | client: claude / cursor / codex / opencode / skill / cli |
-| `agents_install_copy` | 安装区点击「复制」且写入剪贴板成功 | client |
+| `agents_install_copy` | 安装区点击「复制」且写入剪贴板成功 | client；cmd: mcp / skill / config |
 | `agents_github_click` | /agents 上点 GitHub 链接 | position: nav / hero / cta |
 | `agents_style_play` | /agents 风格示例点按播放（移动端 tap / 键盘） | style: editorial / street / classic |
 | `home_agents_module_click` | 首页 Agent 模块点「了解 Agent 接入」 | variant: on |
