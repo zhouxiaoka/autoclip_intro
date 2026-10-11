@@ -1,9 +1,4 @@
 /* Blog index and posts: charcoal page, wide figures, readable text. */
-
-/* Metric-matched stand-in while Geist loads, so long intros don't reflow (CLS). */
-@font-face { font-family: "Geist Fallback"; src: local("Arial"), local("Helvetica"), local("Arimo"), local("Liberation Sans"); font-weight: 400 500; size-adjust: 89.6%; }
-@font-face { font-family: "Geist Fallback"; src: local("Arial Bold"), local("Arial-BoldMT"), local("Helvetica Bold"), local("Arimo Bold"), local("Liberation Sans Bold"); font-weight: 600 700; size-adjust: 88%; }
-:root { --ac-font-sans: "Geist", "Geist Fallback", "PingFang SC", "Noto Sans SC", system-ui, -apple-system, sans-serif; }
 body.blog-page {
   --ac-bg: #171615;
   --ac-card: #221F1D;
