@@ -117,7 +117,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500&amp;family=Noto+Sans+SC:wght@400;500&amp;family=Noto+Serif+SC:wght@600&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../tokens.css">
-<link rel="stylesheet" href="../assets/home.css?v=2026-10-09-kit">
+<link rel="stylesheet" href="../assets/home.css?v=2026-10-11-agents">
 <link rel="alternate" hreflang="zh-CN" href="https://zhouxiaoka.github.io/autoclip_intro/">
 <link rel="alternate" hreflang="en" href="https://zhouxiaoka.github.io/autoclip_intro/en/">
 <link rel="alternate" hreflang="x-default" href="https://zhouxiaoka.github.io/autoclip_intro/">
@@ -145,6 +145,7 @@
       <a href="#clips" data-i18n="nav.clips">Cases</a>
       <a href="#numbers" data-i18n="nav.numbers">Speed &amp; cost</a>
       <a href="#developers" data-i18n="nav.developers">Developers</a>
+      <a href="agents/" data-i18n="nav.agents">Agents</a>
       <a href="#faq" data-i18n="nav.faq">FAQ</a>
       <a class="nav-blog" href="blog/" data-i18n="nav.blog">Blog</a>
     </nav>
@@ -360,6 +361,19 @@
   </div>
 </section>
 
+<section class="section band-white agents-mod" id="agents-mod" data-flag="site_agents_module">
+  <div class="container"><div class="dev">
+    <div><span class="eyebrow" data-i18n="agents.eyebrow">New · AutoClip for Agents</span><h2 data-i18n-html="agents.h2">Clips from any agent,<br>in one sentence.</h2>
+      <p class="lede" data-i18n="agents.lede">Paste a link in Claude Code, Cursor or Codex. Get back clips, covers, post copy and a publish kit.</p>
+      <div class="mod-chips"><span>Skill</span><span>CLI</span><span>MCP</span><span class="mono">uvx autoclip-mcp</span></div>
+      <div class="hero-cta" style="justify-content:flex-start;margin-top:28px"><a class="btn btn-primary" href="agents/" data-agents-module data-i18n="agents.cta">Set up your agent →</a></div></div>
+    <div class="pane"><div class="chat">
+      <p class="me" data-i18n="agents.me">Make this link into a Xiaohongshu post</p><span class="tool"><span>autoclip · start_quick_output</span><span>completed</span></span>
+      <p class="ai" data-i18n="agents.ai">Done: clips, cover, post copy and a ZIP kit.</p></div>
+      <div class="out3"><img src="https://pub-3fb92949b9c2480b89feec5ec03f3540.r2.dev/cases/jensen-dwarkesh/01.jpg" alt="" loading="lazy"><img src="https://pub-3fb92949b9c2480b89feec5ec03f3540.r2.dev/cases/jensen-dwarkesh/01-cover.jpg" alt="" loading="lazy"><div class="kit-mock"><b style="font-size:.875rem" data-i18n="agents.kit">Title</b><span class="sk w90"></span><span class="sk w70"></span><span data-i18n="agents.tag">#topic</span><span class="mono">kit.zip</span></div></div></div>
+  </div></div>
+</section>
+
 <section class="section" id="developers">
   <div class="container">
     <span class="eyebrow" data-i18n="dev.eyebrow">Developers</span>
@@ -368,7 +382,7 @@
     <div class="dev">
       <ul>
         <li><b>CLI</b><span data-i18n="dev.1">Batch jobs, with --json output for scripts and pipelines.</span></li>
-        <li><b>MCP</b><span data-i18n="dev.2">Seven tools that Claude, Cursor, opencode and other agents can call to make clips.</span></li>
+        <li><b>MCP</b><span data-i18n-html="dev.2">Start a clip job, check progress, cancel, list styles: Claude Code, Cursor, Codex and other agents call it directly. <a class="link" href="agents/">Set it up →</a></span></li>
         <li><b>Docker</b><span data-i18n="dev.3">Self-host the web app on a server or NAS.</span></li>
       </ul>
 <div class="term"><span class="c" data-i18n="dev.c1"># Use your saved model settings, one command to clips</span>
@@ -494,6 +508,15 @@
       'nav.developers':'开发者',
       'nav.faq':'常见问题',
       'nav.blog':'博客',
+      'nav.agents':'Agent',
+      'agents.eyebrow':'新 · AutoClip for Agents',
+      'agents.h2':'在任意 agent 里，<br>一句话出片。',
+      'agents.lede':'Claude Code、Cursor、Codex 里贴个链接，拿回成片、封面、文案和发布包。',
+      'agents.cta':'了解 Agent 接入 →',
+      'agents.me':'把这个链接做成小红书版',
+      'agents.ai':'好了：成片、封面、文案、ZIP 包。',
+      'agents.kit':'标题',
+      'agents.tag':'#话题',
       'nav.cta':'下载',
       'research.eyebrow':'研究笔记',
       'research.h2':'选对瞬间，而不是堆特效：158 条短视频告诉我们什么在驱动播放',
@@ -559,7 +582,7 @@
       'dev.h2':'一条命令出片，也能交给 Agent。',
       'dev.lede':'桌面应用、命令行和 MCP 共用同一套流程和数据目录。命令行出的项目，在桌面端首页直接可见。',
       'dev.1':'批量处理，--json 输出给脚本和流水线。',
-      'dev.2':'7 个工具，Claude、Cursor、opencode 等 Agent 可以直接调用出片。',
+      'dev.2':'一键出片、查进度、取消任务、列出剪辑风格，Claude Code、Cursor、Codex 等 Agent 可以直接调用。<a class="link" href="agents/">接入方法 →</a>',
       'dev.3':'自建 Web 服务，跑在服务器或 NAS 上。',
       'dev.c1':'# 本地模型，一条命令出片',
       'dev.c2':'# 导出 Shorts 竖屏版',
@@ -645,6 +668,15 @@
       'nav.developers':'Developers',
       'nav.faq':'FAQ',
       'nav.blog':'Blog',
+      'nav.agents':'Agents',
+      'agents.eyebrow':'New · AutoClip for Agents',
+      'agents.h2':'Clips from any agent,<br>in one sentence.',
+      'agents.lede':'Paste a link in Claude Code, Cursor or Codex. Get back clips, covers, post copy and a publish kit.',
+      'agents.cta':'Set up your agent →',
+      'agents.me':'Make this link into a Xiaohongshu post',
+      'agents.ai':'Done: clips, cover, post copy and a ZIP kit.',
+      'agents.kit':'Title',
+      'agents.tag':'#topic',
       'nav.cta':'Download',
       'research.eyebrow':'Research note',
       'research.h2':'Pick the moment, not the effect: what 158 short clips taught us about what drives views',
@@ -710,7 +742,7 @@
       'dev.h2':'One command to clips, or hand it to an agent.',
       'dev.lede':'The desktop app, CLI and MCP server share one pipeline and one data folder. Projects made from the command line show up in the desktop app.',
       'dev.1':'Batch jobs, with --json output for scripts and pipelines.',
-      'dev.2':'Seven tools that Claude, Cursor, opencode and other agents can call to make clips.',
+      'dev.2':'Start a clip job, check progress, cancel, list styles: Claude Code, Cursor, Codex and other agents call it directly. <a class="link" href="agents/">Set it up →</a>',
       'dev.3':'Self-host the web app on a server or NAS.',
       'dev.c1':'# Use your saved model settings, one command to clips',
       'dev.c2':'# Inspect outputs and export publish kits',
@@ -858,5 +890,6 @@
 <script src="../assets/motion.js"></script>
 <script src="../assets/analytics-config.js"></script>
 <script src="../assets/analytics.js"></script>
+<script src="../assets/agents-module.js"></script>
 </body>
 </html>

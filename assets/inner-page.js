@@ -7,6 +7,7 @@ function apply(lang){
  document.documentElement.lang=ATTR[lang];
  if(d.title)document.title=d.title;
  document.querySelectorAll('[data-copy]').forEach(el=>{const k=el.getAttribute('data-copy');if(d[k]!=null)el.textContent=d[k];});
+ document.querySelectorAll('[data-i18n-html]').forEach(el=>{const k=el.getAttribute('data-i18n-html');if(d[k]!=null)el.innerHTML=window.AutoClipLocale?window.AutoClipLocale.html(d[k]):d[k];});
  document.querySelectorAll('[data-home]').forEach(a=>{const u=new URL(a.getAttribute('href'),location.href);u.searchParams.set('lang',lang);a.href=u.href;});
  const sel=document.getElementById('language');if(sel)sel.value=lang;
  try{localStorage.setItem('autoclip.lang',lang);}catch(e){}

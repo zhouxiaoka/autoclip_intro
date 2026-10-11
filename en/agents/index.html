@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en" data-static-language="en" data-source-path="agents/">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AutoClip for Agents: clips from any agent in one sentence | AutoClip</title>
+<meta name="description" content="Paste a YouTube or Bilibili link in Claude Code, Cursor or Codex and get back clips, covers, post copy and a publish kit. One line: uvx autoclip-mcp. Open source (MIT), runs locally.">
+<meta property="og:title" content="AutoClip for Agents: clips from any agent in one sentence | AutoClip">
+<meta property="og:description" content="Paste a YouTube or Bilibili link in Claude Code, Cursor or Codex and get back clips, covers, post copy and a publish kit. One line: uvx autoclip-mcp. Open source (MIT), runs locally.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://zhouxiaoka.github.io/autoclip_intro/en/agents/">
+<link rel="canonical" href="https://zhouxiaoka.github.io/autoclip_intro/en/agents/">
+<meta property="og:image" content="https://zhouxiaoka.github.io/autoclip_intro/img/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F6F5F3">
+<link rel="icon" type="image/svg+xml" href="../../logo.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500&amp;family=Noto+Sans+SC:wght@400;500&amp;family=Noto+Serif+SC:wght@600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../assets/home.css?v=2026-10-11-agents">
+<link rel="alternate" hreflang="zh-CN" href="https://zhouxiaoka.github.io/autoclip_intro/agents/">
+<link rel="alternate" hreflang="en" href="https://zhouxiaoka.github.io/autoclip_intro/en/agents/">
+<link rel="alternate" hreflang="x-default" href="https://zhouxiaoka.github.io/autoclip_intro/agents/">
+<script src="../../assets/language-routing.js"></script>
+</head>
+<body class="site-home v2 agents-page">
+<div class="footer-reveal" aria-hidden="true">
+  <img src="../../assets/art/reveal-01-camera.webp" alt="" width="1280" height="720">
+  <img src="../../assets/art/reveal-02-wash.webp" alt="" width="1280" height="720">
+  <img src="../../assets/art/reveal-03-scissors.webp" alt="" width="1280" height="720">
+  <img src="../../assets/art/reveal-04-stamp.webp" alt="" width="1280" height="720">
+  <img src="../../assets/art/reveal-05-lens.webp" alt="" width="1280" height="720">
+  <img src="../../assets/art/reveal-06-clips.webp" alt="" width="1280" height="720">
+</div>
+<div class="page-sheet">
+<header class="nav">
+  <div class="container nav-in">
+    <a class="brand serif" href="../" data-home aria-label="AutoClip"><img src="../../logo.svg" alt="">AutoClip</a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="../#clips" data-home data-copy="nav.clips">Clips</a>
+      <a href="../#numbers" data-home data-copy="nav.numbers">Speed &amp; cost</a>
+      <a href="../#developers" data-home data-copy="nav.developers">Developers</a>
+      <a href="./" aria-current="page" style="color:var(--ac-ink)" data-copy="nav.agents">Agents</a>
+      <a href="../#faq" data-home data-copy="nav.faq">FAQ</a>
+      <a class="nav-blog" href="../blog/" data-copy="nav.blog">Blog</a>
+    </nav>
+    <div class="nav-right">
+      <a class="gh" data-gh="nav" href="https://github.com/zhouxiaoka/autoclip" target="_blank" rel="noopener">
+        <svg viewbox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.66-.22.66-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.45-1.15-1.1-1.46-1.1-1.46-.9-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85.004 1.71.11 2.51.32 1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.85-2.34 4.7-4.57 4.95.36.31.68.92.68 1.85 0 1.33-.01 2.4-.01 2.73 0 .27.16.58.67.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"></path></svg>
+        <span>GitHub</span><span class="mono" data-stars>9k</span>
+      </a>
+      <div class="lang">
+        <select id="language" aria-label="Language / 语言">
+          <option value="zh" lang="zh-CN">简体中文</option>
+          <option value="en" lang="en" selected>English</option>
+          <option value="ja" lang="ja">日本語</option>
+          <option value="ko" lang="ko">한국어</option>
+          <option value="es" lang="es">Español</option>
+          <option value="pt" lang="pt-BR">Português (Brasil)</option>
+          <option value="ru" lang="ru">Русский</option>
+          <option value="fr" lang="fr">Français</option>
+        </select>
+      </div>
+      <a class="btn btn-primary btn-sm" href="../#download" data-home data-copy="download">Download</a>
+    </div>
+  </div>
+</header>
+<main id="top">
+<section class="hero hero-split"><div class="container hero-grid"><div class="hero-copy">
+<span class="badge"><i></i><span>Skill · CLI · MCP</span></span>
+<h1 data-i18n-html="h1">Clips from any agent,<br>in one sentence.</h1>
+<p class="lede" data-copy="lede">Paste a YouTube or Bilibili link in Claude Code, Cursor or Codex. Get back the clips, covers, post copy and a publish kit.</p>
+<span class="en-sub" data-copy="lede.sub"></span>
+<div class="hero-cta"><a class="btn btn-primary" href="https://github.com/zhouxiaoka/autoclip" target="_blank" rel="noopener" data-gh="hero" data-copy="gh">View on GitHub</a><a class="btn btn-secondary" href="#pack" data-copy="demo">See the demo</a></div>
+<div class="hero-alt"><span class="mono">$ uvx autoclip-mcp</span><span>·</span><span data-copy="hero.alt">Open source (MIT) · Runs locally</span></div></div>
+<div class="hero-art" aria-hidden="true"><div class="art-panel art-a"><img src="../../assets/art/lemon-marks.webp" alt=""></div><div class="art-panel art-b"><img src="../../assets/art/burst.webp" alt=""></div><div class="demo"><div class="demo-bar"><i></i><i></i><i></i><span>Claude Code</span></div>
+<div class="demo-body"><div class="chat">
+<p class="me" data-copy="chat.me">Make this into Xiaohongshu and Shorts: youtube.com/watch?v=Hrbq66XqtCo</p>
+<span class="tool"><span>autoclip · start_quick_output</span><span>3f9c…</span></span>
+<p class="ai" data-copy="chat.ai1">Started. Picking moments now, about 2 more minutes.</p>
+<span class="tool"><span>autoclip · get_quick_output_status</span><span>completed</span></span>
+<p class="ai" data-copy="chat.ai2">Both are ready: clips, covers, post copy and a ZIP kit.</p></div>
+<div class="demo-done"><span data-copy="chat.done">Xiaohongshu · Shorts</span><span class="mono">7:30</span></div></div></div>
+<div class="demo-out"><img src="https://pub-3fb92949b9c2480b89feec5ec03f3540.r2.dev/cases/jensen-dwarkesh/01.jpg" alt=""><img src="https://pub-3fb92949b9c2480b89feec5ec03f3540.r2.dev/cases/jensen-dwarkesh/02.jpg" alt=""><img src="https://pub-3fb92949b9c2480b89feec5ec03f3540.r2.dev/cases/jensen-dwarkesh/03.jpg" alt=""></div></div></div></section>
+
+<section class="section band-white" id="pack"><div class="container">
+<span class="eyebrow" data-copy="pack.eyebrow">Publish pack</span><h2 data-copy="pack.h2">One sentence in, four things out.</h2>
+<p class="lede" data-copy="pack.lede">Clips cut per platform, covers, post copy and a ZIP kit — the same pipeline as the desktop app.</p><span class="en-sub" data-copy="pack.sub"></span>
+<div class="pane pane-kit" style="margin-top:40px;max-width:760px"><img src="https://pub-3fb92949b9c2480b89feec5ec03f3540.r2.dev/cases/jensen-dwarkesh/01-cover.jpg" alt="" loading="lazy">
+<div class="kit-mock"><span class="mono" data-copy="pack.meta">Xiaohongshu · 0:52 · completed</span><b data-copy="pack.title">A one-line title, written per platform</b>
+<span class="sk w90"></span><span class="sk w70"></span><span class="sk w40"></span>
+<div class="kit-files"><span data-copy="pack.tag1">#topic</span><span data-copy="pack.tag2">#another</span><span data-copy="pack.tag3">#bilingual</span></div>
+<div class="kit-files"><span>video.mp4</span><span>cover.jpg</span><span>kit.zip</span></div>
+<div class="kit-btns"><span class="cta" data-copy="pack.copy">Copy text</span><span data-copy="pack.open">Open folder</span></div></div></div></div></section>
+
+<section class="section" id="install"><div class="container">
+<span class="eyebrow" data-copy="install.eyebrow">Install</span><h2 data-copy="install.h2">One line to plug AutoClip into your agent.</h2><span class="en-sub" data-copy="install.sub"></span>
+<div class="dev"><ul role="group" aria-label="Client"><li class="on"><button type="button" data-client="claude" aria-pressed="true"><b>Claude Code</b><span data-copy="i.claude">claude mcp add, one line</span></button></li><li><button type="button" data-client="cursor" aria-pressed="false"><b>Cursor</b><span data-copy="i.cursor">~/.cursor/mcp.json</span></button></li><li><button type="button" data-client="codex" aria-pressed="false"><b>Codex</b><span data-copy="i.codex">~/.codex/config.toml</span></button></li><li><button type="button" data-client="opencode" aria-pressed="false"><b>OpenCode</b><span data-copy="i.opencode">autoclip mcp install opencode</span></button></li><li><button type="button" data-client="skill" aria-pressed="false"><b>Skill</b><span data-copy="i.skill">Tells the agent when to call it and what to hand back</span></button></li><li><button type="button" data-client="cli" aria-pressed="false"><b>CLI</b><span data-copy="i.cli">autoclip produce … --json</span></button></li></ul>
+<div><div class="term-wrap"><div class="term" data-client="claude"><span class="c" data-copy="t.mcp"># 1. Add the MCP server (needs ffmpeg)</span>
+<span class="p">$ </span>claude mcp add autoclip --env AUTOCLIP_API_KEY=sk-... -- uvx autoclip-mcp
+
+<span class="c" data-copy="t.skill"># 2. Add the skill</span>
+<span class="p">$ </span>npx skills add zhouxiaoka/autoclip
+
+<span class="c" data-copy="t.ask"># 3. Then just ask:</span>
+<span class="c" data-copy="t.ask2">#    Turn this link into a Shorts clip https://youtube.com/…</span></div><div class="term" data-client="cursor" hidden><span class="c" data-copy="t.cursor"># ~/.cursor/mcp.json</span>
+{"mcpServers":{"autoclip":{"command":"uvx","args":["autoclip-mcp"],"env":{"AUTOCLIP_API_KEY":"${env:AUTOCLIP_API_KEY}"}}}}</div><div class="term" data-client="codex" hidden><span class="c" data-copy="t.codex"># ~/.codex/config.toml</span>
+[mcp_servers.autoclip]
+command = "uvx"
+args = ["autoclip-mcp"]
+env_vars = ["AUTOCLIP_API_KEY"]
+startup_timeout_sec = 120
+tool_timeout_sec = 3600</div><div class="term" data-client="opencode" hidden><span class="c" data-copy="t.opencode"># With the AutoClip CLI installed, write the opencode config</span>
+<span class="p">$ </span>autoclip mcp install opencode</div><div class="term" data-client="skill" hidden><span class="c" data-copy="t.skillonly"># Tells the agent when to call AutoClip and what to deliver</span>
+<span class="p">$ </span>npx skills add zhouxiaoka/autoclip</div><div class="term" data-client="cli" hidden><span class="c" data-copy="t.cli"># One command, --json for scripts and pipelines</span>
+<span class="p">$ </span>autoclip produce talk.mp4 --platform youtube_shorts --json</div><button type="button" class="copy-btn" data-copy="copy">Copy</button></div>
+<p class="footnote" data-copy="install.note">Keep model keys in the desktop app settings or the AUTOCLIP_API_KEY environment variable, never in the chat. Ollama / LM Studio local models work too.</p></div></div></div></section>
+
+<section class="section band-white" id="agents"><div class="container">
+<span class="eyebrow" data-copy="agents.eyebrow">Supported agents</span><h2 data-copy="agents.h2">Works with the agent you already use.</h2><span class="en-sub" data-copy="agents.sub"></span>
+<div class="agent-grid"><div><b>Claude Code</b><span>MCP + Skill</span></div><div><b>Cursor</b><span>MCP + Skill</span></div><div><b>Codex</b><span>MCP</span></div><div><b>OpenCode</b><span data-copy="agents.oc">One-command install</span></div><div><b data-copy="agents.any">Any MCP</b><span data-copy="agents.stdio">stdio clients</span></div></div></div></section>
+
+<section class="stage" id="styles"><div class="container">
+<span class="eyebrow" data-copy="styles.eyebrow">Styles</span><h2 data-copy="styles.h2">Three styles. Just ask to switch.</h2><span class="en-sub" data-copy="styles.sub"></span>
+<div class="tpl-grid">
+<div class="tpl"><img src="https://pub-3fb92949b9c2480b89feec5ec03f3540.r2.dev/cases/jensen-dwarkesh/02.jpg" alt="" loading="lazy"><div><span class="k">editorial</span><h3 data-copy="s1.h">Editorial</h3><ul><li data-copy="s1.a">White space, serif titles</li><li data-copy="s1.b">For ideas and people</li></ul></div></div>
+<div class="tpl"><img src="https://pub-3fb92949b9c2480b89feec5ec03f3540.r2.dev/cases/jensen-dwarkesh/03.jpg" alt="" loading="lazy"><div><span class="k">street</span><h3 data-copy="s2.h">Street</h3><ul><li data-copy="s2.a">Big keywords, fast pace</li><li data-copy="s2.b">For punchlines</li></ul></div></div>
+<div class="tpl"><img src="https://pub-3fb92949b9c2480b89feec5ec03f3540.r2.dev/cases/jensen-dwarkesh/01.jpg" alt="" loading="lazy"><div><span class="k">classic</span><h3 data-copy="s3.h">Classic</h3><ul><li data-copy="s3.a">The safe default</li><li data-copy="s3.b">Interviews and podcasts</li></ul></div></div></div>
+</div></section>
+
+<section class="section" id="faq"><div class="container faq-grid"><div><span class="eyebrow" data-copy="faq.eyebrow">FAQ</span><h2 data-copy="faq.h2">What you probably want to ask.</h2></div><div class="faq">
+<details open><summary data-copy="f1.q">Is it free?</summary><p data-copy="f1.a">AutoClip is free and MIT-licensed. Cloud models bill through your provider; local analysis with Ollama / LM Studio has no cloud model cost.</p></details>
+<details open><summary data-copy="f2.q">Where does it run?</summary><p data-copy="f2.a">On your computer. Output shares the desktop app data folder, so CLI / MCP projects show up on the desktop home screen.</p></details>
+<details><summary data-copy="f3.q">Which platforms?</summary><p data-copy="f3.a">Douyin, Xiaohongshu, Bilibili, TikTok, Reels, YouTube Shorts and long-form YouTube.</p></details>
+<details><summary data-copy="f4.q">Long jobs — will the agent time out?</summary><p data-copy="f4.a">The MCP server returns a job ID right away; the agent polls using poll_after_sec.</p></details>
+<details><summary data-copy="f5.q">Do I need ffmpeg?</summary><p data-copy="f5.a">Yes. Videos without captions also need local faster-whisper.</p></details></div></div></section>
+
+<section class="section" id="start"><div class="container"><div class="cta-band">
+<img class="cta-art" src="../../assets/art/filmstrip-band.webp" alt=""><div class="cta-card">
+<span class="eyebrow" data-copy="cta.eyebrow">Get started</span><h2 data-copy="cta.h2">Make your first clip from your agent.</h2><span class="en-sub" data-copy="cta.sub"></span>
+<div class="term"><span class="p">$ </span>uvx autoclip-mcp</div>
+<div class="hero-cta"><a class="btn btn-primary" href="https://github.com/zhouxiaoka/autoclip" target="_blank" rel="noopener" data-gh="cta">Star on GitHub</a><a class="btn btn-secondary" href="https://github.com/zhouxiaoka/autoclip/blob/main/docs/CLI_AND_MCP.md" target="_blank" rel="noopener" data-copy="cta.docs">CLI / MCP docs</a></div></div></div></div></section>
+</main>
+<footer class="footer site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+      <div class="fcol"><h3 data-f="h.product">Product</h3><a href="../#how" data-f="oneclick">One-click clips</a><a href="../cases/" data-f="cases">Case library</a><a href="../#numbers" data-f="numbers">Speed &amp; cost</a><a href="../#download" data-f="download">Download</a><a href="https://github.com/zhouxiaoka/autoclip/releases" target="_blank" rel="noopener" data-f="releases">Releases</a><a href="https://github.com/zhouxiaoka/autoclip/blob/main/CHANGELOG.md" target="_blank" rel="noopener" data-f="changelog">Changelog</a></div>
+      </div>
+      <nav class="footer-links" aria-label="页脚">
+      <div class="fcol"><h3 data-f="h.uses">Use cases</h3><a href="../use-cases/podcast/" data-f="podcast">Interviews &amp; podcasts</a><a href="../use-cases/course/" data-f="course">Courses</a><a href="../use-cases/gameplay/" data-f="game">Gaming highlights</a><a href="../features/publish/" data-f="publish">Publish everywhere</a><a href="../features/auto-cover/" data-f="cover">Auto cover</a></div>
+      <div class="fcol"><h3 data-f="h.res">Resources</h3><a href="https://github.com/zhouxiaoka/autoclip/blob/main/docs/USER_INSTALLATION_GUIDE.md" target="_blank" rel="noopener" data-f="install">Install &amp; first clip</a><a href="../guides/first-clips/" data-f="first">First clips</a><a href="../guides/podcast-to-shorts/" data-f="shortsGuide">Podcast to Shorts</a><a href="../guides/local-vs-cloud/" data-f="choice">Local vs cloud</a><a href="../blog/" data-f="blog">Blog</a><a href="../../guides/publish/?lang=en" data-f="guide">Publish guide</a><a href="https://github.com/zhouxiaoka/autoclip/blob/main/docs/MULTI_LLM_PROVIDER_GUIDE.md" target="_blank" rel="noopener" data-f="models">Model setup</a><a href="https://github.com/zhouxiaoka/autoclip/blob/main/docs/FAQ.md" target="_blank" rel="noopener" data-f="faq">FAQ</a><a href="../../llms.txt" data-f="llms">For AI systems</a><a href="../../analytics/" data-f="privacy">Privacy</a></div>
+      <div class="fcol"><h3 data-f="h.dev">Developers</h3><a href="https://github.com/zhouxiaoka/autoclip" target="_blank" rel="noopener" data-f="github">GitHub</a><a href="https://github.com/zhouxiaoka/autoclip/blob/main/docs/CLI_AND_MCP.md" target="_blank" rel="noopener" data-f="cli">CLI / MCP</a><a href="https://github.com/zhouxiaoka/autoclip/blob/main/DOCKER.md" target="_blank" rel="noopener" data-f="docker">Docker</a><a href="https://github.com/zhouxiaoka/autoclip/blob/main/skills/autoclip/SKILL.md" target="_blank" rel="noopener" data-f="skill">Agent skill</a><a href="https://github.com/zhouxiaoka/autoclip/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener" data-f="contrib">Contributing</a><a href="https://github.com/zhouxiaoka/autoclip/blob/main/LICENSE" target="_blank" rel="noopener" data-f="license">MIT License</a></div>
+      <div class="fcol"><h3 data-f="h.comm">Community</h3><a href="https://github.com/zhouxiaoka/autoclip/discussions" target="_blank" rel="noopener" data-f="discuss">Discussions</a><a href="https://github.com/zhouxiaoka/autoclip/discussions/new?category=show-and-tell" target="_blank" rel="noopener" data-f="submit">Share your clips</a><a href="https://github.com/zhouxiaoka/autoclip/issues/new/choose" target="_blank" rel="noopener" data-f="issue">Report a bug</a><a href="https://github.com/zhouxiaoka/autoclip/issues/96" target="_blank" rel="noopener" data-f="known">Known issues</a><a href="mailto:christine_zhouye@163.com" data-f="contact">Contact</a></div>
+      </nav>
+    </div>
+    <div class="footer-meta">
+      <div class="footer-social">
+        <a href="https://github.com/zhouxiaoka/autoclip" target="_blank" rel="noopener" aria-label="GitHub"><svg viewbox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.66-.22.66-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.45-1.15-1.1-1.46-1.1-1.46-.9-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85.004 1.71.11 2.51.32 1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.85-2.34 4.7-4.57 4.95.36.31.68.92.68 1.85 0 1.33-.01 2.4-.01 2.73 0 .27.16.58.67.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"></path></svg></a>
+        <a href="mailto:christine_zhouye@163.com" aria-label="Email"><svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3.5 6.5l8.5 6 8.5-6"></path></svg></a>
+      </div>
+      <span data-f="copy">© 2025–2026 AutoClip · MIT License</span>
+    </div>
+    <a class="footer-mark" href="#top" aria-label="AutoClip">
+      <svg class="footer-wordmark" viewbox="0 0 920 168" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <text x="460" y="148" text-anchor="middle">AutoClip</text>
+      </svg>
+    </a>
+  </div>
+</footer>
+<div class="footer-reveal-end" aria-hidden="true"></div>
+
+</div>
+<script>window.INNER_COPY = {
+    zh:{title:'AutoClip for Agents：在任意 agent 里一句话出片 | AutoClip',download:'下载',
+      'meta.desc':'在 Claude Code、Cursor、Codex 里贴一个 YouTube / B 站链接，拿回成片、封面、文案和发布包。uvx autoclip-mcp 一行接入，开源 MIT，本地运行。',
+      'nav.clips':'案例','nav.numbers':'速度与成本','nav.developers':'开发者','nav.agents':'Agent','nav.faq':'常见问题','nav.blog':'博客',
+      h1:'在任意 agent 里，<br>一句话出片。',lede:'在 Claude Code、Cursor、Codex 里贴一个 YouTube / B 站链接，拿回成片、封面、文案和发布包。','lede.sub':'Turn one link into a publish-ready pack, from any agent.',
+      gh:'在 GitHub 查看',demo:'看演示','hero.alt':'开源 MIT · 本地运行',
+      'chat.me':'把这个做成小红书和 Shorts：youtube.com/watch?v=Hrbq66XqtCo','chat.ai1':'开始了，正在挑片段，大约还要 2 分钟。','chat.ai2':'两个版本都好了：成片、封面、文案和 ZIP 发布包。','chat.done':'小红书 · Shorts',
+      'pack.eyebrow':'发布包 · Publish pack','pack.h2':'一句话进去，四样东西出来。','pack.lede':'按平台剪好的成片、封面、发布文案和 ZIP 包，和桌面应用是同一套流程。','pack.sub':'Video, cover, post copy and a ZIP kit — the same pipeline as the desktop app.',
+      'pack.meta':'小红书 · 0:52 · completed','pack.title':'一句话标题，按平台各写一版','pack.tag1':'#话题一','pack.tag2':'#话题二','pack.tag3':'#中英字幕','pack.copy':'复制文案','pack.open':'打开文件夹',
+      'install.eyebrow':'安装 · Install','install.h2':'一行命令，接进你的 agent。','install.sub':'One line to plug AutoClip into your agent.',
+      'i.claude':'claude mcp add，一行接入','i.cursor':'~/.cursor/mcp.json','i.codex':'~/.codex/config.toml','i.opencode':'autoclip mcp install opencode','i.skill':'告诉 agent 什么时候调用、怎么交付','i.cli':'autoclip produce … --json',
+      't.mcp':'# 1. 接入 MCP（需要 ffmpeg）','t.skill':'# 2. 装 skill','t.ask':'# 3. 在对话里说：','t.ask2':'#    把这个链接做成抖音版 https://youtube.com/…','t.cursor':'# ~/.cursor/mcp.json','t.codex':'# ~/.codex/config.toml','t.opencode':'# 装好 AutoClip CLI 后，一键写入 opencode 配置','t.skillonly':'# 告诉 agent 什么时候调用、怎么交付','t.cli':'# 一条命令出片，--json 给脚本和流水线',
+      copy:'复制',copied:'已复制',
+      'install.note':'模型密钥放在桌面应用设置，或环境变量 AUTOCLIP_API_KEY，不要写进对话。也支持 Ollama / LM Studio 本地模型。',
+      'agents.eyebrow':'支持的 Agent','agents.h2':'你在用的 agent，基本都行。','agents.sub':'Works with any MCP client.','agents.oc':'一键 install','agents.any':'任意 MCP','agents.stdio':'stdio 客户端',
+      'styles.eyebrow':'剪辑风格 · Styles','styles.h2':'三种风格，说一句就换。','styles.sub':'Three editing styles — just ask.',
+      's1.h':'杂志风','s1.a':'留白、衬线标题','s1.b':'适合观点和人物','s2.h':'街头快剪','s2.a':'大字关键词、节奏快','s2.b':'适合金句','s3.h':'经典','s3.a':'稳妥默认','s3.b':'访谈、播客都合适',
+      'faq.eyebrow':'常见问题','faq.h2':'你大概想问的。',
+      'f1.q':'要花钱吗？','f1.a':'AutoClip 免费、MIT 开源。云端模型按服务商计费；用 Ollama / LM Studio 本地分析没有云端模型费用。',
+      'f2.q':'视频在哪处理？','f2.a':'在你本机。产物和桌面应用共用数据目录，CLI / MCP 出的片在桌面首页也能看到。',
+      'f3.q':'支持哪些平台？','f3.a':'抖音、小红书、B 站、TikTok、Reels、YouTube Shorts、YouTube 长视频。',
+      'f4.q':'任务很长，agent 会超时吗？','f4.a':'MCP 立即返回任务 ID，agent 按 poll_after_sec 轮询。',
+      'f5.q':'要装 ffmpeg 吗？','f5.a':'要。没有字幕的视频还需要本地 faster-whisper。',
+      'cta.eyebrow':'开始','cta.h2':'在你的 agent 里，试第一条。','cta.sub':'Make your first clip from your agent.','cta.docs':'CLI / MCP 文档'},
+    en:{title:'AutoClip for Agents: clips from any agent in one sentence | AutoClip',download:'Download',
+      'meta.desc':'Paste a YouTube or Bilibili link in Claude Code, Cursor or Codex and get back clips, covers, post copy and a publish kit. One line: uvx autoclip-mcp. Open source (MIT), runs locally.',
+      'nav.clips':'Clips','nav.numbers':'Speed & cost','nav.developers':'Developers','nav.agents':'Agents','nav.faq':'FAQ','nav.blog':'Blog',
+      h1:'Clips from any agent,<br>in one sentence.',lede:'Paste a YouTube or Bilibili link in Claude Code, Cursor or Codex. Get back the clips, covers, post copy and a publish kit.','lede.sub':'',
+      gh:'View on GitHub',demo:'See the demo','hero.alt':'Open source (MIT) · Runs locally',
+      'chat.me':'Make this into Xiaohongshu and Shorts: youtube.com/watch?v=Hrbq66XqtCo','chat.ai1':'Started. Picking moments now, about 2 more minutes.','chat.ai2':'Both are ready: clips, covers, post copy and a ZIP kit.','chat.done':'Xiaohongshu · Shorts',
+      'pack.eyebrow':'Publish pack','pack.h2':'One sentence in, four things out.','pack.lede':'Clips cut per platform, covers, post copy and a ZIP kit — the same pipeline as the desktop app.','pack.sub':'',
+      'pack.meta':'Xiaohongshu · 0:52 · completed','pack.title':'A one-line title, written per platform','pack.tag1':'#topic','pack.tag2':'#another','pack.tag3':'#bilingual','pack.copy':'Copy text','pack.open':'Open folder',
+      'install.eyebrow':'Install','install.h2':'One line to plug AutoClip into your agent.','install.sub':'',
+      'i.claude':'claude mcp add, one line','i.cursor':'~/.cursor/mcp.json','i.codex':'~/.codex/config.toml','i.opencode':'autoclip mcp install opencode','i.skill':'Tells the agent when to call it and what to hand back','i.cli':'autoclip produce … --json',
+      't.mcp':'# 1. Add the MCP server (needs ffmpeg)','t.skill':'# 2. Add the skill','t.ask':'# 3. Then just ask:','t.ask2':'#    Turn this link into a Shorts clip https://youtube.com/…','t.cursor':'# ~/.cursor/mcp.json','t.codex':'# ~/.codex/config.toml','t.opencode':'# With the AutoClip CLI installed, write the opencode config','t.skillonly':'# Tells the agent when to call AutoClip and what to deliver','t.cli':'# One command, --json for scripts and pipelines',
+      copy:'Copy',copied:'Copied',
+      'install.note':'Keep model keys in the desktop app settings or the AUTOCLIP_API_KEY environment variable, never in the chat. Ollama / LM Studio local models work too.',
+      'agents.eyebrow':'Supported agents','agents.h2':'Works with the agent you already use.','agents.sub':'','agents.oc':'One-command install','agents.any':'Any MCP','agents.stdio':'stdio clients',
+      'styles.eyebrow':'Styles','styles.h2':'Three styles. Just ask to switch.','styles.sub':'',
+      's1.h':'Editorial','s1.a':'White space, serif titles','s1.b':'For ideas and people','s2.h':'Street','s2.a':'Big keywords, fast pace','s2.b':'For punchlines','s3.h':'Classic','s3.a':'The safe default','s3.b':'Interviews and podcasts',
+      'faq.eyebrow':'FAQ','faq.h2':'What you probably want to ask.',
+      'f1.q':'Is it free?','f1.a':'AutoClip is free and MIT-licensed. Cloud models bill through your provider; local analysis with Ollama / LM Studio has no cloud model cost.',
+      'f2.q':'Where does it run?','f2.a':'On your computer. Output shares the desktop app data folder, so CLI / MCP projects show up on the desktop home screen.',
+      'f3.q':'Which platforms?','f3.a':'Douyin, Xiaohongshu, Bilibili, TikTok, Reels, YouTube Shorts and long-form YouTube.',
+      'f4.q':'Long jobs — will the agent time out?','f4.a':'The MCP server returns a job ID right away; the agent polls using poll_after_sec.',
+      'f5.q':'Do I need ffmpeg?','f5.a':'Yes. Videos without captions also need local faster-whisper.',
+      'cta.eyebrow':'Get started','cta.h2':'Make your first clip from your agent.','cta.sub':'','cta.docs':'CLI / MCP docs'}
+  };</script>
+<script src="../../assets/inner-page.js"></script>
+<script src="../../assets/agents.js"></script>
+<script src="../../assets/footer.js"></script>
+<script src="../../assets/motion.js"></script>
+<script src="../../assets/analytics-config.js"></script>
+<script src="../../assets/analytics.js"></script>
+</body>
+</html>
