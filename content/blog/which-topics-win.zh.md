@@ -262,7 +262,7 @@ AutoClip 帮人把长访谈剪成短切片。我们在之前的[剪辑研究](..
 
 ## 10. 我们对 AutoClip 选片雷达的改动
 
-详见 [`radar-patch.md`](https://github.com/zhouxiaoka/autoclip/blob/main/docs/research/2026-10-which-topics-win/radar-patch.md)。简单说：
+详见 [`radar-patch.md`](https://github.com/zhouxiaoka/autoclip/blob/docs/topic-research/docs/research/2026-10-which-topics-win/radar-patch.md)。简单说：
 
 - **加分**：挂靠事件、说话人对此题有权威、给出可执行方法、名人 × 人人都面对的决定。
 - **降分**：标题以往事开头；切身但没有名人、反常判断或事件撑着；大家都听过的判断。

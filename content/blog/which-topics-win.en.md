@@ -262,7 +262,7 @@ Strongest evidence first:
 
 ## 10. What we change in AutoClip's selection radar
 
-Full detail in [`radar-patch.md`](https://github.com/zhouxiaoka/autoclip/blob/main/docs/research/2026-10-which-topics-win/radar-patch.md). In short:
+Full detail in [`radar-patch.md`](https://github.com/zhouxiaoka/autoclip/blob/docs/topic-research/docs/research/2026-10-which-topics-win/radar-patch.md). In short:
 
 - **Score up**: live event link, speaker authority on the topic, actionable method, famous voice × universal decision.
 - **Score down**: backstory-led titles; personal stakes with no famous voice, surprise or event behind them; claims everyone has heard.
