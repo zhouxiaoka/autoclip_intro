@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500&amp;family=Noto+Sans+SC:wght@400;500&amp;family=Noto+Serif+SC:wght@600&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../tokens.css">
-<link rel="stylesheet" href="../assets/home.css?v=2026-10-11-agents">
+<link rel="stylesheet" href="../assets/home.css?v=2026-10-11-agents2">
 <link rel="alternate" hreflang="zh-CN" href="https://zhouxiaoka.github.io/autoclip_intro/agents/">
 <link rel="alternate" hreflang="en" href="https://zhouxiaoka.github.io/autoclip_intro/en/agents/">
 <link rel="alternate" hreflang="x-default" href="https://zhouxiaoka.github.io/autoclip_intro/agents/">
@@ -100,7 +100,7 @@
 <span class="eyebrow" data-copy="install.eyebrow">安装 · Install</span><h2 data-copy="install.h2">一行命令，接进你的 agent。</h2><span class="en-sub" data-copy="install.sub">One line to plug AutoClip into your agent.</span>
 <div class="dev"><ul role="group" aria-label="Client"><li class="on"><button type="button" data-client="claude" aria-pressed="true"><b>Claude Code</b><span data-copy="i.claude">claude mcp add，一行接入</span></button></li><li><button type="button" data-client="cursor" aria-pressed="false"><b>Cursor</b><span data-copy="i.cursor">~/.cursor/mcp.json</span></button></li><li><button type="button" data-client="codex" aria-pressed="false"><b>Codex</b><span data-copy="i.codex">~/.codex/config.toml</span></button></li><li><button type="button" data-client="opencode" aria-pressed="false"><b>OpenCode</b><span data-copy="i.opencode">autoclip mcp install opencode</span></button></li><li><button type="button" data-client="skill" aria-pressed="false"><b>Skill</b><span data-copy="i.skill">告诉 agent 什么时候调用、怎么交付</span></button></li><li><button type="button" data-client="cli" aria-pressed="false"><b>CLI</b><span data-copy="i.cli">autoclip produce … --json</span></button></li></ul>
 <div><div class="term-wrap"><div class="term" data-client="claude"><span class="c" data-copy="t.mcp"># 1. 接入 MCP（需要 ffmpeg）</span>
-<span class="p">$ </span>claude mcp add autoclip --env AUTOCLIP_API_KEY=sk-... -- uvx autoclip-mcp
+<span class="p">$ </span>claude mcp add autoclip --env AUTOCLIP_API_KEY=$AUTOCLIP_API_KEY -- uvx autoclip-mcp
 
 <span class="c" data-copy="t.skill"># 2. 装 skill</span>
 <span class="p">$ </span>npx skills add zhouxiaoka/autoclip
@@ -117,7 +117,7 @@ tool_timeout_sec = 3600</div><div class="term" data-client="opencode" hidden><sp
 <span class="p">$ </span>autoclip mcp install opencode</div><div class="term" data-client="skill" hidden><span class="c" data-copy="t.skillonly"># 告诉 agent 什么时候调用、怎么交付</span>
 <span class="p">$ </span>npx skills add zhouxiaoka/autoclip</div><div class="term" data-client="cli" hidden><span class="c" data-copy="t.cli"># 一条命令出片，--json 给脚本和流水线</span>
 <span class="p">$ </span>autoclip produce talk.mp4 --platform youtube_shorts --json</div><button type="button" class="copy-btn" data-copy="copy">复制</button></div>
-<p class="footnote" data-copy="install.note">模型密钥放在桌面应用设置，或环境变量 AUTOCLIP_API_KEY，不要写进对话。也支持 Ollama / LM Studio 本地模型。</p></div></div></div></section>
+<p class="footnote" data-copy="install.note">命令里只引用环境变量 $AUTOCLIP_API_KEY，不写明文密钥；也可以不设环境变量，直接在桌面应用的设置里填模型密钥。不要把密钥写进对话。也支持 Ollama / LM Studio 本地模型。</p></div></div></div></section>
 
 <section class="section band-white" id="agents"><div class="container">
 <span class="eyebrow" data-copy="agents.eyebrow">支持的 Agent</span><h2 data-copy="agents.h2">你在用的 agent，基本都行。</h2><span class="en-sub" data-copy="agents.sub">Works with any MCP client.</span>
@@ -187,7 +187,7 @@ tool_timeout_sec = 3600</div><div class="term" data-client="opencode" hidden><sp
       'i.claude':'claude mcp add，一行接入','i.cursor':'~/.cursor/mcp.json','i.codex':'~/.codex/config.toml','i.opencode':'autoclip mcp install opencode','i.skill':'告诉 agent 什么时候调用、怎么交付','i.cli':'autoclip produce … --json',
       't.mcp':'# 1. 接入 MCP（需要 ffmpeg）','t.skill':'# 2. 装 skill','t.ask':'# 3. 在对话里说：','t.ask2':'#    把这个链接做成抖音版 https://youtube.com/…','t.cursor':'# ~/.cursor/mcp.json','t.codex':'# ~/.codex/config.toml','t.opencode':'# 装好 AutoClip CLI 后，一键写入 opencode 配置','t.skillonly':'# 告诉 agent 什么时候调用、怎么交付','t.cli':'# 一条命令出片，--json 给脚本和流水线',
       copy:'复制',copied:'已复制',
-      'install.note':'模型密钥放在桌面应用设置，或环境变量 AUTOCLIP_API_KEY，不要写进对话。也支持 Ollama / LM Studio 本地模型。',
+      'install.note':'命令里只引用环境变量 $AUTOCLIP_API_KEY，不写明文密钥；也可以不设环境变量，直接在桌面应用的设置里填模型密钥。不要把密钥写进对话。也支持 Ollama / LM Studio 本地模型。',
       'agents.eyebrow':'支持的 Agent','agents.h2':'你在用的 agent，基本都行。','agents.sub':'Works with any MCP client.','agents.oc':'一键 install','agents.any':'任意 MCP','agents.stdio':'stdio 客户端',
       'styles.eyebrow':'剪辑风格 · Styles','styles.h2':'三种风格，说一句就换。','styles.sub':'Three editing styles — just ask.',
       's1.h':'杂志风','s1.a':'留白、衬线标题','s1.b':'适合观点和人物','s2.h':'街头快剪','s2.a':'大字关键词、节奏快','s2.b':'适合金句','s3.h':'经典','s3.a':'稳妥默认','s3.b':'访谈、播客都合适',
@@ -201,24 +201,24 @@ tool_timeout_sec = 3600</div><div class="term" data-client="opencode" hidden><sp
     en:{title:'AutoClip for Agents: clips from any agent in one sentence | AutoClip',download:'Download',
       'meta.desc':'Paste a YouTube or Bilibili link in Claude Code, Cursor or Codex and get back clips, covers, post copy and a publish kit. One line: uvx autoclip-mcp. Open source (MIT), runs locally.',
       'nav.clips':'Clips','nav.numbers':'Speed & cost','nav.developers':'Developers','nav.agents':'Agents','nav.faq':'FAQ','nav.blog':'Blog',
-      h1:'Clips from any agent,<br>in one sentence.',lede:'Paste a YouTube or Bilibili link in Claude Code, Cursor or Codex. Get back the clips, covers, post copy and a publish kit.','lede.sub':'',
+      h1:'Make clips from any agent,<br>in one sentence.',lede:'Paste a YouTube or Bilibili link in Claude Code, Cursor or Codex. Get back the clips, covers, post copy and a publish kit.','lede.sub':'',
       gh:'View on GitHub',demo:'See the demo','hero.alt':'Open source (MIT) · Runs locally',
-      'chat.me':'Make this into Xiaohongshu and Shorts: youtube.com/watch?v=Hrbq66XqtCo','chat.ai1':'Started. Picking moments now, about 2 more minutes.','chat.ai2':'Both are ready: clips, covers, post copy and a ZIP kit.','chat.done':'Xiaohongshu · Shorts',
+      'chat.me':'Turn this into a Xiaohongshu post and a Short: youtube.com/watch?v=Hrbq66XqtCo','chat.ai1':'Started — picking the best moments. About 2 minutes left.','chat.ai2':'Both are ready: clips, covers, post copy and a ZIP kit.','chat.done':'Xiaohongshu · Shorts',
       'pack.eyebrow':'Publish pack','pack.h2':'One sentence in, four things out.','pack.lede':'Clips cut per platform, covers, post copy and a ZIP kit — the same pipeline as the desktop app.','pack.sub':'',
-      'pack.meta':'Xiaohongshu · 0:52 · completed','pack.title':'A one-line title, written per platform','pack.tag1':'#topic','pack.tag2':'#another','pack.tag3':'#bilingual','pack.copy':'Copy text','pack.open':'Open folder',
+      'pack.meta':'Xiaohongshu · 0:52 · completed','pack.title':'A one-line title, written per platform','pack.tag1':'#topic','pack.tag2':'#topic2','pack.tag3':'#bilingual','pack.copy':'Copy text','pack.open':'Open folder',
       'install.eyebrow':'Install','install.h2':'One line to plug AutoClip into your agent.','install.sub':'',
-      'i.claude':'claude mcp add, one line','i.cursor':'~/.cursor/mcp.json','i.codex':'~/.codex/config.toml','i.opencode':'autoclip mcp install opencode','i.skill':'Tells the agent when to call it and what to hand back','i.cli':'autoclip produce … --json',
+      'i.claude':'One line with claude mcp add','i.cursor':'~/.cursor/mcp.json','i.codex':'~/.codex/config.toml','i.opencode':'autoclip mcp install opencode','i.skill':'Tells the agent when to call it and what to hand back','i.cli':'autoclip produce … --json',
       't.mcp':'# 1. Add the MCP server (needs ffmpeg)','t.skill':'# 2. Add the skill','t.ask':'# 3. Then just ask:','t.ask2':'#    Turn this link into a Shorts clip https://youtube.com/…','t.cursor':'# ~/.cursor/mcp.json','t.codex':'# ~/.codex/config.toml','t.opencode':'# With the AutoClip CLI installed, write the opencode config','t.skillonly':'# Tells the agent when to call AutoClip and what to deliver','t.cli':'# One command, --json for scripts and pipelines',
       copy:'Copy',copied:'Copied',
-      'install.note':'Keep model keys in the desktop app settings or the AUTOCLIP_API_KEY environment variable, never in the chat. Ollama / LM Studio local models work too.',
+      'install.note':'The command only references $AUTOCLIP_API_KEY, never a plaintext key. You can also skip the variable and set the model key in the desktop app\'s settings. Never paste keys into the chat. Ollama / LM Studio local models work too.',
       'agents.eyebrow':'Supported agents','agents.h2':'Works with the agent you already use.','agents.sub':'','agents.oc':'One-command install','agents.any':'Any MCP','agents.stdio':'stdio clients',
       'styles.eyebrow':'Styles','styles.h2':'Three styles. Just ask to switch.','styles.sub':'',
       's1.h':'Editorial','s1.a':'White space, serif titles','s1.b':'For ideas and people','s2.h':'Street','s2.a':'Big keywords, fast pace','s2.b':'For punchlines','s3.h':'Classic','s3.a':'The safe default','s3.b':'Interviews and podcasts',
-      'faq.eyebrow':'FAQ','faq.h2':'What you probably want to ask.',
+      'faq.eyebrow':'FAQ','faq.h2':'Questions you might have.',
       'f1.q':'Is it free?','f1.a':'AutoClip is free and MIT-licensed. Cloud models bill through your provider; local analysis with Ollama / LM Studio has no cloud model cost.',
-      'f2.q':'Where does it run?','f2.a':'On your computer. Output shares the desktop app data folder, so CLI / MCP projects show up on the desktop home screen.',
+      'f2.q':'Where does it run?','f2.a':'On your computer. Projects share the desktop app\'s data folder, so anything made via CLI or MCP shows up in the app.',
       'f3.q':'Which platforms?','f3.a':'Douyin, Xiaohongshu, Bilibili, TikTok, Reels, YouTube Shorts and long-form YouTube.',
-      'f4.q':'Long jobs — will the agent time out?','f4.a':'The MCP server returns a job ID right away; the agent polls using poll_after_sec.',
+      'f4.q':'Will long jobs time out my agent?','f4.a':'The MCP server returns a job ID right away; the agent polls using poll_after_sec.',
       'f5.q':'Do I need ffmpeg?','f5.a':'Yes. Videos without captions also need local faster-whisper.',
       'cta.eyebrow':'Get started','cta.h2':'Make your first clip from your agent.','cta.sub':'','cta.docs':'CLI / MCP docs'}
   };</script>

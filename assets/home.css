@@ -732,3 +732,13 @@ img[data-develop].developed{opacity:1}
 .mod-chips span{height:30px;display:inline-flex;align-items:center;padding:0 13px;border-radius:999px;border:1px solid var(--ac-line);font-size:.8125rem;color:var(--ac-sub)}
 @media (max-width:960px){.agents-page .tpl-grid{grid-template-columns:1fr}}
 @media (max-width:720px){.agent-grid{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:28px}.agent-grid div:nth-child(odd){padding-left:0;border-left:0}.agent-grid div:nth-child(even){padding-left:16px}}
+/* Metric-matched fallbacks so the web-font swap does not move the /agents hero (CLS). */
+@font-face{font-family:"Geist Fallback";src:local("Arial"),local("Arimo"),local("Liberation Sans"),local("Helvetica");size-adjust:100%;ascent-override:100.49%;descent-override:29.5%;line-gap-override:0%}
+@font-face{font-family:"Instrument Serif Fallback";src:local("Times New Roman"),local("Tinos"),local("Liberation Serif"),local("Times");size-adjust:82.2%;ascent-override:120.44%;descent-override:37.71%;line-gap-override:0%}
+.agents-page{--ac-font-sans:"Geist","Geist Fallback","PingFang SC","Noto Sans SC",system-ui,-apple-system,sans-serif;--ac-font-serif:"Instrument Serif","Instrument Serif Fallback",Georgia,serif}
+@media (prefers-reduced-motion:reduce){.agents-page *,.agents-page *::before,.agents-page *::after,.agents-mod *{animation:none!important;transition:none!important}.agents-page .demo-out img{transform:none}.agents-page .rv,.agents-mod .rv{opacity:1!important;transform:none!important}}
+.agents-page.v2:not(:lang(zh-CN)) .hero-split h1,.agents-page.v2:not(:lang(zh-CN)) h2{font-family:"Instrument Serif","Instrument Serif Fallback","Noto Serif SC","Songti SC",serif}
+.agents-page.v2:not(:lang(zh-CN)) .hero-split h1{max-width:5.52em} /* = 12ch in Instrument Serif; em keeps the width stable across the font swap */
+.agents-page.v2:not(:lang(zh-CN)) .lede{max-width:37.13em} /* = 56ch in Geist */
+@media (max-width:720px){.agents-page.v2:not(:lang(zh-CN)) .hero-split .lede{max-width:21.22em}} /* = 32ch in Geist */
+.agents-page .hero-alt{column-gap:4px}
