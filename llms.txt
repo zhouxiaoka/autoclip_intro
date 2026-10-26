@@ -14,6 +14,7 @@ Each finished clip is a publish kit: video, cover, title, description, tags, and
 - [Local vs cloud](https://zhouxiaoka.github.io/autoclip_intro/en/guides/local-vs-cloud/)
 - [Blog](https://zhouxiaoka.github.io/autoclip_intro/en/blog/)
 - [Research: what drives views](https://zhouxiaoka.github.io/autoclip_intro/en/blog/what-drives-views/)
+- [Research: which topics get interview clips watched](https://zhouxiaoka.github.io/autoclip_intro/en/blog/which-topics-win/)
 - [Jensen × Dwarkesh, creator captions](https://zhouxiaoka.github.io/autoclip_intro/en/cases/jensen-dwarkesh/)
 - [TIM × Luo Yonghao, local transcription](https://zhouxiaoka.github.io/autoclip_intro/en/cases/tim-luoyonghao/)
 
@@ -36,3 +37,4 @@ AutoClip 是开源免费的桌面工具：贴一个链接，选好平台，一�
 - [Original first-run case](https://zhouxiaoka.github.io/autoclip_intro/en/cases/autoclip-first-run/): official 1.5.0, supplied SRT, three Shorts and manual review findings.
 - [博客](https://zhouxiaoka.github.io/autoclip_intro/blog/)
 - [研究：选对瞬间，而不是堆特效](https://zhouxiaoka.github.io/autoclip_intro/blog/what-drives-views/)
+- [研究：什么样的选题能让访谈切片多拿播放](https://zhouxiaoka.github.io/autoclip_intro/blog/which-topics-win/)
