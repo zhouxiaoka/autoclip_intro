@@ -27,6 +27,7 @@ Each finished clip is a publish kit: video, cover, title, description, tags, and
 - [Publish guide](https://zhouxiaoka.github.io/autoclip_intro/guides/publish/)
 - [GitHub repository](https://github.com/zhouxiaoka/autoclip): source, issues, latest release
 - [CLI / MCP](https://github.com/zhouxiaoka/autoclip/blob/main/docs/CLI_AND_MCP.md)
+- [AutoClip for Agents](https://zhouxiaoka.github.io/autoclip_intro/agents/): MCP server `uvx autoclip-mcp` (stdio), Claude Code / Cursor / Codex setup, skill `npx skills add zhouxiaoka/autoclip`
 - [Full machine-readable brief](https://zhouxiaoka.github.io/autoclip_intro/llms-full.txt)
 
 ## 中文

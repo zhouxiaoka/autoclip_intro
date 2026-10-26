@@ -26,6 +26,12 @@
 | `website_sponsor_click` | 点击显式标记的赞助链接 | sponsor_id；placement |
 | `website_resource_click` | 打开仓库、文档、发布列表、社区或站内发布指南 | resource；placement |
 | `website_language_change` | 切换页面语言 | from_language；to_language |
+| `agents_page_view` | 同意后打开 /agents（中英） | 无 |
+| `agents_tab_switch` | 安装区切换客户端 | client: claude / cursor / codex / opencode / skill / cli |
+| `agents_install_copy` | 安装区点击「复制」且写入剪贴板成功 | client；cmd: mcp / skill / config |
+| `agents_github_click` | /agents 上点 GitHub 链接 | position: nav / hero / cta |
+| `agents_style_play` | /agents 风格示例点按播放（移动端 tap / 键盘） | style: editorial / street / classic |
+| `home_agents_module_click` | 首页 Agent 模块点「了解 Agent 接入」 | variant: on |
 
 共同属性：page、language、referrer_source、可选 UTM、surface、analytics_environment、schema_version。匿名 `distinct_id` 使用独立 `website_` 前缀；刷新和跳页复用，不与客户端 ID 拼接。来源和 UTM 按当前页面记录，不跨页面重新归因；查看转化来源时使用漏斗第一步的属性。
 
@@ -83,3 +89,14 @@ ORDER BY day
 采集 API：[PostHog Capture API](https://posthog.com/docs/api/capture)。网络请求使用 `keepalive`，不阻塞导航，无离线补发或无限重试；同意撤回后不会重放旧事件。
 
 本次接入验证：已发送一条 `analytics_environment = validation` 的合成 pageview，采集端返回 HTTP 200 / `status: Ok`，跨域允许正式官网 Origin。它不计入上述 production 查询；这只证明接口接受请求，尚不代表已在 PostHog 后台核对落库。
+
+
+## 站点功能开关
+
+`assets/analytics.js` 提供 `AutoClipAnalytics.flag(name, cb)`。构建默认值写在 `FLAG_DEFAULTS`；未同意、DNT/GPC、非正式域名或请求失败时直接用默认值，不发请求。同意后才向 PostHog `/flags/?v=2` 请求一次，用同一个匿名 `website_` 标识，远程值覆盖默认值。
+
+| 开关 | 默认 | 作用 |
+| --- | --- | --- |
+| `site_agents_module` | `true` | 首页「本地剪辑，自选模型」之后的 Agent 模块。设为 false 时隐藏模块；导航里的 Agent 链接不受开关控制。 |
+
+需要在 PostHog 项目里创建同名开关才能做远程关闭或 A/B；未创建时所有访客看到默认值。

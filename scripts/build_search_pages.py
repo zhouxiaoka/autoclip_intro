@@ -17,7 +17,8 @@ ROOT = Path(__file__).resolve().parents[1]
 SITE = 'https://zhouxiaoka.github.io/autoclip_intro/'
 SOURCES = ['index.html', 'cases/index.html', 'use-cases/podcast/index.html',
            'use-cases/course/index.html', 'use-cases/gameplay/index.html',
-           'features/publish/index.html', 'features/auto-cover/index.html']
+           'features/publish/index.html', 'features/auto-cover/index.html',
+           'agents/index.html']
 SOURCES += [p+'index.html' for p in json.loads((ROOT/'data/growth-content.json').read_text())]
 ROUTES = {str(Path(p).parent).replace('.', '') + ('/' if Path(p).parent != Path('.') else '') for p in SOURCES}
 ROUTES.update({'blog/'})
