@@ -1,0 +1,31 @@
+{
+  "source": "github-release",
+  "repository": "zhouxiaoka/autoclip",
+  "tag": "v1.5.8",
+  "version": "1.5.8",
+  "draft": false,
+  "prerelease": false,
+  "published_at": "2026-11-02T12:15:50Z",
+  "html_url": "https://github.com/zhouxiaoka/autoclip/releases/tag/v1.5.8",
+  "download_page": "https://github.com/zhouxiaoka/autoclip/releases/latest",
+  "assets": {
+    "mac": {
+      "name": "AutoClip.Desktop_1.5.8_aarch64.dmg",
+      "bytes": 364920141,
+      "size_mb": 348,
+      "url": "https://github.com/zhouxiaoka/autoclip/releases/download/v1.5.8/AutoClip.Desktop_1.5.8_aarch64.dmg"
+    },
+    "win": {
+      "name": "AutoClip.Desktop_1.5.8_x64-setup.exe",
+      "bytes": 204238232,
+      "size_mb": 195,
+      "url": "https://github.com/zhouxiaoka/autoclip/releases/download/v1.5.8/AutoClip.Desktop_1.5.8_x64-setup.exe"
+    },
+    "cli": {
+      "name": "autoclip-1.5.8-cli-mcp.zip",
+      "bytes": 21430514,
+      "size_mb": 20,
+      "url": "https://github.com/zhouxiaoka/autoclip/releases/download/v1.5.8/autoclip-1.5.8-cli-mcp.zip"
+    }
+  }
+}

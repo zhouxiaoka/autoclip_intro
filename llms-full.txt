@@ -1,6 +1,6 @@
 # AutoClip — product brief for search and answer engines
 
-Updated: 2026-10-02. Official site: https://zhouxiaoka.github.io/autoclip_intro/
+Updated: 2026-11-02. Official site: https://zhouxiaoka.github.io/autoclip_intro/
 Source: https://github.com/zhouxiaoka/autoclip
 Latest release: https://github.com/zhouxiaoka/autoclip/releases/latest
 
@@ -26,14 +26,14 @@ You do not need a timeline editor. You do not need to chat with an AI to get the
 - Not limited to English platforms. Douyin, Xiaohongshu and Bilibili have dedicated templates; foreign speech can be captioned in Chinese.
 - Not CLI-only and not Docker-only. Desktop is the default path. CLI and MCP share the same 1.5 pipeline.
 
-## Current product (1.5.0)
+## Current product (1.5.8)
 
 | Item | Fact |
 | --- | --- |
 | License | MIT, open source |
 | Desktop | macOS 13+ Apple Silicon; Windows 10/11 x64 |
 | Not yet | Intel Mac; Apple notarization; Windows code signing (first-launch OS warning) |
-| Installers | Self-contained (Python + FFmpeg bundled). macOS ~270 MB, Windows ~196 MB |
+| Installers | Self-contained (Python + FFmpeg bundled). macOS ~348 MB, Windows ~195 MB |
 | Other surfaces | CLI, MCP, Docker |
 | Sources | YouTube, Bilibili, local files |
 | Transcripts | Creator subtitles first; else local Whisper / SenseVoice or a configured cloud STT |
@@ -76,7 +76,7 @@ Cases: https://zhouxiaoka.github.io/autoclip_intro/cases/
 
 ## 中文摘要
 
-AutoClip 是开源免费的本地一键出片工具，不是按月订阅的云端切片 SaaS，也不是只能 Docker 部署的旧版 Web 演示。贴 YouTube / B 站链接或本地文件，选抖音、小红书、B 站、TikTok、Reels、Shorts、YouTube，按一次即可。剪辑和渲染在本机；云端模型只收字幕文本。1.5.0 提供 Windows x64 与 macOS Apple Silicon 桌面版，以及同一条链路的 CLI / MCP。每条成片含视频、封面、标题、简介、话题和 ZIP。实测 1 小时 43 分钟访谈、有作者字幕时约 7.5 分钟出 10 条，文字模型约 ¥0.09。
+AutoClip 是开源免费的本地一键出片工具，不是按月订阅的云端切片 SaaS，也不是只能 Docker 部署的旧版 Web 演示。贴 YouTube / B 站链接或本地文件，选抖音、小红书、B 站、TikTok、Reels、Shorts、YouTube，按一次即可。剪辑和渲染在本机；云端模型只收字幕文本。1.5.8 提供 Windows x64 与 macOS Apple Silicon 桌面版，以及同一条链路的 CLI / MCP。每条成片含视频、封面、标题、简介、话题和 ZIP。实测 1 小时 43 分钟访谈、有作者字幕时约 7.5 分钟出 10 条，文字模型约 ¥0.09。
 
 ## Guides and case evidence
 
