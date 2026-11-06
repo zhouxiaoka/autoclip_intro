@@ -61,7 +61,7 @@ Editing and rendering are local. Anonymous website analytics on this GitHub Page
 
 **Is the video uploaded?** Editing and rendering stay local. Cloud analysis receives relevant subtitles and copy; optional vision and reference-frame image generation receive sampled frames, and cloud transcription receives audio. Local analysis and transcription avoid those cloud APIs. Finished clips upload only when the user chooses to publish to a connected platform.
 
-**First-launch warnings?** Builds are not notarized or code-signed yet. macOS: right-click → Open. Windows: More info → Run anyway. Once per machine.
+**First-launch warnings?** Builds are not notarized or code-signed yet. On macOS 15 or later, double-click once; if blocked, use System Settings → Privacy & Security → Open Anyway. On older macOS, right-click the app and choose Open. On Windows, choose More info, then Run anyway.
 
 **How to try it first?** Use a 10–30 minute interview or podcast that already has subtitles. Pick one or two platforms.
 
@@ -76,7 +76,7 @@ Cases: https://zhouxiaoka.github.io/autoclip_intro/cases/
 
 ## 中文摘要
 
-AutoClip 是开源免费的本地一键出片工具，不是按月订阅的云端切片 SaaS，也不是只能 Docker 部署的旧版 Web 演示。贴 YouTube / B 站链接或本地文件，选抖音、小红书、B 站、TikTok、Reels、Shorts、YouTube，按一次即可。剪辑和渲染在本机；云端模型只收字幕文本。1.5.8 提供 Windows x64 与 macOS Apple Silicon 桌面版，以及同一条链路的 CLI / MCP。每条成片含视频、封面、标题、简介、话题和 ZIP。实测 1 小时 43 分钟访谈、有作者字幕时约 7.5 分钟出 10 条，文字模型约 ¥0.09。
+AutoClip 是开源免费的本地一键出片工具，不是按月订阅的云端切片 SaaS，也不是只能 Docker 部署的旧版 Web 演示。贴 YouTube / B 站链接或本地文件，选抖音、小红书、B 站、TikTok、Reels、Shorts、YouTube，按一次即可。剪辑和渲染在本机。云端分析会发送相关字幕与文案；可选的画面理解或参考帧生图会发送抽样画面，云端转写会发送音频。1.5.8 提供 Windows x64 与 macOS Apple Silicon 桌面版，以及同一条链路的 CLI / MCP。每条成片含视频、封面、标题、简介、话题和 ZIP。实测 1 小时 43 分钟访谈、有作者字幕时约 7.5 分钟出 10 条，文字模型约 ¥0.09。
 
 ## Guides and case evidence
 

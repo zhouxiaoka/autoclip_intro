@@ -155,8 +155,15 @@ class FactsStayTrue(unittest.TestCase):
         self.assertNotIn("B站自动上传", retired)
         self.assertIn("https://zhouxiaoka.github.io/autoclip_intro/", retired)
         gameplay = (ROOT / "use-cases/gameplay/index.html").read_text(encoding="utf-8")
-        self.assertIn("使用场景 · 1.5.0", gameplay)
+        self.assertNotIn("使用场景 · 1.5.0", gameplay)
+        self.assertNotIn("Use case · 1.5.0", gameplay)
+        self.assertIn("该样本没有在当前正式版上重新验收", gameplay)
+        self.assertIn("has not been re-checked on the current stable release", gameplay)
+        self.assertNotIn("content.js", gameplay)
         self.assertIn("1.4 基础能力", (ROOT / "use-cases/gameplay/content.js").read_text(encoding="utf-8"))
+        full = (ROOT / "llms-full.txt").read_text(encoding="utf-8")
+        self.assertIn("Privacy & Security → Open Anyway", full)
+        self.assertNotIn("云端模型只收字幕文本", full)
 
 
 if __name__ == "__main__":

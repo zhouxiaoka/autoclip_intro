@@ -18,6 +18,12 @@ test('game use case covers its rendered content and references existing local as
     for (const key of keys) assert.ok(copy[lang][key], `${lang}.${key}`);
   }
   assert.match(html, /src="\.\.\/\.\.\/assets\/inner-page\.js"/);
+  assert.doesNotMatch(html, /(?:src|href)="[^"]*(?:content\.js|\/page\.js)"/);
+  assert.equal(copy.zh.eyebrow, '使用场景');
+  assert.equal(copy.en.eyebrow, 'Use case');
+  assert.match(copy.zh.note, /没有在当前正式版上重新验收/);
+  assert.match(copy.en.note, /not been re-checked on the current stable release/);
+  assert.deepEqual(Object.keys(copy).sort(), ['en', 'zh']);
   for (const [, target] of html.matchAll(/(?:src|href)="([^"#?]+)"/g)) {
     if (/^[a-z][a-z0-9+.-]*:/i.test(target)) continue;
     assert.ok(fs.existsSync(path.resolve(root, target)), target);
