@@ -19,6 +19,14 @@ function launch({saved=null,languages=['en-US'],search='',windows=false}={}) {
  vm.runInNewContext(script,context)
  return {...context,nodes,storage,textNodes,htmlNodes}
 }
+test('japanese through french reuse the English catalog, including the current release note',()=>{
+ const release=JSON.parse(fs.readFileSync(require('node:path').join(__dirname,'../data/release.json'),'utf8'))
+ for(const lang of ['ja','ko','es','pt','ru','fr']){
+  assert.equal(c.T[lang],c.T.en,lang)
+  assert.match(c.T[lang]['hero.note'],new RegExp('^v'+release.version.replaceAll('.','\\.')+' ·'))
+ }
+ assert.match(c.T.zh['hero.note'],new RegExp('^v'+release.version.replaceAll('.','\\.')+' ·'))
+})
 test('eight catalogs cover all translated elements and preserve links',()=>{
  const keys=Object.keys(c.T.en).sort()
  for(const lang of langs){

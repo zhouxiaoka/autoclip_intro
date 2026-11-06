@@ -2,7 +2,7 @@
 
 > Open-source desktop app that turns one long video into ready-to-post short clips. Paste a YouTube or Bilibili link (or a local file), pick platforms, press once. Editing and rendering stay on your computer.
 
-AutoClip is not a hosted clipper and not a chat-based editor. Version 1.5.0 ships a desktop app (Windows x64, macOS Apple Silicon), plus CLI and MCP that share the same pipeline. The software is free (MIT). Cloud models are billed by the provider you choose; an October 1, 2026 Apple Silicon Mac run of a 1h43m interview with creator captions and qwen-plus estimated about ¥0.09 for text-model tokens only, excluding cloud transcription, image generation and publishing-service fees. Local Ollama / LM Studio has no model fee.
+AutoClip is not a hosted clipper and not a chat-based editor. Version 1.5.8 ships a desktop app (Windows x64, macOS Apple Silicon), plus CLI and MCP that share the same pipeline. The software is free (MIT). Cloud models are billed by the provider you choose; an October 1, 2026 Apple Silicon Mac run of a 1h43m interview with creator captions and qwen-plus estimated about ¥0.09 for text-model tokens only, excluding cloud transcription, image generation and publishing-service fees. Local Ollama / LM Studio has no model fee.
 
 Each finished clip is a publish kit: video, cover, title, description, tags, and a ZIP. Douyin and Xiaohongshu use an interview layout; TikTok, Reels and Shorts use a full-frame podcast layout; Bilibili and YouTube stay landscape.
 
@@ -31,7 +31,7 @@ Each finished clip is a publish kit: video, cover, title, description, tags, and
 
 ## 中文
 
-AutoClip 是开源免费的桌面工具：贴一个链接，选好平台，一键出片。剪辑和渲染在你的电脑上。1.5.0 同时提供 Windows / macOS 桌面版、CLI 和 MCP。云端模型用你自己的 Key；本地模型没有模型费用。每条成片带封面、标题、简介、话题和 ZIP 发布包。
+AutoClip 是开源免费的桌面工具：贴一个链接，选好平台，一键出片。剪辑和渲染在你的电脑上。1.5.8 同时提供 Windows / macOS 桌面版、CLI 和 MCP。云端模型用你自己的 Key；本地模型没有模型费用。每条成片带封面、标题、简介、话题和 ZIP 发布包。
 
 - [Original first-run case](https://zhouxiaoka.github.io/autoclip_intro/en/cases/autoclip-first-run/): official 1.5.0, supplied SRT, three Shorts and manual review findings.
 - [博客](https://zhouxiaoka.github.io/autoclip_intro/blog/)

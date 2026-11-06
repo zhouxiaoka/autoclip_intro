@@ -43,33 +43,42 @@ npx serve -l 8765 .
 
 ## Release 自动同步
 
-`.github/workflows/sync-release.yml` 从 `zhouxiaoka/autoclip` 的 GitHub Release 同步八语版本文案、下载链接及安装包体积，并自动提交到 `main`、显式请求 GitHub Pages 构建。
+`.github/workflows/sync-release.yml` 从 `zhouxiaoka/autoclip` 的正式 GitHub Release 同步当前版本，并自动提交到 `main`、显式请求 GitHub Pages 构建。单一事实来源是同步时写入的 `data/release.json`。
 
-- **每日同步**：cron `17 3 * * *`，北京时间每天 11:17 检查最新正式 Release；GitHub 调度可能延迟。无需额外 token。
-- **发版触发**：接收 `repository_dispatch` 的 `autoclip-release` 事件，读取 `client_payload.tag`。
-- **手动同步**：在 Actions → Sync release info → Run workflow 运行；tag 留空取 latest，也可指定已发布版本。
+会更新：首页与英文静态页的下载链接、安装包体积、`softwareVersion`、noscript 介绍、`hero.note`；发布教程八语里的「当前正式版」；`llms.txt` / `llms-full.txt` 的当前版本与体积；上述 URL 的 sitemap `lastmod`。
 
-仅有 tag 不会更新官网；Release 必须包含 macOS ARM64 `.dmg` 和 Windows x64 `.exe` 两个安装包，否则同步失败并保留原页面。
+不会更新：案例名称、功能首次提供的版本（例如发布自 v1.3.2、游戏视觉 1.4、1.5.0 首次出片案例）。静态功能说明不随版本号生成；`scripts/sync_release_test.py` 与 `scripts/seo.test.cjs` 锁住系统要求、公证状态和这些历史版本。
+
+- **每日同步**：cron `17 3 * * *`，北京时间每天 11:17 读取 GitHub Latest（不含预发布）。调度可能延迟。无需额外 token。
+- **发版触发**：接收 `repository_dispatch` 的 `autoclip-release`。主仓库只在 `promote-release.yml` 转正或撤回后发送，payload 是当前正式 tag。
+- **手动更正**：Actions → Sync release info → Run workflow。tag 留空取 Latest；填写 tag 时必须已是正式版。撤回后把 tag 写成回退的正式版即可覆盖错误版本。
+
+失败时不提交、不构建 Pages，线上保持上一份成功内容：
+
+- tag 是 draft、prerelease 或 RC
+- 缺少 macOS ARM64 `.dmg` 或 Windows x64 `.exe`，或文件名版本与 tag 不一致
+- Release API 超时、限流或返回无法解析的内容
+
+仅有 tag、预发布或安装包还在上传，都不会改官网。GitHub 可能在公共仓库连续 60 天无活动后停用定时 workflow；停用后到 Actions 里重新启用。
 
 本地检查与同步：
 
 ```bash
 python3 scripts/sync_release.py --check  # 0 = 已同步，1 = 需要更新
-python3 scripts/sync_release.py          # 更新到 latest
-python3 scripts/sync_release.py v1.3.0   # 更新到指定已发布 Release
+python3 scripts/sync_release.py          # 更新到 GitHub Latest（正式版）
+python3 scripts/sync_release.py v1.5.8   # 更新到指定正式 Release
+python3 -m unittest discover -s scripts -p '*_test.py'
 ```
 
-### 可选：发版即时更新
+### 可选：发版后立即更新
 
-主仓库需先合入 [PR #105](https://github.com/zhouxiaoka/autoclip/pull/105) 的 `Notify website` 步骤，再在 **zhouxiaoka/autoclip** 的 Settings → Secrets and variables → Actions 中配置 `WEBSITE_DISPATCH_TOKEN`。
+主仓库 `promote-release.yml` 在转正或撤回之后发送 `autoclip-release`。跨仓库通知使用 Actions secret `WEBSITE_DISPATCH_TOKEN`：fine-grained PAT 只授权本仓库，Contents 为 Read and write。token 不进入仓库。官网提交和 Pages 构建只用本仓库的 `GITHUB_TOKEN`。
 
-使用 fine-grained PAT：Repository access 只选 **autoclip_intro**，Contents 权限为 **Read and write**。该 token 用来发送跨仓库 dispatch；官网 workflow 自身使用内置 `GITHUB_TOKEN` 提交和请求 Pages 构建。
-
-没有配置该 secret 或通知步骤尚未合入时，每日 cron 仍可独立同步。GitHub 可能在公共仓库连续 60 天无活动后停用定时 workflow；如被停用，在 Actions 中重新启用。
+没有这个 secret 时，上面的每日 cron 仍会同步。
 
 ## 反馈入口
 
-官网 `#feedback` 卡指向飞书多维表格表单（免登录）。可复现的 Bug 走 GitHub Issues；公告、第一次出片、想法与路线图分别是 Discussions [#127](https://github.com/zhouxiaoka/autoclip/discussions/127)、[#128](https://github.com/zhouxiaoka/autoclip/discussions/128)、[#129](https://github.com/zhouxiaoka/autoclip/discussions/129)；已知问题仍是 [Issues #96](https://github.com/zhouxiaoka/autoclip/issues/96)。收件箱的说明见主仓库 `HANDOFF.md`「反馈收件箱」一节。
+首页反馈指向 GitHub：可复现的 Bug 用 Issues；公告、第一次出片、想法与路线图分别是 Discussions [#127](https://github.com/zhouxiaoka/autoclip/discussions/127)、[#128](https://github.com/zhouxiaoka/autoclip/discussions/128)、[#129](https://github.com/zhouxiaoka/autoclip/discussions/129)。已知问题仍是 [Issues #96](https://github.com/zhouxiaoka/autoclip/issues/96)。页面上没有飞书表单。
 
 ## 语言
 
