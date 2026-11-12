@@ -265,6 +265,31 @@ def linked_figures(raw):
     return found
 
 
+def image_size(src):
+    """Return (width, height) for a post figure so the browser reserves space."""
+    if not src.startswith('figures/'):
+        return None
+    path = ROOT / FIGURE_ROOT / _ctx['slug'] / src
+    if path.suffix != '.webp' or not path.exists():
+        return None
+    data = path.read_bytes()[:40]
+    kind = data[12:16]
+    if kind == b'VP8X':
+        return 1 + int.from_bytes(data[24:27], 'little'), 1 + int.from_bytes(data[27:30], 'little')
+    if kind == b'VP8 ':
+        return int.from_bytes(data[26:28], 'little') & 0x3FFF, int.from_bytes(data[28:30], 'little') & 0x3FFF
+    if kind == b'VP8L':
+        bits = int.from_bytes(data[21:25], 'little')
+        return (bits & 0x3FFF) + 1, ((bits >> 14) & 0x3FFF) + 1
+    return None
+
+
+def img_tag(src, href, alt):
+    size = image_size(src)
+    dims = f' width="{size[0]}" height="{size[1]}" decoding="async"' if size else ''
+    return f'<img src="{esc(href)}" alt="{esc(alt)}"{dims} loading="lazy">'
+
+
 def render_body(markdown, page_route, language, slug):
     _ctx['slug'] = slug
     _, body = front_matter(markdown)
@@ -310,7 +335,7 @@ def render_body(markdown, page_route, language, slug):
                 if credit:
                     cap += '\n<span class="credit">' + inline(credit, page_route, language) + '</span>'
                 cap += '</figcaption>'
-            parts.append(f'<figure><img src="{esc(href)}" alt="{esc(alt)}" loading="lazy">{cap}</figure>')
+            parts.append(f'<figure>{img_tag(src, href, alt)}{cap}</figure>')
         elif kind == 'table':
             rows = []
             for raw in block[1]:
@@ -331,7 +356,7 @@ def render_body(markdown, page_route, language, slug):
             extras = []
             for alt, src in linked_figures(raw):
                 href = rewrite(src, page_route, language)
-                extras.append(f'<figure><img src="{esc(href)}" alt="{esc(alt)}" loading="lazy"></figure>')
+                extras.append(f'<figure>{img_tag(src, href, alt)}</figure>')
             parts.extend(extras)
         else:
             raise ValueError(kind)

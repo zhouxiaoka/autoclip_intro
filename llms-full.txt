@@ -87,6 +87,7 @@ Podcast-to-Shorts guide: https://zhouxiaoka.github.io/autoclip_intro/en/guides/p
 Local vs hosted workflow: https://zhouxiaoka.github.io/autoclip_intro/en/guides/local-vs-cloud/
 Blog: https://zhouxiaoka.github.io/autoclip_intro/en/blog/
 Research note, what drives views: https://zhouxiaoka.github.io/autoclip_intro/en/blog/what-drives-views/
+Research note, which topics get interview clips watched: https://zhouxiaoka.github.io/autoclip_intro/en/blog/which-topics-win/
 Jensen × Dwarkesh recorded case: https://zhouxiaoka.github.io/autoclip_intro/en/cases/jensen-dwarkesh/
 TIM × Luo Yonghao recorded case: https://zhouxiaoka.github.io/autoclip_intro/en/cases/tim-luoyonghao/
 
