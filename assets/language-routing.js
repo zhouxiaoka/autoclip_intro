@@ -9,9 +9,18 @@
   }
   function localized(url, language) {
     const page = path(url);
-    if (page === null || !routes.has(page) || !['zh', 'en'].includes(language)) return url;
-    url.pathname = root.pathname + (language === 'en' ? 'en/' : '') + page;
-    url.searchParams.delete('lang');
+    if (page === null) return url;
+    if (routes.has(page)) {
+      if (!['zh', 'en'].includes(language)) return url;
+      url.pathname = root.pathname + (language === 'en' ? 'en/' : '') + page;
+      url.searchParams.delete('lang');
+      return url;
+    }
+    /* Unpaired pages such as guides/publish/ have no /en/ tree. Stay on the
+       default path and pass ?lang= so the page's in-page catalog can switch. */
+    url.pathname = root.pathname + page;
+    if (language === 'zh') url.searchParams.delete('lang');
+    else if (language) url.searchParams.set('lang', language);
     return url;
   }
   window.AutoClipLocale = Object.freeze({localized, html(markup) {
