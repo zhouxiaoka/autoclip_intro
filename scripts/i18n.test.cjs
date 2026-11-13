@@ -32,10 +32,14 @@ test('eight catalogs cover all translated elements and preserve links',()=>{
  for(const lang of langs){
   assert.deepEqual(Object.keys(c.T[lang]).sort(),keys,lang)
   for(const [,key] of html.matchAll(/data-i18n(?:-html)?="([^"]+)"/g))assert.ok(c.T[lang][key],lang+': '+key)
-  for(const key of ['dl.alt','fb.alt','fb.stuck','faq.5.a','faq.6.a','faq.7.a']){
-   const links=s=>[...s.matchAll(/href="([^"]+)"/g)].map(m=>m[1]).filter(x=>!x.startsWith('#')).sort()
-   assert.deepEqual(links(c.T[lang][key]),links(c.T.en[key]),lang+': '+key)
-  }
+  const links=s=>[...s.matchAll(/href="([^"]+)"/g)].map(m=>m[1]).filter(x=>!x.startsWith('#'))
+   const pathOf=href=>href.split('?')[0]
+   for(const key of ['dl.alt','fb.alt','fb.stuck','faq.5.a','faq.6.a','faq.7.a']){
+    assert.deepEqual(links(c.T[lang][key]).map(pathOf).sort(),links(c.T.en[key]).map(pathOf).sort(),lang+': '+key)
+   }
+   assert.equal(links(c.T.zh['faq.7.a'])[0],'guides/publish/')
+   assert.equal(links(c.T.en['faq.7.a'])[0],'guides/publish/?lang=en')
+   if(lang!=='zh')assert.equal(links(c.T[lang]['faq.7.a'])[0],'guides/publish/?lang=en')
  }
 })
 test('URL, saved selection, regional browser preferences and fallback have the right precedence',()=>{
