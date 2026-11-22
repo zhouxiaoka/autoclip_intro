@@ -17,7 +17,7 @@ def render(path, item, contents):
     shell = (ROOT/'use-cases/podcast/index.html').read_text()
     header = re.search(r'<header[\s\S]*?</header>', shell)[0]
     footer = re.search(r'<footer[\s\S]*?</footer>', shell)[0]
-    for old,new in [('href="./"','href="../../use-cases/podcast/"'),('href="../course/"','href="../../use-cases/course/"'),('href="../gameplay/"','href="../../use-cases/gameplay/"')]:
+    for old,new in [('href="./"','href="../../use-cases/podcast/"'),('href="../course/"','href="../../use-cases/course/"')]:
         footer=footer.replace(old,new)
     copies = {}
     for lang in ('zh', 'en'):

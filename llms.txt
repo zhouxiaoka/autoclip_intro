@@ -23,7 +23,7 @@ Each finished clip is a publish kit: video, cover, title, description, tags, and
 - [Case library](https://zhouxiaoka.github.io/autoclip_intro/cases/): real untouched outputs
 - [Interviews & podcasts](https://zhouxiaoka.github.io/autoclip_intro/use-cases/podcast/)
 - [Courses](https://zhouxiaoka.github.io/autoclip_intro/use-cases/course/)
-- [Gaming highlights](https://zhouxiaoka.github.io/autoclip_intro/use-cases/gameplay/)
+- [Game stream clipping (v1.6.0 preview)](https://zhouxiaoka.github.io/autoclip_intro/features/game-streams/)
 - [Publish guide](https://zhouxiaoka.github.io/autoclip_intro/guides/publish/)
 - [GitHub repository](https://github.com/zhouxiaoka/autoclip): source, issues, latest release
 - [CLI / MCP](https://github.com/zhouxiaoka/autoclip/blob/main/docs/CLI_AND_MCP.md)

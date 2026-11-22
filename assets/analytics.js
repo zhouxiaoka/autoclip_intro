@@ -5,7 +5,7 @@
   const config = window.AUTOCLIP_ANALYTICS_CONFIG || {};
   const root = new URL('../', document.currentScript.src);
   const prefix = 'autoclip.website.analytics.';
-  const pages = new Set(['', 'cases/', 'use-cases/podcast/', 'use-cases/course/', 'use-cases/gameplay/', 'features/game-streams/', 'features/publish/', 'features/auto-cover/', 'guides/publish/', 'guides/first-clips/', 'guides/podcast-to-shorts/', 'guides/local-vs-cloud/', 'cases/jensen-dwarkesh/', 'cases/tim-luoyonghao/', 'cases/autoclip-first-run/']);
+  const pages = new Set(['', 'cases/', 'use-cases/podcast/', 'use-cases/course/', 'features/game-streams/', 'features/publish/', 'features/auto-cover/', 'guides/publish/', 'guides/first-clips/', 'guides/podcast-to-shorts/', 'guides/local-vs-cloud/', 'cases/jensen-dwarkesh/', 'cases/tim-luoyonghao/', 'cases/autoclip-first-run/']);
   const languages = ['zh', 'en', 'ja', 'ko', 'es', 'pt', 'ru', 'fr'];
   const read = key => { try { return localStorage.getItem(prefix + key); } catch { return null; } };
   const write = (key, value) => { try { localStorage.setItem(prefix + key, value); } catch {} };

@@ -205,7 +205,7 @@ test('storage denial and synchronous/asynchronous network failures do not break 
 });
 test('all marketing pages load config then analytics once, using existing local paths',()=>{
   const root=path.join(__dirname,'..');
-  for(const p of ['','cases','use-cases/podcast','use-cases/course','use-cases/gameplay','features/game-streams','features/publish','features/auto-cover','guides/publish']) {
+  for(const p of ['','cases','use-cases/podcast','use-cases/course','features/game-streams','features/publish','features/auto-cover','guides/publish']) {
     const html=fs.readFileSync(path.join(root,p,'index.html'),'utf8');
     for(const asset of ['analytics-config.js','analytics.js']) {
       const links=[...html.matchAll(new RegExp('<script src="([^\"]*assets/'+asset.replace('.','\\.')+')"></script>','g'))];

@@ -17,7 +17,7 @@ const pages = [
   '/cases/',
   '/use-cases/podcast/',
   '/use-cases/course/',
-  '/use-cases/gameplay/',
+  '/features/game-streams/',
   '/guides/publish/',
   '/features/publish/',
   '/features/auto-cover/',
