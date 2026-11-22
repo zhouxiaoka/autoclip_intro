@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1.6.0 游戏直播切片预告（GTA 6 热播正当时）| AutoClip</title>
+<meta name="description" content="AutoClip 1.6.0 即将发布：GTA 6 已经开播，专为长时游戏直播打造的本地切片工作流。OBS 下播自动接管、秒级裁掉私人桌面、Twitch 后台拉取、6 大回放来源，开源免费、无月费。">
+<meta property="og:title" content="1.6.0 游戏直播切片预告（GTA 6 热播正当时）| AutoClip">
+<meta property="og:description" content="AutoClip 1.6.0 即将发布：GTA 6 已经开播，专为长时游戏直播打造的本地切片工作流。OBS 下播自动接管、秒级裁掉私人桌面、Twitch 后台拉取、6 大回放来源，开源免费、无月费。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://zhouxiaoka.github.io/autoclip_intro/features/game-streams/">
+<link rel="canonical" href="https://zhouxiaoka.github.io/autoclip_intro/features/game-streams/">
+<meta property="og:image" content="https://zhouxiaoka.github.io/autoclip_intro/features/game-streams/assets/stream-source.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="1.6.0 游戏直播切片预告（GTA 6 热播正当时）| AutoClip">
+<meta name="twitter:description" content="AutoClip 1.6.0 即将发布：GTA 6 已经开播，专为长时游戏直播打造的本地切片工作流。OBS 下播自动接管、秒级裁掉私人桌面、Twitch 后台拉取、6 大回放来源，开源免费、无月费。">
+<meta name="twitter:image" content="https://zhouxiaoka.github.io/autoclip_intro/features/game-streams/assets/stream-source.webp">
+<meta name="theme-color" content="#F6F5F3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#19181A" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/svg+xml" href="../../logo.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500&family=Noto+Serif+SC:wght@600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../assets/home.css?v=2026-11-23-launch">
+<link rel="stylesheet" href="launch.css?v=2026-11-23-v7">
+</head>
+<body class="v2 gs-launch">
+<div class="footer-reveal" aria-hidden="true">
+  <img src="../../assets/art/reveal-01-camera.webp" alt="" width="1280" height="720">
+  <img src="../../assets/art/reveal-02-wash.webp" alt="" width="1280" height="720">
+  <img src="../../assets/art/reveal-03-scissors.webp" alt="" width="1280" height="720">
+  <img src="../../assets/art/reveal-04-stamp.webp" alt="" width="1280" height="720">
+  <img src="../../assets/art/reveal-05-lens.webp" alt="" width="1280" height="720">
+  <img src="../../assets/art/reveal-06-clips.webp" alt="" width="1280" height="720">
+</div>
+<div class="page-sheet">
+
+<header class="nav">
+  <div class="container nav-in">
+    <a class="brand serif" href="../../" data-home aria-label="AutoClip"><img src="../../logo.svg" alt="">AutoClip</a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="../../" data-home data-copy="nav.home">首页</a>
+      <a href="#sources" data-copy="nav.sources">6 大来源</a>
+      <a href="#gta6" data-copy="nav.gta6">高光切法</a>
+      <a href="#checklist" data-copy="nav.checklist">三步上手</a>
+    </nav>
+    <div class="nav-right">
+      <a class="gh" href="https://github.com/zhouxiaoka/autoclip" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.66-.22.66-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.45-1.15-1.1-1.46-1.1-1.46-.9-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85.004 1.71.11 2.51.32 1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.85-2.34 4.7-4.57 4.95.36.31.68.92.68 1.85 0 1.33-.01 2.4-.01 2.73 0 .27.16.58.67.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"/></svg>
+        <span>GitHub</span>
+      </a>
+      <div class="lang">
+        <select id="language" aria-label="Language / 语言">
+          <option value="zh" lang="zh-CN">简体中文</option>
+          <option value="en" lang="en">English</option>
+          <option value="ja" lang="ja">日本語</option>
+          <option value="ko" lang="ko">한국어</option>
+          <option value="es" lang="es">Español</option>
+          <option value="pt" lang="pt-BR">Português (Brasil)</option>
+          <option value="ru" lang="ru">Русский</option>
+          <option value="fr" lang="fr">Français</option>
+        </select>
+      </div>
+      <a class="btn btn-primary btn-sm" href="#download" data-copy="nav.cta">抢先准备</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero hero-split">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <div class="badge-row">
+        <span class="badge"><i class="rec"></i><span data-copy="hero.badge">游戏直播切片</span></span>
+        <span class="badge badge-soon" data-copy="hero.soon">v1.6.0 即将发布</span>
+      </div>
+      <h1 data-copy-html="hero.h1">下播即出片，<br>高光自动留。</h1>
+      <p class="lede" data-copy="hero.lede"></p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" id="hero-releases-cta" href="https://github.com/zhouxiaoka/autoclip/releases" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+          <span data-copy="hero.cta.primary">关注 1.6.0 发布</span>
+        </a>
+        <a class="btn btn-secondary" href="#download" data-copy="hero.cta.secondary">先装桌面版熟悉流程</a>
+      </div>
+      <div class="hero-alt">
+        <span class="mono" data-copy="hero.alt.note">1.6.0 预告 · 支持 macOS / Windows · MIT 开源</span>
+      </div>
+    </div>
+
+    <div class="hero-art" id="gs-hero-art">
+      <div class="art-panel art-a"><img data-develop src="assets/riso-marks.webp" width="864" height="1152" alt=""></div>
+      <div class="art-panel art-b"><img data-develop src="assets/vice-hero.webp" width="864" height="1152" alt=""></div>
+
+      <div class="gs-hero-stack">
+        <div class="demo gs-demo" id="gs-demo">
+          <div class="demo-bar">
+            <span class="demo-dots"><i></i><i></i><i></i></span>
+            <span class="demo-bar-title"><b></b><span data-copy="demo.bar">OBS 已连接 · 1.6.0</span></span>
+            <button type="button" class="gs-demo-replay" id="gs-demo-replay" data-copy="demo.replay">重播</button>
+          </div>
+          <div class="demo-body">
+            <div class="gs-demo-file">
+              <div class="gs-demo-file-meta">
+                <strong data-copy="demo.file">GTA6_罪恶都市通宵实况.mkv</strong>
+                <span class="mono" data-copy="demo.meta">04:18:22 · 16.4 GB · 本地录像</span>
+              </div>
+              <span class="gs-demo-badge" data-copy="demo.tag">已下播</span>
+            </div>
+            <div class="demo-pills">
+              <span data-copy="demo.p1">抖音</span>
+              <span data-copy="demo.p2">B 站</span>
+              <span data-copy="demo.p3">TikTok</span>
+              <span data-copy="demo.p4">Shorts</span>
+            </div>
+            <ol class="demo-steps">
+              <li><span data-copy="demo.s1">下播后自动开始处理</span><em class="mono" data-copy="demo.s1v">自动接管</em></li>
+              <li><span data-copy="demo.s2">裁掉开播前后私人桌面</span><em class="mono" data-copy="demo.s2v">秒级完成</em></li>
+              <li><span data-copy="demo.s3">挑出高光操作与第一反应</span><em class="mono" data-copy="demo.s3v">8–45s</em></li>
+              <li><span data-copy="demo.s4">导出各平台成片与文案</span><em class="mono" data-copy="demo.s4v">6 条待审</em></li>
+            </ol>
+            <div class="demo-done">
+              <span class="mono" id="gs-demo-clock">0:00</span>
+              <span data-copy="demo.done.label">本机完成 · 无需上传原片</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="gs-clip-fan" aria-hidden="true">
+          <article class="gs-mini-card">
+            <img src="assets/split-chase.webp" width="540" height="960" alt="">
+            <div class="gs-mini-foot">
+              <div class="gs-mini-top">
+                <span class="gs-mini-pill"><span class="gs-mini-dot" style="background:#FF6F59"></span><span data-copy="card1.tag">抖音</span></span>
+                <span class="gs-mini-dur">0:18</span>
+              </div>
+              <strong data-copy="card1.title">五星追车漂移反杀</strong>
+            </div>
+          </article>
+          <article class="gs-mini-card">
+            <img src="assets/split-wuxia.webp" width="540" height="960" alt="">
+            <div class="gs-mini-foot">
+              <div class="gs-mini-top">
+                <span class="gs-mini-pill"><span class="gs-mini-dot" style="background:#F4DC3C"></span><span data-copy="card2.tag">B 站</span></span>
+                <span class="gs-mini-dur">0:26</span>
+              </div>
+              <strong data-copy="card2.title">残血弹反无伤过 Boss</strong>
+            </div>
+          </article>
+          <article class="gs-mini-card">
+            <img src="assets/split-squad.webp" width="540" height="960" alt="">
+            <div class="gs-mini-foot">
+              <div class="gs-mini-top">
+                <span class="gs-mini-pill"><span class="gs-mini-dot" style="background:#5A8BFF"></span><span data-copy="card3.tag">TikTok</span></span>
+                <span class="gs-mini-dur">0:34</span>
+              </div>
+              <strong data-copy="card3.title">抢劫最后十秒翻车</strong>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stage" id="sources">
+  <div class="container">
+    <div class="stage-head">
+      <div>
+        <span class="eyebrow" data-copy="src.eyebrow">6 大直播回放来源</span>
+        <h2 data-copy="src.h2">不管你用什么开播，下播后都进同一条流水线。</h2>
+        <p class="lede" data-copy="src.lede"></p>
+      </div>
+    </div>
+
+    <div class="gs-sources-grid">
+      <div class="gs-src-list" id="gs-src-list" role="group" aria-label="Replay sources"></div>
+      <div class="gs-src-detail" id="gs-src-detail" aria-live="polite"></div>
+    </div>
+
+    <div class="gs-archetypes" id="gta6">
+      <span class="eyebrow" data-copy="arch.eyebrow">全品类游戏实况</span>
+      <h2 data-copy="arch.h2">一场长直播，自动剪出各平台成片。</h2>
+      <p class="lede" data-copy="arch.lede"></p>
+
+      <div class="gs-board">
+        <div class="gs-board-src">
+          <img src="assets/stream-source.webp" width="960" height="540" alt="" loading="lazy">
+          <span class="gs-board-src-pill"><i></i><span data-copy="board.src.tag">Twitch / OBS 直播原片</span></span>
+          <span class="gs-board-src-dur">8:36:14</span>
+        </div>
+
+        <div class="gs-board-bridge">
+          <span data-copy="board.bridge.label">自动识别高光 + 主播摄像头分屏重排</span>
+          <strong data-copy="board.bridge.btn">AutoClip 1.6.0</strong>
+        </div>
+
+        <div class="gs-multi-strip">
+          <article class="gs-mcard is-wide">
+            <span class="gs-mcard-plat" style="--plat-bg:#C92434" data-copy="arch.4.src">YouTube / B 站 · 16:9</span>
+            <div class="gs-mcard-frame">
+              <img src="assets/wide-guide.webp" width="960" height="540" alt="" loading="lazy">
+              <div class="gs-mcard-foot">
+                <div class="gs-mcard-cap">
+                  <strong data-copy="arch.4.h">黄金海岸隐藏路线讲解</strong>
+                  <span data-copy="arch.4.meta">0:48 · 横屏攻略</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="gs-mcard">
+            <span class="gs-mcard-plat" style="--plat-bg:#1D1C22" data-copy="arch.1.src">抖音 · 9:16</span>
+            <div class="gs-mcard-frame">
+              <img src="assets/split-chase.webp" width="540" height="960" alt="" loading="lazy">
+              <div class="gs-mcard-foot">
+                <div class="gs-mcard-cap">
+                  <strong data-copy="arch.1.h">五星追车反杀</strong>
+                  <span data-copy="arch.1.meta">0:18 · GTA 6</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="gs-mcard">
+            <span class="gs-mcard-plat" style="--plat-bg:#008AC5" data-copy="arch.3.src">B 站 · 9:16</span>
+            <div class="gs-mcard-frame">
+              <img src="assets/split-wuxia.webp" width="540" height="960" alt="" loading="lazy">
+              <div class="gs-mcard-foot">
+                <div class="gs-mcard-cap">
+                  <strong data-copy="arch.3.h">残血无伤过 Boss</strong>
+                  <span data-copy="arch.3.meta">0:26 · 动作大作</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="gs-mcard">
+            <span class="gs-mcard-plat" style="--plat-bg:#2A1F3D" data-copy="arch.2.src">TikTok / Shorts</span>
+            <div class="gs-mcard-frame">
+              <img src="assets/split-squad.webp" width="540" height="960" alt="" loading="lazy">
+              <div class="gs-mcard-foot">
+                <div class="gs-mcard-cap">
+                  <strong data-copy="arch.2.h">抢劫十秒翻车</strong>
+                  <span data-copy="arch.2.meta">0:34 · 开黑</span>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="gs-strip-pills">
+          <div class="gs-strip-pill"><b data-copy="arch.1.t1">8s+ 短动作保留</b><span data-copy="arch.1.p">短漂移与瞬间反杀不再被误删</span></div>
+          <div class="gs-strip-pill"><b data-copy="arch.2.t1">留住第一反应</b><span data-copy="arch.2.p">顺延保留主播和队友的尖叫大笑</span></div>
+          <div class="gs-strip-pill"><b data-copy="arch.3.t1">全品类通用</b><span data-copy="arch.3.p">GTA 6、影之刃零、黑神话都能剪</span></div>
+          <div class="gs-strip-pill"><b data-copy="arch.4.t1">横竖屏一次出齐</b><span data-copy="arch.4.p">上摄像头下实况，封面文案全配好</span></div>
+        </div>
+      </div>
+
+      <div class="gs-case-callout">
+        <span data-copy="arch.callout">上方为按真实 Twitch / B 站实况构图还原的 1.6.0 切片示意。1.6.0 发布后将陆续收录真实主播实测成片，欢迎投稿进入官网案例库。</span>
+        <a href="https://github.com/zhouxiaoka/autoclip/discussions/new?category=show-and-tell" target="_blank" rel="noopener" data-copy="arch.submit">投稿你的游戏切片 →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section band-white" id="why">
+  <div class="container">
+    <span class="eyebrow" data-copy="ways.eyebrow">为什么换掉老办法</span>
+    <h2 data-copy="ways.h2">不用凌晨三点拖时间线，也不用排队传云端。</h2>
+    <p class="lede" data-copy="ways.lede"></p>
+    <div class="ways">
+      <article class="way old">
+        <span class="way-k mono" data-copy="ways.a.k">手动翻录像</span>
+        <div class="tline" aria-hidden="true">
+          <i class="ph"></i>
+          <div class="tr"><b style="left:3%;width:26%"></b><b style="left:33%;width:18%"></b><b style="left:55%;width:36%"></b></div>
+          <div class="tr"><b style="left:6%;width:42%"></b><b style="left:54%;width:28%"></b></div>
+          <div class="tr sub"><b style="left:2%;width:12%"></b><b style="left:16%;width:10%"></b><b style="left:29%;width:14%"></b><b style="left:46%;width:9%"></b><b style="left:59%;width:16%"></b><b style="left:78%;width:12%"></b></div>
+        </div>
+        <p data-copy="ways.a.p"></p>
+      </article>
+      <article class="way old">
+        <span class="way-k mono" data-copy="ways.b.k">云端订阅工具</span>
+        <div class="gs-upload-box" aria-hidden="true">
+          <div class="gs-upload-row"><span data-copy="ways.b.file">正在上传 16.4 GB...</span><span data-copy="ways.b.pct">24% · 排队中</span></div>
+          <div class="gs-upload-bar"><i></i></div>
+          <div class="gs-upload-tags"><span data-copy="ways.b.t1">热门时段云端排队</span><span data-copy="ways.b.t2">按月订阅 $19–$49</span></div>
+        </div>
+        <p data-copy="ways.b.p"></p>
+      </article>
+      <article class="way now">
+        <span class="way-k mono" data-copy="ways.c.k">AutoClip 1.6.0</span>
+        <div class="one-btn" aria-hidden="true"><span data-copy="ways.c.btn">下播自动接管</span></div>
+        <ul class="one-list">
+          <li data-copy="ways.c.1"></li>
+          <li data-copy="ways.c.2"></li>
+          <li data-copy="ways.c.3"></li>
+        </ul>
+        <p data-copy="ways.c.p"></p>
+      </article>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><b data-copy="stat.1.v">0 秒</b><span data-copy="stat.1.l"></span></div>
+      <div class="stat"><b data-copy="stat.2.v">秒级裁剪</b><span data-copy="stat.2.l"></span></div>
+      <div class="stat"><b data-copy="stat.3.v">8–45s</b><span data-copy="stat.3.l"></span></div>
+      <div class="stat"><b data-copy="stat.4.v">无月费</b><span data-copy="stat.4.l"></span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="checklist">
+  <div class="container">
+    <span class="eyebrow" data-copy="story.eyebrow">三分钟接入你的直播间</span>
+    <h2 data-copy="story.h2">今晚开播前花三分钟设好，下播直接去睡。</h2>
+    <div class="story">
+      <ol class="story-nav">
+        <li data-story-nav="0"><span class="mono">01</span><b data-copy="story.1.h"></b></li>
+        <li data-story-nav="1"><span class="mono">02</span><b data-copy="story.2.h"></b></li>
+        <li data-story-nav="2"><span class="mono">03</span><b data-copy="story.3.h"></b></li>
+      </ol>
+      <div class="story-panels">
+        <article class="panel" data-story="0">
+          <h3 data-copy="story.1.h"></h3>
+          <p data-copy="story.1.p"></p>
+          <div class="pane">
+            <div class="gs-pane-kv">
+              <div class="gs-kv"><span data-copy="story.1.k1"></span><strong data-copy="story.1.v1"></strong></div>
+              <div class="gs-kv"><span data-copy="story.1.k2"></span><strong data-copy="story.1.v2"></strong></div>
+              <div class="gs-kv"><span data-copy="story.1.k3"></span><strong data-copy="story.1.v3"></strong></div>
+            </div>
+          </div>
+        </article>
+        <article class="panel" data-story="1">
+          <h3 data-copy="story.2.h"></h3>
+          <p data-copy="story.2.p"></p>
+          <div class="pane">
+            <ul class="gs-pane-list">
+              <li><span data-copy="story.2.i1"></span><em data-copy="story.2.v1"></em></li>
+              <li><span data-copy="story.2.i2"></span><em data-copy="story.2.v2"></em></li>
+              <li><span data-copy="story.2.i3"></span><em data-copy="story.2.v3"></em></li>
+            </ul>
+          </div>
+        </article>
+        <article class="panel" data-story="2">
+          <h3 data-copy="story.3.h"></h3>
+          <p data-copy="story.3.p"></p>
+          <div class="pane">
+            <div class="kit-mock">
+              <span class="mono" data-copy="story.3.k"></span>
+              <b data-copy="story.3.title"></b>
+              <i class="sk w90"></i><i class="sk w70"></i><i class="sk w40 accent"></i>
+              <div class="kit-files mono">
+                <span data-copy="story.3.f1"></span>
+                <span data-copy="story.3.f2"></span>
+                <span data-copy="story.3.f3"></span>
+              </div>
+              <div class="kit-btns">
+                <span data-copy="story.3.b1"></span>
+                <span class="cta" data-copy="story.3.b2"></span>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="compare">
+  <div class="container">
+    <span class="eyebrow" data-copy="cmp.eyebrow">本地开源 vs 云端订阅</span>
+    <h2 data-copy="cmp.h2">热门大作连播，最不需要的是上传排队和月费账单。</h2>
+    <div class="compare">
+      <div class="crow head"><span class="l"></span><span class="a" data-copy="cmp.col.a">AutoClip 1.6.0</span><span class="b" data-copy="cmp.col.b">云端游戏切片订阅工具</span></div>
+      <div class="crow"><span class="l" data-copy="cmp.1.l"></span><span class="a" data-copy="cmp.1.a"></span><span class="b" data-copy="cmp.1.b"></span></div>
+      <div class="crow"><span class="l" data-copy="cmp.2.l"></span><span class="a" data-copy="cmp.2.a"></span><span class="b" data-copy="cmp.2.b"></span></div>
+      <div class="crow"><span class="l" data-copy="cmp.3.l"></span><span class="a" data-copy="cmp.3.a"></span><span class="b" data-copy="cmp.3.b"></span></div>
+      <div class="crow"><span class="l" data-copy="cmp.4.l"></span><span class="a" data-copy="cmp.4.a"></span><span class="b" data-copy="cmp.4.b"></span></div>
+      <div class="crow"><span class="l" data-copy="cmp.5.l"></span><span class="a" data-copy="cmp.5.a"></span><span class="b" data-copy="cmp.5.b"></span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="download">
+  <div class="container">
+    <div class="cta-band">
+      <img class="cta-art" data-develop src="assets/riso-collage.webp" width="1280" height="720" alt="" loading="lazy">
+      <div class="cta-card">
+        <span class="eyebrow" data-copy="cta.eyebrow">v1.6.0 即将发布</span>
+        <h2 data-copy="cta.h2">先装好 AutoClip，1.6.0 一发就接管你的实况录像。</h2>
+        <p class="lede" data-copy="cta.lede"></p>
+        <div class="gs-cta-actions">
+          <a class="btn btn-primary btn-sm" href="https://github.com/zhouxiaoka/autoclip/releases" target="_blank" rel="noopener" data-copy="cta.releases">前往 GitHub Releases 关注 1.6.0</a>
+          <a class="btn btn-secondary btn-sm" href="../../" data-home data-copy="cta.docs">查看首页完整介绍</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="dl">
+      <div class="dlcard" id="dl-card-mac">
+        <div class="hd">
+          <h3><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.365 1.43c0 1.14-.493 2.27-1.177 3.08-.744.9-1.99 1.57-2.987 1.57-.12 0-.23-.02-.3-.03-.01-.06-.04-.22-.04-.39 0-1.15.572-2.27 1.206-2.98.804-.94 2.142-1.64 3.248-1.68.03.13.05.28.05.43zm4.565 15.71c-.03.07-.463 1.58-1.518 3.12-.945 1.34-1.94 2.71-3.43 2.71-1.517 0-1.9-.88-3.63-.88-1.698 0-2.302.91-3.67.91-1.377 0-2.332-1.26-3.428-2.8-1.287-1.82-2.323-4.63-2.323-7.28 0-4.28 2.797-6.55 5.552-6.55 1.448 0 2.675.95 3.6.95.865 0 2.222-1.01 3.902-1.01.613 0 2.886.06 4.374 2.19-.13.09-2.383 1.37-2.383 4.19 0 3.26 2.854 4.42 2.955 4.45z"/></svg>macOS</h3>
+          <span class="ver">v1.5.8 · 348 MB</span>
+        </div>
+        <p class="req" data-copy="dl.mac.req"></p>
+        <a class="btn btn-primary" id="dl-mac-btn" href="https://github.com/zhouxiaoka/autoclip/releases/download/v1.5.8/AutoClip.Desktop_1.5.8_aarch64.dmg" data-copy="dl.mac.btn">先下载 macOS 版 (.dmg)</a>
+      </div>
+      <div class="dlcard" id="dl-card-win">
+        <div class="hd">
+          <h3><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 5.5l7.5-1.03v7.25H3V5.5zm0 13l7.5 1.03v-7.16H3v6.13zm8.32 1.14L21 21v-8.63h-9.68v7.27zm0-15.28v7.36H21V3l-9.68 1.36z"/></svg>Windows</h3>
+          <span class="ver">v1.5.8 · 195 MB</span>
+        </div>
+        <p class="req" data-copy="dl.win.req"></p>
+        <a class="btn btn-primary" id="dl-win-btn" href="https://github.com/zhouxiaoka/autoclip/releases/download/v1.5.8/AutoClip.Desktop_1.5.8_x64-setup.exe" data-copy="dl.win.btn">先下载 Windows 版 (.exe)</a>
+      </div>
+    </div>
+
+    <div class="gs-share-bar">
+      <div class="gs-share-copy">
+        <strong data-copy="share.title">叫上一起开黑的主播和剪辑师</strong>
+        <span data-copy="share.desc">复制本页链接发到开黑群、Discord 或工作室群，1.6.0 发布前提前装好。</span>
+      </div>
+      <button type="button" class="btn btn-secondary btn-sm" id="gs-share-btn" data-copy="share.btn">复制本页链接</button>
+    </div>
+
+    <p class="gs-disclaimer" data-copy="disclaimer"></p>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="fcol"><h3 data-f="h.product"></h3><a href="../../#how" data-f="oneclick"></a><a href="../../cases/" data-f="cases"></a><a href="../../#numbers" data-f="numbers"></a><a href="../../#download" data-f="download"></a><a href="https://github.com/zhouxiaoka/autoclip/releases" target="_blank" rel="noopener" data-f="releases"></a><a href="https://github.com/zhouxiaoka/autoclip/blob/main/CHANGELOG.md" target="_blank" rel="noopener" data-f="changelog"></a></div>
+      </div>
+      <nav class="footer-links" aria-label="页脚">
+        <div class="fcol"><h3 data-f="h.uses"></h3><a href="../../use-cases/podcast/" data-f="podcast"></a><a href="../../use-cases/course/" data-f="course"></a><a href="../../use-cases/gameplay/" data-f="game"></a><a href="../../features/game-streams/" data-f="gamestreams"></a><a href="../../features/publish/" data-f="publish"></a><a href="../../features/auto-cover/" data-f="cover"></a></div>
+        <div class="fcol"><h3 data-f="h.res"></h3><a href="https://github.com/zhouxiaoka/autoclip/blob/main/docs/USER_INSTALLATION_GUIDE.md" target="_blank" rel="noopener" data-f="install"></a><a href="../../guides/first-clips/" data-f="first"></a><a href="../../guides/podcast-to-shorts/" data-f="shortsGuide"></a><a href="../../guides/local-vs-cloud/" data-f="choice"></a><a href="../../blog/" data-f="blog"></a><a href="../../guides/publish/" data-f="guide"></a><a href="https://github.com/zhouxiaoka/autoclip/blob/main/docs/MULTI_LLM_PROVIDER_GUIDE.md" target="_blank" rel="noopener" data-f="models"></a><a href="https://github.com/zhouxiaoka/autoclip/blob/main/docs/FAQ.md" target="_blank" rel="noopener" data-f="faq"></a><a href="../../llms.txt" data-f="llms"></a><a href="../../analytics/" data-f="privacy"></a></div>
+        <div class="fcol"><h3 data-f="h.dev"></h3><a href="https://github.com/zhouxiaoka/autoclip" target="_blank" rel="noopener" data-f="github"></a><a href="https://github.com/zhouxiaoka/autoclip/blob/main/docs/CLI_AND_MCP.md" target="_blank" rel="noopener" data-f="cli"></a><a href="https://github.com/zhouxiaoka/autoclip/blob/main/DOCKER.md" target="_blank" rel="noopener" data-f="docker"></a><a href="https://github.com/zhouxiaoka/autoclip/blob/main/skills/autoclip/SKILL.md" target="_blank" rel="noopener" data-f="skill"></a><a href="https://github.com/zhouxiaoka/autoclip/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener" data-f="contrib"></a><a href="https://github.com/zhouxiaoka/autoclip/blob/main/LICENSE" target="_blank" rel="noopener" data-f="license"></a></div>
+        <div class="fcol"><h3 data-f="h.comm"></h3><a href="https://github.com/zhouxiaoka/autoclip/discussions" target="_blank" rel="noopener" data-f="discuss"></a><a href="https://github.com/zhouxiaoka/autoclip/discussions/new?category=show-and-tell" target="_blank" rel="noopener" data-f="submit"></a><a href="https://github.com/zhouxiaoka/autoclip/issues/new/choose" target="_blank" rel="noopener" data-f="issue"></a><a href="https://github.com/zhouxiaoka/autoclip/issues/96" target="_blank" rel="noopener" data-f="known"></a><a href="mailto:christine_zhouye@163.com" data-f="contact"></a></div>
+      </nav>
+    </div>
+    <div class="footer-meta">
+      <div class="footer-social">
+        <a href="https://github.com/zhouxiaoka/autoclip" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.66-.22.66-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.45-1.15-1.1-1.46-1.1-1.46-.9-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85.004 1.71.11 2.51.32 1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.85-2.34 4.7-4.57 4.95.36.31.68.92.68 1.85 0 1.33-.01 2.4-.01 2.73 0 .27.16.58.67.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"/></svg></a>
+        <a href="mailto:christine_zhouye@163.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 6 8.5-6"/></svg></a>
+      </div>
+      <span data-f="copy"></span>
+    </div>
+    <a class="footer-mark" href="../../" data-home aria-label="AutoClip">
+      <svg class="footer-wordmark" viewBox="0 0 920 168" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <text x="460" y="148" text-anchor="middle">AutoClip</text>
+      </svg>
+    </a>
+  </div>
+</footer>
+<div class="footer-reveal-end" aria-hidden="true"></div>
+</div>
+
+<script src="launch.js?v=2026-11-23-v7"></script>
+<script src="../../assets/footer.js"></script>
+<script src="../../assets/motion.js"></script>
+<script src="../../assets/analytics-config.js"></script>
+<script src="../../assets/analytics.js"></script>
+</body>
+</html>

@@ -212,6 +212,24 @@ def patch_index(html: str, version: str, assets: dict[str, dict]) -> str:
     return html
 
 
+def patch_game_streams(html: str, version: str, assets: dict[str, dict]) -> str:
+    html = _sub_count(rf"(?<=/v){VERSION}(?=/)", version, html, 2, "游戏直播页下载链接")
+    html = _sub_count(rf"(?<=Desktop_){VERSION}(?=_)", version, html, 2, "游戏直播页安装包文件名")
+    sizes = iter((assets["mac"]["size_mb"], assets["win"]["size_mb"]))
+
+    def _size(match: re.Match) -> str:
+        try:
+            size = next(sizes)
+        except StopIteration:
+            fail("游戏直播页下载卡体积多于两处，页面保持原样")
+        return f"{match.group(1)}v{version} · {size} MB</span>"
+
+    html, count = re.subn(rf'(<span class="ver">)v{VERSION} · \d+ MB</span>', _size, html)
+    if count != 2:
+        fail(f"游戏直播页下载卡体积找到 {count} 处，期望 2。页面保持原样")
+    return html
+
+
 def patch_publish(html: str, version: str) -> str:
     for pattern, template in PUBLISH_SLOTS:
         html = _sub_count(pattern, template.format(version=version), html, 1, f"发布教程 {pattern}")
@@ -279,6 +297,11 @@ def render(root: Path, release: dict, requested_tag: str | None = None) -> dict[
         "sitemap.xml": patch_sitemap((root / "sitemap.xml").read_text(encoding="utf-8"), day),
         "data/release.json": json.dumps(document, ensure_ascii=False, indent=2) + "\n",
     }
+    gs_page = root / "features/game-streams/index.html"
+    if gs_page.is_file():
+        files["features/game-streams/index.html"] = patch_game_streams(
+            gs_page.read_text(encoding="utf-8"), version, assets
+        )
     return files
 
 

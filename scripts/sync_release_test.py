@@ -6,6 +6,7 @@ from pathlib import Path
 
 from sync_release import (
     fetch_release,
+    patch_game_streams,
     patch_index,
     patch_llms,
     patch_llms_full,
@@ -135,6 +136,15 @@ class SlotIsolation(unittest.TestCase):
         self.assertIn("Official AutoClip 1.5.0", full)
         self.assertIn("same 1.5 pipeline", full)
         self.assertIn("Updated: 2026-11-02", full)
+
+    def test_game_streams_page_syncs_download_slots(self):
+        html = (ROOT / "features/game-streams/index.html").read_text(encoding="utf-8")
+        updated = patch_game_streams(html, "1.5.9", ASSETS)
+        self.assertIn("/v1.5.9/AutoClip.Desktop_1.5.9_aarch64.dmg", updated)
+        self.assertIn("/v1.5.9/AutoClip.Desktop_1.5.9_x64-setup.exe", updated)
+        self.assertIn('<span class="ver">v1.5.9 · 11 MB</span>', updated)
+        self.assertIn('<span class="ver">v1.5.9 · 22 MB</span>', updated)
+        self.assertNotIn("/v1.5.8/", updated)
 
 
 class FactsStayTrue(unittest.TestCase):

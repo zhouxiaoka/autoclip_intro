@@ -48,6 +48,11 @@ class CommittedRelease(unittest.TestCase):
         self.assertIn(f"macOS ~{mac['size_mb']} MB, Windows ~{win['size_mb']} MB", full)
         self.assertIn("Official AutoClip 1.5.0", full)
         self.assertIn(">AutoClip 1.5.0<", index)
+        gs = (ROOT / "features/game-streams/index.html").read_text(encoding="utf-8")
+        self.assertIn(f"/v{version}/{mac['name']}", gs)
+        self.assertIn(f"/v{version}/{win['name']}", gs)
+        self.assertIn(f"v{version} · {mac['size_mb']} MB", gs)
+        self.assertIn(f"v{version} · {win['size_mb']} MB", gs)
 
 
 if __name__ == "__main__":

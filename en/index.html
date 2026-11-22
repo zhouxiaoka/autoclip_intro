@@ -117,7 +117,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500&amp;family=Noto+Sans+SC:wght@400;500&amp;family=Noto+Serif+SC:wght@600&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../tokens.css">
-<link rel="stylesheet" href="../assets/home.css?v=2026-10-09-kit">
+<link rel="stylesheet" href="../assets/home.css?v=2026-11-23-launch">
 <link rel="alternate" hreflang="zh-CN" href="https://zhouxiaoka.github.io/autoclip_intro/">
 <link rel="alternate" hreflang="en" href="https://zhouxiaoka.github.io/autoclip_intro/en/">
 <link rel="alternate" hreflang="x-default" href="https://zhouxiaoka.github.io/autoclip_intro/">
@@ -143,6 +143,7 @@
     <a class="brand serif" href="#top" aria-label="AutoClip"><img src="../logo.svg" alt="">AutoClip</a>
     <nav class="nav-links" aria-label="主导航">
       <a href="#clips" data-i18n="nav.clips">Cases</a>
+      <a href="../features/game-streams/" data-i18n="nav.gamestreams">Game streams</a>
       <a href="#numbers" data-i18n="nav.numbers">Speed &amp; cost</a>
       <a href="#developers" data-i18n="nav.developers">Developers</a>
       <a href="#faq" data-i18n="nav.faq">FAQ</a>
@@ -175,7 +176,15 @@
 <section class="hero hero-split">
   <div class="container hero-grid">
     <div class="hero-copy">
-      <span class="badge"><i></i><span data-i18n="hero.badge">Open source · Free · Local</span></span>
+      <div class="hero-badges">
+        <a class="badge-launch" href="../features/game-streams/">
+          <span class="badge-launch-thumb"><img src="../features/game-streams/assets/stream-source.webp" width="80" height="48" alt=""><i></i></span>
+          <span class="badge-launch-tag" data-i18n="hero.launch.tag">v1.6 NEW</span>
+          <span class="badge-launch-text" data-i18n="hero.launch">Game stream clipping · Auto-cut VODs</span>
+          <span class="badge-launch-arrow" aria-hidden="true">→</span>
+        </a>
+        <span class="badge"><i></i><span data-i18n="hero.badge">Open source · Free · Local</span></span>
+      </div>
       <h1 data-i18n-html="hero.h1">One link.<br><em>One click.</em></h1>
       <p class="lede" data-i18n="hero.lede">Paste a link, pick platforms, press once. Get clips, captions, covers and post copy together. Edit and render on your computer.</p>
       <div class="hero-cta">
@@ -456,7 +465,7 @@
       <div class="fcol"><h3 data-f="h.product">Product</h3><a href="#how" data-f="oneclick">One-click clips</a><a href="cases/" data-f="cases">Case library</a><a href="#numbers" data-f="numbers">Speed &amp; cost</a><a href="#download" data-f="download">Download</a><a href="https://github.com/zhouxiaoka/autoclip/releases" target="_blank" rel="noopener" data-f="releases">Releases</a><a href="https://github.com/zhouxiaoka/autoclip/blob/main/CHANGELOG.md" target="_blank" rel="noopener" data-f="changelog">Changelog</a></div>
       </div>
       <nav class="footer-links" aria-label="页脚">
-      <div class="fcol"><h3 data-f="h.uses">Use cases</h3><a href="use-cases/podcast/" data-f="podcast">Interviews &amp; podcasts</a><a href="use-cases/course/" data-f="course">Courses</a><a href="use-cases/gameplay/" data-f="game">Gaming highlights</a><a href="features/publish/" data-f="publish">Publish everywhere</a><a href="features/auto-cover/" data-f="cover">Auto cover</a></div>
+      <div class="fcol"><h3 data-f="h.uses">Use cases</h3><a href="use-cases/podcast/" data-f="podcast">Interviews &amp; podcasts</a><a href="use-cases/course/" data-f="course">Courses</a><a href="use-cases/gameplay/" data-f="game">Gaming highlights</a><a href="../features/game-streams/" data-f="gamestreams">Game streams · 1.6</a><a href="features/publish/" data-f="publish">Publish everywhere</a><a href="features/auto-cover/" data-f="cover">Auto cover</a></div>
       <div class="fcol"><h3 data-f="h.res">Resources</h3><a href="https://github.com/zhouxiaoka/autoclip/blob/main/docs/USER_INSTALLATION_GUIDE.md" target="_blank" rel="noopener" data-f="install">Install &amp; first clip</a><a href="guides/first-clips/" data-f="first">First clips</a><a href="guides/podcast-to-shorts/" data-f="shortsGuide">Podcast to Shorts</a><a href="guides/local-vs-cloud/" data-f="choice">Local vs cloud</a><a href="blog/" data-f="blog">Blog</a><a href="../guides/publish/?lang=en" data-f="guide">Publish guide</a><a href="https://github.com/zhouxiaoka/autoclip/blob/main/docs/MULTI_LLM_PROVIDER_GUIDE.md" target="_blank" rel="noopener" data-f="models">Model setup</a><a href="https://github.com/zhouxiaoka/autoclip/blob/main/docs/FAQ.md" target="_blank" rel="noopener" data-f="faq">FAQ</a><a href="../llms.txt" data-f="llms">For AI systems</a><a href="../analytics/" data-f="privacy">Privacy</a></div>
       <div class="fcol"><h3 data-f="h.dev">Developers</h3><a href="https://github.com/zhouxiaoka/autoclip" target="_blank" rel="noopener" data-f="github">GitHub</a><a href="https://github.com/zhouxiaoka/autoclip/blob/main/docs/CLI_AND_MCP.md" target="_blank" rel="noopener" data-f="cli">CLI / MCP</a><a href="https://github.com/zhouxiaoka/autoclip/blob/main/DOCKER.md" target="_blank" rel="noopener" data-f="docker">Docker</a><a href="https://github.com/zhouxiaoka/autoclip/blob/main/skills/autoclip/SKILL.md" target="_blank" rel="noopener" data-f="skill">Agent skill</a><a href="https://github.com/zhouxiaoka/autoclip/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener" data-f="contrib">Contributing</a><a href="https://github.com/zhouxiaoka/autoclip/blob/main/LICENSE" target="_blank" rel="noopener" data-f="license">MIT License</a></div>
       <div class="fcol"><h3 data-f="h.comm">Community</h3><a href="https://github.com/zhouxiaoka/autoclip/discussions" target="_blank" rel="noopener" data-f="discuss">Discussions</a><a href="https://github.com/zhouxiaoka/autoclip/discussions/new?category=show-and-tell" target="_blank" rel="noopener" data-f="submit">Share your clips</a><a href="https://github.com/zhouxiaoka/autoclip/issues/new/choose" target="_blank" rel="noopener" data-f="issue">Report a bug</a><a href="https://github.com/zhouxiaoka/autoclip/issues/96" target="_blank" rel="noopener" data-f="known">Known issues</a><a href="mailto:christine_zhouye@163.com" data-f="contact">Contact</a></div>
@@ -490,6 +499,7 @@
       'title':'AutoClip — 开源 AI 视频剪辑工具，一个链接一键出片',
       'meta.desc':'开源 AI 视频剪辑桌面工具，将播客、访谈、课程等长视频剪成适配抖音、小红书、TikTok、Reels 与 YouTube Shorts 的短视频，生成字幕、封面和发布文案。剪辑与渲染在本机，模型可自选。',
       'nav.clips':'案例',
+      'nav.gamestreams':'游戏直播切片',
       'nav.numbers':'速度与成本',
       'nav.developers':'开发者',
       'nav.faq':'常见问题',
@@ -500,6 +510,8 @@
       'research.p':'AutoClip 研究笔记 #1 · 2026 年 10 月 9 日',
       'research.more':'阅读全文',
       'hero.badge':'开源 · 免费 · 本地运行',
+      'hero.launch.tag':'1.6 预告',
+      'hero.launch':'游戏直播切片来了 · 下播即出片',
       'hero.h1':'一个链接，<br>一键出片。',
       'hero.lede':'贴链接，选平台，按一次。自动剪片、取景、配字幕，视频、封面和发布文案一起交付。',
       'hero.cta.mac':'下载 macOS 版',
@@ -641,6 +653,7 @@
       'title':'AutoClip — Open-source AI video clipping & content repurposing',
       'meta.desc':'Open-source AI video clipping desktop app for podcasts, interviews and courses. Turn long videos into shorts for TikTok, Reels, YouTube Shorts, Douyin and Xiaohongshu, with captions, covers and post copy. Edit and render locally with your choice of model.',
       'nav.clips':'Cases',
+      'nav.gamestreams':'Game streams',
       'nav.numbers':'Speed & cost',
       'nav.developers':'Developers',
       'nav.faq':'FAQ',
@@ -651,6 +664,8 @@
       'research.p':'AutoClip Research Note #1 · 9 October 2026',
       'research.more':'Read the note',
       'hero.badge':'Open source · Free · Local',
+      'hero.launch.tag':'v1.6 NEW',
+      'hero.launch':'Game stream clipping · Auto-cut VODs',
       'hero.h1':'One link.<br><em>One click.</em>',
       'hero.lede':'Paste a link, pick platforms, press once. Get clips, captions, covers and post copy together. Edit and render on your computer.',
       'hero.cta.mac':'Download for macOS',
