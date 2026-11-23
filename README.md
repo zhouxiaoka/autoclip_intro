@@ -45,7 +45,7 @@ npx serve -l 8765 .
 
 `.github/workflows/sync-release.yml` 从 `zhouxiaoka/autoclip` 的正式 GitHub Release 同步当前版本，并自动提交到 `main`、显式请求 GitHub Pages 构建。单一事实来源是同步时写入的 `data/release.json`。
 
-会更新：首页与英文静态页的下载链接、安装包体积、`softwareVersion`、noscript 介绍、`hero.note`；发布教程八语里的「当前正式版」；`llms.txt` / `llms-full.txt` 的当前版本与体积；上述 URL 的 sitemap `lastmod`。
+会更新：首页与英文静态页的下载链接、安装包体积、`softwareVersion`、noscript 介绍、`hero.note`；游戏直播预览页（`features/game-streams/`）的下载链接与安装包体积；发布教程八语里的「当前正式版」；`llms.txt` / `llms-full.txt` 的当前版本与体积；上述 URL 的 sitemap `lastmod`。
 
 不会更新：案例名称、功能首次提供的版本（例如发布自 v1.3.2、游戏视觉 1.4、1.5.0 首次出片案例）。静态功能说明不随版本号生成；`scripts/sync_release_test.py` 与 `scripts/seo.test.cjs` 锁住系统要求、公证状态和这些历史版本。
 

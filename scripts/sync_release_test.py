@@ -22,8 +22,88 @@ ASSETS = {
     "win": {"name": "AutoClip.Desktop_9.9.9_x64-setup.exe", "bytes": 1, "size_mb": 22, "url": "https://example.test/win"},
 }
 
+INDEX_SAMPLE = """<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script type="application/ld+json">
+{"@graph": [{"@type": "SoftwareApplication", "softwareVersion": "1.5.8"}]}
+</script>
+</head>
+<body>
+<noscript>
+  <p>当前版本 1.5.8，支持 Windows 与 macOS Apple Silicon。</p>
+  <p lang="en">v1.5.8 for Windows and Apple Silicon Mac.</p>
+</noscript>
+<a id="cta-primary" href="https://github.com/zhouxiaoka/autoclip/releases/download/v1.5.8/AutoClip.Desktop_1.5.8_aarch64.dmg">Download</a>
+<a id="cta-alt" href="https://github.com/zhouxiaoka/autoclip/releases/download/v1.5.8/AutoClip.Desktop_1.5.8_x64-setup.exe">Windows</a>
+<span class="mono" data-i18n="hero.note">v1.5.8 · 开源 MIT · 免费</span>
+<p><span>AutoClip 1.5.0</span></p>
+<div class="dl">
+  <span class="ver">v1.5.8 · 348 MB</span>
+  <a href="https://github.com/zhouxiaoka/autoclip/releases/download/v1.5.8/AutoClip.Desktop_1.5.8_aarch64.dmg">下载 .dmg</a>
+  <span class="ver">v1.5.8 · 195 MB</span>
+  <a href="https://github.com/zhouxiaoka/autoclip/releases/download/v1.5.8/AutoClip.Desktop_1.5.8_x64-setup.exe">下载安装包</a>
+</div>
+<script>
+  var REL = 'https://github.com/zhouxiaoka/autoclip/releases/download/v1.5.8/';
+  var MAC = REL + 'AutoClip.Desktop_1.5.8_aarch64.dmg';
+  var WIN = REL + 'AutoClip.Desktop_1.5.8_x64-setup.exe';
+  var T = {
+    zh: {'hero.note':'v1.5.8 · 开源 MIT · 免费'},
+    en: {'hero.note':'v1.5.8 · Open source, MIT · Free'}
+  };
+</script>
+</body>
+</html>
+"""
+
+PUBLISH_SAMPLE = """<p class="fine" data-i18n="hero.ver">发布与自动封面自 v1.3.2 起可用。下载用当前正式版（现为 v1.5.0）。</p>
+<script>
+const COPY = {
+  zh: {'hero.ver':'发布与自动封面自 v1.3.2 起可用。下载用当前正式版（现为 v1.5.0）。'},
+  en: {'hero.ver':'Publish and auto-cover have been available since v1.3.2. Download the current release (v1.5.0).'},
+  ja: {'hero.ver':'公開と自動カバーは v1.3.2 から使えます。ダウンロードは現行の正式版（現在 v1.5.0）です。'},
+  ko: {'hero.ver':'게시와 자동 커버는 v1.3.2부터 사용할 수 있습니다. 다운로드는 현재 정식판(지금 v1.5.0)입니다。'},
+  es: {'hero.ver':'Publicar y la portada automática están disponibles desde v1.3.2. Descarga la versión actual (v1.5.0).'},
+  pt: {'hero.ver':'Publicar e a capa automática existem desde o v1.3.2. Baixe a versão atual (v1.5.0).'},
+  ru: {'hero.ver':'Публикация и автообложка доступны с v1.3.2. Скачайте актуальный релиз (сейчас v1.5.0).'},
+  fr: {'hero.ver':'La publication et la couverture auto sont là depuis la v1.3.2. Téléchargez la version actuelle (v1.5.0).'}
+};
+</script>
+"""
+
+LLMS_SAMPLE = """AutoClip is not a hosted clipper. Version 1.5.0 ships a desktop app (Windows x64, macOS Apple Silicon).
+See the official 1.5.0 first-run case.
+剪辑和渲染在你的电脑上。1.5.0 同时提供 Windows / macOS 桌面版、CLI 和 MCP。
+"""
+
+LLMS_FULL_SAMPLE = """# AutoClip — Full Product Brief
+Updated: 2026-10-01
+
+## Current product (1.5.0)
+| Installers | Self-contained (Python + FFmpeg bundled). macOS ~340 MB, Windows ~190 MB |
+Official AutoClip 1.5.0 first-run case on the same 1.5 pipeline.
+云端转写会发送音频。1.5.0 提供 Windows x64 与 macOS Apple Silicon 桌面版。
+"""
+
+GAME_STREAMS_SAMPLE = """<section class="hero">
+  <span class="badge badge-soon" data-copy="hero.soon">v1.6.0 即将发布</span>
+</section>
+<div class="dl">
+  <div class="dlcard" id="dl-card-mac">
+    <span class="ver">v1.5.8 · 348 MB</span>
+    <a id="dl-mac-btn" href="https://github.com/zhouxiaoka/autoclip/releases/download/v1.5.8/AutoClip.Desktop_1.5.8_aarch64.dmg">先下载 macOS 版 (.dmg)</a>
+  </div>
+  <div class="dlcard" id="dl-card-win">
+    <span class="ver">v1.5.8 · 195 MB</span>
+    <a id="dl-win-btn" href="https://github.com/zhouxiaoka/autoclip/releases/download/v1.5.8/AutoClip.Desktop_1.5.8_x64-setup.exe">先下载 Windows 版 (.exe)</a>
+  </div>
+</div>
+"""
+
 
 def release(tag="v1.5.8", **extra):
+    ver = tag.removeprefix("v")
     payload = {
         "tag_name": tag,
         "draft": False,
@@ -31,8 +111,8 @@ def release(tag="v1.5.8", **extra):
         "published_at": "2026-11-02T12:15:50Z",
         "html_url": f"https://github.com/zhouxiaoka/autoclip/releases/tag/{tag}",
         "assets": [
-            {"name": "AutoClip.Desktop_1.5.8_aarch64.dmg", "size": 348 * 1024 * 1024, "browser_download_url": "https://example.test/mac"},
-            {"name": "AutoClip.Desktop_1.5.8_x64-setup.exe", "size": 195 * 1024 * 1024, "browser_download_url": "https://example.test/win"},
+            {"name": f"AutoClip.Desktop_{ver}_aarch64.dmg", "size": 348 * 1024 * 1024, "browser_download_url": "https://example.test/mac"},
+            {"name": f"AutoClip.Desktop_{ver}_x64-setup.exe", "size": 195 * 1024 * 1024, "browser_download_url": "https://example.test/win"},
         ],
     }
     payload.update(extra)
@@ -84,20 +164,19 @@ class StableReleaseGate(unittest.TestCase):
 
 class SlotIsolation(unittest.TestCase):
     def test_stale_intro_updates_without_touching_history(self):
-        html = (ROOT / "index.html").read_text(encoding="utf-8")
-        stale = html.replace("当前版本 1.5.8", "当前版本 1.5.0").replace(
+        stale = INDEX_SAMPLE.replace("当前版本 1.5.8", "当前版本 1.5.0").replace(
             "v1.5.8 for Windows", "v1.5.0 for Windows"
         )
         self.assertIn("当前版本 1.5.0", stale)
-        updated = patch_index(stale, "1.5.8", {"mac": {"size_mb": 348}, "win": {"size_mb": 195}})
-        self.assertIn("当前版本 1.5.8", updated)
-        self.assertIn("v1.5.8 for Windows", updated)
+        updated = patch_index(stale, "1.5.9", {"mac": {"size_mb": 348}, "win": {"size_mb": 195}})
+        self.assertIn("当前版本 1.5.9", updated)
+        self.assertIn("v1.5.9 for Windows", updated)
         self.assertIn(">AutoClip 1.5.0<", updated)
         self.assertNotIn("当前版本 1.5.0", updated)
+        self.assertNotIn("1.5.8", updated)
 
     def test_downgrade_rewrites_current_slots_only(self):
-        html = (ROOT / "index.html").read_text(encoding="utf-8")
-        updated = patch_index(html, "1.5.7", ASSETS)
+        updated = patch_index(INDEX_SAMPLE, "1.5.7", ASSETS)
         self.assertIn("/v1.5.7/AutoClip.Desktop_1.5.7_aarch64.dmg", updated)
         self.assertIn("<span class=\"ver\">v1.5.7 · 11 MB</span>", updated)
         self.assertIn("<span class=\"ver\">v1.5.7 · 22 MB</span>", updated)
@@ -109,8 +188,7 @@ class SlotIsolation(unittest.TestCase):
         self.assertEqual(again, updated)
 
     def test_publish_guide_keeps_feature_introduction(self):
-        html = (ROOT / "guides/publish/index.html").read_text(encoding="utf-8")
-        updated = patch_publish(html, "1.5.8")
+        updated = patch_publish(PUBLISH_SAMPLE, "1.5.8")
         self.assertIn("现为 v1.5.8", updated)
         self.assertIn("current release (v1.5.8)", updated)
         self.assertIn("現在 v1.5.8", updated)
@@ -119,14 +197,20 @@ class SlotIsolation(unittest.TestCase):
         self.assertIn("versão atual (v1.5.8)", updated)
         self.assertIn("сейчас v1.5.8", updated)
         self.assertIn("version actuelle (v1.5.8)", updated)
-        self.assertEqual(len(re.findall(r"自 v1\.3\.2", updated)), len(re.findall(r"自 v1\.3\.2", html)))
+        self.assertEqual(
+            len(re.findall(r"自 v1\.3\.2", updated)),
+            len(re.findall(r"自 v1\.3\.2", PUBLISH_SAMPLE)),
+        )
         self.assertNotIn("现为 v1.5.0", updated)
 
     def test_llms_current_version_is_separate_from_the_first_run_case(self):
-        brief = (ROOT / "llms.txt").read_text(encoding="utf-8")
-        full = (ROOT / "llms-full.txt").read_text(encoding="utf-8")
-        brief = patch_llms(brief, "1.5.8")
-        full = patch_llms_full(full, "1.5.8", {"mac": {"size_mb": 348}, "win": {"size_mb": 195}}, "2026-11-02T12:15:50Z")
+        brief = patch_llms(LLMS_SAMPLE, "1.5.8")
+        full = patch_llms_full(
+            LLMS_FULL_SAMPLE,
+            "1.5.8",
+            {"mac": {"size_mb": 348}, "win": {"size_mb": 195}},
+            "2026-11-02T12:15:50Z",
+        )
         self.assertIn("Version 1.5.8 ships", brief)
         self.assertIn("1.5.8 同时提供", brief)
         self.assertIn("official 1.5.0", brief)
@@ -138,13 +222,21 @@ class SlotIsolation(unittest.TestCase):
         self.assertIn("Updated: 2026-11-02", full)
 
     def test_game_streams_page_syncs_download_slots(self):
-        html = (ROOT / "features/game-streams/index.html").read_text(encoding="utf-8")
-        updated = patch_game_streams(html, "1.5.9", ASSETS)
+        updated = patch_game_streams(GAME_STREAMS_SAMPLE, "1.5.9", ASSETS)
         self.assertIn("/v1.5.9/AutoClip.Desktop_1.5.9_aarch64.dmg", updated)
         self.assertIn("/v1.5.9/AutoClip.Desktop_1.5.9_x64-setup.exe", updated)
         self.assertIn('<span class="ver">v1.5.9 · 11 MB</span>', updated)
         self.assertIn('<span class="ver">v1.5.9 · 22 MB</span>', updated)
+        self.assertIn("v1.6.0 即将发布", updated)
         self.assertNotIn("/v1.5.8/", updated)
+
+    def test_render_accepts_live_pages_regardless_of_current_version(self):
+        files = render(ROOT, release("v9.9.9"))
+        self.assertIn("/v9.9.9/AutoClip.Desktop_9.9.9_aarch64.dmg", files["index.html"])
+        self.assertIn("/v9.9.9/AutoClip.Desktop_9.9.9_aarch64.dmg", files["features/game-streams/index.html"])
+        self.assertIn("现为 v9.9.9", files["guides/publish/index.html"])
+        self.assertIn("Version 9.9.9 ships", files["llms.txt"])
+        self.assertIn("## Current product (9.9.9)", files["llms-full.txt"])
 
 
 class FactsStayTrue(unittest.TestCase):

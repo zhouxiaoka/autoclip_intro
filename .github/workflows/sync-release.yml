@@ -38,7 +38,7 @@ jobs:
         with:
           node-version: '22'
 
-      - name: Sync index.html to the release
+      - name: Sync release slots across pages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TAG: ${{ github.event.client_payload.tag || inputs.tag || '' }}
@@ -54,7 +54,7 @@ jobs:
 
       - name: Commit and push if changed
         run: |
-          paths=(index.html en data/release.json llms.txt llms-full.txt guides/publish/index.html sitemap.xml)
+          paths=(index.html en features/game-streams/index.html data/release.json llms.txt llms-full.txt guides/publish/index.html sitemap.xml)
           if git diff --quiet -- "${paths[@]}"; then
             echo "官网已是最新"; exit 0
           fi
