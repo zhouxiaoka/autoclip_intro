@@ -15,6 +15,10 @@ from urllib.parse import urlsplit, urlunsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = 'https://zhouxiaoka.github.io/autoclip_intro/'
+SOCIAL_TITLE_EN = 'AutoClip – Open-source, local-first AI video clipping'
+SOCIAL_DESC_EN = 'Turn long videos & livestream replays into ready-to-post clips locally. Free & MIT open-source for macOS and Windows.'
+SOCIAL_IMAGE_EN = SITE + 'img/og-en.png'
+SOCIAL_IMAGE_ALT_EN = 'AutoClip — Turn long videos & streams into clips, automatically'
 SOURCES = ['index.html', 'cases/index.html', 'use-cases/podcast/index.html',
            'use-cases/course/index.html',
            'features/publish/index.html', 'features/auto-cover/index.html']
@@ -93,10 +97,23 @@ class Render(HTMLParser):
             name = a.get('name') or a.get('property')
             title = self.copy.get('title', '')
             description = self.copy.get('meta.desc') or self.copy.get('lede', '')
-            if name in ('description','og:description','twitter:description') and description: a['content'] = description
-            if name in ('og:title','twitter:title') and title: a['content'] = title
+            if name == 'description' and description: a['content'] = description
+            if self.source == 'index.html':
+                if name in ('og:title', 'twitter:title'): a['content'] = SOCIAL_TITLE_EN
+                if name in ('og:description', 'twitter:description'): a['content'] = SOCIAL_DESC_EN
+                if name in ('og:image', 'twitter:image'): a['content'] = SOCIAL_IMAGE_EN
+                if name in ('og:image:alt', 'twitter:image:alt'): a['content'] = SOCIAL_IMAGE_ALT_EN
+                if name == 'og:locale': a['content'] = 'en_US'
+                if name == 'og:locale:alternate': a['content'] = 'zh_CN'
+            else:
+                if name in ('og:description', 'twitter:description') and description: a['content'] = description
+                if name in ('og:title', 'twitter:title') and title: a['content'] = title
+                if name == 'og:locale': a['content'] = 'zh_CN' if self.language == 'zh' else 'en_US'
+                if self.language == 'en' and name in ('og:image', 'twitter:image') and a.get('content') == SITE + 'img/og.png':
+                    a['content'] = SOCIAL_IMAGE_EN
+                if self.language == 'en' and name in ('og:image:alt', 'twitter:image:alt'):
+                    a['content'] = SOCIAL_IMAGE_ALT_EN
             if name == 'og:url': a['content'] = self.canonical
-            if name == 'og:locale': a['content'] = 'zh_CN' if self.language == 'zh' else 'en_US'
         if tag == 'option' and a.get('value') in ('zh','en'):
             a.pop('selected', None)
             if a['value'] == self.language: a['selected'] = None
@@ -156,6 +173,8 @@ def schema(text, language, copy, source='index.html'):
             if item['@type'] == 'SoftwareApplication':
                 item['description'] = copy['meta.desc']
                 item['softwareVersion'] = re.search(r"var REL = .*?v([\d.]+)/",text).group(1)
+                if item.get('screenshot') == SITE + 'img/og.png':
+                    item['screenshot'] = SOCIAL_IMAGE_EN
             if item['@type'] == 'FAQPage':
                 item['inLanguage'] = 'zh-CN' if language == 'zh' else 'en'
                 item['url'] = SITE + ('en/' if language == 'en' else '') + '#faq'

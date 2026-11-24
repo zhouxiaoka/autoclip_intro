@@ -74,5 +74,24 @@ class SearchPages(unittest.TestCase):
                 a=re.search(fr'data-i18n="faq.{i}.a">([^<]*)',text)[1]
                 self.assertEqual(unescape(q),question['name']);self.assertEqual(unescape(a),question['acceptedAnswer']['text'])
 
+    def test_homepage_social_cards_default_to_english_and_en_pages_use_english_og_image(self):
+        import html
+        from build_search_pages import SOCIAL_DESC_EN, SOCIAL_IMAGE_EN, SOCIAL_TITLE_EN, SOCIAL_IMAGE_ALT_EN
+        self.assertTrue((ROOT/'img/og-en.png').is_file())
+        alt_escaped = html.escape(SOCIAL_IMAGE_ALT_EN, quote=True)
+        desc_escaped = html.escape(SOCIAL_DESC_EN, quote=True)
+        for rel in ('index.html', 'en/index.html'):
+            text = (ROOT/rel).read_text()
+            self.assertIn(f'<meta property="og:title" content="{SOCIAL_TITLE_EN}">', text)
+            self.assertIn(f'<meta name="twitter:title" content="{SOCIAL_TITLE_EN}">', text)
+            self.assertIn(f'<meta property="og:description" content="{desc_escaped}">', text)
+            self.assertIn(f'<meta name="twitter:description" content="{desc_escaped}">', text)
+            self.assertIn(f'<meta property="og:image" content="{SOCIAL_IMAGE_EN}">', text)
+            self.assertIn(f'<meta name="twitter:image" content="{SOCIAL_IMAGE_EN}">', text)
+            self.assertIn(f'<meta property="og:image:alt" content="{alt_escaped}">', text)
+            self.assertIn(f'<meta name="twitter:image:alt" content="{alt_escaped}">', text)
+        for p in (ROOT/'en').rglob('index.html'):
+            self.assertNotIn('https://zhouxiaoka.github.io/autoclip_intro/img/og.png', p.read_text(), str(p))
+
 
 if __name__=='__main__':unittest.main()

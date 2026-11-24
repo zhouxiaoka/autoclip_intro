@@ -1010,7 +1010,8 @@ def build(check=False, footer=None, home=None):
     for language in ('zh', 'en'):
         route = ('en/' if language == 'en' else '') + 'blog/'
         rows = listed_posts(posts, language)
-        image = SITE + rows[0].cover_path() if rows else SITE + 'img/og.png'
+        fallback_og = SITE + ('img/og-en.png' if language == 'en' else 'img/og.png')
+        image = SITE + rows[0].cover_path() if rows else fallback_og
         zh_url = SITE + 'blog/'
         en_url = SITE + 'en/blog/'
         main = index_main(posts, route, language)
@@ -1033,7 +1034,8 @@ def build(check=False, footer=None, home=None):
                 en_post = next((item for item in posts if item.slug == post.slug and item.lang == 'en' and item.role == 'post'), None)
                 zh_url = SITE + zh_post.site_path('zh') if zh_post else ''
                 en_url = SITE + en_post.site_path('en') if en_post else ''
-            image = SITE + post.cover_path() if post.cover else SITE + 'img/og.png'
+            fallback_og = SITE + ('img/og-en.png' if language == 'en' else 'img/og.png')
+            image = SITE + post.cover_path() if post.cover else fallback_og
             description = post.summary or post.title
             main = post_main(post, posts, route, language)
             text = document(
