@@ -90,6 +90,10 @@ class Render(HTMLParser):
             a['data-static-language'] = self.language
             a['data-source-path'] = self.page
         if tag == 'link' and a.get('rel') == 'canonical': a['href'] = self.canonical
+        if a.get('data-copy-src') and self.copy.get(a['data-copy-src']):
+            a['src'] = self.copy[a['data-copy-src']]
+        if a.get('data-copy-alt') and self.copy.get(a['data-copy-alt']):
+            a['alt'] = self.copy[a['data-copy-alt']]
         for key in ('href','src','poster'):
             if key in a and not (tag == 'link' and a.get('rel') == 'canonical'):
                 a[key] = self.link(a[key], tag, key)

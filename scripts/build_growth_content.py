@@ -34,6 +34,9 @@ def render(path, item, contents):
              'cli':'CLI / MCP 文档' if lang=='zh' else 'CLI / MCP documentation',
              'models':'模型配置文档' if lang=='zh' else 'Model configuration'}
         for i,(h,p) in enumerate(d['sections']): c.update({f's{i}h':h,f's{i}p':p})
+        for idx,fig in (item.get('figures') or {}).items():
+            f = fig[lang]
+            c.update({f's{idx}fig_src':f['src'], f's{idx}fig_alt':f['alt'], f's{idx}fig_cap':f['caption']})
         if item.get('original'):
             c['rights'] = '原创教程与合成旁白，可用于介绍 AutoClip，请保留来源标注。' if lang=='zh' else 'Original lesson with synthetic narration. Reuse to introduce AutoClip with source attribution.'
             c['srt'] = '下载配套 SRT' if lang=='zh' else 'Download matching SRT'
@@ -58,8 +61,20 @@ def render(path, item, contents):
                       'thumbnailUrl':media+out['poster'],'contentUrl':media+out['video'],
                       'uploadDate':case['added']+'T00:00:00+08:00','duration':f'PT{out["duration_sec"]}S','url':SITE+path})
     main+=f'<p class="lede" data-copy="lede">{e(c["lede"])}</p>'
+    figures = item.get('figures') or {}
     for i,_ in enumerate(item['zh']['sections']):
-        main+=f'<section class="article-section"><h2 data-copy="s{i}h">{e(c[f"s{i}h"])}</h2><p data-copy="s{i}p">{e(c[f"s{i}p"])}</p></section>'
+        fig_html = ''
+        if str(i) in figures:
+            fig = figures[str(i)]['zh']
+            fig_html = (
+                f'<figure style="margin:18px 0 0;">'
+                f'<img src="{e(fig["src"])}" data-copy-src="s{i}fig_src" data-copy-alt="s{i}fig_alt" '
+                f'alt="{e(fig["alt"])}" loading="lazy" '
+                f'style="width:100%;height:auto;display:block;border-radius:12px;border:1px solid var(--line,rgba(0,0,0,0.08));">'
+                f'<figcaption style="margin-top:8px;font-size:13px;color:var(--muted,#666);" data-copy="s{i}fig_cap">{e(fig["caption"])}</figcaption>'
+                f'</figure>'
+            )
+        main+=f'<section class="article-section"><h2 data-copy="s{i}h">{e(c[f"s{i}h"])}</h2><p data-copy="s{i}p">{e(c[f"s{i}p"])}</p>{fig_html}</section>'
         if i==2 and item['kind']=='case':
             main+=f'<figure class="output-cover"><img src="{e(media+out["cover"])}" alt="{e(out.get("post",{}).get("title",c["h1"]))}" loading="lazy"><figcaption data-copy="cover">{c["cover"]}</figcaption></figure>'
     main+=f'<nav class="article-related"><h2 data-copy="related">{c["related"]}</h2>'

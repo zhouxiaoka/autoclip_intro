@@ -66,7 +66,33 @@
       "guides/podcast-to-shorts/",
       "cases/jensen-dwarkesh/",
       "guides/local-vs-cloud/"
-    ]
+    ],
+    "figures": {
+      "1": {
+        "zh": {
+          "src": "media/step2-api-setup-zh.gif",
+          "alt": "AutoClip 配置 AI 模型 API Key 操作动图",
+          "caption": "操作示意：在「设置 → 服务商与模型」选择服务商、粘贴 API Key 并测试启用（复制 Key 切回窗口也可一键自动填入）。"
+        },
+        "en": {
+          "src": "media/step2-api-setup-en.gif",
+          "alt": "AutoClip API key setup walkthrough",
+          "caption": "Walkthrough: open Settings → Providers & models, pick a provider, paste your API key, and click Test & enable."
+        }
+      },
+      "3": {
+        "zh": {
+          "src": "media/step3-import-output-zh.gif",
+          "alt": "AutoClip 导入视频与选择平台模板操作动图",
+          "caption": "操作示意：导入链接或本地视频，勾选目标平台，自由开关成片字幕与品牌片尾后点击「生成成片」。"
+        },
+        "en": {
+          "src": "media/step3-import-output-en.gif",
+          "alt": "AutoClip import video and select platforms walkthrough",
+          "caption": "Walkthrough: import a link or local video, pick target platforms, toggle captions or branded outro, and click Generate videos."
+        }
+      }
+    }
   },
   "guides/podcast-to-shorts/": {
     "kind": "guide",
