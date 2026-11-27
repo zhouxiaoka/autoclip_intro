@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AutoClip 模板广场 — 29+ 免费开源 AI 短视频剪辑模板与本地 3D 景深特效</title>
+  <meta name="description" content="浏览 AutoClip 官方免费开源短视频模板广场：涵盖 3D 人像景深穿背、杂志衬线、影院遮幅、红号清单、数据战绩卡、游戏主播分屏等 29+ 款可热更新模板，支持本地零费用渲染与 Claude/Codex Agent 克隆。" />
+  <link rel="canonical" href="https://zhouxiaoka.github.io/autoclip_intro/templates/" />
+  <link rel="icon" type="image/png" href="../favicon-32.png" />
+  <link rel="stylesheet" href="../tokens.css" />
+  <link rel="stylesheet" href="../site-shell.css" />
+  <style>
+    :root {
+      --g-bg: #faf9f6;
+      --g-card: #ffffff;
+      --g-ink: #14151a;
+      --g-muted: #5c6170;
+      --g-border: rgba(20, 21, 26, 0.09);
+      --g-accent: #14151a;
+      --g-depth: #6d28d9;
+    }
+    body {
+      margin: 0;
+      background: var(--g-bg);
+      color: var(--g-ink);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", "PingFang SC", "Noto Sans SC", sans-serif;
+    }
+    .t-nav {
+      position: sticky; top: 0; z-index: 40;
+      background: rgba(250, 249, 246, 0.88); backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--g-border);
+    }
+    .t-nav-in {
+      max-width: 1240px; margin: 0 auto; padding: 14px 24px;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    }
+    .t-brand {
+      display: inline-flex; align-items: center; gap: 9px; text-decoration: none;
+      color: var(--g-ink); font-weight: 700; font-size: 19px; letter-spacing: -0.02em;
+    }
+    .t-brand img { width: 26px; height: 26px; }
+    .t-links { display: flex; align-items: center; gap: 20px; font-size: 14px; }
+    .t-links a { color: var(--g-muted); text-decoration: none; font-weight: 500; }
+    .t-links a:hover, .t-links a.active { color: var(--g-ink); font-weight: 600; }
+    .t-actions { display: flex; align-items: center; gap: 10px; }
+    .t-btn {
+      display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px;
+      border-radius: 999px; font-size: 13px; font-weight: 600; text-decoration: none;
+      border: 1px solid var(--g-border); background: #fff; color: var(--g-ink); cursor: pointer;
+    }
+    .t-btn.primary { background: var(--g-ink); color: #fff; border-color: var(--g-ink); }
+    .t-btn:hover { filter: brightness(0.96); }
+
+    .t-hero {
+      max-width: 1240px; margin: 0 auto; padding: 54px 24px 26px;
+    }
+    .t-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12.5px; font-weight: 600; padding: 5px 12px; border-radius: 999px;
+      background: rgba(109, 40, 217, 0.09); color: var(--g-depth); margin-bottom: 16px;
+    }
+    .t-hero h1 {
+      margin: 0 0 12px; font-size: clamp(30px, 4.2vw, 46px); line-height: 1.12; letter-spacing: -0.03em;
+    }
+    .t-hero p {
+      margin: 0; max-width: 740px; font-size: 16px; line-height: 1.6; color: var(--g-muted);
+    }
+
+    .t-bar {
+      max-width: 1240px; margin: 0 auto; padding: 12px 24px 24px;
+      display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 14px;
+    }
+    .t-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+    .t-pill {
+      border: 1px solid var(--g-border); background: #fff; color: var(--g-muted);
+      padding: 7px 14px; border-radius: 999px; font-size: 13px; font-weight: 600; cursor: pointer;
+      transition: all .15s ease;
+    }
+    .t-pill:hover { border-color: rgba(20,21,26,.28); color: var(--g-ink); }
+    .t-pill.active { background: var(--g-ink); color: #fff; border-color: var(--g-ink); }
+    .t-pill.depth-pill.active { background: var(--g-depth); border-color: var(--g-depth); color: #fff; }
+    .t-search {
+      padding: 8px 14px; border-radius: 999px; border: 1px solid var(--g-border);
+      background: #fff; font-size: 13.5px; width: 240px; outline: none;
+    }
+    .t-search:focus { border-color: rgba(20,21,26,.35); }
+
+    .t-grid {
+      max-width: 1240px; margin: 0 auto; padding: 0 24px 64px;
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 22px;
+    }
+    .t-card {
+      background: var(--g-card); border: 1px solid var(--g-border); border-radius: 18px;
+      overflow: hidden; cursor: pointer; transition: transform .18s ease, box-shadow .18s ease;
+      display: flex; flex-direction: column;
+    }
+    .t-card:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(20,21,26,.09); }
+    .t-media {
+      position: relative; aspect-ratio: 9 / 16; background: #101218; overflow: hidden;
+    }
+    .t-media img, .t-media video {
+      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+    }
+    .t-media video { opacity: 0; transition: opacity .22s ease; }
+    .t-card:hover .t-media video { opacity: 1; }
+    .t-badges {
+      position: absolute; top: 10px; left: 10px; right: 10px; display: flex; justify-content: space-between; pointer-events: none;
+    }
+    .t-tag {
+      font-size: 11px; font-weight: 700; padding: 4px 8px; border-radius: 8px;
+      background: rgba(14, 16, 22, 0.72); color: #fff; backdrop-filter: blur(6px);
+    }
+    .t-tag.depth { background: rgba(109, 40, 217, 0.9); }
+    .t-body { padding: 13px 14px 15px; display: flex; flex-direction: column; gap: 5px; flex: 1; }
+    .t-name { font-size: 15px; font-weight: 700; color: var(--g-ink); display: flex; justify-content: space-between; align-items: center; gap: 6px; }
+    .t-ver { font-size: 11px; color: var(--g-muted); font-family: ui-monospace, Menlo, monospace; font-weight: 500; }
+    .t-desc {
+      font-size: 12.5px; line-height: 1.48; color: var(--g-muted);
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    }
+
+    .t-cta-band {
+      max-width: 1240px; margin: 0 auto 72px; padding: 0 24px;
+    }
+    .t-cta-box {
+      background: #14151a; color: #f6f7fb; border-radius: 22px; padding: 34px 36px;
+      display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px;
+    }
+    .t-cta-box h2 { margin: 0 0 8px; font-size: 22px; }
+    .t-cta-box p { margin: 0; color: #a7aec0; font-size: 14px; max-width: 640px; line-height: 1.55; }
+    .t-cta-code {
+      margin-top: 12px; display: inline-block; font-family: ui-monospace, Menlo, monospace;
+      font-size: 12.5px; background: rgba(255,255,255,.08); padding: 7px 12px; border-radius: 8px; color: #e2e8f0;
+    }
+
+    /* Modal */
+    .t-modal-bg {
+      position: fixed; inset: 0; background: rgba(10,12,18,.68); backdrop-filter: blur(6px);
+      display: none; align-items: center; justify-content: center; z-index: 100; padding: 20px;
+    }
+    .t-modal-bg.open { display: flex; }
+    .t-modal {
+      background: #fff; border-radius: 22px; max-width: 860px; width: 100%;
+      overflow: hidden; display: grid; grid-template-columns: 320px 1fr; box-shadow: 0 28px 80px rgba(0,0,0,.35);
+    }
+    @media (max-width: 760px) { .t-modal { grid-template-columns: 1fr; max-height: 90vh; overflow-y: auto; } .t-links { display: none; } }
+    .t-m-media { background: #0b0d12; aspect-ratio: 9 / 16; display: flex; align-items: center; justify-content: center; }
+    .t-m-media video { width: 100%; height: 100%; object-fit: contain; }
+    .t-m-info { padding: 26px 28px; display: flex; flex-direction: column; justify-content: space-between; gap: 16px; }
+    .t-m-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+    .t-close { border: none; background: #f2f3f6; width: 32px; height: 32px; border-radius: 999px; font-size: 18px; cursor: pointer; }
+    .t-cli {
+      background: #14151a; color: #e2e8f0; padding: 12px 14px; border-radius: 12px;
+      font-family: ui-monospace, Menlo, monospace; font-size: 12.5px; word-break: break-all;
+      display: flex; justify-content: space-between; align-items: center; gap: 10px;
+    }
+    .t-cli button { background: #2d3242; color: #fff; border: none; padding: 5px 10px; border-radius: 7px; font-size: 12px; cursor: pointer; white-space: nowrap; }
+    .t-tags-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+    .t-chip { font-size: 11.5px; padding: 3px 9px; border-radius: 999px; background: #f2f3f7; color: #4b5060; }
+  </style>
+</head>
+<body>
+<header class="t-nav">
+  <div class="t-nav-in">
+    <a class="t-brand" href="../"><img src="../logo.svg" alt="AutoClip" />AutoClip</a>
+    <nav class="t-links">
+      <a href="../" data-i="navHome">首页</a>
+      <a href="./" class="active" data-i="navTpl">模板广场</a>
+      <a href="../features/game-streams/" data-i="navGame">游戏直播切片</a>
+      <a href="../cases/" data-i="navCases">案例</a>
+    </nav>
+    <div class="t-actions">
+      <button class="t-btn" id="langBtn" onclick="toggleLang()">EN</button>
+      <a class="t-btn primary" href="https://github.com/zhouxiaoka/autoclip/releases/latest" target="_blank" rel="noopener" data-i="dlBtn">免费下载桌面端</a>
+    </div>
+  </div>
+</header>
+
+<section class="t-hero">
+  <div class="t-eyebrow" data-i="eyebrow">✨ 全部开源 · 本地零费用渲染 · 支持 1.6.3 本地 3D 景深人像抠图</div>
+  <h1 data-i="heroTitle">AutoClip 官方短视频模板广场</h1>
+  <p data-i="heroDesc">悬停任意卡片即可实时预览动效。支持桌面端一键下载热更新，或通过 CLI / MCP / Claude Code 一条命令把任意长视频、播客、访谈和直播切片做成爆款竖屏成片。</p>
+</section>
+
+<section class="t-bar">
+  <div class="t-pills" id="pills"></div>
+  <input class="t-search" id="searchInput" type="search" placeholder="搜索模板、风格、3D 景深..." />
+</section>
+
+<main class="t-grid" id="grid"></main>
+
+<section class="t-cta-band">
+  <div class="t-cta-box">
+    <div>
+      <h2 data-i="ctaTitle">想把刷到的爆款短视频变成你的专属模板？</h2>
+      <p data-i="ctaDesc">AutoClip 内置 <code>template-cloner</code> Agent Skill，支持在 Claude Code / Codex 里输入任意参考视频，自动拆解排版、动效与 3D 景深层并一键热装到本机。</p>
+      <div class="t-cta-code">npx skills add zhouxiaoka/autoclip</div>
+    </div>
+    <a class="t-btn" style="background:#fff;color:#14151a;padding:11px 20px;font-size:14px;" href="https://github.com/zhouxiaoka/autoclip" target="_blank" rel="noopener" data-i="ctaBtn">前往 GitHub 查看源码 →</a>
+  </div>
+</section>
+
+<div class="t-modal-bg" id="modalBg" onclick="if(event.target===this)closeModal()">
+  <div class="t-modal">
+    <div class="t-m-media"><video id="mVideo" controls autoplay loop muted playsinline></video></div>
+    <div class="t-m-info">
+      <div>
+        <div class="t-m-top">
+          <div>
+            <h2 id="mTitle" style="margin:0 0 6px;font-size:22px;"></h2>
+            <div id="mSub" style="font-size:12.5px;color:#64748b;font-family:ui-monospace,Menlo,monospace;"></div>
+          </div>
+          <button class="t-close" onclick="closeModal()">×</button>
+        </div>
+        <p id="mDesc" style="margin:14px 0 0;font-size:14.5px;line-height:1.6;color:#334155;"></p>
+        <div class="t-tags-row" id="mTags"></div>
+      </div>
+      <div>
+        <div style="font-size:12px;font-weight:600;color:#64748b;margin-bottom:6px;" data-i="cliLbl">CLI / Agent 一键使用：</div>
+        <div class="t-cli"><span id="mCli"></span><button id="copyBtn" onclick="copyCli()">复制</button></div>
+        <div style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;">
+          <a class="t-btn primary" style="padding:10px 18px;" href="https://github.com/zhouxiaoka/autoclip/releases/latest" target="_blank" rel="noopener" data-i="mDl">下载 AutoClip 桌面端使用</a>
+          <a class="t-btn" style="padding:10px 16px;" href="https://github.com/zhouxiaoka/autoclip/blob/main/docs/CLI_AND_MCP.md" target="_blank" rel="noopener" data-i="mDocs">CLI &amp; MCP 文档</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const FALLBACK_TEMPLATES = [{"id": "streamer_split", "version": "1.0.0", "name": {"zh": "主播上下分屏", "en": "Streamer Split", "locales": {}}, "desc": {"zh": "上 38% 全宽主播特写 + 下 62% 纯净游戏（自动避让双主播），中缝逐词高亮大字幕", "en": "Full-bleed 38% top facecam + 62% bottom gameplay with seam kinetic captions", "locales": {}}, "tags": ["gaming", "livestream", "split-screen", "viral"], "category": "gaming", "order": 40, "sha256": "45702b272d06edef43818d6d633a99d0324ece334afd94a1a76a3fb88e2f9ae7", "download_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/streamer_split-1.0.0.zip", "size_bytes": 255532, "min_app_version": null, "author": "AutoClip", "featured": false, "badge": null, "status": "published", "target_locales": [], "poster_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/streamer_split-1.0.0.poster.webp", "preview_mp4_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/streamer_split-1.0.0.preview.mp4", "preview_webm_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/streamer_split-1.0.0.preview.webm"}, {"id": "gta_wasted", "version": "2.0.0", "name": {"zh": "高能翻车分屏", "en": "Wasted Impact Split", "locales": {}}, "desc": {"zh": "平时 100% 满屏干净分屏，高能瞬间游戏层黑白去色 + 红黑横幅瞬时冲击", "en": "Clean full-bleed split-screen with game-only B&W impact & slam banner on peak moments", "locales": {}}, "tags": ["gaming", "livestream", "split-screen", "viral"], "category": "gaming", "order": 41, "sha256": "def6cf80ea429c8aecda4bc7ae05a4cdc88b9cae3b22f256875a56d850750e02", "download_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/gta_wasted-2.0.0.zip", "size_bytes": 270230, "min_app_version": null, "author": "AutoClip", "featured": false, "badge": null, "status": "published", "target_locales": [], "poster_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/gta_wasted-2.0.0.poster.webp", "preview_mp4_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/gta_wasted-2.0.0.preview.mp4", "preview_webm_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/gta_wasted-2.0.0.preview.webm"}, {"id": "streamer_pip", "version": "1.0.0", "name": {"zh": "全屏游戏大浮窗", "en": "Full-Bleed PiP", "locales": {}}, "desc": {"zh": "100% 满屏沉浸游戏画面 + 360px 圆角大反应窗，适合动作竞技与高画质单机", "en": "100% full-bleed vertical gameplay with a large 360px rounded floating reaction cam", "locales": {}}, "tags": ["gaming", "livestream", "split-screen", "viral"], "category": "gaming", "order": 42, "sha256": "a239e15b9db94f7141d658abc220629f06190661aeacd24b95ce5dae4b2a8922", "download_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/streamer_pip-1.0.0.zip", "size_bytes": 279912, "min_app_version": null, "author": "AutoClip", "featured": false, "badge": null, "status": "published", "target_locales": [], "poster_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/streamer_pip-1.0.0.poster.webp", "preview_mp4_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/streamer_pip-1.0.0.preview.mp4", "preview_webm_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/streamer_pip-1.0.0.preview.webm"}, {"id": "meme_setup", "version": "1.0.0", "name": {"zh": "情景反转黄牌", "en": "Meme Setup Banner", "locales": {}}, "desc": {"zh": "顶部亮黄圆角情境大标题卡 + 粗黑边大字幕，专为抖音/B站游戏搞笑与情景反转切片打造", "en": "Bold yellow rounded setup card on top + thick-stroked punchline captions for viral gaming & comedy clips", "locales": {}}, "tags": ["gaming", "comedy", "meme", "viral", "bilibili", "douyin"], "category": "gaming", "order": 43, "sha256": "7c7fd6c3672b3290cba774f28025531c56d5158a4de1545d0dbf65cd491059dd", "download_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/meme_setup-1.0.0.zip", "size_bytes": 143941, "min_app_version": null, "author": "AutoClip", "featured": false, "badge": null, "status": "published", "target_locales": [], "poster_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/meme_setup-1.0.0.poster.webp", "preview_mp4_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/meme_setup-1.0.0.preview.mp4", "preview_webm_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/meme_setup-1.0.0.preview.webm"}, {"id": "highlight_note", "version": "1.0.0", "name": {"zh": "荧光便利贴", "en": "Highlight Note", "locales": {}}, "desc": {"zh": "荧光黄便利贴标题 + 白底块状逐词高亮字幕，适合效率、认知与干货口播", "en": "Yellow highlighter tape headline + crisp white sticker block captions for productivity & knowledge shorts", "locales": {}}, "tags": ["knowledge", "productivity", "captions", "viral", "notes"], "category": "knowledge", "order": 45, "sha256": "76c91ae0f47729a7432fc02ffc463b4bfd7d63beffe84b4cfebba0017bd411be", "download_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/highlight_note-1.0.0.zip", "size_bytes": 175855, "min_app_version": null, "author": "AutoClip", "featured": false, "badge": null, "status": "published", "target_locales": [], "poster_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/highlight_note-1.0.0.poster.webp", "preview_mp4_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/highlight_note-1.0.0.preview.mp4", "preview_webm_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/highlight_note-1.0.0.preview.webm"}, {"id": "clean_pill", "version": "1.0.0", "name": {"zh": "极简白胶囊", "en": "Clean White Pill", "locales": {}}, "desc": {"zh": "极简白底黑字胶囊字幕 + 零干扰干净画幅，适合科技、效率与创始人深度口播", "en": "Minimal crisp white pill captions with zero visual clutter for tech, founder & productivity shorts", "locales": {}}, "tags": ["knowledge", "minimal", "productivity", "interview", "viral"], "category": "knowledge", "order": 46, "sha256": "d51951bfbe8fa720594ba8abce3a2e61fc683f55275b4f4ddfc631f73e227d89", "download_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/clean_pill-1.0.0.zip", "size_bytes": 175636, "min_app_version": null, "author": "AutoClip", "featured": false, "badge": null, "status": "published", "target_locales": [], "poster_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/clean_pill-1.0.0.poster.webp", "preview_mp4_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/clean_pill-1.0.0.preview.mp4", "preview_webm_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/clean_pill-1.0.0.preview.webm"}, {"id": "interview_card", "version": "1.0.0", "name": {"zh": "访谈卡片", "en": "Interview Card", "locales": {}}, "desc": {"zh": "深蓝卡片 + 居中横屏画框，顶部标题嘉宾、底部双语字幕与出处", "en": "Navy card with a centered 16:9 window, headline, bilingual captions and source", "locales": {}}, "tags": ["interview", "podcast", "bilingual", "xiaohongshu"], "category": "interview", "order": 50, "sha256": "501d88f033e09f84f8c888307693fa9900451d3796bc7d47aa1ef543fc7b6a39", "download_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/interview_card-1.0.0.zip", "size_bytes": 81315, "min_app_version": null, "author": "AutoClip", "featured": false, "badge": null, "status": "published", "target_locales": [], "poster_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/interview_card-1.0.0.poster.webp", "preview_mp4_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/interview_card-1.0.0.preview.mp4", "preview_webm_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/interview_card-1.0.0.preview.webm"}, {"id": "xhs_note", "version": "1.0.0", "name": {"zh": "干货便签", "en": "Knowledge Note", "locales": {}}, "desc": {"zh": "暖米白便签卡片 + 荧光黄重点标亮，适合小红书知识干货切片", "en": "Warm paper note card with highlighter accents for Xiaohongshu knowledge clips", "locales": {}}, "tags": ["xiaohongshu", "knowledge", "note", "bilingual"], "category": "interview", "order": 55, "sha256": "33a84d54be7b4e42fc47b37d3903aa77c579331ea1a13854f137bca2210ba7a0", "download_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/xhs_note-1.0.0.zip", "size_bytes": 85449, "min_app_version": null, "author": "AutoClip", "featured": false, "badge": null, "status": "published", "target_locales": [], "poster_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/xhs_note-1.0.0.poster.webp", "preview_mp4_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/xhs_note-1.0.0.preview.mp4", "preview_webm_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/xhs_note-1.0.0.preview.webm"}, {"id": "podcast_dark", "version": "1.0.0", "name": {"zh": "暗黑播客", "en": "Dark Podcast", "locales": {}}, "desc": {"zh": "极客暗黑播客卡片 + 青色高亮字幕与底部进度条，适合科技播客切片", "en": "Obsidian dark podcast frame with cyan keyword highlights and progress bar", "locales": {}}, "tags": ["podcast", "tech", "dark", "bilingual"], "category": "podcast", "order": 60, "sha256": "b6e7b5c3710489f7ad0ab2444d30d99b37912be5acb2a1d37ba12d42707d32fb", "download_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/podcast_dark-1.0.0.zip", "size_bytes": 83624, "min_app_version": null, "author": "AutoClip", "featured": false, "badge": null, "status": "published", "target_locales": [], "poster_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/podcast_dark-1.0.0.poster.webp", "preview_mp4_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/podcast_dark-1.0.0.preview.mp4", "preview_webm_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/podcast_dark-1.0.0.preview.webm"}, {"id": "solo_magenta", "version": "1.0.0", "name": {"zh": "洋红节奏插页", "en": "Magenta Beat Cut", "locales": {}}, "desc": {"zh": "对标 260 万播放 Your First Solo Weekend：高饱和洋红全屏节奏插页 + 正文避脸大小字混排动效", "en": "Faithful to 2.6M-view Solo Weekend: punchy magenta interstitial title cuts + face-safe mixed-size kinetic captions", "locales": {}}, "tags": ["viral", "magenta", "interstitial", "minimal", "animated"], "category": "general", "order": 60, "sha256": "470a3461a0d1c47ace1a0de42596f8986692d28e9312c38adfa15a09bd5d86ee", "download_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/solo_magenta-1.0.0.zip", "size_bytes": 271830, "min_app_version": null, "author": "AutoClip", "featured": false, "badge": "new", "status": "published", "target_locales": [], "poster_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/solo_magenta-1.0.0.poster.webp", "preview_mp4_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/solo_magenta-1.0.0.preview.mp4", "preview_webm_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/solo_magenta-1.0.0.preview.webm"}, {"id": "cinema_letterbox", "version": "1.1.0", "name": {"zh": "影院留白极简", "en": "Cinema Letterbox", "locales": {}}, "desc": {"zh": "对标 63 万播放 Chase Your Dreams：纯黑影院上下遮幅 + 细长无衬线轻字重逐词诗意浮现，绝不遮脸", "en": "Faithful to 631K-view Chase Your Dreams: pure black cinema letterbox with ultra-light condensed word-by-word reveal", "locales": {}}, "tags": ["cinema", "minimal", "letterbox", "aesthetic", "animated"], "category": "general", "order": 61, "sha256": "78c33e7412069c65074a00085f773a2283133988f05a6de4d75b0ca78469a7f1", "download_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/cinema_letterbox-1.1.0.zip", "size_bytes": 137938, "min_app_version": null, "author": "AutoClip", "featured": false, "badge": "new", "status": "published", "target_locales": [], "poster_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/cinema_letterbox-1.1.0.poster.webp", "preview_mp4_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/cinema_letterbox-1.1.0.preview.mp4", "preview_webm_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/cinema_letterbox-1.1.0.preview.webm"}, {"id": "impact_red", "version": "2.0.0", "name": {"zh": "红白虚焦冲击", "en": "Impact Red Blur", "locales": {}}, "desc": {"zh": "对标 Starting a Clothing Brand：开场 1.35s 背景真高斯模糊+居中红白大字冲击，正片清晰后字幕自动下移避脸", "en": "True timeline blur on 1.35s crimson/white center hook, then crisp face-safe lower captions once sharp", "locales": {}}, "tags": ["editorial", "impact", "crimson", "blur", "face-safe"], "category": "general", "order": 62, "sha256": "47264793a136c5fcfc5f34e286eca6318a9bafe077f3507548d18dd2affbccce", "download_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/impact_red-2.0.0.zip", "size_bytes": 239773, "min_app_version": null, "author": "AutoClip", "featured": false, "badge": "new", "status": "published", "target_locales": [], "poster_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/impact_red-2.0.0.poster.webp", "preview_mp4_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/impact_red-2.0.0.preview.mp4", "preview_webm_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/impact_red-2.0.0.preview.webm"}, {"id": "red_list_hook", "version": "1.0.0", "name": {"zh": "红号清单榜单", "en": "Crimson List Hook", "locales": {}}, "desc": {"zh": "对标 110 万播放 Better Date Questions：顶部固定白标题 + 避脸区大号红字 #1/#2/#3 编号与白字清单", "en": "Faithful to 1.1M-view Date Questions: persistent top white headline + bold crimson #1/#2/#3 numbered takeaways", "locales": {}}, "tags": ["list", "hook", "crimson", "tips", "animated"], "category": "knowledge", "order": 63, "sha256": "e1bb6b7370096e697828c5f0b14faaa0f6dc417e356e6a32bc7f7278d22f6e80", "download_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/red_list_hook-1.0.0.zip", "size_bytes": 253729, "min_app_version": null, "author": "AutoClip", "featured": false, "badge": "new", "status": "published", "target_locales": [], "poster_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/red_list_hook-1.0.0.poster.webp", "preview_mp4_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/red_list_hook-1.0.0.preview.mp4", "preview_webm_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/red_list_hook-1.0.0.preview.webm"}, {"id": "editorial_serif", "version": "2.0.0", "name": {"zh": "极简杂志衬线", "en": "Editorial Serif Mix", "locales": {}}, "desc": {"zh": "对标 An Unforgettable Party：丝滑逐词柔焦浮现 + 句内大小字体/正斜体混排（重点词自动放大斜体衬线），避脸高级感", "en": "Silky word-by-word focus reveal with mixed-size regular/italic Instrument Serif emphasis words in face-safe zone", "locales": {}}, "tags": ["editorial", "serif", "mixed-type", "silky", "face-safe"], "category": "general", "order": 64, "sha256": "32dec8cb9f8048fd69e795b2386368e31426adbcb13c05af51eccbc7176c7169", "download_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/editorial_serif-2.0.0.zip", "size_bytes": 340246, "min_app_version": null, "author": "AutoClip", "featured": false, "badge": "new", "status": "published", "target_locales": [], "poster_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/editorial_serif-2.0.0.poster.webp", "preview_mp4_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/editorial_serif-2.0.0.preview.mp4", "preview_webm_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/editorial_serif-2.0.0.preview.webm"}, {"id": "garden_vlog", "version": "1.0.0", "name": {"zh": "手绘涂鸦日记", "en": "Garden Storytime", "locales": {}}, "desc": {"zh": "对标 250 万播放 Garden Storytime：无边框生活化 Vlog，顶部粗白小写 + 镂空手绘描边字与小星芒涂鸦", "en": "Faithful to 2.5M-view Garden Storytime: frameless lifestyle vlog with bold lowercase sans + hollow outlined hand-drawn accent words", "locales": {}}, "tags": ["vlog", "handdrawn", "doodle", "lifestyle", "animated"], "category": "general", "order": 65, "sha256": "f2292a409ed796acd16e5549c00fcdc09006f2bf6cca26f7b95b92d6e7d1779c", "download_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/garden_vlog-1.0.0.zip", "size_bytes": 453579, "min_app_version": null, "author": "AutoClip", "featured": false, "badge": "new", "status": "published", "target_locales": [], "poster_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/garden_vlog-1.0.0.poster.webp", "preview_mp4_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/garden_vlog-1.0.0.preview.mp4", "preview_webm_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/garden_vlog-1.0.0.preview.webm"}, {"id": "stats_kpi", "version": "1.0.0", "name": {"zh": "爆款数据战绩卡", "en": "Viral KPI Stats", "locales": {}}, "desc": {"zh": "对标 86 万播放 Faceless Content Page：顶部暗透数据战绩卡动态滚数 + 底部经典白字黑边框字幕", "en": "Faithful to 864K-view Faceless Content Page: animated dark frosted KPI metrics pill + crisp white black-outlined captions", "locales": {}}, "tags": ["stats", "kpi", "creator", "business", "animated"], "category": "knowledge", "order": 66, "sha256": "ba3bab62d02b0aaebdd5268fbcdf3020ef4cabecf9790f801f69c7f54a35f684", "download_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/stats_kpi-1.0.0.zip", "size_bytes": 183430, "min_app_version": null, "author": "AutoClip", "featured": false, "badge": "new", "status": "published", "target_locales": [], "poster_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/stats_kpi-1.0.0.poster.webp", "preview_mp4_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/stats_kpi-1.0.0.preview.mp4", "preview_webm_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/stats_kpi-1.0.0.preview.webm"}, {"id": "editorial_pairing", "version": "1.0.0", "name": {"zh": "杂志手写双题", "en": "Editorial Pairing", "locales": {}}, "desc": {"zh": "对标 140 万播放 Better Snack Combos：顶部复古衬线大标题 + 优雅花体手写副标 + 极简小字字幕", "en": "Faithful to 1.4M-view Better Snack Combos: condensed serif header + delicate cursive script pairing + whisper-clean captions", "locales": {}}, "tags": ["editorial", "serif", "script", "aesthetic", "animated"], "category": "general", "order": 67, "sha256": "b182b15895600c0ae5384a378a22c2b616ae8a07f0b678211442cac7b177e6a1", "download_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/editorial_pairing-1.0.0.zip", "size_bytes": 408515, "min_app_version": null, "author": "AutoClip", "featured": false, "badge": "new", "status": "published", "target_locales": [], "poster_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/editorial_pairing-1.0.0.poster.webp", "preview_mp4_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/editorial_pairing-1.0.0.preview.mp4", "preview_webm_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/editorial_pairing-1.0.0.preview.webm"}, {"id": "sticker_steps", "version": "1.0.0", "name": {"zh": "步骤贴纸字幕", "en": "Sticker Steps", "locales": {}}, "desc": {"zh": "对标 17 万播放 Travel Light：顶部 3 步状态切换标签（当前步亮红）+ 底部逐词弹跳贴纸块字幕", "en": "Faithful to 169K-view Travel Light: top 3-step active-red progress pills + spring-popping word-by-word sticker tile captions", "locales": {}}, "tags": ["steps", "stickers", "tutorial", "tips", "animated"], "category": "knowledge", "order": 68, "sha256": "5c2e76b4e3a7b9103d9a137a04e971834fbe6d27c0e45ae42c1e57b8575377c9", "download_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/sticker_steps-1.0.0.zip", "size_bytes": 382271, "min_app_version": null, "author": "AutoClip", "featured": false, "badge": "new", "status": "published", "target_locales": [], "poster_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/sticker_steps-1.0.0.poster.webp", "preview_mp4_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/sticker_steps-1.0.0.preview.mp4", "preview_webm_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/sticker_steps-1.0.0.preview.webm"}, {"id": "red_white_kinetic", "version": "1.0.0", "name": {"zh": "红白交错动效字", "en": "Red-White Kinetic", "locales": {}}, "desc": {"zh": "专为高能观点口播打造：红白交错大小字体 30fps 弹性动效字幕，重点词巨幅红白交替炸屏且严格避脸", "en": "High-energy alternating crimson-red and pure-white mixed-size kinetic captions with bouncy 30fps spring motion", "locales": {}}, "tags": ["kinetic", "red", "white", "viral", "animated"], "category": "general", "order": 69, "sha256": "ca50f357d3805e7930c6f7a746f0ef5d26b8bccf2147e7b15d964155073d5f30", "download_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/red_white_kinetic-1.0.0.zip", "size_bytes": 255222, "min_app_version": null, "author": "AutoClip", "featured": false, "badge": "new", "status": "published", "target_locales": [], "poster_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/red_white_kinetic-1.0.0.poster.webp", "preview_mp4_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/red_white_kinetic-1.0.0.preview.mp4", "preview_webm_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/red_white_kinetic-1.0.0.preview.webm"}, {"id": "depth_billboard", "version": "1.0.0", "name": {"zh": "景深大字穿背", "en": "Depth Billboard", "locales": {}}, "desc": {"zh": "3 层本地人像抠图：巨幅 Anton 标题从人物头肩背后穿过，前景安全区叠加利落动态字幕", "en": "Local 3-layer subject matte: monumental Anton headline passing cleanly behind the speaker's head and shoulders", "locales": {}}, "tags": ["depth", "3d", "behind", "viral", "animated"], "category": "general", "order": 70, "sha256": "50749ca9d4845301808fafd09b569c2ec7f966476e5d0c5c2e1de537e13e9995", "download_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/depth_billboard-1.0.0.zip", "size_bytes": 351962, "min_app_version": "1.6.3", "author": "AutoClip", "featured": false, "badge": "new", "status": "published", "target_locales": [], "poster_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/depth_billboard-1.0.0.poster.webp", "preview_mp4_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/depth_billboard-1.0.0.preview.mp4", "preview_webm_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/depth_billboard-1.0.0.preview.webm"}, {"id": "depth_zen", "version": "1.0.0", "name": {"zh": "禅意景深排版", "en": "Zen Depth Editorial", "locales": {}}, "desc": {"zh": "对标 Bonsai Patience：3 层人像抠图实现句首文字藏于人物背后，前景以修长斜体衬线大字承接金句", "en": "Faithful to Bonsai Patience: 3-layer subject matte puts lead-in text behind the speaker with foreground italic serif emphasis", "locales": {}}, "tags": ["depth", "serif", "editorial", "zen", "animated"], "category": "general", "order": 71, "sha256": "21f5ac921bc901f7b84256d7a843b20c39fe455bf7e0ed4db72b3264da81be1e", "download_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/depth_zen-1.0.0.zip", "size_bytes": 361435, "min_app_version": "1.6.3", "author": "AutoClip", "featured": false, "badge": "new", "status": "published", "target_locales": [], "poster_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/depth_zen-1.0.0.poster.webp", "preview_mp4_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/depth_zen-1.0.0.preview.mp4", "preview_webm_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/depth_zen-1.0.0.preview.webm"}, {"id": "dynamic_word_shout", "version": "1.0.0", "name": {"zh": "动态大白字强节奏", "en": "Dynamic Word Shout", "locales": {}}, "desc": {"zh": "对标 Build Your Keyboard（修复静态字）：每句口播动态切换巨幅大白关键词 + 下方紧凑黑底字幕条", "en": "Faithful to Build Your Keyboard: giant white uppercase hero word dynamically updates on every cue above a tight black bar", "locales": {}}, "tags": ["shout", "dynamic", "white", "viral", "animated"], "category": "general", "order": 72, "sha256": "ba2db884228ddbbeda1018de6c9f75e7e5ff4a92ded0d790d87f583d6e99a9dd", "download_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/dynamic_word_shout-1.0.0.zip", "size_bytes": 302221, "min_app_version": null, "author": "AutoClip", "featured": false, "badge": "new", "status": "published", "target_locales": [], "poster_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/dynamic_word_shout-1.0.0.poster.webp", "preview_mp4_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/dynamic_word_shout-1.0.0.preview.mp4", "preview_webm_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/dynamic_word_shout-1.0.0.preview.webm"}, {"id": "yellow_sans_hook", "version": "1.0.0", "name": {"zh": "无衬线亮黄干货", "en": "Yellow Sans Hook", "locales": {}}, "desc": {"zh": "对标 35 万播放 How to Draw Better：纯无衬线高对比亮黄粗体左对齐字幕 + 顶部极简主题签，绝不遮脸", "en": "Faithful to 354K-view How to Draw Better: crisp bold sans-serif vivid yellow left-aligned captions in face-safe zone", "locales": {}}, "tags": ["yellow", "sans", "tips", "creator", "animated"], "category": "knowledge", "order": 73, "sha256": "ad73d159ed7a33370de5dd7aed744be93d1ec067b6035198479d0231eca13d01", "download_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/yellow_sans_hook-1.0.0.zip", "size_bytes": 212606, "min_app_version": null, "author": "AutoClip", "featured": false, "badge": "new", "status": "published", "target_locales": [], "poster_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/yellow_sans_hook-1.0.0.poster.webp", "preview_mp4_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/yellow_sans_hook-1.0.0.preview.mp4", "preview_webm_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/yellow_sans_hook-1.0.0.preview.webm"}, {"id": "verdict_meter", "version": "1.0.0", "name": {"zh": "三段评测打分条", "en": "Verdict Meter", "locales": {}}, "desc": {"zh": "对标 20 万播放 Battery Health Myth：顶部动态三档评测条（MYTH / NEUTRAL / PROVEN）随口播高亮 + 底部白字黑边字幕", "en": "Faithful to 204K-view Battery Health Myth: animated 3-tier verdict meter bar at top + crisp white outlined captions", "locales": {}}, "tags": ["review", "verdict", "myth", "tech", "animated"], "category": "knowledge", "order": 74, "sha256": "ef81246ef1ae0f2f649a526683274eac3c1de61c28e2965417b966fe6f987aa3", "download_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/verdict_meter-1.0.0.zip", "size_bytes": 213866, "min_app_version": null, "author": "AutoClip", "featured": false, "badge": "new", "status": "published", "target_locales": [], "poster_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/verdict_meter-1.0.0.poster.webp", "preview_mp4_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/verdict_meter-1.0.0.preview.mp4", "preview_webm_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/verdict_meter-1.0.0.preview.webm"}, {"id": "split_headline_pop", "version": "1.0.0", "name": {"zh": "荧光胶囊逐词高亮", "en": "Lime Word Pill", "locales": {}}, "desc": {"zh": "高留存口播神器：荧光绿胶囊随说话节奏逐词丝滑跳跃高亮当前词，清晰现代且严格避让人脸", "en": "High-retention kinetic captions: electric-lime pill smoothly hops word-by-word in sync with speech in the face-safe zone", "locales": {}}, "tags": ["lime", "karaoke", "pill", "viral", "animated"], "category": "general", "order": 75, "sha256": "adb9eb94560ed6cb1fb49ef7c2c481c9cb3924978d6ce65d1e38a420711aaa73", "download_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/split_headline_pop-1.0.0.zip", "size_bytes": 165859, "min_app_version": null, "author": "AutoClip", "featured": false, "badge": "new", "status": "published", "target_locales": [], "poster_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/split_headline_pop-1.0.0.poster.webp", "preview_mp4_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/split_headline_pop-1.0.0.preview.mp4", "preview_webm_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/split_headline_pop-1.0.0.preview.webm"}, {"id": "magazine_issue", "version": "1.0.0", "name": {"zh": "时尚刊号杂志风", "en": "Magazine Issue", "locales": {}}, "desc": {"zh": "高质感时尚刊物风：顶部极细横线刊号栏（ISSUE · 标题）+ 底部 Playfair Display 衬线斜体混排字幕", "en": "High-fashion editorial magazine look: hairline issue header at top + refined Playfair Display regular/italic captions", "locales": {}}, "tags": ["magazine", "editorial", "playfair", "fashion", "animated"], "category": "general", "order": 76, "sha256": "21f44b5b345adfabdc1e398ce3cd322feaf87917f9348a9323f39043aeb4f49a", "download_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/magazine_issue-1.0.0.zip", "size_bytes": 496636, "min_app_version": null, "author": "AutoClip", "featured": false, "badge": "new", "status": "published", "target_locales": [], "poster_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/magazine_issue-1.0.0.poster.webp", "preview_mp4_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/magazine_issue-1.0.0.preview.mp4", "preview_webm_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/magazine_issue-1.0.0.preview.webm"}, {"id": "depth_chapter_num", "version": "1.0.0", "name": {"zh": "景深大号章节号", "en": "Depth Chapter Num", "locales": {}}, "desc": {"zh": "3 层人像抠图：巨幅半透明 01/02/03 章节号随干货要点从人物背后动态滑出，前景配清晰要点字幕", "en": "3-layer subject matte: monumental translucent 01/02/03 chapter numbers dynamically slide behind speaker per takeaway", "locales": {}}, "tags": ["depth", "chapter", "list", "tips", "3d"], "category": "knowledge", "order": 77, "sha256": "21aca4b05f4b269f0768d6d5bf5cdfb9ee754fc9f58ef610a8011a104e23d3d7", "download_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/depth_chapter_num-1.0.0.zip", "size_bytes": 332666, "min_app_version": "1.6.3", "author": "AutoClip", "featured": false, "badge": "new", "status": "published", "target_locales": [], "poster_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/depth_chapter_num-1.0.0.poster.webp", "preview_mp4_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/depth_chapter_num-1.0.0.preview.mp4", "preview_webm_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/depth_chapter_num-1.0.0.preview.webm"}, {"id": "depth_neon_glow", "version": "1.0.0", "name": {"zh": "霓虹光晕景深", "en": "Depth Neon Glow", "locales": {}}, "desc": {"zh": "3 层人像抠图：赛博发光网格与霓虹光晕环绕人物背后，动态发光关键词穿背而出，适合科技/AI/游戏赛道", "en": "3-layer subject matte: cyber neon grid aura + dynamic glowing power word behind speaker for tech, AI & gaming clips", "locales": {}}, "tags": ["depth", "neon", "cyber", "tech", "3d"], "category": "general", "order": 78, "sha256": "80d1c786a0827cd204db7c771375e6d4d7d2ba2bfa4c01ea807de190f1d7d34f", "download_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/depth_neon_glow-1.0.0.zip", "size_bytes": 357524, "min_app_version": "1.6.3", "author": "AutoClip", "featured": false, "badge": "new", "status": "published", "target_locales": [], "poster_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/depth_neon_glow-1.0.0.poster.webp", "preview_mp4_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/depth_neon_glow-1.0.0.preview.mp4", "preview_webm_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/depth_neon_glow-1.0.0.preview.webm"}, {"id": "depth_card_peek", "version": "1.0.0", "name": {"zh": "景深数据卡探出", "en": "Depth Card Peek", "locales": {}}, "desc": {"zh": "3 层人像抠图：暗黑金融/增长走势数据卡从人物头肩背后动态探出并画线，前景配利落商业口播字幕", "en": "3-layer subject matte: dark financial/KPI trend card peeks smoothly out from behind the speaker with live sparkline", "locales": {}}, "tags": ["depth", "finance", "kpi", "business", "3d"], "category": "knowledge", "order": 79, "sha256": "88c4014839f7eb78882d9f6154d46ea55c406130aef5d0f155eed7ee16c5e2ad", "download_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/depth_card_peek-1.0.0.zip", "size_bytes": 261150, "min_app_version": "1.6.3", "author": "AutoClip", "featured": false, "badge": "new", "status": "published", "target_locales": [], "poster_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/depth_card_peek-1.0.0.poster.webp", "preview_mp4_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/depth_card_peek-1.0.0.preview.mp4", "preview_webm_url": "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/depth_card_peek-1.0.0.preview.webm"}];
+const CATALOG_URL = "https://github.com/zhouxiaoka/autoclip/releases/download/templates-catalog/catalog.json";
+
+let lang = (new URLSearchParams(location.search).get("lang") || "").toLowerCase().startsWith("en") ? "en" : "zh";
+let templates = FALLBACK_TEMPLATES.slice();
+let activeCat = "all";
+let query = "";
+
+const I18N = {
+  zh: {
+    navHome: "首页", navTpl: "模板广场", navGame: "游戏直播切片", navCases: "案例", dlBtn: "免费下载桌面端",
+    eyebrow: "✨ 全部开源 · 本地零费用渲染 · 支持 1.6.3 本地 3D 景深人像抠图",
+    heroTitle: "AutoClip 官方短视频模板广场",
+    heroDesc: "悬停任意卡片即可实时预览动效。支持桌面端一键下载热更新，或通过 CLI / MCP / Claude Code 一条命令把任意长视频、播客、访谈和直播切片做成爆款竖屏成片。",
+    searchPh: "搜索模板、风格、3D 景深...",
+    ctaTitle: "想把刷到的爆款短视频变成你的专属模板？",
+    ctaDesc: "AutoClip 内置 template-cloner Agent Skill，支持在 Claude Code / Codex 里输入任意参考视频，自动拆解排版、动效与 3D 景深层并一键热装到本机。",
+    ctaBtn: "前往 GitHub 查看源码 →",
+    cliLbl: "CLI / Agent 一键使用：", mDl: "下载 AutoClip 桌面端使用", mDocs: "CLI & MCP 文档",
+    cats: { all: "全部", depth: "3D 景深 · 1.6.3", general: "通用爆款", knowledge: "干货知识", interview: "访谈播客", gaming: "游戏直播" },
+    copy: "复制", copied: "已复制", langBtn: "EN"
+  },
+  en: {
+    navHome: "Home", navTpl: "Templates", navGame: "Game Streams", navCases: "Showcase", dlBtn: "Download Free",
+    eyebrow: "✨ Open-Source · 100% Local Rendering · 1.6.3 Local 3D Subject Depth Engine",
+    heroTitle: "AutoClip Official Template Gallery",
+    heroDesc: "Hover any card for live motion preview. Hot-install inside AutoClip Desktop in one click, or trigger any template from CLI, MCP, Claude Code, or Codex with zero cloud render fees.",
+    searchPh: "Search templates, 3D depth, serif...",
+    ctaTitle: "Want to clone any viral short into your own template?",
+    ctaDesc: "AutoClip ships with the template-cloner Agent Skill for Claude Code & Codex — drop any reference video to reverse-engineer typography, motion, and 3D depth layers locally.",
+    ctaBtn: "Explore on GitHub →",
+    cliLbl: "One-line CLI / Agent command:", mDl: "Download AutoClip Desktop", mDocs: "CLI & MCP Docs",
+    cats: { all: "All", depth: "3D Depth · 1.6.3", general: "Viral & Editorial", knowledge: "Knowledge & Tips", interview: "Podcast & Interview", gaming: "Gaming Streams" },
+    copy: "Copy", copied: "Copied", langBtn: "中文"
+  }
+};
+
+function isDepth(t) { return t.min_app_version === "1.6.3" || (t.tags || []).includes("depth"); }
+function tName(t) { return (t.name && (t.name[lang] || t.name.en || t.name.zh)) || t.id; }
+function tDesc(t) { return (t.description && (t.description[lang] || t.description.en || t.description.zh)) || ""; }
+
+function applyI18n() {
+  const d = I18N[lang];
+  document.documentElement.lang = lang === "en" ? "en" : "zh-CN";
+  document.querySelectorAll("[data-i]").forEach(el => { const k = el.getAttribute("data-i"); if (d[k]) el.textContent = d[k]; });
+  document.getElementById("searchInput").placeholder = d.searchPh;
+  document.getElementById("langBtn").textContent = d.langBtn;
+  document.getElementById("copyBtn").textContent = d.copy;
+}
+
+function renderPills() {
+  const d = I18N[lang];
+  const counts = {
+    all: templates.length,
+    depth: templates.filter(isDepth).length,
+    general: templates.filter(t => t.category === "general").length,
+    knowledge: templates.filter(t => t.category === "knowledge").length,
+    interview: templates.filter(t => t.category === "interview" || t.category === "podcast").length,
+    gaming: templates.filter(t => t.category === "gaming").length,
+  };
+  const order = ["all", "depth", "general", "knowledge", "interview", "gaming"];
+  document.getElementById("pills").innerHTML = order.map(k => `
+    <button class="t-pill ${k === "depth" ? "depth-pill" : ""} ${activeCat === k ? "active" : ""}" onclick="setCat('${k}')">
+      ${d.cats[k]} (${counts[k]})
+    </button>
+  `).join("");
+}
+
+function renderGrid() {
+  const q = query.trim().toLowerCase();
+  const list = templates.filter(t => {
+    if (activeCat === "depth" && !isDepth(t)) return false;
+    else if (activeCat === "interview" && !(t.category === "interview" || t.category === "podcast")) return false;
+    else if (activeCat !== "all" && activeCat !== "depth" && activeCat !== "interview" && t.category !== activeCat) return false;
+    if (!q) return true;
+    return (t.id + " " + tName(t) + " " + tDesc(t) + " " + (t.tags || []).join(" ")).toLowerCase().includes(q);
+  });
+  const grid = document.getElementById("grid");
+  grid.innerHTML = list.map(t => {
+    const depth = isDepth(t);
+    const badgeHtml = depth
+      ? `<span class="t-tag depth">3D DEPTH · 1.6.3</span>`
+      : (t.badge === "new" ? `<span class="t-tag">${lang === "en" ? "NEW" : "新上线"}</span>` : `<span></span>`);
+    return `
+      <article class="t-card" onclick="openModal('${t.id}')" onmouseenter="playCard(this)" onmouseleave="stopCard(this)">
+        <div class="t-media">
+          <img src="${t.poster_url}" alt="${tName(t)}" loading="lazy" />
+          <video data-src="${t.preview_mp4_url}" muted loop playsinline preload="none"></video>
+          <div class="t-badges">${badgeHtml}</div>
+        </div>
+        <div class="t-body">
+          <div class="t-name"><span>${tName(t)}</span><span class="t-ver">v${t.version}</span></div>
+          <div class="t-desc">${tDesc(t)}</div>
+        </div>
+      </article>
+    `;
+  }).join("");
+}
+
+function playCard(el) {
+  const v = el.querySelector("video");
+  if (!v) return;
+  if (!v.src && v.dataset.src) v.src = v.dataset.src;
+  v.play().catch(() => {});
+}
+function stopCard(el) {
+  const v = el.querySelector("video");
+  if (v) { v.pause(); v.currentTime = 0; }
+}
+function setCat(c) { activeCat = c; renderPills(); renderGrid(); }
+function toggleLang() { lang = lang === "zh" ? "en" : "zh"; applyI18n(); renderPills(); renderGrid(); }
+
+function openModal(id) {
+  const t = templates.find(x => x.id === id);
+  if (!t) return;
+  document.getElementById("mTitle").textContent = tName(t);
+  document.getElementById("mSub").textContent = `${t.id} · v${t.version}${t.min_app_version ? " · min v" + t.min_app_version : ""}`;
+  document.getElementById("mDesc").textContent = tDesc(t);
+  document.getElementById("mTags").innerHTML = (t.tags || []).map(tag => `<span class="t-chip">#${tag}</span>`).join("");
+  document.getElementById("mCli").textContent = `autoclip produce "<video-url>" --template ${t.id} --platform youtube_shorts`;
+  const v = document.getElementById("mVideo");
+  v.poster = t.poster_url;
+  v.src = t.preview_mp4_url;
+  v.play().catch(() => {});
+  document.getElementById("modalBg").classList.add("open");
+}
+function closeModal() {
+  document.getElementById("modalBg").classList.remove("open");
+  const v = document.getElementById("mVideo");
+  v.pause(); v.removeAttribute("src");
+}
+function copyCli() {
+  navigator.clipboard.writeText(document.getElementById("mCli").textContent).then(() => {
+    const btn = document.getElementById("copyBtn");
+    btn.textContent = I18N[lang].copied;
+    setTimeout(() => btn.textContent = I18N[lang].copy, 1500);
+  });
+}
+
+document.getElementById("searchInput").addEventListener("input", e => { query = e.target.value; renderGrid(); });
+applyI18n(); renderPills(); renderGrid();
+
+// Silent live sync with GitHub Releases catalog.json so future template batches auto-appear!
+fetch(CATALOG_URL, { cache: "no-store" }).then(r => r.ok ? r.json() : null).then(data => {
+  if (data && Array.isArray(data.templates) && data.templates.length) {
+    templates = data.templates;
+    renderPills(); renderGrid();
+  }
+}).catch(() => {});
+</script>
+</body>
+</html>
