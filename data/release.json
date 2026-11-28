@@ -1,31 +1,31 @@
 {
   "source": "github-release",
   "repository": "zhouxiaoka/autoclip",
-  "tag": "v1.6.2",
-  "version": "1.6.2",
+  "tag": "v1.6.3",
+  "version": "1.6.3",
   "draft": false,
   "prerelease": false,
-  "published_at": "2026-11-26T14:07:52Z",
-  "html_url": "https://github.com/zhouxiaoka/autoclip/releases/tag/v1.6.2",
+  "published_at": "2026-11-28T08:22:05Z",
+  "html_url": "https://github.com/zhouxiaoka/autoclip/releases/tag/v1.6.3",
   "download_page": "https://github.com/zhouxiaoka/autoclip/releases/latest",
   "assets": {
     "mac": {
-      "name": "AutoClip.Desktop_1.6.2_aarch64.dmg",
-      "bytes": 347562949,
+      "name": "AutoClip.Desktop_1.6.3_aarch64.dmg",
+      "bytes": 347016569,
       "size_mb": 331,
-      "url": "https://github.com/zhouxiaoka/autoclip/releases/download/v1.6.2/AutoClip.Desktop_1.6.2_aarch64.dmg"
+      "url": "https://github.com/zhouxiaoka/autoclip/releases/download/v1.6.3/AutoClip.Desktop_1.6.3_aarch64.dmg"
     },
     "win": {
-      "name": "AutoClip.Desktop_1.6.2_x64-setup.exe",
-      "bytes": 208464290,
-      "size_mb": 199,
-      "url": "https://github.com/zhouxiaoka/autoclip/releases/download/v1.6.2/AutoClip.Desktop_1.6.2_x64-setup.exe"
+      "name": "AutoClip.Desktop_1.6.3_x64-setup.exe",
+      "bytes": 214724071,
+      "size_mb": 205,
+      "url": "https://github.com/zhouxiaoka/autoclip/releases/download/v1.6.3/AutoClip.Desktop_1.6.3_x64-setup.exe"
     },
     "cli": {
-      "name": "autoclip-1.6.2-cli-mcp.zip",
-      "bytes": 21641215,
-      "size_mb": 21,
-      "url": "https://github.com/zhouxiaoka/autoclip/releases/download/v1.6.2/autoclip-1.6.2-cli-mcp.zip"
+      "name": "autoclip-1.6.3-cli-mcp.zip",
+      "bytes": 27366398,
+      "size_mb": 26,
+      "url": "https://github.com/zhouxiaoka/autoclip/releases/download/v1.6.3/autoclip-1.6.3-cli-mcp.zip"
     }
   }
 }
